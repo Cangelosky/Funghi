@@ -4966,6 +4966,17 @@
       "tmax_7gg_stimata": "12.8",
       "tmin_7gg_stimata": "8.3"
      }
+    },
+    {
+     "d": "2025-12-14",
+     "note": "Ritrovamenti fotografati",
+     "c": {
+      "pioggia_7": "0.9",
+      "pioggia_14": "2.8",
+      "pioggia_21": "32.4",
+      "pioggia_30": "97.0",
+      "gg_da_pioggia5": "16"
+     }
     }
    ],
    "bosco": {
@@ -7809,6 +7820,50 @@
    "note": "Foto con fotocamera mirrorless; ora di scatto non affidabile; determinazione a livello di genere",
    "id": "R032",
    "foto": "foto/cortinarius_2.jpg"
+  },
+  {
+   "id": "R033",
+   "d": "2025-12-14",
+   "h": "",
+   "z": "lago_piana",
+   "lat": 37.97623,
+   "lon": 13.29189,
+   "q": null,
+   "sp": "Tricholoma terreum",
+   "cert": "certo",
+   "fonte": "fotogramma da video (posizione della zona)",
+   "foto": "foto/tricholoma_terreum_1.jpg",
+   "c": {
+    "r7": 0.9,
+    "r14": 2.8,
+    "r21": 32.4,
+    "r30": 97.0,
+    "gg": 16,
+    "fino": "2025-12-13"
+   },
+   "note": "Fotogramma da video iPhone; sotto pini"
+  },
+  {
+   "id": "R034",
+   "d": "2025-12-14",
+   "h": "",
+   "z": "lago_piana",
+   "lat": 37.97623,
+   "lon": 13.29189,
+   "q": null,
+   "sp": "Tricholoma terreum",
+   "cert": "certo",
+   "fonte": "fotogramma da video (posizione della zona)",
+   "foto": "foto/tricholoma_terreum_2.jpg",
+   "c": {
+    "r7": 0.9,
+    "r14": 2.8,
+    "r21": 32.4,
+    "r30": 97.0,
+    "gg": 16,
+    "fino": "2025-12-13"
+   },
+   "note": "Fotogramma da video iPhone; sotto pini"
   }
  ],
  "forecast": {
