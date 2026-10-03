@@ -7886,6 +7886,28 @@
     "fino": "2025-10-17"
    },
    "note": "Primordio (esemplare giovane)"
+  },
+  {
+   "id": "R036",
+   "d": "2025-10-18",
+   "h": "16:30",
+   "z": "poggio_sfrancesco",
+   "lat": 38.01498,
+   "lon": 13.26426,
+   "q": null,
+   "sp": "Suillus sp.",
+   "cert": "certo",
+   "fonte": "foto (posizione della zona)",
+   "foto": "foto/suillus_2.jpg",
+   "c": {
+    "r7": 57.5,
+    "r14": 60.1,
+    "r21": 116.4,
+    "r30": 162.1,
+    "gg": 2,
+    "fino": "2025-10-17"
+   },
+   "note": "Sotto conifere, su lettiera di aghi e muschio"
   }
  ],
  "forecast": {
