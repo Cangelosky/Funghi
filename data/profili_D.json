@@ -1,0 +1,1422 @@
+{
+ "profili": [
+  {
+   "sp": "Pleurotus eryngii var. eryngii",
+   "nome_it": "Cardoncello",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Eryngium campestre",
+     "forza": "forte",
+     "fonte": "s1"
+    },
+    {
+     "taxon": "Eryngium maritimum",
+     "forza": "forte",
+     "fonte": "s1"
+    }
+   ],
+   "habitat_note": "Pascoli e rive sabbiose (s1). Cresce su radici o residui secchi di Eryngium, descritto come parassita e saprofita (s7); checklist siciliana: saprotrofo terricolo (s8). Il complesso eryngii comprende varieta legate a diverse Apiaceae (ferulae, thapsiae, elaeoselini) trattate in profili separati.",
+   "quota_m": {
+    "min": 0,
+    "max": 1500,
+    "fonte": "s1",
+    "nota": "Intervallo per l'Italia, non specifico della Sicilia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (s1: autunno-tardo inverno; s7: ottobre-dicembre, con prolungamento a gennaio-marzo se il clima e umido e senza venti freddi da nord). Osservazioni GBIF Sicilia per l'intero complesso (n=10 record): mesi 1,3,4,5,10,11,12 (gpe).",
+    "mesi": [
+     10,
+     11,
+     12,
+     1,
+     2,
+     3
+    ],
+    "picco": null,
+    "fonte": "s7"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s7",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Qualitativo: la stagione si prolunga a gennaio-marzo se il clima e sufficientemente umido e poco condizionato dai venti da nord (s7). Nessun valore numerico.",
+    "fonte": "s7"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli calcarei (s1); terreno 'per lo piu arido e compatto' per il complesso (s6).",
+    "fonte": "s1"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Raccogliere solo con identificazione di un micologo/ispettorato micologico. La scheda dell'ASL 5 Oristano (s23) mette a confronto P. eryngii con Omphalotus olearius (velenoso) e Cantharellus cibarius: rischio di confusione con specie tossiche (accostamento nella scheda; il tipo di somiglianza non e dettagliato).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Mesi [10..3]: 'ottobre-dicembre normalmente, anche gennaio-marzo' (s7) tradotti in elenco di mesi; s1 dice 'autumn to late winter'.",
+    "Picco non indicato: lasciato null."
+   ],
+   "lacune": [
+    "Temperatura di fruttificazione non documentata",
+    "pH non documentato",
+    "Esposizione non documentata",
+    "Pioggia/umidita solo qualitativa (s7)",
+    "Quota solo come intervallo italiano generale (s1), nessun dato siciliano specifico",
+    "Dati fenologici principali da fonte non peer-reviewed (s7) e da s1 in forma generica"
+   ]
+  },
+  {
+   "sp": "Pleurotus eryngii var. ferulae",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Ferula communis",
+     "forza": "forte",
+     "fonte": "s1"
+    }
+   ],
+   "habitat_note": "Garighe, pascoli e prati (s1); campi e incolti semiaridi (s6). Si sviluppa su radici morte della ferula. Scheda OROS Sicilia (s5) cita per questa varieta anche Eryngium, Thapsia garganica ed Elaeoselinum asclepium, ma s1 attribuisce Thapsia ed Elaeoselinum a varieta distinte (thapsiae, elaeoselini).",
+   "quota_m": {
+    "min": 0,
+    "max": 1200,
+    "fonte": "s1",
+    "nota": "Intervallo per l'Italia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (s1: 'quasi tutto l'anno'; s6: 'per lo piu in autunno, sporadicamente anche a primavera'). Picco autunnale = inferenza da s6.",
+    "mesi": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": [
+     10,
+     11
+    ],
+    "fonte": "s1"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s1",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli calcarei, silicei e vulcanici (s1). Terreno per lo piu arido e compatto (s6).",
+    "fonte": "s1"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Identificazione solo da parte di esperti; rischio di confusione con specie tossiche lignicole/cespitose (es. Omphalotus olearius, s23 accosta le specie in una scheda di sicurezza).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Picco [10,11] dedotto da 'per lo piu in autunno' (s6).",
+    "'Quasi tutto l'anno' (s1) reso con 12 mesi."
+   ],
+   "lacune": [
+    "Temperatura non documentata",
+    "pH non documentato",
+    "Esposizione non documentata",
+    "Pioggia/umidita non documentata",
+    "Quota solo come intervallo italiano generale",
+    "Fonti discordanti sulla gamma di ospiti della varieta (s1 vs s5)"
+   ]
+  },
+  {
+   "sp": "Pleurotus eryngii var. thapsiae",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Thapsia garganica",
+     "forza": "forte",
+     "fonte": "s1"
+    }
+   ],
+   "habitat_note": "Varieta nota solo per la Sicilia secondo s1. Descritta in origine da localita montane; nuovi ritrovamenti in due aree protette costiere tirreniche con condizioni ambientali diverse (s4, solo abstract letto). Citata per la provincia di Trapani (s42).",
+   "quota_m": {
+    "min": 0,
+    "max": 1500,
+    "fonte": "s1",
+    "nota": "Intervallo di s1; s4 documenta anche popolazioni costiere."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia/Sicilia (s1: primavera e autunno, marzo-maggio e ottobre-novembre)",
+    "mesi": [
+     3,
+     4,
+     5,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "s1"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s1",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli calcarei e silicei (s1).",
+    "fonte": "s1"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita (s4 la definisce edibile, ma non e una valutazione di sicurezza del sito). Rischio di confusione con specie tossiche: identificazione solo esperta.",
+   "affidabilita": "media",
+   "inferenze": [],
+   "lacune": [
+    "Temperatura, pH, esposizione, pioggia non documentati",
+    "Testo completo di s4 (ecologia dettagliata, localita) non accessibile: solo abstract",
+    "Picco non documentato"
+   ]
+  },
+  {
+   "sp": "Pleurotus eryngii var. elaeoselini",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Elaeoselinum asclepium subsp. asclepium",
+     "forza": "forte",
+     "fonte": "s1"
+    },
+    {
+     "taxon": "Laserpitium latifolium",
+     "forza": "possibile",
+     "fonte": "s1"
+    },
+    {
+     "taxon": "Laserpitium siler",
+     "forza": "possibile",
+     "fonte": "s1"
+    }
+   ],
+   "habitat_note": "Pascoli e prati (s1); campi e incolti anche in quota (s6). In Sicilia l'ospite e Elaeoselinum asclepium (s6, s42).",
+   "quota_m": {
+    "min": 0,
+    "max": 1200,
+    "fonte": "s1",
+    "nota": "s1 riporta nello stesso testo sia 0-1200 m sia 0-2100 m: dato interno discordante, si usa 1200 m. s42 indica per Laserpitium latifolium la var. laserpitii come alpina: i Laserpitium non risultano ospiti siciliani nelle fonti lette."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (s1: primavera e autunno, marzo-maggio e ottobre-novembre; s6: per lo piu aprile-maggio e autunno)",
+    "mesi": [
+     3,
+     4,
+     5,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "s1"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s1",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli calcarei e silicei (s1).",
+    "fonte": "s1"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Morfologicamente quasi identico a P. nebrodensis sul campo ma geneticamente distinto (s2): non basta l'aspetto per attribuire il taxon; identificazione solo esperta.",
+   "affidabilita": "media",
+   "inferenze": [],
+   "lacune": [
+    "Temperatura, pH, esposizione, pioggia non documentati",
+    "Dato di quota discordante in s1",
+    "Picco non documentato"
+   ]
+  },
+  {
+   "sp": "Pleurotus nebrodensis",
+   "nome_it": "Fungo basilisco (funcia di basiliscu)",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Prangos ferulacea (= Cachrys ferulacea)",
+     "forza": "forte",
+     "fonte": "s2"
+    }
+   ],
+   "habitat_note": "Cresce su radici morte di Prangos ferulacea in comunita xerofile e basifile su substrati dolomitici e creste rocciose (alleanza Cerastio-Astragalion nebrodensis) (s2). GBIF: 3 record georiferiti in Sicilia (gpn). Meno di 10 localita nelle Madonie, estensione di presenza <100 km2, <150 individui maturi, circa 70 basidiomi/anno (s2). Endemita siciliano in pericolo (s1, s2); raccolta fortemente sconsigliata (s43). L'associazione 'obbligata' con Prangos non e dichiarata esplicitamente: 'forte' e una classificazione prudente.",
+   "quota_m": {
+    "min": 1200,
+    "max": 2000,
+    "fonte": "s1",
+    "nota": "Osservato in s2: Vallone Faguare 1263 m, Monte dei Cervi 1794 m. s6 riporta 1000-2000+ m e s43 'sopra 1400 m' (fonti non peer-reviewed)."
+   },
+   "mesi_fruttificazione": {
+    "area": "Madonie, Sicilia (s1: meta aprile-primi dieci giorni di giugno; s2: fine aprile-inizio giugno; s3: aprile-giugno)",
+    "mesi": [
+     4,
+     5,
+     6
+    ],
+    "picco": null,
+    "fonte": "s2"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s2",
+    "nota": "Temperatura di fruttificazione NON documentata. Solo contesto bioclimatico dei siti (s2), non soglia: termotipo supramediterraneo 8-13 C e mesomediterraneo 13-16 C di temperatura media annua."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessuna soglia di pioggia per la fruttificazione. Contesto bioclimatico (s2): ombrotipo subumido 600-1000 mm e umido >1000 mm di pioggia media annua. s3 cita erosione del suolo, modifica dell'habitat e irregolarita delle piogge tra i fattori di declino.",
+    "fonte": "s2"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Substrati dolomitici; comunita xerofile e basifile su rocce consolidate (s2); suoli calcarei (s1).",
+    "fonte": "s2"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s2"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Specie rara e minacciata: la raccolta e la minaccia principale (s2) e viene sconsigliata (s43). Sul campo e quasi indistinguibile da P. eryngii var. elaeoselini (s2).",
+   "affidabilita": "alta",
+   "inferenze": [
+    "'forte' per Prangos: l'unico ospite documentato, ma non descritto come esclusivo.",
+    "Il sinonimo Cachrys ferulacea e usato in s6/s43; s2 usa Prangos ferulacea."
+   ],
+   "lacune": [
+    "Temperatura di fruttificazione non documentata",
+    "pH numerico non documentato",
+    "Esposizione non documentata",
+    "Pioggia solo come ombrotipo annuale",
+    "Picco non documentato"
+   ]
+  },
+  {
+   "sp": "Amanita ovoidea",
+   "nome_it": null,
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus spp. (sempreverdi e caducifoglie)",
+     "forza": "forte",
+     "fonte": "s13"
+    },
+    {
+     "taxon": "Pinus spp.",
+     "forza": "possibile",
+     "fonte": "s12"
+    },
+    {
+     "taxon": "Carpinus",
+     "forza": "possibile",
+     "fonte": "s14"
+    },
+    {
+     "taxon": "Olea europaea",
+     "forza": "possibile",
+     "fonte": "s13"
+    }
+   ],
+   "habitat_note": "Ectomicorrizico (s13, s8). Raccolte in boschi misti, pinete, querceti e parchi urbani in Italia centrale (s12). s13 lo dice sotto querce su suoli alcalini e cita anche l'olivo (in assenza di verifica, e probabile compresenza di querce). Un singolo post (s14) riporta 'sotto querce e carpini'. Fonti sull'associazione ospite non peer-reviewed.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s12",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia centrale (s12: settembre-novembre, autunni 2010 e 2012); sud Europa (s13: fino a dicembre o anche nel nuovo anno). Sicilia: record GBIF novembre (n=2, gao); segnalazione forum novembre 2016 (s14).",
+    "mesi": [
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": null,
+    "fonte": "s12"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s12",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s12"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli alcalini (s13, non peer-reviewed).",
+    "fonte": "s13"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "SPECIE DA NON RACCOGLIERE a scopo alimentare: non se ne afferma la commestibilita. Caso clinico a Palermo: insufficienza renale acuta (sindrome nefrotossica da Amanita) con 10 giorni di emodialisi (s11). s10 segnala che le proprieta alimentari sono 'rather questionable' con possibili disturbi gastrointestinali. s13 avverte la somiglianza con Amanita mortali (es. A. virosa/destroying angel). s12 documenta bioaccumulo di metalli pesanti in un esemplare. s14 la classifica tra i velenosi.",
+   "affidabilita": "media",
+   "inferenze": [
+    "mesi [9..12]: unione di s12 (set-nov) e s13 (fino a dicembre in sud Europa)."
+   ],
+   "lacune": [
+    "Quota non documentata",
+    "Temperatura, pH, esposizione, pioggia non documentati",
+    "Ospiti documentati solo in fonti non peer-reviewed",
+    "Nessuno studio fenologico siciliano specifico"
+   ]
+  },
+  {
+   "sp": "Lepista nuda",
+   "nome_it": "Agarico nudo",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Lettiera di latifoglie e conifere (non specie-specifica)",
+     "forza": "possibile",
+     "fonte": "s29"
+    }
+   ],
+   "habitat_note": "Saprotrofo su lettiera (s29, s8: Sl). Boschi di latifoglie e conifere, su terreni ricchi di humus (s31). Frequente e diffuso (s30).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s31",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa/Spagna (s30: tardo autunno fino all'inverno inoltrato); Regno Unito set-dic (s29); Monti Nebrodi/Peloritani (s31: primavera-autunno). Sicilia: 5 record GBIF a novembre (gln, tutti MATERIAL_SAMPLE, probabilmente una sola campagna).",
+    "mesi": [
+     10,
+     11,
+     12
+    ],
+    "picco": null,
+    "fonte": "s30"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s30",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s30"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Terreni ricchi di humus (s31).",
+    "fonte": "s31"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Sosia tossici: Cortinarius violacei (es. C. camphoratus, C. purpurascens), distinguibili dal colore della sporata (bruno-violacea nei Cortinarius, bianco-lilla in L. nuda) e dai residui di cortina (s29, s30). In Sardegna meridionale 3 casi di intossicazione attribuiti a L. nuda con crampi, nausea e vomito (s25).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Mesi [10,11,12]: sintesi di s30 (tardo autunno-inverno) e record GBIF di novembre; s31 indica un periodo piu lungo (primavera-autunno).",
+    "Checklist siciliana (s8) lo riporta solo per AG, PA, TP: probabile sottocampionamento nelle altre province."
+   ],
+   "lacune": [
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Dati fenologici da fonti non peer-reviewed",
+    "Nessun dato in Sicilia su stagionalita da studio scientifico"
+   ]
+  },
+  {
+   "sp": "Agaricus campestris",
+   "nome_it": "Prataiolo",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Prati e pascoli (nessun ospite arboreo)",
+     "forza": "possibile",
+     "fonte": "s32"
+    }
+   ],
+   "habitat_note": "Prati, pascoli, aree erbose, raramente in bosco (s32); terreni grassi e concimati, orti, parchi, giardini (s31). Madonie: Piano Sempria, radure di boschi di Quercus ilex, 1250 m, 4 giugno 1990 (s9, come 'campester').",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s9",
+    "nota": "Nessun intervallo documentato; unico record puntuale: 1250 m (Madonie, Piano Sempria, s9)."
+   },
+   "mesi_fruttificazione": {
+    "area": "Nebrodi/Peloritani (s31: dalla primavera all'autunno); dopo piogge da fine estate (s32); Madonie: giugno (s9). Nessun record georiferito GBIF in Sicilia.",
+    "mesi": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "s31"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s31",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Qualitativo: compare dopo la pioggia da fine estate in poi (s32). Nessun valore numerico.",
+    "fonte": "s32"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Terreni erbosi, grassi e concimati (s31).",
+    "fonte": "s31"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Sosia pericolosi: Amanita virosa e altre Amanita bianche, mortali; Agaricus xanthodermus, che causa disturbi gastrointestinali (s32). In Sardegna meridionale A. xanthodermus ha causato 15 casi (s25). Il forum AMINT (s33) segnala la confusione con A. xanthodermus e Amanita.",
+   "affidabilita": "media",
+   "inferenze": [
+    "Mesi [3..11]: 'primavera-autunno' (s31) tradotti in marzo-novembre."
+   ],
+   "lacune": [
+    "Quota non documentata (solo un record a 1250 m)",
+    "Temperatura, pH, esposizione non documentati",
+    "Pioggia solo qualitativa",
+    "Nessuna fenologia peer-reviewed per la Sicilia",
+    "GBIF: nessun record georiferito in Sicilia (interrogazione effettuata, 0 risultati)"
+   ]
+  },
+  {
+   "sp": "Macrolepiota mastoidea",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Latifoglie (associazione generica, nessun genere specifico)",
+     "forza": "possibile",
+     "fonte": "s35"
+    }
+   ],
+   "habitat_note": "Saprotrofo su lettiera (checklist siciliana: Sl, s8). s35 lo associa genericamente a latifoglie. s34 non specifica il substrato.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s34",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa (s34: da agosto a novembre). Sicilia: un record GBIF a ottobre (gmm).",
+    "mesi": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "s34"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s34",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s34"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": "s34"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Sosia tossici: alcune specie di Chlorophyllum (s34); in Sicilia e presente Macrolepiota venenata, da considerare tossica anche dopo cottura (s8 per la presenza, s36 per la tossicita), e Lepiota piccole tossiche come L. cristata, L. felina, L. clypeolaria (s36).",
+   "affidabilita": "bassa",
+   "inferenze": [],
+   "lacune": [
+    "Quasi tutti i campi ecologici non documentati: quota, temperatura, pH, esposizione, pioggia, substrato preciso",
+    "Fonti disponibili generiche (aggregatori)",
+    "Un solo record GBIF in Sicilia"
+   ]
+  },
+  {
+   "sp": "Macrolepiota procera",
+   "nome_it": "Mazza di tamburo",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Radure e prati; lettiera (nessun ospite specifico)",
+     "forza": "possibile",
+     "fonte": "s8"
+    }
+   ],
+   "habitat_note": "Prati e radure aperte, margini di pascoli (s36, s31); pianura, collina e montagna (s31). Checklist siciliana: saprotrofo su lettiera (Sl, s8). s36 lo definisce 'micorrizogeno': contrasta con s8 e con la letteratura (saprotrofo); si adotta s8.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s31",
+    "nota": "Solo descrizione qualitativa (pianura, collina, montagna). Un record GBIF a 1530 m non e rappresentativo."
+   },
+   "mesi_fruttificazione": {
+    "area": "Sicilia: 40 record GBIF georiferiti per mese 5:1, 6:1, 8:2, 9:4, 10:27, 11:3, 12:1 (gmp; probabile bias di campionamento). Fonti testuali: estate (da luglio) e autunno (s36, s31).",
+    "mesi": [
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": [
+     10
+    ],
+    "fonte": "s36"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s36",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s36"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": "s36"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Sosia tossici: Macrolepiota venenata (presente in Sicilia, s8; tossica anche dopo cottura, s36), Lepiota piccole (L. cristata, L. felina, L. clypeolaria, s36), Chlorophyllum rachodes (9 casi di intossicazione in Sardegna meridionale, s25). Aspromonte: 3 record GBIF set/ott/dic (gmpa).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Picco [10] derivato dai record GBIF (27 di 40 in ottobre): possibile effetto di una singola campagna di rilievo.",
+    "Mesi [7..11] uniscono s36 (da luglio) e GBIF (fino a dicembre)."
+   ],
+   "lacune": [
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Contrasto sul ruolo trofico (s36 vs s8)"
+   ]
+  },
+  {
+   "sp": "Amanita phalloides",
+   "nome_it": "Amanita falloide",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus spp.",
+     "forza": "forte",
+     "fonte": "s15"
+    },
+    {
+     "taxon": "Quercus suber",
+     "forza": "possibile",
+     "fonte": "s15"
+    },
+    {
+     "taxon": "Castanea",
+     "forza": "possibile",
+     "fonte": "s15"
+    },
+    {
+     "taxon": "Corylus",
+     "forza": "possibile",
+     "fonte": "s15"
+    },
+    {
+     "taxon": "Betula",
+     "forza": "possibile",
+     "fonte": "s15"
+    },
+    {
+     "taxon": "Fagus",
+     "forza": "possibile",
+     "fonte": "s15"
+    },
+    {
+     "taxon": "Pinus",
+     "forza": "possibile",
+     "fonte": "s15"
+    },
+    {
+     "taxon": "Cedrus",
+     "forza": "possibile",
+     "fonte": "s15"
+    }
+   ],
+   "habitat_note": "Ectomicorrizico con querce e altre latifoglie, meno spesso con conifere; temperato, mediterraneo e boreale (s15). Esemplari esaminati sotto Quercus suber e Q. canariensis nel sud della Spagna, nov. 2003 (s15). Tipica specie autunnale (s15).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s15",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Mediterraneo/Italia (s15: 'molto comune in autunno'; s16: estate e autunno). Sicilia: 3 record GBIF, settembre (1) e ottobre (2) (gap). Calabria: intossicazioni in ottobre 2013 (s18). Aspromonte: 1 record GBIF a dicembre (gapa).",
+    "mesi": [
+     9,
+     10,
+     11
+    ],
+    "picco": [
+     10
+    ],
+    "fonte": "s15"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s15",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s15"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": "s15"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "SPECIE MORTALE (amatossine). Sintomi dopo 6-12 h, danno epatico dopo 3-6 giorni (s16); sul quotidiano siciliano 12-24 h (s17). Mortalita storica 60-70%, stime attuali 10-30% (s16). Sosia: Amanita caesarea, Agaricus e altri bianchi, Russula, Volvariella (s16); facilmente confusa con 'funghi champignon selvatici' (s17). Nell'area mediterranea sono presenti altre Phalloideae (A. verna, A. vidua) con tossicita simile (s15). In Calabria 2003-2014: 25 intossicazioni da Amanita, 5 decessi e 3 trapianti (s18). Intossicazioni segnalate nei dintorni di Madonie ed Etna (s17).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Picco [10]: dai record GBIF Sicilia (2 di 3 in ottobre) e dal focolaio calabrese di ottobre 2013 (s18); campione molto piccolo.",
+    "Mesi [9,10,11]: sintesi di 'autunno' (s15)."
+   ],
+   "lacune": [
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Dati siciliani di fenologia e ospiti da studio quantitativo assenti",
+    "Solo 3 record GBIF in Sicilia"
+   ]
+  },
+  {
+   "sp": "Omphalotus olearius",
+   "nome_it": "Fungo dell'olivo",
+   "ruolo": "lignicolo saprotrofo",
+   "ospiti": [
+    {
+     "taxon": "Olea europaea",
+     "forza": "forte",
+     "fonte": "s22"
+    },
+    {
+     "taxon": "Quercus spp. (inclusa Q. ilex)",
+     "forza": "forte",
+     "fonte": "s21"
+    },
+    {
+     "taxon": "Pinus halepensis",
+     "forza": "possibile",
+     "fonte": "s19"
+    },
+    {
+     "taxon": "Cistus spp.",
+     "forza": "possibile",
+     "fonte": "s19"
+    },
+    {
+     "taxon": "Fagus",
+     "forza": "possibile",
+     "fonte": "s44"
+    }
+   ],
+   "habitat_note": "Cespitoso su ceppaie e radici sepolte di latifoglie, soprattutto olivo e querce (s21, s22, s23); boschi termofili (s24). Specie mediterranea (s19, s21). Raccolte in Croazia, Francia, Italia, Spagna su Pinus halepensis, sotto P. halepensis e con Cistus e querce (s19).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s19",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Mediterraneo (s22: settembre-gennaio nel sud Europa; s19: prevalgono ottobre-novembre; s20: luglio-ottobre). Sicilia: 11 record GBIF su mesi 3,5,9,10(4),11(3) (goo). Aspromonte: 1 record GBIF a ottobre (gooa).",
+    "mesi": [
+     9,
+     10,
+     11,
+     12,
+     1
+    ],
+    "picco": [
+     10,
+     11
+    ],
+    "fonte": "s22"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s22",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s22"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": "s22"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "VELENOSO. Tossina illudina S (s20). Intossicazioni gastrointestinali con crampi, vomito, diarrea (s20, s24). Nel sud della Sardegna e stata la specie tossica piu frequente (18 casi, circa il 22% dei casi identificati; ritardo medio 3,5 h; ricovero medio 2 giorni) (s25). Spesso confuso con il galletto (Cantharellus cibarius): lamelle vere e non pliche (s20, s24). Colonizza ceppaie di olivo e leccio (s23). Presente in tutte le province siciliane (s8) e segnalato su ceppi alla base di olivo e querce in Sicilia (s17). Nota: s22 attribuisce la tossicita alla muscarina, in contrasto con s20 (illudine): dato non usato.",
+   "affidabilita": "media",
+   "inferenze": [
+    "Picco [10,11]: da s19 (ottobre-novembre prevalenti) e dai record GBIF Sicilia (7 di 11 in ottobre-novembre).",
+    "Forza 'forte' per Quercus: confermato da s21, s23."
+   ],
+   "lacune": [
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Nessuno studio fenologico siciliano specifico",
+    "Ospiti specifici per la Sicilia non dettagliati da studi peer-reviewed"
+   ]
+  },
+  {
+   "sp": "Entoloma sinuatum",
+   "nome_it": "Entoloma livido",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus spp.",
+     "forza": "possibile",
+     "fonte": "s26"
+    },
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "possibile",
+     "fonte": "s26"
+    },
+    {
+     "taxon": "Betula",
+     "forza": "possibile",
+     "fonte": "s26"
+    },
+    {
+     "taxon": "Salix",
+     "forza": "possibile",
+     "fonte": "s26"
+    }
+   ],
+   "habitat_note": "Boschi di latifoglie sotto querce, faggio e talvolta betulla, su suoli argillosi o calcarei; si estende a parchi, campi e zone erbose; talvolta in anelli (s26). Forma micorrize con Salix (s26, s27). La checklist siciliana lo classifica come saprotrofo su lettiera (Sl, s8), mentre s28 lo indica come ectomicorrizico (Ec) e s27 come 'probabilmente per lo piu saprobio': ruolo trofico discordante.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s26",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa (s26: autunno principale); Mediterraneo (s27: fino all'anno nuovo). Sicilia: 2 record GBIF, ottobre e novembre (ges).",
+    "mesi": [
+     9,
+     10,
+     11,
+     12,
+     1
+    ],
+    "picco": null,
+    "fonte": "s27"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s26",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "s26"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli argillosi o calcarei (s26).",
+    "fonte": "s26"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "VELENOSO. Gastroenterite con diarrea, vomito, cefalea, 30 min-2 h dopo l'ingestione, fino a 48 h; alcaloidi presenti (s26). Responsabile di circa il 10% delle intossicazioni da funghi in Europa (s26); documentato almeno un decesso (s27). Nel sud della Sardegna: 14 casi, ritardo medio 1 h (s25). Sosia: Clitocybe nebularis, Agaricus campestris, Tricholoma (s26).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Ruolo 'micorrizico' scelto sulla base di s28 e s26 contro s8 (Sl)."
+   ],
+   "lacune": [
+    "Ruolo trofico discordante tra le fonti",
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Ospiti non documentati per la Sicilia",
+    "Dati ecologici da fonti non peer-reviewed"
+   ]
+  },
+  {
+   "sp": "Morchella esculenta",
+   "nome_it": "Spugnola gialla",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Ulmus",
+     "forza": "possibile",
+     "fonte": "s38"
+    },
+    {
+     "taxon": "Fraxinus",
+     "forza": "possibile",
+     "fonte": "s37"
+    },
+    {
+     "taxon": "Populus",
+     "forza": "possibile",
+     "fonte": "s37"
+    },
+    {
+     "taxon": "Salix",
+     "forza": "possibile",
+     "fonte": "s38"
+    },
+    {
+     "taxon": "Pinus (pinete a livello del mare)",
+     "forza": "possibile",
+     "fonte": "s38"
+    }
+   ],
+   "habitat_note": "Terreni morbidi, sabbiosi, umidi vicino a corsi d'acqua; pianura, collina e montagna lungo torrenti; aree bruciate l'anno precedente; pinete a livello del mare (s38). s37: ambienti freschi e umidi con suolo sciolto sabbioso, frassino, olmo, alberi da frutto, pioppo; anche aree bruciate e prati. Per la Sicilia s8 elenca M. esculenta in tutte le province, M. elata (CT, ME, PA), M. deliciosa, M. hortensis, M. costata, M. semilibera; Morchella conica non compare in s8 (GBIF la tratta come sinonimo di M. esculenta). Ruolo trofico incerto: s38 indica simbiosi con olmo per M. esculenta e saprofitismo per M. conica; s8 usa 'saprotrofo terricolo'.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "s38",
+    "nota": "Solo qualitativo: la stagione avanza da pianura a collina e montagna. Nessuna quota numerica."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (s37: da meta marzo a inizio giugno; s38: pianura da meta marzo, collina/montagna aprile-maggio). Sicilia: 1 record GBIF a aprile per M. esculenta (gme); 3 record a marzo per M. elata (gml). Messina/Nebrodi: 'tipicamente primaverile' (s31).",
+    "mesi": [
+     3,
+     4,
+     5,
+     6
+    ],
+    "picco": null,
+    "fonte": "s37"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "s37",
+    "nota": "Nessuna temperatura di fruttificazione per ambiente mediterraneo trovata in fonti attendibili (i risultati disponibili riguardano Nord America/Asia e non sono stati usati)."
+   },
+   "umidita_pioggia": {
+    "nota": "Qualitativo: ambienti freschi e umidi (s37). Nessun valore numerico.",
+    "fonte": "s37"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suolo sciolto, sabbioso, umido (s37, s38).",
+    "fonte": "s37"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "s8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. s38 indica che contiene tossine termolabili e che richiede cottura prolungata (almeno una ventina di minuti): consumo crudo o poco cotto pericoloso. Sosia pericolosi: Gyromitra (false spugnole) (s37).",
+   "affidabilita": "bassa",
+   "inferenze": [
+    "Mesi [3..6] derivati da s37 (marzo-giugno).",
+    "Taxon trattato in senso lato: la tassonomia di Morchella e in revisione e M. conica, M. elata, M. deliciosa sono taxa distinti o sinonimi a seconda della fonte."
+   ],
+   "lacune": [
+    "Temperatura/suolo termico non documentata per la Sicilia",
+    "pH non documentato",
+    "Esposizione non documentata",
+    "Quota numerica non documentata",
+    "Nessuno studio peer-reviewed siciliano di fenologia trovato",
+    "Tassonomia incerta nel genere"
+   ]
+  }
+ ],
+ "fonti": [
+  {
+   "id": "s1",
+   "t": "Venturella G., Gargano M.L., Compagno R. - The genus Pleurotus in Italy (Flora Mediterranea 25, Special Issue: 143-156)",
+   "u": "https://ricerca.uniba.it/retrieve/dd9e0c66-5f7a-1e9c-e053-3a05fe0a45ef/Pleurotus%20in%20Italy.pdf",
+   "tipo": "peer-reviewed",
+   "anno": 2015
+  },
+  {
+   "id": "s2",
+   "t": "Gargano M.L. et al. - Pleurotus nebrodensis (Basidiomycota), a rare endemic mushroom of Sicily: current and future issues (Italian Botanist 17: 55-68)",
+   "u": "https://italianbotanist.pensoft.net/article_preview.php?id=123048",
+   "tipo": "peer-reviewed",
+   "anno": 2024
+  },
+  {
+   "id": "s3",
+   "t": "Cirlincione F., Gargano M.L., Venturella G., Mirabile G. - Conservation Strategies of the Culinary-Medicinal Mushroom Pleurotus nebrodensis (Basidiomycota, Fungi) (sede di pubblicazione non verificata)",
+   "u": "https://iris.unipa.it/retrieve/237c28c9-efd9-47cb-b057-9a8213427f1e/10%20-%20Conservation%20Strategies%20of%20the%20Culinary-Medicinal%20Mushroom.pdf",
+   "tipo": "altro",
+   "anno": 2022
+  },
+  {
+   "id": "s4",
+   "t": "Compagno R. et al. - Up-to-date distribution, ecology and cultivation of Pleurotus eryngii var. thapsiae in Sicily (atti XIX Convegno Nazionale di Micologia, Gubbio; solo abstract letto)",
+   "u": "https://iris.unipa.it/handle/10447/78962",
+   "tipo": "altro",
+   "anno": 2012
+  },
+  {
+   "id": "s5",
+   "t": "OROS Sicilia - Pleurotos eryngii var. ferulae (scheda web)",
+   "u": "https://www.oros-sicilia.it/micologia/pleurotos-eryngii-var-ferulae/",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s6",
+   "t": "Gruppo Micologico Milanese - I Pleurotus del complesso eryngii",
+   "u": "https://www.gruppomicologicomilanese.it/pages/p_articoli_05pleurotus.html",
+   "tipo": "societa-micologica",
+   "anno": null
+  },
+  {
+   "id": "s7",
+   "t": "Agnello C. - Il cardoncello (Rivista di Agraria.org, 25 settembre 2007)",
+   "u": "https://rivistadiagraria.org/articoli/anno-2007/il-cardoncello/?print=pdf",
+   "tipo": "altro",
+   "anno": 2007
+  },
+  {
+   "id": "s8",
+   "t": "Ferraro V., Venturella G., Cirlincione F., Mirabile G., Gargano M.L., Colasuonno P. - The Checklist of Sicilian Macrofungi: Second Edition (J. Fungi 8: 566)",
+   "u": "https://iris.unipa.it/retrieve/2a7dee3d-790d-499b-bd75-d1adfd93e05e/jof-08-00566-v2.pdf",
+   "tipo": "checklist-atlante",
+   "anno": 2022
+  },
+  {
+   "id": "s9",
+   "t": "La Rocca S., Saitta A. - Check-list of fungi collected during Iter Mediterraneum III (Sicilia, giugno 1990)",
+   "u": "https://herbmedit.vps.webdock.cloud/storage/2553/17-275.pdf",
+   "tipo": "checklist-atlante",
+   "anno": 2004
+  },
+  {
+   "id": "s10",
+   "t": "Venturella G., Saitta A. - The traditional use of fungi in Sicily, Italy (Delpinoa 45: 105-108)",
+   "u": "https://www.ortobotaniconapoli.it/images/Delpinoa/Delpinoa_n_s_45_2003_[2004]/Delpinoa_n_s_45_2003_[2004]_105-108.pdf",
+   "tipo": "altro",
+   "anno": 2003
+  },
+  {
+   "id": "s11",
+   "t": "Li Cavoli G. et al. - Acute renal failure after Amanita ovoidea eating (Indian J Nephrol; casi di Palermo)",
+   "u": "https://indianjnephrol.org/acute-renal-failure-after-amanita-ovoidea-eating",
+   "tipo": "peer-reviewed",
+   "anno": 2018
+  },
+  {
+   "id": "s12",
+   "t": "Biagi M. et al. - Investigations into Amanita ovoidea (Bull.) Link.: Edible or Poisonous? (Natural Resources)",
+   "u": "https://usiena-air.unisi.it/retrieve/e0feeaa5-6c52-44d2-e053-6605fe0a8db0/NR_2014043014344345.pdf",
+   "tipo": "peer-reviewed",
+   "anno": 2014
+  },
+  {
+   "id": "s13",
+   "t": "First Nature - Amanita ovoidea (Bull.) Quel. - Bearded Amanita",
+   "u": "https://www.first-nature.com/fungi/amanita-ovoidea.php",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s14",
+   "t": "Funghi in Italia (forum AMINT) - Amanita ovoidea (Bull.: Fr.) Link 1833, discussione pag. 2",
+   "u": "https://www.funghiitaliani.it/topic/7919-amanita-ovoidea-bull-fr-link-1833/page/2/",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  {
+   "id": "s15",
+   "t": "Alvarado P. et al. - Amanita Section Phalloideae Species in the Mediterranean Basin: Destroying Angels Reviewed",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9138314",
+   "tipo": "peer-reviewed",
+   "anno": 2022
+  },
+  {
+   "id": "s16",
+   "t": "Wikipedia - Amanita phalloides",
+   "u": "https://en.wikipedia.org/wiki/Amanita_phalloides",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s17",
+   "t": "Balarm - Li raccogli in autunno ma occhio ai velenosi: i funghi che ingannano crescono in Sicilia",
+   "u": "https://www.balarm.it/news/li-raccogli-in-autunno-ma-occhio-ai-velenosi-i-funghi-che-ingannano-crescono-in-sicilia-158799",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s18",
+   "t": "Epicentro ISS (BEN) - Episodi di intossicazione da consumo di funghi del genere Amanita nella regione Calabria, 2012-14",
+   "u": "https://www.epicentro.iss.it/ben/2015/giugno/1",
+   "tipo": "altro",
+   "anno": 2015
+  },
+  {
+   "id": "s19",
+   "t": "Kirchmair M., Poder R. - Why Omphalotus illudens (Schwein.) Bresinsky et Besl is an Independent Species (Rev. Catalana Micol.)",
+   "u": "https://revistes.iec.cat/index.php/RCMic/article/download/18071.001/53021",
+   "tipo": "peer-reviewed",
+   "anno": 2002
+  },
+  {
+   "id": "s20",
+   "t": "Wikipedia - Omphalotus olearius",
+   "u": "https://en.wikipedia.org/wiki/Omphalotus_olearius",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s21",
+   "t": "MushroomExpert.Com - Omphalotus olearius",
+   "u": "https://mushroomexpert.com/omphalotus_olearius.html",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s22",
+   "t": "First Nature - Omphalotus olearius",
+   "u": "https://first-nature.com/fungi/omphalotus-olearius.php",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s23",
+   "t": "ASL 5 Oristano (Servizio Igiene Alimenti e Nutrizione, Ispettorato micologico) - scheda Omphalotus olearius",
+   "u": "https://asl5oristano.it/wp-content/uploads/2024/09/OMPHALOTUS-OLEARIUS.pdf",
+   "tipo": "altro",
+   "anno": 2024
+  },
+  {
+   "id": "s24",
+   "t": "Documento '186 vqr Funghi' (iris.santannapisa.it) - scheda Omphalotus olearius",
+   "u": "https://iris.santannapisa.it/retrieve/dd9e0b31-bbe5-709e-e053-3705fe0a83fd/186_vqr_Funghi.pdf",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s25",
+   "t": "La Rosa L. et al. - Epidemiology and clinical aspect of mushroom poisonings in South Sardinia: a 10-year retrospective analysis (Food Sci Nutr)",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10804087",
+   "tipo": "peer-reviewed",
+   "anno": 2024
+  },
+  {
+   "id": "s26",
+   "t": "Wikipedia - Entoloma sinuatum",
+   "u": "https://en.wikipedia.org/wiki/Entoloma_sinuatum",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s27",
+   "t": "First Nature - Entoloma sinuatum",
+   "u": "https://first-nature.com/fungi/entoloma-sinuatum.php",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s28",
+   "t": "Zotti M. et al. - Checklist of Macrofungi Associated with Nine Different Habitats of Taburno-Camposauro Massif in Campania, Southern Italy (J. Fungi)",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11050982",
+   "tipo": "checklist-atlante",
+   "anno": 2024
+  },
+  {
+   "id": "s29",
+   "t": "Wikipedia - Lepista nuda (Collybia nuda)",
+   "u": "https://en.wikipedia.org/wiki/Lepista_nuda",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s30",
+   "t": "Garcia Chamorro J.J. - Lepista nuda (Bull.: Fr.) Cooke (scheda, Fungipedia)",
+   "u": "https://www.fungipedia.org/media/kunena/attachments/2470/Lepistanuda.pdf",
+   "tipo": "altro",
+   "anno": 2012
+  },
+  {
+   "id": "s31",
+   "t": "Citta Metropolitana di Messina, Enoteca Provinciale - Funghi commestibili dei Monti Nebroidei e Peloritani, schede sintetiche",
+   "u": "https://www.cittametropolitana.me.it/enoteca-provinciale/le-news/allegati/funghi-commestibili-ultimo-da-pubblicare-21-nov-2022-1.pdf",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s32",
+   "t": "Wikipedia - Agaricus campestris",
+   "u": "https://en.wikipedia.org/wiki/Agaricus_campestris",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s33",
+   "t": "Funghi in Italia (forum AMINT) - Agaricus campestris L.: Fr. 1753, discussione pag. 3",
+   "u": "https://www.funghiitaliani.it/topic/7917-agaricus-campestris-l-fr-1753/page/3/",
+   "tipo": "aggregatore",
+   "anno": 2025
+  },
+  {
+   "id": "s34",
+   "t": "Wikipedia - Macrolepiota mastoidea",
+   "u": "https://en.wikipedia.org/wiki/Macrolepiota_mastoidea",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s35",
+   "t": "BioImages - Macrolepiota mastoidea (Checklist of British and Irish Basidiomycota)",
+   "u": "https://bioimages.org.uk/bioinfohtml/html/Macrolepiota_mastoidea.htm",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s36",
+   "t": "Salvaterra M. - Mazza di tamburo, Macrolepiota procera (Rivista di Agraria.org, 31 ottobre 2012)",
+   "u": "https://www.rivistadiagraria.org/articoli/anno-2012/mazza-di-tamburo-macrolepiota-procera/?print=pdf",
+   "tipo": "altro",
+   "anno": 2012
+  },
+  {
+   "id": "s37",
+   "t": "Funghi in Italia (forum AMINT) - Morchella esculenta (L.: Fr.) Pers. 1794",
+   "u": "https://www.funghiitaliani.it/topic/8919-morchella-esculenta-l-fr-pers-1794/",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  {
+   "id": "s38",
+   "t": "Ioriatti M. - Sentinelle primaverili: le morchelle (Rivista di Agraria.org, 14 maggio 2020)",
+   "u": "https://www.rivistadiagraria.org/articoli/anno-2020/sentinelle-primaverili-le-morchelle/",
+   "tipo": "altro",
+   "anno": 2020
+  },
+  {
+   "id": "s39",
+   "t": "Boddy L. et al. - Climate variation effects on fungal fruiting (Fungal Ecology 10: 20-33)",
+   "u": "https://pure.royalholloway.ac.uk/en/publications/climate-variation-effects-on-fungal-fruiting/",
+   "tipo": "peer-reviewed",
+   "anno": 2014
+  },
+  {
+   "id": "s40",
+   "t": "Andrew C. et al. - Explaining European fungal fruiting phenology with climate variability (Ecology)",
+   "u": "https://pure.royalholloway.ac.uk/en/publications/explaining-european-fungal-fruiting-phenology-with-climate-variab/",
+   "tipo": "peer-reviewed",
+   "anno": 2018
+  },
+  {
+   "id": "s42",
+   "t": "Funghi in Italia (forum AMINT) - Pleurotus eryngii (DC.: Fr.) Quel. 1872",
+   "u": "https://www.funghiitaliani.it/topic/8438-pleurotus-eryngii%C2%A0dc-fr-qu%C3%A9l-1872/",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  {
+   "id": "s43",
+   "t": "Balarm - In Sicilia autunno vuol dire caccia ai funghi: dove cresce una bonta (molto rara) [P. nebrodensis]",
+   "u": "https://www.balarm.it/news/in-sicilia-autunno-vuol-dire-caccia-ai-funghi-dove-cresce-una-bonta-molto-rara-148754",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "s44",
+   "t": "Boletales.com - Omphalotus olearius (Genera & Species)",
+   "u": "https://boletales.com/genera/omphalotus/o-olearius/",
+   "tipo": "altro",
+   "anno": null
+  },
+  {
+   "id": "gpe",
+   "t": "GBIF occurrence API - Pleurotus eryngii (incl. var. sinonime), record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=9075265&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gpn",
+   "t": "GBIF occurrence API - Pleurotus nebrodensis, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=3329478&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gao",
+   "t": "GBIF occurrence API - Amanita ovoidea, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=5240329&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gln",
+   "t": "GBIF occurrence API - Lepista nuda, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=5242048&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gmp",
+   "t": "GBIF occurrence API - Macrolepiota procera, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=8914748&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gmm",
+   "t": "GBIF occurrence API - Macrolepiota mastoidea, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=2536707&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gap",
+   "t": "GBIF occurrence API - Amanita phalloides, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=5240325&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "goo",
+   "t": "GBIF occurrence API - Omphalotus olearius, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=2538088&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "ges",
+   "t": "GBIF occurrence API - Entoloma sinuatum, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=2539308&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gme",
+   "t": "GBIF occurrence API - Morchella esculenta (incl. M. conica come sinonimo GBIF), record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=2594602&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gml",
+   "t": "GBIF occurrence API - Morchella elata, record georiferiti nel riquadro Sicilia (lat 36.5-38.4, lon 12.3-15.7), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=2594626&decimalLatitude=36.5,38.4&decimalLongitude=12.3,15.7&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month&facet=basisOfRecord",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gapa",
+   "t": "GBIF occurrence API - Amanita phalloides, riquadro Aspromonte (lat 37.85-38.35, lon 15.7-16.3), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=5240325&decimalLatitude=37.85,38.35&decimalLongitude=15.7,16.3&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gooa",
+   "t": "GBIF occurrence API - Omphalotus olearius, riquadro Aspromonte (lat 37.85-38.35, lon 15.7-16.3), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=2538088&decimalLatitude=37.85,38.35&decimalLongitude=15.7,16.3&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month",
+   "tipo": "aggregatore",
+   "anno": 2026
+  },
+  {
+   "id": "gmpa",
+   "t": "GBIF occurrence API - Macrolepiota procera, riquadro Aspromonte (lat 37.85-38.35, lon 15.7-16.3), conteggi per mese (interrogata ottobre 2026)",
+   "u": "https://api.gbif.org/v1/occurrence/search?taxonKey=8914748&decimalLatitude=37.85,38.35&decimalLongitude=15.7,16.3&hasCoordinate=true&hasGeospatialIssue=false&limit=0&facet=month",
+   "tipo": "aggregatore",
+   "anno": 2026
+  }
+ ]
+}

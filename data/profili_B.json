@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "generato": "2026-10-04",
+    "nota": "Profili ecologici documentati. Nessuna fonte letta fornisce soglie numeriche di temperatura o pH per queste specie: i campi relativi sono null. Le fonti climatiche generali (s1, s23, s24, s25) riguardano comunita fungine, non le singole specie. Le voci marcate 'INFERENZA' sono dell'assistente e NON documentate nelle fonti. Nessuna affermazione di commestibilita.",
+    "affidabilita_complessiva": "bassa-media: presenza in Sicilia e ospiti ben documentati per Fistulina, Ganoderma, Armillaria, Laetiporus; fenologia mediterranea, temperatura, pH, quota ed esposizione quasi ovunque assenti."
+  },
+  "profili": [
+    {
+      "sp": "Fistulina hepatica",
+      "nome_it": "Lingua di bue",
+      "ruolo": "lignicolo parassita",
+      "ospiti": [
+        {"taxon": "Quercus (Q. ilex, Q. petraea, Q. virgiliana in Sicilia)", "forza": "forte", "fonte": "s9"},
+        {"taxon": "Castanea sativa", "forza": "forte", "fonte": "s2"},
+        {"taxon": "Acer, Alnus, Betula, Carpinus, Corylus, Eucalyptus, Fagus, Fraxinus, Juglans, Platanus, Robinia, Tilia, Ulmus", "forza": "possibile", "fonte": "s3"}
+      ],
+      "habitat_note": "Causa carie bruna in alberi vivi maturi e vive da saprotrofo su legno caduto e ceppaie (s2, s3). In Sicilia raccolta su ceppaie di Quercus ilex e Q. petraea (localita 56a, Parco delle Madonie) e Q. virgiliana (localita 58, Monte Carcaci) (s9). In querceti britannici e specie chiave del marciume del durame, presente nel 27% degli alberi campionati (s4). Gli studi di dispersione e fenologia citati sono di clima temperato (Lituania, Polonia), non mediterraneo.",
+      "quota_m": {"min": null, "max": null, "fonte": null, "nota": "Nessun dato altitudinale trovato nelle fonti lette."},
+      "mesi_fruttificazione": {
+        "area": "Europa temperata (Gran Bretagna/Europa; Lituania per il picco di sporulazione). Non documentato per la Sicilia.",
+        "mesi": [7, 8, 9, 10],
+        "picco": [9, 10],
+        "fonte": "s16",
+        "nota": "Mesi 7-10 da fonte aggregatore (Wikipedia, 'da luglio a ottobre' in Gran Bretagna e resto d'Europa; s16, che indica anche agosto-fine autunno). Il 'picco' 9-10 riguarda il picco di rilascio sporale (fine settembre-meta ottobre, ~4 settimane) osservato in querceti lituani (s2), non la fruttificazione in senso stretto. Un esemplare polacco trovato il 20 settembre 2017 (s3). INFERENZA: in Sicilia il periodo potrebbe slittare verso l'autunno inoltrato."
+      },
+      "temperatura": {"cosa": null, "min": null, "max": null, "fonte": "s2", "nota": "Nessun dato numerico. s2 riporta che il rilascio sporale NON correla con la temperatura."},
+      "umidita_pioggia": {"nota": "Il rilascio sporale correla positivamente con l'umidita relativa dell'aria ma non con la temperatura (Lituania, s2). Per il contesto generale dei querceti mediterranei, la fruttificazione delle macrofungine richiede abbondante pioggia annuale e la pioggia dei 30 giorni precedenti e il fattore dominante nei picchi (Toscana, s24); in Spagna mediterranea gli impulsi di pioggia di fine estate-inizio autunno sono decisivi (s25). Dati di comunita, non specifici di F. hepatica.", "fonte": "s2"},
+      "suolo": {"ph": null, "tipo": null, "fonte": null},
+      "esposizione": null,
+      "presenza_sicilia": {"stato": "documentata", "fonte": "s10", "nota": "Checklist siciliana: province CT, ME, PA (s10); campioni d'erbario PAL da Parco delle Madonie e Monte Carcaci (s9)."},
+      "tossicita_nota": "Nessuna affermazione di commestibilita. Un aggregatore (s16) segnala che esemplari maturi possono causare disturbo gastrico; non consumare senza determinazione da parte di un esperto.",
+      "affidabilita": "media",
+      "lacune": ["Quota, temperatura, pH e esposizione: nessun dato trovato", "Fenologia mediterranea/siciliana non documentata (mesi da fonti temperate/aggregatore)", "Forza associazione con Quercus mediterranee (Q. suber, Q. ilex, Q. pubescens) non quantificata"]
+    },
+    {
+      "sp": "Laetiporus sulphureus",
+      "nome_it": "Polipora solforino",
+      "ruolo": "lignicolo parassita",
+      "ospiti": [
+        {"taxon": "Ceratonia siliqua", "forza": "forte", "fonte": "s5"},
+        {"taxon": "Quercus (Q. ilex, Q. pubescens in Italia centro-nord)", "forza": "possibile", "fonte": "s9"},
+        {"taxon": "Castanea sativa, Eucalyptus, Fagus, Populus, Prunus (incl. P. amygdalus), Pyrus, Robinia, Salix", "forza": "possibile", "fonte": "s5"}
+      ],
+      "habitat_note": "Parassita necrotrofo e saprotrofo, causa carie bruna cubica del durame (colonne di carie di 5-8 m); infezione tramite basidiospore su ferite della corteccia (s5). In Sicilia sud-occidentale (Modica, Ragusa) incidenza del 34% nei carrubi campionati; un caso su mandorlo (s5). Presente anche in Toscana e Piemonte (s5). Un aggregatore cita carrubo ed eucalipto come ospiti mediterranei (s15). La complessa tassonomia (specie affini a L. sulphureus) impone cautela nell'attribuzione.",
+      "quota_m": {"min": null, "max": null, "fonte": null, "nota": "Nessun dato altitudinale trovato."},
+      "mesi_fruttificazione": {
+        "area": "Europa (generico, aggregatore); non documentato per la Sicilia.",
+        "mesi": [4, 5, 6, 7, 8, 9, 10, 11],
+        "picco": null,
+        "fonte": "s15",
+        "nota": "'Da aprile a novembre' in Europa secondo Wikipedia (aggregatore). Nel NE degli USA (zona 5-6) tipicamente estate-autunno, anche da fine maggio (s26): non trasferibile alla Sicilia."
+      },
+      "temperatura": {"cosa": null, "min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "umidita_pioggia": {"nota": "Nessun dato specifico sulla specie. Contesto generale di comunita: vedi s24, s25 (non specifici).", "fonte": "s24"},
+      "suolo": {"ph": null, "tipo": null, "fonte": null},
+      "esposizione": null,
+      "presenza_sicilia": {"stato": "documentata", "fonte": "s5", "nota": "Sillo et al. 2018: carrubeti di Modica e Ragusa. Le raccolte d'erbario di s9 per L. sulphureus (localita 26 e 48) non risultano siciliane nell'elenco localita letto. Non verificata la presenza in Madonie/Nebrodi/Ficuzza/Monti di Palermo."},
+      "tossicita_nota": "Nessuna affermazione di commestibilita. Fonte aggregatore (s15): reazioni avverse gravi (vomito, febbre) in circa il 10% delle persone, forse per confusione con specie affini; il consumo da crudo e sconsigliato. Non consumare senza determinazione da parte di un esperto.",
+      "affidabilita": "media",
+      "lacune": ["Mesi e picco in Sicilia/Italia meridionale non documentati", "Quota, temperatura, pH, esposizione: nessun dato", "Presenza in Madonie, Nebrodi, Ficuzza, Piana degli Albanesi, Aspromonte non verificata", "Quali specie del complesso L. sulphureus s.l. siano presenti in Sicilia non verificato"]
+    },
+    {
+      "sp": "Ganoderma lucidum",
+      "nome_it": "Ganoderma lucido",
+      "ruolo": "lignicolo parassita",
+      "ospiti": [
+        {"taxon": "Quercus (Q. ilex, Q. robur in Sicilia)", "forza": "forte", "fonte": "s9"},
+        {"taxon": "Altri latifoglie (24 generi legnosi in Europa; es. Armeniaca vulgaris)", "forza": "possibile", "fonte": "s11"}
+      ],
+      "habitat_note": "Su latifoglie in parchi e soprattutto in foreste; in Slovacchia le querce sono l'ospite piu frequente tra i record con ospite identificato (16%) (s11). Carpofori annuali o perenni (s11). In Sicilia, raccolte d'erbario su Q. ilex (Parco delle Madonie 56a, Monte Carcaci 58) e Q. robur (Bosco Niscemi 56b) (s9). Taxon problematico: G. lucidum e G. carnosum (piu scuro, spore piu larghe, preferenza per conifere) sono simili (s11); tra collezioni italiane 4 risultano G. lucidum e 1 G. resinaceum (s12). Il 'lingzhi/reishi' asiatico e un taxon diverso (s30). Il nome nelle checklist siciliane va quindi inteso con cautela (INFERENZA: possibile inclusione di G. resinaceum/G. carnosum).",
+      "quota_m": {"min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "mesi_fruttificazione": {
+        "area": "Non documentato per area mediterranea.",
+        "mesi": null,
+        "picco": null,
+        "fonte": null,
+        "nota": "Unico dato: NE USA, G. sessile (lucidum) da agosto all'autunno (s26), non trasferibile e riferito a taxon nordamericano."
+      },
+      "temperatura": {"cosa": null, "min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "umidita_pioggia": {"nota": "Nessun dato specifico sulla specie.", "fonte": null},
+      "suolo": {"ph": null, "tipo": null, "fonte": null},
+      "esposizione": null,
+      "presenza_sicilia": {"stato": "documentata", "fonte": "s10", "nota": "Checklist siciliana: AG, CL, CT, EN, ME, PA, RG, SR, TP (s10); esemplari PAL in s9."},
+      "tossicita_nota": "Nessuna affermazione di commestibilita. Per i preparati di Ganoderma una fonte aggregatore (s30) segnala preoccupazioni di sicurezza e interazioni con farmaci e integratori. Rischio di confusione tra specie del genere e con altri poliporacei.",
+      "affidabilita": "bassa",
+      "lacune": ["Fenologia, temperatura, pH, quota, esposizione: nessun dato", "Identita tassonomica (G. lucidum s.s. vs G. resinaceum/G. carnosum) in Sicilia non verificata", "Presenza in Aspromonte e Piana degli Albanesi non verificata"]
+    },
+    {
+      "sp": "Pleurotus ostreatus",
+      "nome_it": "Orecchione, Gelone",
+      "ruolo": "lignicolo saprotrofo",
+      "ospiti": [
+        {"taxon": "Populus alba, Populus tremula", "forza": "possibile", "fonte": "s13"},
+        {"taxon": "Salix alba", "forza": "possibile", "fonte": "s13"},
+        {"taxon": "Fagus sylvatica, Castanea sativa, Quercus pubescens, Quercus petraea, Morus nigra, Abies alba", "forza": "possibile", "fonte": "s13"}
+      ],
+      "habitat_note": "In Italia su ceppaie, tronchi caduti e latifoglie vive in boschi e parchi (s13). Nessun dato della fonte sulla Sicilia per questa specie. Nel gruppo Pleurotus siciliano e documentato P. eryngii var. thapsiae su Apiaceae (Madonie, calcare, doppia fruttificazione autunno e primavera; s31): taxon diverso, non attribuibile a P. ostreatus. Ruolo saprotrofo/ospiti vivi: la fonte parla di 'latifoglie vive', quindi possibile comportamento da debole parassita (INFERENZA).",
+      "quota_m": {"min": 0, "max": 1450, "fonte": "s13", "nota": "Intervallo altitudinale per l'Italia (Venturella et al. 2015), non specifico per la Sicilia."},
+      "mesi_fruttificazione": {
+        "area": "Italia (generale)",
+        "mesi": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "picco": null,
+        "fonte": "s13",
+        "nota": "'Raccoglibile tutto l'anno' (s13). Per il NE USA: tarda primavera rara, estate-autunno comune, tra gli ultimi funghi carnosi dell'autunno (s26): non trasferibile."
+      },
+      "temperatura": {"cosa": null, "min": null, "max": null, "fonte": null, "nota": "Nessun dato per popolazioni spontanee trovato nelle fonti lette (i dati trovati riguardavano la coltivazione e non sono stati letti)."},
+      "umidita_pioggia": {"nota": "Nessun dato specifico sulla specie. Contesto generale di comunita: s24, s25.", "fonte": null},
+      "suolo": {"ph": null, "tipo": null, "fonte": null},
+      "esposizione": null,
+      "presenza_sicilia": {"stato": "non documentata", "fonte": "s13", "nota": "Non presente nei testi letti di s13 e s10 (s10 solo parzialmente leggibile). INFERENZA: presenza probabile, ma non verificata."},
+      "tossicita_nota": "Nessuna affermazione di commestibilita. INFERENZA, non documentata nelle fonti lette: esistono funghi lignicoli a lamelle potenzialmente pericolosi in ambiente mediterraneo (es. Omphalotus); determinazione solo da parte di un esperto.",
+      "affidabilita": "media",
+      "lacune": ["Presenza in Sicilia non verificata con fonte", "Temperatura/umidita richieste in natura: nessun dato", "pH, esposizione: nessun dato", "Picco di fruttificazione per l'area mediterranea non documentato"]
+    },
+    {
+      "sp": "Armillaria mellea s.l. (A. mellea, A. gallica, Desarmillaria tabescens; A. ostoyae non verificata)",
+      "nome_it": "Chiodino",
+      "ruolo": "lignicolo parassita",
+      "ospiti": [
+        {"taxon": "Quercus (Q. ilex, Q. macrolepis, Q. robur ecc.)", "forza": "forte", "fonte": "s7"},
+        {"taxon": "Querce miste in querceto deperiente dell'Italia meridionale (A. gallica)", "forza": "forte", "fonte": "s6"}
+      ],
+      "habitat_note": "Funghi facoltativamente necrotrofi con fase parassita e saprotrofa (s28). Nell'Italia meridionale A. gallica: 111 isolati da un querceto misto deperiente, 28 genet, il maggiore ~2,6 ha e ~300 anni (stima) (s6). Prove di patogenicita: A. mellea e A. gallica le piu virulente, specie su Q. macrolepis; Armillaria considerata fattore secondario nel deperimento delle querce (s7). Q. ilex mostra le infezioni piu alte tra cinque querce testate, Q. robur la maggior resistenza; A. mellea la piu patogena, A. gallica comparabile solo su piante con poca acqua, A. tabescens meno virulenta (s8). Distribuzione e altitudini delle specie europee sono trattate da Guillaumin et al. 1993 (s27), ma i dettagli non sono stati letti. Desarmillaria tabescens e probabilmente diffusa in Europa e Asia (s28).",
+      "quota_m": {"min": null, "max": null, "fonte": "s27", "nota": "s27 tratta le distribuzioni altitudinali ma il contenuto non e stato letto."},
+      "mesi_fruttificazione": {
+        "area": "Non documentato per area mediterranea.",
+        "mesi": null,
+        "picco": null,
+        "fonte": null,
+        "nota": "Unico dato: NE USA, A. tabescens da meta luglio, A. mellea da inizio settembre e in autunno (s26): non trasferibile. s28 non fornisce dati fenologici."
+      },
+      "temperatura": {"cosa": null, "min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "umidita_pioggia": {"nota": "Stress idrico (poca acqua) aumenta la patogenicita di A. gallica su semenzali di querce (s8): riguarda la virulenza, NON la fruttificazione.", "fonte": "s8"},
+      "suolo": {"ph": null, "tipo": null, "fonte": null},
+      "esposizione": null,
+      "presenza_sicilia": {"stato": "documentata", "fonte": "s10", "nota": "Checklist siciliana: A. mellea, A. gallica e Desarmillaria tabescens (AG, CL, CT, EN, ME, PA, RG, SR, TP; categoria 'necrotrofi parassiti') (s10). A. ostoyae non rilevata nel testo leggibile di s10. Gli studi s6, s7, s8 sono dell'Italia meridionale continentale (area Calabria/Basilicata, non verificata dai testi letti)."},
+      "tossicita_nota": "Nessuna affermazione di commestibilita. INFERENZA, non da fonte letta: i gruppi lignicoli a lamelle includono sosia pericolosi (es. Galerina marginata, mortale); determinazione solo da parte di un esperto.",
+      "affidabilita": "media",
+      "lacune": ["Fenologia mediterranea, temperatura, pH, quota ed esposizione: nessun dato", "A. ostoyae in Sicilia/Italia meridionale non verificata", "Studi su ospiti e patogenicita dell'Italia meridionale continentale, non siciliani", "Distinzione dei taxa a livello di specie nelle aree di studio del sito non verificata"]
+    },
+    {
+      "sp": "Infundibulicybe geotropa (Clitocybe geotropa)",
+      "nome_it": "Fungo del fumo / Imbutone",
+      "ruolo": "saprotrofo terricolo",
+      "ospiti": [],
+      "habitat_note": "Boschi misti, soprattutto radure erbose, in autunno, spesso gregario o in cerchi delle streghe (s14). Ruolo saprotrofo terricolo: INFERENZA dell'assistente (le fonti lette non lo dichiarano esplicitamente). Nessun ospite arboreo specifico documentato.",
+      "quota_m": {"min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "mesi_fruttificazione": {
+        "area": "Europa (generale, aggregatore); non documentato per la Sicilia.",
+        "mesi": [8, 9, 10, 11],
+        "picco": null,
+        "fonte": "s14",
+        "nota": "'Da agosto a novembre' in Europa (Wikipedia). In area mediterranea il periodo potrebbe differire (INFERENZA)."
+      },
+      "temperatura": {"cosa": null, "min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "umidita_pioggia": {"nota": "Nessun dato specifico sulla specie.", "fonte": null},
+      "suolo": {"ph": null, "tipo": null, "fonte": null},
+      "esposizione": null,
+      "presenza_sicilia": {"stato": "non documentata", "fonte": "s10", "nota": "Non trovata nel testo leggibile di s10 (tabella troncata, ricerca incompleta). Non verificata in altre fonti. INFERENZA: presenza probabile in boschi siciliani, da confermare."},
+      "tossicita_nota": "Nessuna affermazione di commestibilita. Fonte aggregatore (s14): rischio di confusione con specie velenose, es. Entoloma sinuatum (lamelle sinuate, odore farinoso) e Melanoleuca grammopodia (odore muschiato). INFERENZA, non da fonte letta: specie di Clitocybe biancastre di aspetto simile possono contenere muscarina.",
+      "affidabilita": "bassa",
+      "lacune": ["Presenza in Sicilia non verificata", "Ospiti/substrato, quota, temperatura, pH, esposizione: nessun dato", "Fenologia mediterranea non documentata", "Fonti lette solo di tipo aggregatore"]
+    },
+    {
+      "sp": "Clitocybe odora",
+      "nome_it": "Clitocibe odoroso",
+      "ruolo": "saprotrofo terricolo",
+      "ospiti": [
+        {"taxon": "Fagus e altre latifoglie (lettiera)", "forza": "possibile", "fonte": "s17"}
+      ],
+      "habitat_note": "Saprotrofo su suolo tra la lettiera, in particolare sotto faggio e altre latifoglie, in boschi, parchi o brughiere; in Gran Bretagna anche in boschi di conifere (s17, s18). Dati dal Regno Unito; nessun dato mediterraneo. Rilevante per i boschi a faggio dei Nebrodi e delle Madonie (INFERENZA ecologica).",
+      "quota_m": {"min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "mesi_fruttificazione": {
+        "area": "Regno Unito (non mediterraneo)",
+        "mesi": [7, 8, 9, 10],
+        "picco": null,
+        "fonte": "s17",
+        "nota": "Da luglio a ottobre (s17); 'tarda estate e autunno' (s18). Non documentato per la Sicilia."
+      },
+      "temperatura": {"cosa": null, "min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "umidita_pioggia": {"nota": "Nessun dato specifico sulla specie.", "fonte": null},
+      "suolo": {"ph": null, "tipo": null, "fonte": null},
+      "esposizione": null,
+      "presenza_sicilia": {"stato": "documentata", "fonte": "s10", "nota": "Checklist siciliana: AG, CL, CT, EN, ME, PA, RG, SR, TP (categoria Sl, saprotrofo della lettiera)."},
+      "tossicita_nota": "Nessuna affermazione di commestibilita. Sosia pericoloso (s17): Clitocybe fragrans, con odore di anice simile, contiene muscarina e cresce in prati; anche Stropharia aeruginosa e citata come possibile confusione. Non consumare senza determinazione da parte di un esperto.",
+      "affidabilita": "bassa",
+      "lacune": ["Fenologia, quota, temperatura, pH, esposizione in area mediterranea: nessun dato", "Dati ecologici solo da aggregatori britannici", "Associazione con specifici boschi siciliani non documentata"]
+    },
+    {
+      "sp": "Cortinarius subg. Phlegmacium (profilo di genere; ora Phlegmacium)",
+      "nome_it": "Cortinari del sottogenere Phlegmacium",
+      "ruolo": "micorrizico",
+      "ospiti": [
+        {"taxon": "Cistus monspeliensis (C. mahiquesii, Catalogna)", "forza": "forte", "fonte": "s20"},
+        {"taxon": "Quercus (specie affini a C. mahiquesii; Q. ilex per il genere Cortinarius in Liguria)", "forza": "possibile", "fonte": "s19"},
+        {"taxon": "Tilia, Quercus robur (P. brunneiaurantium, Finlandia, non mediterraneo)", "forza": "possibile", "fonte": "s21"}
+      ],
+      "habitat_note": "Profilo SOLO indicativo, a livello di genere. C. mahiquesii (subg. Phlegmacium, subipogeo): macchia pura di Cistus monspeliensis su suolo siliceo acido, raccolta a gennaio (Catalogna); differisce da specie affini che crescono con Quercus (s20). Nel leccio ligure sono stati trovati 67 taxa di Cortinarius (non distinti per sottogenere) (s19). P. brunneiaurantium: latifoglie su argilla ricca ('clayey mull'), autunno (s21; Finlandia). Brandrud 1996 revisiona la sezione Phlegmacium in Europa (taxonomia, senza dati ecologici utilizzabili letti) (s22). Tutte le specie del gruppo sono micorriziche per inferenza (non esplicitata dalle fonti lette). Nel 2022 Phlegmacium e stato elevato a genere (s21).",
+      "quota_m": {"min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato."},
+      "mesi_fruttificazione": {
+        "area": "Non documentato per Sicilia/Italia meridionale; esempi: Catalogna (gennaio), Finlandia (autunno).",
+        "mesi": null,
+        "picco": null,
+        "fonte": "s20",
+        "nota": "C. mahiquesii: olotipo raccolto il 18 gennaio 2008 (s20). P. brunneiaurantium: autunno (s21). Nessun dato aggregabile per il sottogenere nel Mediterraneo."
+      },
+      "temperatura": {"cosa": null, "min": null, "max": null, "fonte": null, "nota": "Nessun dato trovato. Contesto generale: la temperatura guida la fruttificazione autunnale dei funghi ectomicorrizici europei (s23), non specifico del gruppo."},
+      "umidita_pioggia": {"nota": "Contesto di comunita, non specifico: nella foresta di leccio e pino mediterranei i funghi ectomicorrizici sono piu produttivi e piu sensibili alle variazioni meteo annuali; conta il meteo autunnale (pioggia e temperatura) (s29, tesi 2025); precipitazioni di tarda estate-inizio autunno determinanti in Spagna (s25).", "fonte": "s29"},
+      "suolo": {"ph": "acido (solo C. mahiquesii)", "tipo": "siliceo (C. mahiquesii); argilla ricca (P. brunneiaurantium, Finlandia)", "fonte": "s20"},
+      "esposizione": null,
+      "presenza_sicilia": {"stato": "probabile", "fonte": "s10", "nota": "Il genere Cortinarius e ben rappresentato nella checklist siciliana (circa 90 taxa; tra i nomi letti C. praestans, C. infractus, C. caerulescens, C. caesiocanescens, C. collinitus) ma l'attribuzione al sottogenere Phlegmacium non e stata verificata."},
+      "tossicita_nota": "Nessuna affermazione di commestibilita. INFERENZA, non da fonte letta: il genere Cortinarius comprende specie gravemente tossiche (nefrotossicita ritardata); non consumare nessun Cortinarius senza determinazione da parte di un esperto.",
+      "affidabilita": "bassa",
+      "lacune": ["Nessuna monografia ecologica mediterranea del sottogenere letta (le fonti sono per singole specie/genere)", "Ospiti reali in Sicilia, mesi, quota, pH, temperatura, esposizione: nessun dato", "Elenco dei taxa siciliani del sottogenere non estratto dalla checklist", "Accesso negato a Mycologia 106 (Phlegmacium del Mediterraneo europeo) e Persoonia 2021 non pertinente (altro sottogenere)"]
+    }
+  ],
+  "fonti": [
+    {"id": "s1", "t": "Climate variation effects on fungal fruiting (Boddy, Buntgen, Egli, Gange, Heegaard, Kirk, Mohammad, Kauserud). Fungal Ecology 10:20-33", "u": "https://orca.cardiff.ac.uk/id/eprint/58174/", "tipo": "peer-reviewed", "anno": 2014},
+    {"id": "s2", "t": "Marciulynas A., Menkis A. - Fistulina hepatica spore dispersal in oak stands. Diversity 15(11):1110", "u": "https://www.mdpi.com/1424-2818/15/11/1110", "tipo": "peer-reviewed", "anno": 2023},
+    {"id": "s3", "t": "Pietka J., Ciurzycki W. - Fistulina hepatica in Poland. Acta Mycologica 53(1):1108", "u": "https://pbsociety.org.pl/journals/index.php/am/article/download/am.1108/7488", "tipo": "peer-reviewed", "anno": 2018},
+    {"id": "s4", "t": "Wright R. - Fungal heart-rot communities of British oak (Quercus spp.) trees (tesi PhD, Cardiff University)", "u": "https://orca.cardiff.ac.uk/id/eprint/165966", "tipo": "altro", "anno": 2023},
+    {"id": "s5", "t": "Sillo F., Gianchino C., Giordano L., Mari M., Gonthier P. - Local epidemiology of the wood decay agent Laetiporus sulphureus in carob stands in Sicily. Forest Pathology", "u": "https://iris.unito.it/retrieve/e27ce42c-a933-2581-e053-d805fe0acbaa/Sillo%20et%20al.%202018_Forest%20Pathology_open%20access.pdf", "tipo": "peer-reviewed", "anno": 2018},
+    {"id": "s6", "t": "de Gioia T., Ubaldo R., Sicoli G., Luisi N. - Occurrence and distribution of Armillaria gallica genets in a declining oak stand of southern Italy (Phytopathologia Mediterranea)", "u": "https://oajournals.fupress.net/index.php/pm/article/view/5014", "tipo": "peer-reviewed", "anno": 2003},
+    {"id": "s7", "t": "Sicoli G., Annese V., de Gioia T., Luisi N. - Armillaria pathogenicity tests on oaks in southern Italy (abstract, SIPaV)", "u": "https://www.sipav.org/it/16/Archive/1093", "tipo": "altro", "anno": 2002},
+    {"id": "s8", "t": "Metaliaj R., Sicoli G., Luisi N. - Pathogenicity of Armillaria isolates inoculated on five Quercus species at different watering regimes. Phytopathologia Mediterranea 45(1):3-9", "u": "https://oajournals.fupress.net/index.php/pm/article/view/5147", "tipo": "peer-reviewed", "anno": 2006},
+    {"id": "s9", "t": "Bernicchia A., Benni A., Venturella G., Gargano M.L., Saitta A., Perez Gorjon S. - Aphyllophoraceous wood-inhabiting fungi on Quercus spp. in Italy (checklist, Mycotaxon 104)", "u": "https://www.mycotaxon.com/resources/checklists/bernicchia_v104-checklist.pdf", "tipo": "checklist-atlante", "anno": 2008},
+    {"id": "s10", "t": "Ferraro V., Venturella G., Cirlincione F., Mirabile G., Gargano M.L., Colasuonno P. - The Checklist of Sicilian Macrofungi: Second Edition. J. Fungi 8:566", "u": "https://iris.unipa.it/retrieve/2a7dee3d-790d-499b-bd75-d1adfd93e05e/jof-08-00566-v2.pdf", "tipo": "checklist-atlante", "anno": 2022},
+    {"id": "s11", "t": "Beck T., Gaper J., Sebesta M., Gaperova S. - Host preferences of wood-decaying fungi of the genus Ganoderma in the urban areas of Slovakia. Annales Univ. Paedagogicae Cracoviensis Studia Naturae", "u": "https://aupcstudianaturae.uken.krakow.pl/article/download/5437/5071/17638", "tipo": "peer-reviewed", "anno": 2018},
+    {"id": "s12", "t": "Badalyan S., Gharibyan N., Iotti M., Zambonelli A. - Morphological and genetic characteristics of different collections of Ganoderma P. Karst. species", "u": "https://cris.unibo.it/handle/11585/129404", "tipo": "peer-reviewed", "anno": 2012},
+    {"id": "s13", "t": "Venturella G., Gargano M.L., Compagno R. - The genus Pleurotus in Italy. Flora Mediterranea 25 (Special Issue):143-156", "u": "https://ricerca.uniba.it/retrieve/dd9e0c66-5f7a-1e9c-e053-3a05fe0a45ef/Pleurotus%20in%20Italy.pdf", "tipo": "peer-reviewed", "anno": 2015},
+    {"id": "s14", "t": "Infundibulicybe geotropa (Wikipedia)", "u": "https://en.wikipedia.org/wiki/Infundibulicybe_geotropa", "tipo": "aggregatore", "anno": null},
+    {"id": "s15", "t": "Laetiporus sulphureus (Wikipedia)", "u": "https://en.wikipedia.org/wiki/Laetiporus_sulphureus", "tipo": "aggregatore", "anno": null},
+    {"id": "s16", "t": "Fistulina hepatica (Wikipedia)", "u": "https://en.wikipedia.org/wiki/Fistulina_hepatica", "tipo": "aggregatore", "anno": null},
+    {"id": "s17", "t": "Aniseed Funnel (Clitocybe odora) - Wild Food UK", "u": "https://wildfooduk.com/?p=59310", "tipo": "aggregatore", "anno": null},
+    {"id": "s18", "t": "Aniseed Toadstool (Clitocybe odora) - NatureSpot", "u": "https://www.naturespot.org/species/aniseed-toadstool", "tipo": "aggregatore", "anno": null},
+    {"id": "s19", "t": "Zotti M., Ambrosio E., Di Piazza S., Pavarino M., Mariotti M. - Ecology and diversity of Cortinarius species associated with Quercus ilex in the Mediterranean area of Liguria (NW Italy)", "u": "https://iris.unige.it/handle/11567/700980", "tipo": "peer-reviewed", "anno": 2014},
+    {"id": "s20", "t": "Vila J., Ortega A., Suarez-Santiago V.N., Llimona X. - Cortinarius mahiquesii, a new subhypogeous species from Catalonia (Iberian Peninsula)", "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2846133", "tipo": "peer-reviewed", "anno": null},
+    {"id": "s21", "t": "Phlegmacium brunneiaurantium / Phlegmacium (Wikipedia: pagina specie e pagina genere)", "u": "https://en.wikipedia.org/wiki/Phlegmacium", "tipo": "aggregatore", "anno": null},
+    {"id": "s22", "t": "Brandrud T.E. - Cortinarius subgenus Phlegmacium section Phlegmacium in Europe: Descriptive part. Edinburgh Journal of Botany 53(3)", "u": "https://journals.rbge.org.uk/ejb/article/view/802", "tipo": "peer-reviewed", "anno": 1996},
+    {"id": "s23", "t": "Andrew C. et al. (Kauserud H. ed.) - Explaining European fungal fruiting phenology with climate variability. Ecology 99(6):1306-1315", "u": "https://pure.royalholloway.ac.uk/en/publications/explaining-european-fungal-fruiting-phenology-with-climate-variab/", "tipo": "peer-reviewed", "anno": 2018},
+    {"id": "s24", "t": "Salerni E., Lagana A., Perini C., Loppi S., De Dominicis V. - Effects of temperature and rainfall on fruiting of macrofungi in oak forests of the Mediterranean area. Israel Journal of Plant Sciences 50(3):189-198", "u": "https://usiena-air.unisi.it/handle/11365/3048", "tipo": "peer-reviewed", "anno": 2002},
+    {"id": "s25", "t": "Martinez Pena F. et al. - Record breaking mushroom yields in Spain (record repository; rivista non verificata)", "u": "https://recercat.cat/handle/10459.1/64847", "tipo": "peer-reviewed", "anno": 2017},
+    {"id": "s26", "t": "Luley C.J. - Here come the basidiocarps: seasonal fruiting of decay fungi (Tree Care Industry Magazine; osservazioni NE USA)", "u": "https://tcimag.tcia.org/training/here-come-the-basidiocarps-seasonal-fruiting-of-decay-fungi/", "tipo": "altro", "anno": 2021},
+    {"id": "s27", "t": "Guillaumin J.J. et al. - Geographical distribution and ecology of the Armillaria species in western Europe (solo scheda bibliografica letta)", "u": "https://research.wur.nl/en/publications/geographical-distribution-and-ecology-of-the-armillaria-species-i/", "tipo": "peer-reviewed", "anno": 1993},
+    {"id": "s28", "t": "Koch R.A., Herr J.R. - Global distribution and richness of Armillaria and related species inferred from public databases and amplicon sequencing datasets. Frontiers in Microbiology", "u": "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.733159/pdf", "tipo": "peer-reviewed", "anno": 2021},
+    {"id": "s29", "t": "Ponce A. - Macrofungal sporocarp fructification in two Mediterranean areas (tesi, repository Universitat de Lleida)", "u": "https://portalrecerca.udl.cat/documentos/68d2e055f4c9ce76a7590a04?lang=en", "tipo": "altro", "anno": 2025},
+    {"id": "s30", "t": "Ganoderma lucidum (Wikipedia)", "u": "https://en.wikipedia.org/wiki/Ganoderma_lucidum", "tipo": "aggregatore", "anno": null},
+    {"id": "s31", "t": "Compagno R. et al. - Up-to-date distribution, ecology and cultivation of Pleurotus eryngii var. thapsiae in Sicily (abstract, XIX Congresso Nazionale UMI)", "u": "https://iris.unipa.it/handle/10447/78962", "tipo": "societa-micologica", "anno": 2012}
+  ]
+}

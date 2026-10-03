@@ -7465,8 +7465,8 @@
    "lat": 37.976325,
    "lon": 13.292092,
    "q": 609,
-   "sp": null,
-   "cert": "da verificare",
+   "sp": "Cyclocybe cylindracea",
+   "cert": "certo",
    "fonte": "foto",
    "foto": "foto/a307cf3b.jpg",
    "c": {
@@ -7480,7 +7480,8 @@
     "tx7": 18.3,
     "rh7": 80.8,
     "ws7": 3.1
-   }
+   },
+   "note": "Su ceppo di pioppo (pioppini)"
   },
   {
    "id": "R013",
