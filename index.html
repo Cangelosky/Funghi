@@ -1,76 +1,89 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Funghi Sicilia</title>
+<title>Funghi Sicilia – mappe e condizioni</title>
+<meta name="description" content="Zone di ricerca micologica in Sicilia: percorsi, ritrovamenti fotografati e condizioni meteo precedenti.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-:root{--bg:#f6f3ec;--card:#fff;--ink:#2a2620;--mut:#6f675a;--acc:#7a4b1e;--ok:#2e7d4f;--warn:#b7791f;--line:#e4ddcf}
-@media(prefers-color-scheme:dark){:root{--bg:#1c1a16;--card:#27241f;--ink:#efe9dc;--mut:#a39a89;--acc:#d9a066;--ok:#6cc08b;--warn:#e0b04c;--line:#3a352d}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,sans-serif}
-header{padding:20px 16px 8px;max-width:960px;margin:auto}h1{margin:0;font-size:1.5rem}header p{margin:4px 0 0;color:var(--mut);font-size:.9rem}
-main{max-width:960px;margin:auto;padding:0 16px 40px}
-nav{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap}nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:20px;font:inherit;cursor:pointer}
+:root{--bg:#f6f3ec;--card:#fff;--ink:#2a2620;--mut:#6f675a;--acc:#7a4b1e;--ok:#2e7d4f;--warn:#b7791f;--line:#e4ddcf;--rain:#3b7cc4}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1a16;--card:#27241f;--ink:#efe9dc;--mut:#a39a89;--acc:#d9a066;--ok:#6cc08b;--warn:#e0b04c;--line:#3a352d;--rain:#6aa6e6}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+header,main,footer{max-width:1000px;margin:auto;padding:0 16px}header{padding-top:20px}h1{margin:0;font-size:1.5rem}header p{margin:4px 0 0;color:var(--mut);font-size:.9rem}
+nav{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap}nav button,.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:20px;font:inherit;cursor:pointer}
 nav button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
 section{display:none}section.on{display:block}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
-.card h3{margin:0 0 6px;font-size:1.05rem}.meta{color:var(--mut);font-size:.85rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
-.pill{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.78rem;margin-right:4px;border:1px solid var(--line)}
-.ok{color:var(--ok);border-color:var(--ok)}.warn{color:var(--warn);border-color:var(--warn)}
-#map{height:60vh;min-height:320px;border-radius:12px;border:1px solid var(--line)}
-table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600}
-.scroll{overflow-x:auto}small.note{color:var(--mut);display:block;margin-top:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}.card h3{margin:0 0 6px;font-size:1.05rem}
+.meta{color:var(--mut);font-size:.85rem}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.pill{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.78rem;margin:2px 4px 2px 0;border:1px solid var(--line)}.ok{color:var(--ok);border-color:var(--ok)}.warn{color:var(--warn);border-color:var(--warn)}
+.map{height:58vh;min-height:320px;border-radius:12px;border:1px solid var(--line)}.map.sm{height:46vh}
+table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600}.scroll{overflow-x:auto}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}.photos figure{margin:0}.photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;cursor:zoom-in;display:block}.photos figcaption{font-size:.75rem;color:var(--mut)}
+svg text{fill:var(--mut);font:11px system-ui}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column;color:#fff;padding:12px}#lb img{max-width:100%;max-height:85vh;border-radius:6px}
+footer{padding:24px 16px 32px;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line);margin-top:30px}
+.note{color:var(--mut);font-size:.82rem;margin-top:10px}.back{margin:6px 0}
 </style></head><body>
-<header><h1>🍄 Funghi Sicilia</h1><p>Zone, uscite e condizioni meteo prima delle uscite. Dati aggiornati al <span id="agg"></span>. Posizioni approssimate.</p></header>
+<header><h1>🍄 Funghi Sicilia</h1><p>Percorsi, ritrovamenti e condizioni meteo prima delle uscite. Dati al <span id="agg"></span>.</p></header>
 <main>
 <nav id="tabs"></nav>
-<section id="s-ora"><div id="ora" class="grid"></div>
-<small class="note">Pioggia da satellite CHIRPS (~5 km): ultimi 2-3 giorni non ancora disponibili. Previsioni MET Norway, molto incerte oltre 5 giorni. È un quadro descrittivo, non una previsione di ritrovamento.</small></section>
-<section id="s-mappa"><div id="map"></div></section>
+<section id="s-mappa"><div id="map" class="map"></div><p class="note">Tocca un marker per aprire la scheda della zona con percorso, foto, profilo di quota e pioggia.</p></section>
+<section id="s-ora"><div id="ora" class="grid"></div><p class="note">Pioggia da satellite CHIRPS (~5 km): gli ultimi 2-3 giorni non sono ancora disponibili. Previsioni MET Norway, molto incerte oltre 5 giorni. Quadro descrittivo, non una previsione di ritrovamento.</p></section>
 <section id="s-uscite"><div class="card scroll"><table id="tu"></table></div></section>
-<section id="s-zone"><div id="zone" class="grid"></div></section>
+<section id="s-zona"><div class="back"><button class="btn" onclick="show('mappa')">← Mappa</button></div><div id="zona"></div></section>
 </main>
+<footer>© Oscar Cangelosi. Proprietà personale: dati, foto e mappe non sono riutilizzabili senza autorizzazione. Pioggia: CHIRPS v3 (UCSB/CHC); temperature e umidità stimate: NASA POWER; previsioni: MET Norway; cartografia © OpenStreetMap, OpenTopoMap, Esri. Progetto a fini di studio micologico: le informazioni non sono una guida alla commestibilità.</footer>
+<div id="lb" onclick="this.style.display='none'"><img id="lbi"><div id="lbc"></div></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const DATA={
-agg:"2026-10-03",
-zone:[
-{id:"castagneto_piccolo",n:"Castagneto piccolo (S. Cristina Gela)",lat:38.00,lon:13.32,q:735,t:"castagneto"},
-{id:"castagneto_esteso",n:"Castagneto esteso (Piana)",lat:38.01,lon:13.31,q:750,t:"castagneto"},
-{id:"lago_piana",n:"Lago di Piana",lat:37.98,lon:13.29,q:610,t:"misto"},
-{id:"xaravulli",n:"Xaravulli (Piana)",lat:38.01,lon:13.27,q:null,t:""},
-{id:"poggio_sfrancesco",n:"Poggio San Francesco",lat:38.01,lon:13.26,q:778,t:""},
-{id:"ficuzza",n:"Ficuzza (cappella, grotta, Cozzo Molle)",lat:37.86,lon:13.40,q:1000,t:""},
-{id:"san_giorgio",n:"San Giorgio (Gratteri)",lat:37.95,lon:13.95,q:590,t:""},
-{id:"piano_torre",n:"Piano Torre (Gratteri)",lat:37.91,lon:13.99,q:870,t:""},
-{id:"carcara",n:"Carcara (Caronia/Mistretta)",lat:37.97,lon:14.39,q:767,t:""}],
-ora:[
-{z:"Lago di Piana",r14:41.9,r30:49.6,gg:15,prev:"≈18 mm il 10 ott",q:610},
-{z:"Castagneto esteso",r14:44.3,r30:51.8,gg:15,prev:"≈18 mm il 10 ott",q:750},
-{z:"Ficuzza",r14:44.1,r30:48.8,gg:15,prev:"≈13 mm il 10 ott",q:1000},
-{z:"Piano Torre / Gratteri",r14:41.1,r30:45.9,gg:14,prev:"≈26 mm il 10 ott",q:870},
-{z:"Carcara",r14:29.7,r30:39.0,gg:13,prev:"≈20 mm il 10 ott",q:767}],
-uscite:[
-["18/09/2026","Castagneto piccolo","legno/altro","7 mm / 14 gg"],
-["30/09/2026","Ficuzza cappella","—","40 mm / 14 gg"],
-["30/09/2026","Ficuzza grotta","Fistulina (legno)","44 mm / 14 gg"],
-["30/09/2026","Cozzo Molle","—","44 mm / 14 gg"],
-["03/10/2026","San Giorgio","—","38 mm / 14 gg"],
-["03/10/2026","Piano Torre","Ganoderma (legno)","41 mm / 14 gg"]],
-find:{lago_piana:["20/10/2025","17/11/2025","14/12/2025","26/12/2025"],castagneto_esteso:["04/11/2025"],poggio_sfrancesco:["09/10/2025"]}
-};
-const $=s=>document.querySelector(s);$("#agg").textContent=DATA.agg;
-const tabs=[["ora","Dove andare ora"],["mappa","Mappa"],["uscite","Uscite"],["zone","Zone"]];
-$("#tabs").innerHTML=tabs.map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
+const $=s=>document.querySelector(s);let D,map,zmap;
+const it=d=>d.split("-").reverse().join("/");
+const FIX={"Fistulina epatica e laetipprus solphurus":"Fistulina epatica e Laetiporus sulphureus"};
+function base(){return{"Escursionistica":L.tileLayer("https://tile.opentopomap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:"© OpenTopoMap, © OpenStreetMap"}),
+"Stradale":L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}),
+"Satellite":L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxZoom:18,attribution:"© Esri"})}}
+function mkmap(id){const b=base();const m=L.map(id,{layers:[b.Escursionistica]});L.control.layers(b).addTo(m);return m}
 function show(k){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id=="s-"+k));
-document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==k));if(k=="mappa")setTimeout(()=>map.invalidateSize(),50)}
+document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==k));
+if(k=="mappa")setTimeout(()=>map.invalidateSize(),50);if(k!="zona")history.replaceState(null,"","#"+k)}
+fetch("data/data.json").then(r=>r.json()).then(d=>{D=d;init()});
+function init(){$("#agg").textContent=it(D.agg);
+$("#tabs").innerHTML=[["mappa","Mappa"],["ora","Dove andare ora"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
 $("#tabs").onclick=e=>{if(e.target.dataset.k)show(e.target.dataset.k)};
-$("#ora").innerHTML=DATA.ora.map(o=>`<div class="card"><h3>${o.z}</h3><div class="meta">${o.q} m</div>
-<p>Pioggia 14 gg: <b>${o.r14} mm</b><br>Pioggia 30 gg: <b>${o.r30} mm</b><br>Giorni dall'ultima pioggia ≥5 mm: <b>${o.gg}</b></p>
-<span class="pill ${o.gg>10?'warn':'ok'}">${o.gg>10?'secco da giorni':'suolo umido'}</span><span class="pill">Previsione: ${o.prev}</span></div>`).join("");
-$("#tu").innerHTML="<tr><th>Data</th><th>Zona</th><th>Trovato</th><th>Pioggia prima</th></tr>"+DATA.uscite.map(r=>"<tr>"+r.map(c=>`<td>${c}</td>`).join("")+"</tr>").join("");
-$("#zone").innerHTML=DATA.zone.map(z=>`<div class="card"><h3>${z.n}</h3><div class="meta">${z.q?z.q+" m":""} ${z.t||""}</div>${(DATA.find[z.id]||[]).length?`<p class="meta">Ritrovamenti: ${DATA.find[z.id].join(", ")}</p>`:""}</div>`).join("");
-const map=L.map("map").setView([38.0,13.7],8);
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© OpenStreetMap"}).addTo(map);
-DATA.zone.forEach(z=>L.marker([z.lat,z.lon]).addTo(map).bindPopup(`<b>${z.n}</b><br>${z.q?z.q+" m":""}`));
-show("ora");
+map=mkmap("map").setView([37.97,13.85],8);
+const cols={"Piana degli Albanesi":"#7a4b1e","Ficuzza":"#2e7d4f","Madonie":"#8a3fa0","Nebrodi":"#c4503b"};
+D.zones.forEach(z=>{const nf=z.foto.length;const m=L.circleMarker([z.lat,z.lon],{radius:9,color:"#fff",weight:2,fillColor:cols[z.area]||"#555",fillOpacity:.95}).addTo(map);
+m.bindTooltip(z.n+(nf?` · ${nf} foto`:""));m.on("click",()=>openZona(z.id));
+if(z.track)L.polyline(z.track.pts.map(p=>[p[1],p[0]]),{color:cols[z.area]||"#555",weight:3,opacity:.8}).addTo(map).on("click",()=>openZona(z.id))});
+const lg=L.control({position:"bottomleft"});lg.onAdd=()=>{const e=L.DomUtil.create("div");e.style.cssText="background:var(--card);color:var(--ink);padding:6px 8px;border-radius:8px;font-size:12px;line-height:1.5";e.innerHTML=Object.entries(cols).map(([a,c])=>`<span style="color:${c}">●</span> ${a}`).join("<br>");return e};lg.addTo(map);
+$("#ora").innerHTML=D.ora.map(o=>`<div class="card"><h3>${o.z}</h3><div class="meta">${o.q} m</div>
+<p>Pioggia 7 gg: <b>${o.r7} mm</b><br>14 gg: <b>${o.r14} mm</b><br>30 gg: <b>${o.r30} mm</b><br>Giorni dall'ultima pioggia ≥5 mm: <b>${o.gg}</b></p>
+<span class="pill ${o.gg>10?'warn':'ok'}">${o.gg>10?'secco da giorni':'suolo umido'}</span><span class="pill">Previsione: ${o.prev}</span><br><button class="btn" style="margin-top:6px" onclick="openZona('${o.id}')">Scheda zona</button></div>`).join("");
+const rows=[];D.zones.forEach(z=>z.uscite.forEach(u=>rows.push([u.d,z,u])));rows.sort((a,b)=>b[0].localeCompare(a[0]));
+$("#tu").innerHTML="<tr><th>Data</th><th>Zona</th><th>Note</th><th>Pioggia 14 gg</th><th>Giorni da pioggia</th></tr>"+rows.map(([d,z,u])=>`<tr><td>${it(d)}</td><td><a href="#" onclick="openZona('${z.id}');return false">${z.n}</a></td><td>${u.note||""}</td><td>${u.c?u.c.pioggia_14+" mm":"—"}</td><td>${u.c?u.c.gg_da_pioggia5:"—"}</td></tr>`).join("");
+const h=location.hash.slice(1);if(h.startsWith("z-"))openZona(h.slice(2));else show(["ora","uscite"].includes(h)?h:"mappa")}
+function rainSVG(z){const ser=D.rain[z.cp];if(!ser)return'<p class="meta">Serie pioggia non disponibile per questo punto.</p>';
+const W=900,H=190,P={l:34,r:8,t:10,b:26},n=ser.length,mx=Math.max(30,...ser.map(v=>v||0));const x=i=>P.l+i*(W-P.l-P.r)/n,y=v=>H-P.b-v*(H-P.t-P.b)/mx;
+const i0=D.start;const idx=d=>Math.round((new Date(d)-new Date(i0))/864e5);let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Pioggia giornaliera">`;
+for(let g=0;g<=mx;g+=Math.ceil(mx/4/10)*10)s+=`<line x1="${P.l}" x2="${W-P.r}" y1="${y(g)}" y2="${y(g)}" stroke="var(--line)"/><text x="${P.l-4}" y="${y(g)+4}" text-anchor="end">${g}</text>`;
+ser.forEach((v,i)=>{if(v)s+=`<rect x="${x(i)}" y="${y(v)}" width="${Math.max(1,(W-P.l-P.r)/n-.5)}" height="${H-P.b-y(v)}" fill="var(--rain)"><title>${it(new Date(new Date(i0).getTime()+i*864e5).toISOString().slice(0,10))}: ${v} mm</title></rect>`});
+const ev={};z.uscite.forEach(u=>ev[u.d]=(ev[u.d]||"Uscita"));z.foto.forEach(f=>ev[f.d]="Ritrovamento");
+Object.entries(ev).forEach(([d,t])=>{const i=idx(d);if(i<0||i>=n)return;const c=t=="Ritrovamento"?"#2e7d4f":"#b7791f";s+=`<line x1="${x(i)}" x2="${x(i)}" y1="${P.t}" y2="${H-P.b}" stroke="${c}" stroke-width="2" stroke-dasharray="4 2"/><circle cx="${x(i)}" cy="${P.t+4}" r="4" fill="${c}"><title>${t} ${it(d)}</title></circle>`});
+for(let m=0;m<n;m+=30){const dd=new Date(new Date(i0).getTime()+m*864e5);s+=`<text x="${x(m)}" y="${H-8}">${dd.toLocaleDateString("it",{month:"short",year:"2-digit"})}</text>`}
+return s+"</svg>"}
+function profSVG(t){const p=t.pts,W=900,H=130,P={l:36,r:8,t:8,b:20},L0=p[p.length-1][3]||1,lo=t.min-5,hi=t.max+5;const x=d=>P.l+d*(W-P.l-P.r)/L0,y=e=>H-P.b-(e-lo)*(H-P.t-P.b)/(hi-lo);
+const pts=p.map(q=>x(q[3])+","+y(q[2])).join(" ");return`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Profilo di quota"><polyline points="${P.l},${H-P.b} ${pts} ${W-P.r},${H-P.b}" fill="var(--line)" stroke="var(--acc)" stroke-width="2"/><text x="2" y="${y(t.max)+4}">${t.max} m</text><text x="2" y="${y(t.min)+4}">${t.min} m</text><text x="${W-P.r}" y="${H-4}" text-anchor="end">${(L0/1000).toFixed(2)} km</text></svg>`}
+function openZona(id){const z=D.zones.find(q=>q.id==id);if(!z)return;history.replaceState(null,"","#z-"+id);
+let h=`<div class="card"><h3>${z.n}</h3><div class="meta">${z.area}${z.tipo?" · "+z.tipo:""} · ${z.lat.toFixed(5)}, ${z.lon.toFixed(5)}</div></div><div id="zmap" class="map sm"></div>`;
+if(z.track){const t=z.track;h+=`<div class="card"><h3>Percorso del ${it(t.data)}</h3><div class="meta">${t.km} km · quota ${t.min}–${t.max} m · salita ≈ ${t.dislivello_salita} m</div>${profSVG(t)}</div>`}
+else h+=`<p class="note">Traccia GPS non ancora disponibile per questa zona.</p>`;
+h+=`<div class="card"><h3>Pioggia giornaliera (mm)</h3>${rainSVG(z)}<div class="meta"><span style="color:var(--warn)">┆</span> uscita &nbsp; <span style="color:var(--ok)">┆</span> ritrovamento fotografato</div></div>`;
+if(z.uscite.length)h+=`<div class="card scroll"><h3>Uscite e condizioni precedenti</h3><table><tr><th>Data</th><th>Note</th><th>7 gg</th><th>14 gg</th><th>30 gg</th><th>Giorni da pioggia ≥5 mm</th></tr>${z.uscite.map(u=>`<tr><td>${it(u.d)}</td><td>${u.note||""}</td>${u.c?`<td>${u.c.pioggia_7}</td><td>${u.c.pioggia_14}</td><td>${u.c.pioggia_30}</td><td>${u.c.gg_da_pioggia5}</td>`:"<td colspan=4>—</td>"}</tr>`).join("")}</table><div class="meta">Pioggia in mm (CHIRPS) prima della data. Il giorno stesso escluso.</div></div>`;
+if(z.foto.length)h+=`<div class="card"><h3>Ritrovamenti fotografati (${z.foto.length})</h3><div class="photos">${z.foto.map((f,i)=>`<figure><img loading="lazy" src="${f.f}" alt="${f.s}" onclick="lb(${JSON.stringify(f).replace(/"/g,"&quot;")})"><figcaption>${it(f.d)} · ${f.q} m<br>${f.s}</figcaption></figure>`).join("")}</div></div>`;
+$("#zona").innerHTML=h;show("zona");
+if(zmap){zmap.remove()}zmap=mkmap("zmap");const bb=[[z.lat,z.lon]];
+if(z.track){const ll=z.track.pts.map(p=>[p[1],p[0]]);L.polyline(ll,{color:"#c4503b",weight:4}).addTo(zmap);bb.push(...ll);L.circleMarker(ll[0],{radius:6,color:"#fff",fillColor:"#2e7d4f",fillOpacity:1}).addTo(zmap).bindTooltip("Partenza")}
+z.wpt.forEach(w=>{L.marker([w.lat,w.lon]).addTo(zmap).bindPopup(`<b>${FIX[w.n]||w.n}</b><br>${w.ele} m`);bb.push([w.lat,w.lon])});
+z.foto.forEach(f=>{L.circleMarker([f.lat,f.lon],{radius:7,color:"#fff",weight:2,fillColor:"#2e7d4f",fillOpacity:1}).addTo(zmap).bindPopup(`<img src="${f.f}" width="160"><br>${it(f.d)} · ${f.s}`);bb.push([f.lat,f.lon])});
+if(!z.track&&!z.wpt.length&&!z.foto.length)L.marker([z.lat,z.lon]).addTo(zmap).bindPopup(z.n);
+zmap.fitBounds(bb.length>1?bb:[[z.lat-.004,z.lon-.004],[z.lat+.004,z.lon+.004]],{padding:[30,30],maxZoom:16});setTimeout(()=>zmap.invalidateSize(),60);window.scrollTo(0,0)}
+function lb(f){$("#lbi").src=f.f;$("#lbc").textContent=`${it(f.d)} ${f.h} · ${f.q} m · ${f.s}`;$("#lb").style.display="flex"}
 </script></body></html>
