@@ -7908,6 +7908,94 @@
     "fino": "2025-10-17"
    },
    "note": "Sotto conifere, su lettiera di aghi e muschio"
+  },
+  {
+   "id": "R037",
+   "d": "2025-10-18",
+   "h": "15:45",
+   "z": "poggio_sfrancesco",
+   "lat": 38.014161,
+   "lon": 13.265572,
+   "q": 813,
+   "sp": "Clitocybe odora",
+   "cert": "probabile",
+   "fonte": "foto (GPS della foto)",
+   "foto": "foto/clitocybe_odora_1.jpg",
+   "c": {
+    "r7": 57.5,
+    "r14": 60.1,
+    "r21": 116.4,
+    "r30": 162.1,
+    "gg": 2,
+    "fino": "2025-10-17"
+   },
+   "note": "Odore di anice (riferito)"
+  },
+  {
+   "id": "R038",
+   "d": "2025-10-18",
+   "h": "",
+   "z": "poggio_sfrancesco",
+   "lat": 38.014161,
+   "lon": 13.265572,
+   "q": 813,
+   "sp": "Clitocybe odora",
+   "cert": "probabile",
+   "fonte": "foto (GPS della foto)",
+   "foto": "foto/clitocybe_odora_2.jpg",
+   "c": {
+    "r7": 57.5,
+    "r14": 60.1,
+    "r21": 116.4,
+    "r30": 162.1,
+    "gg": 2,
+    "fino": "2025-10-17"
+   },
+   "note": "Odore di anice (riferito)"
+  },
+  {
+   "id": "R039",
+   "d": "2025-10-18",
+   "h": "",
+   "z": "poggio_sfrancesco",
+   "lat": 38.014161,
+   "lon": 13.265572,
+   "q": 813,
+   "sp": "Clitocybe odora",
+   "cert": "probabile",
+   "fonte": "foto (GPS della foto)",
+   "foto": "foto/clitocybe_odora_3.jpg",
+   "c": {
+    "r7": 57.5,
+    "r14": 60.1,
+    "r21": 116.4,
+    "r30": 162.1,
+    "gg": 2,
+    "fino": "2025-10-17"
+   },
+   "note": "Odore di anice (riferito)"
+  },
+  {
+   "id": "R040",
+   "d": "2025-10-18",
+   "h": "",
+   "z": "poggio_sfrancesco",
+   "lat": 38.01498,
+   "lon": 13.26426,
+   "q": null,
+   "sp": "Tricholoma sp.",
+   "cert": "probabile",
+   "fonte": "foto (posizione della zona)",
+   "foto": "foto/tricholoma_sp_1.jpg",
+   "c": {
+    "r7": 57.5,
+    "r14": 60.1,
+    "r21": 116.4,
+    "r30": 162.1,
+    "gg": 2,
+    "fino": "2025-10-17"
+   },
+   "note": "Gruppo di T. terreum (ipotesi); data assunta uguale alle altre foto del luogo"
   }
  ],
  "forecast": {
