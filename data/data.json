@@ -5081,6 +5081,17 @@
       "tmax_7gg_stimata": "18.6",
       "tmin_7gg_stimata": "12.6"
      }
+    },
+    {
+     "d": "2025-10-18",
+     "note": "Ritrovamenti fotografati",
+     "c": {
+      "pioggia_7": "57.5",
+      "pioggia_14": "60.1",
+      "pioggia_21": "116.4",
+      "pioggia_30": "162.1",
+      "gg_da_pioggia5": "2"
+     }
     }
    ],
    "bosco": {
@@ -7853,6 +7864,28 @@
     "fino": "2025-12-13"
    },
    "note": "Fotogramma da video iPhone; sotto pini"
+  },
+  {
+   "id": "R035",
+   "d": "2025-10-18",
+   "h": "",
+   "z": "poggio_sfrancesco",
+   "lat": 38.01498,
+   "lon": 13.26426,
+   "q": null,
+   "sp": "Infundibulicybe geotropa",
+   "cert": "certo",
+   "fonte": "foto (posizione della zona)",
+   "foto": "foto/infundibulicybe_geotropa_1.jpg",
+   "c": {
+    "r7": 57.5,
+    "r14": 60.1,
+    "r21": 116.4,
+    "r30": 162.1,
+    "gg": 2,
+    "fino": "2025-10-17"
+   },
+   "note": "Primordio (esemplare giovane)"
   }
  ],
  "forecast": {
