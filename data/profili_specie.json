@@ -1,0 +1,3695 @@
+{
+ "aggiornato": "2026-10-04",
+ "nota": "Profili da letteratura compilati con ricerca web; dati quantitativi (temperature, soglie di pioggia) per lo più assenti. Non sostituiscono la verifica sul campo. Nessuna indicazione di commestibilità.",
+ "profili": [
+  {
+   "sp": "Leccinellum corsicum",
+   "nome_it": null,
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Cistus spp.",
+     "forza": "obbligato",
+     "fonte": "As9"
+    },
+    {
+     "taxon": "Cistus salviifolius",
+     "forza": "obbligato",
+     "fonte": "As30"
+    },
+    {
+     "taxon": "Cistus (arbusti di macchia/garriga siciliana, es. C. creticus, C. salviifolius, C. monspeliensis)",
+     "forza": "obbligato",
+     "fonte": "As1"
+    }
+   ],
+   "habitat_note": "Documentato in fonte: simbionte micorrizico esclusivo di Cisti (Cistus) [s15, s9 'Cistus-specific', s30 'cresce esclusivamente presso Cistus']. In Sicilia la checklist indica che in pascoli, praterie e garighe i micorrizici si riducono a quelli degli arbusti di Cistus (Lactarius cistophilus e Leccinellum corsicum) [s1]. In Sardegna e' tra i funghi micorrizici piu' comuni dell'isola [s9]. Inferenza (non da fonte): la distribuzione locale segue quella dei Cisti, quindi macchia/garriga aperta e aree degradate o percorse da incendio; non verificato.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di quota trovato nelle fonti lette."
+   },
+   "mesi_fruttificazione": {
+    "area": null,
+    "mesi": null,
+    "picco": null,
+    "fonte": null,
+    "nota": "Nessuna fonte letta indica i mesi di fruttificazione di questa specie."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di temperatura di fruttificazione trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "CL",
+     "CT",
+     "EN",
+     "ME",
+     "PA",
+     "RG",
+     "SR",
+     "TP"
+    ],
+    "nota": "Checklist 2022: presente in tutte e 9 le province siciliane (categoria ecologica Em). Le aree Madonie/Nebrodi, Monti di Palermo, Ficuzza e Piana degli Albanesi ricadono nelle province PA e ME; la checklist non da' dettaglio per singola localita'. Aspromonte e' in Calabria, fuori dalla checklist siciliana."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. Nella casistica di avvelenamenti della Sardegna meridionale 2011-2021 sono registrati casi con nausea, vomito, diarrea e crampi associati a L. corsicum [s12]. Nella stessa casistica compaiono altri Boletaceae classificati come tossici o non commestibili (es. Rubroboletus lupinus) [s12]: l'identificazione dei boleti richiede competenza.",
+   "affidabilita": "media",
+   "lacune": [
+    "Quota, mesi di fruttificazione e picco: nessun dato nelle fonti lette",
+    "Temperatura e soglie di pioggia specifiche: non trovate",
+    "Tipo di suolo e pH: non trovati",
+    "Esposizione: non trovata",
+    "Distribuzione per singola localita' siciliana (Madonie, Nebrodi, Ficuzza, Piana degli Albanesi): la checklist da' solo le province",
+    "Fonte 'altro' (sito micologico locale) per l'ospite C. salviifolius; altre specie di Cistus come ospiti non verificate singolarmente"
+   ]
+  },
+  {
+   "sp": "Lactarius sanguifluus",
+   "nome_it": "Sanguinello (nome regionale, Romagna)",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Pinus spp.",
+     "forza": "forte",
+     "fonte": "As16"
+    },
+    {
+     "taxon": "Pinus spp. (pinete)",
+     "forza": "forte",
+     "fonte": "As38"
+    },
+    {
+     "taxon": "Pinus spp. (su suolo calcareo)",
+     "forza": "forte",
+     "fonte": "As29"
+    },
+    {
+     "taxon": "Cupressus spp.",
+     "forza": "possibile",
+     "fonte": "As31"
+    },
+    {
+     "taxon": "Juniperus spp.",
+     "forza": "possibile",
+     "fonte": "As31"
+    }
+   ],
+   "habitat_note": "Documentato in fonte: ectomicorrizico con conifere, in particolare pini, in clima mediterraneo [s16, s17, s29, s31]; la fonte locale siciliana cita anche cipressi e ginepri [s31] (affermazione di una sola fonte non peer-reviewed). Nota: la pagina Wikipedia cita anche Pseudotsuga (non rilevante per la Sicilia) [s16]. Distribuzione siciliana nella checklist piu' ristretta rispetto ad altri Lactarius: solo province AG, PA, TP [s1]. Congenerico simile L. semisanguifluus, presente in AG, CT, ME, PA, TP [s1].",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di quota trovato nelle fonti lette."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa meridionale: settembre-novembre, a volte fino a dicembre nelle zone piu' meridionali [s16, s17]. Fonti italiane regionali (non siciliane): 'estate-tardo autunno' [s38], 'dall'estate all'autunno' [s31]. Mesi 9-12 = dato di s16/s17; picco non documentato.",
+    "mesi": [
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": null,
+    "fonte": "As16",
+    "nota": "Non e' un dato rilevato in Sicilia; la fonte parla di Europa meridionale in generale."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di temperatura specifico trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "calcareo (preferenza documentata: 'terreni preferibilmente calcarei', pinete su suoli calcarei, incl. dune calcaree)",
+    "fonte": "As17"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "PA",
+     "TP"
+    ],
+    "nota": "Checklist 2022: presente solo in AG, PA, TP (non in ME, CT, EN, CL, RG, SR). PA copre Madonie occidentali, Monti di Palermo, Ficuzza, Piana degli Albanesi; i Nebrodi (ME) non risultano. Possibile sotto-segnalazione: non e' un dato di assenza."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. Rischio di confusione con congenerici simili (L. semisanguifluus, L. vinosus) distinguibili per colore/tempi di viraggio del latice [s16]. I corpi fruttiferi possono bioaccumulare metalli pesanti (zinco, manganese, nichel, cobalto, cadmio, piombo) se raccolti su suoli inquinati o lungo strade trafficate [s16].",
+   "affidabilita": "media",
+   "lacune": [
+    "Quota: non trovata",
+    "Picco di fruttificazione: non trovato; mesi 9-12 da fonte generale (Europa meridionale), non siciliana",
+    "Temperatura/soglie di pioggia specifiche: non trovate",
+    "pH del suolo: non trovato (solo 'calcareo')",
+    "Esposizione: non trovata",
+    "Specie di Pinus presenti in Sicilia come ospiti confermati (P. halepensis, P. pinea, P. nigra subsp. laricio): non verificate singolarmente",
+    "Aree Nebrodi/Monti di Palermo/Ficuzza/Piana: nessun dato per singola localita'"
+   ]
+  },
+  {
+   "sp": "Amanita caesarea",
+   "nome_it": "Ovolo buono",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus spp.",
+     "forza": "forte",
+     "fonte": "As11"
+    },
+    {
+     "taxon": "Quercus suber",
+     "forza": "forte",
+     "fonte": "As10"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "As10"
+    },
+    {
+     "taxon": "Quercus spp. e Castanea sativa (boschi termofili soleggiati)",
+     "forza": "forte",
+     "fonte": "As37"
+    },
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "possibile",
+     "fonte": "As11"
+    },
+    {
+     "taxon": "Pinus spp.",
+     "forza": "possibile",
+     "fonte": "As18"
+    },
+    {
+     "taxon": "altre latifoglie (Betula, Corylus, Tilia)",
+     "forza": "possibile",
+     "fonte": "As11"
+    }
+   ],
+   "habitat_note": "Documentato in fonte: ectomicorrizico con Fagaceae, tipicamente Quercus [s11]; boschi da decidui a sclerofillici dominati da Quercus, incl. dehesa/montado/macchia [s11]; in Europa soprattutto querceti e pinete [s18]; 'boschi termofili' di castagno e quercia ben soleggiati e radure [s37]. Specie termofila (inferenza coerente con s18, s37).",
+   "quota_m": {
+    "min": null,
+    "max": 1200,
+    "fonte": "As11",
+    "nota": "Fonte: 'dalla pianura alle basse montagne, solo raramente oltre 1200 m'. Il valore max e' un limite 'raro', non assoluto; minimo non specificato (pianura)."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa meridionale. Fonti discordanti: agosto-dicembre [s26]; da inizio estate a meta' autunno [s18]; 'estivo-autunnale' [s37]. Qui usato s26 (mesi espliciti). Picco non documentato.",
+    "mesi": [
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": null,
+    "fonte": "As26",
+    "nota": "Non e' un dato rilevato in Sicilia."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "As10",
+    "nota": "Nessun dato di temperatura di FRUTTIFICAZIONE trovato. Solo dato in vitro (crescita del micelio in coltura, isolati di Quercus suber/Castanea sativa del SO Spagna): ottimo 24-28 gradi C e pH 6-7 [s10], ripreso da Wikipedia [s18]. NON e' una soglia di fruttificazione ne' un pH del suolo. Descrizione qualitativa: specie termofila [s37, s18]."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": "Solo qualitativo: boschi ben soleggiati e radure (Alta Valle del Vara, Liguria) [s37]; non e' un'esposizione cardinale.",
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "CL",
+     "CT",
+     "EN",
+     "ME",
+     "PA",
+     "RG",
+     "SR",
+     "TP"
+    ],
+    "nota": "Checklist 2022: presente in tutte e 9 le province (Em). La fonte locale cita nomi dialettali siciliani (Ovulu, Funci d'ovu) [s32]."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. AVVERTENZA: lo stadio di 'ovolo' chiuso e' confondibile con uova di Amanita mortali; sosia pericolosi: Amanita phalloides (mortale), A. pantherina, A. muscaria, tutte documentate in Sicilia in tutte le province [s1, s18, s26]. Una fonte locale segnala che la raccolta allo stadio di ovolo chiuso e' vietata (normativa da verificare) [s32]. Nella casistica di avvelenamenti della Sardegna meridionale 2011-2021 compare 1 caso associato ad A. caesarea (febbre, crampi, sudorazione, tremori) [s12]; potrebbe riflettere errori di identificazione. Minacce di conservazione: deposizione di azoto e pratiche forestali [s11].",
+   "affidabilita": "media",
+   "lacune": [
+    "Temperatura/umidita' di fruttificazione: nessun dato quantitativo (solo ottimo in vitro 24-28 C)",
+    "Mesi: fonti discordanti e non siciliane; picco non trovato",
+    "Quota minima non specificata",
+    "pH e tipo di suolo: non trovati in fonte",
+    "Esposizione: solo qualitativa, da fonte ligure",
+    "Ruolo di Quercus ilex/pubescens/cerris (querce siciliane) non verificato singolarmente (solo 'Quercus spp.')",
+    "Dettaglio per singola localita' siciliana non disponibile"
+   ]
+  },
+  {
+   "sp": "Suillus bellinii",
+   "nome_it": null,
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Pinus halepensis",
+     "forza": "forte",
+     "fonte": "As19"
+    },
+    {
+     "taxon": "Pinus pinea",
+     "forza": "forte",
+     "fonte": "As19"
+    },
+    {
+     "taxon": "Pinus pinaster",
+     "forza": "forte",
+     "fonte": "As19"
+    },
+    {
+     "taxon": "Pinus radiata",
+     "forza": "possibile",
+     "fonte": "As25"
+    }
+   ],
+   "habitat_note": "Documentato in fonte: micorrizico con pini a due aghi (P. halepensis, P. pinea, P. pinaster; anche P. radiata) in pinete costiere mediterranee [s19, s25, s2]; tipico di ambienti mediterranei, boschi costieri [s2, s33]. Descritto da Inzenga in 'Funghi Siciliani' [s25] (nome (Inzenga) Kuntze nella checklist [s1]). Molto affine a S. mediterraneensis (carne gialla a maturita', piu' legato a terreni calcarei) [s2].",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "As2",
+    "nota": "Nessun valore numerico. Fonti: 'boschi costieri' [s2], 'in prossimita' delle coste' [s33]: quote basse (documentato qualitativamente)."
+   },
+   "mesi_fruttificazione": {
+    "area": "Boschi costieri a pini (Lazio, fonte AMER; Sicilia, fonte locale). 'Meta' autunno-inizio inverno' [s2]; 'tardo autunno o inverno' [s33]. Conversione in mesi 10-1 = mia interpretazione dei termini stagionali.",
+    "mesi": [
+     10,
+     11,
+     12,
+     1
+    ],
+    "picco": null,
+    "fonte": "As2",
+    "nota": "Interpretazione: 'meta' autunno' = ott-nov, 'inizio inverno' = dic-gen. Picco non documentato."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di temperatura trovato. Qualitativo: fruttificazione tardo-autunnale/invernale (ambiente costiero), quindi dopo il calo termico autunnale (inferenza)."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "sabbioso o siliceo, in prossimita' delle coste (fonte locale siciliana)",
+    "fonte": "As33"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "CL",
+     "CT",
+     "EN",
+     "ME",
+     "PA",
+     "RG",
+     "SR",
+     "TP"
+    ],
+    "nota": "Checklist 2022: presente in tutte e 9 le province (Em). Specie descritta da Inzenga sulla base di raccolte siciliane (Funghi Siciliani) [s25] (la fonte non precisa la localita' tipo)."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. Nessuna avvertenza di tossicita' specifica trovata nelle fonti lette. Precauzione: determinazione difficile tra S. bellinii, S. mediterraneensis e S. alkaliaurantians [s2]; per il genere Suillus (S. granulatus) sono riportati dermatite da contatto e disturbi gastrici in alcune persone [s21].",
+   "affidabilita": "media",
+   "lacune": [
+    "Quota numerica: assente",
+    "Picco, temperatura e soglie di pioggia: non trovati",
+    "pH del suolo: non trovato (solo 'sabbioso/siliceo' da fonte locale)",
+    "Esposizione: non trovata",
+    "Mesi da fonte del Lazio e fonte locale generica; nessun dato fenologico siciliano quantitativo",
+    "Presenza nelle singole aree di monitoraggio non verificabile (checklist provinciale)"
+   ]
+  },
+  {
+   "sp": "Suillus collinitus",
+   "nome_it": null,
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Pinus halepensis",
+     "forza": "forte",
+     "fonte": "As20"
+    },
+    {
+     "taxon": "Pinus pinea",
+     "forza": "forte",
+     "fonte": "As20"
+    },
+    {
+     "taxon": "Pinus nigra",
+     "forza": "forte",
+     "fonte": "As20"
+    },
+    {
+     "taxon": "Pinus sylvestris",
+     "forza": "forte",
+     "fonte": "As20"
+    },
+    {
+     "taxon": "Pinus a due aghi (P. mugo, P. nigra, P. pinea, P. pinaster, P. halepensis, P. sylvestris)",
+     "forza": "forte",
+     "fonte": "As2"
+    }
+   ],
+   "habitat_note": "Documentato in fonte: micorrizico con diverse specie di Pinus, termofilo, frequente in Europa meridionale, raro a nord [s20]; boschi di conifere/impianti artificiali [s39]; 'forse la specie piu' diffusa' nel Lazio in ambienti costieri e montani, anche antropizzati [s2].",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "As2",
+    "nota": "Nessun valore numerico. Fonte (Lazio): presente 'in ambienti silvestri costieri che montani' [s2], cioe' dal piano alla montagna."
+   },
+   "mesi_fruttificazione": {
+    "area": "Lazio (fonte AMER, non Sicilia): 'dall'estate all'autunno inoltrato' [s2]. Mesi 6-11 = mia conversione; in Sicilia (estate siccitosa) verosimilmente ristretti all'autunno (inferenza non documentata).",
+    "mesi": [
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "As2",
+    "nota": "Conversione dei termini stagionali in mesi = interpretazione."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "As20",
+    "nota": "Nessun dato numerico. Qualitativo: 'termofilo', frequente nell'Europa meridionale [s20]."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "calcareo (preferenza: 'favours limestone soils')",
+    "fonte": "As20"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "CL",
+     "CT",
+     "EN",
+     "ME",
+     "PA",
+     "RG",
+     "SR",
+     "TP"
+    ],
+    "nota": "Checklist 2022: presente in tutte e 9 le province (Em)."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. Nessuna avvertenza di tossicita' specifica trovata. Confondibile con S. granulatus (distinguibile per micelio/base del gambo rosati in S. collinitus) [s39, s2]. Per il genere sono riportati dermatite da contatto e disturbi gastrici in alcune persone (S. granulatus) [s21].",
+   "affidabilita": "media",
+   "lacune": [
+    "Quota numerica, picco, temperatura e soglie di pioggia: non trovati",
+    "pH numerico: non trovato",
+    "Esposizione: non trovata",
+    "Mesi da fonte del Lazio, non siciliana",
+    "Fonte sul suolo e sugli ospiti e' un aggregatore (Wikipedia/HandWiki), non peer-reviewed"
+   ]
+  },
+  {
+   "sp": "Suillus granulatus",
+   "nome_it": null,
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Pinus spp.",
+     "forza": "forte",
+     "fonte": "As21"
+    },
+    {
+     "taxon": "Pinus nigra (giovani impianti)",
+     "forza": "forte",
+     "fonte": "As2"
+    },
+    {
+     "taxon": "Pinus a due aghi",
+     "forza": "forte",
+     "fonte": "As2"
+    }
+   ],
+   "habitat_note": "Documentato in fonte: la specie di Suillus associata ai pini piu' diffusa nei climi caldi [s21]; molto comune 'dal piano alla montagna', soprattutto in giovani impianti di pino nero [s2]. Cresce su suoli sia calcarei sia acidi, a volte in gran numero [s21].",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "As2",
+    "nota": "Nessun limite numerico. Fonte AMER (Lazio): 'dal piano alla montagna'; si trova gia' dai primi di giugno 'intorno ai 1000 m di altezza' fino a meta' autunno, a seconda dell'altitudine [s2]: il valore ~1000 m indica dove appare in giugno, non un limite altitudinale."
+   },
+   "mesi_fruttificazione": {
+    "area": "Lazio (fonte AMER, non Sicilia): da inizio giugno (a ~1000 m) a meta' autunno a seconda della quota [s2]. Mesi 6-10 = mia conversione.",
+    "mesi": [
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "picco": null,
+    "fonte": "As2",
+    "nota": "Conversione in mesi = interpretazione; in Sicilia stagione verosimilmente piu' breve in pianura (inferenza non documentata)."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "As21",
+    "nota": "Nessun dato numerico. Qualitativo: 'most widespread pine-associating Suillus in warm climates' [s21]."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "sia calcareo sia acido (nessuna preferenza stretta documentata)",
+    "fonte": "As21"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "CL",
+     "CT",
+     "EN",
+     "ME",
+     "PA",
+     "RG",
+     "SR",
+     "TP"
+    ],
+    "nota": "Checklist 2022: presente in tutte e 9 le province (Em)."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. Riportati dermatite da contatto in chi maneggia il fungo e disturbi gastrici in alcuni casi [s21]. Nella casistica di avvelenamenti della Sardegna meridionale 2011-2021 compare 1 caso associato a S. granulatus (diarrea, nausea, vomito, coliche) [s12].",
+   "affidabilita": "media",
+   "lacune": [
+    "Quota: solo qualitativa, fonte laziale",
+    "Picco, temperatura, soglie di pioggia: non trovati",
+    "pH numerico: non trovato",
+    "Esposizione: non trovata",
+    "Mesi da fonte del Lazio, non siciliana"
+   ]
+  },
+  {
+   "sp": "Suillus spp. dei pini mediterranei (S. mediterraneensis, S. alkaliaurantians, S. luteus, S. bovinus)",
+   "nome_it": "Pinaroli (gruppo)",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Pinus halepensis",
+     "forza": "forte",
+     "fonte": "As2"
+    },
+    {
+     "taxon": "Pinus pinea",
+     "forza": "forte",
+     "fonte": "As2"
+    },
+    {
+     "taxon": "Pinus pinaster",
+     "forza": "forte",
+     "fonte": "As2"
+    },
+    {
+     "taxon": "Pinus nigra",
+     "forza": "forte",
+     "fonte": "As2"
+    },
+    {
+     "taxon": "Pinus a due aghi in generale (genere Suillus)",
+     "forza": "forte",
+     "fonte": "As2"
+    }
+   ],
+   "habitat_note": "Documentato in fonte (Lazio, AMER): S. bellinii, S. collinitus, S. granulatus e S. luteus si legano ai pini a due aghi [s2]. S. mediterraneensis: abbastanza comune nei boschi costieri a pini bifogli, soprattutto con P. halepensis, con maggiore selettivita' per terreno calcareo; molto affine a S. bellinii [s2]. S. alkaliaurantians: originario di boschi costieri greci, a lungo sinonimo di S. bellinii, elevato a specie intorno al 2000 [s2]. S. luteus: pinete collinari e di montagna, fine estate-meta' autunno, non ovunque presente; unico con anello [s2]. In pinete di P. sylvestris (Catalogna) S. variegatus e S. luteus risultano tra i micorrizici piu' produttivi (>2 kg/ha/anno) [s6].",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "As2",
+    "nota": "Nessun valore numerico. S. luteus: pinete collinari e montane; S. mediterraneensis/S. bellinii: boschi costieri [s2]."
+   },
+   "mesi_fruttificazione": {
+    "area": "Lazio (fonte AMER): S. luteus fine estate-meta' autunno; S. bellinii meta' autunno-inizio inverno; S. collinitus estate-autunno inoltrato; S. granulatus giugno-meta' autunno. Per S. mediterraneensis/alkaliaurantians/bovinus: nessun dato mesi. Mesi indicati = S. luteus (8-10), interpretazione.",
+    "mesi": [
+     8,
+     9,
+     10
+    ],
+    "picco": null,
+    "fonte": "As2",
+    "nota": "Rappresenta solo S. luteus; vedere profili separati per S. bellinii, S. collinitus, S. granulatus."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di temperatura trovato per il gruppo."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "S. mediterraneensis: piu' selettivo per terreno calcareo [s2]; altre specie: nessun dato di suolo in fonti lette",
+    "fonte": "As2"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "CL",
+     "CT",
+     "EN",
+     "ME",
+     "PA",
+     "RG",
+     "SR",
+     "TP"
+    ],
+    "nota": "Checklist 2022: S. alkaliaurantians, S. bovinus, S. luteus, S. mediterraneensis presenti in tutte e 9 le province; S. lakei solo in CT, ME, PA."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. Specie critiche o difficili da separare (S. bellinii / S. mediterraneensis / S. alkaliaurantians): la determinazione richiede esame accurato [s2]. Nessuna avvertenza di tossicita' specifica per queste specie nelle fonti lette; per S. granulatus riportati dermatite da contatto e disturbi gastrici [s21].",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Dati ecologici per S. mediterraneensis, S. alkaliaurantians e S. bovinus: quasi assenti (solo ospite/habitat qualitativo)",
+    "Mesi/quota/temperatura/pH: non trovati per il gruppo",
+    "Dati stagionali solo dal Lazio, non dalla Sicilia",
+    "Tassonomia del gruppo Granulati ancora instabile: S. bovinoides, S. obscurus e altre entita' necessitano conferme molecolari [s2]"
+   ]
+  },
+  {
+   "sp": "Tricholoma terreum",
+   "nome_it": "Moretta",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Pinus spp.",
+     "forza": "forte",
+     "fonte": "As27"
+    },
+    {
+     "taxon": "Pinus e Picea (conifere)",
+     "forza": "forte",
+     "fonte": "As22"
+    },
+    {
+     "taxon": "Pinus radiata (introdotto, Australia)",
+     "forza": "possibile",
+     "fonte": "As22"
+    },
+    {
+     "taxon": "Pino o abete (conifere)",
+     "forza": "forte",
+     "fonte": "As34"
+    }
+   ],
+   "habitat_note": "Documentato in fonte: micorrizico con conifere, in particolare pini, su suoli ricchi e spesso calcarei, spesso ai margini di sentieri in piantagioni [s27, s22, s34]; cresce in gruppi, a volte in cerchi [s22]. Checklist siciliana: ectomicorrizico, presente in tutte le province [s1]; gli ospiti conifere siciliani specifici non sono indicati.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di quota trovato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa: settembre-dicembre [s22]; Regno Unito: agosto-ottobre [s27]; 'fino alle prime gelate' [s34]. Dato non specifico per la Sicilia.",
+    "mesi": [
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": null,
+    "fonte": "As22",
+    "nota": "Picco non documentato."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "As34",
+    "nota": "Nessun dato numerico. Qualitativo: la crescita prosegue fino alle prime gelate [s34]."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "ricchi e spesso calcarei (neutro-calcarei)",
+    "fonte": "As27"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "CL",
+     "CT",
+     "EN",
+     "ME",
+     "PA",
+     "RG",
+     "SR",
+     "TP"
+    ],
+    "nota": "Checklist 2022: T. terreum e var. album presenti in tutte e 9 le province (Em)."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. AVVERTENZA: letteratura in conflitto sulla sicurezza. Una fonte riporta che ricercatori cinesi hanno identificato tossine capaci di causare rabdomiolisi (come T. equestre) e consiglia di non raccoglierlo [s27, s34]; uno studio del 2024 su due raccolte italiane non ha trovato terreolidi, terreumoli o saponaceolidi H-S, rilevando saponaceolide B come principale terpenoide citotossico [s13]; Wikipedia riferisce che la ricerca 2024 considera trascurabili i livelli di tossina [s22]. Sosia: Tricholoma pardinum (tossico, presente in Sicilia in CT, ME, PA [s1]), T. orirubens [s22]. Tricholoma equestre e' presente in tutte le province siciliane [s1].",
+   "affidabilita": "media",
+   "lacune": [
+    "Quota, picco, temperatura, soglie di pioggia: non trovati",
+    "pH numerico: non trovato",
+    "Ospiti conifere effettivi in Sicilia non documentati",
+    "Mesi: fonti europee/britanniche, non siciliane",
+    "Esposizione: non trovata"
+   ]
+  },
+  {
+   "sp": "Macrolepiota procera",
+   "nome_it": "Mazza di tamburo",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [],
+   "habitat_note": "Documentato in fonte: saprotrofo (categoria 'saprotrofo di lettiera' nella checklist siciliana, presente in tutte le province) [s1]; pascoli e occasionalmente boschi, anche in cerchi [s24]; in Sicilia 'ubiquitaria presso latifoglie e conifere ma anche in campi incolti' [s35]. Non e' micorrizico: nessun ospite obbligato (campo ospiti vuoto = non applicabile). Nelle pinete costiere di P. pinaster in Catalogna e' il secondo contributo per massa ai funghi commercializzati (13%) [s3].",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di quota trovato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Sicilia (fonte locale generica): dalla primavera all'autunno [s35]. Pinete di Pinus pinaster, Catalogna: fruttifica presto nella stagione ed e' l'unica responsabile della resa di settembre nell'area di studio (stagione set-dic) [s3]. Regno Unito: luglio-novembre [s24].",
+    "mesi": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "As35",
+    "nota": "Mesi 3-11 = conversione di 'primavera-autunno' (fonte locale generica, interpretazione). Picco non documentato per la Sicilia; in Catalogna autunno precoce (settembre) [s3]."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "As3",
+    "nota": "Nessuna soglia specifica per la specie. Contesto (non soglia): nell'area di studio catalana la resa di settembre dipende positivamente dalle piogge di agosto, mentre la produzione di inizio stagione e' limitata da alte temperature e pochissima pioggia [s3]; valori medi osservati nello studio: T max media di settembre 22.3 C (15.4-27.7), T max media di ottobre 17.8 C (12.2-21.8) [s3]."
+   },
+   "umidita_pioggia": {
+    "nota": "Documentato (Karavani 2016, pinete di P. pinaster, Catalogna): la pioggia di agosto influisce positivamente sulla resa precoce di M. procera a settembre [s3]. In generale, effetto ritardato della pioggia di circa un mese [s3]. Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As3"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "suoli ben drenati",
+    "fonte": "As24"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "CL",
+     "CT",
+     "EN",
+     "ME",
+     "PA",
+     "RG",
+     "SR",
+     "TP"
+    ],
+    "nota": "Checklist 2022: presente in tutte e 9 le province (categoria Sl, saprotrofo di lettiera)."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. AVVERTENZA: sosia pericolosi. Lepiota brunneoincarnata (tossica, ha causato avvelenamenti mortali in Spagna [s24]; classificata tossica e con casi in Sardegna [s12]; presente in Sicilia in tutte le province [s1]); Chlorophyllum molybdites (causa di molte intossicazioni, lamelle e sporata verdastre [s24]; in Sicilia: CT, ME, PA, TP [s1]); Chlorophyllum rhacodes (carne virante: la fonte locale rinvia ai Chlorophyllum [s35]; presente in tutte le province [s1]). Macrolepiota venenata e' presente in tutte le province siciliane [s1]: tossicologia non verificata in fonti lette. Nella casistica della Sardegna meridionale 2011-2021 compaiono 2 casi associati a M. procera (malessere) [s12].",
+   "affidabilita": "media",
+   "lacune": [
+    "Quota, picco, temperatura: non trovati",
+    "pH: non trovato",
+    "Esposizione: non trovata",
+    "Mesi per la Sicilia solo generici (primavera-autunno); dato fenologico quantitativo siciliano assente",
+    "Soglie di temperatura/pioggia della specie non documentate (solo contesto di comunita' e effetto pioggia agosto -> settembre in Catalogna)"
+   ]
+  },
+  {
+   "sp": "Helvella lacunosa",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Pinus spp. (habitat associato, ruolo trofico dibattuto)",
+     "forza": "possibile",
+     "fonte": "As23"
+    },
+    {
+     "taxon": "Quercus spp. (habitat associato, ruolo trofico dibattuto)",
+     "forza": "possibile",
+     "fonte": "As23"
+    },
+    {
+     "taxon": "Pseudotsuga menziesii (habitat associato; non pertinente per la Sicilia)",
+     "forza": "possibile",
+     "fonte": "As23"
+    }
+   ],
+   "habitat_note": "Documentato in fonte: la checklist siciliana la classifica come saprotrofa di lettiera [s1]; cresce sul terreno tra la lettiera 'in tutti i tipi di bosco', spesso su terreno bruciato [s36, s28]; sotto pino, quercia e abete di Douglas e nei parchi [s23]. ATTENZIONE: il ruolo ecologico di molte Helvella e' controverso (saprotrofo vs micorrizico) [s14]; non e' stata trovata una fonte specifica su H. lacunosa s.str. Il complesso H. lacunosa e' tassonomicamente articolato (decine di linee filogenetiche distinte, 49 solo nello studio [s40]): determinazioni basate solo sulla morfologia sono incerte.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di quota trovato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa/Nord America: tarda estate e autunno [s23]; 'estate e autunno' [s28]. Dato non specifico per la Sicilia.",
+    "mesi": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "As23",
+    "nota": "Conversione di 'tarda estate e autunno' in mesi 8-11 = interpretazione."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato di temperatura trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Dato generico di comunita' fungina (NON specifico di specie): in Sicilia la maggior parte dei macromiceti si raccoglie in autunno e la fruttificazione e' fortemente influenzata da periodi di siccita' prolungata; nei boschi dell'entroterra notti fredde, temporali estivi e precipitazioni occulte favoriscono comparse precoci a partire dalla seconda decade di agosto [s1]. In Sicilia fruttificazioni autunnali sono state associate ad anomalie di precipitazione e a uno shock termico autunnale [s7]. In pinete mediterranee (Catalogna) la produzione e' limitata da alte temperature e scarsa pioggia a inizio stagione (sett-ott) e da basse temperature a fine stagione (nov-dic), con effetto ritardato di circa un mese della pioggia [s3]; per i funghi micorrizici in pineta mediterranea (Spagna) contano temperatura di inizio primavera e pioggia di fine estate-autunno [s5]; nelle querce toscane la pioggia dei 30 giorni precedenti correla con il numero di carpofori [s8]. Boddy et al. 2014 [s4] sintetizzano che quantita', durata e frequenza di fruttificazione dipendono da numerosi fattori ambientali, con risposte alla temperatura variabili. Nessuna soglia numerica specifica per la specie e' stata trovata.",
+    "fonte": "As1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "suolo ricco e terreno bruciato (preferenza qualitativa)",
+    "fonte": "As28"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "As1",
+    "province": [
+     "AG",
+     "ME",
+     "PA",
+     "TP"
+    ],
+    "nota": "Checklist 2022: presente solo in AG, ME, PA, TP. Specie del complesso (es. H. panormitana Inzenga, H. juniperi) registrate per altre province [s1]."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita' in questo profilo. AVVERTENZA DI TOSSICITA': fonte locale siciliana: 'diversamente da quanto indicato in vecchi testi, si tratta di specie tossica, contenente giromitrina che provoca sindrome giromitrica' [s36]; Wikipedia: puo' contenere monometilidrazina, sintomi gastrointestinali se consumata cruda [s23]; First Nature: disturbi gastrici se non cotta a fondo e dubbi su possibili cancerogeni [s28]. Gyromitra esculenta e' presente in tutte le province siciliane [s1]. Possibile confusione con H. crispa e H. maculata [s23].",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Ruolo trofico (saprotrofo vs micorrizico) controverso e non risolto per H. lacunosa s.str.",
+    "Quota, picco, temperatura, soglie di pioggia: non trovati",
+    "pH numerico: non trovato",
+    "Esposizione: non trovata",
+    "Mesi non specifici per la Sicilia",
+    "Delimitazione tassonomica del complesso H. lacunosa incerta: le segnalazioni siciliane potrebbero riferirsi a specie affini"
+   ]
+  },
+  {
+   "sp": "Fistulina hepatica",
+   "nome_it": "Lingua di bue",
+   "ruolo": "lignicolo parassita",
+   "ospiti": [
+    {
+     "taxon": "Quercus (Q. ilex, Q. petraea, Q. virgiliana in Sicilia)",
+     "forza": "forte",
+     "fonte": "Bs9"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "Bs2"
+    },
+    {
+     "taxon": "Acer, Alnus, Betula, Carpinus, Corylus, Eucalyptus, Fagus, Fraxinus, Juglans, Platanus, Robinia, Tilia, Ulmus",
+     "forza": "possibile",
+     "fonte": "Bs3"
+    }
+   ],
+   "habitat_note": "Causa carie bruna in alberi vivi maturi e vive da saprotrofo su legno caduto e ceppaie (s2, s3). In Sicilia raccolta su ceppaie di Quercus ilex e Q. petraea (localita 56a, Parco delle Madonie) e Q. virgiliana (localita 58, Monte Carcaci) (s9). In querceti britannici e specie chiave del marciume del durame, presente nel 27% degli alberi campionati (s4). Gli studi di dispersione e fenologia citati sono di clima temperato (Lituania, Polonia), non mediterraneo.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato altitudinale trovato nelle fonti lette."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa temperata (Gran Bretagna/Europa; Lituania per il picco di sporulazione). Non documentato per la Sicilia.",
+    "mesi": [
+     7,
+     8,
+     9,
+     10
+    ],
+    "picco": [
+     9,
+     10
+    ],
+    "fonte": "Bs16",
+    "nota": "Mesi 7-10 da fonte aggregatore (Wikipedia, 'da luglio a ottobre' in Gran Bretagna e resto d'Europa; s16, che indica anche agosto-fine autunno). Il 'picco' 9-10 riguarda il picco di rilascio sporale (fine settembre-meta ottobre, ~4 settimane) osservato in querceti lituani (s2), non la fruttificazione in senso stretto. Un esemplare polacco trovato il 20 settembre 2017 (s3). INFERENZA: in Sicilia il periodo potrebbe slittare verso l'autunno inoltrato."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Bs2",
+    "nota": "Nessun dato numerico. s2 riporta che il rilascio sporale NON correla con la temperatura."
+   },
+   "umidita_pioggia": {
+    "nota": "Il rilascio sporale correla positivamente con l'umidita relativa dell'aria ma non con la temperatura (Lituania, s2). Per il contesto generale dei querceti mediterranei, la fruttificazione delle macrofungine richiede abbondante pioggia annuale e la pioggia dei 30 giorni precedenti e il fattore dominante nei picchi (Toscana, s24); in Spagna mediterranea gli impulsi di pioggia di fine estate-inizio autunno sono decisivi (s25). Dati di comunita, non specifici di F. hepatica.",
+    "fonte": "Bs2"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Bs10",
+    "nota": "Checklist siciliana: province CT, ME, PA (s10); campioni d'erbario PAL da Parco delle Madonie e Monte Carcaci (s9)."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita. Un aggregatore (s16) segnala che esemplari maturi possono causare disturbo gastrico; non consumare senza determinazione da parte di un esperto.",
+   "affidabilita": "media",
+   "lacune": [
+    "Quota, temperatura, pH e esposizione: nessun dato trovato",
+    "Fenologia mediterranea/siciliana non documentata (mesi da fonti temperate/aggregatore)",
+    "Forza associazione con Quercus mediterranee (Q. suber, Q. ilex, Q. pubescens) non quantificata"
+   ]
+  },
+  {
+   "sp": "Laetiporus sulphureus",
+   "nome_it": "Polipora solforino",
+   "ruolo": "lignicolo parassita",
+   "ospiti": [
+    {
+     "taxon": "Ceratonia siliqua",
+     "forza": "forte",
+     "fonte": "Bs5"
+    },
+    {
+     "taxon": "Quercus (Q. ilex, Q. pubescens in Italia centro-nord)",
+     "forza": "possibile",
+     "fonte": "Bs9"
+    },
+    {
+     "taxon": "Castanea sativa, Eucalyptus, Fagus, Populus, Prunus (incl. P. amygdalus), Pyrus, Robinia, Salix",
+     "forza": "possibile",
+     "fonte": "Bs5"
+    }
+   ],
+   "habitat_note": "Parassita necrotrofo e saprotrofo, causa carie bruna cubica del durame (colonne di carie di 5-8 m); infezione tramite basidiospore su ferite della corteccia (s5). In Sicilia sud-occidentale (Modica, Ragusa) incidenza del 34% nei carrubi campionati; un caso su mandorlo (s5). Presente anche in Toscana e Piemonte (s5). Un aggregatore cita carrubo ed eucalipto come ospiti mediterranei (s15). La complessa tassonomia (specie affini a L. sulphureus) impone cautela nell'attribuzione.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato altitudinale trovato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa (generico, aggregatore); non documentato per la Sicilia.",
+    "mesi": [
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Bs15",
+    "nota": "'Da aprile a novembre' in Europa secondo Wikipedia (aggregatore). Nel NE degli USA (zona 5-6) tipicamente estate-autunno, anche da fine maggio (s26): non trasferibile alla Sicilia."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato specifico sulla specie. Contesto generale di comunita: vedi s24, s25 (non specifici).",
+    "fonte": "Bs24"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Bs5",
+    "nota": "Sillo et al. 2018: carrubeti di Modica e Ragusa. Le raccolte d'erbario di s9 per L. sulphureus (localita 26 e 48) non risultano siciliane nell'elenco localita letto. Non verificata la presenza in Madonie/Nebrodi/Ficuzza/Monti di Palermo."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita. Fonte aggregatore (s15): reazioni avverse gravi (vomito, febbre) in circa il 10% delle persone, forse per confusione con specie affini; il consumo da crudo e sconsigliato. Non consumare senza determinazione da parte di un esperto.",
+   "affidabilita": "media",
+   "lacune": [
+    "Mesi e picco in Sicilia/Italia meridionale non documentati",
+    "Quota, temperatura, pH, esposizione: nessun dato",
+    "Presenza in Madonie, Nebrodi, Ficuzza, Piana degli Albanesi, Aspromonte non verificata",
+    "Quali specie del complesso L. sulphureus s.l. siano presenti in Sicilia non verificato"
+   ]
+  },
+  {
+   "sp": "Ganoderma lucidum",
+   "nome_it": "Ganoderma lucido",
+   "ruolo": "lignicolo parassita",
+   "ospiti": [
+    {
+     "taxon": "Quercus (Q. ilex, Q. robur in Sicilia)",
+     "forza": "forte",
+     "fonte": "Bs9"
+    },
+    {
+     "taxon": "Altri latifoglie (24 generi legnosi in Europa; es. Armeniaca vulgaris)",
+     "forza": "possibile",
+     "fonte": "Bs11"
+    }
+   ],
+   "habitat_note": "Su latifoglie in parchi e soprattutto in foreste; in Slovacchia le querce sono l'ospite piu frequente tra i record con ospite identificato (16%) (s11). Carpofori annuali o perenni (s11). In Sicilia, raccolte d'erbario su Q. ilex (Parco delle Madonie 56a, Monte Carcaci 58) e Q. robur (Bosco Niscemi 56b) (s9). Taxon problematico: G. lucidum e G. carnosum (piu scuro, spore piu larghe, preferenza per conifere) sono simili (s11); tra collezioni italiane 4 risultano G. lucidum e 1 G. resinaceum (s12). Il 'lingzhi/reishi' asiatico e un taxon diverso (s30). Il nome nelle checklist siciliane va quindi inteso con cautela (INFERENZA: possibile inclusione di G. resinaceum/G. carnosum).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Non documentato per area mediterranea.",
+    "mesi": null,
+    "picco": null,
+    "fonte": null,
+    "nota": "Unico dato: NE USA, G. sessile (lucidum) da agosto all'autunno (s26), non trasferibile e riferito a taxon nordamericano."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato specifico sulla specie.",
+    "fonte": null
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Bs10",
+    "nota": "Checklist siciliana: AG, CL, CT, EN, ME, PA, RG, SR, TP (s10); esemplari PAL in s9."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita. Per i preparati di Ganoderma una fonte aggregatore (s30) segnala preoccupazioni di sicurezza e interazioni con farmaci e integratori. Rischio di confusione tra specie del genere e con altri poliporacei.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Fenologia, temperatura, pH, quota, esposizione: nessun dato",
+    "Identita tassonomica (G. lucidum s.s. vs G. resinaceum/G. carnosum) in Sicilia non verificata",
+    "Presenza in Aspromonte e Piana degli Albanesi non verificata"
+   ]
+  },
+  {
+   "sp": "Pleurotus ostreatus",
+   "nome_it": "Orecchione, Gelone",
+   "ruolo": "lignicolo saprotrofo",
+   "ospiti": [
+    {
+     "taxon": "Populus alba, Populus tremula",
+     "forza": "possibile",
+     "fonte": "Bs13"
+    },
+    {
+     "taxon": "Salix alba",
+     "forza": "possibile",
+     "fonte": "Bs13"
+    },
+    {
+     "taxon": "Fagus sylvatica, Castanea sativa, Quercus pubescens, Quercus petraea, Morus nigra, Abies alba",
+     "forza": "possibile",
+     "fonte": "Bs13"
+    }
+   ],
+   "habitat_note": "In Italia su ceppaie, tronchi caduti e latifoglie vive in boschi e parchi (s13). Nessun dato della fonte sulla Sicilia per questa specie. Nel gruppo Pleurotus siciliano e documentato P. eryngii var. thapsiae su Apiaceae (Madonie, calcare, doppia fruttificazione autunno e primavera; s31): taxon diverso, non attribuibile a P. ostreatus. Ruolo saprotrofo/ospiti vivi: la fonte parla di 'latifoglie vive', quindi possibile comportamento da debole parassita (INFERENZA).",
+   "quota_m": {
+    "min": 0,
+    "max": 1450,
+    "fonte": "Bs13",
+    "nota": "Intervallo altitudinale per l'Italia (Venturella et al. 2015), non specifico per la Sicilia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (generale)",
+    "mesi": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": null,
+    "fonte": "Bs13",
+    "nota": "'Raccoglibile tutto l'anno' (s13). Per il NE USA: tarda primavera rara, estate-autunno comune, tra gli ultimi funghi carnosi dell'autunno (s26): non trasferibile."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato per popolazioni spontanee trovato nelle fonti lette (i dati trovati riguardavano la coltivazione e non sono stati letti)."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato specifico sulla specie. Contesto generale di comunita: s24, s25.",
+    "fonte": null
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "non documentata",
+    "fonte": "Bs13",
+    "nota": "Non presente nei testi letti di s13 e s10 (s10 solo parzialmente leggibile). INFERENZA: presenza probabile, ma non verificata."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita. INFERENZA, non documentata nelle fonti lette: esistono funghi lignicoli a lamelle potenzialmente pericolosi in ambiente mediterraneo (es. Omphalotus); determinazione solo da parte di un esperto.",
+   "affidabilita": "media",
+   "lacune": [
+    "Presenza in Sicilia non verificata con fonte",
+    "Temperatura/umidita richieste in natura: nessun dato",
+    "pH, esposizione: nessun dato",
+    "Picco di fruttificazione per l'area mediterranea non documentato"
+   ]
+  },
+  {
+   "sp": "Armillaria mellea s.l. (A. mellea, A. gallica, Desarmillaria tabescens; A. ostoyae non verificata)",
+   "nome_it": "Chiodino",
+   "ruolo": "lignicolo parassita",
+   "ospiti": [
+    {
+     "taxon": "Quercus (Q. ilex, Q. macrolepis, Q. robur ecc.)",
+     "forza": "forte",
+     "fonte": "Bs7"
+    },
+    {
+     "taxon": "Querce miste in querceto deperiente dell'Italia meridionale (A. gallica)",
+     "forza": "forte",
+     "fonte": "Bs6"
+    }
+   ],
+   "habitat_note": "Funghi facoltativamente necrotrofi con fase parassita e saprotrofa (s28). Nell'Italia meridionale A. gallica: 111 isolati da un querceto misto deperiente, 28 genet, il maggiore ~2,6 ha e ~300 anni (stima) (s6). Prove di patogenicita: A. mellea e A. gallica le piu virulente, specie su Q. macrolepis; Armillaria considerata fattore secondario nel deperimento delle querce (s7). Q. ilex mostra le infezioni piu alte tra cinque querce testate, Q. robur la maggior resistenza; A. mellea la piu patogena, A. gallica comparabile solo su piante con poca acqua, A. tabescens meno virulenta (s8). Distribuzione e altitudini delle specie europee sono trattate da Guillaumin et al. 1993 (s27), ma i dettagli non sono stati letti. Desarmillaria tabescens e probabilmente diffusa in Europa e Asia (s28).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Bs27",
+    "nota": "s27 tratta le distribuzioni altitudinali ma il contenuto non e stato letto."
+   },
+   "mesi_fruttificazione": {
+    "area": "Non documentato per area mediterranea.",
+    "mesi": null,
+    "picco": null,
+    "fonte": null,
+    "nota": "Unico dato: NE USA, A. tabescens da meta luglio, A. mellea da inizio settembre e in autunno (s26): non trasferibile. s28 non fornisce dati fenologici."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Stress idrico (poca acqua) aumenta la patogenicita di A. gallica su semenzali di querce (s8): riguarda la virulenza, NON la fruttificazione.",
+    "fonte": "Bs8"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Bs10",
+    "nota": "Checklist siciliana: A. mellea, A. gallica e Desarmillaria tabescens (AG, CL, CT, EN, ME, PA, RG, SR, TP; categoria 'necrotrofi parassiti') (s10). A. ostoyae non rilevata nel testo leggibile di s10. Gli studi s6, s7, s8 sono dell'Italia meridionale continentale (area Calabria/Basilicata, non verificata dai testi letti)."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita. INFERENZA, non da fonte letta: i gruppi lignicoli a lamelle includono sosia pericolosi (es. Galerina marginata, mortale); determinazione solo da parte di un esperto.",
+   "affidabilita": "media",
+   "lacune": [
+    "Fenologia mediterranea, temperatura, pH, quota ed esposizione: nessun dato",
+    "A. ostoyae in Sicilia/Italia meridionale non verificata",
+    "Studi su ospiti e patogenicita dell'Italia meridionale continentale, non siciliani",
+    "Distinzione dei taxa a livello di specie nelle aree di studio del sito non verificata"
+   ]
+  },
+  {
+   "sp": "Infundibulicybe geotropa (Clitocybe geotropa)",
+   "nome_it": "Fungo del fumo / Imbutone",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [],
+   "habitat_note": "Boschi misti, soprattutto radure erbose, in autunno, spesso gregario o in cerchi delle streghe (s14). Ruolo saprotrofo terricolo: INFERENZA dell'assistente (le fonti lette non lo dichiarano esplicitamente). Nessun ospite arboreo specifico documentato.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa (generale, aggregatore); non documentato per la Sicilia.",
+    "mesi": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Bs14",
+    "nota": "'Da agosto a novembre' in Europa (Wikipedia). In area mediterranea il periodo potrebbe differire (INFERENZA)."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato specifico sulla specie.",
+    "fonte": null
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "non documentata",
+    "fonte": "Bs10",
+    "nota": "Non trovata nel testo leggibile di s10 (tabella troncata, ricerca incompleta). Non verificata in altre fonti. INFERENZA: presenza probabile in boschi siciliani, da confermare."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita. Fonte aggregatore (s14): rischio di confusione con specie velenose, es. Entoloma sinuatum (lamelle sinuate, odore farinoso) e Melanoleuca grammopodia (odore muschiato). INFERENZA, non da fonte letta: specie di Clitocybe biancastre di aspetto simile possono contenere muscarina.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Presenza in Sicilia non verificata",
+    "Ospiti/substrato, quota, temperatura, pH, esposizione: nessun dato",
+    "Fenologia mediterranea non documentata",
+    "Fonti lette solo di tipo aggregatore"
+   ]
+  },
+  {
+   "sp": "Clitocybe odora",
+   "nome_it": "Clitocibe odoroso",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Fagus e altre latifoglie (lettiera)",
+     "forza": "possibile",
+     "fonte": "Bs17"
+    }
+   ],
+   "habitat_note": "Saprotrofo su suolo tra la lettiera, in particolare sotto faggio e altre latifoglie, in boschi, parchi o brughiere; in Gran Bretagna anche in boschi di conifere (s17, s18). Dati dal Regno Unito; nessun dato mediterraneo. Rilevante per i boschi a faggio dei Nebrodi e delle Madonie (INFERENZA ecologica).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Regno Unito (non mediterraneo)",
+    "mesi": [
+     7,
+     8,
+     9,
+     10
+    ],
+    "picco": null,
+    "fonte": "Bs17",
+    "nota": "Da luglio a ottobre (s17); 'tarda estate e autunno' (s18). Non documentato per la Sicilia."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato specifico sulla specie.",
+    "fonte": null
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": null
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Bs10",
+    "nota": "Checklist siciliana: AG, CL, CT, EN, ME, PA, RG, SR, TP (categoria Sl, saprotrofo della lettiera)."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita. Sosia pericoloso (s17): Clitocybe fragrans, con odore di anice simile, contiene muscarina e cresce in prati; anche Stropharia aeruginosa e citata come possibile confusione. Non consumare senza determinazione da parte di un esperto.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Fenologia, quota, temperatura, pH, esposizione in area mediterranea: nessun dato",
+    "Dati ecologici solo da aggregatori britannici",
+    "Associazione con specifici boschi siciliani non documentata"
+   ]
+  },
+  {
+   "sp": "Cortinarius subg. Phlegmacium (profilo di genere; ora Phlegmacium)",
+   "nome_it": "Cortinari del sottogenere Phlegmacium",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Cistus monspeliensis (C. mahiquesii, Catalogna)",
+     "forza": "forte",
+     "fonte": "Bs20"
+    },
+    {
+     "taxon": "Quercus (specie affini a C. mahiquesii; Q. ilex per il genere Cortinarius in Liguria)",
+     "forza": "possibile",
+     "fonte": "Bs19"
+    },
+    {
+     "taxon": "Tilia, Quercus robur (P. brunneiaurantium, Finlandia, non mediterraneo)",
+     "forza": "possibile",
+     "fonte": "Bs21"
+    }
+   ],
+   "habitat_note": "Profilo SOLO indicativo, a livello di genere. C. mahiquesii (subg. Phlegmacium, subipogeo): macchia pura di Cistus monspeliensis su suolo siliceo acido, raccolta a gennaio (Catalogna); differisce da specie affini che crescono con Quercus (s20). Nel leccio ligure sono stati trovati 67 taxa di Cortinarius (non distinti per sottogenere) (s19). P. brunneiaurantium: latifoglie su argilla ricca ('clayey mull'), autunno (s21; Finlandia). Brandrud 1996 revisiona la sezione Phlegmacium in Europa (taxonomia, senza dati ecologici utilizzabili letti) (s22). Tutte le specie del gruppo sono micorriziche per inferenza (non esplicitata dalle fonti lette). Nel 2022 Phlegmacium e stato elevato a genere (s21).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Non documentato per Sicilia/Italia meridionale; esempi: Catalogna (gennaio), Finlandia (autunno).",
+    "mesi": null,
+    "picco": null,
+    "fonte": "Bs20",
+    "nota": "C. mahiquesii: olotipo raccolto il 18 gennaio 2008 (s20). P. brunneiaurantium: autunno (s21). Nessun dato aggregabile per il sottogenere nel Mediterraneo."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun dato trovato. Contesto generale: la temperatura guida la fruttificazione autunnale dei funghi ectomicorrizici europei (s23), non specifico del gruppo."
+   },
+   "umidita_pioggia": {
+    "nota": "Contesto di comunita, non specifico: nella foresta di leccio e pino mediterranei i funghi ectomicorrizici sono piu produttivi e piu sensibili alle variazioni meteo annuali; conta il meteo autunnale (pioggia e temperatura) (s29, tesi 2025); precipitazioni di tarda estate-inizio autunno determinanti in Spagna (s25).",
+    "fonte": "Bs29"
+   },
+   "suolo": {
+    "ph": "acido (solo C. mahiquesii)",
+    "tipo": "siliceo (C. mahiquesii); argilla ricca (P. brunneiaurantium, Finlandia)",
+    "fonte": "Bs20"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "probabile",
+    "fonte": "Bs10",
+    "nota": "Il genere Cortinarius e ben rappresentato nella checklist siciliana (circa 90 taxa; tra i nomi letti C. praestans, C. infractus, C. caerulescens, C. caesiocanescens, C. collinitus) ma l'attribuzione al sottogenere Phlegmacium non e stata verificata."
+   },
+   "tossicita_nota": "Nessuna affermazione di commestibilita. INFERENZA, non da fonte letta: il genere Cortinarius comprende specie gravemente tossiche (nefrotossicita ritardata); non consumare nessun Cortinarius senza determinazione da parte di un esperto.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Nessuna monografia ecologica mediterranea del sottogenere letta (le fonti sono per singole specie/genere)",
+    "Ospiti reali in Sicilia, mesi, quota, pH, temperatura, esposizione: nessun dato",
+    "Elenco dei taxa siciliani del sottogenere non estratto dalla checklist",
+    "Accesso negato a Mycologia 106 (Phlegmacium del Mediterraneo europeo) e Persoonia 2021 non pertinente (altro sottogenere)"
+   ]
+  },
+  {
+   "sp": "Boletus aereus",
+   "nome_it": "Porcino nero / bronzino",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus suber",
+     "forza": "forte",
+     "fonte": "Cs21"
+    },
+    {
+     "taxon": "Quercus cerris",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Quercus pubescens s.l. (roverella; Q. virgiliana nei siti siciliani)",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "possibile",
+     "fonte": "Cs21"
+    },
+    {
+     "taxon": "Arbutus / Erica / Cistus (arbusti sclerofilli)",
+     "forza": "possibile",
+     "fonte": "Cs21"
+    }
+   ],
+   "habitat_note": "Specie termofila tipicamente mediterranea, ectomicorrizica con latifoglie (Quercus, Fagus, Castanea) e arbusti sclerofilli (s1). Scheda IPLA (Piemonte, s4): ambienti caldi, soleggiati e asciutti, suoli ben drenati, no ristagni; habitat principali castagneti, querceti di rovere e roverella, faggete; piu raro nelle zone alpine e prealpine. In Sicilia (s1) i 39 campioni di B. aereus provengono da boschi con Q. suber (Madonie, Trapani, Nebrodi), Q. cerris/Q. virgiliana (Nebrodi, Peloritani, Monti di Palermo), Castanea sativa + Erica arborea (Peloritani), Fagus sylvatica/Castanea/Corylus (Etna); la vegetazione e quella del sito di campionamento, non un'associazione micorrizica verificata. Wikipedia (s21) lo riporta come boleto piu comune nei boschi delle Madonie. Madonie: querceti sempreverdi, boschi di faggio e castagno (s34). Q. ilex NON e citata come ospite in nessuna fonte letta (vedi lacune).",
+   "quota_m": {
+    "min": 200,
+    "max": 1000,
+    "fonte": "Cs4",
+    "nota": "Dato IPLA per il Piemonte ('normalmente dai 200 sino ai 1.000 m'); non verificato per la Sicilia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Piemonte (s4) e Sicilia (s33, giornalistico)",
+    "mesi": [
+     8,
+     9,
+     10
+    ],
+    "picco": [
+     9,
+     10
+    ],
+    "fonte": "Cs4",
+    "nota": "s4: ottimale settembre-ottobre, puo comparire dalla seconda meta di agosto. s33: settembre mese migliore su Etna/Nebrodi/Madonie dopo le prime piogge di fine estate. s1 (generico, non regionale): raccolto da tarda primavera a inizio autunno. Finestra siciliana reale non quantificata da fonti scientifiche."
+   },
+   "temperatura": {
+    "cosa": "suolo",
+    "min": null,
+    "max": null,
+    "fonte": "Cs4",
+    "nota": "Documentato solo qualitativamente: la fruttificazione richiede un 'abbassamento repentino delle temperature del terreno' (s4). Nessun valore in gradi trovato."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessuna soglia di pioggia specifica per B. aereus. s4: servono umidita adeguata e abbassamento repentino della temperatura del suolo. s3 (sezione B. aestivalis, che cita studi francesi su 'boleti estivi B. aestivalis e B. aereus'): puo contare il forte calo termico invernale mesi prima, e una buona raccolta e favorita da somme termiche elevate e buona umidita del suolo dell'anno precedente. s33: prime piogge di fine estate.",
+    "fonte": "Cs4"
+   },
+   "suolo": {
+    "ph": "acido (qualitativo; Wikipedia s21: 'prefers acidic soils'); nessun valore numerico di pH trovato",
+    "tipo": "suoli ben drenati, non tollera ristagni (s4)",
+    "fonte": "Cs4"
+   },
+   "esposizione": "versanti soleggiati / luoghi caldi e asciutti (s4, dato piemontese)",
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Sosia da NON confondere (s21): B. reticulatus, B. pinophilus, B. edulis (stesso gruppo); in generale tra i boleti esistono specie tossiche o amare (es. Rubroboletus satanas, Tylopilus felleus, s23). Accumula metalli (Pt, Pd nei campioni siciliani, s1). Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "media",
+   "lacune": [
+    "Nessuna soglia numerica di temperatura o pioggia per il Mediterraneo/Sicilia",
+    "pH numerico non trovato",
+    "Quota e mesi derivati da fonte piemontese e da articolo giornalistico per la Sicilia",
+    "Associazione con Quercus ilex non verificata in nessuna fonte letta",
+    "Alaimo 2023 (s1) non riporta quote ne mesi dei campioni",
+    "Aspromonte (Calabria) non coperto dalla checklist siciliana"
+   ],
+   "inferenze": [
+    "Con ospiti e fenologia del Piemonte applicati alla Sicilia, la finestra attesa in area Madonie/Nebrodi e fine estate-autunno (set-ott); la quota siciliana effettiva potrebbe differire.",
+    "Ficuzza/Monti di Palermo: Q. virgiliana e Q. suber nei campioni dei Monti di Palermo/Madonie (s1) rendono plausibile la presenza, ma Ficuzza non e citata esplicitamente."
+   ]
+  },
+  {
+   "sp": "Boletus reticulatus (= B. aestivalis)",
+   "nome_it": "Porcino estivo",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus (roverella, rovere, farnia)",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "Cs3"
+    },
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "possibile",
+     "fonte": "Cs3"
+    },
+    {
+     "taxon": "Corylus avellana / Betula",
+     "forza": "possibile",
+     "fonte": "Cs3"
+    },
+    {
+     "taxon": "Picea abies / Pinus sylvestris",
+     "forza": "possibile",
+     "fonte": "Cs3"
+    }
+   ],
+   "habitat_note": "Il sinonimo Boletus aestivalis (Paulet) Fr. e confermato da Wikipedia (s22); la scheda IPLA (s3) e redatta come B. aestivalis. Ectomicorrizico, piu frequente nei popolamenti basso-montani e collinari sotto latifoglie (soprattutto querceti e castagneti, anche faggete) e conifere (s3). Wikipedia (s22): associato a Quercus, meno specifico di altri porcini. Santolamazza-Carbone 2025 (s35): studio su mycelio di B. edulis e B. reticulatus in Quercus robur (Galizia); B. reticulatus senza correlazioni climatiche significative. Beugelsdijk 2008 (s8) riconosce 4 specie europee, incl. B. reticulatus.",
+   "quota_m": {
+    "min": 200,
+    "max": 1000,
+    "fonte": "Cs3",
+    "nota": "Normale 200-1000 m (Piemonte); fino a 1600 m in estati calde sotto nocciolo/betulla e 2200 m in arbusteti alpini (Piemonte). Non verificato per la Sicilia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Piemonte (s3)",
+    "mesi": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "picco": [
+     7,
+     8,
+     9
+    ],
+    "fonte": "Cs3",
+    "nota": "Da maggio in collina; ottimale luglio-agosto e primo autunno (settembre); fino a ottobre, eccezionalmente novembre. Wikipedia (s22): da inizio estate a fine autunno dopo tempo caldo e umido. Per la Sicilia non quantificato."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Cs3",
+    "nota": "Specie 'abbastanza termofila', non tollera le gelate (s3); nessun valore numerico documentato."
+   },
+   "umidita_pioggia": {
+    "nota": "s3: serve un periodo con sufficiente disponibilita idrica; per i boleti estivi puo contare il forte calo termico invernale mesi prima e condizioni favorevoli (somme termiche elevate, buona umidita del suolo) dell'anno precedente. s22: dopo tempo caldo e umido. Nessuna soglia in mm.",
+    "fonte": "Cs3"
+   },
+   "suolo": {
+    "ph": "da neutro ad acido, almeno nello strato superficiale (qualitativo, s3 testo verbatim 'da neutra ad acida'). Un sito di studio in Galizia sotto Q. robur aveva pH 4.6 (s35, sito specifico).",
+    "tipo": "nessuna esigenza di tessitura rilevata",
+    "fonte": "Cs3"
+   },
+   "esposizione": "versanti solatii e pendii ripidi e asciutti purche vi sia disponibilita idrica sufficiente (s3, dato piemontese)",
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Sosia del gruppo dei porcini (B. aereus, B. edulis, B. pinophilus, s21/s22); tra i boleti esistono specie tossiche o amare (Rubroboletus satanas, Tylopilus felleus, s23). s3: carne meno serbevole, frequenti larve. Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "media",
+   "lacune": [
+    "Nessuna soglia numerica per il Mediterraneo",
+    "pH numerico non trovato per la specie (solo 4.6 in un sito galiziano)",
+    "Nessuna fonte letta documenta quota/ospiti specifici in Sicilia",
+    "Sinonimia B. reticulatus = B. aestivalis confermata solo da Wikipedia, non da Index Fungorum/MycoBank (non consultati)"
+   ],
+   "inferenze": [
+    "Ospiti siciliani attesi: querce caducifoglie (Q. cerris, Q. virgiliana/pubescens) e castagno, per analogia con i siti di B. aereus (s1) e con le preferenze di s3."
+   ]
+  },
+  {
+   "sp": "Boletus edulis",
+   "nome_it": "Porcino (cappello bruno / nobile)",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "forte",
+     "fonte": "Cs3"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "Cs11"
+    },
+    {
+     "taxon": "Abies alba",
+     "forza": "forte",
+     "fonte": "Cs9"
+    },
+    {
+     "taxon": "Quercus (rovere, roverella)",
+     "forza": "possibile",
+     "fonte": "Cs8"
+    },
+    {
+     "taxon": "Picea abies",
+     "forza": "forte",
+     "fonte": "Cs3"
+    },
+    {
+     "taxon": "Pinus sylvestris",
+     "forza": "forte",
+     "fonte": "Cs3"
+    },
+    {
+     "taxon": "Betula / Tilia / Corylus",
+     "forza": "possibile",
+     "fonte": "Cs3"
+    }
+   ],
+   "habitat_note": "Generalista ectomicorrizico con ampio spettro di conifere e latifoglie (Picea, Quercus, Betula, Fagus, Tilia, raramente Pinus; s8). IPLA (s3): piu frequente in popolamenti montani e di alta collina, faggete, querceti e castagneti freschi, peccete, abetine, pinete di pino silvestre; 'amando il fresco cresce di preferenza nei boschi montani nel sud Italia'. Castagneto produttivo di B. edulis s.l. studiato in Italia (s11); abetine di Abies alba (s9, s10); faggete tedesche (s6). In Sicilia (s33, giornalistico) porcini sotto castagni e querce sull'Etna e in faggete/sugherete dei Nebrodi e Madonie.",
+   "quota_m": {
+    "min": 300,
+    "max": 2000,
+    "fonte": "Cs3",
+    "nota": "Piemonte: da 300 m al limite del bosco (~2000 m). A basse quote nel Sud preferisce l'autunno inoltrato (s3). Non verificato per la Sicilia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Piemonte (s3) / Sicilia (s33)",
+    "mesi": [
+     9,
+     10,
+     11
+    ],
+    "picco": [
+     9,
+     10
+    ],
+    "fonte": "Cs3",
+    "nota": "s3: in Piemonte da meta giugno, ottimale fine estate-autunno; 'stagione autunnale inoltrata a basse quote in meridione'. s33: settembre su Etna/Nebrodi/Madonie dopo le prime piogge. [INFERENZA] finestra sud-Italia/Sicilia set-nov interpretata da queste due frasi; non e un dato quantitativo."
+   },
+   "temperatura": {
+    "cosa": "aria media",
+    "min": 10,
+    "max": 15,
+    "fonte": "Cs6",
+    "nota": "Preprint (non peer-reviewed), faggete presso Bielefeld (Germania), 2015-2024: media di 20 giorni di ~13 C ottimale, produzione massima tra 10 e 15 C; ritardo ottimo 20 giorni. Clima NON mediterraneo: trasferibilita alla Sicilia non verificata. Qualitativamente s3: serve un calo repentino della temperatura del suolo dopo un periodo caldo; s23 (Wikipedia): pioggia in periodo caldo seguita da piogge autunnali e calo della temperatura del suolo."
+   },
+   "umidita_pioggia": {
+    "nota": "s3 (Piemonte): pioggia >=30 mm (meglio 50-60 mm se bosco chiuso) dopo siccita che ha asciugato e riscaldato il suolo; la fruttificazione inizia 12-15 giorni dopo l'evento, a seconda di temperatura ed esposizione; assenza di pioggia o piogge prolungate per settimane limitano la produzione. s6 (Germania): produzione cresce linearmente con la pioggia cumulata su 26 giorni (ottimo 2-4 mm/giorno medi), ritardo ottimo 26 giorni. s10 (Italia, abetine): picchi di temperatura inibiscono la produzione in diradamenti leggeri; ~3 settimane dopo gli eventi di calore la produzione migliora nelle zone diradate intensamente. s16 (Spagna, pino silvestre): produttivita legata a precipitazioni estive ridotte dopo il 2004 (nessun numero rilevato nel record letto). s7: la fruttificazione dipende da molti fattori oltre la temperatura, incluse precipitazioni e risorse.",
+    "fonte": "Cs3"
+   },
+   "suolo": {
+    "ph": "acido almeno nello strato superficiale; piu raramente neutro/basico dove la decomposizione porta il pH vicino alla neutralita (s3). Sito galiziano sotto Q. robur: pH 4.6 (s35, sito specifico).",
+    "tipo": "nessuna esigenza di tessitura; soffre l'accumulo di sostanza organica indecomposta (s3)",
+    "fonte": "Cs3"
+   },
+   "esposizione": "variabile: anche su versanti solatii e pendii ripidi asciutti se la disponibilita idrica e sufficiente (s3)",
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Sosia segnalati (s23): Rubroboletus satanas (gambo rosso, vira al blu) e Tylopilus felleus (molto amaro, pori rosati). Accumula metalli pesanti (Hg, Cd; s23) - evitare siti contaminati. Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "media",
+   "lacune": [
+    "Nessuna soglia numerica per ambienti mediterranei/siciliani: i numeri (30-60 mm, 12-15 gg; 13 C, 26 gg) vengono da Alpi/Piemonte e Germania",
+    "Quota e stagione siciliane non quantificate",
+    "pH numerico solo da un sito galiziano",
+    "Boddy 2014 (s7) letto solo a livello di abstract: nessun dato numerico estratto",
+    "Peintner 2007, Salerni 2004/2023 letti solo come abstract",
+    "Presenza di B. edulis s.s. in Sicilia: la checklist riporta il nome, ma non distingue dalle altre specie del gruppo (identificazioni storiche non verificate con DNA)"
+   ],
+   "inferenze": [
+    "Per la Sicilia i soli ospiti plausibili tra quelli documentati sono Fagus, Castanea e Quercus (boschi di Madonie/Nebrodi, s34/s33)."
+   ]
+  },
+  {
+   "sp": "Boletus pinophilus",
+   "nome_it": "Porcino rosso / dei pini",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Pinus sylvestris",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Abies alba",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Picea abies",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Pinus nigra / Pinus cembra",
+     "forza": "possibile",
+     "fonte": "Cs24"
+    }
+   ],
+   "habitat_note": "s4 (Piemonte): piu frequente nei popolamenti montani e di alta collina, sotto conifere (abete bianco, abete rosso, pino silvestre) e latifoglie (soprattutto castagno e faggio). Wikipedia (s24): conifere (Pinus cembra, P. nigra, ecc.) ma anche castagno, quercia, faggio; suoli acidi e sabbiosi. Richiede umidita ma temperature non troppo alte (s4). In Sicilia la checklist lo riporta solo per CT, ME, PA (s2).",
+   "quota_m": {
+    "min": 400,
+    "max": 1400,
+    "fonte": "Cs4",
+    "nota": "Normale 400-1400 m; ritrovamenti fino a 1800 m (Piemonte). Non verificato per la Sicilia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Piemonte (s4); Italia (s24)",
+    "mesi": [
+     4,
+     5,
+     9,
+     10,
+     11
+    ],
+    "picco": [
+     9,
+     10
+    ],
+    "fonte": "Cs4",
+    "nota": "s4: duplice produzione annuale, in primavera e a fine autunno; periodo ottimale settembre-ottobre. s24: puo comparire da aprile in Italia, estate-autunno. I mesi 11 e 4-5 derivano dalla dicitura 'primavera' e 'fine autunno', non da date esatte."
+   },
+   "temperatura": {
+    "cosa": "suolo",
+    "min": null,
+    "max": null,
+    "fonte": "Cs4",
+    "nota": "Qualitativo: necessita di abbassamento repentino della temperatura del suolo; temperature non troppo alte (s4). Nessun valore numerico."
+   },
+   "umidita_pioggia": {
+    "nota": "s4: 'necessita di una buona dose di umidita'. Nessuna soglia numerica.",
+    "fonte": "Cs4"
+   },
+   "suolo": {
+    "ph": "substrati acidi almeno nello strato superficiale (qualitativo, s4); nessun valore numerico",
+    "tipo": "suoli acidi, anche sabbiosi (s24)",
+    "fonte": "Cs4"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Sosia del gruppo porcini (B. edulis, B. aereus; s24). Tra i boleti esistono specie amare/tossiche (Tylopilus felleus, Rubroboletus satanas; s23). Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Tutti i dati ecologici vengono dal Piemonte/letteratura generale; nessuna fonte siciliana su ospiti, quota o mesi",
+    "Nessuna soglia numerica di temperatura/pioggia",
+    "Conifere ospiti in Sicilia (es. Pinus nigra subsp. laricio sull'Etna, Pinus halepensis) non verificate su fonti lette",
+    "Esposizione non documentata"
+   ],
+   "inferenze": [
+    "B. pinophilus dipende soprattutto da conifere e castagno/faggio: in Sicilia e atteso solo dove questi ospiti coesistono (checklist: CT, ME, PA); la scelta di aree e un'ipotesi."
+   ]
+  },
+  {
+   "sp": "Lactarius deliciosus s.l. (incl. L. deterrimus, L. semisanguifluus, L. sanguifluus)",
+   "nome_it": "Sanguinello / agarico delizioso",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Pinus halepensis",
+     "forza": "obbligato",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Pinus pinea",
+     "forza": "obbligato",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Pinus pinaster",
+     "forza": "obbligato",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Pinus nigra",
+     "forza": "obbligato",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Pinus sylvestris",
+     "forza": "obbligato",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Picea abies (L. deterrimus)",
+     "forza": "forte",
+     "fonte": "Cs26"
+    },
+    {
+     "taxon": "Arctostaphylos uva-ursi (L. deterrimus, arbutoide)",
+     "forza": "possibile",
+     "fonte": "Cs26"
+    }
+   ],
+   "habitat_note": "IPLA (s5): L. deliciosus e L. sanguifluus sono 'simbionti ectomicorrizici obbligati di conifere del genere Pinus' (P. halepensis, nigra, pinaster, pinea, strobus); pinete di Aleppo in gran parte artificiali. Segneri (s32, Lazio): L. deliciosus e L. semisanguifluus sotto pini a due aghi; L. sanguifluus pini a due aghi; L. deterrimus sotto Picea abies (poco comune in Lazio). Wikipedia: L. deterrimus con Picea (anche con Arctostaphylos; s26); L. sanguifluus con pino su suoli calcarei, termofilo (s27). Nota tassonomica: la sezione Deliciosi in Europa comprende piu specie (mushroomexpert avverte di bassa conspecificita intercontinentale); i limiti tra L. deliciosus/deterrimus/semisanguifluus non sono stati verificati su revisione molecolare europea. In Sicilia: L. deliciosus (tutte le province), L. semisanguifluus (AG,CT,ME,PA,TP), L. sanguifluus (AG,PA,TP) nella checklist (s2); L. deterrimus NON compare.",
+   "quota_m": {
+    "min": 0,
+    "max": 1700,
+    "fonte": "Cs5",
+    "nota": "s5: dal livello del mare; in Piemonte/Rhone-Alpes fino a 1600-1700 m nei boschi di conifere; in Liguria nelle pinete litoranee e oltre 1000 m in zone riparate esposte a sud. Non verificato per la Sicilia. Il valore 0 e 'livello del mare' dalla fonte."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia/Liguria-Piemonte (s5); Europa meridionale (s27)",
+    "mesi": [
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": [
+     10,
+     11
+    ],
+    "fonte": "Cs5",
+    "nota": "s5: dalla primavera all'inizio dell'inverno, tipicamente tardo autunnale dopo calo termico. s27 (L. sanguifluus): settembre-novembre, fino a dicembre nel Sud Europa piu meridionale. s25: nell'emisfero nord agosto-inizio ottobre. Picco siciliano non documentato: [INFERENZA] ottobre-novembre."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Cs5",
+    "nota": "s5: serve un 'netto shock termico' con abbassamento delle temperature sotto una certa soglia (non indicata). s18 (Catalogna, pini mediterranei): temperature massime/minime medie predittori migliori delle medie; alte temperature limitano l'inizio stagione (set-ott), basse la fine (nov-dic). Nessun valore numerico."
+   },
+   "umidita_pioggia": {
+    "nota": "s15 (Spagna, P. pinaster): rese del gruppo deliciosus dipendono da intensita di diradamento e precipitazione di agosto-settembre (nessun valore numerico nell'abstract letto). s18: ritardo di circa un mese tra pioggia e resa. s17: precipitazione di fine estate-inizio autunno e la variabile piu influente nei picchi di produzione (Spagna). s16: legame con precipitazioni estive.",
+    "fonte": "Cs15"
+   },
+   "suolo": {
+    "ph": "preferibilmente acido; cresce anche su suoli neutri o calcarei dove prosperano pino d'Aleppo o pino nero (s5); L. sanguifluus su suoli calcarei (s27). L. deterrimus: favorisce suoli calcarei ma tollera acidi e alcalini (s26). Nessun valore numerico.",
+    "tipo": "nessuna preferenza di tessitura (s5)",
+    "fonte": "Cs5"
+   },
+   "esposizione": "in Liguria oltre 1000 m in zone protette dai venti ed esposte a sud (s5)",
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Il gruppo include specie simili; Wikipedia (s25) cita sosia come L. olympianus (latice bianco, sapore sgradevole) e altri Lactarius a latice colorato. IPLA (s5) segnala esemplari parassitati da deuteromiceti con 'disturbi gastrointestinali' noti e sconsiglia l'uso di esemplari deformati/parassitati. Possibile accumulo di metalli lungo le strade (s27). Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "L. deterrimus non risulta nella checklist siciliana (s2) e il suo ospite tipico (Picea) non e documentato come nativo in Sicilia: probabilmente assente o confondibile con L. deliciosus/semisanguifluus",
+    "Nessuna soglia numerica di temperatura o pioggia",
+    "Quota e mesi per la Sicilia non documentati",
+    "Ospiti siciliani (Pinus halepensis/pinea/nigra, rimboschimenti) non verificati su fonti siciliane lette",
+    "Martinez de Aragon 2011 e Bonet 2010 non letti in modo sostanziale (solo bibliografia/abstract)",
+    "Revisione tassonomica europea della sez. Deliciosi (Nuytinck/Verbeken) non letta"
+   ],
+   "inferenze": [
+    "Le pinete (in gran parte di rimboschimento) di Monti di Palermo, Madonie, Nebrodi, Ficuzza sono ambienti plausibili in presenza di Pinus, ma nessuna fonte letta lo documenta per quelle aree.",
+    "L. semisanguifluus/sanguifluus, 'termofili', sono le specie del gruppo piu attese in Sicilia (checklist s2 le include)."
+   ]
+  },
+  {
+   "sp": "Cantharellus cibarius s.l.",
+   "nome_it": "Gallinaccio / finferlo",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus (rovere)",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "forte",
+     "fonte": "Cs4"
+    },
+    {
+     "taxon": "Picea abies / Abies alba / Pinus sylvestris",
+     "forza": "forte",
+     "fonte": "Cs4"
+    }
+   ],
+   "habitat_note": "s4 (Piemonte): boschi di latifoglie e conifere fino a 2000 m (peccete, abetine, pinete di pino silvestre, faggete, castagneti, querceti di rovere); ubiquitario nella fascia pedemontana e montana, piuttosto raro in quella collinare; lettiera e humus. s28: Europa dalla Scandinavia al Mediterraneo. Il complesso e multi-specie in Europa (s13: C. cibarius, C. pallens, C. amethysteus, C. ilicis ecc.): i dati sono per C. cibarius s.l. e potrebbero riguardare altre specie. Nella checklist siciliana compare solo 'C. cibarius var. cibarius' (tutte le province), mentre C. pallens (CT,ME,PA) e C. amethysteus (CT,ME,PA) sono elencati a parte (s2).",
+   "quota_m": {
+    "min": null,
+    "max": 2000,
+    "fonte": "Cs4",
+    "nota": "Fino a 2000 m (Piemonte). Il limite inferiore in pianura/basse quote da maggio a novembre (s4), non quantificato."
+   },
+   "mesi_fruttificazione": {
+    "area": "Piemonte (s4); Europa (s28)",
+    "mesi": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Cs4",
+    "nota": "s4: estate-autunno, dalla primavera all'autunno dopo abbondanti piogge; pianura/basse quote da maggio a novembre. s28: giugno-dicembre. Picco non documentato per Sicilia."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Cs4",
+    "nota": "s4: 'temperature relativamente elevate e piovosita intensa'; nessun valore numerico."
+   },
+   "umidita_pioggia": {
+    "nota": "s4: compare dopo abbondanti piogge con temperature relativamente elevate; eccessi di zolfo e azoto nel suolo sfavorevoli (secondo sintesi del documento IPLA letta). Nessuna soglia in mm.",
+    "fonte": "Cs4"
+   },
+   "suolo": {
+    "ph": "substrati a reazione acida (qualitativo, s4); nessun valore numerico",
+    "tipo": "lettiera e humus (s4)",
+    "fonte": "Cs4"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Sosia tossici: Omphalotus olearius (illudina S; crampi, vomito, diarrea severi), che nel Sud Europa cresce su radici di olivo e ceppi di latifoglie, luglio-ottobre, con lamelle vere e non pliche ottuse (s31); Hygrophoropsis aurantiaca (falso gallinaccio) e, in Nord America, O. illudens (s28). Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Nessun dato siciliano su quota, mesi o ospiti",
+    "Nessuna soglia numerica di temperatura/pioggia",
+    "Identita del taxon (complesso C. cibarius s.l.) non risolta per i reperti siciliani",
+    "Olariaga 2017 letto solo come record/abstract",
+    "Ospiti mediterranei (Quercus ilex/suber/cerris) non verificati"
+   ],
+   "inferenze": [
+    "Per Madonie/Nebrodi i querceti caducifogli e i castagneti sono gli ambienti piu coerenti con s4, ma non e un dato siciliano."
+   ]
+  },
+  {
+   "sp": "Cantharellus ilicis",
+   "nome_it": "Finferlo del leccio",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus ilex (scritto 'Quercus ilicis' nella fonte)",
+     "forza": "forte",
+     "fonte": "Cs12"
+    },
+    {
+     "taxon": "Quercus rotundifolia",
+     "forza": "forte",
+     "fonte": "Cs12"
+    },
+    {
+     "taxon": "Querce marcescenti / Pinus halepensis",
+     "forza": "possibile",
+     "fonte": "Cs12"
+    }
+   ],
+   "habitat_note": "Descritta come nuova specie del bacino mediterraneo raccolta in boschi di querce sempreverdi (s12); documentata in Spagna (Baleari, Cordova, Navarra, Saragozza) secondo la sintesi letta; suolo calcareo; riconosciuta nella revisione europea multigenica (s13). Nessuna fonte letta documenta la specie per Sicilia o per l'Italia.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Cs12",
+    "nota": "Quota non estratta dalle fonti lette."
+   },
+   "mesi_fruttificazione": {
+    "area": "Spagna (s12)",
+    "mesi": [
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Cs12",
+    "nota": "Raccolte da settembre a novembre secondo la sintesi dell'articolo originale; picco non documentato."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessuna soglia numerica documentata nelle fonti lette."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo trovato.",
+    "fonte": null
+   },
+   "suolo": {
+    "ph": "suolo calcareo (qualitativo, s12); nessun valore numerico",
+    "tipo": "suolo calcareo in boschi mediterranei di querce sempreverdi",
+    "fonte": "Cs12"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "non documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Stesso gruppo di C. cibarius: sosia tossico Omphalotus olearius nel Mediterraneo, spesso su olivo e ceppi di latifoglie (s31); Hygrophoropsis aurantiaca (s28). Questo profilo e per la sola specie e non afferma nulla sulla sua commestibilita. Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Assente dalla checklist siciliana 2022 (s2): nessun record siciliano trovato",
+    "Quota, temperatura e pioggia non documentate",
+    "Dati da una sola descrizione originale (letta come sintesi); articolo non verificato riga per riga",
+    "Revisione s13 letta solo come abstract: nessun dato ecologico estratto"
+   ],
+   "inferenze": [
+    "Se presente in Sicilia, sarebbe atteso nelle leccete delle Madonie/Nebrodi/Monti di Palermo (Q. ilex): e solo un'ipotesi ecologica, non una segnalazione."
+   ]
+  },
+  {
+   "sp": "Craterellus cornucopioides",
+   "nome_it": "Trombetta dei morti",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "forte",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Quercus petraea (rovere)",
+     "forza": "forte",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Quercus suber",
+     "forza": "possibile",
+     "fonte": "Cs19"
+    }
+   ],
+   "habitat_note": "s5 (Piemonte): comunissimo nelle faggete e boschi di latifoglie, raro sotto conifere; terreno umido, ricco di muschio e sostanza organica, vicino a ceppaie marcescenti e corsi d'acqua; la fonte lo considera 'probabilmente simbionte' ma non esclude il saprotrofismo (ruolo incerto). s29: sotto faggio, quercia o altre latifoglie in muschio su suolo calcareo pesante. s19 (Sardegna): micorrizico associato a sughera. Checklist siciliana: CT, ME, PA, TP, categoria Em (s2).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": null,
+    "nota": "Nessun valore di quota trovato nelle fonti lette."
+   },
+   "mesi_fruttificazione": {
+    "area": "Piemonte (s5); Europa (s29)",
+    "mesi": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Cs5",
+    "nota": "s5: tarda estate e tutto l'autunno. s29: Europa giugno-novembre. Non documentato per la Sicilia."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Cs5",
+    "nota": "s5: temperature atmosferiche fluttuanti e per lo piu basse; nessun valore numerico."
+   },
+   "umidita_pioggia": {
+    "nota": "s5: fruttifica con precipitazioni regolari; esige clima fresco e umido prolungato, da cui la forte variabilita interannuale (anche piu anni senza fruttificazione). Nessuna soglia.",
+    "fonte": "Cs5"
+   },
+   "suolo": {
+    "ph": "da acido a moderatamente basico (qualitativo, s5)",
+    "tipo": "terreni nettamente argillosi, umidi (s5); suolo calcareo pesante (s29)",
+    "fonte": "Cs5"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Nelle fonti lette non sono indicati sosia tossici per l'Europa mediterranea (s29 cita Polyozellus multiplex e Craterellus sinuosus, specie nordamericane). L'assenza di segnalazioni non equivale a assenza di sosia. Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Quota non documentata",
+    "Nessun dato quantitativo di temperatura/pioggia",
+    "Ruolo ecologico incerto (simbionte probabile)",
+    "Dati da Piemonte e fonti generali; nessun dato siciliano su ospiti e mesi",
+    "Acta Mycologica 2018 (checklist Mediterraneo) trovato in ricerca ma non utile al taxon"
+   ],
+   "inferenze": [
+    "In Sicilia la specie e attesa nelle faggete umide di Madonie/Nebrodi (s2 la dà per CT, ME, PA, TP): ipotesi basata su s5."
+   ]
+  },
+  {
+   "sp": "Hydnum repandum s.l.",
+   "nome_it": "Steccherino dorato",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus ilex (lecceta)",
+     "forza": "possibile",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Quercus (rovere, roverella)",
+     "forza": "possibile",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Castanea sativa",
+     "forza": "forte",
+     "fonte": "Cs20"
+    },
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "possibile",
+     "fonte": "Cs5"
+    },
+    {
+     "taxon": "Pinus (pinete)",
+     "forza": "possibile",
+     "fonte": "Cs19"
+    },
+    {
+     "taxon": "Abies / Picea",
+     "forza": "possibile",
+     "fonte": "Cs5"
+    }
+   ],
+   "habitat_note": "s5 (Piemonte): fungo ectomicorrizico generalista di latifoglie e conifere, tra gli ambienti elencati lecceta, ostrieto, castagneti, querceti, faggete, abetine, peccete, pinete. s14: Hydnum e un genere con molte specie criptiche in Europa (11 specie filogenetiche, tra cui H. repandum, H. rufescens, H. magnorufescens, H. ellipsosporum, H. vesterholtii); le segnalazioni 'H. repandum' possono includere altre specie. s20 (Lazio, castagneto a 612 m): H. ibericum e H. ovoideisporum, ottobre-dicembre. s19: H. repandum associato a pinete in Sardegna. Nota: la checklist siciliana (s2) classifica H. repandum come saprotrofo terricolo (St), in contrasto con le fonti ectomicorriziche (s5, s14); la specie e elencata per PA e TP.",
+   "quota_m": {
+    "min": 100,
+    "max": 1800,
+    "fonte": "Cs5",
+    "nota": "'dai 100 fino oltre i 1.800 m' (Piemonte); non verificato per la Sicilia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Piemonte (s5); Lazio (s20)",
+    "mesi": [
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     1
+    ],
+    "picco": null,
+    "fonte": "Cs5",
+    "nota": "s5: da inizio estate a autunno inoltrato; in ambiente mediterraneo e zone temperate senza gelo e neve anche dicembre-gennaio. s20: ottobre-dicembre in castagneto laziale. Picco non documentato."
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Cs5",
+    "nota": "Nessuna soglia numerica; assenza di gelo e neve consente fruttificazione invernale in ambiente mediterraneo (s5)."
+   },
+   "umidita_pioggia": {
+    "nota": "s5: fruttifica spesso anche in condizioni di scarsa umidita, quando i boleti stentano. Nessuna soglia numerica.",
+    "fonte": "Cs5"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "nessuna esigenza edafica particolare (s5)",
+    "fonte": "Cs5"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Cs2"
+   },
+   "tossicita_nota": "Un aggregatore (s30) afferma che la specie non ha sosia velenosi: non verificato su fonti scientifiche; il genere ha specie criptiche e simili (H. albidum/pallidum, H. rufescens, H. umbilicatum; s30). Non va presa come garanzia. Identificazione sempre da verificare presso un micologo/ispettorato micologico ASL prima di qualsiasi uso; questo profilo NON afferma la commestibilita di alcuna specie.",
+   "affidabilita": "bassa",
+   "lacune": [
+    "Complesso di specie: dati non attribuibili con certezza a H. repandum s.s.",
+    "Nessun dato siciliano su ospiti, quota, mesi",
+    "pH e temperatura non documentati",
+    "Ruolo ecologico discordante tra checklist siciliana (St) e fonti ectomicorriziche",
+    "Segnalazioni siciliane solo PA e TP nella checklist"
+   ],
+   "inferenze": [
+    "Per via della tolleranza alla siccita (s5) potrebbe fruttificare in finestre piu ampie di altri funghi in Sicilia; ipotesi, non dato."
+   ]
+  },
+  {
+   "sp": "Pleurotus eryngii var. eryngii",
+   "nome_it": "Cardoncello",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Eryngium campestre",
+     "forza": "forte",
+     "fonte": "Ds1"
+    },
+    {
+     "taxon": "Eryngium maritimum",
+     "forza": "forte",
+     "fonte": "Ds1"
+    }
+   ],
+   "habitat_note": "Pascoli e rive sabbiose (s1). Cresce su radici o residui secchi di Eryngium, descritto come parassita e saprofita (s7); checklist siciliana: saprotrofo terricolo (s8). Il complesso eryngii comprende varieta legate a diverse Apiaceae (ferulae, thapsiae, elaeoselini) trattate in profili separati.",
+   "quota_m": {
+    "min": 0,
+    "max": 1500,
+    "fonte": "Ds1",
+    "nota": "Intervallo per l'Italia, non specifico della Sicilia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (s1: autunno-tardo inverno; s7: ottobre-dicembre, con prolungamento a gennaio-marzo se il clima e umido e senza venti freddi da nord). Osservazioni GBIF Sicilia per l'intero complesso (n=10 record): mesi 1,3,4,5,10,11,12 (gpe).",
+    "mesi": [
+     10,
+     11,
+     12,
+     1,
+     2,
+     3
+    ],
+    "picco": null,
+    "fonte": "Ds7"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds7",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Qualitativo: la stagione si prolunga a gennaio-marzo se il clima e sufficientemente umido e poco condizionato dai venti da nord (s7). Nessun valore numerico.",
+    "fonte": "Ds7"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli calcarei (s1); terreno 'per lo piu arido e compatto' per il complesso (s6).",
+    "fonte": "Ds1"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Raccogliere solo con identificazione di un micologo/ispettorato micologico. La scheda dell'ASL 5 Oristano (s23) mette a confronto P. eryngii con Omphalotus olearius (velenoso) e Cantharellus cibarius: rischio di confusione con specie tossiche (accostamento nella scheda; il tipo di somiglianza non e dettagliato).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Mesi [10..3]: 'ottobre-dicembre normalmente, anche gennaio-marzo' (s7) tradotti in elenco di mesi; s1 dice 'autumn to late winter'.",
+    "Picco non indicato: lasciato null."
+   ],
+   "lacune": [
+    "Temperatura di fruttificazione non documentata",
+    "pH non documentato",
+    "Esposizione non documentata",
+    "Pioggia/umidita solo qualitativa (s7)",
+    "Quota solo come intervallo italiano generale (s1), nessun dato siciliano specifico",
+    "Dati fenologici principali da fonte non peer-reviewed (s7) e da s1 in forma generica"
+   ]
+  },
+  {
+   "sp": "Pleurotus eryngii var. ferulae",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Ferula communis",
+     "forza": "forte",
+     "fonte": "Ds1"
+    }
+   ],
+   "habitat_note": "Garighe, pascoli e prati (s1); campi e incolti semiaridi (s6). Si sviluppa su radici morte della ferula. Scheda OROS Sicilia (s5) cita per questa varieta anche Eryngium, Thapsia garganica ed Elaeoselinum asclepium, ma s1 attribuisce Thapsia ed Elaeoselinum a varieta distinte (thapsiae, elaeoselini).",
+   "quota_m": {
+    "min": 0,
+    "max": 1200,
+    "fonte": "Ds1",
+    "nota": "Intervallo per l'Italia."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (s1: 'quasi tutto l'anno'; s6: 'per lo piu in autunno, sporadicamente anche a primavera'). Picco autunnale = inferenza da s6.",
+    "mesi": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": [
+     10,
+     11
+    ],
+    "fonte": "Ds1"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds1",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli calcarei, silicei e vulcanici (s1). Terreno per lo piu arido e compatto (s6).",
+    "fonte": "Ds1"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Identificazione solo da parte di esperti; rischio di confusione con specie tossiche lignicole/cespitose (es. Omphalotus olearius, s23 accosta le specie in una scheda di sicurezza).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Picco [10,11] dedotto da 'per lo piu in autunno' (s6).",
+    "'Quasi tutto l'anno' (s1) reso con 12 mesi."
+   ],
+   "lacune": [
+    "Temperatura non documentata",
+    "pH non documentato",
+    "Esposizione non documentata",
+    "Pioggia/umidita non documentata",
+    "Quota solo come intervallo italiano generale",
+    "Fonti discordanti sulla gamma di ospiti della varieta (s1 vs s5)"
+   ]
+  },
+  {
+   "sp": "Pleurotus eryngii var. thapsiae",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Thapsia garganica",
+     "forza": "forte",
+     "fonte": "Ds1"
+    }
+   ],
+   "habitat_note": "Varieta nota solo per la Sicilia secondo s1. Descritta in origine da localita montane; nuovi ritrovamenti in due aree protette costiere tirreniche con condizioni ambientali diverse (s4, solo abstract letto). Citata per la provincia di Trapani (s42).",
+   "quota_m": {
+    "min": 0,
+    "max": 1500,
+    "fonte": "Ds1",
+    "nota": "Intervallo di s1; s4 documenta anche popolazioni costiere."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia/Sicilia (s1: primavera e autunno, marzo-maggio e ottobre-novembre)",
+    "mesi": [
+     3,
+     4,
+     5,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Ds1"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds1",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli calcarei e silicei (s1).",
+    "fonte": "Ds1"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita (s4 la definisce edibile, ma non e una valutazione di sicurezza del sito). Rischio di confusione con specie tossiche: identificazione solo esperta.",
+   "affidabilita": "media",
+   "inferenze": [],
+   "lacune": [
+    "Temperatura, pH, esposizione, pioggia non documentati",
+    "Testo completo di s4 (ecologia dettagliata, localita) non accessibile: solo abstract",
+    "Picco non documentato"
+   ]
+  },
+  {
+   "sp": "Pleurotus eryngii var. elaeoselini",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Elaeoselinum asclepium subsp. asclepium",
+     "forza": "forte",
+     "fonte": "Ds1"
+    },
+    {
+     "taxon": "Laserpitium latifolium",
+     "forza": "possibile",
+     "fonte": "Ds1"
+    },
+    {
+     "taxon": "Laserpitium siler",
+     "forza": "possibile",
+     "fonte": "Ds1"
+    }
+   ],
+   "habitat_note": "Pascoli e prati (s1); campi e incolti anche in quota (s6). In Sicilia l'ospite e Elaeoselinum asclepium (s6, s42).",
+   "quota_m": {
+    "min": 0,
+    "max": 1200,
+    "fonte": "Ds1",
+    "nota": "s1 riporta nello stesso testo sia 0-1200 m sia 0-2100 m: dato interno discordante, si usa 1200 m. s42 indica per Laserpitium latifolium la var. laserpitii come alpina: i Laserpitium non risultano ospiti siciliani nelle fonti lette."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (s1: primavera e autunno, marzo-maggio e ottobre-novembre; s6: per lo piu aprile-maggio e autunno)",
+    "mesi": [
+     3,
+     4,
+     5,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Ds1"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds1",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds1"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli calcarei e silicei (s1).",
+    "fonte": "Ds1"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Morfologicamente quasi identico a P. nebrodensis sul campo ma geneticamente distinto (s2): non basta l'aspetto per attribuire il taxon; identificazione solo esperta.",
+   "affidabilita": "media",
+   "inferenze": [],
+   "lacune": [
+    "Temperatura, pH, esposizione, pioggia non documentati",
+    "Dato di quota discordante in s1",
+    "Picco non documentato"
+   ]
+  },
+  {
+   "sp": "Pleurotus nebrodensis",
+   "nome_it": "Fungo basilisco (funcia di basiliscu)",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Prangos ferulacea (= Cachrys ferulacea)",
+     "forza": "forte",
+     "fonte": "Ds2"
+    }
+   ],
+   "habitat_note": "Cresce su radici morte di Prangos ferulacea in comunita xerofile e basifile su substrati dolomitici e creste rocciose (alleanza Cerastio-Astragalion nebrodensis) (s2). GBIF: 3 record georiferiti in Sicilia (gpn). Meno di 10 localita nelle Madonie, estensione di presenza <100 km2, <150 individui maturi, circa 70 basidiomi/anno (s2). Endemita siciliano in pericolo (s1, s2); raccolta fortemente sconsigliata (s43). L'associazione 'obbligata' con Prangos non e dichiarata esplicitamente: 'forte' e una classificazione prudente.",
+   "quota_m": {
+    "min": 1200,
+    "max": 2000,
+    "fonte": "Ds1",
+    "nota": "Osservato in s2: Vallone Faguare 1263 m, Monte dei Cervi 1794 m. s6 riporta 1000-2000+ m e s43 'sopra 1400 m' (fonti non peer-reviewed)."
+   },
+   "mesi_fruttificazione": {
+    "area": "Madonie, Sicilia (s1: meta aprile-primi dieci giorni di giugno; s2: fine aprile-inizio giugno; s3: aprile-giugno)",
+    "mesi": [
+     4,
+     5,
+     6
+    ],
+    "picco": null,
+    "fonte": "Ds2"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds2",
+    "nota": "Temperatura di fruttificazione NON documentata. Solo contesto bioclimatico dei siti (s2), non soglia: termotipo supramediterraneo 8-13 C e mesomediterraneo 13-16 C di temperatura media annua."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessuna soglia di pioggia per la fruttificazione. Contesto bioclimatico (s2): ombrotipo subumido 600-1000 mm e umido >1000 mm di pioggia media annua. s3 cita erosione del suolo, modifica dell'habitat e irregolarita delle piogge tra i fattori di declino.",
+    "fonte": "Ds2"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Substrati dolomitici; comunita xerofile e basifile su rocce consolidate (s2); suoli calcarei (s1).",
+    "fonte": "Ds2"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds2"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Specie rara e minacciata: la raccolta e la minaccia principale (s2) e viene sconsigliata (s43). Sul campo e quasi indistinguibile da P. eryngii var. elaeoselini (s2).",
+   "affidabilita": "alta",
+   "inferenze": [
+    "'forte' per Prangos: l'unico ospite documentato, ma non descritto come esclusivo.",
+    "Il sinonimo Cachrys ferulacea e usato in s6/s43; s2 usa Prangos ferulacea."
+   ],
+   "lacune": [
+    "Temperatura di fruttificazione non documentata",
+    "pH numerico non documentato",
+    "Esposizione non documentata",
+    "Pioggia solo come ombrotipo annuale",
+    "Picco non documentato"
+   ]
+  },
+  {
+   "sp": "Amanita ovoidea",
+   "nome_it": null,
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus spp. (sempreverdi e caducifoglie)",
+     "forza": "forte",
+     "fonte": "Ds13"
+    },
+    {
+     "taxon": "Pinus spp.",
+     "forza": "possibile",
+     "fonte": "Ds12"
+    },
+    {
+     "taxon": "Carpinus",
+     "forza": "possibile",
+     "fonte": "Ds14"
+    },
+    {
+     "taxon": "Olea europaea",
+     "forza": "possibile",
+     "fonte": "Ds13"
+    }
+   ],
+   "habitat_note": "Ectomicorrizico (s13, s8). Raccolte in boschi misti, pinete, querceti e parchi urbani in Italia centrale (s12). s13 lo dice sotto querce su suoli alcalini e cita anche l'olivo (in assenza di verifica, e probabile compresenza di querce). Un singolo post (s14) riporta 'sotto querce e carpini'. Fonti sull'associazione ospite non peer-reviewed.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Ds12",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia centrale (s12: settembre-novembre, autunni 2010 e 2012); sud Europa (s13: fino a dicembre o anche nel nuovo anno). Sicilia: record GBIF novembre (n=2, gao); segnalazione forum novembre 2016 (s14).",
+    "mesi": [
+     9,
+     10,
+     11,
+     12
+    ],
+    "picco": null,
+    "fonte": "Ds12"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds12",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds12"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli alcalini (s13, non peer-reviewed).",
+    "fonte": "Ds13"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "SPECIE DA NON RACCOGLIERE a scopo alimentare: non se ne afferma la commestibilita. Caso clinico a Palermo: insufficienza renale acuta (sindrome nefrotossica da Amanita) con 10 giorni di emodialisi (s11). s10 segnala che le proprieta alimentari sono 'rather questionable' con possibili disturbi gastrointestinali. s13 avverte la somiglianza con Amanita mortali (es. A. virosa/destroying angel). s12 documenta bioaccumulo di metalli pesanti in un esemplare. s14 la classifica tra i velenosi.",
+   "affidabilita": "media",
+   "inferenze": [
+    "mesi [9..12]: unione di s12 (set-nov) e s13 (fino a dicembre in sud Europa)."
+   ],
+   "lacune": [
+    "Quota non documentata",
+    "Temperatura, pH, esposizione, pioggia non documentati",
+    "Ospiti documentati solo in fonti non peer-reviewed",
+    "Nessuno studio fenologico siciliano specifico"
+   ]
+  },
+  {
+   "sp": "Lepista nuda",
+   "nome_it": "Agarico nudo",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Lettiera di latifoglie e conifere (non specie-specifica)",
+     "forza": "possibile",
+     "fonte": "Ds29"
+    }
+   ],
+   "habitat_note": "Saprotrofo su lettiera (s29, s8: Sl). Boschi di latifoglie e conifere, su terreni ricchi di humus (s31). Frequente e diffuso (s30).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Ds31",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa/Spagna (s30: tardo autunno fino all'inverno inoltrato); Regno Unito set-dic (s29); Monti Nebrodi/Peloritani (s31: primavera-autunno). Sicilia: 5 record GBIF a novembre (gln, tutti MATERIAL_SAMPLE, probabilmente una sola campagna).",
+    "mesi": [
+     10,
+     11,
+     12
+    ],
+    "picco": null,
+    "fonte": "Ds30"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds30",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds30"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Terreni ricchi di humus (s31).",
+    "fonte": "Ds31"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Sosia tossici: Cortinarius violacei (es. C. camphoratus, C. purpurascens), distinguibili dal colore della sporata (bruno-violacea nei Cortinarius, bianco-lilla in L. nuda) e dai residui di cortina (s29, s30). In Sardegna meridionale 3 casi di intossicazione attribuiti a L. nuda con crampi, nausea e vomito (s25).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Mesi [10,11,12]: sintesi di s30 (tardo autunno-inverno) e record GBIF di novembre; s31 indica un periodo piu lungo (primavera-autunno).",
+    "Checklist siciliana (s8) lo riporta solo per AG, PA, TP: probabile sottocampionamento nelle altre province."
+   ],
+   "lacune": [
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Dati fenologici da fonti non peer-reviewed",
+    "Nessun dato in Sicilia su stagionalita da studio scientifico"
+   ]
+  },
+  {
+   "sp": "Agaricus campestris",
+   "nome_it": "Prataiolo",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Prati e pascoli (nessun ospite arboreo)",
+     "forza": "possibile",
+     "fonte": "Ds32"
+    }
+   ],
+   "habitat_note": "Prati, pascoli, aree erbose, raramente in bosco (s32); terreni grassi e concimati, orti, parchi, giardini (s31). Madonie: Piano Sempria, radure di boschi di Quercus ilex, 1250 m, 4 giugno 1990 (s9, come 'campester').",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Ds9",
+    "nota": "Nessun intervallo documentato; unico record puntuale: 1250 m (Madonie, Piano Sempria, s9)."
+   },
+   "mesi_fruttificazione": {
+    "area": "Nebrodi/Peloritani (s31: dalla primavera all'autunno); dopo piogge da fine estate (s32); Madonie: giugno (s9). Nessun record georiferito GBIF in Sicilia.",
+    "mesi": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Ds31"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds31",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Qualitativo: compare dopo la pioggia da fine estate in poi (s32). Nessun valore numerico.",
+    "fonte": "Ds32"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Terreni erbosi, grassi e concimati (s31).",
+    "fonte": "Ds31"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Sosia pericolosi: Amanita virosa e altre Amanita bianche, mortali; Agaricus xanthodermus, che causa disturbi gastrointestinali (s32). In Sardegna meridionale A. xanthodermus ha causato 15 casi (s25). Il forum AMINT (s33) segnala la confusione con A. xanthodermus e Amanita.",
+   "affidabilita": "media",
+   "inferenze": [
+    "Mesi [3..11]: 'primavera-autunno' (s31) tradotti in marzo-novembre."
+   ],
+   "lacune": [
+    "Quota non documentata (solo un record a 1250 m)",
+    "Temperatura, pH, esposizione non documentati",
+    "Pioggia solo qualitativa",
+    "Nessuna fenologia peer-reviewed per la Sicilia",
+    "GBIF: nessun record georiferito in Sicilia (interrogazione effettuata, 0 risultati)"
+   ]
+  },
+  {
+   "sp": "Macrolepiota mastoidea",
+   "nome_it": null,
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Latifoglie (associazione generica, nessun genere specifico)",
+     "forza": "possibile",
+     "fonte": "Ds35"
+    }
+   ],
+   "habitat_note": "Saprotrofo su lettiera (checklist siciliana: Sl, s8). s35 lo associa genericamente a latifoglie. s34 non specifica il substrato.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Ds34",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa (s34: da agosto a novembre). Sicilia: un record GBIF a ottobre (gmm).",
+    "mesi": [
+     8,
+     9,
+     10,
+     11
+    ],
+    "picco": null,
+    "fonte": "Ds34"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds34",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds34"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": "Ds34"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. Sosia tossici: alcune specie di Chlorophyllum (s34); in Sicilia e presente Macrolepiota venenata, da considerare tossica anche dopo cottura (s8 per la presenza, s36 per la tossicita), e Lepiota piccole tossiche come L. cristata, L. felina, L. clypeolaria (s36).",
+   "affidabilita": "bassa",
+   "inferenze": [],
+   "lacune": [
+    "Quasi tutti i campi ecologici non documentati: quota, temperatura, pH, esposizione, pioggia, substrato preciso",
+    "Fonti disponibili generiche (aggregatori)",
+    "Un solo record GBIF in Sicilia"
+   ]
+  },
+  {
+   "sp": "Amanita phalloides",
+   "nome_it": "Amanita falloide",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus spp.",
+     "forza": "forte",
+     "fonte": "Ds15"
+    },
+    {
+     "taxon": "Quercus suber",
+     "forza": "possibile",
+     "fonte": "Ds15"
+    },
+    {
+     "taxon": "Castanea",
+     "forza": "possibile",
+     "fonte": "Ds15"
+    },
+    {
+     "taxon": "Corylus",
+     "forza": "possibile",
+     "fonte": "Ds15"
+    },
+    {
+     "taxon": "Betula",
+     "forza": "possibile",
+     "fonte": "Ds15"
+    },
+    {
+     "taxon": "Fagus",
+     "forza": "possibile",
+     "fonte": "Ds15"
+    },
+    {
+     "taxon": "Pinus",
+     "forza": "possibile",
+     "fonte": "Ds15"
+    },
+    {
+     "taxon": "Cedrus",
+     "forza": "possibile",
+     "fonte": "Ds15"
+    }
+   ],
+   "habitat_note": "Ectomicorrizico con querce e altre latifoglie, meno spesso con conifere; temperato, mediterraneo e boreale (s15). Esemplari esaminati sotto Quercus suber e Q. canariensis nel sud della Spagna, nov. 2003 (s15). Tipica specie autunnale (s15).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Ds15",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Mediterraneo/Italia (s15: 'molto comune in autunno'; s16: estate e autunno). Sicilia: 3 record GBIF, settembre (1) e ottobre (2) (gap). Calabria: intossicazioni in ottobre 2013 (s18). Aspromonte: 1 record GBIF a dicembre (gapa).",
+    "mesi": [
+     9,
+     10,
+     11
+    ],
+    "picco": [
+     10
+    ],
+    "fonte": "Ds15"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds15",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds15"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": "Ds15"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "SPECIE MORTALE (amatossine). Sintomi dopo 6-12 h, danno epatico dopo 3-6 giorni (s16); sul quotidiano siciliano 12-24 h (s17). Mortalita storica 60-70%, stime attuali 10-30% (s16). Sosia: Amanita caesarea, Agaricus e altri bianchi, Russula, Volvariella (s16); facilmente confusa con 'funghi champignon selvatici' (s17). Nell'area mediterranea sono presenti altre Phalloideae (A. verna, A. vidua) con tossicita simile (s15). In Calabria 2003-2014: 25 intossicazioni da Amanita, 5 decessi e 3 trapianti (s18). Intossicazioni segnalate nei dintorni di Madonie ed Etna (s17).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Picco [10]: dai record GBIF Sicilia (2 di 3 in ottobre) e dal focolaio calabrese di ottobre 2013 (s18); campione molto piccolo.",
+    "Mesi [9,10,11]: sintesi di 'autunno' (s15)."
+   ],
+   "lacune": [
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Dati siciliani di fenologia e ospiti da studio quantitativo assenti",
+    "Solo 3 record GBIF in Sicilia"
+   ]
+  },
+  {
+   "sp": "Omphalotus olearius",
+   "nome_it": "Fungo dell'olivo",
+   "ruolo": "lignicolo saprotrofo",
+   "ospiti": [
+    {
+     "taxon": "Olea europaea",
+     "forza": "forte",
+     "fonte": "Ds22"
+    },
+    {
+     "taxon": "Quercus spp. (inclusa Q. ilex)",
+     "forza": "forte",
+     "fonte": "Ds21"
+    },
+    {
+     "taxon": "Pinus halepensis",
+     "forza": "possibile",
+     "fonte": "Ds19"
+    },
+    {
+     "taxon": "Cistus spp.",
+     "forza": "possibile",
+     "fonte": "Ds19"
+    },
+    {
+     "taxon": "Fagus",
+     "forza": "possibile",
+     "fonte": "Ds44"
+    }
+   ],
+   "habitat_note": "Cespitoso su ceppaie e radici sepolte di latifoglie, soprattutto olivo e querce (s21, s22, s23); boschi termofili (s24). Specie mediterranea (s19, s21). Raccolte in Croazia, Francia, Italia, Spagna su Pinus halepensis, sotto P. halepensis e con Cistus e querce (s19).",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Ds19",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Mediterraneo (s22: settembre-gennaio nel sud Europa; s19: prevalgono ottobre-novembre; s20: luglio-ottobre). Sicilia: 11 record GBIF su mesi 3,5,9,10(4),11(3) (goo). Aspromonte: 1 record GBIF a ottobre (gooa).",
+    "mesi": [
+     9,
+     10,
+     11,
+     12,
+     1
+    ],
+    "picco": [
+     10,
+     11
+    ],
+    "fonte": "Ds22"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds22",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds22"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": null,
+    "fonte": "Ds22"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "VELENOSO. Tossina illudina S (s20). Intossicazioni gastrointestinali con crampi, vomito, diarrea (s20, s24). Nel sud della Sardegna e stata la specie tossica piu frequente (18 casi, circa il 22% dei casi identificati; ritardo medio 3,5 h; ricovero medio 2 giorni) (s25). Spesso confuso con il galletto (Cantharellus cibarius): lamelle vere e non pliche (s20, s24). Colonizza ceppaie di olivo e leccio (s23). Presente in tutte le province siciliane (s8) e segnalato su ceppi alla base di olivo e querce in Sicilia (s17). Nota: s22 attribuisce la tossicita alla muscarina, in contrasto con s20 (illudine): dato non usato.",
+   "affidabilita": "media",
+   "inferenze": [
+    "Picco [10,11]: da s19 (ottobre-novembre prevalenti) e dai record GBIF Sicilia (7 di 11 in ottobre-novembre).",
+    "Forza 'forte' per Quercus: confermato da s21, s23."
+   ],
+   "lacune": [
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Nessuno studio fenologico siciliano specifico",
+    "Ospiti specifici per la Sicilia non dettagliati da studi peer-reviewed"
+   ]
+  },
+  {
+   "sp": "Entoloma sinuatum",
+   "nome_it": "Entoloma livido",
+   "ruolo": "micorrizico",
+   "ospiti": [
+    {
+     "taxon": "Quercus spp.",
+     "forza": "possibile",
+     "fonte": "Ds26"
+    },
+    {
+     "taxon": "Fagus sylvatica",
+     "forza": "possibile",
+     "fonte": "Ds26"
+    },
+    {
+     "taxon": "Betula",
+     "forza": "possibile",
+     "fonte": "Ds26"
+    },
+    {
+     "taxon": "Salix",
+     "forza": "possibile",
+     "fonte": "Ds26"
+    }
+   ],
+   "habitat_note": "Boschi di latifoglie sotto querce, faggio e talvolta betulla, su suoli argillosi o calcarei; si estende a parchi, campi e zone erbose; talvolta in anelli (s26). Forma micorrize con Salix (s26, s27). La checklist siciliana lo classifica come saprotrofo su lettiera (Sl, s8), mentre s28 lo indica come ectomicorrizico (Ec) e s27 come 'probabilmente per lo piu saprobio': ruolo trofico discordante.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Ds26",
+    "nota": "Non documentata."
+   },
+   "mesi_fruttificazione": {
+    "area": "Europa (s26: autunno principale); Mediterraneo (s27: fino all'anno nuovo). Sicilia: 2 record GBIF, ottobre e novembre (ges).",
+    "mesi": [
+     9,
+     10,
+     11,
+     12,
+     1
+    ],
+    "picco": null,
+    "fonte": "Ds27"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds26",
+    "nota": "Nessuna temperatura di fruttificazione specifica per questa specie trovata in fonti lette. Contesto generale (non specie-specifico): in Europa la temperatura guida la fruttificazione delle specie autunnali (Andrew et al. 2018, s40; Boddy et al. 2014, s39), senza soglie numeriche per questa specie."
+   },
+   "umidita_pioggia": {
+    "nota": "Nessun dato quantitativo di pioggia/umidita specifico per questa specie in fonti lette.",
+    "fonte": "Ds26"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suoli argillosi o calcarei (s26).",
+    "fonte": "Ds26"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "VELENOSO. Gastroenterite con diarrea, vomito, cefalea, 30 min-2 h dopo l'ingestione, fino a 48 h; alcaloidi presenti (s26). Responsabile di circa il 10% delle intossicazioni da funghi in Europa (s26); documentato almeno un decesso (s27). Nel sud della Sardegna: 14 casi, ritardo medio 1 h (s25). Sosia: Clitocybe nebularis, Agaricus campestris, Tricholoma (s26).",
+   "affidabilita": "media",
+   "inferenze": [
+    "Ruolo 'micorrizico' scelto sulla base di s28 e s26 contro s8 (Sl)."
+   ],
+   "lacune": [
+    "Ruolo trofico discordante tra le fonti",
+    "Quota, temperatura, pH, esposizione, pioggia non documentati",
+    "Ospiti non documentati per la Sicilia",
+    "Dati ecologici da fonti non peer-reviewed"
+   ]
+  },
+  {
+   "sp": "Morchella esculenta",
+   "nome_it": "Spugnola gialla",
+   "ruolo": "saprotrofo terricolo",
+   "ospiti": [
+    {
+     "taxon": "Ulmus",
+     "forza": "possibile",
+     "fonte": "Ds38"
+    },
+    {
+     "taxon": "Fraxinus",
+     "forza": "possibile",
+     "fonte": "Ds37"
+    },
+    {
+     "taxon": "Populus",
+     "forza": "possibile",
+     "fonte": "Ds37"
+    },
+    {
+     "taxon": "Salix",
+     "forza": "possibile",
+     "fonte": "Ds38"
+    },
+    {
+     "taxon": "Pinus (pinete a livello del mare)",
+     "forza": "possibile",
+     "fonte": "Ds38"
+    }
+   ],
+   "habitat_note": "Terreni morbidi, sabbiosi, umidi vicino a corsi d'acqua; pianura, collina e montagna lungo torrenti; aree bruciate l'anno precedente; pinete a livello del mare (s38). s37: ambienti freschi e umidi con suolo sciolto sabbioso, frassino, olmo, alberi da frutto, pioppo; anche aree bruciate e prati. Per la Sicilia s8 elenca M. esculenta in tutte le province, M. elata (CT, ME, PA), M. deliciosa, M. hortensis, M. costata, M. semilibera; Morchella conica non compare in s8 (GBIF la tratta come sinonimo di M. esculenta). Ruolo trofico incerto: s38 indica simbiosi con olmo per M. esculenta e saprofitismo per M. conica; s8 usa 'saprotrofo terricolo'.",
+   "quota_m": {
+    "min": null,
+    "max": null,
+    "fonte": "Ds38",
+    "nota": "Solo qualitativo: la stagione avanza da pianura a collina e montagna. Nessuna quota numerica."
+   },
+   "mesi_fruttificazione": {
+    "area": "Italia (s37: da meta marzo a inizio giugno; s38: pianura da meta marzo, collina/montagna aprile-maggio). Sicilia: 1 record GBIF a aprile per M. esculenta (gme); 3 record a marzo per M. elata (gml). Messina/Nebrodi: 'tipicamente primaverile' (s31).",
+    "mesi": [
+     3,
+     4,
+     5,
+     6
+    ],
+    "picco": null,
+    "fonte": "Ds37"
+   },
+   "temperatura": {
+    "cosa": null,
+    "min": null,
+    "max": null,
+    "fonte": "Ds37",
+    "nota": "Nessuna temperatura di fruttificazione per ambiente mediterraneo trovata in fonti attendibili (i risultati disponibili riguardano Nord America/Asia e non sono stati usati)."
+   },
+   "umidita_pioggia": {
+    "nota": "Qualitativo: ambienti freschi e umidi (s37). Nessun valore numerico.",
+    "fonte": "Ds37"
+   },
+   "suolo": {
+    "ph": null,
+    "tipo": "Suolo sciolto, sabbioso, umido (s37, s38).",
+    "fonte": "Ds37"
+   },
+   "esposizione": null,
+   "presenza_sicilia": {
+    "stato": "documentata",
+    "fonte": "Ds8"
+   },
+   "tossicita_nota": "Non si afferma la commestibilita. s38 indica che contiene tossine termolabili e che richiede cottura prolungata (almeno una ventina di minuti): consumo crudo o poco cotto pericoloso. Sosia pericolosi: Gyromitra (false spugnole) (s37).",
+   "affidabilita": "bassa",
+   "inferenze": [
+    "Mesi [3..6] derivati da s37 (marzo-giugno).",
+    "Taxon trattato in senso lato: la tassonomia di Morchella e in revisione e M. conica, M. elata, M. deliciosa sono taxa distinti o sinonimi a seconda della fonte."
+   ],
+   "lacune": [
+    "Temperatura/suolo termico non documentata per la Sicilia",
+    "pH non documentato",
+    "Esposizione non documentata",
+    "Quota numerica non documentata",
+    "Nessuno studio peer-reviewed siciliano di fenologia trovato",
+    "Tassonomia incerta nel genere"
+   ]
+  }
+ ],
+ "fonti": {
+  "As1": {
+   "t": "Ferraro V., Venturella G., Cirlincione F., Mirabile G., Gargano M.L., Colasuonno P. - The Checklist of Sicilian Macrofungi: Second Edition. J. Fungi 8(6):566",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9224803/",
+   "tipo": "checklist-atlante",
+   "anno": 2022,
+   "letto": "testo completo (via Europe PMC)"
+  },
+  "As2": {
+   "t": "Segneri G. - Il genere Suillus Micheli (Spazio rubrica). Rivista di Micologia Romana n. 105, pp. 154-159 (AMER, Lazio)",
+   "u": "https://www.ameronlus.it/RMR/2018/boll_105/105_154-159_Segneri.pdf",
+   "tipo": "societa-micologica",
+   "anno": 2018,
+   "letto": "testo completo"
+  },
+  "As3": {
+   "t": "Karavani A. - Effect of climatic and micro-climatic conditions on the provisioning of fungal-based ecosystem services in Mediterranean pine stands (tesi MSc MEDFOR, Univ. Lleida; Pinus pinaster, Catalogna)",
+   "u": "https://medfor.eu/sites/default/files/editor/karavani_et_al_final.pdf",
+   "tipo": "altro",
+   "anno": 2016,
+   "letto": "testo completo"
+  },
+  "As9": {
+   "t": "Comandini O., Paulis M., Rinaldi A.C. - Sardinia: Mycovisions from a Charming Land (CREAM)",
+   "u": "https://iris.unica.it/retrieve/e2f56ed7-9795-3eaf-e053-3a05fe0a5d97/Comandini%20et%20al_CREAM%202018.pdf",
+   "tipo": "peer-reviewed",
+   "anno": 2018,
+   "letto": "testo (estratto tramite WebFetch)"
+  },
+  "As10": {
+   "t": "Daza A., Manjon J.L., Camacho M., Romero de la Osa L., Aguilar A., Santamaria C. - Effect of carbon and nitrogen sources, pH and temperature on in vitro culture of several isolates of Amanita caesarea. Mycorrhiza",
+   "u": "https://doi.org/10.1007/s00572-005-0025-6",
+   "tipo": "peer-reviewed",
+   "anno": 2006,
+   "letto": "solo abstract (via Europe PMC)"
+  },
+  "As11": {
+   "t": "Amanita caesarea - scheda Red List (redlist.info, valutazione LC 2019)",
+   "u": "https://redlist.info/iucn/species_view/208468",
+   "tipo": "altro",
+   "anno": 2019,
+   "letto": "pagina web"
+  },
+  "As16": {
+   "t": "Wikipedia - Lactarius sanguifluus",
+   "u": "https://en.wikipedia.org/wiki/Lactarius_sanguifluus",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As17": {
+   "t": "Wikipedia (it) - Lactarius sanguifluus",
+   "u": "https://it.wikipedia.org/wiki/Lactarius_sanguifluus",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As18": {
+   "t": "Wikipedia - Amanita caesarea",
+   "u": "https://en.wikipedia.org/wiki/Amanita_caesarea",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As19": {
+   "t": "Wikipedia - Suillus bellinii",
+   "u": "https://en.wikipedia.org/wiki/Suillus_bellinii",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As20": {
+   "t": "HandWiki (copia di Wikipedia) - Suillus collinitus",
+   "u": "https://handwiki.org/wiki/Biology:Suillus_collinitus",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As21": {
+   "t": "Wikipedia - Suillus granulatus",
+   "u": "https://en.wikipedia.org/wiki/Suillus_granulatus",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As22": {
+   "t": "Wikipedia - Tricholoma terreum",
+   "u": "https://en.wikipedia.org/wiki/Tricholoma_terreum",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As23": {
+   "t": "Wikipedia - Helvella lacunosa",
+   "u": "https://en.wikipedia.org/wiki/Helvella_lacunosa",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As24": {
+   "t": "Wikipedia - Macrolepiota procera",
+   "u": "https://en.wikipedia.org/wiki/Macrolepiota_procera",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As25": {
+   "t": "Boletales.com - Suillus bellinii (Genera & Species)",
+   "u": "https://boletales.com/genera/suillus/s-bellinii/",
+   "tipo": "altro",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As26": {
+   "t": "First Nature - Amanita caesarea",
+   "u": "https://first-nature.com/fungi/amanita-caesarea.php",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As27": {
+   "t": "First Nature - Tricholoma terreum",
+   "u": "https://www.first-nature.com/fungi/tricholoma-terreum.php",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As28": {
+   "t": "First Nature - Helvella lacunosa",
+   "u": "https://first-nature.com/fungi/helvella-lacunosa.php",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As29": {
+   "t": "Svampguiden - Lactarius sanguifluus",
+   "u": "https://svampguiden.com/en/art/4767-vinriska",
+   "tipo": "aggregatore",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As30": {
+   "t": "Micologia Messinese (sito di gruppo micologico locale, Sicilia) - Leccinum corsicum",
+   "u": "https://micologiamessinese.altervista.org/Funghi%20Le.htm",
+   "tipo": "altro",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As31": {
+   "t": "Micologia Messinese - Lactarius sanguifluus var. violaceus",
+   "u": "https://micologiamessinese.altervista.org/Funghi%20L.htm",
+   "tipo": "altro",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As33": {
+   "t": "Micologia Messinese - Suillus bellinii",
+   "u": "https://micologiamessinese.altervista.org/Funghi%20Suillus.htm",
+   "tipo": "altro",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As34": {
+   "t": "Micologia Messinese - Tricholoma terreum",
+   "u": "https://micologiamessinese.altervista.org/Miceli/Tricholomi.htm",
+   "tipo": "altro",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As35": {
+   "t": "Micologia Messinese - Macrolepiota procera",
+   "u": "https://micologiamessinese.altervista.org/Funghi_Macrolepiota.htm",
+   "tipo": "altro",
+   "anno": null,
+   "letto": "pagina web"
+  },
+  "As37": {
+   "t": "La risorsa FUNGO in Alta Valle del Vara (documento regionale, Liguria; repository Sant'Anna Pisa; autori/anno non indicati) - sezione Amanita caesarea",
+   "u": "https://iris.santannapisa.it/retrieve/dd9e0b31-bbe6-709e-e053-3705fe0a83fd/80_vqr_Funghi.pdf",
+   "tipo": "altro",
+   "anno": null,
+   "letto": "estratto tramite WebFetch"
+  },
+  "As38": {
+   "t": "Documento regionale Alta Valle del Vara (repository Sant'Anna Pisa; autori/anno non indicati) - sezione Lactarius sanguifluus",
+   "u": "https://iris.santannapisa.it/retrieve/dd9e0b31-bb9e-709e-e053-3705fe0a83fd/158_vqr_Funghi.pdf",
+   "tipo": "altro",
+   "anno": null,
+   "letto": "estratto tramite WebFetch"
+  },
+  "Bs2": {
+   "t": "Marciulynas A., Menkis A. - Fistulina hepatica spore dispersal in oak stands. Diversity 15(11):1110",
+   "u": "https://www.mdpi.com/1424-2818/15/11/1110",
+   "tipo": "peer-reviewed",
+   "anno": 2023
+  },
+  "Bs3": {
+   "t": "Pietka J., Ciurzycki W. - Fistulina hepatica in Poland. Acta Mycologica 53(1):1108",
+   "u": "https://pbsociety.org.pl/journals/index.php/am/article/download/am.1108/7488",
+   "tipo": "peer-reviewed",
+   "anno": 2018
+  },
+  "Bs5": {
+   "t": "Sillo F., Gianchino C., Giordano L., Mari M., Gonthier P. - Local epidemiology of the wood decay agent Laetiporus sulphureus in carob stands in Sicily. Forest Pathology",
+   "u": "https://iris.unito.it/retrieve/e27ce42c-a933-2581-e053-d805fe0acbaa/Sillo%20et%20al.%202018_Forest%20Pathology_open%20access.pdf",
+   "tipo": "peer-reviewed",
+   "anno": 2018
+  },
+  "Bs6": {
+   "t": "de Gioia T., Ubaldo R., Sicoli G., Luisi N. - Occurrence and distribution of Armillaria gallica genets in a declining oak stand of southern Italy (Phytopathologia Mediterranea)",
+   "u": "https://oajournals.fupress.net/index.php/pm/article/view/5014",
+   "tipo": "peer-reviewed",
+   "anno": 2003
+  },
+  "Bs7": {
+   "t": "Sicoli G., Annese V., de Gioia T., Luisi N. - Armillaria pathogenicity tests on oaks in southern Italy (abstract, SIPaV)",
+   "u": "https://www.sipav.org/it/16/Archive/1093",
+   "tipo": "altro",
+   "anno": 2002
+  },
+  "Bs8": {
+   "t": "Metaliaj R., Sicoli G., Luisi N. - Pathogenicity of Armillaria isolates inoculated on five Quercus species at different watering regimes. Phytopathologia Mediterranea 45(1):3-9",
+   "u": "https://oajournals.fupress.net/index.php/pm/article/view/5147",
+   "tipo": "peer-reviewed",
+   "anno": 2006
+  },
+  "Bs9": {
+   "t": "Bernicchia A., Benni A., Venturella G., Gargano M.L., Saitta A., Perez Gorjon S. - Aphyllophoraceous wood-inhabiting fungi on Quercus spp. in Italy (checklist, Mycotaxon 104)",
+   "u": "https://www.mycotaxon.com/resources/checklists/bernicchia_v104-checklist.pdf",
+   "tipo": "checklist-atlante",
+   "anno": 2008
+  },
+  "Bs10": {
+   "t": "Ferraro V., Venturella G., Cirlincione F., Mirabile G., Gargano M.L., Colasuonno P. - The Checklist of Sicilian Macrofungi: Second Edition. J. Fungi 8:566",
+   "u": "https://iris.unipa.it/retrieve/2a7dee3d-790d-499b-bd75-d1adfd93e05e/jof-08-00566-v2.pdf",
+   "tipo": "checklist-atlante",
+   "anno": 2022
+  },
+  "Bs11": {
+   "t": "Beck T., Gaper J., Sebesta M., Gaperova S. - Host preferences of wood-decaying fungi of the genus Ganoderma in the urban areas of Slovakia. Annales Univ. Paedagogicae Cracoviensis Studia Naturae",
+   "u": "https://aupcstudianaturae.uken.krakow.pl/article/download/5437/5071/17638",
+   "tipo": "peer-reviewed",
+   "anno": 2018
+  },
+  "Bs13": {
+   "t": "Venturella G., Gargano M.L., Compagno R. - The genus Pleurotus in Italy. Flora Mediterranea 25 (Special Issue):143-156",
+   "u": "https://ricerca.uniba.it/retrieve/dd9e0c66-5f7a-1e9c-e053-3a05fe0a45ef/Pleurotus%20in%20Italy.pdf",
+   "tipo": "peer-reviewed",
+   "anno": 2015
+  },
+  "Bs14": {
+   "t": "Infundibulicybe geotropa (Wikipedia)",
+   "u": "https://en.wikipedia.org/wiki/Infundibulicybe_geotropa",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Bs15": {
+   "t": "Laetiporus sulphureus (Wikipedia)",
+   "u": "https://en.wikipedia.org/wiki/Laetiporus_sulphureus",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Bs16": {
+   "t": "Fistulina hepatica (Wikipedia)",
+   "u": "https://en.wikipedia.org/wiki/Fistulina_hepatica",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Bs17": {
+   "t": "Aniseed Funnel (Clitocybe odora) - Wild Food UK",
+   "u": "https://wildfooduk.com/?p=59310",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Bs19": {
+   "t": "Zotti M., Ambrosio E., Di Piazza S., Pavarino M., Mariotti M. - Ecology and diversity of Cortinarius species associated with Quercus ilex in the Mediterranean area of Liguria (NW Italy)",
+   "u": "https://iris.unige.it/handle/11567/700980",
+   "tipo": "peer-reviewed",
+   "anno": 2014
+  },
+  "Bs20": {
+   "t": "Vila J., Ortega A., Suarez-Santiago V.N., Llimona X. - Cortinarius mahiquesii, a new subhypogeous species from Catalonia (Iberian Peninsula)",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2846133",
+   "tipo": "peer-reviewed",
+   "anno": null
+  },
+  "Bs21": {
+   "t": "Phlegmacium brunneiaurantium / Phlegmacium (Wikipedia: pagina specie e pagina genere)",
+   "u": "https://en.wikipedia.org/wiki/Phlegmacium",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Bs24": {
+   "t": "Salerni E., Lagana A., Perini C., Loppi S., De Dominicis V. - Effects of temperature and rainfall on fruiting of macrofungi in oak forests of the Mediterranean area. Israel Journal of Plant Sciences 50(3):189-198",
+   "u": "https://usiena-air.unisi.it/handle/11365/3048",
+   "tipo": "peer-reviewed",
+   "anno": 2002
+  },
+  "Bs27": {
+   "t": "Guillaumin J.J. et al. - Geographical distribution and ecology of the Armillaria species in western Europe (solo scheda bibliografica letta)",
+   "u": "https://research.wur.nl/en/publications/geographical-distribution-and-ecology-of-the-armillaria-species-i/",
+   "tipo": "peer-reviewed",
+   "anno": 1993
+  },
+  "Bs29": {
+   "t": "Ponce A. - Macrofungal sporocarp fructification in two Mediterranean areas (tesi, repository Universitat de Lleida)",
+   "u": "https://portalrecerca.udl.cat/documentos/68d2e055f4c9ce76a7590a04?lang=en",
+   "tipo": "altro",
+   "anno": 2025
+  },
+  "Cs2": {
+   "t": "The Checklist of Sicilian Macrofungi: Second Edition - Ferraro, Venturella, Cirlincione et al., J. Fungi 8(6):566",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9224803",
+   "tipo": "checklist-atlante",
+   "anno": 2022
+  },
+  "Cs3": {
+   "t": "Funghi & Tartufi: risorse del bosco (progetto Amycoforest, Alcotra 2007-2013, IPLA) - schede Boletus edulis e B. aestivalis",
+   "u": "https://www.regione.piemonte.it/web/media/14353/download",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Cs4": {
+   "t": "Funghi & Tartufi: risorse del bosco (Amycoforest/IPLA) - schede B. aereus, B. pinophilus, Cantharellus cibarius",
+   "u": "https://www.regione.piemonte.it/web/media/14354/download",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Cs5": {
+   "t": "Funghi & Tartufi: risorse del bosco (Amycoforest/IPLA) - schede Craterellus cornucopioides, Hydnum repandum, Lactarius deliciosus, L. sanguifluus",
+   "u": "https://www.regione.piemonte.it/web/media/14355/download",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Cs6": {
+   "t": "Predicting porcini: a decade of sporocarp monitoring reveals the meteorological triggers of Boletus edulis fruiting in central European beech forests - Brejon Lamartiniere & Hoffman (preprint bioRxiv, non peer-reviewed)",
+   "u": "https://www.biorxiv.org/content/10.64898/2025.12.12.693895.full.pdf",
+   "tipo": "altro",
+   "anno": 2025
+  },
+  "Cs8": {
+   "t": "A phylogenetic study of Boletus section Boletus in Europe - Beugelsdijk et al., Persoonia",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2865352",
+   "tipo": "peer-reviewed",
+   "anno": 2008
+  },
+  "Cs9": {
+   "t": "Experimental study for increasing productivity of Boletus edulis s.l. in Italy - Salerni & Perini, Forest Ecol. Manage. 201:161-170",
+   "u": "https://usiena-air.unisi.it/handle/11365/18734",
+   "tipo": "peer-reviewed",
+   "anno": 2004
+  },
+  "Cs11": {
+   "t": "Soil fungal communities in a Castanea sativa forest producing large quantities of Boletus edulis s.l. - Peintner et al., Environ. Microbiol.",
+   "u": "https://ricerca.univaq.it/handle/11697/141843",
+   "tipo": "peer-reviewed",
+   "anno": 2007
+  },
+  "Cs12": {
+   "t": "Cantharellus ilicis sp. nov., a new species from the Mediterranean Basin collected in evergreen Quercus forests - Olariaga & Salcedo",
+   "u": "https://publicacions.iec.cat/repository/pdf/00000166%5C00000089.pdf",
+   "tipo": "peer-reviewed",
+   "anno": 2008
+  },
+  "Cs15": {
+   "t": "Immediate effect of thinning on the yield of Lactarius group deliciosus in Pinus pinaster forests in Northeastern Spain - Bonet et al., Forest Ecol. Manage. 265:211-217 (solo abstract letto)",
+   "u": "https://agris.fao.org/search/en/records/65df4c2f0f3e94b9e5d71c15",
+   "tipo": "peer-reviewed",
+   "anno": 2012
+  },
+  "Cs19": {
+   "t": "Sardinia: Mycovisions from a Charming Land - Comandini, Paulis & Rinaldi (CREAM 2018)",
+   "u": "https://iris.unica.it/retrieve/e2f56ed7-9795-3eaf-e053-3a05fe0a5d97/Comandini%20et%20al_CREAM%202018.pdf",
+   "tipo": "altro",
+   "anno": 2018
+  },
+  "Cs20": {
+   "t": "Rare findings from the chestnut forest of Monte Rocca Romana (Latium, Italy) - Knijn, Ferretti, Saar, Ital. J. Mycol.",
+   "u": "https://italianmycology.unibo.it/article/download/12562/12940",
+   "tipo": "peer-reviewed",
+   "anno": 2021
+  },
+  "Cs21": {
+   "t": "Boletus aereus - Wikipedia",
+   "u": "https://en.wikipedia.org/wiki/Boletus_aereus",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Cs24": {
+   "t": "Boletus pinophilus - Wikipedia",
+   "u": "https://en.wikipedia.org/wiki/Boletus_pinophilus",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Cs26": {
+   "t": "Lactarius deterrimus - Wikipedia",
+   "u": "https://en.wikipedia.org/wiki/Lactarius_deterrimus",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Ds1": {
+   "t": "Venturella G., Gargano M.L., Compagno R. - The genus Pleurotus in Italy (Flora Mediterranea 25, Special Issue: 143-156)",
+   "u": "https://ricerca.uniba.it/retrieve/dd9e0c66-5f7a-1e9c-e053-3a05fe0a45ef/Pleurotus%20in%20Italy.pdf",
+   "tipo": "peer-reviewed",
+   "anno": 2015
+  },
+  "Ds2": {
+   "t": "Gargano M.L. et al. - Pleurotus nebrodensis (Basidiomycota), a rare endemic mushroom of Sicily: current and future issues (Italian Botanist 17: 55-68)",
+   "u": "https://italianbotanist.pensoft.net/article_preview.php?id=123048",
+   "tipo": "peer-reviewed",
+   "anno": 2024
+  },
+  "Ds7": {
+   "t": "Agnello C. - Il cardoncello (Rivista di Agraria.org, 25 settembre 2007)",
+   "u": "https://rivistadiagraria.org/articoli/anno-2007/il-cardoncello/?print=pdf",
+   "tipo": "altro",
+   "anno": 2007
+  },
+  "Ds8": {
+   "t": "Ferraro V., Venturella G., Cirlincione F., Mirabile G., Gargano M.L., Colasuonno P. - The Checklist of Sicilian Macrofungi: Second Edition (J. Fungi 8: 566)",
+   "u": "https://iris.unipa.it/retrieve/2a7dee3d-790d-499b-bd75-d1adfd93e05e/jof-08-00566-v2.pdf",
+   "tipo": "checklist-atlante",
+   "anno": 2022
+  },
+  "Ds9": {
+   "t": "La Rocca S., Saitta A. - Check-list of fungi collected during Iter Mediterraneum III (Sicilia, giugno 1990)",
+   "u": "https://herbmedit.vps.webdock.cloud/storage/2553/17-275.pdf",
+   "tipo": "checklist-atlante",
+   "anno": 2004
+  },
+  "Ds12": {
+   "t": "Biagi M. et al. - Investigations into Amanita ovoidea (Bull.) Link.: Edible or Poisonous? (Natural Resources)",
+   "u": "https://usiena-air.unisi.it/retrieve/e0feeaa5-6c52-44d2-e053-6605fe0a8db0/NR_2014043014344345.pdf",
+   "tipo": "peer-reviewed",
+   "anno": 2014
+  },
+  "Ds13": {
+   "t": "First Nature - Amanita ovoidea (Bull.) Quel. - Bearded Amanita",
+   "u": "https://www.first-nature.com/fungi/amanita-ovoidea.php",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds14": {
+   "t": "Funghi in Italia (forum AMINT) - Amanita ovoidea (Bull.: Fr.) Link 1833, discussione pag. 2",
+   "u": "https://www.funghiitaliani.it/topic/7919-amanita-ovoidea-bull-fr-link-1833/page/2/",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Ds15": {
+   "t": "Alvarado P. et al. - Amanita Section Phalloideae Species in the Mediterranean Basin: Destroying Angels Reviewed",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9138314",
+   "tipo": "peer-reviewed",
+   "anno": 2022
+  },
+  "Ds19": {
+   "t": "Kirchmair M., Poder R. - Why Omphalotus illudens (Schwein.) Bresinsky et Besl is an Independent Species (Rev. Catalana Micol.)",
+   "u": "https://revistes.iec.cat/index.php/RCMic/article/download/18071.001/53021",
+   "tipo": "peer-reviewed",
+   "anno": 2002
+  },
+  "Ds21": {
+   "t": "MushroomExpert.Com - Omphalotus olearius",
+   "u": "https://mushroomexpert.com/omphalotus_olearius.html",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds22": {
+   "t": "First Nature - Omphalotus olearius",
+   "u": "https://first-nature.com/fungi/omphalotus-olearius.php",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds26": {
+   "t": "Wikipedia - Entoloma sinuatum",
+   "u": "https://en.wikipedia.org/wiki/Entoloma_sinuatum",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds27": {
+   "t": "First Nature - Entoloma sinuatum",
+   "u": "https://first-nature.com/fungi/entoloma-sinuatum.php",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds29": {
+   "t": "Wikipedia - Lepista nuda (Collybia nuda)",
+   "u": "https://en.wikipedia.org/wiki/Lepista_nuda",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds30": {
+   "t": "Garcia Chamorro J.J. - Lepista nuda (Bull.: Fr.) Cooke (scheda, Fungipedia)",
+   "u": "https://www.fungipedia.org/media/kunena/attachments/2470/Lepistanuda.pdf",
+   "tipo": "altro",
+   "anno": 2012
+  },
+  "Ds31": {
+   "t": "Citta Metropolitana di Messina, Enoteca Provinciale - Funghi commestibili dei Monti Nebroidei e Peloritani, schede sintetiche",
+   "u": "https://www.cittametropolitana.me.it/enoteca-provinciale/le-news/allegati/funghi-commestibili-ultimo-da-pubblicare-21-nov-2022-1.pdf",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds32": {
+   "t": "Wikipedia - Agaricus campestris",
+   "u": "https://en.wikipedia.org/wiki/Agaricus_campestris",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds34": {
+   "t": "Wikipedia - Macrolepiota mastoidea",
+   "u": "https://en.wikipedia.org/wiki/Macrolepiota_mastoidea",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds35": {
+   "t": "BioImages - Macrolepiota mastoidea (Checklist of British and Irish Basidiomycota)",
+   "u": "https://bioimages.org.uk/bioinfohtml/html/Macrolepiota_mastoidea.htm",
+   "tipo": "altro",
+   "anno": null
+  },
+  "Ds37": {
+   "t": "Funghi in Italia (forum AMINT) - Morchella esculenta (L.: Fr.) Pers. 1794",
+   "u": "https://www.funghiitaliani.it/topic/8919-morchella-esculenta-l-fr-pers-1794/",
+   "tipo": "aggregatore",
+   "anno": null
+  },
+  "Ds38": {
+   "t": "Ioriatti M. - Sentinelle primaverili: le morchelle (Rivista di Agraria.org, 14 maggio 2020)",
+   "u": "https://www.rivistadiagraria.org/articoli/anno-2020/sentinelle-primaverili-le-morchelle/",
+   "tipo": "altro",
+   "anno": 2020
+  },
+  "Ds44": {
+   "t": "Boletales.com - Omphalotus olearius (Genera & Species)",
+   "u": "https://boletales.com/genera/omphalotus/o-olearius/",
+   "tipo": "altro",
+   "anno": null
+  }
+ }
+}
