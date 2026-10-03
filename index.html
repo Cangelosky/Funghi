@@ -47,7 +47,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 <script>
 const $=s=>document.querySelector(s);let D,map,zmap,smap;
 const it=d=>d.split("-").reverse().join("/");const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-const LAST="2026-09-30",TODAY="2026-10-03",NOID="Da identificare";
+let LAST="2026-09-30",TODAY="2026-10-03";const NOID="Da identificare";
 const FIX={"Fistulina epatica e laetipprus solphurus":"Fistulina epatica e Laetiporus sulphureus"};
 const MESI=["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
 const CERT={certo:"ok",probabile:"warn","da verificare":"bad"};
@@ -59,7 +59,7 @@ function mkmap(id){const b=base();const m=L.map(id,{layers:[b.Escursionistica]})
 function show(k){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id=="s-"+k));
 document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==(k=="zona"?"mappa":k=="sp"?"specie":k)));
 if(k=="mappa")setTimeout(()=>map.invalidateSize(),50);if(k!="zona"&&k!="sp")history.replaceState(null,"","#"+k);window.scrollTo(0,0)}
-fetch("data/data.json?v="+Date.now()).then(r=>r.json()).then(d=>{D=d;init()});
+fetch("data/data.json?v="+Date.now()).then(r=>r.json()).then(d=>{D=d;TODAY=new Date().toLocaleDateString("sv",{timeZone:"Europe/Rome"});const ks=Object.values(D.rain);let n=0;ks.forEach(a=>{let i=a.length-1;while(i>=0&&a[i]===null)i--;n=Math.max(n,i)});LAST=addD(D.start,n);init()});
 const zn=id=>D.zones.find(z=>z.id==id);
 function species(){const m={};D.obs.forEach(o=>{const k=o.sp||NOID;(m[k]=m[k]||[]).push(o)});return m}
 function init(){$("#agg").textContent=it(D.agg);
@@ -123,7 +123,7 @@ const ph=O.filter(o=>o.foto);if(ph.length)h+=`<div class="card"><h3>Foto per dat
 const mm=Array(12).fill(0);O.forEach(o=>mm[+o.d.slice(5,7)-1]++);const mx=Math.max(...mm,1);
 h+=`<div class="card"><h3>Fenologia (osservazioni per mese)</h3><svg viewBox="0 0 360 80" width="100%">${mm.map((v,i)=>`<rect x="${i*30+4}" y="${60-v*50/mx}" width="22" height="${v*50/mx}" fill="var(--acc)"/><text x="${i*30+15}" y="76" text-anchor="middle">${MESI[i]}</text>${v?`<text x="${i*30+15}" y="${56-v*50/mx}" text-anchor="middle">${v}</text>`:""}`).join("")}</svg></div>`;
 h+=`<div class="card scroll"><h3>Ritrovamenti e condizioni</h3><table><tr><th>Cod.</th><th>Data</th><th>Zona</th><th>Quota</th><th>Certezza</th><th>Fonte</th><th>7 gg</th><th>14 gg</th><th>30 gg</th><th>Gg da pioggia</th><th>Note</th></tr>${O.map(o=>`<tr><td>${o.id}</td><td>${it(o.d)}</td><td><a href="#z-${o.z}">${zn(o.z).n}</a></td><td>${o.q??"—"}</td><td>${pillC(o.cert)}</td><td>${o.fonte}</td>${cc(o.c)}<td>${o.note||""}</td></tr>`).join("")}</table>
-<div class="meta">Pioggia in mm (CHIRPS) nei giorni precedenti. Condizioni medie ai ritrovamenti: 14 gg ≈ ${avg("r14")} mm · 30 gg ≈ ${avg("r30")} mm.${cs.some(o=>o.c.fino<addD(o.d,-1))?" Per le date recenti i dati arrivano al 30/09/2026.":""}</div></div>`;
+<div class="meta">Pioggia in mm (CHIRPS) nei giorni precedenti. Condizioni medie ai ritrovamenti: 14 gg ≈ ${avg("r14")} mm · 30 gg ≈ ${avg("r30")} mm.${cs.some(o=>o.c.fino<addD(o.d,-1))?" Per le date recenti i dati arrivano al "+it(LAST)+".":""}</div></div>`;
 
 $("#sp").innerHTML=h;show("sp");if(smap)smap.remove();smap=mkmap("smap");const bb=[];O.forEach(o=>{L.circleMarker([o.lat,o.lon],{radius:8,color:"#fff",weight:2,fillColor:"#2e7d4f",fillOpacity:1}).addTo(smap).bindPopup(`${o.id} · ${it(o.d)}<br>${zn(o.z).n}`);bb.push([o.lat,o.lon])});
 smap.fitBounds(bb.length>1?bb:[[bb[0][0]-.01,bb[0][1]-.01],[bb[0][0]+.01,bb[0][1]+.01]],{padding:[30,30],maxZoom:14});setTimeout(()=>smap.invalidateSize(),60)}
