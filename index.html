@@ -58,7 +58,7 @@ function mkmap(id){const b=base();const m=L.map(id,{layers:[b.Escursionistica]})
 function show(k){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id=="s-"+k));
 document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==(k=="zona"?"mappa":k=="sp"?"specie":k)));
 if(k=="mappa")setTimeout(()=>map.invalidateSize(),50);if(k!="zona"&&k!="sp")history.replaceState(null,"","#"+k);window.scrollTo(0,0)}
-fetch("data/data.json").then(r=>r.json()).then(d=>{D=d;init()});
+fetch("data/data.json?v="+Date.now()).then(r=>r.json()).then(d=>{D=d;init()});
 const zn=id=>D.zones.find(z=>z.id==id);
 function species(){const m={};D.obs.forEach(o=>{const k=o.sp||NOID;(m[k]=m[k]||[]).push(o)});return m}
 function init(){$("#agg").textContent=it(D.agg);
