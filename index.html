@@ -33,6 +33,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 <main>
 <nav id="tabs"></nav>
 <section id="s-mappa"><div class="stats" id="stats"></div><div id="map" class="map"></div><p class="note">Tocca un marker per aprire la scheda della zona; usa «Specie» per partire dal fungo.</p></section>
+<section id="s-zone"><div id="zgrid" class="grid"></div></section>
 <section id="s-specie"><div id="spgrid" class="grid"></div></section>
 <section id="s-meteo"><div class="row"><label>Zona <select id="mz"></select></label></div><div id="meteo"></div></section>
 <section id="s-previsione"><div id="prev"></div></section>
@@ -62,7 +63,7 @@ fetch("data/data.json?v="+Date.now()).then(r=>r.json()).then(d=>{D=d;init()});
 const zn=id=>D.zones.find(z=>z.id==id);
 function species(){const m={};D.obs.forEach(o=>{const k=o.sp||NOID;(m[k]=m[k]||[]).push(o)});return m}
 function init(){$("#agg").textContent=it(D.agg);
-$("#tabs").innerHTML=[["mappa","Mappa"],["specie","Specie"],["meteo","Meteo"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
+$("#tabs").innerHTML=[["mappa","Mappa"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
 $("#tabs").onclick=e=>{if(e.target.dataset.k)route(e.target.dataset.k)};
 const S=species(),nsp=Object.keys(S).filter(k=>k!=NOID).length;
 const nusc=new Set();D.zones.forEach(z=>z.uscite.forEach(u=>nusc.add(z.id+u.d)));
@@ -72,15 +73,18 @@ D.zones.forEach(z=>{const nf=D.obs.filter(o=>o.z==z.id).length;const c=AREA[z.ar
 const m=L.circleMarker([z.lat,z.lon],{radius:9,color:"#fff",weight:2,fillColor:c,fillOpacity:.95}).addTo(map);m.bindTooltip(z.n+(nf?` · ${nf} oss.`:""));m.on("click",()=>route("z-"+z.id));
 if(z.track)L.polyline(z.track.pts.map(p=>[p[1],p[0]]),{color:c,weight:3,opacity:.8}).addTo(map).on("click",()=>route("z-"+z.id))});
 const lg=L.control({position:"bottomleft"});lg.onAdd=()=>{const e=L.DomUtil.create("div");e.style.cssText="background:var(--card);color:var(--ink);padding:6px 8px;border-radius:8px;font-size:12px;line-height:1.5";e.innerHTML=Object.entries(AREA).map(([a,c])=>`<span style="color:${c}">●</span> ${a}`).join("<br>");return e};lg.addTo(map);
-buildSpecie();buildMeteoSel();buildUscite();setupSearch();
+buildZone();buildSpecie();buildMeteoSel();buildUscite();setupSearch();
 window.onhashchange=()=>routeHash();routeHash()}
 function route(h){if(location.hash=="#"+h)routeHash();else location.hash=h}
 function routeHash(){const h=location.hash.slice(1)||"mappa";
-if(h.startsWith("z-"))openZona(h.slice(2));else if(h.startsWith("sp-"))openSpecie(h.slice(3));else if(h=="meteo"){drawMeteo();show("meteo")}else if(h=="previsione"){drawPrev();show("previsione")}else if(["specie","uscite","mappa"].includes(h))show(h);else show("mappa")}
+if(h.startsWith("z-"))openZona(h.slice(2));else if(h.startsWith("sp-"))openSpecie(h.slice(3));else if(h=="meteo"){drawMeteo();show("meteo")}else if(h=="previsione"){drawPrev();show("previsione")}else if(["zone","specie","uscite","mappa"].includes(h))show(h);else show("mappa")}
 function setupSearch(){const q=$("#q"),r=$("#res");const items=[];const S=species();Object.keys(S).filter(k=>k!=NOID).forEach(k=>items.push({t:k,s:S[k].length+" oss.",h:"sp-"+slug(k),k:"Specie"}));D.zones.forEach(z=>items.push({t:z.n,s:z.area,h:"z-"+z.id,k:"Zona"}));
 q.oninput=()=>{const v=q.value.trim().toLowerCase();if(!v){r.style.display="none";return}const m=items.filter(i=>i.t.toLowerCase().includes(v)).slice(0,8);r.innerHTML=m.length?m.map(i=>`<div data-h="${i.h}"><b>${i.t}</b> <span class="meta">${i.k} · ${i.s}</span></div>`).join(""):'<div class="meta">Nessun risultato</div>';r.style.display="block"};
 r.onclick=e=>{const d=e.target.closest("[data-h]");if(d){r.style.display="none";q.value="";route(d.dataset.h)}};document.addEventListener("click",e=>{if(!e.target.closest(".search"))r.style.display="none"})}
 function pillC(c){return`<span class="pill ${CERT[c]||""}">${c}</span>`}
+function buildZone(){const zs=[...D.zones].sort((a,b)=>a.area.localeCompare(b.area)||a.n.localeCompare(b.n));
+$("#zgrid").innerHTML=zs.map(z=>{const O=D.obs.filter(o=>o.z==z.id),sp=[...new Set(O.filter(o=>o.sp).map(o=>o.sp))],ph=O.find(o=>o.foto),ds=z.uscite.map(u=>u.d).sort(),n=ds.length;
+return`<div class="card" style="cursor:pointer;display:flex;gap:12px;align-items:center;justify-content:space-between" onclick="route('z-${z.id}')"><div><h3 style="margin:0">${z.n}</h3><div class="meta">${z.area}${z.tipo?" · "+z.tipo:""}</div><div style="margin-top:6px">${sp.length?sp.map(k=>`<span class="sppill" style="font-size:.9rem;padding:4px 10px">${k}</span>`).join(""):'<span class="meta">Nessun fungo determinato</span>'}</div><div class="meta" style="margin-top:4px">${n} ${n==1?"uscita":"uscite"}${n?" · ultima "+it(ds[n-1]):""} · ${O.length} oss.${z.track?" · traccia GPS":""}</div></div>${ph?`<img src="${ph.foto}" alt="" loading="lazy" style="width:84px;height:84px;object-fit:cover;border-radius:10px;flex:none">`:""}</div>`}).join("")}
 function buildSpecie(){const S=species();const keys=Object.keys(S).filter(k=>k!=NOID).sort((a,b)=>a==NOID?1:b==NOID?-1:S[b].length-S[a].length);
 $("#spgrid").innerHTML=keys.map(k=>{const o=S[k],zs=[...new Set(o.map(x=>zn(x.z).n))],ds=o.map(x=>x.d).sort(),nph=o.filter(x=>x.foto).length;const cert=k==NOID?"da verificare":o.some(x=>x.cert=="certo")?"certo":o[0].cert;
 const ph=o.find(x=>x.foto);return`<div class="card" style="cursor:pointer;display:flex;gap:12px;align-items:center;justify-content:space-between" onclick="route('sp-${slug(k)}')"><div style="min-width:0"><h3>${k==NOID?"Da identificare":"<i>"+k+"</i>"}</h3>${pillC(cert)}<p class="meta">${o.length} osservazioni · ${nph} foto<br>${zs.length} zone · ${it(ds[0])}${ds[0]!=ds[ds.length-1]?" → "+it(ds[ds.length-1]):""}</p></div>${ph?`<img src="${ph.foto}" alt="${k}" loading="lazy" style="width:84px;height:84px;object-fit:cover;border-radius:10px;flex:none">`:""}</div>`}).join("")}
