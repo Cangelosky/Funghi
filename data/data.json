@@ -7424,7 +7424,7 @@
    "lon": 13.293347,
    "q": 613,
    "sp": "Lactarius sanguifluus",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "foto",
    "foto": "foto/222fb260.jpg",
    "c": {
@@ -7530,7 +7530,7 @@
    "lon": 13.265461,
    "q": 778,
    "sp": "Suillus sp.",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "foto",
    "foto": "foto/543bdf7b.jpg",
    "c": {
@@ -7551,7 +7551,7 @@
    "lon": 13.316448,
    "q": 735,
    "sp": "Fistulina hepatica",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "waypoint GPS",
    "foto": null,
    "c": {
@@ -7572,7 +7572,7 @@
    "lon": 13.316448,
    "q": 735,
    "sp": "Laetiporus sulphureus",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "waypoint GPS",
    "foto": null,
    "c": {
@@ -7593,7 +7593,7 @@
    "lon": 13.417962,
    "q": 1004,
    "sp": "Fistulina hepatica",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "foto (posizione dal punto GPS)",
    "foto": "foto/fistulina_grotta_1.jpg",
    "c": {
@@ -7614,7 +7614,7 @@
    "lon": 13.417962,
    "q": 1004,
    "sp": "Fistulina hepatica",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "foto (posizione dal punto GPS)",
    "foto": "foto/fistulina_grotta_2.jpg",
    "c": {
@@ -7635,7 +7635,7 @@
    "lon": 13.417962,
    "q": 1004,
    "sp": "Fistulina hepatica",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "foto (posizione dal punto GPS)",
    "foto": "foto/fistulina_grotta_3.jpg",
    "c": {
@@ -7656,7 +7656,7 @@
    "lon": 13.993186,
    "q": 878,
    "sp": "Ganoderma lucidum",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "foto (posizione dal punto GPS)",
    "foto": "foto/ganoderma_torre_1.jpg",
    "c": {
@@ -7677,7 +7677,7 @@
    "lon": 13.993186,
    "q": 878,
    "sp": "Ganoderma lucidum",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "foto (posizione dal punto GPS)",
    "foto": "foto/ganoderma_torre_2.jpg",
    "c": {
@@ -7698,7 +7698,7 @@
    "lon": 13.993186,
    "q": 878,
    "sp": "Ganoderma lucidum",
-   "cert": "probabile",
+   "cert": "certo",
    "fonte": "foto (posizione dal punto GPS)",
    "foto": "foto/ganoderma_torre_3.jpg",
    "c": {
