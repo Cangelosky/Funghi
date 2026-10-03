@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Funghi Sicilia</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--bg:#f6f3ec;--card:#fff;--ink:#2a2620;--mut:#6f675a;--acc:#7a4b1e;--ok:#2e7d4f;--warn:#b7791f;--line:#e4ddcf}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1a16;--card:#27241f;--ink:#efe9dc;--mut:#a39a89;--acc:#d9a066;--ok:#6cc08b;--warn:#e0b04c;--line:#3a352d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,sans-serif}
+header{padding:20px 16px 8px;max-width:960px;margin:auto}h1{margin:0;font-size:1.5rem}header p{margin:4px 0 0;color:var(--mut);font-size:.9rem}
+main{max-width:960px;margin:auto;padding:0 16px 40px}
+nav{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap}nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:20px;font:inherit;cursor:pointer}
+nav button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
+.card h3{margin:0 0 6px;font-size:1.05rem}.meta{color:var(--mut);font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.pill{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.78rem;margin-right:4px;border:1px solid var(--line)}
+.ok{color:var(--ok);border-color:var(--ok)}.warn{color:var(--warn);border-color:var(--warn)}
+#map{height:60vh;min-height:320px;border-radius:12px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600}
+.scroll{overflow-x:auto}small.note{color:var(--mut);display:block;margin-top:12px}
+</style></head><body>
+<header><h1>🍄 Funghi Sicilia</h1><p>Zone, uscite e condizioni meteo prima delle uscite. Dati aggiornati al <span id="agg"></span>. Posizioni approssimate.</p></header>
+<main>
+<nav id="tabs"></nav>
+<section id="s-ora"><div id="ora" class="grid"></div>
+<small class="note">Pioggia da satellite CHIRPS (~5 km): ultimi 2-3 giorni non ancora disponibili. Previsioni MET Norway, molto incerte oltre 5 giorni. È un quadro descrittivo, non una previsione di ritrovamento.</small></section>
+<section id="s-mappa"><div id="map"></div></section>
+<section id="s-uscite"><div class="card scroll"><table id="tu"></table></div></section>
+<section id="s-zone"><div id="zone" class="grid"></div></section>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const DATA={
+agg:"2026-10-03",
+zone:[
+{id:"castagneto_piccolo",n:"Castagneto piccolo (S. Cristina Gela)",lat:38.00,lon:13.32,q:735,t:"castagneto"},
+{id:"castagneto_esteso",n:"Castagneto esteso (Piana)",lat:38.01,lon:13.31,q:750,t:"castagneto"},
+{id:"lago_piana",n:"Lago di Piana",lat:37.98,lon:13.29,q:610,t:"misto"},
+{id:"xaravulli",n:"Xaravulli (Piana)",lat:38.01,lon:13.27,q:null,t:""},
+{id:"poggio_sfrancesco",n:"Poggio San Francesco",lat:38.01,lon:13.26,q:778,t:""},
+{id:"ficuzza",n:"Ficuzza (cappella, grotta, Cozzo Molle)",lat:37.86,lon:13.40,q:1000,t:""},
+{id:"san_giorgio",n:"San Giorgio (Gratteri)",lat:37.95,lon:13.95,q:590,t:""},
+{id:"piano_torre",n:"Piano Torre (Gratteri)",lat:37.91,lon:13.99,q:870,t:""},
+{id:"carcara",n:"Carcara (Caronia/Mistretta)",lat:37.97,lon:14.39,q:767,t:""}],
+ora:[
+{z:"Lago di Piana",r14:41.9,r30:49.6,gg:15,prev:"≈18 mm il 10 ott",q:610},
+{z:"Castagneto esteso",r14:44.3,r30:51.8,gg:15,prev:"≈18 mm il 10 ott",q:750},
+{z:"Ficuzza",r14:44.1,r30:48.8,gg:15,prev:"≈13 mm il 10 ott",q:1000},
+{z:"Piano Torre / Gratteri",r14:41.1,r30:45.9,gg:14,prev:"≈26 mm il 10 ott",q:870},
+{z:"Carcara",r14:29.7,r30:39.0,gg:13,prev:"≈20 mm il 10 ott",q:767}],
+uscite:[
+["18/09/2026","Castagneto piccolo","legno/altro","7 mm / 14 gg"],
+["30/09/2026","Ficuzza cappella","—","40 mm / 14 gg"],
+["30/09/2026","Ficuzza grotta","Fistulina (legno)","44 mm / 14 gg"],
+["30/09/2026","Cozzo Molle","—","44 mm / 14 gg"],
+["03/10/2026","San Giorgio","—","38 mm / 14 gg"],
+["03/10/2026","Piano Torre","Ganoderma (legno)","41 mm / 14 gg"]],
+find:{lago_piana:["20/10/2025","17/11/2025","14/12/2025","26/12/2025"],castagneto_esteso:["04/11/2025"],poggio_sfrancesco:["09/10/2025"]}
+};
+const $=s=>document.querySelector(s);$("#agg").textContent=DATA.agg;
+const tabs=[["ora","Dove andare ora"],["mappa","Mappa"],["uscite","Uscite"],["zone","Zone"]];
+$("#tabs").innerHTML=tabs.map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
+function show(k){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id=="s-"+k));
+document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==k));if(k=="mappa")setTimeout(()=>map.invalidateSize(),50)}
+$("#tabs").onclick=e=>{if(e.target.dataset.k)show(e.target.dataset.k)};
+$("#ora").innerHTML=DATA.ora.map(o=>`<div class="card"><h3>${o.z}</h3><div class="meta">${o.q} m</div>
+<p>Pioggia 14 gg: <b>${o.r14} mm</b><br>Pioggia 30 gg: <b>${o.r30} mm</b><br>Giorni dall'ultima pioggia ≥5 mm: <b>${o.gg}</b></p>
+<span class="pill ${o.gg>10?'warn':'ok'}">${o.gg>10?'secco da giorni':'suolo umido'}</span><span class="pill">Previsione: ${o.prev}</span></div>`).join("");
+$("#tu").innerHTML="<tr><th>Data</th><th>Zona</th><th>Trovato</th><th>Pioggia prima</th></tr>"+DATA.uscite.map(r=>"<tr>"+r.map(c=>`<td>${c}</td>`).join("")+"</tr>").join("");
+$("#zone").innerHTML=DATA.zone.map(z=>`<div class="card"><h3>${z.n}</h3><div class="meta">${z.q?z.q+" m":""} ${z.t||""}</div>${(DATA.find[z.id]||[]).length?`<p class="meta">Ritrovamenti: ${DATA.find[z.id].join(", ")}</p>`:""}</div>`).join("");
+const map=L.map("map").setView([38.0,13.7],8);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© OpenStreetMap"}).addTo(map);
+DATA.zone.forEach(z=>L.marker([z.lat,z.lon]).addTo(map).bindPopup(`<b>${z.n}</b><br>${z.q?z.q+" m":""}`));
+show("ora");
+</script></body></html>
