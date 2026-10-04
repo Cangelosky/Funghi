@@ -62,6 +62,40 @@ while day < today:
     day += dt.timedelta(1)
 print('CHIRPS: giorni aggiunti', nuovi)
 
+# 1b) Radar DPC (CUM24, radar corretto con pluviometri, ~1 km): copre i giorni che CHIRPS non ha ancora ---
+def radar_ultimi(giorni=30):
+    import requests
+    from rasterio.io import MemoryFile
+    H = {'Origin': 'https://cangelosky.github.io'}
+    try:
+        t0 = requests.get('https://radar-api.protezionecivile.it/findLastProductByType?type=CUM24', headers=H, timeout=25).json()['lastProducts'][0]['time']
+    except Exception as e:
+        print('Radar: non raggiungibile', e); return
+    # il prodotto delle 07:00 UTC del giorno D copre (circa) il giorno D-1
+    DAY = 86400000; t0 = t0 - (t0 % DAY) + 7 * 3600000 - (DAY if (t0 % DAY) < 7 * 3600000 else 0)
+    R = d.setdefault('radar', {})
+    n = 0
+    for k in range(giorni):
+        ms = t0 - k * 86400000
+        giorno = str((dt.datetime.fromtimestamp(ms / 1000, dt.UTC) - dt.timedelta(1)).date())
+        if all(giorno in R.get(cp, {}) for cp in pts) and k > 3:
+            continue   # i giorni vecchi già salvati non si rifanno; gli ultimi 4 si rileggono (correzioni)
+        try:
+            r = requests.post('https://radar-api.protezionecivile.it/downloadProduct', json={'productType': 'CUM24', 'productDate': ms}, headers=H, timeout=30)
+            if r.status_code != 200: continue
+            b = requests.get(r.json()['url'], timeout=60).content
+            with MemoryFile(b) as mf, mf.open() as s:
+                a = s.read(1)
+                for cp, (la, lo) in pts.items():
+                    i, j = s.index(lo, la)
+                    w = a[i-1:i+2, j-1:j+2]; w = w[w > -9000]
+                    if w.size: R.setdefault(cp, {})[giorno] = round(float(w.mean()), 1)
+            n += 1
+        except Exception as e:
+            print('Radar: errore', giorno, e)
+    print('Radar: giorni letti', n)
+radar_ultimi()
+
 # 2) MET Norway ------------------------------------------------------
 UA = 'funghi-oscar-cangelosi/1.0 github.com/Cangelosky/Funghi'
 tz = ZoneInfo('Europe/Rome')
