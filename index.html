@@ -118,9 +118,9 @@ if(z.uscite.length)h+=`<div class="card scroll"><h3>Uscite e condizioni preceden
 const PH=O.filter(o=>o.foto);if(PH.length)h+=`<div class="card"><h3>Foto (${PH.length})</h3><div class="photos">${PH.map(f=>phot(f)).join("")}</div></div>`;
 $("#zona").innerHTML=h;show("zona");if(zmap)zmap.remove();zmap=mkmap("zmap");const bb=[[z.lat,z.lon]];
 if(z.track){const ll=z.track.pts.map(p=>[p[1],p[0]]);L.polyline(ll,{color:"#c4503b",weight:4}).addTo(zmap);bb.push(...ll);L.circleMarker(ll[0],{radius:6,color:"#fff",fillColor:"#2e7d4f",fillOpacity:1}).addTo(zmap).bindTooltip("Partenza")}
-z.wpt.forEach(w=>{L.marker([w.lat,w.lon]).addTo(zmap).bindPopup(`<b>${FIX[w.n]||w.n}</b><br>${w.ele} m`);bb.push([w.lat,w.lon])});
+(z.wpt||[]).forEach(w=>{L.marker([w.lat,w.lon]).addTo(zmap).bindPopup(`<b>${FIX[w.n]||w.n}</b><br>${w.ele} m`);bb.push([w.lat,w.lon])});
 O.filter(o=>o.foto).forEach(f=>{L.circleMarker([f.lat,f.lon],{radius:7,color:"#fff",weight:2,fillColor:"#2e7d4f",fillOpacity:1}).addTo(zmap).bindPopup(`<img src="${f.foto}" width="160"><br>${it(f.d)} · ${f.sp||NOID}`);bb.push([f.lat,f.lon])});
-if(!z.track&&!z.wpt.length&&!PH.length)L.marker([z.lat,z.lon]).addTo(zmap).bindPopup(z.n);
+if(!z.track&&!(z.wpt||[]).length&&!PH.length)L.marker([z.lat,z.lon]).addTo(zmap).bindPopup(z.n);
 zmap.fitBounds(bb.length>1?bb:[[z.lat-.004,z.lon-.004],[z.lat+.004,z.lon+.004]],{padding:[30,30],maxZoom:16});setTimeout(()=>zmap.invalidateSize(),60);
 if(z.griglia){const g=z.griglia,bd=[[g.lat0-g.n*g.dl,g.lon0],[g.lat0,g.lon0+g.n*g.dn]];let ov=null;const zm=zmap;$("#zov").onclick=e=>{const b=e.target.closest("button");if(!b)return;[...$("#zov").querySelectorAll("button")].forEach(x=>x.classList.toggle("on",x==b));if(ov){zm.removeLayer(ov);ov=null}const m=b.dataset.m;$("#zovn").style.display=m?"block":"none";if(m){ov=L.imageOverlay(topoImg(g,m),bd,{opacity:.8,interactive:false}).addTo(zm);ov.bringToBack();zm.eachLayer(l=>{if(l instanceof L.Polyline)l.bringToFront()})}}}}
 function phot(f){const o=JSON.stringify({f:f.foto,d:f.d,h:f.h||"",q:f.q,s:f.sp||NOID}).replace(/"/g,"&quot;");return`<figure><img loading="lazy" src="${f.foto}" alt="${f.sp||NOID}" onclick="lb(${o})"><figcaption>${it(f.d)}${f.q!=null?" · "+f.q+" m":""}<br>${f.sp||NOID}</figcaption></figure>`}

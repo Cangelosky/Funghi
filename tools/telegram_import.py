@@ -73,6 +73,10 @@ def zone_from_text(text, A):
 def parse_caption(cap, A):
     cap = cap or ''
     r = dict(zona=None, sp=None, cert=None, note=[], date=None)
+    mc = COORD.search(cap)
+    if mc:
+        xy = coord_text(mc[0])
+        if xy: r['loc'] = xy; cap = cap.replace(mc[0], ' ')
     oggi = dt.datetime.now(TZ).date(); anno = False
     for m in re.finditer(r'(?<![\d.,/])(\d{1,2})[/.](\d{1,2})(?:[/.](\d{2,4}))?(?![\d.,/])', cap):
         prima, dopo = cap[:m.start()], cap[m.end():]
@@ -177,6 +181,16 @@ def rain_feat(D, cp, day):
         if gg is None and x >= 5: gg = i + 1
     return dict(r7=round(s[7], 1), r14=round(s[14], 1), r21=round(s[21], 1), r30=round(s[30], 1), gg=gg, fino=str(fino) if fino else None)
 
+COORD = re.compile(r'(\d{1,2})[.,](\d{3,})\s*°?\s*([NS])?\s*[,;/\s]\s*(\d{1,2})[.,](\d{3,})\s*°?\s*([EOW])?', re.I)
+def coord_text(t):
+    """'37,88166° N, 13,39258° E' o '37.88166, 13.39258' -> (lat, lon) se il messaggio è quasi solo coordinate"""
+    m = COORD.search(t or '')
+    if not m or len(re.sub(r'[\s°NSEOWnseow,.;/\d]', '', t)) > 12: return None
+    la, lo = float(m[1] + '.' + m[2]), float(m[4] + '.' + m[5])
+    if (m[3] or 'N').upper() == 'S': la = -la
+    if (m[6] or 'E').upper() == 'W': lo = -lo
+    return (la, lo) if SICILIA(la, lo) else None
+
 def t_ok(l):
     try: return SICILIA(float(l['latitude']), float(l['longitude']))
     except Exception: return False
@@ -192,6 +206,9 @@ def process(D, S, updates, fetch, send, allowed):
             if uid not in allowed:
                 print('ignorato: mittente non autorizzato', uid); continue
             when = dt.datetime.fromtimestamp(m['date'], TZ); chat = m['chat']['id']
+            if m.get('text') and not m.get('location'):
+                xy = coord_text(m['text'])
+                if xy: m = dict(m, location={'latitude': xy[0], 'longitude': xy[1]}); m.pop('text')
             last = next((e for e in reversed(entries) if e['uid'] == uid), None)
             recent = last and (when - last['when']).total_seconds() < 3600
             if m.get('text') and re.match(r'\s*uscita senza funghi', m['text'], re.I):
@@ -243,18 +260,7 @@ def process(D, S, updates, fetch, send, allowed):
         if not e['photos']:
             send(e['chat'], 'Ho ricevuto la posizione ma non le foto: rimanda foto e posizione.'); continue
         c = parse_caption(e['cap'], A)
-        zid = None; loc = e.get('loc')
-        if loc:
-            dist = []
-            for z in D['zones']:
-                pts = [(z['lat'], z['lon'])] + [(o['lat'], o['lon']) for o in D['obs'] if o['z'] == z['id'] and o.get('lat')]
-                dist.append((min(hav(loc[0], loc[1], a, b) for a, b in pts), z['id']))
-            dmin, zid = min(dist)
-            if dmin > 3: zid = None
-        if c['zona'] and loc:      # zona scritta e posizione vicina (entro 3 km): vale quella scritta
-            zc = next(z for z in D['zones'] if z['id'] == c['zona'])
-            if hav(loc[0], loc[1], zc['lat'], zc['lon']) <= 3: zid = c['zona']
-        zid = zid or c['zona']
+        loc = e.get('loc') or c.get('loc')
         saved = []
         for fid, uq in e['photos']:
             if 'foto/tg_' + hashlib.md5(uq.encode()).hexdigest()[:8] + '.jpg' in usate:
@@ -266,20 +272,34 @@ def process(D, S, updates, fetch, send, allowed):
             else: send(e['chat'], 'Non sono riuscito a scaricare le foto: rimandale.')
             continue
         if not loc:
-            g = next(((x['lat'], x['lon']) for _, x in saved if 'lat' in x), None)
-            loc = g
-        if loc and not zid:
-            zid = min((hav(loc[0], loc[1], z['lat'], z['lon']), z['id']) for z in D['zones'])[1]
-            if hav(loc[0], loc[1], *[(z['lat'], z['lon']) for z in D['zones'] if z['id'] == zid][0]) > 3: zid = None
+            loc = next(((x['lat'], x['lon']) for _, x in saved if 'lat' in x), None)
+        zid = None; dmin = None
+        if loc:      # zona più vicina: punto della zona, ritrovamenti e traccia GPS
+            dist = []
+            for z in D['zones']:
+                pts = [(z['lat'], z['lon'])] + [(o['lat'], o['lon']) for o in D['obs'] if o['z'] == z['id'] and o.get('lat')] + [(q[1], q[0]) for q in ((z.get('track') or {}).get('pts') or [])[::10]]
+                dist.append((min(hav(loc[0], loc[1], a, b) for a, b in pts), z['id']))
+            dmin, zid = min(dist)
+            if dmin > 1.5: zid = None
+            if c['zona']:      # zona scritta e posizione entro 3 km da quella zona: vale quella scritta
+                zc = next(z for z in D['zones'] if z['id'] == c['zona'])
+                if hav(loc[0], loc[1], zc['lat'], zc['lon']) <= 3: zid = c['zona']
+        else:
+            zid = c['zona']
         if not zid:
             for n, _ in saved:
                 if n not in usate: os.remove(n)
-            send(e['chat'], 'Non riconosco la zona: scrivila nella didascalia (es. "Poggio San Francesco; ...") o invia la posizione. Rimanda la segnalazione.'); continue
+            if loc:      # posizione lontana dalle zone note: può essere una zona nuova, la segnalazione resta in attesa
+                S.setdefault('in_attesa', []).append(dict(quando=e['when'].isoformat(timespec='minutes'), uid=e['uid'], testo=e['cap'], lat=round(loc[0], 6), lon=round(loc[1], 6), foto=[list(x) for x in e['photos']]))
+                send(e['chat'], 'La posizione è a %.1f km dalla zona conosciuta più vicina: potrebbe essere una zona nuova. La segnalazione resta in attesa finché la zona non viene aggiunta al sito.' % dmin)
+            else:
+                send(e['chat'], 'Non riconosco la zona: scrivila nella didascalia (es. "Poggio San Francesco; ...") o invia la posizione. Rimanda la segnalazione.')
+            continue
         z = next(z for z in D['zones'] if z['id'] == zid)
         day = c['date'] or next((x['dt'].date() for _, x in saved if 'dt' in x), None) or e['when'].date()
         hh = next((x['dt'].strftime('%H:%M') for _, x in saved if 'dt' in x), e['when'].strftime('%H:%M'))
         lat, lon = loc if loc else (z['lat'], z['lon'])
-        fonte = ('Telegram (GPS della foto)' if (loc and not e.get('loc')) else 'Telegram (posizione)') if loc else 'Telegram (posizione della zona)'
+        fonte = ('Telegram (posizione inviata)' if e.get('loc') else 'Telegram (coordinate scritte)' if c.get('loc') else 'Telegram (GPS della foto)') if loc else 'Telegram (posizione della zona)'
         if c['sp']:
             known = {o['sp'] for o in D['obs'] if o.get('sp')}
             low = c['sp'].lower()
