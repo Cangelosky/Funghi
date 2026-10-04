@@ -24,7 +24,7 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left
 svg text{fill:var(--mut);font:11px system-ui}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column;color:#fff;padding:12px}#lb img{max-width:100%;max-height:85vh;border-radius:6px}
 footer{padding:24px 16px 32px;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line);margin-top:30px}
-.note{color:var(--mut);font-size:.82rem;margin-top:8px}.back{margin:6px 0}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.nolab .zl{display:none}.note{color:var(--mut);font-size:.82rem;margin-top:8px}.back{margin:6px 0}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
 .bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%}
 details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 </style></head><body>
@@ -196,18 +196,27 @@ const row=x=>{const[b,c]=band(x.best.sim.s);return`<div class="card" style="curs
 const T=L.filter(x=>!WOOD.test(x.k)),W=L.filter(x=>WOOD.test(x.k));
 $("#prev").innerHTML=`<div class="card"><h3>Previsione condizioni favorevoli</h3>${togH()}${daysH(days)}<p class="note"><b>Ipotesi di lavoro, non una previsione validata.</b> Probabilità = somiglianza tra le condizioni previste e quelle dei ritrovamenti, nel posto migliore per ogni specie. Tocca una specie per vedere le zone.</p></div><h3 style="margin:14px 2px 0">Funghi a terra</h3>${T.map(row).join("")||'<p class="meta">Nessuno.</p>'}<h3 style="margin:14px 2px 0">Funghi su legno</h3><p class="meta" style="margin:0 2px">Dipendono meno dalla pioggia recente: il punteggio è meno indicativo.</p>${W.map(row).join("")||'<p class="meta">Nessuno.</p>'}${lettCards(days)}`}
 function gotoPrev(sp){psp=sp;route("previsione")}
-/* Mappa topografica per zona (ipotesi): esposizione, pendenza, conformazione del terreno */
-let TM=null;
+/* Mappa topografica (ipotesi): esposizione, pendenza, conformazione del terreno */
+let TM=null,TLAY={};
 function topoCol(v){const t=v/100;return`hsl(${Math.round(30+95*t)},${Math.round(55+15*t)}%,${Math.round(62-24*t)}%)`}
+function topoRGB(v){const t=v/100,hh=30+95*t,s=(55+15*t)/100,l=(62-24*t)/100,a=s*Math.min(l,1-l),f=n=>{const k=(n+hh/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1))))};return[f(0),f(8),f(4)]}
+function topoImg(g){const n=g.n,c0=document.createElement("canvas");c0.width=c0.height=n;const x0=c0.getContext("2d"),im=x0.createImageData(n,n);g.v.forEach((v,k)=>{const c=topoRGB(v);im.data.set([c[0],c[1],c[2],255],k*4)});x0.putImageData(im,0,0);
+const S=512,c=document.createElement("canvas");c.width=c.height=S;const x=c.getContext("2d");x.imageSmoothingEnabled=true;x.imageSmoothingQuality="high";x.filter="blur(14px)";x.drawImage(c0,-S*.04,-S*.04,S*1.08,S*1.08);x.filter="none";
+x.globalCompositeOperation="destination-in";const gr=x.createRadialGradient(S/2,S/2,S*.28,S/2,S/2,S*.5);gr.addColorStop(0,"rgba(0,0,0,1)");gr.addColorStop(1,"rgba(0,0,0,0)");x.fillStyle=gr;x.fillRect(0,0,S,S);return c.toDataURL()}
+function hull(P){P=P.slice().sort((a,b)=>a[0]-b[0]||a[1]-b[1]);const cr=(o,a,b)=>(a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]),lo=[],up=[];for(const p of P){while(lo.length>1&&cr(lo[lo.length-2],lo[lo.length-1],p)<=0)lo.pop();lo.push(p)}for(const p of P.slice().reverse()){while(up.length>1&&cr(up[up.length-2],up[up.length-1],p)<=0)up.pop();up.push(p)}return lo.slice(0,-1).concat(up.slice(0,-1))}
+function areaZona(z){const P=[[z.lat,z.lon]];D.obs.forEach(o=>{if(o.z==z.id&&o.lat)P.push([o.lat,o.lon])});if(z.track)z.track.pts.forEach(p=>P.push([p[1],p[0]]));(z.wpt||[]).forEach(w=>P.push([w.lat,w.lon]));const B=[],r=0.0011;P.forEach(p=>{for(let a=0;a<12;a++){const t=a*Math.PI/6;B.push([p[0]+r*Math.sin(t),p[1]+r*Math.cos(t)/Math.cos(p[0]*Math.PI/180)])}});return hull(B)}
 function addTopo(){const P=$("#prev");if(!P)return;const old=$("#topocard");if(old)old.remove();const Z=D.zones.filter(z=>z.griglia);if(!Z.length)return;
 const c=D.topo_check,chk=c?`<p class="note">Controllo sui tuoi dati: i ${c.n} ritrovamenti cadono in celle che stanno in media al ${c.perc_medio}° percentile della loro zona (50 = nessuna differenza dal caso; ${c.sopra_50} su ${c.n} sopra la mediana). Cautela: molti ritrovamenti sono vicini tra loro e le uscite seguono i sentieri, quindi non è una prova.</p>`:"";
 const d=document.createElement("div");d.id="topocard";d.className="card";d.style.marginTop="14px";
-d.innerHTML=`<h3>Mappa topografica della zona</h3><div class="row"><select id="tz">${Z.map(z=>`<option value="${z.id}">${z.n}</option>`).join("")}</select></div><div id="tmap" class="map sm"></div><div class="row meta"><span style="display:inline-block;width:14px;height:14px;background:${topoCol(5)}"></span>meno favorevole<span style="display:inline-block;width:14px;height:14px;background:${topoCol(95)}"></span>più favorevole<span>· ● ritrovamenti</span></div><p class="note"><b>Ipotesi non validata, valida per i funghi in generale.</b> Cella di 90 m (modello di rilievo). Più alta dove il versante guarda a nord (più fresco e umido), la pendenza è moderata (sotto 15°) e il terreno è una conca o un fondovalle invece di un dosso. Non tiene conto degli alberi, che dentro la zona non conosco: per le singole specie guarda gli ospiti nella scheda della zona.</p>${chk}`;
-P.appendChild(d);$("#tz").onchange=()=>drawTopo($("#tz").value);drawTopo(Z[0].id)}
-function drawTopo(id){const z=zn(id),g=z.griglia;if(TM){TM.remove();TM=null}TM=mkmap("tmap");
-g.v.forEach((v,k)=>{const i=Math.floor(k/g.n),j=k%g.n,la=g.lat0-i*g.dl,lo=g.lon0+j*g.dn;L.rectangle([[la-g.dl/2,lo-g.dn/2],[la+g.dl/2,lo+g.dn/2]],{stroke:false,fillColor:topoCol(v),fillOpacity:.6}).bindTooltip(`Indice ${v}/100`).addTo(TM)});
-const pts=D.obs.filter(o=>o.z==id&&o.lat);pts.forEach(o=>L.circleMarker([o.lat,o.lon],{radius:5,color:"#fff",weight:2,fillColor:"#222",fillOpacity:1}).bindTooltip(o.sp||"Da identificare").addTo(TM));
-TM.fitBounds([[g.lat0-g.n*g.dl,g.lon0],[g.lat0,g.lon0+g.n*g.dn]]);setTimeout(()=>TM&&TM.invalidateSize(),150)}
+d.innerHTML=`<h3>Mappa delle zone più favorevoli</h3><div class="row"><select id="tz"><option value="">Tutta la Sicilia</option>${Z.map(z=>`<option value="${z.id}">${z.n}</option>`).join("")}</select></div><div id="tmap" class="map" style="height:62vh;min-height:380px"></div><div class="row meta"><span style="display:inline-block;width:56px;height:12px;border-radius:6px;background:linear-gradient(90deg,${topoCol(5)},${topoCol(50)},${topoCol(95)})"></span>meno → più favorevole<span>· tratteggio giallo = area percorsa · ● ritrovamenti</span></div><p class="note"><b>Ipotesi non validata, valida per i funghi in generale.</b> Più alta dove il versante guarda a nord (più fresco e umido), la pendenza è moderata (sotto 15°) e il terreno è una conca o un fondovalle invece di un dosso. Calcolata su celle di 90 m e sfumata per leggibilità. Il contorno giallo racchiude i punti GPS (percorso, ritrovamenti) con un margine di circa 120 m: <b>non è il limite ufficiale del bosco</b>, che non ho a disposizione. Non tiene conto degli alberi: per le singole specie guarda gli ospiti nella scheda della zona.</p>${chk}`;
+P.appendChild(d);$("#tz").onchange=()=>focusTopo($("#tz").value);drawTopo()}
+function drawTopo(){if(TM){TM.remove();TM=null}TM=mkmap("tmap");TLAY={};const lb=()=>$("#tmap").classList.toggle("nolab",TM.getZoom()<10);TM.on("zoomend",lb);
+D.zones.filter(z=>z.griglia).forEach(z=>{const g=z.griglia,b=[[g.lat0-g.n*g.dl,g.lon0],[g.lat0,g.lon0+g.n*g.dn]],o=L.imageOverlay(topoImg(g),b,{opacity:.78}).addTo(TM);
+const ar=L.polygon(areaZona(z),{color:"#ffd23f",weight:2.5,dashArray:"6 5",fill:false}).addTo(TM);
+D.obs.filter(x=>x.z==z.id&&x.lat).forEach(x=>L.circleMarker([x.lat,x.lon],{radius:5,color:"#fff",weight:2,fillColor:"#222",fillOpacity:1}).bindTooltip(x.sp||"Da identificare").addTo(TM));
+const mk=L.circleMarker([z.lat,z.lon],{radius:7,color:"#fff",weight:2,fillColor:"#2d6a4f",fillOpacity:1}).bindTooltip(z.n.replace(/ \(.*/,""),{permanent:true,direction:"top",offset:[0,-6],className:"zl"}).addTo(TM);mk.on("click",()=>{$("#tz").value=z.id;focusTopo(z.id)});TLAY[z.id]=b});
+setTimeout(()=>focusTopo(""),200)}
+function focusTopo(id){if(!TM)return;TM.invalidateSize();if(!id)TM.fitBounds([[36.6,12.4],[38.3,15.65]]);else{const b=TLAY[id];TM.fitBounds(b,{padding:[10,10]})}setTimeout(()=>TM&&TM.invalidateSize(),150)}
 const _dp0=drawPrev;drawPrev=function(){_dp0.apply(this,arguments);addTopo()};
 
 function drawPrev(){const days=[];for(let i=0;i<8;i++)days.push(addD(TODAY,i));if(pview=="specie")return drawPrevSp(days);const S=Object.keys(species()).filter(k=>k!=NOID).sort();
