@@ -49,11 +49,14 @@ def pix(lat, lon, day):
     return 'NA'
 
 today = dt.datetime.now(ZoneInfo('Europe/Rome')).date()
-n0 = min(len(v) for v in d['rain'].values())
+for k in pts: d['rain'].setdefault(k, [])          # zona nuova: serie vuota, si riempie da sola
+n0 = min(len(d['rain'][k]) for k in pts)
 day = start + dt.timedelta(n0)
 nuovi = 0
-while day < today:
-    res = {k: pix(la, lo, day) for k, (la, lo) in pts.items()}
+while day < today and nuovi < 120:
+    i = (day - start).days
+    serve = [k for k in pts if len(d['rain'][k]) == i]   # ogni serie avanza dalla sua lunghezza
+    res = {k: pix(*pts[k], day) for k in serve}
     if any(v == 'NA' for v in res.values()):
         break  # giorno non ancora disponibile
     for k, v in res.items():
@@ -117,24 +120,29 @@ def met(z):
     days = sorted(TX)[:9]
     mean = lambda L: round(sum(L) / len(L), 1) if L else None
     return z['id'], [dict(d=k, r=round(R.get(k, 0), 1), tx=round(TX[k], 1), tn=round(TN[k], 1), rh=mean(RH.get(k)), ws=mean(WS.get(k))) for k in days]
+ok_met = 0
 with ThreadPoolExecutor(4) as ex:
     for zid, f in ex.map(met, zones):
-        if f: d['forecast']['zones'][zid] = f
+        if f: d['forecast']['zones'][zid] = f; ok_met += 1
         else: print('MET fallito', zid)
-d['forecast']['updated'] = dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
+if ok_met: d['forecast']['updated'] = dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')   # se tutto fallisce resta l'ora vera dell'ultima previsione
 
 # 3) Modelli Open-Meteo ---------------------------------------------
 M = ['ecmwf_ifs025', 'icon_seamless', 'gfs_seamless', 'meteofrance_seamless']
 def om(z):
     q = dict(latitude=z['lat'], longitude=z['lon'], daily='precipitation_sum,temperature_2m_max,temperature_2m_min,relative_humidity_2m_mean,wind_speed_10m_mean',
              models=','.join(M), forecast_days=10, timezone='auto')
-    x = getjson('https://api.open-meteo.com/v1/forecast?' + urllib.parse.urlencode(q, safe=','), tries=3)
+    x = None
+    for k in range(4):      # Open-Meteo a volte rifiuta richieste ravvicinate: si riprova con pause crescenti
+        x = getjson('https://api.open-meteo.com/v1/forecast?' + urllib.parse.urlencode(q, safe=','), tries=1)
+        if x and 'daily' in x: break
+        time.sleep(5 * (k + 1))
     if not x or 'daily' not in x: return z['id'], None
     mm = {m: dict(r=x['daily'][f'precipitation_sum_{m}'], tx=x['daily'][f'temperature_2m_max_{m}'], tn=x['daily'][f'temperature_2m_min_{m}'], rh=x['daily'].get(f'relative_humidity_2m_mean_{m}'), ws=x['daily'].get(f'wind_speed_10m_mean_{m}'))
           for m in M if any(v is not None for v in x['daily'].get(f'precipitation_sum_{m}', []))}
     return z['id'], dict(d=x['daily']['time'], m=mm, quota=x.get('elevation'))
 mod = d['forecast'].setdefault('modelli', {})
-with ThreadPoolExecutor(4) as ex:
+with ThreadPoolExecutor(2) as ex:
     for zid, r in ex.map(om, [z for z in zones if z['id'] in d['forecast']['zones']]):
         if r: mod[zid] = r
         else: print('Open-Meteo fallito', zid)
@@ -145,6 +153,8 @@ quota = {}
 for z in zones:
     r = mod.get(z['id'])
     if r and r.get('quota') is not None: quota.setdefault(z['cp'], r['quota'])
+for z in zones:      # se Open-Meteo manca, quota dal modello del terreno (90 m)
+    if z['cp'] not in quota and (z.get('topo') or {}).get('quota_dem') is not None: quota[z['cp']] = z['topo']['quota_dem']
 met_ = d.setdefault('meteo', {})
 def power(item):
     cp, (la, lo) = item
@@ -178,9 +188,47 @@ def arricchisci(c, cp, day):
     for k, nm in (('tn', 'tn7'), ('tx', 'tx7'), ('rh', 'rh7'), ('ws', 'ws7')):
         v = media7(cp, day, k)
         if v is not None: c[nm] = v
+# 5) Pioggia prima di ogni ritrovamento e uscita: si ricalcola sempre (CHIRPS arriva in ritardo, il radar copre il buco)
+def piog(cp, day):
+    ser = d['rain'].get(cp) or []; rad = (d.get('radar') or {}).get(cp, {})
+    def v(x):
+        i = (x - start).days
+        if 0 <= i < len(ser) and ser[i] is not None: return ser[i], True
+        r = rad.get(str(x))
+        return (r, True) if r is not None else (0.0, False)
+    s = {7: 0, 14: 0, 21: 0, 30: 0}; gg = None; fino = None; manca = 0
+    for i in range(30):
+        x = day - dt.timedelta(i + 1); val, ok = v(x)
+        if ok and fino is None: fino = x
+        if not ok: manca += 1
+        for k in s:
+            if i < k: s[k] += val
+        if gg is None and val >= 5: gg = i + 1
+    return dict(r7=round(s[7], 1), r14=round(s[14], 1), r21=round(s[21], 1), r30=round(s[30], 1), gg=gg, fino=str(fino) if fino else None), manca
+ZD = {z['id']: z for z in zones}
 for o in d['obs']:
-    z = next(z for z in zones if z['id'] == o['z'])
-    if o.get('c') is not None: arricchisci(o['c'], z['cp'], dt.date.fromisoformat(o['d']))
+    z = ZD.get(o['z'])
+    if not z: print('osservazione con zona sconosciuta', o.get('id')); continue
+    day = dt.date.fromisoformat(o['d'])
+    if day < start + dt.timedelta(30): continue
+    c, manca = piog(z['cp'], day)
+    if manca > 3: continue      # dati insufficienti: si lascia quello che c'era
+    o.setdefault('c', {}).update(c)
+    arricchisci(o['c'], z['cp'], day)
+for z in zones:
+    for u in z.get('uscite', []):
+        day = dt.date.fromisoformat(u['d'])
+        if day < start + dt.timedelta(30): continue
+        c, manca = piog(z['cp'], day)
+        if manca > 3: continue
+        u.setdefault('c', {})
+        u['c'].update({'pioggia_7': str(c['r7']), 'pioggia_14': str(c['r14']), 'pioggia_21': str(c['r21']), 'pioggia_30': str(c['r30']), 'gg_da_pioggia5': str(c['gg']) if c['gg'] else '>30'})
+        for k, nm in (('tx', 'tmax_7gg_stimata'), ('tn', 'tmin_7gg_stimata')):
+            v_ = media7(z['cp'], day, k)
+            if v_ is not None: u['c'][nm] = str(v_)
 
-json.dump(d, open(P, 'w'), ensure_ascii=False, indent=1)
+d['agg'] = str(today)
+tmp = P + '.tmp'
+with open(tmp, 'w') as f: json.dump(d, f, ensure_ascii=False, indent=1, allow_nan=False)
+os.replace(tmp, P)
 print('ok', d['forecast']['updated'])
