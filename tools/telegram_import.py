@@ -8,7 +8,7 @@ import urllib.request, urllib.parse
 from zoneinfo import ZoneInfo
 from PIL import Image, ExifTags
 
-DP, SP = 'data/data.json', 'data/telegram_state.json'
+DP, SP = os.path.abspath('data/data.json'), os.path.abspath('data/telegram_state.json')
 TZ = ZoneInfo('Europe/Rome')
 BAD = re.compile(r'commestibil|mangiabil|velenos|tossic|mortal|edul|buon[oa] da mangiare', re.I)
 CERT = [('da verificare', r'da verificare|incert|non so|boh'), ('probabile', r'probabil'), ('certo', r'\bcert[oa]\b|determinat[oa] con')]
@@ -142,6 +142,7 @@ def process(D, S, updates, fetch, send, allowed):
                 zz['uscite'].append(dict(d=str(dd), note='Uscita senza funghi (segnalazione Telegram)', c={})); zz['uscite'].sort(key=lambda u: u['d']); added += 0
                 send(chat, 'Registrata uscita senza funghi: %s, %s.' % (zz['n'], dd.strftime('%d/%m/%Y')))
             continue
+        if m.get('text') and re.fullmatch(r'\W*(ciao|salve|buongiorno|buonasera|ok|grazie)\W*', m['text'], re.I): continue
         if m.get('text') and not m['text'].startswith('/'):
             if recent and not last['cap'] and last['photos']: last['cap'] = m['text']
             else: send(chat, 'Ho letto il testo ma non trovo una foto. Invia le foto con una didascalia: Zona; specie; certezza; note')
@@ -213,6 +214,8 @@ def process(D, S, updates, fetch, send, allowed):
     return added
 
 def main():
+    import sys, shutil, tempfile
+    dry = '--dry' in sys.argv
     tok = os.environ['TELEGRAM_TOKEN']; allowed = {int(x) for x in os.environ['TELEGRAM_ALLOWED'].split(',') if x.strip()}
     api = 'https://api.telegram.org/bot' + tok + '/'
     def call(meth, **kw):
@@ -222,13 +225,18 @@ def main():
         fp = call('getFile', file_id=fid)['file_path']
         return urllib.request.urlopen('https://api.telegram.org/file/bot' + tok + '/' + fp, timeout=120).read()
     def send(chat, text):
+        if dry: print('[risposta]', text); return
         try: call('sendMessage', chat_id=chat, text=text)
         except Exception as ex: print('invio non riuscito', ex)
     S = json.load(open(SP)) if os.path.exists(SP) else {'offset': 0}
     ups = call('getUpdates', offset=S['offset'], timeout=0, limit=100)
     if not ups: print('Telegram: nessun messaggio nuovo'); return
     D = json.load(open(DP))
+    if dry: os.makedirs('/tmp/tgdry/foto', exist_ok=True); os.chdir('/tmp/tgdry')
     n = process(D, S, ups, fetch, send, allowed)
+    if dry:
+        for o in D['obs'][-n:] if n else []: print({k: o[k] for k in ('id','d','h','z','lat','lon','sp','cert','fonte','note','foto','val')}, o['c'])
+        return
     S['offset'] = max(u['update_id'] for u in ups) + 1
     json.dump(D, open(DP, 'w'), ensure_ascii=False, indent=1); json.dump(S, open(SP, 'w'))
     print('Telegram: messaggi', len(ups), 'osservazioni aggiunte', n)
