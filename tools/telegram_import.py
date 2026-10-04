@@ -15,7 +15,7 @@ except ImportError:
     import pillow_heif
 pillow_heif.register_heif_opener()
 
-NOTIFY = int(os.environ.get('TELEGRAM_NOTIFY') or 0)
+NOMI = {int(a): b for a, b in (x.split(':', 1) for x in os.environ.get('TELEGRAM_NOMI', '').split(',') if ':' in x)}   # es. 123:Oscar,456:Mimmo
 DP, SP = os.path.abspath('data/data.json'), os.path.abspath('data/telegram_state.json')
 TZ = ZoneInfo('Europe/Rome')
 BAD = re.compile(r'commestibil|mangiabil|velenos|tossic|mortal|edul|buon[oa] da mangiare', re.I)
@@ -229,8 +229,8 @@ def process(D, S, updates, fetch, send, allowed):
         if not any(u['d'] == str(day) for u in z['uscite']):
             z['uscite'].append(dict(d=str(day), note='Segnalazione Telegram', c={})); z['uscite'].sort(key=lambda u: u['d'])
         send(e['chat'], 'Registrato: %s, %s, %s, %s (%d foto). Compare nel sito con l\'etichetta "inserimento TG da verificare".' % (z['n'], c['sp'] or 'specie da determinare', cert, day.strftime('%d/%m/%Y'), len(saved)))
-        if NOTIFY and e['uid'] != NOTIFY:
-            send(NOTIFY, 'Nuova segnalazione da %s: %s, %s, %s, %s (%d foto), pubblicata con etichetta "inserimento TG da verificare".' % (e.get('nome') or 'altro utente', z['n'], c['sp'] or 'specie da determinare', cert, day.strftime('%d/%m/%Y'), len(saved)))
+        for other in allowed - {e['uid']}:      # avvisa gli altri utenti abilitati
+            send(other, 'Nuova segnalazione da %s: %s, %s, %s, %s (%d foto), pubblicata con etichetta "inserimento TG da verificare".' % (NOMI.get(e['uid']) or e.get('nome') or 'un altro utente', z['n'], c['sp'] or 'specie da determinare', cert, day.strftime('%d/%m/%Y'), len(saved)))
     return added
 
 def main():
