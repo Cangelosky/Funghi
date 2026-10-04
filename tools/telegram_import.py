@@ -57,23 +57,30 @@ def parse_caption(cap, A):
         except ValueError: pass
         cap = cap.replace(m2[0], ' ')
     if r['date'] and r['date'] > dt.datetime.now(TZ).date(): r['date'] = r['date'].replace(year=r['date'].year - 1)
-    parts = [p.strip() for p in cap.split(';') if p.strip()]
+    parts = [p.strip(' .') for p in re.split(r'[;\n]+', cap) if p.strip(' .')]
+    IGN = re.compile(r'\b(vedi|guarda)\b.*\b(gps|foto|data|posizione)\b|^(gps|posizione|data)\b.*\bfoto\b', re.I)
     rest = []
-    for i, p in enumerate(parts):
-        zid = zone_from_text(p, A) if r['zona'] is None else None
-        c = next((k for k, rx in CERT if len(p) < 30 and re.search(rx, p, re.I)), None)
-        if zid and i == 0: r['zona'] = zid
-        elif c and r['cert'] is None: r['cert'] = c
-        else: rest.append(p)
-    if len(parts) > 1 and rest and r['zona']:       # formato: zona; specie; certezza; note
-        r['sp'] = rest.pop(0)
-        r['note'] = rest
-    else:                                           # testo libero: cerca zona e certezza, il resto va nelle note
-        t = ' '.join(parts)
-        r['zona'] = r['zona'] or zone_from_text(t, A)
-        for k, rx in CERT:
-            if r['cert'] is None and re.search(rx, t, re.I): r['cert'] = k
-        r['note'] = [p for p in rest]
+    for p in parts:
+        if IGN.search(p): continue
+        lab = re.match(r'(?i)(zona|luogo|specie|fungo|nome|certezza|determinazione|note|nota)\s*[:=-]?\s*(.*)$', p)
+        key, val = (lab[1].lower(), lab[2].strip()) if lab and lab[2].strip() else (None, p)
+        if key in ('zona', 'luogo') and r['zona'] is None:
+            r['zona'] = zone_from_text(val, A) or r['zona']; continue
+        if key in ('specie', 'fungo', 'nome') and r['sp'] is None: r['sp'] = val; continue
+        if key in ('note', 'nota'): r['note'].append(val); continue
+        c = next((k for k, rx in CERT if len(val) < 30 and re.search(rx, val, re.I)), None)
+        if c and r['cert'] is None: r['cert'] = c; continue
+        zid = zone_from_text(val, A) if r['zona'] is None else None
+        if zid: r['zona'] = zid; continue
+        rest.append(val)
+    if r['zona'] is None:
+        r['zona'] = zone_from_text(' '.join(parts), A)
+        if r['zona']:      # zona trovata dentro un testo libero: togli il pezzo dalla specie/note e cerca anche la certezza
+            for k, rx in CERT:
+                if r['cert'] is None and re.search(rx, ' '.join(parts), re.I): r['cert'] = k
+            rest = [x for x in rest if not zone_from_text(x, A) and not any(re.search(rx, x, re.I) for _, rx in CERT)]
+    if r['sp'] is None and rest: r['sp'] = rest.pop(0)
+    r['note'] = rest + r['note']
     if r['sp']:
         s = re.sub(r'\s+', ' ', r['sp']).strip(' .')
         r['sp'] = s[:1].upper() + s[1:] if s else None
