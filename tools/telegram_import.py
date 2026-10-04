@@ -2,7 +2,7 @@
 """Legge le segnalazioni inviate al bot Telegram e le inserisce in data/data.json.
 Variabili d'ambiente (NON nel repository): TELEGRAM_TOKEN, TELEGRAM_ALLOWED (id separati da virgola).
 Uso: python3 tools/telegram_import.py   (dalla radice del repo; poi tools/aggiorna.py per il meteo)
-Regole: le segnalazioni entrano con val=False ("da validare"); 'certo' solo se scritto; nessun giudizio sulla commestibilità."""
+Regole: le segnalazioni entrano con val=False ("inserimento TG da verificare"); 'certo' solo se scritto; nessun giudizio sulla commestibilità."""
 import os, re, io, json, math, hashlib, unicodedata, difflib, datetime as dt
 import urllib.request, urllib.parse
 from zoneinfo import ZoneInfo
@@ -165,7 +165,7 @@ def process(D, S, updates, fetch, send, allowed):
             else: send(chat, 'Ho letto il testo ma non trovo una foto. Invia le foto con una didascalia: Zona; specie; certezza; note')
             continue
         if m.get('text', '').startswith('/'):
-            send(chat, 'Invia foto con didascalia "Zona; specie; certezza; note" e, se puoi, la posizione. Le segnalazioni compaiono nel sito come da validare.'); continue
+            send(chat, 'Invia foto con didascalia "Zona; specie; certezza; note" e, se puoi, la posizione. Le segnalazioni compaiono nel sito con l\'etichetta "inserimento TG da verificare".'); continue
         if m.get('location'):
             if recent and 'loc' not in last: last['loc'] = (m['location']['latitude'], m['location']['longitude'])
             else: entries.append(dict(uid=uid, chat=chat, when=when, photos=[], cap='', loc=(m['location']['latitude'], m['location']['longitude'])))
@@ -227,7 +227,7 @@ def process(D, S, updates, fetch, send, allowed):
             D['obs'].append(o); nid += 1; added += 1
         if not any(u['d'] == str(day) for u in z['uscite']):
             z['uscite'].append(dict(d=str(day), note='Segnalazione Telegram', c={})); z['uscite'].sort(key=lambda u: u['d'])
-        send(e['chat'], 'Registrato: %s, %s, %s, %s (%d foto). Compare nel sito come "da validare".' % (z['n'], c['sp'] or 'specie da determinare', cert, day.strftime('%d/%m/%Y'), len(saved)))
+        send(e['chat'], 'Registrato: %s, %s, %s, %s (%d foto). Compare nel sito con l\'etichetta "inserimento TG da verificare".' % (z['n'], c['sp'] or 'specie da determinare', cert, day.strftime('%d/%m/%Y'), len(saved)))
     return added
 
 def main():
