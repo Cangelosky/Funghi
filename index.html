@@ -265,9 +265,7 @@ const S=species(),SP=[];Object.keys(S).filter(k=>k!=NOID&&!WOOD.test(k)).forEach
 const nO=new Set(D.obs.filter(o=>o.c).map(o=>o.z+o.d)).size;
 const d=document.createElement("div");d.id="sunto";d.className="card sunto";
 d.innerHTML=`<h3>In sintesi · ${dl(TODAY)}</h3><div class="big"><span class="pill ${bc}">${bn}</span> ${head}</div>
-<div class="dchips">${days.map((x,i)=>{const[n,c]=band(mx[i]);return`<div class="dchip"><span class="meta">${i?dl(x):"oggi"}</span><b style="color:var(--${c})">${mx[i]}</b></div>`}).join("")}</div><p class="meta" style="margin:0 0 4px">Miglior punteggio tra le zone, giorno per giorno (rosso = poco probabile, giallo = possibile, verde = favorevole).</p>
-<h4 style="margin:12px 0 2px">Dove andare</h4>${Z.slice(0,3).map(row).join("")}
-<h4 style="margin:12px 0 2px">Specie con condizioni simili ai vostri ritrovamenti</h4>${SP.length?SP.slice(0,4).map(x=>`<div class="zr"><div class="row" style="justify-content:space-between"><b><i>${x.k}</i></b><b>${x.b.sim.s}%</b></div><div class="meta">${x.b.z.n.replace(/ \(.*/,"")} · simile al ritrovamento del ${it(x.b.sim.o.d)}${x.b.sim.n<3?' <span class="pill warn">pochi dati</span>':""}</div></div>`).join(""):'<p class="meta">Oggi nessuna specie ha condizioni vicine a quelle dei ritrovamenti registrati.</p>'}
+<div class="dchips">${days.map((x,i)=>{const[n,c]=band(mx[i]);return`<div class="dchip"><span class="meta">${i?dl(x):"oggi"}</span><b style="color:var(--${c})">${mx[i]}/100</b></div>`}).join("")}</div><p class="meta" style="margin:0 0 4px">Probabilità di trovare funghi nella zona migliore, giorno per giorno (rosso = poco probabile, giallo = possibile, verde = favorevole).</p>
 <p class="note"><b>Ipotesi di lavoro, non validata.</b> Affidabilità <b>bassa</b>: calcolata su ${nO} giornate con ritrovamento, senza uscite a vuoto con cui confrontarla. Oltre 4-5 giorni la pioggia prevista è incerta. Sotto il dettaglio per zona e per specie.</p>`;
 P.insertAdjacentHTML("afterbegin","");P.insertBefore(d,P.firstChild)}
 const _dm0=drawMeteo;drawMeteo=function(){_dm0.apply(this,arguments);addMeteoSunto()};
