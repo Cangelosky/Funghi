@@ -16186,7 +16186,7 @@
     "ws7": 3.1
    },
    "note": "",
-   "val": false
+   "val": true
   },
   {
    "id": "R044",
@@ -16213,7 +16213,7 @@
     "ws7": 3.4
    },
    "note": "",
-   "val": false
+   "val": true
   }
  ],
  "forecast": {
