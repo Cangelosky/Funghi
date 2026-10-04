@@ -7,6 +7,13 @@ import os, re, io, json, math, hashlib, unicodedata, difflib, datetime as dt
 import urllib.request, urllib.parse
 from zoneinfo import ZoneInfo
 from PIL import Image, ExifTags
+try:
+    import pillow_heif
+except ImportError:
+    import subprocess, sys
+    subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', '--break-system-packages', 'pillow-heif'])
+    import pillow_heif
+pillow_heif.register_heif_opener()
 
 DP, SP = os.path.abspath('data/data.json'), os.path.abspath('data/telegram_state.json')
 TZ = ZoneInfo('Europe/Rome')
@@ -97,6 +104,9 @@ def exif_info(im):
             f = lambda v: float(v[0]) + float(v[1]) / 60 + float(v[2]) / 3600
             la, lo = f(g[2]), f(g[4])
             out['lat'] = round(-la if g.get(1) == 'S' else la, 6); out['lon'] = round(-lo if g.get(3) == 'W' else lo, 6)
+        if g and 6 in g:
+            try: out['alt'] = round(float(g[6]))
+            except Exception: pass
         t = ex.get_ifd(0x8769).get(36867) or ex.get(306)
         if t: out['dt'] = dt.datetime.strptime(str(t), '%Y:%m:%d %H:%M:%S')
         return out
@@ -204,7 +214,7 @@ def process(D, S, updates, fetch, send, allowed):
         day = c['date'] or next((x['dt'].date() for _, x in saved if 'dt' in x), None) or e['when'].date()
         hh = next((x['dt'].strftime('%H:%M') for _, x in saved if 'dt' in x), e['when'].strftime('%H:%M'))
         lat, lon = loc if loc else (z['lat'], z['lon'])
-        fonte = 'Telegram (posizione)' if loc else 'Telegram (posizione della zona)'
+        fonte = ('Telegram (GPS della foto)' if (loc and not e.get('loc')) else 'Telegram (posizione)') if loc else 'Telegram (posizione della zona)'
         if c['sp']:
             known = {o['sp'] for o in D['obs'] if o.get('sp')}
             low = c['sp'].lower()
@@ -212,7 +222,7 @@ def process(D, S, updates, fetch, send, allowed):
             if len(hit) == 1: c['sp'] = hit[0]
         cert = c['cert'] or ('da verificare' if not c['sp'] else 'probabile')
         for n, _ in saved:
-            o = dict(id='R%03d' % nid, d=str(day), h=hh, z=zid, lat=round(lat, 6), lon=round(lon, 6), q=None, sp=c['sp'], cert=cert,
+            o = dict(id='R%03d' % nid, d=str(day), h=hh, z=zid, lat=round(lat, 6), lon=round(lon, 6), q=next((x['alt'] for _, x in saved if 'alt' in x), None), sp=c['sp'], cert=cert,
                      fonte=fonte, foto=n, c=rain_feat(D, z['cp'], day), note=c['note'], val=False)
             D['obs'].append(o); nid += 1; added += 1
         if not any(u['d'] == str(day) for u in z['uscite']):
