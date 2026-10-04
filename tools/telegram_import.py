@@ -44,6 +44,9 @@ def zone_from_text(text, A):
     t = norm(text)
     hits = [(len(a), zid) for a, zid in A.items() if a in t]
     if hits: return max(hits)[1]
+    cd = lambda x: re.sub(r'(.)\1', r'\1', x)      # tollera doppie (xaravuli = xaravulli)
+    hits = [(len(a), zid) for a, zid in A.items() if cd(a) in cd(t)]
+    if hits: return max(hits)[1]
     m = difflib.get_close_matches(t, list(A), n=1, cutoff=.75)
     return A[m[0]] if m else None
 
@@ -65,7 +68,7 @@ def parse_caption(cap, A):
         except ValueError: pass
         cap = cap.replace(m2[0], ' ')
     if r['date'] and r['date'] > dt.datetime.now(TZ).date(): r['date'] = r['date'].replace(year=r['date'].year - 1)
-    parts = [p.strip(' .') for p in re.split(r'[;\n]+', cap) if p.strip(' .')]
+    parts = [p.strip(' .') for p in re.split(r'[;\n]+|\s+[-–]+\s*', cap) if p.strip(' .')]
     IGN = re.compile(r'\b(vedi|guarda)\b.*\b(gps|foto|data|posizione)\b|^(gps|posizione|data)\b.*\bfoto\b', re.I)
     rest = []
     for p in parts:
