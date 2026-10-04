@@ -15,6 +15,7 @@ except ImportError:
     import pillow_heif
 pillow_heif.register_heif_opener()
 
+NOTIFY = int(os.environ.get('TELEGRAM_NOTIFY') or 0)
 DP, SP = os.path.abspath('data/data.json'), os.path.abspath('data/telegram_state.json')
 TZ = ZoneInfo('Europe/Rome')
 BAD = re.compile(r'commestibil|mangiabil|velenos|tossic|mortal|edul|buon[oa] da mangiare', re.I)
@@ -168,7 +169,7 @@ def process(D, S, updates, fetch, send, allowed):
             send(chat, 'Invia foto con didascalia "Zona; specie; certezza; note" e, se puoi, la posizione. Le segnalazioni compaiono nel sito con l\'etichetta "inserimento TG da verificare".'); continue
         if m.get('location'):
             if recent and 'loc' not in last: last['loc'] = (m['location']['latitude'], m['location']['longitude'])
-            else: entries.append(dict(uid=uid, chat=chat, when=when, photos=[], cap='', loc=(m['location']['latitude'], m['location']['longitude'])))
+            else: entries.append(dict(uid=uid, nome=(m.get('from') or {}).get('first_name', ''), chat=chat, when=when, photos=[], cap='', loc=(m['location']['latitude'], m['location']['longitude'])))
             continue
         ph = None
         if m.get('photo'): ph = m['photo'][-1]['file_id'], m['photo'][-1]['file_unique_id']
@@ -178,7 +179,7 @@ def process(D, S, updates, fetch, send, allowed):
         tgt = next((e for e in entries if grp and e.get('grp') == grp), None)
         if not tgt and recent and not grp and not last['photos'] and last.get('loc'): tgt = last   # posizione inviata prima delle foto
         if not tgt:
-            tgt = dict(uid=uid, chat=chat, when=when, photos=[], cap='', grp=grp); entries.append(tgt)
+            tgt = dict(uid=uid, nome=(m.get('from') or {}).get('first_name', ''), chat=chat, when=when, photos=[], cap='', grp=grp); entries.append(tgt)
         tgt['photos'].append(ph)
         if m.get('caption'): tgt['cap'] = m['caption']
     nid = max(int(o['id'][1:]) for o in D['obs']) + 1
@@ -228,6 +229,8 @@ def process(D, S, updates, fetch, send, allowed):
         if not any(u['d'] == str(day) for u in z['uscite']):
             z['uscite'].append(dict(d=str(day), note='Segnalazione Telegram', c={})); z['uscite'].sort(key=lambda u: u['d'])
         send(e['chat'], 'Registrato: %s, %s, %s, %s (%d foto). Compare nel sito con l\'etichetta "inserimento TG da verificare".' % (z['n'], c['sp'] or 'specie da determinare', cert, day.strftime('%d/%m/%Y'), len(saved)))
+        if NOTIFY and e['uid'] != NOTIFY:
+            send(NOTIFY, 'Nuova segnalazione da %s: %s, %s, %s, %s (%d foto), pubblicata con etichetta "inserimento TG da verificare".' % (e.get('nome') or 'altro utente', z['n'], c['sp'] or 'specie da determinare', cert, day.strftime('%d/%m/%Y'), len(saved)))
     return added
 
 def main():
