@@ -15,7 +15,7 @@ function creaModulo() {
   form.setAllowResponseEdits(false);
 
   // ---- Pagina 1: chi, quando, dove, esito ----
-  form.addTextItem().setTitle('Chi segnala (nome o sigla)').setRequired(true)
+  form.addMultipleChoiceItem().setTitle('Chi segnala').setChoiceValues(['Oscar', 'Mimmo']).setRequired(true)
     .setHelpText('Non viene pubblicato nel sito senza accordo.');
   form.addDateItem().setTitle('Data del ritrovamento / uscita').setRequired(true);
   form.addTimeItem().setTitle('Ora (se la ricordi)');
