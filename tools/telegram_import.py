@@ -132,6 +132,16 @@ def process(D, S, updates, fetch, send, allowed):
         when = dt.datetime.fromtimestamp(m['date'], TZ); chat = m['chat']['id']
         last = next((e for e in reversed(entries) if e['uid'] == uid), None)
         recent = last and (when - last['when']).total_seconds() < 3600
+        if m.get('text') and re.match(r'\s*uscita senza funghi', m['text'], re.I):
+            cp_ = parse_caption(re.sub(r'(?i)uscita senza funghi', '', m['text']), A)
+            if not cp_['zona']:
+                send(chat, 'Non riconosco la zona: scrivi "Uscita senza funghi; zona; data".'); continue
+            zz = next(z for z in D['zones'] if z['id'] == cp_['zona']); dd = cp_['date'] or when.date()
+            if any(u['d'] == str(dd) for u in zz['uscite']): send(chat, 'Uscita gia registrata per %s il %s.' % (zz['n'], dd.strftime('%d/%m/%Y')))
+            else:
+                zz['uscite'].append(dict(d=str(dd), note='Uscita senza funghi (segnalazione Telegram)', c={})); zz['uscite'].sort(key=lambda u: u['d']); added += 0
+                send(chat, 'Registrata uscita senza funghi: %s, %s.' % (zz['n'], dd.strftime('%d/%m/%Y')))
+            continue
         if m.get('text') and not m['text'].startswith('/'):
             if recent and not last['cap'] and last['photos']: last['cap'] = m['text']
             else: send(chat, 'Ho letto il testo ma non trovo una foto. Invia le foto con una didascalia: Zona; specie; certezza; note')
