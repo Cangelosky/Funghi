@@ -232,3 +232,11 @@ tmp = P + '.tmp'
 with open(tmp, 'w') as f: json.dump(d, f, ensure_ascii=False, indent=1, allow_nan=False)
 os.replace(tmp, P)
 print('ok', d['forecast']['updated'])
+
+# 6) Diario delle previsioni (una volta al giorno, al primo giro)
+try:
+    import sys as _s; _s.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import diario
+    print('diario salvato' if diario.salva(d) else 'diario: oggi già salvato')
+except Exception as ex:
+    print('diario non salvato:', ex)

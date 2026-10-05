@@ -180,6 +180,7 @@ const LAGK=[[0,.1],[2,.25],[5,.55],[7,1],[14,1],[21,.65],[30,.35],[45,.15]];
 function lag(g){if(g===null)return .1;for(let i=1;i<LAGK.length;i++)if(g<=LAGK[i][0]){const[a,fa]=LAGK[i-1],[b,fb]=LAGK[i];return fa+(fb-fa)*(g-a)/(b-a)}return .15}
 function verif(){const F=[],V=[];D.zones.forEach(z=>{if(!D.rain[z.cp])return;z.uscite.forEach(u=>{const n=D.obs.filter(o=>o.z==z.id&&o.d==u.d&&!(o.sp&&WOOD.test(o.sp))).length;(n?F:V).push(score(feat(z,u.d)))})});const m=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):null;return{nf:F.length,mf:m(F),nv:V.length,mv:m(V)}}
 function lagE(f){return f.ev&&f.ev.length?Math.max(...f.ev.map(lag)):lag(null)}
+/* Formula del punteggio: se la cambi, aggiorna anche tools/diario.py (diario delle previsioni) */
 function score(f){return Math.round(100*Math.min(1,f.r30/100)*lagE(f)*tf(f.tn7,cal().tn,3)*tf(f.rh7,cal().rh,8))}
 function band(s){return s>=65?["favorevole","ok"]:s>=35?["possibile","warn"]:["poco probabile","bad"]}
 function simil(f,sp){const O=D.obs.filter(o=>o.sp==sp&&o.c&&o.c.gg!==null);if(!O.length)return null;let best=0,bo=null;O.forEach(o=>{const d=Math.hypot((f.r30-o.c.r30)/40,((f.gg??40)-o.c.gg)/6,(f.tn7!=null&&o.c.tn7!=null)?(f.tn7-o.c.tn7)/4:0,(f.rh7!=null&&o.c.rh7!=null)?(f.rh7-o.c.rh7)/15:0);const s=Math.exp(-d*d/2);if(s>best){best=s;bo=o}});return{s:Math.round(best*100),n:O.length,o:bo}}
