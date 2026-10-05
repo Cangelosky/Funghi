@@ -49,18 +49,21 @@ def pix(lat, lon, day):
     return 'NA'
 
 today = dt.datetime.now(ZoneInfo('Europe/Rome')).date()
-for k in pts: d['rain'].setdefault(k, [])          # zona nuova: serie vuota, si riempie da sola
-n0 = min(len(d['rain'][k]) for k in pts)
+# d['rain_chirps'] = serie del satellite; d['rain'] = pioggia "migliore" (radar > stazioni SIAS > satellite), ricostruita al punto 1c
+if 'rain_chirps' not in d: d['rain_chirps'] = {k: list(v) for k, v in d['rain'].items()}
+CH = d['rain_chirps']
+for k in pts: CH.setdefault(k, [])          # zona nuova: serie vuota, si riempie da sola
+n0 = min(len(CH[k]) for k in pts)
 day = start + dt.timedelta(n0)
 nuovi = 0
 while day < today and nuovi < 120:
     i = (day - start).days
-    serve = [k for k in pts if len(d['rain'][k]) == i]   # ogni serie avanza dalla sua lunghezza
+    serve = [k for k in pts if len(CH[k]) == i]   # ogni serie avanza dalla sua lunghezza
     res = {k: pix(*pts[k], day) for k in serve}
     if any(v == 'NA' for v in res.values()):
         break  # giorno non ancora disponibile
     for k, v in res.items():
-        d['rain'][k].append(v)
+        CH[k].append(v)
     nuovi += 1
     day += dt.timedelta(1)
 print('CHIRPS: giorni aggiunti', nuovi)
@@ -97,7 +100,39 @@ def radar_ultimi(giorni=30):
         except Exception as e:
             print('Radar: errore', giorno, e)
     print('Radar: giorni letti', n)
-radar_ultimi()
+radar_ultimi(150 if min((len(v) for v in (d.get('radar') or {}).values()), default=0) < 100 else 30)   # la prima volta recupera tutto lo storico disponibile (~5 mesi)
+
+# 1b-bis) Stazioni SIAS (pioggia e temperature giornaliere misurate, dalle tabelle ANCE)
+try:
+    import sys as _s; _s.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import sias
+    _n, _ult, SIAS = sias.aggiorna()
+    print('SIAS: file nuovi', _n, '- dati fino al', _ult)
+except Exception as ex:
+    print('SIAS non aggiornato:', ex)
+    SIAS = json.load(open('data/sias.json')) if os.path.exists('data/sias.json') else {'P': {}}
+
+# 1c) Pioggia "migliore" per ogni punto: radar (1 km, corretto con i pluviometri) > media delle stazioni SIAS vicine > satellite CHIRPS
+STZ = {}
+for z in zones:
+    if z.get('sias'): STZ.setdefault(z['cp'], z['sias'])
+best, fonte = {}, {}
+fine = today - dt.timedelta(1)
+for cp in pts:
+    v, f = [], []
+    R = (d.get('radar') or {}).get(cp, {}); C = CH.get(cp, [])
+    for i in range((fine - start).days + 1):
+        g = str(start + dt.timedelta(i))
+        if R.get(g) is not None: v.append(R[g]); f.append('r'); continue
+        x = [SIAS['P'][s][g] for s in STZ.get(cp, []) if g in SIAS['P'].get(s, {})]
+        if x: v.append(round(sum(x) / len(x), 1)); f.append('s'); continue
+        if i < len(C) and C[i] is not None: v.append(C[i]); f.append('c'); continue
+        v.append(None); f.append('-')
+    while v and v[-1] is None: v.pop(); f.pop()
+    best[cp], fonte[cp] = v, ''.join(f)
+d['rain'] = best; d['rain_fonte'] = fonte
+d['rain_fonti'] = {'r': 'radar Protezione Civile (1 km, corretto con i pluviometri)', 's': 'media delle stazioni SIAS vicine', 'c': 'satellite CHIRPS (~5 km)'}
+print('Pioggia migliore:', {cp: {k: fonte[cp].count(k) for k in 'rsc-'} for cp in list(fonte)[:2]})
 
 # 2) MET Norway ------------------------------------------------------
 UA = 'funghi-oscar-cangelosi/1.0 github.com/Cangelosky/Funghi'
