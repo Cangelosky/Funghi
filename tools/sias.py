@@ -11,10 +11,26 @@ PATH = 'data/sias.json'
 URL = 'https://ance.it/wp-content/uploads/allegati/'
 MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic']
 TIPI = {'Precipitazioni': 'P', 'Temp_min': 'tn', 'Temp_max': 'tx'}
-# stazioni conservate (vicine alle zone e ai loro dintorni); per una zona nuova lontana aggiungere qui le sue
-TENUTE = {'Corleone', 'Mezzojuso', 'Monreale Bifarera', 'Monreale Vigna Api', 'Misilmeri', 'Partinico', 'Camporeale', 'Palermo', 'Prizzi',
-          'Castelbuono', 'Polizzi Generosa', 'Lascari', 'Petralia Sottana', 'Gangi', 'Caronia Pomiere', 'Caronia Buzza', 'Mistretta',
-          'San Fratello', 'Pettineo', 'Cesarò Monte Soro', 'Contessa Entellina', 'Termini Imerese'}
+STAZIONI = 'data/sias_stazioni.json'      # elenco ufficiale SIAS con coordinate e quota
+
+def km(a, b, c, d):
+    import math
+    return 111.32 * math.hypot((b - d) * math.cos(math.radians((a + c) / 2)), a - c)
+
+def stazioni():
+    return [s for s in json.load(open(STAZIONI))['stazioni'] if s['attiva'] and s.get('nome')]
+
+def pesi(lat, lon, n=3, maxkm=25):
+    """Le n stazioni più vicine entro maxkm, con peso 1/distanza² (sotto 1 km conta come 1 km)."""
+    v = sorted((km(lat, lon, s['lat'], s['lon']), s) for s in stazioni())
+    v = [(d, s) for d, s in v if d <= maxkm][:n]
+    tot = sum(1 / max(d, 1) ** 2 for d, _ in v)
+    return [dict(nome=s['nome'], km=round(d, 1), quota=s['quota'], peso=round(1 / max(d, 1) ** 2 / tot, 3)) for d, s in v]
+
+def tenute(maxkm=30):
+    """Stazioni da conservare: quelle entro maxkm da almeno una zona."""
+    Z = json.load(open('data/data.json'))['zones']
+    return {s['nome'] for s in stazioni() if any(km(z['lat'], z['lon'], s['lat'], s['lon']) <= maxkm for z in Z)}
 
 def nomi(s, e, pref):
     ms = [MESI[s.month - 1]] + (['sett'] if s.month == 9 else []); me = [MESI[e.month - 1]] + (['sett'] if e.month == 9 else [])
@@ -44,10 +60,14 @@ def scarica(nome):
 
 def aggiorna(giorni=40):
     A = json.load(open(PATH)) if os.path.exists(PATH) else {'fonte': __doc__.split('\n')[1].strip(), 'file_letti': [], 'P': {}, 'tn': {}, 'tx': {}}
+    TENUTE = tenute()
+    rifai = bool(TENUTE - set(A.get('tenute', [])))      # stazioni nuove (zona nuova): si rileggono tutti i file da agosto 2025
+    if rifai: giorni = max(giorni, (dt.date.today() - dt.date(2025, 7, 15)).days)
+    A['tenute'] = sorted(TENUTE)
     oggi = dt.date.today(); cand = []
     for k in range(giorni, 9, -1):
         s = oggi - dt.timedelta(k); e = s + dt.timedelta(10)
-        for pref in TIPI: cand += [n for n in nomi(s, e, pref) if n not in A['file_letti']]
+        for pref in TIPI: cand += [n for n in nomi(s, e, pref) if rifai or n not in A['file_letti']]
     nuovi = 0
     with ThreadPoolExecutor(8) as ex:
         for nome, testo in ex.map(scarica, cand):
@@ -55,7 +75,8 @@ def aggiorna(giorni=40):
             tipo = TIPI[nome.split('_dal_')[0]]
             for st, vals in leggi(testo, tipo).items():
                 if st in TENUTE: A[tipo].setdefault(st, {}).update(vals)
-            A['file_letti'].append(nome); nuovi += 1
+            if nome not in A['file_letti']: A['file_letti'].append(nome)
+            nuovi += 1
     tmp = PATH + '.tmp'
     with open(tmp, 'w') as f: json.dump(A, f, ensure_ascii=False, separators=(',', ':'))
     os.replace(tmp, PATH)

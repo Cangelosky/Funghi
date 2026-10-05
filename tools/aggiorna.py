@@ -114,8 +114,10 @@ except Exception as ex:
 
 # 1c) Pioggia "migliore" per ogni punto: radar (1 km, corretto con i pluviometri) > media delle stazioni SIAS vicine > satellite CHIRPS
 STZ = {}
-for z in zones:
-    if z.get('sias'): STZ.setdefault(z['cp'], z['sias'])
+for z in zones:          # le 3 stazioni SIAS più vicine al punto meteo della zona (peso 1/distanza²)
+    try: z['sias'] = sias.pesi(*pts[z['cp']])
+    except Exception as ex: print('stazioni vicine non calcolate:', ex)
+    if z.get('sias') and isinstance(z['sias'][0], dict): STZ.setdefault(z['cp'], z['sias'])
 best, fonte = {}, {}
 fine = today - dt.timedelta(1)
 for cp in pts:
@@ -124,8 +126,8 @@ for cp in pts:
     for i in range((fine - start).days + 1):
         g = str(start + dt.timedelta(i))
         if R.get(g) is not None: v.append(R[g]); f.append('r'); continue
-        x = [SIAS['P'][s][g] for s in STZ.get(cp, []) if g in SIAS['P'].get(s, {})]
-        if x: v.append(round(sum(x) / len(x), 1)); f.append('s'); continue
+        x = [(SIAS['P'][s['nome']][g], s['peso']) for s in STZ.get(cp, []) if g in SIAS['P'].get(s['nome'], {})]
+        if x: v.append(round(sum(a * w for a, w in x) / sum(w for _, w in x), 1)); f.append('s'); continue
         if i < len(C) and C[i] is not None: v.append(C[i]); f.append('c'); continue
         v.append(None); f.append('-')
     while v and v[-1] is None: v.pop(); f.pop()
@@ -212,6 +214,25 @@ with ThreadPoolExecutor(3) as ex:
                         tx=ser('T2M_MAX', lambda v: v + corr), tn=ser('T2M_MIN', lambda v: v + corr), rh=ser('RH2M'), ws=ser('WS2M'),
                         fonte='NASA POWER (~50 km), temperature corrette in quota (6,5 °C/km)')
 print('POWER ok', len(met_))
+
+# 4b) Temperature minime e massime dalle stazioni SIAS vicine, corrette per la quota della zona (6,5 °C ogni 1000 m)
+QZ = {}
+for z in zones: QZ.setdefault(z['cp'], (z.get('topo') or {}).get('quota_dem'))
+nt = 0
+for cp, W in STZ.items():
+    m = met_.get(cp); zq = QZ.get(cp)
+    if not m or zq is None: continue
+    for k in ('tn', 'tx'):
+        serie = m[k]
+        for i in range((today - dt.timedelta(1) - start).days + 1):
+            g = str(start + dt.timedelta(i))
+            x = [(SIAS[k][s['nome']][g] - 0.0065 * (zq - s['quota']), s['peso']) for s in W if g in SIAS.get(k, {}).get(s['nome'], {})]
+            if not x: continue
+            while len(serie) <= i: serie.append(None)
+            serie[i] = round(sum(a * w for a, w in x) / sum(w for _, w in x), 1); nt += 1
+    m['fonte'] = 'temperature: stazioni SIAS vicine (' + ', '.join(f"{s['nome']} {s['km']} km" for s in W) + '), corrette per la quota della zona; umidità e vento: NASA POWER (~50 km)'
+    m['quota'] = zq
+print('Temperature da stazioni SIAS:', nt, 'valori')
 
 def media7(cp, day, key):
     m = met_.get(cp)
