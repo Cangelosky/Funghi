@@ -25,7 +25,7 @@ def pesi(lat, lon, n=3, maxkm=25):
     v = sorted((km(lat, lon, s['lat'], s['lon']), s) for s in stazioni())
     v = [(d, s) for d, s in v if d <= maxkm][:n]
     tot = sum(1 / max(d, 1) ** 2 for d, _ in v)
-    return [dict(nome=s['nome'], km=round(d, 1), quota=s['quota'], peso=round(1 / max(d, 1) ** 2 / tot, 3)) for d, s in v]
+    return [dict(nome=s['nome'], km=round(d, 1), quota=s['quota'], lat=s['lat'], lon=s['lon'], peso=round(1 / max(d, 1) ** 2 / tot, 3)) for d, s in v]
 
 def tenute(maxkm=30):
     """Stazioni da conservare: quelle entro maxkm da almeno una zona."""

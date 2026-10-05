@@ -93,8 +93,14 @@ def calcola(D, oggi):
             c = rcons(z['id'], d, prev.get(d, {}).get('r'))
             piog.append(round(c['mean'], 1) if c else None); prob.append(round(c['p1'] * 100) if c and c['n'] > 1 else None)
         f0 = F[0]
+        tnp = [ms.get(d, {}).get('tn') for d in giorni]; txp = [ms.get(d, {}).get('tx') for d in giorni]
+        SU = (D.get('suolo') or {}).get(z['cp']) or {}; sp = dict(SU.get('prev') or [])
+        SV = SU.get('v') or []
+        suolo = [sp.get(d) if d in sp else (SV[(dt.date.fromisoformat(d) - dt.date.fromisoformat(st)).days] if 0 <= (dt.date.fromisoformat(d) - dt.date.fromisoformat(st)).days < len(SV) else None) for d in giorni]
+        SMo = (D.get('suolo_modello') or {}).get(z['cp']) or {}
         out[z['id']] = dict(punteggi=[score(f) for f in F], r7=round(f0['r7'], 1), r14=round(f0['r14'], 1), r30=round(f0['r30'], 1),
-                            gg10=f0['gg10'], tn7=f0['tn7'], rh7=f0['rh7'], pioggia_prevista=piog, prob_pioggia=prob)
+                            gg10=f0['gg10'], tn7=f0['tn7'], rh7=f0['rh7'], pioggia_prevista=piog, prob_pioggia=prob,
+                            tn_prevista=tnp, tx_prevista=txp, acqua_suolo=suolo, t_suolo_6cm=[(SMo.get(d) or [None])[0] for d in giorni])
     return out, LAST
 
 def salva(D, path='data/diario.json'):
@@ -108,6 +114,27 @@ def salva(D, path='data/diario.json'):
     os.replace(tmp, path)
     return True
 
+def verifica(D, path='data/diario.json', minimo=14):
+    """Quanto sbagliano le previsioni salvate nel diario rispetto a quanto poi misurato (pioggia e temperature), per zona e anticipo 1-3 giorni."""
+    if not os.path.exists(path): return {}
+    G = json.load(open(path))['giorni']; st = D['start']; out = {}
+    for z in D['zones']:
+        cp = z['cp']; P = D['rain'].get(cp) or []; M = (D.get('meteo') or {}).get(cp) or {}
+        acc = {}
+        for g0, rec in G.items():
+            Z = rec['zone'].get(z['id'])
+            if not Z: continue
+            for L in (1, 2, 3):
+                g = add(g0, L); i = (dt.date.fromisoformat(g) - dt.date.fromisoformat(st)).days
+                for k, prev, oss in (('pioggia', (Z.get('pioggia_prevista') or [None] * 8)[L], P[i] if 0 <= i < len(P) else None),
+                                     ('tn', (Z.get('tn_prevista') or [None] * 8)[L], (M.get('tn') or [])[i] if 0 <= i < len(M.get('tn') or []) else None),
+                                     ('tx', (Z.get('tx_prevista') or [None] * 8)[L], (M.get('tx') or [])[i] if 0 <= i < len(M.get('tx') or []) else None)):
+                    if prev is not None and oss is not None: acc.setdefault(k, []).append(prev - oss)
+        r = {k: dict(n=len(v), errore_medio=round(sum(v) / len(v), 1), errore_assoluto=round(sum(abs(x) for x in v) / len(v), 1)) for k, v in acc.items() if len(v) >= minimo}
+        if r: out[z['id']] = r
+    return out
+
 if __name__ == '__main__':
     D = json.load(open('data/data.json'))
     print('diario salvato' if salva(D) else 'diario: oggi già salvato')
+    print('verifica:', verifica(D) or 'non ancora abbastanza giorni')
