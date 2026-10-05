@@ -2,6 +2,7 @@
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Funghi Sicilia – monitoraggio micologico</title>
 <meta name="description" content="Monitoraggio micologico in Sicilia: ritrovamenti per specie e per zona, meteo passato e previsto, ipotesi di previsione.">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#2d6a4f"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Funghi">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🍄%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
@@ -289,4 +290,5 @@ const _dm0=drawMeteo;drawMeteo=function(){_dm0.apply(this,arguments);addMeteoSun
 const _dp1=drawPrev;drawPrev=function(){_dp1.apply(this,arguments);addSunto()};
 function buildUscite(){const rows=[];D.zones.forEach(z=>z.uscite.forEach(u=>rows.push([u.d,z,u])));rows.sort((a,b)=>b[0].localeCompare(a[0]));
 $("#tu").innerHTML="<tr><th>Data</th><th>Zona</th><th>Note</th><th>Pioggia 14 gg</th><th>Giorni da pioggia</th></tr>"+rows.map(([d,z,u])=>`<tr><td>${it(d)}</td><td><a href="#z-${z.id}">${z.n}</a></td><td>${u.note||""}</td><td>${u.c?u.c.pioggia_14+" mm":"—"}</td><td>${u.c?u.c.gg_da_pioggia5:"—"}</td></tr>`).join("")}
+if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 </script></body></html>
