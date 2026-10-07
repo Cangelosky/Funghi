@@ -27,10 +27,10 @@ def pesi(lat, lon, n=3, maxkm=25):
     tot = sum(1 / max(d, 1) ** 2 for d, _ in v)
     return [dict(nome=s['nome'], km=round(d, 1), quota=s['quota'], lat=s['lat'], lon=s['lon'], peso=round(1 / max(d, 1) ** 2 / tot, 3)) for d, s in v]
 
-def tenute(maxkm=30):
-    """Stazioni da conservare: quelle entro maxkm da almeno una zona."""
-    Z = json.load(open('data/data.json'))['zones']
-    return {s['nome'] for s in stazioni() if any(km(z['lat'], z['lon'], s['lat'], s['lon']) <= maxkm for z in Z)}
+def tenute(maxkm=30, extra=()):
+    """Stazioni da conservare: quelle entro maxkm da almeno una zona o da un punto in più (extra: [(lat, lon)], per esempio le segnalazioni)."""
+    Z = [(z['lat'], z['lon']) for z in json.load(open('data/data.json'))['zones']] + list(extra)
+    return {s['nome'] for s in stazioni() if any(km(la, lo, s['lat'], s['lon']) <= maxkm for la, lo in Z)}
 
 def nomi(s, e, pref):
     ms = [MESI[s.month - 1]] + (['sett'] if s.month == 9 else []); me = [MESI[e.month - 1]] + (['sett'] if e.month == 9 else [])
@@ -58,9 +58,9 @@ def scarica(nome):
         if r.returncode: return nome, None
         return nome, subprocess.run(['pdftotext', '-layout', f.name, '-'], capture_output=True, text=True).stdout
 
-def aggiorna(giorni=40):
+def aggiorna(giorni=40, extra=()):
     A = json.load(open(PATH)) if os.path.exists(PATH) else {'fonte': __doc__.split('\n')[1].strip(), 'file_letti': [], 'P': {}, 'tn': {}, 'tx': {}}
-    TENUTE = tenute()
+    TENUTE = tenute(extra=extra)
     rifai = bool(TENUTE - set(A.get('tenute', [])))      # stazioni nuove (zona nuova): si rileggono tutti i file da agosto 2025
     if rifai: giorni = max(giorni, (dt.date.today() - dt.date(2025, 7, 15)).days)
     A['tenute'] = sorted(TENUTE)

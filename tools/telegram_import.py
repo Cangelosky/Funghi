@@ -195,8 +195,9 @@ def t_ok(l):
     try: return SICILIA(float(l['latitude']), float(l['longitude']))
     except Exception: return False
 
-def process(D, S, updates, fetch, send, allowed):
-    """fetch(file_id)->bytes ; send(chat_id,text) ; restituisce numero di osservazioni aggiunte"""
+def process(D, S, updates, fetch, send, allowed, assoc=None):
+    """fetch(file_id)->bytes ; send(chat_id,text) ; assoc(update_id, testo, data)->risposta o None (segnalazioni associati);
+    restituisce numero di osservazioni aggiunte"""
     A = aliases(D['zones']); added = 0; entries = []
     for u in updates:
       try:
@@ -211,6 +212,11 @@ def process(D, S, updates, fetch, send, allowed):
                 if xy: m = dict(m, location={'latitude': xy[0], 'longitude': xy[1]}); m.pop('text')
             last = next((e for e in reversed(entries) if e['uid'] == uid), None)
             recent = last and (when - last['when']).total_seconds() < 3600
+            if m.get('text') and re.match(r'\s*assoc', m['text'], re.I):     # segnalazione di un associato: archivio cifrato a parte
+                if assoc is None: send(chat, 'Segnalazione associati non salvata: manca la password dell\'archivio. Rimandala più tardi.'); continue
+                risp = assoc(u['update_id'], m['text'], when.date())
+                if risp: send(chat, risp)
+                continue
             if m.get('text') and re.match(r'\s*uscita senza funghi', m['text'], re.I):
                 cp_ = parse_caption(re.sub(r'(?i)uscita senza funghi', '', m['text']), A)
                 if not cp_['zona']:
@@ -347,7 +353,15 @@ def main():
     if not ups: print('Telegram: nessun messaggio nuovo'); return
     D = json.load(open(DP))
     if dry: os.makedirs('/tmp/tgdry/foto', exist_ok=True); os.chdir('/tmp/tgdry')
-    n = process(D, S, ups, fetch, send, allowed)
+    assoc = None; AS = None; pwd = os.environ.get('ASSOC_PASSWORD')
+    if pwd:
+        try:
+            import associati
+            AS = associati.carica(pwd)
+            assoc = lambda uid, testo, giorno: associati.da_telegram(AS, uid, testo, giorno)
+        except Exception as ex: print('Segnalazioni associati non disponibili:', ex)
+    n = process(D, S, ups, fetch, send, allowed, assoc)
+    if AS is not None and not dry: associati.salva(AS, pwd)
     if dry:
         for o in D['obs'][-n:] if n else []: print({k: o[k] for k in ('id','d','h','z','lat','lon','sp','cert','fonte','note','foto','val')}, o['c'])
         return

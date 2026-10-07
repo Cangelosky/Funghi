@@ -63,6 +63,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 <section id="s-meteo"><div class="row"><label>Zona <select id="mz"></select></label></div><div id="meteo"></div></section>
 <section id="s-previsione"><div id="prev"></div></section>
 <section id="s-meteobeta"><div id="mb"></div></section>
+<section id="s-segnalazioni"><div id="sg"></div></section>
 <section id="s-uscite"><div class="card scroll"><table id="tu"></table></div></section>
 <section id="s-zona"><div class="back"><button class="btn" onclick="show('mappa')">← Mappa</button></div><div id="zona"></div></section>
 <section id="s-sp"><div class="back"><button class="btn" onclick="show('specie')">← Specie</button></div><div id="sp"></div></section>
@@ -93,7 +94,7 @@ function drawBoschi(m,zid){return boschi().then(B=>{const L0=L.layerGroup();cons
 function species(){const m={};D.obs.forEach(o=>{const k=o.sp||NOID;(m[k]=m[k]||[]).push(o)});return m}
 function init(){$("#agg").textContent=it(D.agg);
 $("#tabs").innerHTML=[["mappa","Mappa"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["meteobeta","Meteo β"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
-$("#tabs").onclick=e=>{if(e.target.dataset.k)route(e.target.dataset.k)};
+$("#tabs").onclick=e=>{if(e.target.dataset.k)route(e.target.dataset.k)};if(sgMem.get())sgTab();
 const S=species(),nsp=Object.keys(S).filter(k=>k!=NOID).length;
 const nusc=new Set();D.zones.forEach(z=>z.uscite.forEach(u=>nusc.add(z.id+u.d)));
 $("#stats").innerHTML=[[nsp,"specie con nome"],[D.obs.length,"osservazioni"],[nusc.size,"uscite registrate"],[D.zones.length,"zone"],[D.obs.filter(o=>o.foto).length,"foto"]].map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
@@ -106,7 +107,7 @@ buildZone();buildSpecie();buildMeteoSel();buildUscite();setupSearch();
 window.onhashchange=()=>routeHash();routeHash()}
 function route(h){if(location.hash=="#"+h)routeHash();else location.hash=h}
 function routeHash(){const h=location.hash.slice(1)||"mappa";
-if(h.startsWith("z-"))openZona(h.slice(2));else if(h.startsWith("sp-"))openSpecie(h.slice(3));else if(h=="meteobeta"){drawMB();show("meteobeta")}else if(h=="meteo"){drawMeteo();show("meteo")}else if(h=="previsione"){drawPrev();show("previsione")}else if(["zone","specie","uscite","mappa"].includes(h))show(h);else show("mappa")}
+if(h.startsWith("z-"))openZona(h.slice(2));else if(h.startsWith("sp-"))openSpecie(h.slice(3));else if(h=="meteobeta"){drawMB();show("meteobeta")}else if(h=="segnalazioni"){show("segnalazioni");drawSG()}else if(h=="meteo"){drawMeteo();show("meteo")}else if(h=="previsione"){drawPrev();show("previsione")}else if(["zone","specie","uscite","mappa"].includes(h))show(h);else show("mappa")}
 function setupSearch(){const q=$("#q"),r=$("#res");const items=[];const S=species();Object.keys(S).filter(k=>k!=NOID).forEach(k=>items.push({t:k,s:S[k].length+" oss.",h:"sp-"+slug(k),k:"Specie"}));D.zones.forEach(z=>items.push({t:z.n,s:z.area,h:"z-"+z.id,k:"Zona"}));
 q.oninput=()=>{const v=q.value.trim().toLowerCase();if(!v){r.style.display="none";return}const m=items.filter(i=>i.t.toLowerCase().includes(v)).slice(0,8);r.innerHTML=m.length?m.map(i=>`<div data-h="${i.h}"><b>${i.t}</b> <span class="meta">${i.k} · ${i.s}</span></div>`).join(""):'<div class="meta">Nessun risultato</div>';r.style.display="block"};
 r.onclick=e=>{const d=e.target.closest("[data-h]");if(d){r.style.display="none";q.value="";route(d.dataset.h)}};document.addEventListener("click",e=>{if(!e.target.closest(".search"))r.style.display="none"})}
@@ -366,6 +367,45 @@ function addSunto3(){const P=$("#prev");if(!P)return;const old=$("#sunto3");if(o
  <p class="note"><b>Prova, non previsione validata.</b> I numeri vengono da studi in Spagna e Italia centrale e da poche date siciliane: nessuno ha mai studiato meteo e funghi in Sicilia. Corretti una volta il 7 ottobre 2026 (dopo un'unica pioggia forte seguita da giorni asciutti l'indice risultava troppo ottimista), poi fissati per tutta la stagione: verranno rivisti solo con molte più uscite registrate, comprese quelle a vuoto. Alto = 50 o più, medio = 25-49, basso = sotto 25.</p></details>`;
  const s=$("#sunto");P.insertBefore(d,s?s.nextSibling:P.firstChild)}
 const _dp3=drawPrev;drawPrev=function(){_dp3.apply(this,arguments);addSunto3()};
+/* Segnalazioni degli associati (prova): archivio cifrato data/associati.enc, aperto nel browser con la password. Nessun nome, foto o luogo preciso. */
+let SG=null,sgMap=null,sgG="",COM=null;
+const sgMem={get:()=>{try{return localStorage.getItem("sg_pw")}catch(e){return null}},set:v=>{try{v?localStorage.setItem("sg_pw",v):localStorage.removeItem("sg_pw")}catch(e){}}};
+async function sgApri(pw){const b=await(await fetch("data/associati.enc",{cache:"no-store"})).json(),dec=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+ const k0=await crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveKey"]);
+ const k=await crypto.subtle.deriveKey({name:"PBKDF2",salt:dec(b.salt),iterations:b.iter,hash:"SHA-256"},k0,{name:"AES-GCM",length:256},false,["decrypt"]);
+ return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:dec(b.iv)},k,dec(b.ct))))}
+function sgTab(){if(!document.querySelector('#tabs button[data-k="segnalazioni"]'))$("#tabs").insertAdjacentHTML("beforeend",`<button data-k="segnalazioni">Segnalazioni</button>`)}
+async function sgSblocca(pw,ric){const e=$("#sgerr");try{SG=await sgApri(pw);if(ric)sgMem.set(pw);sgTab();drawSG()}catch(x){if(e)e.textContent="Password errata o archivio non raggiungibile."}}
+function sgEsci(){SG=null;sgMem.set(null);const b=document.querySelector('#tabs button[data-k="segnalazioni"]');if(b)b.remove();route("mappa")}
+const SGN={bosco:"bosco",prato:"prato e lettiera",legno:"legno",mixomicete:"mixomicete"};
+const SGS={proposta:["proposta","warn"],confermata_foto:["confermata (foto)","ok"],confermata_sede:["confermata in sede","ok"],in_verifica:["in verifica in sede","bad"]};
+function sgRiga(s){const M=s.meteo||{},[sn,sc]=SGS[s.stato]||[s.stato,""],I=M.indice3;
+ return`<div class="zr"><div class="row" style="justify-content:space-between"><b><i>${s.sp}</i>${s.sp_scritto&&s.sp_scritto.toLowerCase()!=s.sp.toLowerCase()?` <span class="meta">(scritto: ${s.sp_scritto})</span>`:""}</b><span class="meta">${s.id}</span></div>
+ <div class="meta">${s.data_approssimata?"circa "+MESI[+s.d.slice(5,7)-1]+" "+s.d.slice(0,4):dl(s.d)+" "+s.d.slice(0,4)} · ${s.comune}${s.rif?" – "+s.rif:""}${s.ospite?" · su "+s.ospite:""}${s.ambiente?" · "+s.ambiente:""}<br>
+ <span class="pill">${SGN[s.gruppo]||"non classificato"}</span><span class="pill ${sc}">${sn}</span>${s.primi?'<span class="pill ok">primi della stagione</span>':""}${s.nota?`<br>Nota: ${s.nota}`:""}
+ ${M.r30!=null?`<br><b>Meteo nei giorni prima</b> (${M.punto}, ${M.quota??"—"} m): ${Math.round(M.r30)} mm in 30 gg · ${M.gg10?`ultima pioggia ≥10 mm ${M.gg10} gg prima`:"nessuna pioggia ≥10 mm"} · ${Math.round(M.dal_1_agosto)} mm dal 1° agosto · terreno ${M.suolo??"—"}%${M.t7!=null?` · media 7 gg ${M.t7} °C`:""}${I&&s.gruppo!="mixomicete"?`<br><b>Nuovo indice quel giorno:</b> ${["bosco","prato","legno"].map(k=>{const[n,c]=classe3(I[k]);return`${SGN[k]} <span class="pill ${c}">${n} ${I[k]}</span>`}).join(" ")}`:""}${M.completo?"":' <span class="pill warn">dati meteo provvisori</span>'}`:M.nota?`<br>${M.nota}`:""}</div></div>`}
+async function drawSG(){const el=$("#sg");
+ if(!SG){const m=sgMem.get();if(m){try{SG=await sgApri(m);sgTab()}catch(e){sgMem.set(null)}}}
+ if(!SG){el.innerHTML=`<div class="card"><h3>Area riservata</h3><p class="note">Contenuto cifrato: serve la password.</p><form onsubmit="event.preventDefault();sgSblocca(this.pw.value,this.ric.checked)"><div class="row"><input name="pw" type="password" autocomplete="current-password" placeholder="Password" style="flex:1;min-width:0;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)"><button class="btn on">Apri</button></div><label class="meta"><input name="ric" type="checkbox" checked> ricorda su questo dispositivo</label><p id="sgerr" class="meta" style="color:var(--bad)"></p></form></div>`;return}
+ if(!COM)COM=await(await fetch("data/comuni_sicilia.json")).json();
+ const T=SG.segnalazioni.slice().sort((a,b)=>b.d<a.d?-1:b.d>a.d?1:b.id<a.id?-1:1),V=T.filter(s=>!sgG||s.gruppo==sgG);
+ const nsp=new Set(T.filter(s=>s.gruppo!="mixomicete").map(s=>s.sp)).size,nco=new Set(T.map(s=>s.comune)).size,nconf=T.filter(s=>/^confermata/.test(s.stato)).length;
+ const per={};V.forEach(s=>{(per[s.sp]=per[s.sp]||[]).push(s)});const SP=Object.entries(per).sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]));
+ const PR=T.filter(s=>s.primi);
+ el.innerHTML=`<div class="card"><h3>Segnalazioni degli associati · prova</h3><p class="note">Area riservata, archivio cifrato. Solo data, specie, comune con un riferimento generico, ospite: <b>nessun nome, nessuna foto, nessun punto preciso</b>. Le determinazioni sono quelle scritte in chat finché il comitato scientifico non le conferma. Il meteo è calcolato in automatico sul comune (o sulla località indicata) dalle stazioni SIAS e dal radar.</p>
+ <div class="stats"><div class="stat"><b>${T.length}</b><span>segnalazioni</span></div><div class="stat"><b>${nsp}</b><span>specie</span></div><div class="stat"><b>${nco}</b><span>${nco==1?"comune":"comuni"}</span></div><div class="stat"><b>${nconf}</b><span>confermate</span></div></div>
+ <div class="row">${[["","Tutti"],["bosco","Bosco"],["prato","Prato e lettiera"],["legno","Legno"]].map(([k,l])=>`<button class="btn ${sgG==k?"on":""}" onclick="sgG='${k}';drawSG()">${l}</button>`).join("")}</div></div>
+ <div class="card"><h3>Dove (per comune)</h3><div id="sgmap" class="map" style="height:320px"></div><p class="meta">Il colore indica quante segnalazioni ci sono nel comune; mai il punto del ritrovamento.</p></div>
+ ${PR.length?`<div class="card"><h3>Primi della stagione</h3>${PR.map(s=>`<div class="meta"><b>${dl(s.d)}</b> <i>${s.sp}</i> · ${s.comune}${s.rif?" – "+s.rif:""}</div>`).join("")}</div>`:""}
+ <div class="card"><h3>Ultime segnalazioni</h3>${V.map(sgRiga).join("")||'<p class="meta">Nessuna segnalazione in questo gruppo.</p>'}</div>
+ <div class="card scroll"><h3>Specie</h3><table><tr><th>Specie</th><th>Gruppo</th><th>N.</th><th>Prima</th><th>Ultima</th><th>Comuni</th></tr>${SP.map(([k,a])=>`<tr><td><i>${k}</i></td><td>${SGN[a[0].gruppo]||"—"}</td><td>${a.length}</td><td>${it(a.map(s=>s.d).sort()[0])}</td><td>${it(a.map(s=>s.d).sort().pop())}</td><td>${[...new Set(a.map(s=>s.comune))].join(", ")}</td></tr>`).join("")}</table></div>
+ <details class="card"><summary>Come si inseriscono</summary><p class="note">Al bot Telegram, una riga che inizia con <b>Assoc</b>: data del ritrovamento, specie (nome scientifico), comune con un riferimento generico, ospite o substrato, stato.<br>
+ <code>Assoc 06/10 Pleurotus ostreatus, Piana degli Albanesi lago, su pioppo, proposta</code><br><code>Assoc 05/10 primi Agaricus silvicola, Piana degli Albanesi lago, pineta</code><br><code>Assoc 03/10 Boletus aereus, Tortorici, confermato, quota 900</code><br>
+ Stato: <i>proposta</i> (scritto in chat), <i>confermato</i> (dal comitato sulle foto), <i>in sede</i> o <i>microscopia</i> (rimandata in sede), <i>confermato in sede</i>. Per aggiornare: <code>Assoc A006 confermato in sede</code>; per cancellare: <code>Assoc cancella A006</code>. Sinonimi riconosciuti (es. <i>Agrocybe aegerita</i> = <i>Cyclocybe cylindracea</i>); i mixomiceti sono esclusi dalle analisi.</p>
+ <p class="meta">Meteo aggiornato al ${SG.meteo_aggiornato?it(SG.meteo_aggiornato):"—"}. Confini comunali: openpolis (ISTAT), CC BY 4.0.</p><button class="btn" onclick="sgEsci()">Esci e dimentica la password su questo dispositivo</button></details>`;
+ setTimeout(()=>{if(sgMap){sgMap.remove();sgMap=null}sgMap=mkmap("sgmap","Stradale");const cnt={};V.forEach(s=>cnt[s.comune]=(cnt[s.comune]||0)+1);const mx=Math.max(1,...Object.values(cnt)),B=[];
+  COM.comuni.filter(c=>cnt[c.n]).forEach(c=>{const pol=L.polygon(c.poly,{color:"#7a4b1e",weight:1.5,fillColor:"#c0702a",fillOpacity:.15+.5*cnt[c.n]/mx}).addTo(sgMap);pol.bindPopup(`<b>${c.n}</b> (${c.pr})<br>${cnt[c.n]} segnalazioni<br>${[...new Set(V.filter(s=>s.comune==c.n).map(s=>"<i>"+s.sp+"</i>"))].join(", ")}`);B.push(pol.getBounds())});
+  if(B.length){let b=B[0];B.slice(1).forEach(x=>b.extend(x));sgMap.fitBounds(b.pad(.6))}else sgMap.setView([37.6,14.0],7)},60)}
 /* ===== Meteo β: quadro di tutte le zone, mappa radar, scheda zona semplice ===== */
 const MBC=["rgb(198,225,245)","rgb(140,195,235)","rgb(70,150,220)","rgb(30,95,190)","rgb(40,40,150)","rgb(120,30,140)"],MBT=[1,5,10,20,40,80];
 const mbCol=v=>{let k=-1;MBT.forEach((t,i)=>{if(v>=t)k=i});return k<0?null:MBC[k]};

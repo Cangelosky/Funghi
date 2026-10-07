@@ -71,8 +71,15 @@ print('CHIRPS: giorni aggiunti', nuovi)
 # 1b) Stazioni SIAS (pioggia e temperature giornaliere misurate, dalle tabelle ANCE) e stazioni vicine a ogni zona
 import sys as _s; _s.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sias
+_ASSOC = None
+if os.environ.get('ASSOC_PASSWORD'):        # segnalazioni degli associati (archivio cifrato): servono anche le stazioni vicino ai loro comuni
+    try:
+        import associati
+        _ASSOC = associati.carica(os.environ['ASSOC_PASSWORD'])
+    except Exception as ex:
+        print('Segnalazioni non lette:', ex)
 try:
-    _n, _ult, SIAS = sias.aggiorna()
+    _n, _ult, SIAS = sias.aggiorna(extra=list(associati.punti(_ASSOC).values()) if _ASSOC else ())
     print('SIAS: file nuovi', _n, '- dati fino al', _ult)
 except Exception as ex:
     print('SIAS non aggiornato:', ex)
@@ -422,3 +429,12 @@ try:
     print('verifica previsioni:', len(V), 'zone' if V else '(servono almeno 14 confronti)')
 except Exception as ex:
     print('diario non salvato:', ex)
+
+# 7) Segnalazioni degli associati (archivio cifrato, solo se c'è la password): meteo e nuovo indice al giorno di ogni ritrovamento
+if _ASSOC is not None:
+    try:
+        associati.meteo(_ASSOC, SIAS, today, sias)
+        associati.salva(_ASSOC, os.environ['ASSOC_PASSWORD'])
+        print('Segnalazioni: meteo aggiornato per', len(_ASSOC['segnalazioni']), 'segnalazioni')
+    except Exception as ex:
+        print('Segnalazioni: meteo non aggiornato:', ex)
