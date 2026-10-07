@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Guida Funghi</title>
+<style>
+:root{--lnk:#8a5a00;--bg:#f6f3ec;--card:#fff;--ink:#2a2620;--mut:#6f675a;--acc:#7a4b1e;--ok:#2e7d4f;--bad:#a8442f;--line:#e4ddcf}
+@media(prefers-color-scheme:dark){:root{--lnk:#ffd54a;--bg:#1c1a16;--card:#27241f;--ink:#efe9dc;--mut:#a39a89;--acc:#d9a066;--ok:#6cc08b;--bad:#e27d66;--line:#3a352d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:820px;margin:0 auto;padding:16px}h1{font-size:1.4rem;margin:8px 0 4px;color:var(--acc)}h2{font-size:1.15rem;margin:28px 0 8px;color:var(--acc);border-bottom:1px solid var(--line);padding-bottom:4px}h3{font-size:1rem;margin:16px 0 4px}
+a{color:var(--lnk)}code{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1px 5px;font-size:.88em;word-break:break-word}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}.meta{color:var(--mut);font-size:.88rem}
+.toc{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+dt{font-weight:700;margin-top:10px}dd{margin:2px 0 0 0}table{border-collapse:collapse;width:100%;font-size:.9rem;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{background:var(--card)}
+input{flex:1;min-width:0;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}button{padding:9px 14px;border-radius:8px;border:1px solid var(--acc);background:var(--acc);color:#fff;font:inherit;cursor:pointer}
+.row{display:flex;gap:8px}
+</style></head><body><main>
+<h1>Guida del sito Funghi Sicilia</h1><p class="meta">Pagina riservata: istruzioni, metodi e changelog. Non è collegata dal sito.</p>
+<div id="g"><div class="card"><form id="f"><div class="row"><input id="pw" type="password" autocomplete="current-password" placeholder="Password"><button>Apri</button></div>
+<label class="meta"><input id="ric" type="checkbox" checked style="flex:none"> ricorda su questo dispositivo</label><p id="err" class="meta" style="color:var(--bad)"></p></form></div></div>
+</main>
+<script>
+const mem={get:()=>{try{return localStorage.getItem("sg_pw")}catch(e){return null}},set:v=>{try{v?localStorage.setItem("sg_pw",v):localStorage.removeItem("sg_pw")}catch(e){}}};
+async function apri(pw){const b=await(await fetch("data/guida.enc",{cache:"no-store"})).json(),dec=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+ const k0=await crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveKey"]);
+ const k=await crypto.subtle.deriveKey({name:"PBKDF2",salt:dec(b.salt),iterations:b.iter,hash:"SHA-256"},k0,{name:"AES-GCM",length:256},false,["decrypt"]);
+ return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:dec(b.iv)},k,dec(b.ct))))}
+function mostra(o){document.getElementById("g").innerHTML=`<p class="meta">Aggiornata al ${o.aggiornata.split("-").reverse().join("/")} · <a href="./">vai al sito</a> · <a href="#" onclick="mem.set(null);location.reload();return false">esci</a></p>`+o.html;if(location.hash.length>1){const e=document.querySelector(location.hash);if(e)e.scrollIntoView()}}
+document.getElementById("f").onsubmit=async e=>{e.preventDefault();const pw=document.getElementById("pw").value;try{const o=await apri(pw);if(document.getElementById("ric").checked)mem.set(pw);mostra(o)}catch(x){document.getElementById("err").textContent="Password errata o guida non raggiungibile."}};
+(async()=>{const m=mem.get();if(m){try{mostra(await apri(m))}catch(e){}}})();
+</script></body></html>

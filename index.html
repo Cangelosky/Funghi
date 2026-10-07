@@ -62,6 +62,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 <section id="s-specie"><div id="spgrid" class="grid"></div></section>
 <section id="s-meteo"><div class="row"><label>Zona <select id="mz"></select></label></div><div id="meteo"></div></section>
 <section id="s-previsione"><div id="prev"></div></section>
+<section id="s-previsionebeta"><div id="pb"></div></section>
 <section id="s-meteobeta"><div id="mb"></div></section>
 <section id="s-segnalazioni"><div id="sg"></div></section>
 <section id="s-uscite"><div class="card scroll"><table id="tu"></table></div></section>
@@ -93,7 +94,7 @@ const BSTY={color:"#1b7a3d",weight:1.6,dashArray:"5 4",fillColor:"#2e9d55",fillO
 function drawBoschi(m,zid){return boschi().then(B=>{const L0=L.layerGroup();const b=B[zid]||{},P=Array.isArray(b)?b:b.p||[];P.forEach(q=>L.polygon([q.p,...(q.h||[])],{...BSTY,stroke:!b.l}).addTo(L0));(b.l||[]).forEach(l=>L.polyline(l,{...BSTY,fill:false}).addTo(L0));L0.addTo(m);return L0})}
 function species(){const m={};D.obs.forEach(o=>{const k=o.sp||NOID;(m[k]=m[k]||[]).push(o)});return m}
 function init(){$("#agg").textContent=it(D.agg);
-$("#tabs").innerHTML=[["mappa","Mappa"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["meteobeta","Meteo β"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
+$("#tabs").innerHTML=[["mappa","Mappa"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["meteobeta","Meteo β"],["previsione","Previsione"],["previsionebeta","Previsione β"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
 $("#tabs").onclick=e=>{if(e.target.dataset.k)route(e.target.dataset.k)};if(sgMem.get())sgTab();
 const S=species(),nsp=Object.keys(S).filter(k=>k!=NOID).length;
 const nusc=new Set();D.zones.forEach(z=>z.uscite.forEach(u=>nusc.add(z.id+u.d)));
@@ -107,7 +108,7 @@ buildZone();buildSpecie();buildMeteoSel();buildUscite();setupSearch();
 window.onhashchange=()=>routeHash();routeHash()}
 function route(h){if(location.hash=="#"+h)routeHash();else location.hash=h}
 function routeHash(){const h=location.hash.slice(1)||"mappa";
-if(h.startsWith("z-"))openZona(h.slice(2));else if(h.startsWith("sp-"))openSpecie(h.slice(3));else if(h=="meteobeta"){drawMB();show("meteobeta")}else if(h=="segnalazioni"){show("segnalazioni");drawSG()}else if(h=="meteo"){drawMeteo();show("meteo")}else if(h=="previsione"){drawPrev();show("previsione")}else if(["zone","specie","uscite","mappa"].includes(h))show(h);else show("mappa")}
+if(h.startsWith("z-"))openZona(h.slice(2));else if(h.startsWith("sp-"))openSpecie(h.slice(3));else if(h=="meteobeta"){drawMB();show("meteobeta")}else if(h=="previsionebeta"){addSunto3();show("previsionebeta")}else if(h=="segnalazioni"){show("segnalazioni");drawSG()}else if(h=="meteo"){drawMeteo();show("meteo")}else if(h=="previsione"){drawPrev();show("previsione")}else if(["zone","specie","uscite","mappa"].includes(h))show(h);else show("mappa")}
 function setupSearch(){const q=$("#q"),r=$("#res");const items=[];const S=species();Object.keys(S).filter(k=>k!=NOID).forEach(k=>items.push({t:k,s:S[k].length+" oss.",h:"sp-"+slug(k),k:"Specie"}));D.zones.forEach(z=>items.push({t:z.n,s:z.area,h:"z-"+z.id,k:"Zona"}));
 q.oninput=()=>{const v=q.value.trim().toLowerCase();if(!v){r.style.display="none";return}const m=items.filter(i=>i.t.toLowerCase().includes(v)).slice(0,8);r.innerHTML=m.length?m.map(i=>`<div data-h="${i.h}"><b>${i.t}</b> <span class="meta">${i.k} · ${i.s}</span></div>`).join(""):'<div class="meta">Nessun risultato</div>';r.style.display="block"};
 r.onclick=e=>{const d=e.target.closest("[data-h]");if(d){r.style.display="none";q.value="";route(d.dataset.h)}};document.addEventListener("click",e=>{if(!e.target.closest(".search"))r.style.display="none"})}
@@ -346,14 +347,14 @@ const classe3=v=>v>=50?["alto","ok"]:v>=25?["medio","warn"]:["basso","bad"];
 function freno3(r,k){const f=r[k].f,_=r._,G=G3[k];const L=[["calendario",f.calendario,"stagione non ancora piena per questi funghi"],["cancello",f.cancello,_.dopo50!=null?`la stagione si sta ancora aprendo: i 50 mm dal 1° agosto sono stati superati ${_.dopo50} giorni fa`:`da agosto sono caduti solo ${Math.round(_.cum)} mm (ne servono almeno 50 per avviare la stagione)`],
  ["pioggia",f.pioggia,`poca pioggia utile: conta quella di 1-5 settimane fa (${Math.round(r[k].reff)} mm efficaci, pieno da ${G.R})`],["suolo",f.suolo,`terreno ancora asciutto (${_.suolo}% di acqua)`],
  ["temperatura",f.temperatura,_.gelo?"freddo: 5 giorni di fila sotto i 5 °C":_.t7!=null&&_.t7<G.T[0]?"troppo freddo":"troppo caldo"]].filter(x=>x[1]<.8).sort((a,b)=>a[1]-b[1]);return L.length?L[0][2]:null}
-function addSunto3(){const P=$("#prev");if(!P)return;const old=$("#sunto3");if(old)old.remove();const zs=D.zones.filter(z=>D.forecast.zones[z.id]&&D.rain[z.cp]);if(!zs.length)return;
+function addSunto3(){const P=$("#pb");if(!P)return;P.innerHTML="";const zs=D.zones.filter(z=>D.forecast.zones[z.id]&&D.rain[z.cp]);if(!zs.length)return;
  const days=[];for(let i=0;i<8;i++)days.push(addD(TODAY,i));const R=zs.map(z=>({z,by:days.map(d=>indice3(z,d))}));
  const riga=k=>{const best=days.map((d,i)=>Math.max(...R.map(x=>x.by[i][k].v)));return`<div style="margin:10px 0 2px"><b>${G3[k].nome}</b> <span class="meta">(${G3[k].es})</span></div><div class="dchips">${days.map((d,i)=>{const[n,c]=classe3(best[i]);return`<div class="dchip"><span class="meta">${i?dl(d):"oggi"}</span><b style="color:var(--${c})">${n}</b><span class="meta">${best[i]}</span></div>`}).join("")}</div>`};
  const zr=x=>{const r=x.by[0],sal=k=>{const i=x.by.findIndex((y,j)=>j>0&&classe3(y[k].v)[0]!=classe3(r[k].v)[0]&&y[k].v>r[k].v);return i>0?` → ${classe3(x.by[i][k].v)[0]} da ${dl(days[i])}`:""};
   const fr=freno3(r,"bosco");return`<div class="zr"><b><a href="#z-${x.z.id}">${x.z.n.replace(/ \(.*/,"")}</a></b><div class="meta">${["bosco","prato","legno"].map(k=>{const[n,c]=classe3(r[k].v);return`${k=="bosco"?"bosco":k=="prato"?"prato":"legno"} <span class="pill ${c}">${n}</span>${sal(k)}`}).join(" · ")}${fr?`<br>Cosa frena i funghi del bosco: ${fr}`:""}</div></div>`};
  const ord=R.slice().sort((a,b)=>Math.max(b.by[0].bosco.v,b.by[0].prato.v)-Math.max(a.by[0].bosco.v,a.by[0].prato.v));
  const d=document.createElement("div");d.id="sunto3";d.className="card sunto";
- d.innerHTML=`<h3>Nuovo indice · in prova</h3><p class="meta" style="margin:0">Costruito sulle regole trovate nella letteratura scientifica, separato per tipo di fungo. Per qualche settimana lo affianchiamo all'indice attuale per confrontarli. Per ogni giorno: la zona migliore.</p>
+ d.innerHTML=`<h3>Nuovo indice · in prova</h3><p class="meta" style="margin:0">Costruito sulle regole trovate nella letteratura scientifica, separato per tipo di fungo. Pagina di prova: l'indice della pagina Previsione resta quello di sempre, e il diario li salva entrambi per confrontarli. Per ogni giorno: la zona migliore.</p>
  ${["bosco","prato","legno"].map(riga).join("")}
  <details><summary>Zona per zona (oggi)</summary>${ord.map(zr).join("")}</details>
  <details><summary>Come funziona</summary><p class="note">Per ogni tipo di fungo moltiplica sei fattori, ognuno tra 0 e 1:<br>
@@ -365,8 +366,7 @@ function addSunto3(){const P=$("#prev");if(!P)return;const old=$("#sunto3");if(o
  <b>6. Versante nord</b>: piccolo vantaggio (+10%) per i versanti a nord e in pendenza.<br>
  Così, se domani piove, l'indice non sale subito: sale nei giorni e nelle settimane dopo, quando i funghi possono davvero uscire.</p>
  <p class="note"><b>Prova, non previsione validata.</b> I numeri vengono da studi in Spagna e Italia centrale e da poche date siciliane: nessuno ha mai studiato meteo e funghi in Sicilia. Corretti una volta il 7 ottobre 2026 (dopo un'unica pioggia forte seguita da giorni asciutti l'indice risultava troppo ottimista), poi fissati per tutta la stagione: verranno rivisti solo con molte più uscite registrate, comprese quelle a vuoto. Alto = 50 o più, medio = 25-49, basso = sotto 25.</p></details>`;
- const s=$("#sunto");P.insertBefore(d,s?s.nextSibling:P.firstChild)}
-const _dp3=drawPrev;drawPrev=function(){_dp3.apply(this,arguments);addSunto3()};
+P.appendChild(d)}
 /* Segnalazioni degli associati (prova): archivio cifrato data/associati.enc, aperto nel browser con la password. Nessun nome, foto o luogo preciso. */
 let SG=null,sgMap=null,sgG="",COM=null;
 const sgMem={get:()=>{try{return localStorage.getItem("sg_pw")}catch(e){return null}},set:v=>{try{v?localStorage.setItem("sg_pw",v):localStorage.removeItem("sg_pw")}catch(e){}}};
