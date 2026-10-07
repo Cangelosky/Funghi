@@ -74,7 +74,7 @@ const AREA={"Piana degli Albanesi":"#7a4b1e","Ficuzza":"#2e7d4f","Madonie":"#8a3
 const addD=(d,n)=>new Date(new Date(d).getTime()+n*864e5).toISOString().slice(0,10);
 const diff=(a,b)=>Math.round((new Date(a)-new Date(b))/864e5);
 function base(){return{"Escursionistica":L.tileLayer("https://tile.opentopomap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:"© OpenTopoMap, © OpenStreetMap"}),"Stradale":L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}),"Satellite":L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{x}/{y}".replace("{z}/{x}/{y}","{z}/{y}/{x}"),{maxZoom:18,attribution:"© Esri"})}}
-function mkmap(id){const b=base();const m=L.map(id,{layers:[b.Escursionistica]});L.control.layers(b).addTo(m);return m}
+function mkmap(id,def){const b=base();const m=L.map(id,{layers:[b[def||"Escursionistica"]]});L.control.layers(b).addTo(m);return m}
 function show(k){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id=="s-"+k));
 document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==(k=="zona"?"mappa":k=="sp"?"specie":k)));
 if(k=="mappa")setTimeout(()=>map.invalidateSize(),50);if(k!="zona"&&k!="sp")history.replaceState(null,"","#"+k);window.scrollTo(0,0)}
@@ -90,7 +90,7 @@ $("#tabs").onclick=e=>{if(e.target.dataset.k)route(e.target.dataset.k)};
 const S=species(),nsp=Object.keys(S).filter(k=>k!=NOID).length;
 const nusc=new Set();D.zones.forEach(z=>z.uscite.forEach(u=>nusc.add(z.id+u.d)));
 $("#stats").innerHTML=[[nsp,"specie con nome"],[D.obs.length,"osservazioni"],[nusc.size,"uscite registrate"],[D.zones.length,"zone"],[D.obs.filter(o=>o.foto).length,"foto"]].map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
-map=mkmap("map").setView([37.97,13.85],8);
+map=mkmap("map","Stradale").setView([37.97,13.85],8);
 D.zones.forEach(z=>{const nf=D.obs.filter(o=>o.z==z.id).length;const c=AREA[z.area]||"#555";
 const m=L.circleMarker([z.lat,z.lon],{radius:9,color:"#fff",weight:2,fillColor:c,fillOpacity:.95}).addTo(map);m.bindTooltip(z.n+(nf?` · ${nf} oss.`:""));m.on("click",()=>route("z-"+z.id));
 if(z.track)L.polyline(z.track.pts.map(p=>[p[1],p[0]]),{color:c,weight:3,opacity:.8}).addTo(map).on("click",()=>route("z-"+z.id))});
