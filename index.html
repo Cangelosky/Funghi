@@ -37,6 +37,13 @@ footer{padding:24px 16px 32px;color:var(--mut);font-size:.8rem;border-top:1px so
 .bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%}
 details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 .scroll td:first-child,.scroll th:first-child{position:sticky;left:0;background:var(--card);z-index:1;box-shadow:1px 0 0 var(--line)}
+.bfh{display:grid;grid-template-columns:30% 35% 35%;font-size:.72rem;color:var(--mut);margin:6px 0 2px}.bfh span:first-child{grid-column:2;text-align:right;padding-right:6px}.bfh span:last-child{padding-left:6px}
+.bf{display:grid;grid-template-columns:30% 35% 35%;align-items:center;padding:9px 0;border-top:1px solid var(--line);cursor:pointer}.bf.sub{padding:7px 0 7px 8px}.bf.sub .bfn b{font-weight:600;font-size:.88rem}
+.bfn{display:flex;flex-direction:column;line-height:1.2}.bfn span{font-size:.72rem;margin-top:2px}
+.bfl,.bfr{display:flex;align-items:center;gap:5px;height:22px}.bfl{justify-content:flex-end;border-right:2px solid var(--acc);padding-right:3px}.bfr{padding-left:3px}
+.bfl i,.bfr i{display:block;height:16px;border-radius:4px}.bfl i{background:#2f6fb3}.bfr i{background:#8ec3ea}.bfv{font-size:.8rem;font-weight:700;min-width:1.4em}.bfl .bfv{text-align:right}
+.sg{display:inline-block;width:12px;height:12px;border-radius:50%;background:conic-gradient(var(--rain) calc(var(--p)*1%),var(--line) 0);vertical-align:-2px;margin-right:4px;border:1px solid var(--rain)}
+.bfz{background:var(--bg);border-radius:10px;padding:0 8px;margin:0 0 6px}
 .mbg{display:grid;grid-template-columns:minmax(78px,1.2fr) repeat(15,minmax(10px,1fr)) 34px;gap:2px;align-items:center;font-size:.72rem;margin-top:6px}
 .mbg .nm{font-weight:600;line-height:1.15;cursor:pointer;padding-right:4px;overflow-wrap:break-word}.mbg .ar{grid-column:1/-1;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);margin-top:8px}
 .mbg .hd{text-align:center;color:var(--mut);font-size:.62rem}.mbg .hd.og{color:var(--acc);font-weight:700}
@@ -314,32 +321,22 @@ const mbCol=v=>{let k=-1;MBT.forEach((t,i)=>{if(v>=t)k=i});return k<0?null:MBC[k
 const corto=n=>n.split(/ [-–] /)[0];
 let MBSEL=null,MBMAP=null,MBRI=null,MBMODE="24h";
 function mbZone(){const O=["Piana degli Albanesi","Ficuzza","Madonie","Nebrodi"];return D.zones.filter(z=>D.forecast.zones[z.id]&&D.rain[z.cp]).sort((a,b)=>O.indexOf(a.area)-O.indexOf(b.area)||a.n.localeCompare(b.n))}
-function drawMB(){const Z=mbZone(),days=[];for(let i=-7;i<=7;i++)days.push(addD(TODAY,i));
-let h=`<div class="card"><h3>Pioggia in tutte le zone</h3><div class="meta">Ultimi 7 giorni, oggi (riquadro e numero arancione) e prossimi 7 (righe oblique = previsione; più chiara = meno sicura). Tocca una casella per il valore, il nome della zona per i dettagli.</div><div id="mbinfo" class="meta" style="min-height:1.3em;margin-top:6px;color:var(--ink)"></div><div class="mbg"><div></div>${days.map(d=>`<div class="hd${d==TODAY?" og":""}">${+d.slice(8)}</div>`).join("")}<div class="hd">suolo</div>`;
-let ar="";Z.forEach(z=>{if(z.area!=ar){ar=z.area;h+=`<div class="ar">${ar}</div>`}const m=daily(z);
-h+=`<div class="nm" onclick="mbSel('${z.id}')" data-z="${z.id}">${corto(z.n).replace("/","/<wbr>")}</div>`;
-days.forEach(d=>{const v=m[d],fu=d>TODAY||d==TODAY&&D.forecast.zones[z.id][0]&&D.forecast.zones[z.id][0].d==d;let op=1;if(d>TODAY){const F=D.forecast.zones[z.id].find(x=>x.d==d),c=F&&rcons(z.id,d,F.r);if(c&&c.n>1)op=.45+.55*Math.max(c.p1,v>=1?.4:1)}const col=v==null?null:mbCol(v);
-h+=`<div class="mbc${d==TODAY?" og":""}${d>TODAY?" fu":""}" style="${col?`background-color:${col};`:""}opacity:${op.toFixed(2)}" onclick="mbInfo('${z.id}','${d}')"></div>`});
-const su=suoloAt(z.cp,TODAY);h+=`<div class="sl" title="acqua nel terreno oggi (stima)" style="color:${su==null?"var(--mut)":su>=60?"var(--rain)":su>=30?"var(--ink)":"var(--warn)"}">${su==null?"—":su+"%"}</div>`});
-h+=`</div><div class="mbleg">${MBT.map((t,i)=>`<span><i style="background:${MBC[i]}"></i>${t}${MBT[i+1]?"–"+MBT[i+1]:"+"}</span>`).join("")}<span>mm al giorno · <b>suolo</b> = acqua nel terreno oggi (stima)</span></div></div>`;
-h+=`<div class="card"><h3>Dove ha piovuto e dove pioverà</h3><div class="row" id="mbmodes">${[["24h","Ultime 24 ore"],["7g","Ultimi 7 giorni"],["p3","Prossimi 3 giorni"],["p7","Prossimi 7 giorni"]].map(([k,l])=>`<button class="btn${k==MBMODE?" on":""}" data-k="${k}">${l}</button>`).join("")}</div><div id="mbmap" class="map" style="height:52vh;min-height:320px"></div><div id="mbleg2" class="mbleg"></div></div><div id="mbz"></div>`;
-$("#mb").innerHTML=h;$("#mbmodes").onclick=e=>{const b=e.target.closest("button");if(!b)return;MBMODE=b.dataset.k;[...$("#mbmodes").children].forEach(x=>x.classList.toggle("on",x==b));mbLayer()};
-if(MBMAP){MBMAP.remove();MBMAP=null}MBMAP=mkmap("mbmap");MBMAP.fitBounds([[36.6,12.4],[38.3,15.65]]);[150,500].forEach(t=>setTimeout(()=>{if(MBMAP){MBMAP.invalidateSize();MBMAP.fitBounds([[36.6,12.4],[38.3,15.65]])}},t));
-fetch("data/radar_mappe.json?v="+Date.now()).then(r=>r.json()).then(j=>{MBRI=j;mbLayer()}).catch(()=>{MBRI=null;mbLayer()});
-if(MBSEL)mbSel(MBSEL,true)}
-let MBL=null;
-function mbLayer(){if(!MBMAP)return;if(MBL){MBMAP.removeLayer(MBL)}MBL=L.layerGroup().addTo(MBMAP);const Z=mbZone();let leg="";
-const somma=(z,a,b)=>{const m=daily(z);let s=0;for(let d=a;d<=b;d=addD(d,1))s+=m[d]||0;return s};
-if(MBMODE=="24h"||MBMODE=="7g"){if(MBRI){L.imageOverlay(`data/radar_${MBMODE}.png?v=${MBRI.al}`,MBRI.bounds,{opacity:.85,interactive:false}).addTo(MBL);const T=MBRI.soglie[MBMODE];leg=`${T.map((t,i)=>`<span><i style="background:${MBRI.colori[i]}"></i>${t}${T[i+1]?"–"+T[i+1]:"+"}</span>`).join("")}<span>mm · radar Protezione Civile, ${MBMODE=="24h"?"giorno "+it(MBRI.giorno_24h):"dal "+it(MBRI.dal)+" al "+it(MBRI.al)}</span>`}else leg="<span>Mappa radar non ancora disponibile: compare al prossimo aggiornamento.</span>";
-Z.forEach(z=>{const v=MBMODE=="24h"?somma(z,MBRI?MBRI.giorno_24h:addD(TODAY,-1),MBRI?MBRI.giorno_24h:addD(TODAY,-1)):somma(z,MBRI?MBRI.dal:addD(TODAY,-7),MBRI?MBRI.al:addD(TODAY,-1));L.circleMarker([z.lat,z.lon],{radius:6,color:"#fff",weight:2,fillColor:"#222",fillOpacity:1}).bindTooltip(`${corto(z.n)}: ${v.toFixed(0)} mm`).on("click",()=>mbSel(z.id)).addTo(MBL)})}
-else{const n=MBMODE=="p3"?3:7,T=MBMODE=="p3"?[1,5,10,20,40,80]:[5,15,30,60,100,150];
-Z.forEach(z=>{const v=somma(z,TODAY,addD(TODAY,n-1));let k=-1;T.forEach((t,i)=>{if(v>=t)k=i});L.circleMarker([z.lat,z.lon],{radius:9+Math.min(k+1,6)*2,color:"#fff",weight:2,fillColor:k<0?"#bbb":MBC[k],fillOpacity:.95}).bindTooltip(`${corto(z.n)}: ${v.toFixed(0)} mm previsti`,{permanent:false}).on("click",()=>mbSel(z.id)).addTo(MBL)});
-leg=`${T.map((t,i)=>`<span><i style="background:${MBC[i]}"></i>${t}${T[i+1]?"–"+T[i+1]:"+"}</span>`).join("")}<span>mm previsti nei prossimi ${n} giorni (media dei modelli) · grigio = quasi niente</span>`}
-$("#mbleg2").innerHTML=leg}
-function mbInfo(id,d){const z=zn(id),m=daily(z),v=m[d];let t=`<b>${corto(z.n)}</b> · ${d==TODAY?"oggi":dl(d)}: ${v==null?"dato mancante":v.toFixed(1)+" mm"}`;
-if(d>=TODAY){const F=D.forecast.zones[id].find(x=>x.d==d),c=F&&rcons(id,d,F.r);if(c&&c.n>1)t+=` previsti (💧 ${Math.round(c.p1*100)}% dei modelli)`}else{const fo=D.rain_fonte&&D.rain_fonte[z.cp],i=diff(d,D.start);if(fo&&fo[i])t+=` · ${{r:"radar corretto",s:"stazioni SIAS",c:"satellite"}[fo[i]]||""}`}
-$("#mbinfo").innerHTML=t}
-function mbSel(id,noscroll){MBSEL=id;const z=zn(id),m=daily(z),S=D.suolo&&D.suolo[z.cp];document.querySelectorAll(".mbg .nm").forEach(e=>e.style.color=e.dataset.z==id?"var(--acc)":"");
+const AREE=["Piana degli Albanesi","Ficuzza","Madonie","Nebrodi"];let MBAREA=null;
+function mbVal(z){const m=daily(z);let p=0,f=0;for(let i=1;i<=14;i++)p+=m[addD(TODAY,-i)]||0;for(let i=0;i<7;i++)f+=m[addD(TODAY,i)]||0;return{p,f,s:suoloAt(z.cp,TODAY)}}
+function terreno(s){return s==null?["—","var(--mut)","stato sconosciuto"]:s<30?["◔","var(--warn)","terreno secco"]:s<60?["◑","var(--ink)","terreno umido"]:["●","var(--rain)","terreno bagnato"]}
+function mbRiga(nome,v,mx,on,sub){const w=x=>Math.max(x>0?3:0,Math.round(100*x/mx)),[ic,col,tt]=terreno(v.s);
+return`<div class="bf${sub?" sub":""}" onclick="${on}"><div class="bfn"><b>${nome}</b><span style="color:${col}" title="${tt}">${v.s!=null?`<i class="sg" style="--p:${v.s}"></i>`:""}${tt.replace("terreno ","")}${v.s!=null?` ${v.s}%`:""}</span></div><div class="bfl"><span class="bfv">${v.p.toFixed(0)}</span><i style="width:${w(v.p)}%"></i></div><div class="bfr"><i style="width:${w(v.f)}%"></i><span class="bfv">${v.f.toFixed(0)}</span></div></div>`}
+function drawMB(){const Z=mbZone(),A={};Z.forEach(z=>(A[z.area]=A[z.area]||[]).push(z));
+const av=L_=>{const v=L_.map(mbVal),s=v.filter(x=>x.s!=null);return{p:v.reduce((a,x)=>a+x.p,0)/v.length,f:v.reduce((a,x)=>a+x.f,0)/v.length,s:s.length?Math.round(s.reduce((a,x)=>a+x.s,0)/s.length):null}};
+const AV=AREE.filter(a=>A[a]).map(a=>[a,av(A[a])]),mx=Math.max(20,...AV.map(([,v])=>Math.max(v.p,v.f)));
+let h=`<div class="card"><h3>Pioggia per area</h3><div class="bfh"><span>◀ caduta negli ultimi 14 giorni</span><span>prevista nei prossimi 7 ▶</span></div>`;
+AV.forEach(([a,v])=>{h+=mbRiga(a=="Piana degli Albanesi"?"Piana":a,v,mx,`mbArea('${a}')`)+(MBAREA==a?mbZoneArea(A[a]):"")});
+h+=`<p class="note">Millimetri di pioggia, media delle zone di ogni area (radar e stazioni per il passato, media dei modelli per i prossimi giorni). Il cerchietto mostra l'acqua nel terreno oggi (stima): più è pieno di blu, più il terreno è bagnato (secco sotto 30%, umido 30-60%, bagnato oltre 60%). Tocca un'area per vedere le sue zone, una zona per i dettagli. Solo meteo: per i funghi c'è la pagina Previsione.</p></div><div id="mbz"></div>`;
+$("#mb").innerHTML=h;if(MBSEL)mbSel(MBSEL,true)}
+function mbZoneArea(L_){const v=L_.map(z=>[z,mbVal(z)]).sort((a,b)=>(b[1].p+b[1].f)-(a[1].p+a[1].f)),mx=Math.max(20,...v.map(([,x])=>Math.max(x.p,x.f)));
+return`<div class="bfz">${v.map(([z,x])=>mbRiga(corto(z.n),x,mx,`event.stopPropagation();mbSel('${z.id}')`,1)).join("")}<div class="meta" style="margin:2px 0 4px">Zone in ordine di acqua (caduta + prevista).</div></div>`}
+function mbArea(a){MBAREA=MBAREA==a?null:a;drawMB()}
+function mbSel(id,noscroll){MBSEL=id;const z=zn(id),m=daily(z),S=D.suolo&&D.suolo[z.cp];
 const days=[];for(let i=-30;i<=8;i++)days.push(addD(TODAY,i));const vals=days.map(d=>m[d]),mx=Math.max(20,...vals.map(v=>v||0));
 const W=360,H=150,x=i=>8+i*344/days.length,bw=344/days.length-1,y=v=>120-v*108/mx,ys=v=>120-v*1.08,ti=days.indexOf(TODAY);
 let svg=`<svg viewBox="0 0 ${W} ${H}" width="100%"><line x1="8" x2="352" y1="120" y2="120" stroke="var(--line)"/><rect x="${x(ti)}" y="8" width="${352-x(ti)}" height="112" fill="rgba(217,160,102,.13)"/>`;
