@@ -7,8 +7,11 @@ import json, math, os, datetime as dt
 from zoneinfo import ZoneInfo
 
 MODELLO = 'v2 2026-10-04: pioggia 30 gg x ritardo dalla pioggia più utile x temperatura minima x umidità'
-MODELLO3 = ('v3 2026-10-07 (prova, congelato): per gruppo (bosco, prato, legno) = calendario x pioggia efficace con ritardo '
-            'x cancello 50 mm dal 1 agosto x acqua nel terreno x temperatura (fascia, caldo, chiusura freddo) x versante nord')
+MODELLO3 = ('v3.1 2026-10-07 (prova): per gruppo (bosco, prato, legno) = calendario x pioggia efficace con ritardo (giorni piovosi >= 2 mm) '
+            'x apertura dopo 50 mm dal 1 agosto (graduale in 21/10 giorni) x acqua nel terreno (piena dal 60%/50%) x temperatura x versante nord')
+# v3 -> v3.1 (7/10/2026, la sera stessa): dopo un'unica pioggia di ~50 mm seguita da due settimane asciutte l'indice dava "alto" senza funghi.
+# Più severi il terreno (umidità nei mesi produttivi ~50-60% della capacità, Karavani 2016) e i giorni piovosi; apertura della stagione
+# graduale nelle 1-3 settimane dopo i 50 mm (ipotesi del rapporto). Da qui i numeri restano fermi per la stagione.
 LAGK = [(0, .1), (2, .25), (5, .55), (7, 1), (14, 1), (21, .65), (30, .35), (45, .15)]
 add = lambda d, n: (dt.date.fromisoformat(d) + dt.timedelta(n)).isoformat()
 diff = lambda a, b: (dt.date.fromisoformat(a) - dt.date.fromisoformat(b)).days
@@ -23,13 +26,13 @@ def jsum(a):
 # Numeri congelati per la stagione 2026-27: non ritoccarli sui pochi dati disponibili.
 GRUPPI = {
     # simbionti degli alberi: porcini, ovoli, lattari, Suillus, Tricholoma, Cortinarius, Leccinum
-    'bosco': dict(K=[(0, 0), (2, .1), (7, 1), (30, 1), (38, 0)], R=80, cancello=1, T=(10, 18, .2), tx=25, freddo=.25, suolo=(.25, .75), base=0, nord=1,
+    'bosco': dict(K=[(0, 0), (2, .1), (7, 1), (30, 1), (38, 0)], R=100, cancello=1, apertura=21, T=(10, 18, .2), tx=25, freddo=.25, suolo=(15, 60, .1), base=0, nord=1,
                   cal=[.35, .15, .2, .35, .55, .5, .15, .25, .65, 1, 1, .8]),
     # lettiera e prato: mazze di tamburo, Clitocybe, Infundibulicybe, Coprinus, Helvella
-    'prato': dict(K=[(0, 0), (1, .15), (5, 1), (25, 1), (32, 0)], R=60, cancello=1, T=(8, 20, .2), tx=27, freddo=.5, suolo=(.25, .75), base=0, nord=1,
+    'prato': dict(K=[(0, 0), (1, .15), (5, 1), (25, 1), (32, 0)], R=60, cancello=1, apertura=10, T=(8, 20, .2), tx=27, freddo=.5, suolo=(10, 50, .15), base=0, nord=1,
                   cal=[.5, .35, .45, .6, .7, .5, .1, .2, .8, 1, 1, .85]),
     # legno: Pleurotus, Armillaria, Fistulina, Laetiporus, Ganoderma, Cyclocybe
-    'legno': dict(K=[(0, 0), (2, .3), (5, 1), (45, 1), (60, 0)], R=60, cancello=0, T=(6, 22, .5), tx=30, freddo=.7, suolo=(.6, .4), base=.4, nord=0,
+    'legno': dict(K=[(0, 0), (2, .3), (5, 1), (45, 1), (60, 0)], R=60, cancello=0, apertura=0, T=(6, 22, .5), tx=30, freddo=.7, suolo=(-75, 50, .6), base=.4, nord=0,
                   cal=[.75, .75, .75, .75, .75, .5, .5, .5, .85, 1, 1, 1]),
 }
 GRUPPO_GENERE = {'bosco': 'Amanita Boletus Suillus Tricholoma Cortinarius Lactarius Leccinum Leccinellum Russula Hygrophorus Imleria Xerocomus Xerocomellus Hydnum Cantharellus',
@@ -68,9 +71,13 @@ def indice3(T, m, ms, suolo, quota, topo, start):
     # pioggia dal 1 agosto della stagione (agosto-gennaio); la serie parte il 15/8/2025
     d0 = dt.date.fromisoformat(T); y = d0.year if d0.month >= 8 else d0.year - 1
     autunno = d0.month >= 8 or d0.month == 1
-    a1 = max(f'{y}-08-01', start); cum = 0
+    a1 = max(f'{y}-08-01', start); cum = 0; d50 = None
     g = a1
-    while g < T: cum += m.get(g, 0) or 0; g = add(g, 1)
+    while g < T:
+        cum += m.get(g, 0) or 0
+        if d50 is None and cum >= 50: d50 = g
+        g = add(g, 1)
+    dopo50 = diff(T, d50) if d50 else None     # giorni dal giorno in cui si sono superati i 50 mm
     # temperature medie dei 7 giorni prima
     med = []; tx = []
     for i in range(1, 8):
@@ -89,11 +96,13 @@ def indice3(T, m, ms, suolo, quota, topo, start):
         for i in range(1, n + 1):
             v = m.get(add(T, -i), 0) or 0; w = pezzi(G['K'], i)
             reff += w * v
-            if v >= 1 and w >= .5: piovosi += 1
-        car = min(1, reff / G['R']) * (.7 + .3 * min(1, piovosi / 6))
+            if v >= 2 and w >= .5: piovosi += 1
+        car = min(1, reff / G['R']) * (.5 + .5 * min(1, piovosi / 8))
         if G['base']: car = G['base'] + (1 - G['base']) * car
-        canc = (1 if cum >= 50 else .3 + .7 * cum / 50) if G['cancello'] and autunno else 1
-        sa, sb = G['suolo']; su = 1 if suolo is None else min(1, sa + sb * suolo / 50)
+        if not (G['cancello'] and autunno): canc = 1
+        elif dopo50 is None: canc = .3 + .2 * cum / 50
+        else: canc = .5 + .5 * min(1, dopo50 / G['apertura']) if G['apertura'] else 1
+        s0, s1, smin = G['suolo']; su = 1 if suolo is None else max(smin, min(1, (suolo - s0) / (s1 - s0)))
         lo, hi, mn = G['T']; tf = fascia(t7, lo, hi, mn)
         if tx7 is not None and tx7 > G['tx']: tf *= max(.4, 1 - .1 * (tx7 - G['tx']))
         if gelo: tf *= G['freddo']
@@ -102,7 +111,7 @@ def indice3(T, m, ms, suolo, quota, topo, start):
         v = jsround(round(100 * min(1, cal * car * canc * su * tf * sito), 6))
         out[k] = dict(v=v, f=dict(calendario=round(cal, 2), pioggia=round(car, 2), cancello=round(canc, 2), suolo=round(su, 2),
                                   temperatura=round(tf, 2), sito=sito, mm_efficaci=round(reff), giorni_piovosi=piovosi))
-    out['_'] = dict(dal_1_agosto=round(cum), t7=None if t7 is None else round(t7, 1), tx7=None if tx7 is None else round(tx7, 1), gelo=bool(gelo))
+    out['_'] = dict(dal_1_agosto=round(cum), giorni_dopo_50mm=dopo50, t7=None if t7 is None else round(t7, 1), tx7=None if tx7 is None else round(tx7, 1), gelo=bool(gelo))
     return out
 
 def classe3(v): return 'alto' if v >= 50 else 'medio' if v >= 25 else 'basso'

@@ -317,11 +317,11 @@ const _dm0=drawMeteo;drawMeteo=function(){_dm0.apply(this,arguments);addMeteoSun
 const _dp1=drawPrev;drawPrev=function(){_dp1.apply(this,arguments);addSunto()};
 /* Nuovo indice v3 (prova, numeri congelati per la stagione 2026-27). Copia esatta di tools/diario.py (indice3): se cambi qui, cambia anche lì e MODELLO3.
    Regole e fonti: progetto Micologia, documento "Fruttificazione funghi in Sicilia". */
-const G3={bosco:{K:[[0,0],[2,.1],[7,1],[30,1],[38,0]],R:80,cancello:1,T:[10,18,.2],tx:25,freddo:.25,suolo:[.25,.75],base:0,nord:1,cal:[.35,.15,.2,.35,.55,.5,.15,.25,.65,1,1,.8],
+const G3={bosco:{K:[[0,0],[2,.1],[7,1],[30,1],[38,0]],R:100,cancello:1,apertura:21,T:[10,18,.2],tx:25,freddo:.25,suolo:[15,60,.1],base:0,nord:1,cal:[.35,.15,.2,.35,.55,.5,.15,.25,.65,1,1,.8],
   nome:"Funghi del bosco",es:"porcini, ovoli, lattari, Suillus, Tricholoma"},
- prato:{K:[[0,0],[1,.15],[5,1],[25,1],[32,0]],R:60,cancello:1,T:[8,20,.2],tx:27,freddo:.5,suolo:[.25,.75],base:0,nord:1,cal:[.5,.35,.45,.6,.7,.5,.1,.2,.8,1,1,.85],
+ prato:{K:[[0,0],[1,.15],[5,1],[25,1],[32,0]],R:60,cancello:1,apertura:10,T:[8,20,.2],tx:27,freddo:.5,suolo:[10,50,.15],base:0,nord:1,cal:[.5,.35,.45,.6,.7,.5,.1,.2,.8,1,1,.85],
   nome:"Funghi di prato e lettiera",es:"mazze di tamburo, Clitocybe, Coprinus"},
- legno:{K:[[0,0],[2,.3],[5,1],[45,1],[60,0]],R:60,cancello:0,T:[6,22,.5],tx:30,freddo:.7,suolo:[.6,.4],base:.4,nord:0,cal:[.75,.75,.75,.75,.75,.5,.5,.5,.85,1,1,1],
+ legno:{K:[[0,0],[2,.3],[5,1],[45,1],[60,0]],R:60,cancello:0,apertura:0,T:[6,22,.5],tx:30,freddo:.7,suolo:[-75,50,.6],base:.4,nord:0,cal:[.75,.75,.75,.75,.75,.5,.5,.5,.85,1,1,1],
   nome:"Funghi del legno",es:"pleuroti, Fistulina, Laetiporus, Armillaria"}};
 function pezzi(K,x){if(x<=K[0][0])return K[0][1];for(let i=1;i<K.length;i++)if(x<=K[i][0]){const[a,fa]=K[i-1],[b,fb]=K[i];return fa+(fb-fa)*(x-a)/(b-a)}return K[K.length-1][1]}
 function calendario3(C,T,q){const c=C.slice();if(q&&q>=900){c[8]=Math.max(c[8],.85);c[11]=Math.min(c[11],.65)}const D0=new Date(T+"T12:00:00Z"),m=D0.getUTCMonth(),g=D0.getUTCDate();let a,b,t;if(g>=15){a=m;b=(m+1)%12;t=(g-15)/30}else{a=(m+11)%12;b=m;t=(g+15)/30}return c[a]+(c[b]-c[a])*Math.min(1,t)}
@@ -329,20 +329,20 @@ function fascia3(t,lo,hi,mn){if(t==null)return 1;if(t<lo)return Math.max(mn,1-.1
 const quota3=z=>(z.topo&&z.topo.quota_dem)||(D.meteo&&D.meteo[z.cp]&&D.meteo[z.cp].quota)||null;
 const _c3={};
 function indice3(z,T){const key=z.id+T;if(_c3[key])return _c3[key];const m=daily(z),ms=mser(z),suolo=suoloAt(z.cp,addD(T,-1)),quota=quota3(z),topo=z.topo,out={};
- const D0=new Date(T+"T12:00:00Z"),mo=D0.getUTCMonth()+1,y=mo>=8?D0.getUTCFullYear():D0.getUTCFullYear()-1,aut=mo>=8||mo==1;let a1=y+"-08-01";if(a1<D.start)a1=D.start;let cum=0;for(let g=a1;g<T;g=addD(g,1))cum+=m[g]||0;
+ const D0=new Date(T+"T12:00:00Z"),mo=D0.getUTCMonth()+1,y=mo>=8?D0.getUTCFullYear():D0.getUTCFullYear()-1,aut=mo>=8||mo==1;let a1=y+"-08-01";if(a1<D.start)a1=D.start;let cum=0,d50=null;for(let g=a1;g<T;g=addD(g,1)){cum+=m[g]||0;if(d50==null&&cum>=50)d50=g}const dopo50=d50?diff(T,d50):null;
  const med=[],tx=[];for(let i=1;i<=7;i++){const x=ms[addD(T,-i)];if(x&&x.tn!=null&&x.tx!=null){med.push((x.tn+x.tx)/2);tx.push(x.tx)}}
  const avg=a=>a.reduce((p,q)=>p+q,0)/a.length,t7=med.length>=4?avg(med):null,tx7=tx.length>=4?avg(tx):null;
  let fila=0,gelo=false;for(let i=21;i>=1;i--){const x=ms[addD(T,-i)];if(x&&x.tn!=null&&x.tx!=null&&(x.tn+x.tx)/2<5){fila++;gelo=gelo||fila>=5}else fila=0}
  const nord=!!(topo&&topo.esposizione!=null&&(topo.esposizione>=315||topo.esposizione<=45)&&(topo.pendenza||0)>=10);
- for(const k in G3){const G=G3[k],n=G.K[G.K.length-1][0];let reff=0,pv=0;for(let i=1;i<=n;i++){const v=m[addD(T,-i)]||0,w=pezzi(G.K,i);reff+=w*v;if(v>=1&&w>=.5)pv++}
-  let car=Math.min(1,reff/G.R)*(.7+.3*Math.min(1,pv/6));if(G.base)car=G.base+(1-G.base)*car;
-  const canc=G.cancello&&aut?(cum>=50?1:.3+.7*cum/50):1,su=suolo==null?1:Math.min(1,G.suolo[0]+G.suolo[1]*suolo/50);
+ for(const k in G3){const G=G3[k],n=G.K[G.K.length-1][0];let reff=0,pv=0;for(let i=1;i<=n;i++){const v=m[addD(T,-i)]||0,w=pezzi(G.K,i);reff+=w*v;if(v>=2&&w>=.5)pv++}
+  let car=Math.min(1,reff/G.R)*(.5+.5*Math.min(1,pv/8));if(G.base)car=G.base+(1-G.base)*car;
+  const canc=!(G.cancello&&aut)?1:dopo50==null?.3+.2*cum/50:G.apertura?.5+.5*Math.min(1,dopo50/G.apertura):1,su=suolo==null?1:Math.max(G.suolo[2],Math.min(1,(suolo-G.suolo[0])/(G.suolo[1]-G.suolo[0])));
   let tf=fascia3(t7,G.T[0],G.T[1],G.T[2]);if(tx7!=null&&tx7>G.tx)tf*=Math.max(.4,1-.1*(tx7-G.tx));if(gelo)tf*=G.freddo;
   const cal=calendario3(G.cal,T,quota),sito=nord&&G.nord?1.1:1;
   out[k]={v:Math.round(+(100*Math.min(1,cal*car*canc*su*tf*sito)).toFixed(6)),f:{calendario:cal,pioggia:car,cancello:canc,suolo:su,temperatura:tf,sito},reff,pv}}
- out._={cum,t7,tx7,gelo,suolo};return _c3[key]=out}
+ out._={cum,dopo50,t7,tx7,gelo,suolo};return _c3[key]=out}
 const classe3=v=>v>=50?["alto","ok"]:v>=25?["medio","warn"]:["basso","bad"];
-function freno3(r,k){const f=r[k].f,_=r._,G=G3[k];const L=[["calendario",f.calendario,"stagione non ancora piena per questi funghi"],["cancello",f.cancello,`da agosto sono caduti solo ${Math.round(_.cum)} mm (ne servono almeno 50 per avviare la stagione)`],
+function freno3(r,k){const f=r[k].f,_=r._,G=G3[k];const L=[["calendario",f.calendario,"stagione non ancora piena per questi funghi"],["cancello",f.cancello,_.dopo50!=null?`la stagione si sta ancora aprendo: i 50 mm dal 1° agosto sono stati superati ${_.dopo50} giorni fa`:`da agosto sono caduti solo ${Math.round(_.cum)} mm (ne servono almeno 50 per avviare la stagione)`],
  ["pioggia",f.pioggia,`poca pioggia utile: conta quella di 1-5 settimane fa (${Math.round(r[k].reff)} mm efficaci, pieno da ${G.R})`],["suolo",f.suolo,`terreno ancora asciutto (${_.suolo}% di acqua)`],
  ["temperatura",f.temperatura,_.gelo?"freddo: 5 giorni di fila sotto i 5 °C":_.t7!=null&&_.t7<G.T[0]?"troppo freddo":"troppo caldo"]].filter(x=>x[1]<.8).sort((a,b)=>a[1]-b[1]);return L.length?L[0][2]:null}
 function addSunto3(){const P=$("#prev");if(!P)return;const old=$("#sunto3");if(old)old.remove();const zs=D.zones.filter(z=>D.forecast.zones[z.id]&&D.rain[z.cp]);if(!zs.length)return;
@@ -357,13 +357,13 @@ function addSunto3(){const P=$("#prev");if(!P)return;const old=$("#sunto3");if(o
  <details><summary>Zona per zona (oggi)</summary>${ord.map(zr).join("")}</details>
  <details><summary>Come funziona</summary><p class="note">Per ogni tipo di fungo moltiplica sei fattori, ognuno tra 0 e 1:<br>
  <b>1. Stagione</b>: il periodo dell'anno (i funghi del bosco soprattutto da ottobre a dicembre, quelli di prato da settembre, quelli del legno quasi tutto l'anno).<br>
- <b>2. Pioggia utile</b>: la pioggia delle settimane prima, non quella di ieri. Per i funghi del bosco conta poco la pioggia degli ultimi 2-6 giorni, piena quella tra 1 e 4 settimane fa; per prato e lettiera conta già dopo 5 giorni; per il legno fino a 2 mesi. Contano anche i giorni di pioggia, non solo i millimetri.<br>
- <b>3. Avvio della stagione</b>: da settembre a gennaio servono almeno 50 mm caduti dal 1° agosto.<br>
- <b>4. Acqua nel terreno</b>: la stima del bilancio tra pioggia ed evaporazione; caldo e sole asciugano il terreno e abbassano l'indice.<br>
+ <b>2. Pioggia utile</b>: la pioggia delle settimane prima, non quella di ieri. Per i funghi del bosco conta poco la pioggia degli ultimi 2-6 giorni, piena quella tra 1 e 4 settimane fa; per prato e lettiera conta già dopo 5 giorni; per il legno fino a 2 mesi. Contano anche i giorni di pioggia (almeno 2 mm), non solo i millimetri: una sola pioggia forte vale meno di più piogge distribuite.<br>
+ <b>3. Avvio della stagione</b>: da settembre a gennaio servono almeno 50 mm caduti dal 1° agosto; superata la soglia, la stagione si apre gradualmente in circa 3 settimane per i funghi del bosco e 10 giorni per quelli di prato.<br>
+ <b>4. Acqua nel terreno</b>: la stima del bilancio tra pioggia ed evaporazione. Conta pienamente solo sopra il 60% per i funghi del bosco e il 50% per quelli di prato; caldo, sole e vento asciugano il terreno e abbassano l'indice.<br>
  <b>5. Temperatura</b>: giusta tra 10 e 18 °C di media per i funghi del bosco; penalità se le massime superano 25 °C; quasi chiuso dopo 5 giorni di fila sotto i 5 °C.<br>
  <b>6. Versante nord</b>: piccolo vantaggio (+10%) per i versanti a nord e in pendenza.<br>
  Così, se domani piove, l'indice non sale subito: sale nei giorni e nelle settimane dopo, quando i funghi possono davvero uscire.</p>
- <p class="note"><b>Prova, non previsione validata.</b> I numeri vengono da studi in Spagna e Italia centrale e da poche date siciliane: nessuno ha mai studiato meteo e funghi in Sicilia. Sono fissati per tutta la stagione e verranno rivisti solo con molte più uscite registrate, comprese quelle a vuoto. Alto = 50 o più, medio = 25-49, basso = sotto 25.</p></details>`;
+ <p class="note"><b>Prova, non previsione validata.</b> I numeri vengono da studi in Spagna e Italia centrale e da poche date siciliane: nessuno ha mai studiato meteo e funghi in Sicilia. Corretti una volta il 7 ottobre 2026 (dopo un'unica pioggia forte seguita da giorni asciutti l'indice risultava troppo ottimista), poi fissati per tutta la stagione: verranno rivisti solo con molte più uscite registrate, comprese quelle a vuoto. Alto = 50 o più, medio = 25-49, basso = sotto 25.</p></details>`;
  const s=$("#sunto");P.insertBefore(d,s?s.nextSibling:P.firstChild)}
 const _dp3=drawPrev;drawPrev=function(){_dp3.apply(this,arguments);addSunto3()};
 /* ===== Meteo β: quadro di tutte le zone, mappa radar, scheda zona semplice ===== */
