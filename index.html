@@ -37,6 +37,12 @@ footer{padding:24px 16px 32px;color:var(--mut);font-size:.8rem;border-top:1px so
 .bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%}
 details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 .scroll td:first-child,.scroll th:first-child{position:sticky;left:0;background:var(--card);z-index:1;box-shadow:1px 0 0 var(--line)}
+.mbg{display:grid;grid-template-columns:minmax(78px,1.2fr) repeat(15,minmax(10px,1fr)) 34px;gap:2px;align-items:center;font-size:.72rem;margin-top:6px}
+.mbg .nm{font-weight:600;line-height:1.15;cursor:pointer;padding-right:4px;overflow-wrap:break-word}.mbg .ar{grid-column:1/-1;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);margin-top:8px}
+.mbg .hd{text-align:center;color:var(--mut);font-size:.62rem}.mbg .hd.og{color:var(--acc);font-weight:700}
+.mbc{height:20px;border-radius:4px;background:var(--line);cursor:pointer}.mbc.og{box-shadow:0 0 0 2px var(--acc)}.mbc.fu{background-image:repeating-linear-gradient(135deg,transparent 0 3px,rgba(255,255,255,.35) 3px 4px)}
+.mbg .sl{text-align:right;font-weight:700;font-size:.72rem}.mbrow.sel .nm{color:var(--acc)}
+.mbleg{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.72rem;color:var(--mut);margin-top:8px;align-items:center}.mbleg i{display:inline-block;width:14px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:3px}
 .dchips{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:2px 0 6px}.dchip{font:inherit;color:inherit;background:none;cursor:pointer;text-align:center;border:1px solid var(--line);border-radius:10px;padding:6px 2px;font-size:.78rem;line-height:1.35}.dchip b,.dchip span{display:block}.dchip b{font-size:.9rem}.dchip.sel{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}.sunto h3{margin-top:0}.sunto .big{font-size:1.15rem;font-weight:700;margin:2px 0}.sunto .zr{padding:8px 0;border-top:1px solid var(--line)}.sunto .zr:first-of-type{border-top:0}
 .sw{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;user-select:none}.sw input{display:none}.sw span{width:44px;height:24px;border-radius:12px;background:var(--line);position:relative;transition:background .15s;flex:none}.sw span:after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .15s}.sw input:checked+span{background:var(--ok)}.sw input:checked+span:after{left:23px}
 </style></head><body>
@@ -49,6 +55,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 <section id="s-specie"><div id="spgrid" class="grid"></div></section>
 <section id="s-meteo"><div class="row"><label>Zona <select id="mz"></select></label></div><div id="meteo"></div></section>
 <section id="s-previsione"><div id="prev"></div></section>
+<section id="s-meteobeta"><div id="mb"></div></section>
 <section id="s-uscite"><div class="card scroll"><table id="tu"></table></div></section>
 <section id="s-zona"><div class="back"><button class="btn" onclick="show('mappa')">← Mappa</button></div><div id="zona"></div></section>
 <section id="s-sp"><div class="back"><button class="btn" onclick="show('specie')">← Specie</button></div><div id="sp"></div></section>
@@ -78,7 +85,7 @@ const BSTY={color:"#1b7a3d",weight:1.6,dashArray:"5 4",fillColor:"#2e9d55",fillO
 function drawBoschi(m,zid){return boschi().then(B=>{const L0=L.layerGroup();const b=B[zid]||{},P=Array.isArray(b)?b:b.p||[];P.forEach(q=>L.polygon([q.p,...(q.h||[])],{...BSTY,stroke:!b.l}).addTo(L0));(b.l||[]).forEach(l=>L.polyline(l,{...BSTY,fill:false}).addTo(L0));L0.addTo(m);return L0})}
 function species(){const m={};D.obs.forEach(o=>{const k=o.sp||NOID;(m[k]=m[k]||[]).push(o)});return m}
 function init(){$("#agg").textContent=it(D.agg);
-$("#tabs").innerHTML=[["mappa","Mappa"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
+$("#tabs").innerHTML=[["mappa","Mappa"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["meteobeta","Meteo β"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
 $("#tabs").onclick=e=>{if(e.target.dataset.k)route(e.target.dataset.k)};
 const S=species(),nsp=Object.keys(S).filter(k=>k!=NOID).length;
 const nusc=new Set();D.zones.forEach(z=>z.uscite.forEach(u=>nusc.add(z.id+u.d)));
@@ -92,7 +99,7 @@ buildZone();buildSpecie();buildMeteoSel();buildUscite();setupSearch();
 window.onhashchange=()=>routeHash();routeHash()}
 function route(h){if(location.hash=="#"+h)routeHash();else location.hash=h}
 function routeHash(){const h=location.hash.slice(1)||"mappa";
-if(h.startsWith("z-"))openZona(h.slice(2));else if(h.startsWith("sp-"))openSpecie(h.slice(3));else if(h=="meteo"){drawMeteo();show("meteo")}else if(h=="previsione"){drawPrev();show("previsione")}else if(["zone","specie","uscite","mappa"].includes(h))show(h);else show("mappa")}
+if(h.startsWith("z-"))openZona(h.slice(2));else if(h.startsWith("sp-"))openSpecie(h.slice(3));else if(h=="meteobeta"){drawMB();show("meteobeta")}else if(h=="meteo"){drawMeteo();show("meteo")}else if(h=="previsione"){drawPrev();show("previsione")}else if(["zone","specie","uscite","mappa"].includes(h))show(h);else show("mappa")}
 function setupSearch(){const q=$("#q"),r=$("#res");const items=[];const S=species();Object.keys(S).filter(k=>k!=NOID).forEach(k=>items.push({t:k,s:S[k].length+" oss.",h:"sp-"+slug(k),k:"Specie"}));D.zones.forEach(z=>items.push({t:z.n,s:z.area,h:"z-"+z.id,k:"Zona"}));
 q.oninput=()=>{const v=q.value.trim().toLowerCase();if(!v){r.style.display="none";return}const m=items.filter(i=>i.t.toLowerCase().includes(v)).slice(0,8);r.innerHTML=m.length?m.map(i=>`<div data-h="${i.h}"><b>${i.t}</b> <span class="meta">${i.k} · ${i.s}</span></div>`).join(""):'<div class="meta">Nessun risultato</div>';r.style.display="block"};
 r.onclick=e=>{const d=e.target.closest("[data-h]");if(d){r.style.display="none";q.value="";route(d.dataset.h)}};document.addEventListener("click",e=>{if(!e.target.closest(".search"))r.style.display="none"})}
@@ -301,6 +308,50 @@ P.insertBefore(d,P.firstChild);const sd=$("#sdet");if(sd&&psel)sd.innerHTML=sdet
 let psel=null;function pSel(d){psel=psel==d?null:d;addSunto()}
 const _dm0=drawMeteo;drawMeteo=function(){_dm0.apply(this,arguments);addMeteoSunto()};
 const _dp1=drawPrev;drawPrev=function(){_dp1.apply(this,arguments);addSunto()};
+/* ===== Meteo β: quadro di tutte le zone, mappa radar, scheda zona semplice ===== */
+const MBC=["rgb(198,225,245)","rgb(140,195,235)","rgb(70,150,220)","rgb(30,95,190)","rgb(40,40,150)","rgb(120,30,140)"],MBT=[1,5,10,20,40,80];
+const mbCol=v=>{let k=-1;MBT.forEach((t,i)=>{if(v>=t)k=i});return k<0?null:MBC[k]};
+const corto=n=>n.split(/ [-–] /)[0];
+let MBSEL=null,MBMAP=null,MBRI=null,MBMODE="24h";
+function mbZone(){const O=["Piana degli Albanesi","Ficuzza","Madonie","Nebrodi"];return D.zones.filter(z=>D.forecast.zones[z.id]&&D.rain[z.cp]).sort((a,b)=>O.indexOf(a.area)-O.indexOf(b.area)||a.n.localeCompare(b.n))}
+function drawMB(){const Z=mbZone(),days=[];for(let i=-7;i<=7;i++)days.push(addD(TODAY,i));
+let h=`<div class="card"><h3>Pioggia in tutte le zone</h3><div class="meta">Ultimi 7 giorni, oggi (riquadro e numero arancione) e prossimi 7 (righe oblique = previsione; più chiara = meno sicura). Tocca una casella per il valore, il nome della zona per i dettagli.</div><div id="mbinfo" class="meta" style="min-height:1.3em;margin-top:6px;color:var(--ink)"></div><div class="mbg"><div></div>${days.map(d=>`<div class="hd${d==TODAY?" og":""}">${+d.slice(8)}</div>`).join("")}<div class="hd">suolo</div>`;
+let ar="";Z.forEach(z=>{if(z.area!=ar){ar=z.area;h+=`<div class="ar">${ar}</div>`}const m=daily(z);
+h+=`<div class="nm" onclick="mbSel('${z.id}')" data-z="${z.id}">${corto(z.n).replace("/","/<wbr>")}</div>`;
+days.forEach(d=>{const v=m[d],fu=d>TODAY||d==TODAY&&D.forecast.zones[z.id][0]&&D.forecast.zones[z.id][0].d==d;let op=1;if(d>TODAY){const F=D.forecast.zones[z.id].find(x=>x.d==d),c=F&&rcons(z.id,d,F.r);if(c&&c.n>1)op=.45+.55*Math.max(c.p1,v>=1?.4:1)}const col=v==null?null:mbCol(v);
+h+=`<div class="mbc${d==TODAY?" og":""}${d>TODAY?" fu":""}" style="${col?`background-color:${col};`:""}opacity:${op.toFixed(2)}" onclick="mbInfo('${z.id}','${d}')"></div>`});
+const su=suoloAt(z.cp,TODAY);h+=`<div class="sl" title="acqua nel terreno oggi (stima)" style="color:${su==null?"var(--mut)":su>=60?"var(--rain)":su>=30?"var(--ink)":"var(--warn)"}">${su==null?"—":su+"%"}</div>`});
+h+=`</div><div class="mbleg">${MBT.map((t,i)=>`<span><i style="background:${MBC[i]}"></i>${t}${MBT[i+1]?"–"+MBT[i+1]:"+"}</span>`).join("")}<span>mm al giorno · <b>suolo</b> = acqua nel terreno oggi (stima)</span></div></div>`;
+h+=`<div class="card"><h3>Dove ha piovuto e dove pioverà</h3><div class="row" id="mbmodes">${[["24h","Ultime 24 ore"],["7g","Ultimi 7 giorni"],["p3","Prossimi 3 giorni"],["p7","Prossimi 7 giorni"]].map(([k,l])=>`<button class="btn${k==MBMODE?" on":""}" data-k="${k}">${l}</button>`).join("")}</div><div id="mbmap" class="map" style="height:52vh;min-height:320px"></div><div id="mbleg2" class="mbleg"></div></div><div id="mbz"></div>`;
+$("#mb").innerHTML=h;$("#mbmodes").onclick=e=>{const b=e.target.closest("button");if(!b)return;MBMODE=b.dataset.k;[...$("#mbmodes").children].forEach(x=>x.classList.toggle("on",x==b));mbLayer()};
+if(MBMAP){MBMAP.remove();MBMAP=null}MBMAP=mkmap("mbmap");MBMAP.fitBounds([[36.6,12.4],[38.3,15.65]]);[150,500].forEach(t=>setTimeout(()=>{if(MBMAP){MBMAP.invalidateSize();MBMAP.fitBounds([[36.6,12.4],[38.3,15.65]])}},t));
+fetch("data/radar_mappe.json?v="+Date.now()).then(r=>r.json()).then(j=>{MBRI=j;mbLayer()}).catch(()=>{MBRI=null;mbLayer()});
+if(MBSEL)mbSel(MBSEL,true)}
+let MBL=null;
+function mbLayer(){if(!MBMAP)return;if(MBL){MBMAP.removeLayer(MBL)}MBL=L.layerGroup().addTo(MBMAP);const Z=mbZone();let leg="";
+const somma=(z,a,b)=>{const m=daily(z);let s=0;for(let d=a;d<=b;d=addD(d,1))s+=m[d]||0;return s};
+if(MBMODE=="24h"||MBMODE=="7g"){if(MBRI){L.imageOverlay(`data/radar_${MBMODE}.png?v=${MBRI.al}`,MBRI.bounds,{opacity:.85,interactive:false}).addTo(MBL);const T=MBRI.soglie[MBMODE];leg=`${T.map((t,i)=>`<span><i style="background:${MBRI.colori[i]}"></i>${t}${T[i+1]?"–"+T[i+1]:"+"}</span>`).join("")}<span>mm · radar Protezione Civile, ${MBMODE=="24h"?"giorno "+it(MBRI.giorno_24h):"dal "+it(MBRI.dal)+" al "+it(MBRI.al)}</span>`}else leg="<span>Mappa radar non ancora disponibile: compare al prossimo aggiornamento.</span>";
+Z.forEach(z=>{const v=MBMODE=="24h"?somma(z,MBRI?MBRI.giorno_24h:addD(TODAY,-1),MBRI?MBRI.giorno_24h:addD(TODAY,-1)):somma(z,MBRI?MBRI.dal:addD(TODAY,-7),MBRI?MBRI.al:addD(TODAY,-1));L.circleMarker([z.lat,z.lon],{radius:6,color:"#fff",weight:2,fillColor:"#222",fillOpacity:1}).bindTooltip(`${corto(z.n)}: ${v.toFixed(0)} mm`).on("click",()=>mbSel(z.id)).addTo(MBL)})}
+else{const n=MBMODE=="p3"?3:7,T=MBMODE=="p3"?[1,5,10,20,40,80]:[5,15,30,60,100,150];
+Z.forEach(z=>{const v=somma(z,TODAY,addD(TODAY,n-1));let k=-1;T.forEach((t,i)=>{if(v>=t)k=i});L.circleMarker([z.lat,z.lon],{radius:9+Math.min(k+1,6)*2,color:"#fff",weight:2,fillColor:k<0?"#bbb":MBC[k],fillOpacity:.95}).bindTooltip(`${corto(z.n)}: ${v.toFixed(0)} mm previsti`,{permanent:false}).on("click",()=>mbSel(z.id)).addTo(MBL)});
+leg=`${T.map((t,i)=>`<span><i style="background:${MBC[i]}"></i>${t}${T[i+1]?"–"+T[i+1]:"+"}</span>`).join("")}<span>mm previsti nei prossimi ${n} giorni (media dei modelli) · grigio = quasi niente</span>`}
+$("#mbleg2").innerHTML=leg}
+function mbInfo(id,d){const z=zn(id),m=daily(z),v=m[d];let t=`<b>${corto(z.n)}</b> · ${d==TODAY?"oggi":dl(d)}: ${v==null?"dato mancante":v.toFixed(1)+" mm"}`;
+if(d>=TODAY){const F=D.forecast.zones[id].find(x=>x.d==d),c=F&&rcons(id,d,F.r);if(c&&c.n>1)t+=` previsti (💧 ${Math.round(c.p1*100)}% dei modelli)`}else{const fo=D.rain_fonte&&D.rain_fonte[z.cp],i=diff(d,D.start);if(fo&&fo[i])t+=` · ${{r:"radar corretto",s:"stazioni SIAS",c:"satellite"}[fo[i]]||""}`}
+$("#mbinfo").innerHTML=t}
+function mbSel(id,noscroll){MBSEL=id;const z=zn(id),m=daily(z),S=D.suolo&&D.suolo[z.cp];document.querySelectorAll(".mbg .nm").forEach(e=>e.style.color=e.dataset.z==id?"var(--acc)":"");
+const days=[];for(let i=-30;i<=8;i++)days.push(addD(TODAY,i));const vals=days.map(d=>m[d]),mx=Math.max(20,...vals.map(v=>v||0));
+const W=360,H=150,x=i=>8+i*344/days.length,bw=344/days.length-1,y=v=>120-v*108/mx,ys=v=>120-v*1.08,ti=days.indexOf(TODAY);
+let svg=`<svg viewBox="0 0 ${W} ${H}" width="100%"><line x1="8" x2="352" y1="120" y2="120" stroke="var(--line)"/><rect x="${x(ti)}" y="8" width="${352-x(ti)}" height="112" fill="rgba(217,160,102,.13)"/>`;
+vals.forEach((v,i)=>{if(v&&v>=.2){const fu=days[i]>=TODAY;svg+=`<rect x="${x(i).toFixed(1)}" y="${y(v).toFixed(1)}" width="${bw.toFixed(1)}" height="${(120-y(v)).toFixed(1)}" fill="var(--rain)" opacity="${fu?.5:1}"><title>${it(days[i])}: ${v.toFixed(1)} mm</title></rect>`}});
+const su=days.map(d=>suoloAt(z.cp,d));svg+=`<polyline points="${su.map((v,i)=>v==null?null:`${(x(i)+bw/2).toFixed(1)},${ys(v).toFixed(1)}`).filter(Boolean).join(" ")}" fill="none" stroke="var(--ok)" stroke-width="2"/>`;
+svg+=`<line x1="${x(ti)}" x2="${x(ti)}" y1="8" y2="120" stroke="var(--acc)" stroke-dasharray="3 3"/><text x="${x(ti)+3}" y="18" font-size="10">oggi</text><text x="8" y="136" font-size="10">${it(days[0]).slice(0,5)}</text><text x="352" y="136" font-size="10" text-anchor="end">${it(days[days.length-1]).slice(0,5)}</text><text x="352" y="${y(mx)+8}" font-size="10" text-anchor="end">${Math.round(mx)} mm</text></svg>`;
+let p14=0,f8=0;for(let i=1;i<=14;i++)p14+=m[addD(TODAY,-i)]||0;for(let i=0;i<8;i++)f8+=m[addD(TODAY,i)]||0;const f=feat(z,TODAY),so=suoloAt(z.cp,TODAY);
+$("#mbz").innerHTML=`<div class="card"><h3>${z.n}</h3>${svg}<div class="meta"><span style="color:var(--rain)">▮</span> pioggia caduta &nbsp;<span style="color:var(--rain);opacity:.5">▮</span> prevista &nbsp;<span style="color:var(--ok)">━</span> acqua nel terreno (0-100%)</div>
+<div class="stats"><div class="stat"><b>${p14.toFixed(0)}</b><span>mm caduti negli ultimi 14 giorni</span></div><div class="stat"><b>${f8.toFixed(0)}</b><span>mm previsti nei prossimi 8 giorni</span></div><div class="stat"><b>${so??"—"}%</b><span>acqua nel terreno oggi (stima)</span></div></div>
+<p class="meta">Ultima pioggia di almeno 10 mm: ${f.gg10==null?"oltre 30 giorni fa":f.gg10+(f.gg10==1?" giorno fa":" giorni fa")}${f.tn7!=null?` · minime della settimana ${Math.round(f.tn7)} °C`:""}.</p>
+<details><summary>Dettagli tecnici (modelli, temperature, suolo, storico)</summary>${modelliCard(z.id)}${tempCard(z.id)}${suoloCard(z)}<div class="card"><h3>Storico dal ${it(D.start)}</h3>${rainSVG(z.cp,evOf(z.id))}</div></details></div>`;
+if(!noscroll)$("#mbz").scrollIntoView({behavior:"smooth",block:"start"})}
 function buildUscite(){const rows=[];D.zones.forEach(z=>z.uscite.forEach(u=>rows.push([u.d,z,u])));rows.sort((a,b)=>b[0].localeCompare(a[0]));
 $("#tu").innerHTML="<tr><th>Data</th><th>Zona</th><th>Note</th><th>Pioggia 14 gg</th><th>Giorni da pioggia</th></tr>"+rows.map(([d,z,u])=>`<tr><td>${it(d)}</td><td><a href="#z-${z.id}">${z.n}</a></td><td>${u.note||""}</td><td>${u.c?u.c.pioggia_14+" mm":"—"}</td><td>${u.c?u.c.gg_da_pioggia5:"—"}</td></tr>`).join("")}
 if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));

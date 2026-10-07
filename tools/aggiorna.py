@@ -117,6 +117,11 @@ def radar_ultimi(giorni=30):
             print('Radar: errore', giorno, e)
     print('Radar: giorni letti', n)
 radar_ultimi(150 if min((len((d.get('radar') or {}).get(k, {})) for k in list(pts) + list(PST)), default=0) < 100 else 30)   # la prima volta recupera tutto lo storico disponibile (~5 mesi)
+try:
+    import radar_mappe
+    _i = radar_mappe.crea(); print('Mappe radar: 24 ore del', _i['giorno_24h'], '- 7 giorni', _i['dal'], '→', _i['al'])
+except Exception as ex:
+    print('Mappe radar non create:', ex)
 
 # 1d) Correzione locale del radar con i pluviometri SIAS: per ogni giorno, rapporto tra pioggia misurata dalle stazioni
 #     e pioggia del radar sugli stessi punti, nei 31 giorni attorno (servono almeno 10 giorni e 10 mm di radar); limiti 0,5-2
