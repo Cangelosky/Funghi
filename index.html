@@ -12,7 +12,7 @@
 header,main,footer{max-width:1000px;margin:auto;padding:0 16px}header{padding-top:18px}h1{margin:0;font-size:1.5rem}header p{margin:2px 0 0;color:var(--mut);font-size:.9rem}
 .search{position:relative;margin:10px 0 0}.search input{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
 #res{position:absolute;z-index:1200;left:0;right:0;top:46px;background:var(--card);border:1px solid var(--line);border-radius:12px;display:none;max-height:50vh;overflow:auto}#res div{padding:9px 14px;cursor:pointer;border-bottom:1px solid var(--line)}#res div:hover{background:var(--bg)}
-nav{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap}nav button,.btn,select{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:20px;font:inherit;cursor:pointer}
+nav{margin:12px 0}nav button,.btn,select{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:20px;font:inherit;cursor:pointer}
 nav button.on,.btn.on{background:var(--acc);color:#fff;border-color:var(--acc)}
 section{display:none}section.on{display:block}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}.card h3{margin:0 0 6px;font-size:1.05rem}
@@ -20,6 +20,11 @@ section{display:none}section.on{display:block}
 .pill{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.78rem;margin:2px 4px 2px 0;border:1px solid var(--line)}
 .ok{color:var(--ok);border-color:var(--ok)}.warn{color:var(--warn);border-color:var(--warn)}.bad{color:var(--bad);border-color:var(--bad)}.mut{color:var(--mut)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.stat b{display:block;font-size:1.5rem;color:var(--acc)}.stat span{font-size:.78rem;color:var(--mut)}
+nav{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:420px;margin:0 auto;position:sticky;top:0;z-index:1100;background:var(--bg);padding:8px 0}nav button{padding:7px 4px;text-align:center}
+.mini{color:var(--mut);font-size:.82rem;text-align:center;margin:10px 0 0}.mini b{color:var(--acc)}
+.ab{display:flex;gap:6px;overflow-x:auto;margin:8px 0;padding-bottom:2px}.ab .btn{white-space:nowrap;padding:6px 12px;font-size:.88rem}.ab .btn i{font-style:normal;color:var(--mut);font-size:.78rem}.ab .btn.on i{color:#fff}
+#pswitch{display:inline-flex;gap:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:6px 0}#pswitch .btn{border:0;border-radius:0;padding:5px 12px;font-size:.84rem}
+.zw{position:relative}.zlens{position:absolute;right:4px;top:2px;font-size:.8rem;opacity:.55;pointer-events:none}
 .map{height:56vh;min-height:320px;border-radius:12px;border:1px solid var(--line)}.map.sm{height:42vh}
 table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600}.scroll{overflow-x:auto}
 .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}.photos figure{margin:0}.photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;cursor:zoom-in;display:block}.photos figcaption{font-size:.9rem;color:var(--ink);font-weight:600;line-height:1.3;margin-top:3px}.sppill{display:inline-block;padding:7px 14px;margin:4px 6px 4px 0;border-radius:20px;background:var(--acc);color:#fff;font-size:1.05rem;font-weight:700;text-decoration:none;font-style:italic}.sppill b{font-style:normal;opacity:.95}
@@ -61,7 +66,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 <div class="search"><input id="q" type="search" placeholder="Cerca una specie o una zona…" autocomplete="off"><div id="res"></div></div></header>
 <main>
 <nav id="tabs"></nav>
-<section id="s-mappa"><div class="stats" id="stats"></div><div id="map" class="map"></div><p class="note">Tocca un marker per aprire la scheda della zona; usa «Specie» per partire dal fungo.</p></section>
+<section id="s-mappa"><div id="home"></div><div class="ab" id="ab"></div><div id="map" class="map"></div><p class="note">Tocca un marker per aprire la scheda della zona; usa «Specie» per partire dal fungo.</p><p class="mini" id="stats"></p></section>
 <section id="s-zone"><div id="zgrid" class="grid"></div></section>
 <section id="s-specie"><div id="spgrid" class="grid"></div></section>
 <section id="s-meteo"><div id="mb"></div><h3 style="margin:18px 2px 0">Meteo per zona</h3><div class="row"><label>Zona <select id="mz"></select></label></div><div id="meteo"></div></section>
@@ -97,17 +102,17 @@ const BSTY={color:"#1b7a3d",weight:1.6,dashArray:"5 4",fillColor:"#2e9d55",fillO
 function drawBoschi(m,zid){return boschi().then(B=>{const L0=L.layerGroup();const b=B[zid]||{},P=Array.isArray(b)?b:b.p||[];P.forEach(q=>L.polygon([q.p,...(q.h||[])],{...BSTY,stroke:!b.l}).addTo(L0));(b.l||[]).forEach(l=>L.polyline(l,{...BSTY,fill:false}).addTo(L0));L0.addTo(m);return L0})}
 function species(){const m={};D.obs.forEach(o=>{const k=o.sp||NOID;(m[k]=m[k]||[]).push(o)});return m}
 function init(){$("#agg").textContent=it(D.agg);
-$("#tabs").innerHTML=[["mappa","Mappa"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
+$("#tabs").innerHTML=[["mappa","Home"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
 $("#tabs").onclick=e=>{if(e.target.dataset.k)route(e.target.dataset.k)};if(sgMem.get())sgTab();
 const S=species(),nsp=Object.keys(S).filter(k=>k!=NOID).length;
 const nusc=new Set();D.zones.forEach(z=>z.uscite.forEach(u=>nusc.add(z.id+u.d)));
-$("#stats").innerHTML=[[nsp,"specie con nome"],[D.obs.length,"osservazioni"],[nusc.size,"uscite registrate"],[D.zones.length,"zone"],[D.obs.filter(o=>o.foto).length,"foto"]].map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
+$("#stats").innerHTML=[[nsp,"specie"],[D.obs.length,"osservazioni"],[nusc.size,"uscite"],[D.zones.length,"zone"],[D.obs.filter(o=>o.foto).length,"foto"]].map(([n,l])=>`<b>${n}</b> ${l}`).join(" · ");
 map=mkmap("map","Stradale").setView([37.97,13.85],8);
 D.zones.forEach(z=>{const nf=D.obs.filter(o=>o.z==z.id).length;const c=AREA[z.area]||"#555";
 const m=L.circleMarker([z.lat,z.lon],{radius:9,color:"#fff",weight:2,fillColor:c,fillOpacity:.95}).addTo(map);m.bindTooltip(z.n+(nf?` · ${nf} oss.`:""));m.on("click",()=>route("z-"+z.id));
 if(z.track)L.polyline(z.track.pts.map(p=>[p[1],p[0]]),{color:c,weight:3,opacity:.8}).addTo(map).on("click",()=>route("z-"+z.id))});
 const lg=L.control({position:"bottomleft"});lg.onAdd=()=>{const e=L.DomUtil.create("div");e.style.cssText="background:var(--card);color:var(--ink);padding:6px 8px;border-radius:8px;font-size:12px;line-height:1.5";e.innerHTML=Object.entries(AREA).map(([a,c])=>`<span style="color:${c}">●</span> ${a}`).join("<br>");return e};lg.addTo(map);
-buildZone();buildSpecie();buildMeteoSel();buildUscite();setupSearch();
+buildHome();buildZone();buildSpecie();buildMeteoSel();buildUscite();setupSearch();
 window.onhashchange=()=>routeHash();routeHash()}
 function route(h){if(location.hash=="#"+h)routeHash();else location.hash=h}
 function routeHash(){const h=location.hash.slice(1)||"mappa";
@@ -321,7 +326,7 @@ return`<div class="card" style="margin:6px 0 10px;background:var(--bg)"><h4 styl
 const d=document.createElement("div");d.id="sunto";d.className="card sunto";
 d.innerHTML=`<h3>In sintesi · ${dl(TODAY)}</h3><div class="big"><span class="pill ${bc}">${bn}</span> ${head}</div>
 <div class="dchips">${days.map((x,i)=>{const[n,c]=band(mx[i]);return`<button class="dchip${x==psel?" sel":""}" onclick="pSel('${x}')"><span class="meta">${i?dl(x):"oggi"}</span><b style="color:var(--${c})">${mx[i]}/100</b></button>`}).join("")}</div><div id="sdet"></div><p class="meta" style="margin:0 0 4px">Probabilità di trovare funghi nella zona migliore, giorno per giorno (rosso = poco probabile, giallo = possibile, verde = favorevole).</p>
-<p class="note"><b>Ipotesi di lavoro, non validata.</b> Affidabilità <b>bassa</b>: calcolata su ${nO} giornate con ritrovamento${(v=>v.nv?` e ${v.nv} uscite senza funghi a terra. Verifica a posteriori: le uscite con ritrovamenti avevano in media <b>${v.mf}/100</b>, quelle senza <b>${v.mv}/100</b>`:', senza uscite a vuoto con cui confrontarla')(verif())}. Oltre 4-5 giorni la pioggia prevista è incerta. Sotto il dettaglio per zona e per specie.</p>`;
+<div class="note"><b>Ipotesi di lavoro, non validata.</b> <details style="display:inline"><summary style="display:inline;cursor:pointer;color:var(--lnk)">Quanto è affidabile?</summary> Affidabilità <b>bassa</b>: calcolata su ${nO} giornate con ritrovamento${(v=>v.nv?` e ${v.nv} uscite senza funghi a terra. Verifica a posteriori: le uscite con ritrovamenti avevano in media <b>${v.mf}/100</b>, quelle senza <b>${v.mv}/100</b>`:', senza uscite a vuoto con cui confrontarla')(verif())}. Oltre 4-5 giorni la pioggia prevista è incerta. Sotto il dettaglio per zona e per specie.</details></div>`;
 P.insertBefore(d,P.firstChild);const sd=$("#sdet");if(sd&&psel)sd.innerHTML=sdet(psel)}
 let psel=null;function pSel(d){psel=psel==d?null:d;addSunto()}
 const _dm0=drawMeteo;drawMeteo=function(){_dm0.apply(this,arguments);addMeteoSunto()};
@@ -477,5 +482,25 @@ Z.P.set(e.pointerId,n)});
 const up=e=>Z.P.delete(e.pointerId);zv.addEventListener("pointerup",up);zv.addEventListener("pointercancel",up);
 zv.addEventListener("wheel",e=>{e.preventDefault();const r=rc();zbZoom(e.deltaY<0?1.2:1/1.2,e.clientX-r.left,e.clientY-r.top)},{passive:false});
 zv.addEventListener("dblclick",e=>{const r=rc();if(Z.s>Z.s0*1.5)zbFit();else zbZoom(3,e.clientX-r.left,e.clientY-r.top)})}
+
+function buildHome(){const zs=D.zones.filter(z=>D.forecast.zones[z.id]&&D.rain[z.cp]);if(!zs.length){$("#home").innerHTML="";return}
+const days=[];for(let i=0;i<8;i++)days.push(addD(TODAY,i));
+const Z=zs.map(z=>({z,by:days.map(d=>score(feat(z,d)))}));
+const best=i=>Z.slice().sort((a,b)=>b.by[i]-a.by[i])[0];
+const b0=best(0),mx=days.map((d,i)=>best(i).by[i]);const[bn,bc]=band(b0.by[0]);
+let bi=mx.indexOf(Math.max(...mx));const bb=best(bi),nm=x=>x.z.n.replace(/ \(.*/,"");
+const head=bn=="favorevole"?"Oggi si può andare: condizioni favorevoli":bn=="possibile"?"Oggi condizioni possibili":"Oggi funghi poco probabili";
+let l2=`Zona migliore oggi: <b><a href="#z-${b0.z.id}">${nm(b0)}</a></b> (${b0.z.area}), ${b0.by[0]}/100.`;
+let l3=bi==0?"Nei prossimi 8 giorni non è previsto un miglioramento.":`Giorno migliore dei prossimi 8: <b>${dl(days[bi])}</b>, ${bb.by[bi]}/100 a <a href="#z-${bb.z.id}">${nm(bb)}</a>.`;
+const lo=D.obs.filter(o=>o.sp&&o.sp!=NOID).sort((a,b)=>b.d.localeCompare(a.d))[0];
+let l4=lo?`Ultimo ritrovamento: <b>${lo.sp}</b>, ${it(lo.d)}, ${zn(lo.z).n.replace(/ \(.*/,"")}.`:"";
+const ar=Object.keys(AREA).map(a=>{const q=Z.filter(x=>x.z.area==a);return{a,v:q.length?Math.max(...q.map(x=>x.by[0])):null}});
+$("#home").innerHTML=`<div class="card"><h3>${head} <span class="pill ${bc}">${bn}</span></h3><p style="margin:6px 0">${l2}<br>${l3}</p><p class="meta" style="margin:4px 0 0">${l4}</p><p class="note" style="margin:6px 0 0">Ipotesi di lavoro, non validata: vedi «Previsione».</p></div>`;
+const bd=(k,t,v)=>`<button class="btn" data-a="${k}">${t}${v!=null?` <i>${v}</i>`:""}</button>`;
+$("#ab").innerHTML=bd("","Tutta la Sicilia")+ar.map(x=>bd(x.a,x.a,x.v)).join("");
+$("#ab").onclick=e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a;document.querySelectorAll("#ab .btn").forEach(x=>x.classList.toggle("on",x==b));
+if(!a){map.setView([37.97,13.85],8);return}const p=D.zones.filter(z=>z.area==a).flatMap(z=>[[z.lat,z.lon]].concat(z.track?z.track.pts.map(q=>[q[1],q[0]]):[]));map.fitBounds(p,{padding:[30,30],maxZoom:13})}}
+function lens(){document.querySelectorAll('main svg[width="100%"]').forEach(v=>{if(v.parentNode.classList.contains("zw")||v.closest("#zb")||v.closest(".leaflet-container"))return;const w=document.createElement("div");w.className="zw";v.parentNode.insertBefore(w,v);w.appendChild(v);w.insertAdjacentHTML("beforeend",'<span class="zlens">🔍</span>')})}
+new MutationObserver(lens).observe(document.querySelector("main"),{childList:true,subtree:true});
 if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 </script></body></html>
