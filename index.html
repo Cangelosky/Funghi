@@ -66,7 +66,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 <div class="search"><input id="q" type="search" placeholder="Cerca una specie o una zona…" autocomplete="off"><div id="res"></div></div></header>
 <main>
 <nav id="tabs"></nav>
-<section id="s-mappa"><div id="home"></div><div class="ab" id="ab"></div><div id="map" class="map"></div><p class="note">Tocca un marker per aprire la scheda della zona; usa «Specie» per partire dal fungo.</p><p class="mini" id="stats"></p></section>
+<section id="s-mappa"><div id="home"></div><h3 style="margin:18px 2px 0">Mappa delle zone</h3><div class="ab" id="ab"></div><div id="map" class="map"></div><p class="note">Tocca un marker per aprire la scheda della zona; usa «Specie» per partire dal fungo.</p><p class="mini" id="stats"></p></section>
 <section id="s-zone"><div id="zgrid" class="grid"></div></section>
 <section id="s-specie"><div id="spgrid" class="grid"></div></section>
 <section id="s-meteo"><div id="mb"></div><h3 style="margin:18px 2px 0">Meteo per zona</h3><div class="row"><label>Zona <select id="mz"></select></label></div><div id="meteo"></div></section>
@@ -499,7 +499,7 @@ const MV=Object.keys(AREA).map(a=>{const q=zs.filter(z=>z.area==a).map(mbVal);re
 const wet=MV.slice().sort((x,y)=>y.f-x.f)[0];let l5=MV.length?`<p class="meta" style="margin:4px 0 0">Pioggia (mm) ultimi 14 giorni → prossimi 7: ${MV.map(x=>`${x.a=="Piana degli Albanesi"?"Piana":x.a} <b>${x.p.toFixed(0)}→${x.f.toFixed(0)}</b>`).join(" · ")}</p>`:"";
 if(wet&&wet.f>=15&&b0.by[0]<65)l5+=`<p style="margin:6px 0 0">🌧 <b>Pioggia in arrivo</b>: circa ${wet.f.toFixed(0)} mm previsti in ${wet.a}. Ricontrolla la Previsione dopo la pioggia.</p>`;
 const ar=Object.keys(AREA).map(a=>{const q=Z.filter(x=>x.z.area==a);return{a,v:q.length?Math.max(...q.map(x=>x.by[0])):null}});
-$("#home").innerHTML=`<div class="card"><h3>${head} <span class="pill ${bc}">${bn}</span></h3><p style="margin:6px 0">${l2}<br>${l3}</p>${l5}<p class="meta" style="margin:4px 0 0">${l4}</p><p style="margin:10px 0 0"><button class="btn on" onclick="route('z-${b0.z.id}')">Dove andare oggi: ${nm(b0)}</button></p><p class="note" style="margin:6px 0 0">Ipotesi di lavoro, non validata: vedi «Previsione».</p></div>`;
+$("#home").innerHTML=`<div class="card"><h3>${head} <span class="pill ${bc}">${bn}</span></h3><p style="margin:6px 0">${l2}<br>${l3}</p>${l5}<p class="meta" style="margin:4px 0 0">${l4}</p><p class="note" style="margin:6px 0 0">Ipotesi di lavoro, non validata: vedi «Previsione».</p></div>`;
 const bd=(k,t,v)=>`<button class="btn" data-a="${k}">${t}${v!=null?` <i>${v}</i>`:""}</button>`;
 $("#ab").innerHTML=bd("","Tutta la Sicilia")+ar.map(x=>bd(x.a,x.a,x.v)).join("");
 $("#ab").onclick=e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a;document.querySelectorAll("#ab .btn").forEach(x=>x.classList.toggle("on",x==b));
