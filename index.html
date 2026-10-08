@@ -24,7 +24,7 @@ nav{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:420px;mar
 .mini{color:var(--mut);font-size:.82rem;text-align:center;margin:10px 0 0}.mini b{color:var(--acc)}
 .ab{display:flex;gap:6px;overflow-x:auto;margin:8px 0;padding-bottom:2px}.ab .btn{white-space:nowrap;padding:6px 12px;font-size:.88rem}.ab .btn i{font-style:normal;color:var(--mut);font-size:.78rem}.ab .btn.on i{color:#fff}
 #pswitch{display:inline-flex;gap:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:6px 0}#pswitch .btn{border:0;border-radius:0;padding:5px 12px;font-size:.84rem}
-.zw{position:relative}.zlens{position:absolute;right:4px;top:2px;font-size:.8rem;opacity:.55;pointer-events:none}
+.hr{padding:6px 0 4px;border-top:1px solid var(--line)}.hr>.meta:first-child{display:block;font-size:.76rem}.zw{position:relative}.zlens{position:absolute;right:4px;top:2px;font-size:.8rem;opacity:.55;pointer-events:none}
 .map{height:56vh;min-height:320px;border-radius:12px;border:1px solid var(--line)}.map.sm{height:42vh}
 table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600}.scroll{overflow-x:auto}
 .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}.photos figure{margin:0}.photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;cursor:zoom-in;display:block}.photos figcaption{font-size:.9rem;color:var(--ink);font-weight:600;line-height:1.3;margin-top:3px}.sppill{display:inline-block;padding:7px 14px;margin:4px 6px 4px 0;border-radius:20px;background:var(--acc);color:#fff;font-size:1.05rem;font-weight:700;text-decoration:none;font-style:italic}.sppill b{font-style:normal;opacity:.95}
@@ -491,15 +491,15 @@ const best=i=>Z.slice().sort((a,b)=>b.by[i]-a.by[i])[0];
 const b0=best(0),mx=days.map((d,i)=>best(i).by[i]);const[bn,bc]=band(b0.by[0]);
 let bi=mx.indexOf(Math.max(...mx));const bb=best(bi),nm=x=>x.z.n.replace(/ \(.*/,"");
 const head=bn=="favorevole"?"Oggi si può andare: condizioni favorevoli":bn=="possibile"?"Oggi condizioni possibili":"Oggi funghi poco probabili";
-let l2=`Zona migliore oggi: <b><a href="#z-${b0.z.id}">${nm(b0)}</a></b> (${b0.z.area}), ${b0.by[0]}/100.`;
-let l3=bi==0?"Nei prossimi 8 giorni non è previsto un miglioramento.":`Giorno migliore dei prossimi 8: <b>${dl(days[bi])}</b>, ${bb.by[bi]}/100 a <a href="#z-${bb.z.id}">${nm(bb)}</a>.`;
+let l2=`<b><a href="#z-${b0.z.id}">${nm(b0)}</a></b> <span class="meta">${b0.by[0]}/100</span>`;
+let l3=bi==0?"nessun miglioramento nei prossimi 8 giorni":`<b>${dl(days[bi])}</b> <span class="meta">· <a href="#z-${bb.z.id}">${nm(bb)}</a> · ${bb.by[bi]}/100</span>`;
 const lo=D.obs.filter(o=>o.sp&&o.sp!=NOID).sort((a,b)=>b.d.localeCompare(a.d))[0];
 let l4=lo?`Ultimo ritrovamento: <b>${lo.sp}</b>, ${it(lo.d)}, ${zn(lo.z).n.replace(/ \(.*/,"")}.`:"";
 const MV=Object.keys(AREA).map(a=>{const q=zs.filter(z=>z.area==a).map(mbVal);return q.length?{a,p:q.reduce((t,x)=>t+x.p,0)/q.length,f:q.reduce((t,x)=>t+x.f,0)/q.length}:null}).filter(Boolean);
 const wet=MV.slice().sort((x,y)=>y.f-x.f)[0];let l5=MV.length?`<p class="meta" style="margin:4px 0 0">Pioggia (mm) ultimi 14 giorni → prossimi 7: ${MV.map(x=>`${x.a=="Piana degli Albanesi"?"Piana":x.a} <b>${x.p.toFixed(0)}→${x.f.toFixed(0)}</b>`).join(" · ")}</p>`:"";
-if(wet&&wet.f>=15&&b0.by[0]<65)l5+=`<p style="margin:6px 0 0">🌧 <b>Pioggia in arrivo</b>: circa ${wet.f.toFixed(0)} mm previsti in ${wet.a}. Ricontrolla la Previsione dopo la pioggia.</p>`;
+let al=wet&&wet.f>=15&&b0.by[0]<65?`<p style="margin:8px 0 0">🌧 <b>Pioggia in arrivo</b> · ${wet.a} ~${wet.f.toFixed(0)} mm</p>`:"";
 const ar=Object.keys(AREA).map(a=>{const q=Z.filter(x=>x.z.area==a);return{a,v:q.length?Math.max(...q.map(x=>x.by[0])):null}});
-$("#home").innerHTML=`<div class="card"><h3>${head} <span class="pill ${bc}">${bn}</span></h3><p style="margin:6px 0">${l2}<br>${l3}</p>${l5}<p class="meta" style="margin:4px 0 0">${l4}</p><p class="note" style="margin:6px 0 0">Ipotesi di lavoro, non validata: vedi «Previsione».</p></div>`;
+$("#home").innerHTML=`<div class="card"><h3>${head} <span class="pill ${bc}">${bn}</span></h3><div class="hr"><span class="meta">Oggi, meglio</span>${l2}</div><div class="hr"><span class="meta">Giorno migliore</span>${l3}</div>${al}<details style="margin-top:8px"><summary class="meta" style="cursor:pointer">Più dettagli</summary>${l5}<p class="meta" style="margin:6px 0 0">${l4}</p><p class="note" style="margin:6px 0 0">Ipotesi di lavoro, non validata: vedi «Previsione».</p></details></div>`;
 const bd=(k,t,v)=>`<button class="btn" data-a="${k}">${t}${v!=null?` <i>${v}</i>`:""}</button>`;
 $("#ab").innerHTML=bd("","Tutta la Sicilia")+ar.map(x=>bd(x.a,x.a,x.v)).join("");
 $("#ab").onclick=e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a;document.querySelectorAll("#ab .btn").forEach(x=>x.classList.toggle("on",x==b));
