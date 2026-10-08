@@ -9810,6 +9810,108 @@
     "esposizione": 329,
     "esp": "NW"
    }
+  },
+  {
+   "id": "R048",
+   "d": "2025-10-24",
+   "h": "",
+   "z": "carcara",
+   "lat": 37.96707,
+   "lon": 14.39143,
+   "q": null,
+   "sp": "Lycoperdon perlatum",
+   "cert": "probabile",
+   "fonte": "foto (posizione della zona)",
+   "c": {
+    "r7": 8.3,
+    "r14": 24.3,
+    "r21": 60.4,
+    "r30": 160.4,
+    "gg": 7,
+    "fino": "2025-10-23",
+    "tn7": 11.3,
+    "tx7": 19.2,
+    "rh7": 80.6,
+    "ws7": 2.6,
+    "suolo": 90
+   },
+   "note": "Foto con fotocamera mirrorless; ora di scatto non affidabile; posizione non precisa (punto della zona)",
+   "foto": "foto/lycoperdon_perlatum_carcara_1.jpg",
+   "topo": {
+    "quota_dem": 790,
+    "pendenza": 6.2,
+    "esposizione": 11,
+    "esp": "N"
+   }
+  },
+  {
+   "id": "R049",
+   "d": "2025-10-24",
+   "h": "",
+   "z": "carcara",
+   "lat": 37.96707,
+   "lon": 14.39143,
+   "q": null,
+   "sp": "Amanita pantherina",
+   "cert": "probabile",
+   "fonte": "foto (posizione della zona)",
+   "c": {
+    "r7": 8.3,
+    "r14": 24.3,
+    "r21": 60.4,
+    "r30": 160.4,
+    "gg": 7,
+    "fino": "2025-10-23",
+    "tn7": 11.3,
+    "tx7": 19.2,
+    "rh7": 80.6,
+    "ws7": 2.6,
+    "suolo": 90
+   },
+   "note": "Foto con fotocamera mirrorless; ora di scatto non affidabile; posizione non precisa (punto della zona)",
+   "foto": "foto/amanita_pantherina_carcara_1.jpg",
+   "topo": {
+    "quota_dem": 790,
+    "pendenza": 6.2,
+    "esposizione": 11,
+    "esp": "N"
+   },
+   "foto_altre": [
+    "foto/amanita_pantherina_carcara_2.jpg"
+   ]
+  },
+  {
+   "id": "R050",
+   "d": "2025-10-24",
+   "h": "",
+   "z": "carcara",
+   "lat": 37.96707,
+   "lon": 14.39143,
+   "q": null,
+   "sp": "Mycena haematopus",
+   "cert": "probabile",
+   "fonte": "foto (posizione della zona)",
+   "c": {
+    "r7": 8.3,
+    "r14": 24.3,
+    "r21": 60.4,
+    "r30": 160.4,
+    "gg": 7,
+    "fino": "2025-10-23",
+    "tn7": 11.3,
+    "tx7": 19.2,
+    "rh7": 80.6,
+    "ws7": 2.6,
+    "suolo": 90
+   },
+   "note": "Foto con fotocamera mirrorless; ora di scatto non affidabile; posizione non precisa (punto della zona)",
+   "foto": "foto/mycena_haematopus_carcara_1.jpg",
+   "topo": {
+    "quota_dem": 790,
+    "pendenza": 6.2,
+    "esposizione": 11,
+    "esp": "N"
+   }
   }
  ],
  "forecast": {
