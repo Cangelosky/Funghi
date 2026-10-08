@@ -1,0 +1,63 @@
+# BOZZA NON ATTIVA. Per attivarla: spostarla in .github/workflows/aggiorna.yml (dopo aver creato i 4 Secrets su GitHub).
+# Aggiornamento automatico del sito (gratis su GitHub, non consuma credito Claude):
+# alle 6, 13 e 17 ora italiana legge il bot Telegram, aggiorna il meteo e pubblica i dati.
+# I segreti stanno in Settings → Secrets and variables → Actions: TELEGRAM_TOKEN, TELEGRAM_ALLOWED, TELEGRAM_NOMI, ASSOC_PASSWORD.
+name: Aggiornamento automatico
+on:
+  schedule:
+    - cron: '0 4,11,15 * * *'   # ora legale (UTC+2): 6, 13, 17 in Italia
+    - cron: '0 5,12,16 * * *'   # ora solare (UTC+1): 6, 13, 17 in Italia
+  workflow_dispatch: {}          # pulsante "Run workflow" per lanciarlo a mano
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: aggiornamento
+  cancel-in-progress: false
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Ora giusta? (ognuno dei due orari vale solo nella sua stagione)
+        id: ora
+        run: |
+          off=$(TZ=Europe/Rome date +%z)
+          s="${{ github.event.schedule }}"
+          if [ -z "$s" ] || { [ "$off" = "+0200" ] && [ "$s" = "0 4,11,15 * * *" ]; } || { [ "$off" = "+0100" ] && [ "$s" = "0 5,12,16 * * *" ]; }; then
+            echo "vai=1" >> "$GITHUB_OUTPUT"; else echo "vai=0" >> "$GITHUB_OUTPUT"; echo "Orario dell'altra stagione: salto."; fi
+      - uses: actions/checkout@v4
+        if: steps.ora.outputs.vai == '1'
+      - uses: actions/setup-python@v5
+        if: steps.ora.outputs.vai == '1'
+        with:
+          python-version: '3.12'
+      - name: Programmi necessari
+        if: steps.ora.outputs.vai == '1'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+          pip install -q rasterio requests numpy pillow pillow-heif cryptography
+      - name: Giro di aggiornamento
+        if: steps.ora.outputs.vai == '1'
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_ALLOWED: ${{ secrets.TELEGRAM_ALLOWED }}
+          TELEGRAM_NOMI: ${{ secrets.TELEGRAM_NOMI }}
+          ASSOC_PASSWORD: ${{ secrets.ASSOC_PASSWORD }}
+        run: bash tools/giro.sh
+      - name: Pubblica
+        if: steps.ora.outputs.vai == '1'
+        run: |
+          git config user.name "Aggiornamento automatico"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data foto
+          if git diff --cached --quiet; then echo "Niente da pubblicare"; exit 0; fi
+          msg="Aggiornamento meteo automatico"
+          git diff --cached --name-only | grep -q '^foto/tg_\|data/telegram_state.json' && msg="Segnalazioni Telegram e aggiornamento meteo"
+          git commit -q -m "$msg (GitHub Actions)"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 10; done
+      - name: Ricostruisci il sito (GitHub Pages)
+        if: steps.ora.outputs.vai == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Ricostruzione non richiesta (parte comunque dopo il push, se Pages è attivo)"
