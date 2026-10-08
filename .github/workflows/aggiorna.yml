@@ -1,4 +1,4 @@
-# BOZZA NON ATTIVA. Per attivarla: spostarla in .github/workflows/aggiorna.yml (dopo aver creato i 4 Secrets su GitHub).
+# ATTIVO dall'8 ottobre 2026 (prima: bozza in tools/github_actions_aggiorna.yml). Prova a mano: Actions → "Aggiornamento automatico" → Run workflow.
 # Aggiornamento automatico del sito (gratis su GitHub, non consuma credito Claude):
 # tre volte al giorno (circa 6:07, 13:07 e 17:07 ora italiana) legge il bot Telegram, aggiorna il meteo e pubblica i dati.
 # I segreti stanno in Settings → Secrets and variables → Actions: TELEGRAM_TOKEN, TELEGRAM_ALLOWED, TELEGRAM_NOMI, ASSOC_PASSWORD.
