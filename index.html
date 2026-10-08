@@ -101,7 +101,7 @@ let BOSP=null;const boschi=()=>BOSP||(BOSP=fetch("data/boschi.json?v="+Date.now(
 const BSTY={color:"#1b7a3d",weight:1.6,dashArray:"5 4",fillColor:"#2e9d55",fillOpacity:.10,interactive:false};
 function drawBoschi(m,zid){return boschi().then(B=>{const L0=L.layerGroup();const b=B[zid]||{},P=Array.isArray(b)?b:b.p||[];P.forEach(q=>L.polygon([q.p,...(q.h||[])],{...BSTY,stroke:!b.l}).addTo(L0));(b.l||[]).forEach(l=>L.polyline(l,{...BSTY,fill:false}).addTo(L0));L0.addTo(m);return L0})}
 function species(){const m={};D.obs.forEach(o=>{const k=o.sp||NOID;(m[k]=m[k]||[]).push(o)});return m}
-function init(){$("#agg").textContent=it(D.agg);
+function init(){$("#agg").textContent=it(D.agg);fetch("data/stato_aggiornamento.json?v="+Date.now()).then(r=>r.json()).then(j=>{const m=/^(\d{4}-\d\d-\d\d) (\d\d:\d\d)/.exec(j.fine||"");if(m)$("#agg").textContent=it(m[1])+" alle "+m[2]}).catch(()=>{});
 $("#tabs").innerHTML=[["mappa","Home"],["zone","Zone"],["specie","Specie"],["meteo","Meteo"],["previsione","Previsione"],["uscite","Uscite"]].map(([k,l])=>`<button data-k="${k}">${l}</button>`).join("");
 $("#tabs").onclick=e=>{if(e.target.dataset.k)route(e.target.dataset.k)};if(sgMem.get())sgTab();
 const S=species(),nsp=Object.keys(S).filter(k=>k!=NOID).length;
