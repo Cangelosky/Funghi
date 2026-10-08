@@ -10004,43 +10004,13 @@
     "pendenza": 12.4,
     "esposizione": 41,
     "esp": "NE"
-   }
+   },
+   "foto_altre": [
+    "foto/tricholoma_sulphureum_2.jpg"
+   ]
   },
   {
    "id": "R046",
-   "d": "2025-12-12",
-   "h": "11:00",
-   "z": "casena_mongerrati",
-   "lat": 37.91973,
-   "lon": 13.96289,
-   "q": 723,
-   "sp": "Tricholoma sulphureum",
-   "cert": "probabile",
-   "fonte": "foto (posizione indicata da Oscar)",
-   "foto": "foto/tricholoma_sulphureum_2.jpg",
-   "c": {
-    "r7": 11.8,
-    "r14": 18.4,
-    "r21": 30.3,
-    "r30": 37.2,
-    "gg": 6,
-    "fino": "2025-12-11",
-    "tn7": 5.9,
-    "tx7": 14.6,
-    "rh7": 79.2,
-    "ws7": 2.5,
-    "suolo": 81
-   },
-   "note": "Ora indicata: circa le 11",
-   "topo": {
-    "quota_dem": 723,
-    "pendenza": 12.4,
-    "esposizione": 41,
-    "esp": "NE"
-   }
-  },
-  {
-   "id": "R047",
    "d": "2025-12-12",
    "h": "11:00",
    "z": "casena_mongerrati",
@@ -10070,43 +10040,13 @@
     "pendenza": 10.1,
     "esposizione": 347,
     "esp": "N"
-   }
-  },
-  {
-   "id": "R048",
-   "d": "2025-12-12",
-   "h": "11:00",
-   "z": "casena_mongerrati",
-   "lat": 37.92076,
-   "lon": 13.96167,
-   "q": 718,
-   "sp": "Hydnum repandum",
-   "cert": "probabile",
-   "fonte": "foto (posizione indicata da Oscar)",
-   "foto": "foto/hydnum_repandum_2.jpg",
-   "c": {
-    "r7": 11.8,
-    "r14": 18.4,
-    "r21": 30.3,
-    "r30": 37.2,
-    "gg": 6,
-    "fino": "2025-12-11",
-    "tn7": 5.9,
-    "tx7": 14.6,
-    "rh7": 79.2,
-    "ws7": 2.5,
-    "suolo": 81
    },
-   "note": "Ora indicata: circa le 11",
-   "topo": {
-    "quota_dem": 718,
-    "pendenza": 10.1,
-    "esposizione": 347,
-    "esp": "N"
-   }
+   "foto_altre": [
+    "foto/hydnum_repandum_2.jpg"
+   ]
   },
   {
-   "id": "R049",
+   "id": "R047",
    "d": "2025-12-12",
    "h": "11:00",
    "z": "casena_mongerrati",
