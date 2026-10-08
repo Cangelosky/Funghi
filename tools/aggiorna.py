@@ -31,7 +31,7 @@ def chirps_ok():
         import rasterio
         return rasterio
 rio = chirps_ok()
-os.environ.setdefault('CURL_CA_BUNDLE', '/root/.ccr/ca-bundle.crt')
+if os.path.exists('/root/.ccr/ca-bundle.crt'): os.environ.setdefault('CURL_CA_BUNDLE', '/root/.ccr/ca-bundle.crt')   # solo nell'ambiente Claude (proxy); su GitHub Actions no
 start = dt.date.fromisoformat(d['start'])
 pts = {}
 for z in zones:
