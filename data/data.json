@@ -9303,71 +9303,11 @@
     "pendenza": 7.1,
     "esposizione": 350,
     "esp": "N"
-   }
-  },
-  {
-   "id": "R024",
-   "d": "2026-09-30",
-   "h": "",
-   "z": "ficuzza_grotta",
-   "lat": 37.863418,
-   "lon": 13.417962,
-   "q": 1004,
-   "sp": "Fistulina hepatica",
-   "cert": "certo",
-   "fonte": "foto (posizione dal punto GPS)",
-   "foto": "foto/fistulina_grotta_2.jpg",
-   "c": {
-    "r7": 1.7,
-    "r14": 30.5,
-    "r21": 33.2,
-    "r30": 33.2,
-    "gg": 10,
-    "fino": "2026-09-29",
-    "tn7": 10.7,
-    "tx7": 21.5,
-    "rh7": 58.6,
-    "ws7": 2.0,
-    "suolo": 20
    },
-   "topo": {
-    "quota_dem": 986,
-    "pendenza": 7.1,
-    "esposizione": 350,
-    "esp": "N"
-   }
-  },
-  {
-   "id": "R025",
-   "d": "2026-09-30",
-   "h": "",
-   "z": "ficuzza_grotta",
-   "lat": 37.863418,
-   "lon": 13.417962,
-   "q": 1004,
-   "sp": "Fistulina hepatica",
-   "cert": "certo",
-   "fonte": "foto (posizione dal punto GPS)",
-   "foto": "foto/fistulina_grotta_3.jpg",
-   "c": {
-    "r7": 1.7,
-    "r14": 30.5,
-    "r21": 33.2,
-    "r30": 33.2,
-    "gg": 10,
-    "fino": "2026-09-29",
-    "tn7": 10.7,
-    "tx7": 21.5,
-    "rh7": 58.6,
-    "ws7": 2.0,
-    "suolo": 20
-   },
-   "topo": {
-    "quota_dem": 986,
-    "pendenza": 7.1,
-    "esposizione": 350,
-    "esp": "N"
-   }
+   "foto_altre": [
+    "foto/fistulina_grotta_2.jpg",
+    "foto/fistulina_grotta_3.jpg"
+   ]
   },
   {
    "id": "R026",
@@ -9399,71 +9339,11 @@
     "pendenza": 8.1,
     "esposizione": 298,
     "esp": "NW"
-   }
-  },
-  {
-   "id": "R027",
-   "d": "2026-10-03",
-   "h": "",
-   "z": "piano_torre",
-   "lat": 37.911703,
-   "lon": 13.993186,
-   "q": 878,
-   "sp": "Ganoderma lucidum",
-   "cert": "certo",
-   "fonte": "foto (posizione dal punto GPS)",
-   "foto": "foto/ganoderma_torre_2.jpg",
-   "c": {
-    "r7": 0.0,
-    "r14": 52.6,
-    "r21": 54.8,
-    "r30": 54.9,
-    "gg": 12,
-    "fino": "2026-10-02",
-    "tn7": 11.9,
-    "tx7": 22.2,
-    "rh7": 59.8,
-    "ws7": 1.8,
-    "suolo": 30
    },
-   "topo": {
-    "quota_dem": 860,
-    "pendenza": 8.1,
-    "esposizione": 298,
-    "esp": "NW"
-   }
-  },
-  {
-   "id": "R028",
-   "d": "2026-10-03",
-   "h": "",
-   "z": "piano_torre",
-   "lat": 37.911703,
-   "lon": 13.993186,
-   "q": 878,
-   "sp": "Ganoderma lucidum",
-   "cert": "certo",
-   "fonte": "foto (posizione dal punto GPS)",
-   "foto": "foto/ganoderma_torre_3.jpg",
-   "c": {
-    "r7": 0.0,
-    "r14": 52.6,
-    "r21": 54.8,
-    "r30": 54.9,
-    "gg": 12,
-    "fino": "2026-10-02",
-    "tn7": 11.9,
-    "tx7": 22.2,
-    "rh7": 59.8,
-    "ws7": 1.8,
-    "suolo": 30
-   },
-   "topo": {
-    "quota_dem": 860,
-    "pendenza": 8.1,
-    "esposizione": 298,
-    "esp": "NW"
-   }
+   "foto_altre": [
+    "foto/ganoderma_torre_2.jpg",
+    "foto/ganoderma_torre_3.jpg"
+   ]
   },
   {
    "id": "R029",
@@ -9562,40 +9442,10 @@
     "pendenza": 6.2,
     "esposizione": 11,
     "esp": "N"
-   }
-  },
-  {
-   "d": "2025-10-24",
-   "h": "",
-   "z": "carcara",
-   "lat": 37.96707,
-   "lon": 14.39143,
-   "q": null,
-   "sp": "Cortinarius sp.",
-   "cert": "certo",
-   "fonte": "foto (posizione della zona)",
-   "c": {
-    "r7": 8.3,
-    "r14": 24.3,
-    "r21": 60.4,
-    "r30": 160.4,
-    "gg": 7,
-    "fino": "2025-10-23",
-    "tn7": 11.3,
-    "tx7": 19.2,
-    "rh7": 80.6,
-    "ws7": 2.6,
-    "suolo": 90
    },
-   "note": "Foto con fotocamera mirrorless; ora di scatto non affidabile; determinazione a livello di genere",
-   "id": "R032",
-   "foto": "foto/cortinarius_2.jpg",
-   "topo": {
-    "quota_dem": 790,
-    "pendenza": 6.2,
-    "esposizione": 11,
-    "esp": "N"
-   }
+   "foto_altre": [
+    "foto/cortinarius_2.jpg"
+   ]
   },
   {
    "id": "R033",
@@ -9628,40 +9478,10 @@
     "pendenza": 0.8,
     "esposizione": null,
     "esp": null
-   }
-  },
-  {
-   "id": "R034",
-   "d": "2025-12-14",
-   "h": "",
-   "z": "lago_piana",
-   "lat": 37.975,
-   "lon": 13.2923,
-   "q": null,
-   "sp": "Tricholoma terreum",
-   "cert": "certo",
-   "fonte": "fotogramma da video (coordinate del video)",
-   "foto": "foto/tricholoma_terreum_2.jpg",
-   "c": {
-    "r7": 0.0,
-    "r14": 15.3,
-    "r21": 43.2,
-    "r30": 75.9,
-    "gg": 8,
-    "fino": "2025-12-13",
-    "tn7": 5.2,
-    "tx7": 15.0,
-    "rh7": 82.5,
-    "ws7": 1.9,
-    "suolo": 92
    },
-   "note": "Fotogramma da video iPhone; sotto pini",
-   "topo": {
-    "quota_dem": 608,
-    "pendenza": 0.8,
-    "esposizione": null,
-    "esp": null
-   }
+   "foto_altre": [
+    "foto/tricholoma_terreum_2.jpg"
+   ]
   },
   {
    "id": "R035",
@@ -9760,73 +9580,11 @@
     "pendenza": 9.4,
     "esposizione": 337,
     "esp": "NW"
-   }
-  },
-  {
-   "id": "R038",
-   "d": "2025-10-18",
-   "h": "",
-   "z": "poggio_sfrancesco",
-   "lat": 38.014161,
-   "lon": 13.265572,
-   "q": 813,
-   "sp": "Clitocybe odora",
-   "cert": "probabile",
-   "fonte": "foto (GPS della foto)",
-   "foto": "foto/clitocybe_odora_2.jpg",
-   "c": {
-    "r7": 46.2,
-    "r14": 52.0,
-    "r21": 97.0,
-    "r30": 125.5,
-    "gg": 1,
-    "fino": "2025-10-17",
-    "tn7": 9.4,
-    "tx7": 19.3,
-    "rh7": 72.6,
-    "ws7": 2.0,
-    "suolo": 90
    },
-   "note": "Odore di anice (riferito)",
-   "topo": {
-    "quota_dem": 791,
-    "pendenza": 9.4,
-    "esposizione": 337,
-    "esp": "NW"
-   }
-  },
-  {
-   "id": "R039",
-   "d": "2025-10-18",
-   "h": "",
-   "z": "poggio_sfrancesco",
-   "lat": 38.014161,
-   "lon": 13.265572,
-   "q": 813,
-   "sp": "Clitocybe odora",
-   "cert": "probabile",
-   "fonte": "foto (GPS della foto)",
-   "foto": "foto/clitocybe_odora_3.jpg",
-   "c": {
-    "r7": 46.2,
-    "r14": 52.0,
-    "r21": 97.0,
-    "r30": 125.5,
-    "gg": 1,
-    "fino": "2025-10-17",
-    "tn7": 9.4,
-    "tx7": 19.3,
-    "rh7": 72.6,
-    "ws7": 2.0,
-    "suolo": 90
-   },
-   "note": "Odore di anice (riferito)",
-   "topo": {
-    "quota_dem": 791,
-    "pendenza": 9.4,
-    "esposizione": 337,
-    "esp": "NW"
-   }
+   "foto_altre": [
+    "foto/clitocybe_odora_2.jpg",
+    "foto/clitocybe_odora_3.jpg"
+   ]
   },
   {
    "id": "R040",
@@ -9887,35 +9645,10 @@
     "suolo": 62
    },
    "note": "Sotto conifere",
-   "val": true
-  },
-  {
-   "id": "R042",
-   "d": "2025-10-09",
-   "h": "14:53",
-   "z": "poggio_sfrancesco",
-   "lat": 38.019275,
-   "lon": 13.268161,
-   "q": 755,
-   "sp": "Coprinus comatus",
-   "cert": "certo",
-   "fonte": "Telegram (stessa posizione della foto IMG_0376)",
-   "foto": "foto/tg_28111691.jpg",
-   "c": {
-    "r7": 25.9,
-    "r14": 56.4,
-    "r21": 79.3,
-    "r30": 96.3,
-    "gg": 7,
-    "fino": "2025-10-08",
-    "tn7": 8.8,
-    "tx7": 17.4,
-    "rh7": 65.4,
-    "ws7": 4.4,
-    "suolo": 62
-   },
-   "note": "Sotto conifere",
-   "val": true
+   "val": true,
+   "foto_altre": [
+    "foto/tg_28111691.jpg"
+   ]
   },
   {
    "id": "R043",
