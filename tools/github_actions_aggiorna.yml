@@ -1,12 +1,17 @@
 # BOZZA NON ATTIVA. Per attivarla: spostarla in .github/workflows/aggiorna.yml (dopo aver creato i 4 Secrets su GitHub).
 # Aggiornamento automatico del sito (gratis su GitHub, non consuma credito Claude):
-# alle 6, 13 e 17 ora italiana legge il bot Telegram, aggiorna il meteo e pubblica i dati.
+# tre volte al giorno (circa 6:07, 13:07 e 17:07 ora italiana) legge il bot Telegram, aggiorna il meteo e pubblica i dati.
 # I segreti stanno in Settings → Secrets and variables → Actions: TELEGRAM_TOKEN, TELEGRAM_ALLOWED, TELEGRAM_NOMI, ASSOC_PASSWORD.
+# Revisione dell'8 ottobre 2026 (provata in un ambiente pulito con questi stessi pacchetti):
+# - orari al minuto :07 (GitHub ritarda o salta spesso le esecuzioni alle :00);
+# - fuso Europe/Rome per tutto il lavoro (le prove a mano vicino a mezzanotte usavano la data UTC);
+# - se la pubblicazione fallisce il lavoro diventa rosso (prima restava verde);
+# - passaggio finale "Esito": mostra il resoconto nella pagina dell'esecuzione e diventa rosso se Telegram o meteo sono in errore.
 name: Aggiornamento automatico
 on:
   schedule:
-    - cron: '0 4,11,15 * * *'   # ora legale (UTC+2): 6, 13, 17 in Italia
-    - cron: '0 5,12,16 * * *'   # ora solare (UTC+1): 6, 13, 17 in Italia
+    - cron: '7 4,11,15 * * *'   # ora legale (UTC+2): 6:07, 13:07, 17:07 in Italia
+    - cron: '7 5,12,16 * * *'   # ora solare (UTC+1): 6:07, 13:07, 17:07 in Italia
   workflow_dispatch: {}          # pulsante "Run workflow" per lanciarlo a mano
 permissions:
   contents: write
@@ -14,6 +19,8 @@ permissions:
 concurrency:
   group: aggiornamento
   cancel-in-progress: false
+env:
+  TZ: Europe/Rome
 jobs:
   aggiorna:
     runs-on: ubuntu-latest
@@ -24,10 +31,12 @@ jobs:
         run: |
           off=$(TZ=Europe/Rome date +%z)
           s="${{ github.event.schedule }}"
-          if [ -z "$s" ] || { [ "$off" = "+0200" ] && [ "$s" = "0 4,11,15 * * *" ]; } || { [ "$off" = "+0100" ] && [ "$s" = "0 5,12,16 * * *" ]; }; then
+          if [ -z "$s" ] || { [ "$off" = "+0200" ] && [ "$s" = "7 4,11,15 * * *" ]; } || { [ "$off" = "+0100" ] && [ "$s" = "7 5,12,16 * * *" ]; }; then
             echo "vai=1" >> "$GITHUB_OUTPUT"; else echo "vai=0" >> "$GITHUB_OUTPUT"; echo "Orario dell'altra stagione: salto."; fi
       - uses: actions/checkout@v4
         if: steps.ora.outputs.vai == '1'
+        with:
+          fetch-depth: 50
       - uses: actions/setup-python@v5
         if: steps.ora.outputs.vai == '1'
         with:
@@ -55,9 +64,35 @@ jobs:
           msg="Aggiornamento meteo automatico"
           git diff --cached --name-only | grep -q '^foto/tg_\|data/telegram_state.json' && msg="Segnalazioni Telegram e aggiornamento meteo"
           git commit -q -m "$msg (GitHub Actions)"
-          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 10; done
+          for i in 1 2 3; do
+            if git pull -q --rebase --autostash && git push -q; then echo "Pubblicato (tentativo $i)"; exit 0; fi
+            echo "Tentativo $i non riuscito"; git rebase --abort 2>/dev/null || true; sleep 15
+          done
+          echo "::error::Pubblicazione non riuscita dopo 3 tentativi (probabile modifica contemporanea degli stessi file). I messaggi Telegram non sono persi: il prossimo giro li rilegge."
+          exit 1
       - name: Ricostruisci il sito (GitHub Pages)
         if: steps.ora.outputs.vai == '1'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Ricostruzione non richiesta (parte comunque dopo il push, se Pages è attivo)"
+      - name: Esito
+        if: always() && steps.ora.outputs.vai == '1'
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          try:
+              S = json.load(open('data/stato_aggiornamento.json'))
+          except Exception as e:
+              print('::error::Resoconto mancante:', e); sys.exit(1)
+          righe = ['### Aggiornamento automatico',
+                   '- Telegram: ' + S.get('telegram', '?'),
+                   '- Meteo: ' + S.get('meteo', '?'),
+                   '- File JSON validi: ' + S.get('json_validi', '?'),
+                   '- Dalle %s alle %s' % (S.get('inizio', '?'), S.get('fine', '?'))]
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f: f.write('\n'.join(righe) + '\n')
+          problemi = [k for k in ('telegram', 'meteo') if S.get(k) != 'ok']
+          if S.get('json_validi') != 'sì': problemi.append('json')
+          if problemi:
+              print('::error::Da controllare:', ', '.join(problemi)); sys.exit(1)
+          print('Tutto ok')
+          PY
