@@ -61,7 +61,7 @@ def comuni():
 
 # località note che non sono comuni: nome scritto -> (comune, riferimento)
 ALIAS = {'ficuzza': ('Corleone', 'Ficuzza'), 'bosco della ficuzza': ('Corleone', 'Bosco della Ficuzza'),
-         'monte pellegrino': ('Palermo', 'Monte Pellegrino'), 'favorita': ('Palermo', 'Favorita'),
+         'monte pellegrino': ('Palermo', 'Monte Pellegrino'), 'montepellegrino': ('Palermo', 'Monte Pellegrino'), 'favorita': ('Palermo', 'Favorita'),
          'piana': ('Piana degli Albanesi', ''), 'castel umberto': ("Castell'Umberto", '')}
 
 def trova_comune(testo):
@@ -81,14 +81,14 @@ def trova_comune(testo):
 SINONIMI = {'agrocybe aegerita': 'Cyclocybe cylindracea', 'agrocybe cylindracea': 'Cyclocybe cylindracea', 'pholiota aegerita': 'Cyclocybe cylindracea',
             'lepiota procera': 'Macrolepiota procera', 'clitocybe geotropa': 'Infundibulicybe geotropa', 'leccinum corsicum': 'Leccinellum corsicum',
             'boletus badius': 'Imleria badia', 'xerocomus badius': 'Imleria badia', 'lepista nebularis': 'Clitocybe nebularis',
-            'coprinus atramentarius': 'Coprinopsis atramentaria', 'agaricus sylvicola': 'Agaricus silvicola', 'polyporus sulphureus': 'Laetiporus sulphureus'}
+            'coprinus atramentarius': 'Coprinopsis atramentaria', 'volvariella bombicina': 'Volvariella bombycina', 'inonotus ispidus': 'Inonotus hispidus', 'agaricus sylvicola': 'Agaricus silvicola', 'polyporus sulphureus': 'Laetiporus sulphureus'}
 MIXO = set('Reticularia Lycogala Fuligo Stemonitis Trichia Arcyria Physarum Enteridium Didymium Badhamia Comatricha Hemitrichia Ceratiomyxa Mucilago Leocarpus Tubifera'.split())
 GRUPPI = {'bosco': 'Amanita Boletus Suillus Tricholoma Cortinarius Lactarius Leccinum Leccinellum Russula Hygrophorus Imleria Xerocomus Xerocomellus Hydnum Cantharellus '
                    'Hebeloma Inocybe Laccaria Paxillus Rubroboletus Suillellus Neoboletus Caloboletus Hortiboletus Butyriboletus Chroogomphus Gomphidius Craterellus Scleroderma Ramaria Tuber Rhizopogon Hemileccinum Aureoboletus Cyanoboletus',
           'prato': 'Macrolepiota Clitocybe Infundibulicybe Coprinus Coprinopsis Helvella Lepista Agaricus Morchella Chlorophyllum Lycoperdon Calvatia Mycena Marasmius Gymnopus '
                    'Lepiota Leucoagaricus Hygrocybe Calocybe Entoloma Clitopilus Rhodocollybia Collybia Volvopluteus Bovista Geastrum Pseudoclitocybe Melanoleuca Cystoderma Peziza Otidea Sarcosphaera Disciotis Gyromitra Verpa Psathyrella Panaeolus Stropharia Tubaria',
           'legno': 'Pleurotus Armillaria Fistulina Laetiporus Ganoderma Cyclocybe Agrocybe Hypholoma Pholiota Trametes Hericium Polyporus Inonotus Schizophyllum Stereum Auricularia '
-                   'Flammulina Kuehneromyces Gymnopilus Lentinus Daedalea Daedaleopsis Fomes Fomitopsis Phellinus Fuscoporia Amylosporus Pluteus Omphalotus Xylaria Hypoxylon Trichaptum Bjerkandera Meripilus Grifola Sparassis Panellus Mycetinis Tremella Exidia Lenzites Cerioporus Abortiporus Hapalopilus Climacodon'}
+                   'Flammulina Kuehneromyces Gymnopilus Lentinus Daedalea Daedaleopsis Fomes Fomitopsis Phellinus Fuscoporia Amylosporus Pluteus Volvariella Omphalotus Xylaria Hypoxylon Trichaptum Bjerkandera Meripilus Grifola Sparassis Panellus Mycetinis Tremella Exidia Lenzites Cerioporus Abortiporus Hapalopilus Climacodon'}
 
 def gruppo(sp):
     g = (sp or '').split(' ')[0]
@@ -125,7 +125,7 @@ def stato_da(t):
 AMBIENTI = {'giardino': 'giardino', 'parco': 'parco o verde urbano', 'villa': 'parco o verde urbano', 'citta': 'verde urbano', 'urbano': 'verde urbano',
             'prato': 'prato o pascolo', 'pascolo': 'prato o pascolo', 'radura': 'radura', 'rimboschimento': 'rimboschimento', 'pineta': 'pineta',
             'lecceta': 'lecceta', 'sughereta': 'sughereta', 'castagneto': 'castagneto', 'faggeta': 'faggeta', 'querceto': 'querceto', 'eucalipteto': 'eucalipteto',
-            'bosco': 'bosco', 'macchia': 'macchia', 'orto': 'giardino'}
+            'bosco': 'bosco', 'macchia': 'macchia', 'orto': 'giardino', 'trucioli': 'trucioli o pacciamatura', 'pacciamatura': 'trucioli o pacciamatura'}
 MESI = 'gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre'.split()
 
 def data_da(t, oggi):
@@ -186,7 +186,11 @@ def leggi_riga(testo, oggi):
         if s and not specie(p): r['stato'] = s; continue
         m = re.fullmatch(r'(?:quota\s*)?(\d{2,4})\s*m(?:etri)?|quota\s*(\d{2,4})', n)
         if m: r['quota'] = int(m[1] or m[2]); continue
-        if re.match(r'(?i)(su|sotto|tra|fra|in mezzo a|vicino a)\s', p) and not trova_comune(p): r['ospite'] = re.sub(r'(?i)^su\s+', '', p.strip()); continue
+        if re.match(r'(?i)(su|sotto|tra|fra|in mezzo a|vicino a)\s', p) and not trova_comune(p):
+            r['ospite'] = re.sub(r'(?i)^su\s+', '', p.strip())
+            for k, v in AMBIENTI.items():
+                if re.search(r'\b' + k + r'\b', n): r['ambiente'] = r['ambiente'] or v
+            continue
         if n in AMBIENTI: r['ambiente'] = AMBIENTI[n]; continue
         if n.startswith('primi '):
             sp = specie(p[6:])
@@ -246,7 +250,7 @@ def applica(A, r, oggi, fonte='Telegram'):
     S.sort(key=lambda s: (s['d'], s['id']))
     dove = r['comune'] + (' – ' + r['rif'] if r['rif'] else '')
     return 'Segnalazione registrata, %s, %s:\n%s\nStato: %s.%s%s' % (d.strftime('%d/%m/%Y'), dove, '\n'.join(righe), STATI[r['stato'] or 'proposta'],
-            ('\nOspite o substrato: ' + r['ospite']) if r['ospite'] else '', ('\nNon ho capito: ' + '; '.join(r['nota'])) if r['nota'] else '')
+            ('\nOspite o substrato: ' + r['ospite']) if r['ospite'] else '', ('\nNota (salvata così com\'è): ' + '; '.join(r['nota'])) if r['nota'] else '')
 
 def da_telegram(A, update_id, testo, oggi):
     if update_id in A['tg_letti']: return None
@@ -255,7 +259,9 @@ def da_telegram(A, update_id, testo, oggi):
 
 # ---------------- meteo di ogni segnalazione ----------------
 INIZIO = '2025-08-01'      # da qui la pioggia (stazioni SIAS archiviate da metà luglio 2025)
-LUOGHI_BASE = {'Piana degli Albanesi': [dict(parole=['lago'], lat=37.976, lon=13.292, nome='Lago di Piana degli Albanesi')]}
+LUOGHI_BASE = {'Piana degli Albanesi': [dict(parole=['lago'], lat=37.976, lon=13.292, nome='Lago di Piana degli Albanesi')],
+               'Palermo': [dict(parole=['monte pellegrino', 'pellegrino'], lat=38.160, lon=13.352, nome='Monte Pellegrino (punto indicativo sul versante, ~350 m)'),
+                           dict(parole=['favorita'], lat=38.152, lon=13.343, nome='Parco della Favorita')]}
 
 def punto(A, s):
     """Chiave, coordinate e descrizione del punto meteo di una segnalazione: località nota del comune se il riferimento la nomina, altrimenti il comune."""
