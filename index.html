@@ -25,6 +25,9 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left
 .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}.photos figure{margin:0}.photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;cursor:zoom-in;display:block}.photos figcaption{font-size:.9rem;color:var(--ink);font-weight:600;line-height:1.3;margin-top:3px}.sppill{display:inline-block;padding:7px 14px;margin:4px 6px 4px 0;border-radius:20px;background:var(--acc);color:#fff;font-size:1.05rem;font-weight:700;text-decoration:none;font-style:italic}.sppill b{font-style:normal;opacity:.95}
 svg text{fill:var(--mut);font:11px system-ui}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column;color:#fff;padding:12px}#lb img{max-width:100%;max-height:85vh;border-radius:6px}
+#zb{position:fixed;inset:0;z-index:10000;background:var(--bg);display:none;flex-direction:column;padding:8px 10px;gap:6px}#zb.on{display:flex}#zbh{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}#zbh .btn{padding:6px 12px}
+#zbv{flex:1;min-height:0;overflow:hidden;position:relative;touch-action:none;cursor:grab;background:var(--card);border:1px solid var(--line);border-radius:12px}#zbs{position:absolute;left:0;top:0;transform-origin:0 0}#zbs svg{display:block}
+main svg[width="100%"]{cursor:zoom-in}
 footer{padding:24px 16px 32px;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line);margin-top:30px}
 .zc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;transition:box-shadow .15s,transform .15s}.zc:hover{box-shadow:0 4px 14px rgba(0,0,0,.12);transform:translateY(-1px)}
 .zc-h{background:#2d6a4f;color:#fff;padding:9px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}.zc-h b{font-size:1.02rem;line-height:1.25}.zc-h span{font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;opacity:.85;white-space:nowrap}
@@ -70,6 +73,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--acc)}
 </main>
 <footer>© Oscar Cangelosi. Proprietà personale: dati, foto e mappe non sono riutilizzabili senza autorizzazione. Pioggia: radar del Dipartimento della Protezione Civile, stazioni SIAS della Regione Siciliana (tabelle giornaliere pubblicate da ANCE) e satellite CHIRPS v3 (UCSB/CHC); temperature e umidità stimate: NASA POWER; previsioni: MET Norway e modelli ECMWF, ICON, GFS, ARPEGE via Open-Meteo; rilievo e boschi: modello del terreno e Carta Tecnica Regionale della Regione Siciliana (SITR), OpenStreetMap; cartografia © OpenStreetMap, OpenTopoMap, Esri. Progetto a fini di studio micologico: le determinazioni sono da convalidare dal gruppo e le informazioni non sono una guida alla commestibilità.</footer>
 <div id="lb" onclick="this.style.display='none'"><img id="lbi"><div id="lbc"></div></div>
+<div id="zb"><div id="zbh"><b id="zbt"></b><span><button class="btn" onclick="zbZoom(1/1.5)" aria-label="Riduci">−</button> <button class="btn" onclick="zbZoom(1.5)" aria-label="Ingrandisci">+</button> <button class="btn" onclick="Z.r=Z.r?0:1;zbFit()">Ruota</button> <button class="btn" onclick="closeZ()">✕ Chiudi</button></span></div><div id="zbv"><div id="zbs"></div></div><div id="zbl" class="meta"></div><div class="meta">Pizzica o usa + e − per ingrandire, trascina per spostarti, «Ruota» per vedere il grafico in orizzontale.</div></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const $=s=>document.querySelector(s);let D,map,zmap,smap;
@@ -452,5 +456,26 @@ $("#mbz").innerHTML=`<div class="card"><h3>${z.n}</h3>${svg}<div class="meta"><s
 if(!noscroll)$("#mbz").scrollIntoView({behavior:"smooth",block:"start"})}
 function buildUscite(){const rows=[];D.zones.forEach(z=>z.uscite.forEach(u=>rows.push([u.d,z,u])));rows.sort((a,b)=>b[0].localeCompare(a[0]));
 $("#tu").innerHTML="<tr><th>Data</th><th>Zona</th><th>Note</th><th>Pioggia 14 gg</th><th>Giorni da pioggia</th></tr>"+rows.map(([d,z,u])=>`<tr><td>${it(d)}</td><td><a href="#z-${z.id}">${z.n}</a></td><td>${u.note||""}</td><td>${u.c?u.c.pioggia_14+" mm":"—"}</td><td>${u.c?u.c.gg_da_pioggia5:"—"}</td></tr>`).join("")}
+/* Grafici a tutto schermo: tocca un grafico per ingrandirlo; zoom con pizzico, rotella o + e −; trascina per spostarti. Solo presentazione: il grafico è una copia di quello della pagina. */
+const Z={s:1,x:0,y:0,r:0,w:0,h:0,s0:1,P:new Map()};
+const zbApply=()=>{$("#zbs").style.transform=`translate(${Z.x}px,${Z.y}px) scale(${Z.s}) ${Z.r?`translate(${Z.h}px,0) rotate(90deg)`:""}`};
+function zbFit(){const v=$("#zbv"),vw=v.clientWidth,vh=v.clientHeight,cw=Z.r?Z.h:Z.w,ch=Z.r?Z.w:Z.h;Z.s0=Math.min(vw/cw,vh/ch);Z.s=Z.s0;Z.x=(vw-cw*Z.s)/2;Z.y=(vh-ch*Z.s)/2;zbApply()}
+function zbZoom(f,cx,cy){const v=$("#zbv"),ns=Math.min(Z.s0*12,Math.max(Z.s0*.6,Z.s*f)),k=ns/Z.s;if(cx==null){cx=v.clientWidth/2;cy=v.clientHeight/2}Z.x=cx-(cx-Z.x)*k;Z.y=cy-(cy-Z.y)*k;Z.s=ns;zbApply()}
+function openZ(svg){const vb=svg.viewBox.baseVal,c=svg.closest(".card"),t=c&&c.querySelector("h3"),g=svg.nextElementSibling;Z.w=vb.width;Z.h=vb.height;Z.r=0;
+const k=svg.cloneNode(true);k.setAttribute("width",Z.w);k.setAttribute("height",Z.h);$("#zbs").replaceChildren(k);$("#zbt").textContent=t?t.textContent:"Grafico";$("#zbl").innerHTML=g&&g.classList.contains("meta")?g.innerHTML:"";
+$("#zb").classList.add("on");document.body.style.overflow="hidden";zbFit()}
+function closeZ(){$("#zb").classList.remove("on");document.body.style.overflow="";$("#zbs").replaceChildren()}
+document.addEventListener("click",e=>{const g=e.target.closest&&e.target.closest("svg");if(g&&g.matches('main svg[width="100%"]'))openZ(g)});
+document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("#zb").classList.contains("on"))closeZ()});
+window.addEventListener("resize",()=>{if($("#zb").classList.contains("on"))zbFit()});
+{const zv=$("#zbv"),rc=()=>zv.getBoundingClientRect();
+zv.addEventListener("pointerdown",e=>{zv.setPointerCapture(e.pointerId);Z.P.set(e.pointerId,[e.clientX,e.clientY])});
+zv.addEventListener("pointermove",e=>{const o=Z.P.get(e.pointerId);if(!o)return;const n=[e.clientX,e.clientY];
+if(Z.P.size==1){Z.x+=n[0]-o[0];Z.y+=n[1]-o[1];zbApply()}
+else if(Z.P.size==2){const q=[...Z.P.entries()].find(([id])=>id!=e.pointerId)[1],d1=Math.hypot(n[0]-q[0],n[1]-q[1]),d0=Math.hypot(o[0]-q[0],o[1]-q[1]),r=rc();if(d0>0)zbZoom(d1/d0,(n[0]+q[0])/2-r.left,(n[1]+q[1])/2-r.top)}
+Z.P.set(e.pointerId,n)});
+const up=e=>Z.P.delete(e.pointerId);zv.addEventListener("pointerup",up);zv.addEventListener("pointercancel",up);
+zv.addEventListener("wheel",e=>{e.preventDefault();const r=rc();zbZoom(e.deltaY<0?1.2:1/1.2,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+zv.addEventListener("dblclick",e=>{const r=rc();if(Z.s>Z.s0*1.5)zbFit();else zbZoom(3,e.clientX-r.left,e.clientY-r.top)})}
 if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 </script></body></html>
