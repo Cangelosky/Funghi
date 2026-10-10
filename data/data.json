@@ -4785,10 +4785,10 @@
    0.4,
    0.6,
    1.6,
-   null,
-   null,
-   null,
-   null,
+   0.1,
+   13.2,
+   0.4,
+   1.5,
    1.4,
    0.0,
    0.0,
@@ -4819,9 +4819,9 @@
    7.1,
    2.2,
    0.4,
-   null,
-   null,
-   null,
+   4.4,
+   4.9,
+   0.2,
    23.3,
    23.1,
    6.8,
@@ -4833,9 +4833,9 @@
    1.7,
    1.9,
    9.8,
-   null,
-   null,
-   null,
+   10.7,
+   7.4,
+   4.7,
    8.2,
    22.0,
    1.2,
@@ -6603,20 +6603,6 @@
    ],
    "uscite": [
     {
-     "d": "2025-10-20",
-     "note": "Ritrovamenti fotografati",
-     "c": {
-      "pioggia_7": "44.3",
-      "pioggia_14": "49.1",
-      "pioggia_21": "86.0",
-      "pioggia_30": "129.4",
-      "gg_da_pioggia5": "3",
-      "tmax_7gg_stimata": "20.4",
-      "tmin_7gg_stimata": "11.2",
-      "suolo": "83"
-     }
-    },
-    {
      "d": "2025-11-17",
      "note": "Ritrovamenti fotografati",
      "c": {
@@ -6753,8 +6739,8 @@
     ],
     "copertura": 15,
     "dentro": [
-     14,
-     15
+     8,
+     9
     ],
     "nomi": [],
     "tipi": {
@@ -10649,6 +10635,20 @@
    "foto": [],
    "uscite": [
     {
+     "d": "2025-10-20",
+     "note": "Ritrovamenti fotografati",
+     "c": {
+      "pioggia_7": "43.7",
+      "pioggia_14": "49.0",
+      "pioggia_21": "87.2",
+      "pioggia_30": "130.0",
+      "gg_da_pioggia5": "3",
+      "suolo": "83",
+      "tmax_7gg_stimata": "20.4",
+      "tmin_7gg_stimata": "11.1"
+     }
+    },
+    {
      "d": "2026-10-10",
      "note": "Percorso del pioppeto (11:48-13:36); punti GPS: Gymnopilus spectabilis, Cyclocybe aegerita, Pioppini, Coprinus micaceus, Fomes fomentarium",
      "c": {
@@ -10686,8 +10686,8 @@
     ],
     "copertura": 17,
     "dentro": [
-     0,
-     0
+     6,
+     6
     ],
     "nomi": [],
     "tipi": {
@@ -10796,7 +10796,7 @@
    "id": "R004",
    "d": "2025-10-20",
    "h": "12:45",
-   "z": "lago_piana",
+   "z": "pioppeto",
    "lat": 37.984344,
    "lon": 13.300306,
    "q": 610,
@@ -10805,13 +10805,13 @@
    "fonte": "foto",
    "foto": "foto/5cd143fa.jpg",
    "c": {
-    "r7": 44.3,
-    "r14": 49.1,
-    "r21": 86.0,
-    "r30": 129.4,
+    "r7": 43.7,
+    "r14": 49.0,
+    "r21": 87.2,
+    "r30": 130.0,
     "gg": 3,
     "fino": "2025-10-19",
-    "tn7": 11.2,
+    "tn7": 11.1,
     "tx7": 20.4,
     "rh7": 72.5,
     "ws7": 2.2,
@@ -10829,7 +10829,7 @@
    "id": "R005",
    "d": "2025-10-20",
    "h": "12:45",
-   "z": "lago_piana",
+   "z": "pioppeto",
    "lat": 37.983158,
    "lon": 13.302044,
    "q": 609,
@@ -10838,13 +10838,13 @@
    "fonte": "foto",
    "foto": "foto/c515e710.jpg",
    "c": {
-    "r7": 44.3,
-    "r14": 49.1,
-    "r21": 86.0,
-    "r30": 129.4,
+    "r7": 43.7,
+    "r14": 49.0,
+    "r21": 87.2,
+    "r30": 130.0,
     "gg": 3,
     "fino": "2025-10-19",
-    "tn7": 11.2,
+    "tn7": 11.1,
     "tx7": 20.4,
     "rh7": 72.5,
     "ws7": 2.2,
@@ -10862,7 +10862,7 @@
    "id": "R006",
    "d": "2025-10-20",
    "h": "12:56",
-   "z": "lago_piana",
+   "z": "pioppeto",
    "lat": 37.985236,
    "lon": 13.298669,
    "q": 610,
@@ -10871,13 +10871,13 @@
    "fonte": "foto",
    "foto": "foto/60d9e5c6.jpg",
    "c": {
-    "r7": 44.3,
-    "r14": 49.1,
-    "r21": 86.0,
-    "r30": 129.4,
+    "r7": 43.7,
+    "r14": 49.0,
+    "r21": 87.2,
+    "r30": 130.0,
     "gg": 3,
     "fino": "2025-10-19",
-    "tn7": 11.2,
+    "tn7": 11.1,
     "tx7": 20.4,
     "rh7": 72.5,
     "ws7": 2.2,
@@ -10894,7 +10894,7 @@
    "id": "R007",
    "d": "2025-10-20",
    "h": "13:27",
-   "z": "lago_piana",
+   "z": "pioppeto",
    "lat": 37.981369,
    "lon": 13.302067,
    "q": 612,
@@ -10903,13 +10903,13 @@
    "fonte": "foto",
    "foto": "foto/663345ad.jpg",
    "c": {
-    "r7": 44.3,
-    "r14": 49.1,
-    "r21": 86.0,
-    "r30": 129.4,
+    "r7": 43.7,
+    "r14": 49.0,
+    "r21": 87.2,
+    "r30": 130.0,
     "gg": 3,
     "fino": "2025-10-19",
-    "tn7": 11.2,
+    "tn7": 11.1,
     "tx7": 20.4,
     "rh7": 72.5,
     "ws7": 2.2,
@@ -10926,7 +10926,7 @@
    "id": "R008",
    "d": "2025-10-20",
    "h": "13:27",
-   "z": "lago_piana",
+   "z": "pioppeto",
    "lat": 37.981378,
    "lon": 13.302086,
    "q": 612,
@@ -10935,13 +10935,13 @@
    "fonte": "foto",
    "foto": "foto/b0925472.jpg",
    "c": {
-    "r7": 44.3,
-    "r14": 49.1,
-    "r21": 86.0,
-    "r30": 129.4,
+    "r7": 43.7,
+    "r14": 49.0,
+    "r21": 87.2,
+    "r30": 130.0,
     "gg": 3,
     "fino": "2025-10-19",
-    "tn7": 11.2,
+    "tn7": 11.1,
     "tx7": 20.4,
     "rh7": 72.5,
     "ws7": 2.2,
@@ -10958,7 +10958,7 @@
    "id": "R009",
    "d": "2025-10-20",
    "h": "13:33",
-   "z": "lago_piana",
+   "z": "pioppeto",
    "lat": 37.980172,
    "lon": 13.301125,
    "q": 615,
@@ -10967,13 +10967,13 @@
    "fonte": "foto",
    "foto": "foto/b653885c.jpg",
    "c": {
-    "r7": 44.3,
-    "r14": 49.1,
-    "r21": 86.0,
-    "r30": 129.4,
+    "r7": 43.7,
+    "r14": 49.0,
+    "r21": 87.2,
+    "r30": 130.0,
     "gg": 3,
     "fino": "2025-10-19",
-    "tn7": 11.2,
+    "tn7": 11.1,
     "tx7": 20.4,
     "rh7": 72.5,
     "ws7": 2.2,
@@ -11983,7 +11983,7 @@
   }
  ],
  "forecast": {
-  "updated": "2026-10-10T12:06Z",
+  "updated": "2026-10-10T12:21Z",
   "zones": {
    "castagneto_piccolo": [
     {
@@ -14173,8 +14173,8 @@
        null
       ],
       "tx": [
-       16.7,
-       18.8,
+       16.9,
+       18.9,
        19.3,
        19.4,
        17.6,
@@ -14185,8 +14185,8 @@
        null
       ],
       "tn": [
-       13.3,
-       13.6,
+       13.4,
+       13.7,
        13.3,
        13.5,
        12.0,
@@ -14209,8 +14209,8 @@
        null
       ],
       "ws": [
-       14.8,
-       12.2,
+       14.6,
+       12.3,
        5.4,
        6.9,
        14.8,
@@ -14223,64 +14223,64 @@
      },
      "gfs_seamless": {
       "r": [
-       15.6,
-       1.7,
+       13.8,
+       2.0,
+       0.5,
        0.0,
        0.0,
        0.0,
        0.0,
        0.0,
        0.0,
-       0.0,
-       3.9
+       0.0
       ],
       "tx": [
-       18.3,
-       18.6,
+       17.8,
+       17.5,
+       18.7,
+       20.0,
+       17.1,
+       17.9,
+       19.6,
        20.1,
-       19.8,
-       18.0,
-       19.5,
        20.6,
-       21.0,
-       21.8,
-       19.8
+       21.6
       ],
       "tn": [
-       13.5,
-       12.8,
-       12.8,
-       12.4,
-       11.7,
-       10.2,
-       11.7,
-       11.7,
-       12.6,
-       14.0
+       13.7,
+       12.7,
+       13.3,
+       13.0,
+       11.1,
+       10.6,
+       11.0,
+       11.2,
+       12.5,
+       12.5
       ],
       "rh": [
        77,
+       77,
+       70,
        73,
-       68,
-       71,
-       67,
-       47,
-       43,
-       49,
+       61,
        60,
-       72
+       56,
+       65,
+       61,
+       67
       ],
       "ws": [
-       12.2,
-       8.4,
-       4.1,
-       6.8,
-       9.6,
+       11.7,
        7.5,
-       4.7,
-       5.3,
-       4.2,
-       4.8
+       5.0,
+       7.5,
+       12.0,
+       8.5,
+       6.3,
+       5.7,
+       5.2,
+       10.2
       ]
      },
      "meteofrance_seamless": {
@@ -40706,8 +40706,8 @@
  },
  "topo_check": {
   "n": 28,
-  "perc_medio": 57,
-  "mediana": 59,
+  "perc_medio": 60,
+  "mediana": 62,
   "sopra_50": 16
  },
  "rain_chirps": {
@@ -45355,6 +45355,126 @@
    0.0,
    0.0,
    0.0,
+   0.0,
+   0.0,
+   0.0,
+   9.5,
+   34.1,
+   0.0,
+   0.1,
+   4.6,
+   4.5,
+   6.0,
+   0.1,
+   13.2,
+   0.4,
+   1.5,
+   4.5,
+   0.3,
+   0.0,
+   0.7,
+   3.1,
+   0.8,
+   0.5,
+   0.0,
+   0.1,
+   2.9,
+   6.6,
+   0.1,
+   4.8,
+   1.9,
+   0.0,
+   1.1,
+   0.6,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   29.4,
+   6.0,
+   0.4,
+   35.5,
+   24.2,
+   8.1,
+   5.9,
+   11.5,
+   5.8,
+   4.4,
+   4.9,
+   0.2,
+   12.8,
+   5.8,
+   1.5,
+   13.6,
+   5.7,
+   0.0,
+   0.3,
+   4.2,
+   0.1,
+   4.1,
+   2.3,
+   10.7,
+   7.4,
+   4.7,
+   1.2,
+   5.3,
+   1.1,
+   12.0,
+   4.6,
+   3.0,
+   0.7,
+   0.0,
+   0.7,
+   3.8,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.2,
+   0.0,
+   23.7,
+   0.8,
+   16.9,
+   3.6,
+   0.1,
+   1.4,
+   18.8,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   18.7,
+   1.5,
+   13.0,
+   2.9,
+   3.2,
+   0.0,
+   0.2,
+   0.2,
+   1.7,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.1,
+   0.1,
+   0.1,
+   0.1,
+   0.1,
    0.0
   ]
  },
@@ -45370,7 +45490,7 @@
   "piano_torre": "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssccccsssssssssssssssssssssssssssssscccssssssssssscccsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
   "carcara": "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssccccsssssssssssssssssssssssssssssscccssssssssssscccsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
   "casena_mongerrati": "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssccccsssssssssssssssssssssssssssssscccssssssssssscccsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
-  "pioppeto": "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss----ssssssssssssssssssssssssssssss---sssssssssss---sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+  "pioppeto": "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssccccsssssssssssssssssssssssssssssscccssssssssssscccsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
  },
  "rain_fonti": {
   "r": "radar Protezione Civile (1 km) corretto con le stazioni SIAS vicine",
@@ -46644,48 +46764,48 @@
     0.195
    ],
    "2026-10-06": [
-    18.4,
-    0.185
+    18.1,
+    0.191
    ],
    "2026-10-07": [
-    21.1,
-    0.186
+    20.9,
+    0.189
    ],
    "2026-10-08": [
-    22.3,
-    0.188
+    21.6,
+    0.189
    ],
    "2026-10-09": [
     20.6,
-    0.191
+    0.19
    ],
    "2026-10-10": [
-    17.4,
-    0.287
+    17.5,
+    0.297
    ],
    "2026-10-11": [
-    17.1,
-    0.288
+    17.2,
+    0.296
    ],
    "2026-10-12": [
-    16.7,
-    0.266
+    16.1,
+    0.269
    ],
    "2026-10-13": [
-    16.9,
-    0.254
+    16.7,
+    0.263
    ],
    "2026-10-14": [
-    16.0,
-    0.242
+    16.2,
+    0.252
    ],
    "2026-10-15": [
-    15.3,
-    0.229
+    16.0,
+    0.23
    ],
    "2026-10-16": [
-    13.5,
-    0.219
+    14.8,
+    0.215
    ]
   },
   "lago": {
@@ -46927,47 +47047,47 @@
    ],
    "2026-10-06": [
     18.9,
-    0.191
+    0.183
    ],
    "2026-10-07": [
-    21.7,
-    0.189
+    21.1,
+    0.183
    ],
    "2026-10-08": [
-    22.4,
-    0.189
+    21.6,
+    0.187
    ],
    "2026-10-09": [
-    21.3,
-    0.19
+    20.3,
+    0.191
    ],
    "2026-10-10": [
-    18.2,
-    0.297
+    17.9,
+    0.278
    ],
    "2026-10-11": [
-    17.9,
-    0.296
+    17.8,
+    0.283
    ],
    "2026-10-12": [
-    16.8,
-    0.269
+    17.1,
+    0.259
    ],
    "2026-10-13": [
-    17.4,
-    0.263
+    17.8,
+    0.248
    ],
    "2026-10-14": [
-    17.0,
-    0.252
+    17.1,
+    0.236
    ],
    "2026-10-15": [
-    16.8,
-    0.23
+    16.3,
+    0.227
    ],
    "2026-10-16": [
-    15.5,
-    0.215
+    14.2,
+    0.219
    ]
   },
   "poggio_sfrancesco": {
@@ -47490,44 +47610,44 @@
     0.207
    ],
    "2026-10-06": [
-    16.6,
-    0.191
+    16.0,
+    0.192
    ],
    "2026-10-07": [
-    19.1,
-    0.184
-   ],
-   "2026-10-08": [
-    19.9,
+    18.7,
     0.185
    ],
+   "2026-10-08": [
+    19.3,
+    0.186
+   ],
    "2026-10-09": [
-    19.1,
+    18.2,
     0.189
    ],
    "2026-10-10": [
-    16.2,
-    0.332
+    15.7,
+    0.273
    ],
    "2026-10-11": [
-    15.4,
-    0.306
-   ],
-   "2026-10-12": [
     15.1,
-    0.283
-   ],
-   "2026-10-13": [
-    15.4,
     0.276
    ],
+   "2026-10-12": [
+    14.3,
+    0.257
+   ],
+   "2026-10-13": [
+    14.7,
+    0.251
+   ],
    "2026-10-14": [
-    14.4,
-    0.262
+    14.3,
+    0.241
    ],
    "2026-10-15": [
-    13.8,
-    0.235
+    14.0,
+    0.229
    ],
    "2026-10-16": [
     12.1,
@@ -48054,47 +48174,47 @@
     0.203
    ],
    "2026-10-06": [
-    16.2,
+    16.3,
     0.19
    ],
    "2026-10-07": [
-    18.3,
+    18.4,
     0.184
    ],
    "2026-10-08": [
-    19.1,
+    19.2,
     0.185
    ],
    "2026-10-09": [
-    18.1,
+    18.4,
     0.189
    ],
    "2026-10-10": [
-    15.3,
+    15.5,
     0.332
    ],
    "2026-10-11": [
-    14.6,
+    14.7,
     0.306
    ],
    "2026-10-12": [
-    14.1,
+    14.3,
     0.283
    ],
    "2026-10-13": [
-    14.4,
+    14.6,
     0.276
    ],
    "2026-10-14": [
-    13.5,
+    13.7,
     0.262
    ],
    "2026-10-15": [
-    13.0,
+    13.2,
     0.235
    ],
    "2026-10-16": [
-    11.4,
+    12.0,
     0.219
    ]
   },
@@ -54671,39 +54791,18 @@
     96,
     96,
     95,
-    94,
-    94,
-    93,
-    92,
-    91,
-    90,
-    89,
-    94,
-    98,
-    98,
-    97,
-    97,
-    96,
-    95,
-    94,
     100,
-    100,
-    100,
-    100,
-    100,
+    99,
+    99,
     99,
     98,
     97,
     96,
     100,
+    100,
+    100,
     99,
     98,
-    100,
-    100,
-    100,
-    100,
-    100,
-    99,
     98,
     97,
     96,
@@ -54714,13 +54813,34 @@
     100,
     99,
     98,
-    100,
-    100,
-    99,
+    97,
+    96,
     100,
     99,
     98,
-    97,
+    100,
+    100,
+    100,
+    100,
+    100,
+    99,
+    100,
+    100,
+    99,
+    100,
+    100,
+    100,
+    100,
+    100,
+    99,
+    98,
+    100,
+    100,
+    99,
+    100,
+    100,
+    100,
+    100,
     100,
     100,
     99,
