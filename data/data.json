@@ -11980,6 +11980,149 @@
     "esposizione": 11,
     "esp": "N"
    }
+  },
+  {
+   "id": "R051",
+   "d": "2026-10-10",
+   "h": "",
+   "z": "pioppeto",
+   "lat": 37.980594,
+   "lon": 13.302585,
+   "q": 608,
+   "sp": "Gymnopilus spectabilis",
+   "cert": "probabile",
+   "fonte": "foto (punto GPS del percorso)",
+   "foto": "foto/gymnopilus_spectabilis_pioppeto_1.jpg",
+   "foto_altre": [
+    "foto/gymnopilus_spectabilis_pioppeto_2.jpg",
+    "foto/gymnopilus_spectabilis_pioppeto_3.jpg",
+    "foto/gymnopilus_spectabilis_pioppeto_4.jpg",
+    "foto/gymnopilus_spectabilis_pioppeto_5.jpg",
+    "foto/gymnopilus_spectabilis_pioppeto_6.jpg",
+    "foto/gymnopilus_spectabilis_pioppeto_7.jpg"
+   ],
+   "c": {},
+   "note": "Foto senza data/GPS: posizione dal punto GPS del percorso del 10/10/2026",
+   "topo": {
+    "quota_dem": 608,
+    "pendenza": 2.5,
+    "esposizione": 126,
+    "esp": "SE"
+   }
+  },
+  {
+   "id": "R052",
+   "d": "2026-10-10",
+   "h": "",
+   "z": "pioppeto",
+   "lat": 37.984342,
+   "lon": 13.300259,
+   "q": 609,
+   "sp": "Cyclocybe aegerita",
+   "cert": "probabile",
+   "fonte": "foto (punto GPS del percorso)",
+   "foto": "foto/cyclocybe_aegerita_pioppeto_1.jpg",
+   "foto_altre": [
+    "foto/cyclocybe_aegerita_pioppeto_2.jpg",
+    "foto/cyclocybe_aegerita_pioppeto_3.jpg",
+    "foto/cyclocybe_aegerita_pioppeto_4.jpg"
+   ],
+   "c": {},
+   "note": "Foto senza data/GPS: posizione dal punto GPS del percorso del 10/10/2026",
+   "topo": {
+    "quota_dem": 609,
+    "pendenza": 1.7,
+    "esposizione": null,
+    "esp": null
+   }
+  },
+  {
+   "id": "R053",
+   "d": "2026-10-10",
+   "h": "",
+   "z": "pioppeto",
+   "lat": 37.985193,
+   "lon": 13.297799,
+   "q": 609,
+   "sp": "Coprinus micaceus",
+   "cert": "probabile",
+   "fonte": "foto (punto GPS del percorso)",
+   "foto": "foto/coprinus_micaceus_pioppeto_1.jpg",
+   "c": {},
+   "note": "Foto senza data/GPS: posizione dal punto GPS del percorso del 10/10/2026",
+   "topo": {
+    "quota_dem": 609,
+    "pendenza": 2.0,
+    "esposizione": null,
+    "esp": null
+   }
+  },
+  {
+   "id": "R054",
+   "d": "2026-10-10",
+   "h": "",
+   "z": "pioppeto",
+   "lat": 37.983539,
+   "lon": 13.300381,
+   "q": 612,
+   "sp": "Pleurotus sp.",
+   "cert": "probabile",
+   "fonte": "foto (posizione della zona)",
+   "foto": "foto/pleurotus_pioppeto_1.jpg",
+   "c": {},
+   "note": "Foto senza data/GPS; posizione non precisa (punto della zona)",
+   "topo": {
+    "quota_dem": 612,
+    "pendenza": 2.5,
+    "esposizione": 22,
+    "esp": "N"
+   }
+  },
+  {
+   "id": "R055",
+   "d": "2026-10-10",
+   "h": "",
+   "z": "lago_piana",
+   "lat": 37.976227,
+   "lon": 13.288962,
+   "q": 612,
+   "sp": "Suillus sp.",
+   "cert": "probabile",
+   "fonte": "foto (punto GPS del percorso)",
+   "foto": "foto/suillus_lago_piana_1.jpg",
+   "foto_altre": [
+    "foto/suillus_lago_piana_2.jpg",
+    "foto/suillus_lago_piana_3.jpg"
+   ],
+   "c": {},
+   "note": "Foto senza data/GPS: posizione dal punto GPS del percorso del 10/10/2026",
+   "topo": {
+    "quota_dem": 612,
+    "pendenza": 2.3,
+    "esposizione": 153,
+    "esp": "SE"
+   }
+  },
+  {
+   "id": "R056",
+   "d": "2026-10-10",
+   "h": "",
+   "z": "lago_piana",
+   "lat": 37.976552,
+   "lon": 13.290915,
+   "q": 610,
+   "sp": "Lycogala sp.",
+   "cert": "probabile",
+   "fonte": "foto (punto GPS del percorso)",
+   "foto": "foto/lycogala_lago_piana_1.jpg",
+   "c": {},
+   "note": "Foto senza data/GPS: posizione dal punto GPS del percorso del 10/10/2026",
+   "topo": {
+    "quota_dem": 610,
+    "pendenza": 2.2,
+    "esposizione": 338,
+    "esp": "N"
+   }
   }
  ],
  "forecast": {
