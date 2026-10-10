@@ -12014,7 +12014,7 @@
     "ws7": 1.7,
     "suolo": 30
    },
-   "note": "Foto senza data/GPS: posizione dal punto GPS del percorso del 10/10/2026",
+   "note": "Foto senza data/GPS: posizione dal punto GPS del percorso del 10/10/2026. Substrato: tronco di eucalipto (non pioppo)",
    "topo": {
     "quota_dem": 608,
     "pendenza": 2.5,
@@ -12118,7 +12118,7 @@
     "ws7": 1.7,
     "suolo": 30
    },
-   "note": "Foto senza data/GPS; posizione non precisa (punto della zona)",
+   "note": "Foto senza data/GPS; posizione non precisa (punto della zona). Substrato: pioppo",
    "topo": {
     "quota_dem": 612,
     "pendenza": 2.5,
@@ -12193,6 +12193,46 @@
     "quota_dem": 610,
     "pendenza": 2.2,
     "esposizione": 338,
+    "esp": "N"
+   }
+  },
+  {
+   "id": "R057",
+   "d": "2026-10-10",
+   "h": "",
+   "z": "pioppeto",
+   "lat": 37.985242,
+   "lon": 13.297658,
+   "q": 609,
+   "sp": "Fomes fomentarium",
+   "cert": "probabile",
+   "fonte": "punto GPS del percorso",
+   "c": {},
+   "note": "Su pioppo. Foto non ancora disponibile (da aggiungere)",
+   "topo": {
+    "quota_dem": 609,
+    "pendenza": 1.9,
+    "esposizione": null,
+    "esp": null
+   }
+  },
+  {
+   "id": "R058",
+   "d": "2026-10-10",
+   "h": "",
+   "z": "pioppeto",
+   "lat": 37.983539,
+   "lon": 13.300381,
+   "q": 612,
+   "sp": "Auricularia auricula-judae",
+   "cert": "probabile",
+   "fonte": "posizione della zona",
+   "c": {},
+   "note": "Esemplari piccoli, alcuni già secchi: verosimilmente non freschi, residui di una fruttificazione precedente. Senza foto; posizione non precisa (punto della zona)",
+   "topo": {
+    "quota_dem": 612,
+    "pendenza": 2.5,
+    "esposizione": 22,
     "esp": "N"
    }
   }
