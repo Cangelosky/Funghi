@@ -1,6 +1,6 @@
 {
- "inizio": "2026-10-20 17:37",
- "fine": "2026-10-20 17:39",
+ "inizio": "2026-10-21 11:18",
+ "fine": "2026-10-21 11:20",
  "eseguito_da": "GitHub Actions",
  "telegram": "ok",
  "telegram_output": [
@@ -10,19 +10,19 @@
  "json_validi": "sì",
  "meteo_output": [
   "Radar: giorni letti 4",
-  "Mappe radar: 24 ore del 2026-10-19 - 7 giorni 2026-10-13 → 2026-10-19",
-  "Pioggia migliore: {'castagneto_piccolo': {'r': 159, 's': 262, 'c': 10, '-': 0}, 'castagneto_esteso': {'r': 159, 's': 262, 'c': 10, '-': 0}}",
+  "Mappe radar: 24 ore del 2026-10-20 - 7 giorni 2026-10-14 → 2026-10-20",
+  "Pioggia migliore: {'castagneto_piccolo': {'r': 160, 's': 262, 'c': 10, '-': 0}, 'castagneto_esteso': {'r': 160, 's': 262, 'c': 10, '-': 0}}",
   "Fattore radar (ultimo): {'castagneto_piccolo': 0.93, 'castagneto_esteso': 0.83, 'lago': 0.98, 'poggio_sfrancesco': 0.92, 'ficuzza_cappella': 1.05, 'ficuzza_grotta': 1.04, 'cozzo_molle': 1.03, 'san_giorgio': 1.01, 'piano_torre': 1.07, 'carcara': 0.98, 'casena_mongerrati': 1.05, 'pioppeto': 0.97}",
   "POWER ok 12",
-  "Temperature Protezione Civile: giorni letti 0",
+  "Temperature Protezione Civile: giorni letti 1",
   "Scarto medio stazione - Protezione Civile: {('Monreale Vigna Api', 'tn'): -0.9, ('Monreale Vigna Api', 'tx'): 1.0, ('Misilmeri', 'tn'): -0.8, ('Misilmeri', 'tx'): 1.4, ('Monreale Bifarera', 'tn'): -1.7, ('Monreale Bifarera', 'tx'): 0.3, ('Palermo', 'tn'): -1.0, ('Palermo', 'tx'): 1.3, ('Mezzojuso', 'tn'): -0.5, ('Mezzojuso', 'tx'): 1.9, ('Corleone', 'tn'): 0.8, ('Corleone', 'tx'): 2.0, ('Lascari', 'tn'): -0.1, ('Lascari', 'tx'): 2.0, ('Castelbuono', 'tn'): 0.3, ('Castelbuono', 'tx'): 1.7, ('Polizzi Generosa', 'tn'): 0.3, ('Polizzi Generosa', 'tx'): 4.1, ('Pettineo', 'tn'): 0.8, ('Pettineo', 'tx'): 2.0, ('Caronia Buzza', 'tn'): 1.1, ('Caronia Buzza', 'tx'): 3.3, ('Caronia Pomiere', 'tn'): 1.3, ('Caronia Pomiere', 'tx'): 2.4}",
-  "Temperature da stazioni SIAS: 9854 valori",
+  "Temperature da stazioni SIAS: 9878 valori",
   "Suolo dai modelli: 12 punti",
-  "Acqua nel terreno (oggi): {'castagneto_piccolo': 40, 'castagneto_esteso': 36, 'lago': 37, 'poggio_sfrancesco': 35, 'ficuzza_cappella': 24, 'ficuzza_grotta': 22, 'cozzo_molle': 22, 'san_giorgio': 36, 'piano_torre': 55, 'carcara': 90, 'casena_mongerrati': 40, 'pioppeto': 38}",
-  "ok 2026-10-20T15:38Z",
-  "diario: oggi già salvato",
+  "Acqua nel terreno (oggi): {'castagneto_piccolo': 42, 'castagneto_esteso': 37, 'lago': 39, 'poggio_sfrancesco': 38, 'ficuzza_cappella': 27, 'ficuzza_grotta': 25, 'cozzo_molle': 25, 'san_giorgio': 38, 'piano_torre': 56, 'carcara': 92, 'casena_mongerrati': 41, 'pioppeto': 41}",
+  "ok 2026-10-21T09:19Z",
+  "diario salvato",
   "verifica previsioni: 14 zone",
-  "Segnalazioni: giorni radar letti 2",
+  "Segnalazioni: giorni radar letti 3",
   "Segnalazioni: meteo aggiornato per 11 segnalazioni"
  ]
 }
