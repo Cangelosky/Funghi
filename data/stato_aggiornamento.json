@@ -1,6 +1,6 @@
 {
- "inizio": "2026-10-26 11:56",
- "fine": "2026-10-26 11:57",
+ "inizio": "2026-10-26 19:38",
+ "fine": "2026-10-26 19:39",
  "eseguito_da": "GitHub Actions",
  "telegram": "ok",
  "telegram_output": [
@@ -14,13 +14,13 @@
   "Pioggia migliore: {'castagneto_piccolo': {'r': 165, 's': 262, 'c': 10, '-': 0}, 'castagneto_esteso': {'r': 165, 's': 262, 'c': 10, '-': 0}}",
   "Fattore radar (ultimo): {'castagneto_piccolo': 1.26, 'castagneto_esteso': 1.31, 'lago': 1.3, 'poggio_sfrancesco': 1.4, 'ficuzza_cappella': 1.1, 'ficuzza_grotta': 1.13, 'cozzo_molle': 1.15, 'san_giorgio': 1.04, 'piano_torre': 1.03, 'carcara': 1.14, 'casena_mongerrati': 1.03, 'pioppeto': 1.29}",
   "POWER ok 12",
-  "Temperature Protezione Civile: giorni letti 1",
+  "Temperature Protezione Civile: giorni letti 0",
   "Scarto medio stazione - Protezione Civile: {('Monreale Vigna Api', 'tn'): -0.6, ('Monreale Vigna Api', 'tx'): 1.2, ('Misilmeri', 'tn'): -0.8, ('Misilmeri', 'tx'): 1.4, ('Monreale Bifarera', 'tn'): -1.5, ('Monreale Bifarera', 'tx'): 0.4, ('Palermo', 'tn'): -1.0, ('Palermo', 'tx'): 1.3, ('Mezzojuso', 'tn'): -0.2, ('Mezzojuso', 'tx'): 2.0, ('Corleone', 'tn'): 0.9, ('Corleone', 'tx'): 2.1, ('Lascari', 'tn'): -0.1, ('Lascari', 'tx'): 2.0, ('Castelbuono', 'tn'): 0.5, ('Castelbuono', 'tx'): 1.8, ('Polizzi Generosa', 'tn'): 0.5, ('Polizzi Generosa', 'tx'): 4.3, ('Pettineo', 'tn'): 1.0, ('Pettineo', 'tx'): 2.1, ('Caronia Buzza', 'tn'): 1.2, ('Caronia Buzza', 'tx'): 3.4, ('Caronia Pomiere', 'tn'): 1.6, ('Caronia Pomiere', 'tx'): 2.7}",
   "Temperature da stazioni SIAS: 9998 valori",
   "Suolo dai modelli: 12 punti",
-  "Acqua nel terreno (oggi): {'castagneto_piccolo': 41, 'castagneto_esteso': 38, 'lago': 38, 'poggio_sfrancesco': 41, 'ficuzza_cappella': 24, 'ficuzza_grotta': 22, 'cozzo_molle': 22, 'san_giorgio': 57, 'piano_torre': 100, 'carcara': 100, 'casena_mongerrati': 76, 'pioppeto': 39}",
-  "ok 2026-10-26T10:57Z",
-  "diario salvato",
+  "Acqua nel terreno (oggi): {'castagneto_piccolo': 41, 'castagneto_esteso': 38, 'lago': 38, 'poggio_sfrancesco': 41, 'ficuzza_cappella': 24, 'ficuzza_grotta': 22, 'cozzo_molle': 22, 'san_giorgio': 57, 'piano_torre': 99, 'carcara': 100, 'casena_mongerrati': 76, 'pioppeto': 39}",
+  "ok 2026-10-26T18:38Z",
+  "diario: oggi già salvato",
   "verifica previsioni: 14 zone",
   "Segnalazioni: giorni radar letti 1",
   "Segnalazioni: meteo aggiornato per 11 segnalazioni"
