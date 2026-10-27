@@ -339,6 +339,35 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .tx-bar p { margin: 2px 0 0; font-size: 12.5px; color: #6b5f48; }
 .tx-box pre { margin: 0; padding: 14px; overflow: auto; flex: 1; white-space: pre-wrap; font: 15px/1.6 Georgia, "Times New Roman", serif; }
 .tx-foot { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 10px 14px; border-top: 1px solid rgba(0, 0, 0, .12); font-size: 12px; color: #6b5f48; }
+
+.iz-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 4px 0 6px; }
+.iz-tools .search { flex: 1 1 260px; min-width: 0; }
+.iz-sel { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); flex: 1 1 220px; min-width: 0; }
+.iz-sel select { flex: 1; min-width: 0; font: inherit; font-size: 15px; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 9px 10px; }
+.iz-sum { font-size: 14px; color: var(--muted); margin: 10px 0 0 !important; }
+.iz-book { margin-top: 6px; }
+.iz-tav { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; align-items: start; }
+.iz-tav img { width: 76px; height: 100px; object-fit: contain; background: #F6F1E6; border-radius: 6px; padding: 3px; }
+.iz-book > .btn { margin: 4px 0 8px; }
+.bk-two { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+.tv { position: fixed; inset: 0; z-index: 65; background: #F6F1E6; color: #2a2217; display: flex; flex-direction: column; }
+.tv[hidden] { display: none; }
+.tv-bar { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: calc(10px + env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) 10px max(14px, env(safe-area-inset-left, 0px)); background: #2a2217; color: #F6F1E6; }
+.tv-h { min-width: 0; }
+.tv-bar h3 { margin: 0; font: 600 16px/1.25 var(--f-display); }
+.tv-bar p { margin: 2px 0 0; font-size: 12px; opacity: .8; }
+.tv-bar .btn { background: #F6F1E6; color: #2a2217; border-color: #F6F1E6; flex: none; }
+.tv-scroll { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(30px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.tv-body { max-width: 680px; margin: 0 auto; font: 17px/1.65 Georgia, "Times New Roman", serif; }
+.tv-p { padding: 6px 0 14px; border-bottom: 1px solid rgba(0, 0, 0, .1); }
+.tv-p p { margin: 0 0 10px; }
+.tv-n { display: flex; justify-content: space-between; align-items: center; gap: 8px; font: 600 12px/1.2 var(--f-body, system-ui), sans-serif !important; color: #8a7a5c; text-transform: uppercase; letter-spacing: .06em; margin: 8px 0 8px !important; }
+.tv-o { font: 600 12px/1 system-ui, sans-serif; background: none; border: 1px solid rgba(0, 0, 0, .2); border-radius: 999px; padding: 5px 10px; color: #5a4a2c; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.tv-f { margin: 14px 0; padding: 0 0 12px; border-bottom: 1px solid rgba(0, 0, 0, .1); text-align: center; }
+.tv-f img { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto 6px; }
+.tv-f figcaption { font: 13px/1.4 system-ui, sans-serif; color: #8a7a5c; }
+.tv-hl { background: rgba(226, 171, 60, .14); border-radius: 8px; }
+#tvMore { display: block; margin: 16px auto; }
 .lb-sp { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
 .foot { margin-top: 28px; padding-top: 14px; border-top: 1.5px solid var(--line); font-size: 12.5px; color: var(--muted); max-width: 90ch; }
 
@@ -356,7 +385,6 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 <style>#inzGate{position:fixed;inset:0;z-index:9999;background:#15362A;color:#E8EFE3;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Instrument Sans",system-ui,sans-serif}#inzGate form{width:min(380px,100%);display:grid;gap:14px}#inzGate h1{font:700 26px/1.15 "Bricolage Grotesque",system-ui,sans-serif;margin:0}#inzGate p{margin:0;color:#C9D8C6;font-size:16px;line-height:1.5}#inzGate input{font:inherit;font-size:17px;padding:12px 14px;border-radius:12px;border:1px solid #4B7A62;background:#1F4A38;color:#fff}#inzGate button{font:inherit;font-weight:600;font-size:16px;padding:12px 18px;border-radius:999px;border:0;background:#E2AB3C;color:#1A2A20;cursor:pointer}#inzGate .e{color:#F4C987;min-height:1.2em}</style>
 <div id="inzGate"><form autocomplete="off"><h1>Anteprima riservata</h1><p>Sito dell'Associazione Micologica Giuseppe Inzenga, in prova. Inserisci la password che ti è stata data.</p><label style="display:grid;gap:6px;font-weight:600">Password<input id="inzGateP" type="password" autocomplete="current-password"></label><button type="submit">Entra</button><p class="e" id="inzGateE" role="alert"></p></form></div>
 <script>(function(){var g=document.getElementById('inzGate'),ok=false;try{ok=localStorage.getItem('inz-gate')==='1'}catch(e){}if(ok){g.remove();return}g.querySelector('form').addEventListener('submit',function(e){e.preventDefault();if(document.getElementById('inzGateP').value.trim().toLowerCase()==='inzenga2027'){try{localStorage.setItem('inz-gate','1')}catch(e){}g.remove()}else{document.getElementById('inzGateE').textContent='Password non corretta.'}});document.getElementById('inzGateP').focus()})();</script>
-
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <radialGradient id="g-cap" cx=".36" cy=".28" r=".95"><stop offset="0" style="stop-color:var(--d-cap-hi)"/><stop offset=".55" style="stop-color:var(--d-cap)"/><stop offset="1" style="stop-color:var(--d-cap-lo)"/></radialGradient>
@@ -453,10 +481,13 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
       <p>I libri antichi più importanti sui funghi, liberi da diritti d'autore. Li leggi qui: scorri e allarga con due dita. Per ogni libro c'è anche il PDF completo da scaricare.</p>
     </div>
     <section class="inz" aria-labelledby="inzH">
-      <h2 id="inzH">Dentro il libro di Inzenga</h2>
-      <p>Abbiamo trascritto <em>Funghi siciliani</em>, così si può cercare. Scrivi un nome (<em>Amanita</em>, <em>Boletus</em>, <em>Peziza</em>) o una parola, e trovi le specie e le pagine. Da ogni risultato puoi leggere il testo o aprire la pagina originale.</p>
-      <p class="bk-warn" style="display:inline-block">Testo storico del 1865: le indicazioni sull'uso alimentare non valgono oggi.</p>
-      <div class="toolbar"><div class="search"><input id="inzQ" type="search" placeholder="Cerca nel libro di Inzenga: Amanita, Ficuzza, lamelle…" aria-label="Cerca nel libro di Inzenga" autocomplete="off"></div></div>
+      <h2 id="inzH">Cerca dentro i libri</h2>
+      <p>Cinque libri italiani sono trascritti: Inzenga, Vittadini, Bresadola, Comes e Mattirolo. Scrivi un nome o una parola, scegli se cercare in tutti o in uno solo, e da ogni risultato leggi il testo, lo apri nel libro trascritto o vedi la pagina originale.</p>
+      <p class="bk-warn" style="display:inline-block">Testi storici: le indicazioni sull'uso alimentare non valgono oggi.</p>
+      <div class="iz-tools">
+        <div class="search"><input id="inzQ" type="search" placeholder="Cerca: Amanita, Boletus, Ficuzza, lamelle…" aria-label="Cerca nei libri trascritti" autocomplete="off"></div>
+        <label class="iz-sel"><span>Dove</span><select id="inzBook" aria-label="In quale libro cercare"></select></label>
+      </div>
       <div id="inzRes"><p class="status">Scrivi almeno due lettere: un nome (per esempio <em>Amanita</em> o <em>Boletus</em>) o una parola del testo.</p></div>
     </section>
     <h2 class="bk-g">Tutti i libri</h2>
@@ -471,6 +502,11 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
       <pre id="txBody"></pre>
       <div class="tx-foot"><button class="btn primary" id="txPage" type="button" data-iz-page="0">Apri la pagina originale</button><span>Il testo è una trascrizione automatica, ancora da rivedere.</span></div>
     </div>
+  </div>
+
+  <div class="tv" id="tv" hidden role="dialog" aria-modal="true" aria-label="Libro trascritto">
+    <div class="tv-bar"><div class="tv-h"><h3 id="tvTitle"></h3><p id="tvSub"></p></div><button class="btn" id="tvx" type="button">Chiudi</button></div>
+    <div class="tv-scroll" id="tvScroll"><div class="tv-body" id="tvBody"></div><button class="btn" id="tvMore" type="button" hidden>Continua</button></div>
   </div>
 
   <div class="rd" id="rd" hidden role="dialog" aria-modal="true" aria-label="Lettore del libro">
@@ -1937,7 +1973,16 @@ var BIB = [
       v: [{ id: "fungitridentini01bresgoog", n: 322, mb: 6.0, lab: "Vol. 1 (1881)" }, { id: "fungitridentini00bresgoog", n: 375, mb: 6.4, lab: "Vol. 2 (1892)" }] },
     { t: "Descrizione dei funghi mangerecci più comuni dell'Italia e de' velenosi che possono co' medesimi confondersi", a: "Carlo Vittadini", y: "1835", l: "italiano", tag: "Italia storico", old: true,
       d: "Opera italiana dell'Ottocento. Testo storico: le indicazioni sull'uso alimentare non valgono oggi.",
-      v: [{ id: "descrizionedeifu00vitt", n: 474, mb: 29.7 }] },
+      v: [{ id: "descrizionedeifu00vitt", n: 472, mb: 29.7 }] },
+    { t: "I funghi mangerecci e velenosi dell'Europa media", a: "Giacomo Bresadola", y: "1906", l: "italiano", tag: "Italia tavole", old: true,
+      d: "Il grande manuale di Bresadola, con 121 tavole a colori. Seconda edizione. Testo storico: le indicazioni sull'uso alimentare non valgono oggi.",
+      v: [{ id: "ifunghimangereccev00bres", n: 402, mb: 27.5 }] },
+    { t: "Funghi del Napolitano", a: "Orazio Comes", y: "1878", l: "italiano", tag: "Italia tavole", old: true,
+      d: "Elenco commentato dei funghi dell'Italia meridionale, con tre tavole.",
+      v: [{ id: "funghidelnapolit00come", n: 162, mb: 6.4 }] },
+    { t: "I funghi ipogei italiani", a: "Oreste Mattirolo", y: "1903", l: "italiano", tag: "Italia tartufi", old: true,
+      d: "I funghi che crescono sotto terra, tartufi compresi, raccolti dai botanici italiani dell'Ottocento.",
+      v: [{ id: "ifunghiipogeiita00matt", n: 56, mb: 3.0 }] },
     { t: "Flora italica cryptogama, parte Fungi: Hymeniales", a: "Pier Andrea Saccardo", y: "1915", l: "italiano", tag: "Italia", chk: true,
       d: "La flora dei funghi italiani a lamelle, pori e simili. Diritti da verificare dal comitato (autore morto nel 1920).",
       v: [{ id: "floraitalicacryp0000sacc", n: 1428, mb: 68.0 }] },
@@ -2012,12 +2057,14 @@ function biblioHTML(filter) {
       b.v.forEach(function (v, vi) {
         btns += '<button class="btn primary" type="button" data-read="' + v.id + '" data-n="' + v.n + '" data-title="' + esc(b.t + (v.lab ? " · " + v.lab : "")) + '">' + (vols ? esc(v.lab) : "Leggi") + '</button>';
       });
+      b.v.forEach(function (v) { var L = libByIA(v.id); if (L) btns += '<button class="btn" type="button" data-tv="' + L.k + '">Leggi trascritto' + (L.np ? ' · ' + L.np + ' tavole' : '') + '</button>'; });
       var pdfs = b.v.map(function (v) {
         return '<a href="' + IA + 'download/' + v.id + '/' + v.id + '.pdf" target="_blank" rel="noopener">PDF' + (v.lab ? " " + esc(v.lab.split(" (")[0]) : "") + ' · ' + v.mb + ' MB</a>';
       }).join(" · ");
       cards += '<article class="bk"><img class="bk-cov" loading="lazy" alt="" src="' + IA + 'services/img/' + b.v[0].id + '">' +
         '<div class="bk-body"><h3>' + esc(b.t) + '</h3><p class="bk-meta">' + esc(b.a) + ' · ' + esc(b.y) + ' · ' + esc(b.l) + '</p>' +
         '<p class="bk-d">' + esc(b.d) + '</p>' + (b.old ? '<p class="bk-warn">Testo storico</p>' : "") +
+        (b.v.some(function (v) { return libByIA(v.id); }) ? '<p class="bk-two">Due formati: l\'originale da sfogliare e il testo trascritto, con le tavole ripulite.</p>' : '') +
         '<div class="bk-act">' + btns + '</div><p class="bk-links">' + pdfs + '</p></div></article>';
     });
     if (cards) h += '<h2 class="bk-g">' + esc(g.g) + '</h2><div class="bk-grid">' + cards + '</div>';
@@ -2119,7 +2166,30 @@ $("#bkList").addEventListener("click", function (e) {
 });
 
 
-/* ===== Inzenga: ricerca nel testo e schede ===== */
+/* ===== Libri trascritti: ricerca, lettura del testo, tavole ripulite ===== */
+function libList() {
+  return [
+    { k: "inz", id: "funghisiciliani00inze", n: 228, title: "Funghi siciliani", short: "Inzenga, 1865", file: "inzenga/pagine.json", np: 16 },
+    { k: "vitt", id: "descrizionedeifu00vitt", n: 472, title: "Descrizione dei funghi mangerecci più comuni dell'Italia", short: "Vittadini, 1835", file: "libri/vitt.json", np: 22 },
+    { k: "bres", id: "ifunghimangereccev00bres", n: 402, title: "I funghi mangerecci e velenosi dell'Europa media", short: "Bresadola, 1906", file: "libri/bres.json", np: 121 },
+    { k: "come", id: "funghidelnapolit00come", n: 162, title: "Funghi del Napolitano", short: "Comes, 1878", file: "libri/come.json", np: 3 },
+    { k: "matt", id: "ifunghiipogeiita00matt", n: 56, title: "I funghi ipogei italiani", short: "Mattirolo, 1903", file: "libri/matt.json", np: 1 }
+  ];
+}
+function libByIA(id) { var L = libList(); for (var i = 0; i < L.length; i++) if (L[i].id === id) return L[i]; return null; }
+function libByK(k) { var L = libList(); for (var i = 0; i < L.length; i++) if (L[i].k === k) return L[i]; return null; }
+/* tavole ripulite: foglio -> file */
+function libPlates(k) {
+  var o = {}, i;
+  if (k === "inz") { [107, 109, 111, 113, 115, 117, 199, 201, 203, 205, 207, 209, 211, 213, 215, 217].forEach(function (p) { o[p - 1] = "tavole/t" + p + ".webp"; }); return o; }
+  var R = { vitt: [422, 464], bres: [152, 392] };
+  if (R[k]) { for (i = R[k][0]; i <= R[k][1]; i += 2) o[i] = "libri/tav/" + k + "/n" + i + ".webp"; return o; }
+  if (k === "come") { [150, 152, 154].forEach(function (p) { o[p] = "libri/tav/come/n" + p + ".webp"; }); return o; }
+  if (k === "matt") { o[48] = "libri/tav/matt/n048.webp"; return o; }
+  return o;
+}
+function libPlateFile(k, leaf) { var o = libPlates(k); return o[leaf] ? o[leaf].replace(/n(\d{2})\.webp$/, "n0$1.webp") : null; }
+
 var INZ = { loaded: false, loading: false, pages: [], sp: [], byKey: {} };
 var INZ_BOOK = { id: "funghisiciliani00inze", n: 228, title: "Funghi siciliani" };
 var INZ_PLATES = {
@@ -2127,29 +2197,34 @@ var INZ_PLATES = {
   t199: ["2:1"], t201: ["2:2"], t203: ["2:12", "2:13"], t205: ["2:25", "2:26"], t207: ["2:27", "2:28"], t209: ["2:32"],
   t211: ["1:7", "2:38", "2:39"], t213: ["2:47", "2:48", "2:49", "2:50"], t215: ["2:100", "2:86"], t217: ["2:89", "2:87", "2:84", "2:83"]
 };
-function inzLoad(cb) {
-  if (INZ.loaded) { cb(); return; }
-  if (INZ.loading) { INZ.wait.push(cb); return; }
-  INZ.loading = true; INZ.wait = [cb];
-  Promise.all([fetch("inzenga/specie.json").then(function (r) { return r.json(); }), fetch("inzenga/pagine.json").then(function (r) { return r.json(); })]).then(function (d) {
-    INZ.sp = d[0]; INZ.pages = d[1];
-    INZ.sp.forEach(function (s) { INZ.byKey[s.c + ":" + s.n] = s; });
-    INZ.pages.forEach(function (p) { p.nt = norm(p.t); });
-    INZ.loaded = true; INZ.wait.forEach(function (f) { f(); });
-  }).catch(function () { INZ.loading = false; var el = $("#inzRes"); if (el) el.innerHTML = '<p class="status">Non riesco a caricare il testo. Riprova più tardi.</p>'; });
+var LIBD = {}; /* k -> {pages, byLeaf, loaded, wait} */
+function libLoad(k, cb) {
+  var d = LIBD[k] || (LIBD[k] = { loaded: false, loading: false, wait: [] });
+  if (d.loaded) { cb(); return; }
+  d.wait.push(cb); if (d.loading) return; d.loading = true;
+  var L = libByK(k), reqs = [fetch(L.file).then(function (r) { if (!r.ok) throw 0; return r.json(); })];
+  if (k === "inz") reqs.push(fetch("inzenga/specie.json").then(function (r) { return r.json(); }));
+  Promise.all(reqs).then(function (r) {
+    d.pages = r[0]; d.byLeaf = {};
+    d.pages.forEach(function (p) { p.nt = norm(p.t); d.byLeaf[p.l] = p; });
+    if (k === "inz") { INZ.pages = d.pages; INZ.sp = r[1]; INZ.sp.forEach(function (s) { INZ.byKey[s.c + ":" + s.n] = s; }); INZ.loaded = true; }
+    d.loaded = true; var w = d.wait; d.wait = []; w.forEach(function (f) { f(); });
+  }).catch(function () { d.loading = false; d.wait = []; var el = $("#inzRes"); if (el) el.innerHTML = '<p class="status">Non riesco a caricare il testo. Riprova più tardi.</p>'; });
 }
+function inzLoad(cb) { libLoad("inz", cb); }
+function libLoadMany(ks, cb) { var n = ks.length; if (!n) { cb(); return; } ks.forEach(function (k) { libLoad(k, function () { if (--n === 0) cb(); }); }); }
+
 function inzPlateOf(c, n) {
   var k = c + ":" + n, out = [];
   Object.keys(INZ_PLATES).forEach(function (p) { if (INZ_PLATES[p].indexOf(k) > -1) out.push(p); });
   return out;
 }
-function inzName(s) { return s.g + " " + s.s + (s.a ? " " + s.a : ""); }
 function inzSpecCard(s) {
   var pl = inzPlateOf(s.c, s.n), h = '<article class="iz"><div class="iz-b"><h3><em>' + esc(s.g + " " + s.s) + '</em> <span class="iz-a">' + esc(s.a || "") + '</span></h3>' +
-    '<p class="iz-m">Centuria ' + (s.c === 1 ? "prima" : "seconda") + ", n. " + s.n + ", pagina " + s.p + "</p><div class=\"bk-act\">" +
+    '<p class="iz-m">Inzenga, centuria ' + (s.c === 1 ? "prima" : "seconda") + ", n. " + s.n + ", pagina " + s.p + "</p><div class=\"bk-act\">" +
     '<button class="btn primary" type="button" data-iz-text="' + s.c + ":" + s.n + '">Leggi il testo</button>' +
-    '<button class="btn" type="button" data-iz-page="' + s.l + '">Apri la pagina</button>';
-  pl.forEach(function (p) { h += '<button class="btn" type="button" data-iz-page="' + (parseInt(p.slice(1), 10) - 1) + '">Tavola</button>'; });
+    '<button class="btn" type="button" data-iz-page="inz:' + s.l + '">Originale</button>';
+  pl.forEach(function (p) { h += '<button class="btn" type="button" data-iz-page="inz:' + (parseInt(p.slice(1), 10) - 1) + '">Tavola</button>'; });
   return h + "</div></div>" + (pl.length ? '<img class="iz-t" loading="lazy" alt="Tavola di Inzenga con ' + esc(s.g + " " + s.s) + '" src="tavole/' + pl[0] + '.webp">' : "") + "</article>";
 }
 function inzSnippet(p, toks) {
@@ -2159,50 +2234,128 @@ function inzSnippet(p, toks) {
   toks.forEach(function (w) { s = s.replace(new RegExp("(" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig"), "<mark>$1</mark>"); });
   return (a > 0 ? "…" : "") + s + (b < t.length ? "…" : "");
 }
+function libPageLabel(k, p) {
+  if (k === "inz") return "Centuria " + (p.c === 1 ? "prima" : "seconda") + (p.s ? ", pagina " + p.s : "");
+  return p.s ? "Pagina " + p.s : "Foglio " + (p.l + 1);
+}
+function libHit(k, p, toks) {
+  var src = libPlates(k)[p.l];
+  if (src) return '<div class="iz-hit iz-tav"><img loading="lazy" alt="" src="' + src + '"><div><p class="iz-m">Tavola · foglio ' + (p.l + 1) + '</p><p>' + inzSnippet(p, toks) + '</p><div class="bk-act">' +
+    '<button class="btn primary" type="button" data-tv="' + k + '" data-tv-leaf="' + p.l + '">Apri la tavola</button>' +
+    '<button class="btn" type="button" data-iz-page="' + k + ":" + p.l + '">Originale</button></div></div></div>';
+  return '<div class="iz-hit"><p class="iz-m">' + esc(libPageLabel(k, p)) + '</p><p>' + inzSnippet(p, toks) + '</p><div class="bk-act">' +
+    '<button class="btn" type="button" data-iz-ptext="' + k + ":" + p.l + '">Leggi la pagina</button>' +
+    '<button class="btn" type="button" data-tv="' + k + '" data-tv-leaf="' + p.l + '">Nel libro trascritto</button>' +
+    '<button class="btn" type="button" data-iz-page="' + k + ":" + p.l + '">Originale</button></div></div>';
+}
 function inzSearch() {
-  var q = $("#inzQ").value.trim(), el = $("#inzRes");
+  var q = $("#inzQ").value.trim(), el = $("#inzRes"), sel = $("#inzBook").value;
   if (q.length < 2) { el.innerHTML = '<p class="status">Scrivi almeno due lettere: un nome (per esempio <em>Amanita</em> o <em>Boletus</em>) o una parola del testo.</p>'; return; }
-  inzLoad(function () {
-    var toks = norm(q).split(/\s+/).filter(Boolean), h = "";
-    var sp = INZ.sp.filter(function (s) { var n = norm(s.g + " " + s.s + " " + (s.a || "")); return toks.every(function (t) { return n.indexOf(t) > -1; }); });
-    var pg = INZ.pages.filter(function (p) { return toks.every(function (t) { return p.nt.indexOf(t) > -1; }); });
-    pg.sort(function (a, b) { return b.nt.split(toks[0]).length - a.nt.split(toks[0]).length; });
-    if (sp.length) { h += '<h3 class="iz-g">Specie (' + sp.length + ")</h3><div class=\"iz-grid\">" + sp.slice(0, 24).map(inzSpecCard).join("") + "</div>" + (sp.length > 24 ? '<p class="status">Mostrate le prime 24. Scrivi di più per restringere.</p>' : ""); }
-    if (pg.length) {
-      h += '<h3 class="iz-g">Nel testo (' + pg.length + " pagine)</h3>";
-      pg.slice(0, 30).forEach(function (p) {
-        h += '<div class="iz-hit"><p class="iz-m">Centuria ' + (p.c === 1 ? "prima" : "seconda") + (p.s ? ", pagina " + p.s : "") + '</p><p>' + inzSnippet(p, toks) + '</p><div class="bk-act"><button class="btn" type="button" data-iz-ptext="' + p.l + '">Leggi la pagina</button><button class="btn" type="button" data-iz-page="' + p.l + '">Apri la scansione</button></div></div>';
-      });
-      if (pg.length > 30) h += '<p class="status">Mostrate le prime 30 pagine.</p>';
+  var ks = sel === "all" ? libList().map(function (L) { return L.k; }) : [sel];
+  el.innerHTML = '<p class="status">Cerco…</p>';
+  libLoadMany(ks, function () {
+    if ($("#inzQ").value.trim() !== q || $("#inzBook").value !== sel) return;
+    var toks = norm(q).split(/\s+/).filter(Boolean), h = "", any = false, many = ks.length > 1, per = many ? 6 : 40;
+    if (ks.indexOf("inz") > -1) {
+      var sp = INZ.sp.filter(function (s) { var n = norm(s.g + " " + s.s + " " + (s.a || "")); return toks.every(function (t) { return n.indexOf(t) > -1; }); });
+      if (sp.length) { any = true; h += '<h3 class="iz-g">Specie descritte da Inzenga (' + sp.length + ")</h3><div class=\"iz-grid\">" + sp.slice(0, 12).map(inzSpecCard).join("") + "</div>" + (sp.length > 12 ? '<p class="status">Mostrate le prime 12. Scrivi di più per restringere.</p>' : ""); }
     }
-    if (!sp.length && !pg.length) h = '<p class="status">Non trovo nulla. Prova con meno parole o senza accenti.</p>';
+    var summary = [];
+    ks.forEach(function (k) {
+      var L = libByK(k), pg = LIBD[k].pages.filter(function (p) { return toks.every(function (t) { return p.nt.indexOf(t) > -1; }); });
+      if (!pg.length) return;
+      any = true; summary.push(L.short + ": " + pg.length);
+      pg.sort(function (a, b) { var ha = a.nt.slice(0, 160).indexOf(toks[0]) > -1 ? 1 : 0, hb = b.nt.slice(0, 160).indexOf(toks[0]) > -1 ? 1 : 0; return (hb - ha) || (b.nt.split(toks[0]).length - a.nt.split(toks[0]).length); });
+      h += '<section class="iz-book"><h3 class="iz-g"><em>' + esc(L.title) + '</em> <span class="iz-a">' + esc(L.short) + " · " + pg.length + (pg.length === 1 ? " pagina" : " pagine") + "</span></h3>";
+      pg.slice(0, per).forEach(function (p) { h += libHit(k, p, toks); });
+      if (pg.length > per) h += many ? '<button class="btn" type="button" data-iz-only="' + k + '">Mostra tutte le ' + pg.length + " pagine di questo libro</button>" : '<p class="status">Mostrate le prime ' + per + " pagine.</p>";
+      h += "</section>";
+    });
+    if (!any) h = '<p class="status">Non trovo nulla. Prova con meno parole, senza accenti, o con il nome antico (per esempio <em>Agaricus</em> invece di <em>Amanita</em>).</p>';
+    else if (many && summary.length) h = '<p class="iz-sum">Trovato in ' + summary.length + (summary.length === 1 ? " libro" : " libri") + ": " + esc(summary.join(" · ")) + "</p>" + h;
     el.innerHTML = h;
   });
 }
-function inzShowText(title, sub, text, leaf) {
+function inzShowText(title, sub, text, ref) {
   $("#txTitle").innerHTML = title; $("#txSub").textContent = sub; $("#txBody").textContent = text;
-  $("#txPage").setAttribute("data-iz-page", leaf); $("#tx").hidden = false; $("#txBody").scrollTop = 0; $("#txx").focus();
+  $("#txPage").setAttribute("data-iz-page", ref); $("#tx").hidden = false; $("#txBody").scrollTop = 0; $("#txx").focus();
 }
-function inzPageText(leaf) { for (var i = 0; i < INZ.pages.length; i++) if (INZ.pages[i].l === leaf) return INZ.pages[i]; return null; }
+function libOpenOriginal(ref) {
+  var a = String(ref).split(":"), L = libByK(a[0]); if (!L) return;
+  $("#tx").hidden = true; openReader(L.id, L.n, L.title, parseInt(a[1], 10));
+}
+
+/* ----- lettore del libro trascritto ----- */
+var TV = { k: null, i: 0, io: null };
+function tvPageHTML(k, p, plates) {
+  var h = '<section class="tv-p" data-leaf="' + p.l + '"><p class="tv-n"><span>' + esc(libPageLabel(k, p)) + '</span><button class="tv-o" type="button" data-iz-page="' + k + ":" + p.l + '">Originale</button></p>';
+  p.t.split(/\n\n+/).forEach(function (par) { h += "<p>" + esc(par) + "</p>"; });
+  return h + "</section>";
+}
+function tvPlateHTML(k, leaf, src, cap) {
+  return '<figure class="tv-f" data-leaf="' + leaf + '"><img loading="lazy" alt="' + esc(cap || "Tavola ripulita, foglio " + (leaf + 1)) + '" src="' + src + '"><figcaption>' + (cap ? "<em>" + esc(cap) + "</em><br>" : "") + 'Tavola ripulita · <button class="tv-o" type="button" data-iz-page="' + k + ":" + leaf + '">vedi l\'originale</button></figcaption></figure>';
+}
+function tvItems(k) {
+  var d = LIBD[k], pl = libPlates(k), items = [];
+  var leaves = {}; d.pages.forEach(function (p) { leaves[p.l] = p; });
+  Object.keys(pl).forEach(function (x) { leaves[x] = leaves[x] || null; });
+  Object.keys(leaves).map(Number).sort(function (a, b) { return a - b; }).forEach(function (l) {
+    var src = pl[l] ? pl[l].replace(/\/n(\d{2})\.webp$/, "/n0$1.webp") : null;
+    if (src) items.push({ l: l, h: tvPlateHTML(k, l, src, leaves[l] && leaves[l].tv ? leaves[l].t : "") });
+    else if (leaves[l] && leaves[l].t.length > 2) items.push({ l: l, h: tvPageHTML(k, leaves[l]) });
+  });
+  return items;
+}
+function tvMore(n) {
+  var it = TV.items, box = $("#tvBody"), end = Math.min(it.length, TV.i + (n || 20)), h = "";
+  for (; TV.i < end; TV.i++) h += it[TV.i].h;
+  box.insertAdjacentHTML("beforeend", h);
+  $("#tvMore").hidden = TV.i >= it.length;
+}
+function tvOpen(k, leaf) {
+  var L = libByK(k); if (!L) return;
+  $("#tvTitle").textContent = L.title; $("#tvSub").textContent = L.short + " · trascrizione automatica, da rivedere · " + L.np + (L.np === 1 ? " tavola ripulita" : " tavole ripulite");
+  $("#tvBody").innerHTML = '<p class="status">Carico il libro…</p>'; $("#tv").hidden = false; document.body.style.overflow = "hidden"; $("#tvx").focus();
+  libLoad(k, function () {
+    TV.k = k; TV.items = tvItems(k); TV.i = 0; $("#tvBody").innerHTML = "";
+    var target = 0;
+    if (leaf != null) { for (var j = 0; j < TV.items.length; j++) if (TV.items[j].l <= leaf) target = j; }
+    tvMore(Math.max(20, target + 6));
+    $("#tvScroll").scrollTop = 0;
+    if (leaf != null) { var el = $("#tvBody").querySelector('[data-leaf="' + TV.items[target].l + '"]'); if (el) { el.scrollIntoView({ block: "start" }); el.classList.add("tv-hl"); } }
+  });
+}
+function tvClose() { $("#tv").hidden = true; document.body.style.overflow = ""; }
+$("#tvScroll").addEventListener("scroll", function () { var s = $("#tvScroll"); if (TV.items && TV.i < TV.items.length && s.scrollTop + s.clientHeight > s.scrollHeight - 1200) tvMore(20); });
+$("#tvMore").addEventListener("click", function () { tvMore(40); });
+$("#tvx").addEventListener("click", tvClose);
+
 document.addEventListener("click", function (e) {
   var b;
-  if ((b = e.target.closest("[data-iz-page]"))) { var lf = parseInt(b.getAttribute("data-iz-page"), 10); $("#tx").hidden = true; openReader(INZ_BOOK.id, INZ_BOOK.n, INZ_BOOK.title, lf); return; }
+  if ((b = e.target.closest("[data-iz-page]"))) { var ref = b.getAttribute("data-iz-page"); if (ref.indexOf(":") < 0) ref = "inz:" + ref; libOpenOriginal(ref); return; }
+  if ((b = e.target.closest("[data-tv]"))) { var lf = b.getAttribute("data-tv-leaf"); $("#tx").hidden = true; tvOpen(b.getAttribute("data-tv"), lf == null ? null : parseInt(lf, 10)); return; }
+  if ((b = e.target.closest("[data-iz-only]"))) { $("#inzBook").value = b.getAttribute("data-iz-only"); inzSearch(); $("#inzRes").scrollIntoView({ block: "start" }); return; }
   if ((b = e.target.closest("[data-iz-ptext]"))) {
-    var lf2 = parseInt(b.getAttribute("data-iz-ptext"), 10), p = inzPageText(lf2);
-    if (p) inzShowText("Pagina " + (p.s || ""), "Funghi siciliani, centuria " + (p.c === 1 ? "prima" : "seconda") + ". Trascrizione di prova, ancora da rivedere.", p.t, lf2);
+    var a = b.getAttribute("data-iz-ptext").split(":"), k = a[0], lf2 = parseInt(a[1], 10), L = libByK(k);
+    libLoad(k, function () { var p = LIBD[k].byLeaf[lf2]; if (p) inzShowText(esc(libPageLabel(k, p)), L.title + " (" + L.short + "). Trascrizione automatica, da rivedere.", p.t, k + ":" + lf2); });
     return;
   }
   if ((b = e.target.closest("[data-iz-text]"))) {
-    var s = INZ.byKey[b.getAttribute("data-iz-text")]; if (!s) return;
-    var pp = inzPageText(s.l), txt = pp ? pp.t : "";
-    if (pp && s.o > -1) txt = pp.t.slice(s.o);
-    var nx = inzPageText(s.l + 1); if (nx && s.o > -1 && nx.c === pp.c && txt.length < 1800) txt += "\n\n" + nx.t;
-    inzShowText("<em>" + esc(s.g + " " + s.s) + "</em> " + esc(s.a || ""), "Centuria " + (s.c === 1 ? "prima" : "seconda") + ", n. " + s.n + ", pagina " + s.p + ". Trascrizione di prova, ancora da rivedere.", txt, s.l);
+    var key = b.getAttribute("data-iz-text");
+    inzLoad(function () {
+      var s = INZ.byKey[key]; if (!s) return;
+      var by = LIBD.inz.byLeaf, pp = by[s.l], txt = pp ? pp.t : "";
+      if (pp && s.o > -1) txt = pp.t.slice(s.o);
+      var nx = by[s.l + 1]; if (nx && pp && s.o > -1 && nx.c === pp.c && txt.length < 1800) txt += "\n\n" + nx.t;
+      inzShowText("<em>" + esc(s.g + " " + s.s) + "</em> " + esc(s.a || ""), "Inzenga, centuria " + (s.c === 1 ? "prima" : "seconda") + ", n. " + s.n + ", pagina " + s.p + ". Trascrizione automatica, da rivedere.", txt, "inz:" + s.l);
+    });
   }
 });
 $("#txx").addEventListener("click", function () { $("#tx").hidden = true; });
-document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#tx").hidden) $("#tx").hidden = true; });
-var izT = 0; $("#inzQ").addEventListener("input", function () { clearTimeout(izT); izT = setTimeout(inzSearch, 160); });
+document.addEventListener("keydown", function (e) { if (e.key !== "Escape") return; if (!$("#tx").hidden) $("#tx").hidden = true; else if (!$("#tv").hidden) tvClose(); });
+var izT = 0; $("#inzQ").addEventListener("input", function () { clearTimeout(izT); izT = setTimeout(inzSearch, 200); });
+$("#inzBook").addEventListener("change", inzSearch);
+(function () { var h = '<option value="all">Tutti i libri trascritti</option>'; libList().forEach(function (L) { h += '<option value="' + L.k + '">' + esc(L.short + " · " + L.title) + "</option>"; }); $("#inzBook").innerHTML = h; })();
 
 
 
