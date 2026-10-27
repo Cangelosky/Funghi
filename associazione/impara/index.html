@@ -352,6 +352,11 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 </style>
 </head>
 <body>
+<meta name="robots" content="noindex,nofollow">
+<style>#inzGate{position:fixed;inset:0;z-index:9999;background:#15362A;color:#E8EFE3;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Instrument Sans",system-ui,sans-serif}#inzGate form{width:min(380px,100%);display:grid;gap:14px}#inzGate h1{font:700 26px/1.15 "Bricolage Grotesque",system-ui,sans-serif;margin:0}#inzGate p{margin:0;color:#C9D8C6;font-size:16px;line-height:1.5}#inzGate input{font:inherit;font-size:17px;padding:12px 14px;border-radius:12px;border:1px solid #4B7A62;background:#1F4A38;color:#fff}#inzGate button{font:inherit;font-weight:600;font-size:16px;padding:12px 18px;border-radius:999px;border:0;background:#E2AB3C;color:#1A2A20;cursor:pointer}#inzGate .e{color:#F4C987;min-height:1.2em}</style>
+<div id="inzGate"><form autocomplete="off"><h1>Anteprima riservata</h1><p>Sito dell'Associazione Micologica Giuseppe Inzenga, in prova. Inserisci la password che ti è stata data.</p><label style="display:grid;gap:6px;font-weight:600">Password<input id="inzGateP" type="password" autocomplete="current-password"></label><button type="submit">Entra</button><p class="e" id="inzGateE" role="alert"></p></form></div>
+<script>(function(){var g=document.getElementById('inzGate'),ok=false;try{ok=localStorage.getItem('inz-gate')==='1'}catch(e){}if(ok){g.remove();return}g.querySelector('form').addEventListener('submit',function(e){e.preventDefault();if(document.getElementById('inzGateP').value.trim().toLowerCase()==='inzenga2027'){try{localStorage.setItem('inz-gate','1')}catch(e){}g.remove()}else{document.getElementById('inzGateE').textContent='Password non corretta.'}});document.getElementById('inzGateP').focus()})();</script>
+
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <radialGradient id="g-cap" cx=".36" cy=".28" r=".95"><stop offset="0" style="stop-color:var(--d-cap-hi)"/><stop offset=".55" style="stop-color:var(--d-cap)"/><stop offset="1" style="stop-color:var(--d-cap-lo)"/></radialGradient>
@@ -378,6 +383,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
         <svg viewBox="0 0 32 32"><path d="M3 17C3 9 9 3 16 3s13 6 13 14H3Z"/><path d="M12 19h8l-1 9a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2l-1-9Z"/></svg>
       </div>
       <div class="brand-t">
+        <a href="../" style="font-size:14px;font-weight:600;color:inherit">← Sito dell’associazione</a>
         <h1>Impara i funghi</h1>
         <p class="lead">Qui i funghi si imparano facendo: guarda i disegni, mettiti alla prova con i quiz, poi usa la chiave come faresti sul fungo vero.</p>
       </div>
