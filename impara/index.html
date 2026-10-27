@@ -1,0 +1,2284 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Impara i funghi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: una chiave che cresce verso destra come un diagramma di flusso, con schede per i caratteri accanto */
+:root {
+  --bg: #EDF0EA; --surface: #F9FAF6; --surface2: #E3E8E0;
+  --ink: #17251F; --muted: #55645C; --line: #B3C0B6; --line2: #8A9C90;
+  --accent: #17694F; --accent-ink: #FFFFFF; --accent-soft: #D5E9DE;
+  --ochre: #8A4F06; --ochre-soft: #F4E5C8; --hit: #C77C0E; --grid: #CFD7CC;
+  --d-cap: #DCC79B; --d-cap-hi: #EFE0BC; --d-cap-lo: #BC9E69; --d-fl-hi: #FDFBF3; --d-fl-lo: #DDD2B8; --d-flesh: #F6F1E3; --d-gill: #EAD4AA; --d-hi: #FFFFFF; --d-bark: #C9B18C; --d-leaf: #C2D2A0; --d-soil: #D9C7A8; --d-dung: #B7A27C; --d-moss: #A8C58A; --d-gel: #D8E8E4;
+  --f-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --f-body: "Instrument Sans", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1613; --surface: #162520; --surface2: #1E322B;
+    --ink: #E3ECE6; --muted: #9AAEA3; --line: #33493F; --line2: #4F6A5D;
+    --accent: #5CC49B; --accent-ink: #0B1A14; --accent-soft: #1D3A2F;
+    --ochre: #E5AE55; --ochre-soft: #34290F; --hit: #F0B24A; --grid: #1B2C25;
+    --d-cap: #6B5636; --d-cap-hi: #8C7448; --d-cap-lo: #46371F; --d-fl-hi: #3B4D43; --d-fl-lo: #222D27; --d-flesh: #2B3B34; --d-gill: #54432A; --d-hi: #D9C79E; --d-bark: #5A4630; --d-leaf: #4A5E32; --d-soil: #46382A; --d-dung: #5C4A34; --d-moss: #3F5A2C; --d-gel: #35504A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1613; --surface: #162520; --surface2: #1E322B;
+  --ink: #E3ECE6; --muted: #9AAEA3; --line: #33493F; --line2: #4F6A5D;
+  --accent: #5CC49B; --accent-ink: #0B1A14; --accent-soft: #1D3A2F;
+  --ochre: #E5AE55; --ochre-soft: #34290F; --hit: #F0B24A; --grid: #1B2C25;
+    --d-cap: #6B5636; --d-cap-hi: #8C7448; --d-cap-lo: #46371F; --d-fl-hi: #3B4D43; --d-fl-lo: #222D27; --d-flesh: #2B3B34; --d-gill: #54432A; --d-hi: #D9C79E; --d-bark: #5A4630; --d-leaf: #4A5E32; --d-soil: #46382A; --d-dung: #5C4A34; --d-moss: #3F5A2C; --d-gel: #35504A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 15px/1.5 var(--f-body);
+  padding-block: 22px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1240px; margin: 0 auto; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--hit); outline-offset: 2px; }
+
+/* Testata */
+.brand { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.logo { flex: none; width: 48px; height: 48px; border-radius: 12px; background: var(--accent); display: grid; place-items: center; }
+.logo svg { width: 30px; height: 30px; fill: var(--accent-ink); }
+.brand-t { min-width: 0; flex: 1 1 280px; }
+h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-spacing: -0.01em; }
+.lead { margin: 4px 0 0; color: var(--muted); max-width: 62ch; text-wrap: balance; }
+.pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.pill { font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--surface2); color: var(--muted); }
+.pill.warn { background: var(--ochre-soft); color: var(--ochre); }
+
+/* Schede */
+.tabs { display: flex; gap: 4px; border-bottom: 1.5px solid var(--line); margin: 20px 0 16px; }
+.tab { background: none; border: 0; padding: 10px 14px; cursor: pointer; font-weight: 600; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1.5px; }
+.tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Strumenti */
+.how { margin: 0 0 12px; }
+.how summary { cursor: pointer; font-weight: 600; color: var(--accent); width: fit-content; }
+.how ol { margin: 8px 0 0; padding-left: 20px; max-width: 70ch; color: var(--muted); }
+.how li { margin: 3px 0; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.search { flex: 1 1 260px; min-width: 0; }
+.search input { width: 100%; font: inherit; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line2); border-radius: 10px; padding: 9px 12px; }
+.btn { background: var(--surface); border: 1.5px solid var(--line2); border-radius: 10px; padding: 8px 12px; cursor: pointer; font-weight: 600; font-size: 13.5px; white-space: nowrap; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { color: var(--accent-ink); filter: brightness(1.08); }
+.status { margin: 8px 0 0; min-height: 1.4em; font-size: 13px; color: var(--muted); }
+.crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 10px 0 12px; font-size: 13px; }
+.crumbs .lbl { font: 500 10.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 2px; }
+.crumb { background: var(--accent-soft); border: 0; border-radius: 999px; padding: 5px 10px; cursor: pointer; font-weight: 600; color: var(--accent); }
+.crumb:hover { filter: brightness(.96); }
+.crumb-end { background: var(--ochre-soft); color: var(--ochre); border-radius: 999px; padding: 5px 10px; font-weight: 700; }
+.sep { color: var(--line2); }
+
+
+.leaf-img { display: block; width: 100%; margin: 8px 0 0; padding: 0; border: 1px solid var(--ochre); border-radius: 8px; background: #F6F1E6; cursor: pointer; overflow: hidden; text-align: left; color: #3a2e1e; font: inherit; }
+.leaf-img img { display: block; width: 100%; height: 150px; object-fit: contain; padding: 6px; }
+.leaf-img small { display: block; padding: 6px 8px 7px; font-size: 11.5px; line-height: 1.3; border-top: 1px solid rgba(138, 79, 6, .25); }
+.leaf-soon { font-style: italic; }
+.stage { touch-action: pan-x pan-y; }
+.zoomhint { margin: 0 0 8px; font-size: 12.5px; color: var(--muted); }
+/* Diagramma */
+.stage {
+  overflow-x: auto; border: 1.5px solid var(--line); border-radius: 14px;
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--grid) 1px, transparent 1.3px);
+  background-size: 18px 18px;
+  padding: 22px 20px 28px;
+}
+.tree { width: max-content; min-width: 100%; padding-right: min(46vw, 560px); }
+.branch { display: flex; align-items: center; position: relative; }
+.card { flex: none; width: 232px; background: var(--surface); border: 1.5px solid var(--line2); border-radius: 12px; padding: 12px 14px; position: relative; }
+.card.q { border-color: var(--accent); }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+.part, .rank { font: 500 10.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.step { font: 500 10.5px/1 var(--f-mono); color: var(--muted); }
+.card h3 { margin: 0; font: 600 15.5px/1.3 var(--f-display); text-wrap: balance; }
+.hint { margin: 6px 0 0; font-size: 12.5px; color: var(--muted); }
+.openall { margin-top: 10px; margin-right: 8px; background: none; border: 0; padding: 0; cursor: pointer; font-size: 12.5px; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.res { background: var(--ochre-soft); border-color: var(--ochre); }
+.res .rank { color: var(--ochre); }
+.res h3.latin { font-style: italic; }
+.res .desc { margin: 6px 0 0; font-size: 13px; }
+.feats { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 0; padding: 0; list-style: none; }
+.feats li { font-size: 11.5px; padding: 3px 7px; border-radius: 999px; background: var(--surface); border: 1px solid var(--ochre); }
+.eg { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); }
+.eg span { font: 500 10.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; font-style: normal; }
+.res.none { background: var(--surface); border-style: dashed; border-color: var(--line2); }
+.res.none .rank { color: var(--muted); }
+.res.compact { cursor: pointer; padding: 9px 12px; }
+.res.compact .desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 12px; margin-top: 3px; }
+.res.compact .feats, .res.compact .eg { display: none; }
+.res.compact h3 { font-size: 14px; }
+.hit { box-shadow: 0 0 0 3px var(--hit); }
+
+.edges { display: flex; flex-direction: column; gap: 12px; padding: 0 0 0 36px; margin: 0; list-style: none; position: relative; }
+.edges::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; border-top: 2px solid var(--line2); }
+.edge { position: relative; display: flex; align-items: center; }
+.edge::before { content: ""; position: absolute; left: -18px; top: 50%; width: 18px; border-top: 2px solid var(--line2); }
+.edge::after { content: ""; position: absolute; left: -18px; top: -6px; bottom: -6px; border-left: 2px solid var(--line2); }
+.edge:first-child::after { top: 50%; }
+.edge:last-child::after { bottom: 50%; }
+.edge:only-child::after { display: none; }
+.edge.on::before, .edge.on::after { border-color: var(--accent); }
+.edge > .branch { margin-left: 36px; }
+.edge > .branch::before { content: ""; position: absolute; left: -36px; top: 50%; width: 28px; border-top: 2px solid var(--line2); }
+.edge > .branch::after { content: ""; position: absolute; left: -8px; top: calc(50% - 5px); border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--line2); }
+.edge.on > .branch::before { border-color: var(--accent); }
+.edge.on > .branch::after { border-left-color: var(--accent); }
+
+.chip { flex: none; width: 188px; display: flex; align-items: center; gap: 8px; text-align: left; background: var(--surface); border: 1.5px solid var(--line2); border-radius: 10px; padding: 8px 10px; cursor: pointer; }
+.chip b { display: block; font-weight: 600; font-size: 13.5px; line-height: 1.25; }
+.chip small { display: block; color: var(--muted); font-size: 12px; line-height: 1.3; margin-top: 1px; }
+.chip-t { min-width: 0; flex: 1; }
+.chip.hasic { width: 250px; }
+.chip-ic { flex: none; width: 64px; display: grid; place-items: center; }
+.chip-ic .ic { width: 64px; height: 52px; }
+.ic .pap { stroke: var(--surface); }
+.chip-i { flex: none; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--accent); display: grid; place-items: center; font: 600 14px/1 var(--f-mono); color: var(--accent); }
+.chip:hover { border-color: var(--accent); }
+.chip[aria-expanded="true"] { background: var(--accent-soft); border-color: var(--accent); }
+.edge.on .chip[aria-expanded="true"] { background: var(--accent); color: var(--accent-ink); }
+.edge.on .chip[aria-expanded="true"] small { color: inherit; opacity: .85; }
+.edge.on .chip[aria-expanded="true"] .chip-i { color: var(--accent-ink); border-color: var(--accent-ink); }
+.chip.ghost { border-style: dashed; background: transparent; }
+@media (prefers-reduced-motion: no-preference) {
+  .edge > .branch { animation: grow .18s ease-out; }
+  @keyframes grow { from { opacity: .35; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+}
+
+.safety { margin: 12px 0 0; font-size: 13px; color: var(--muted); max-width: 90ch; }
+.safety strong { color: var(--ink); }
+
+/* Caratteri */
+.chars { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px; }
+.parts { display: flex; flex-direction: column; gap: 6px; }
+.part-btn { text-align: left; background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; padding: 9px 12px; cursor: pointer; font-weight: 600; }
+.part-btn:hover { border-color: var(--accent); }
+.part-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.panel { min-width: 0; background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 18px 20px 22px; }
+.panel h2 { margin: 0; font: 700 24px/1.15 var(--f-display); }
+.panel .intro { margin: 6px 0 0; color: var(--muted); max-width: 66ch; }
+.grp { margin-top: 20px; }
+.grp h4 { margin: 0 0 8px; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.items { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 0 18px; }
+.item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
+.item b { display: block; font-weight: 600; }
+.item .ex { display: block; margin-top: 5px; font-style: normal; font-size: 12.5px; line-height: 1.35; color: var(--ink); }
+.item .ex u { text-decoration: none; font: 500 10.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-right: 5px; }
+.item .ex i { font-style: italic; }
+.exnote { margin: 18px 0 0; font-size: 12.5px; color: var(--muted); max-width: 70ch; }
+.item span { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.4; }
+.ic { flex: none; width: 108px; height: auto; }
+.ic * { fill: none; stroke: var(--ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.ic .cap { fill: url(#g-cap); } .ic .fl { fill: url(#g-fl); } .ic .gi { fill: var(--d-gill); }
+.ic .lam { fill: url(#p-lam); stroke: none; } .ic .tub { fill: url(#p-tub); stroke: none; } .ic .po { fill: url(#p-pores); stroke: none; }
+.ic .hi { stroke: var(--d-hi); stroke-width: 2; opacity: .6; } .ic .fib { stroke-width: .7; opacity: .28; }
+.ic .tn { stroke-width: .9; opacity: .65; } .ic .tn2 { stroke-width: 1.2; opacity: .85; }
+.ic .dr { fill: var(--d-hi); } .ic .fz { fill: url(#p-fuzz); stroke: none; }
+.ic .hole { fill: var(--bg); } .ic .core { fill: var(--d-cap); } .ic .skin { stroke-width: 3.4; }
+.ic .ar { stroke: var(--ochre); stroke-width: 2.2; } .ic .cut { stroke-dasharray: 4 4; }
+.ic .gel { fill: var(--d-gel); } .ic .gel2 { fill: var(--d-soil); } .ic .gl2 { fill: var(--d-hi); fill-opacity: .22; }
+.ic .dw { fill: #FFFFFF; } .ic .dc { fill: #E08A2E; }
+.ic .cb { fill: #4F7FD0; stroke: none; opacity: .85; } .ic .cr { fill: #D45B5B; stroke: none; opacity: .85; }
+.ic .cy { fill: #E4B93A; stroke: none; opacity: .9; } .ic .cn { fill: #3E3E3E; stroke: none; opacity: .85; }
+.ic .paper { stroke: #666; stroke-width: 1.2; } .ic .pw { fill: #F8F8F4; } .ic .pk { fill: #2A2A2A; }
+.ic .pr { stroke: #555; stroke-width: 1; } .ic .sw { fill: #FFFFFF; } .ic .sp { fill: #E8A5B4; } .ic .so { fill: #B8651F; }
+.ic .st { fill: #8A5A2B; } .ic .su { fill: #5A3550; } .ic .sk { fill: #1A1A1A; }
+.ic .bark { fill: var(--d-bark); } .ic .leaf { fill: var(--d-leaf); } .ic .soil { fill: var(--d-soil); }
+.ic .dung { fill: var(--d-dung); } .ic .moss { fill: var(--d-moss); }
+.ic .root { stroke-width: 2.4; } .ic .hyph { stroke: var(--ochre); stroke-dasharray: 3 3; }
+.ic .dot { fill: var(--ink); stroke: none; }
+
+
+/* ===== Percorso ===== */
+.soonh { margin: 22px 0 8px; font: 700 18px var(--f-display); }
+.soon { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+.soon div { border: 1.5px dashed var(--line2); border-radius: 12px; padding: 12px 14px; }
+.soon b { display: block; font-weight: 600; } .soon span { display: block; color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+.path { max-width: 820px; }
+.lvl { display: grid; gap: 8px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.lvl-k { display: block; font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.lvl-n { font: 700 22px/1.2 var(--f-display); }
+.lvl-bar { height: 8px; border-radius: 99px; background: var(--surface2); overflow: hidden; }
+.lvl-fill { height: 100%; background: var(--accent); border-radius: 99px; transition: width .4s; }
+.lvl-p { color: var(--muted); font-size: 13.5px; }
+.path-intro { margin: 14px 0; color: var(--muted); max-width: 66ch; }
+.tappe { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.tappa { width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; font: inherit; color: inherit; }
+.tappa:hover { border-color: var(--accent); }
+.tn { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 700 15px/32px var(--f-display); text-align: center; }
+.tt { flex: 1; min-width: 0; } .tt b { display: block; font-weight: 600; } .tt span { display: block; color: var(--muted); font-size: 13.5px; }
+.tr { flex: none; text-align: right; } .tb { display: block; color: var(--muted); font-size: 12.5px; }
+.stars .st { color: var(--line2); font-size: 16px; } .stars .st.on { color: var(--hit); }
+.path h2 { margin: 12px 0 4px; font: 700 24px/1.15 var(--f-display); }
+.path .intro { color: var(--muted); max-width: 66ch; }
+.path .back { margin-bottom: 4px; }
+.lp { margin: 20px 0 0; font: 700 18px var(--f-display); }
+.path .go { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.qtop { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.qn { font: 500 12px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); } .qp { font-weight: 600; color: var(--accent); }
+.qprog { height: 6px; background: var(--surface2); border-radius: 99px; margin: 10px 0 14px; overflow: hidden; } .qprog div { height: 100%; background: var(--accent); transition: width .3s; }
+.qbox { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 18px 18px 20px; }
+.qt { margin: 0 0 8px; font: 700 20px/1.25 var(--f-display); } .qd { margin: 0 0 12px; font-size: 16px; line-height: 1.5; }
+.qfig { display: flex; justify-content: center; margin: 6px 0 14px; } .qfig .ic { width: 170px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; } .chips span { background: var(--accent-soft); color: var(--accent); border-radius: 99px; padding: 3px 10px; font-size: 13px; font-weight: 600; }
+.qopts { display: grid; gap: 8px; } .qopts.figs { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.qo { background: var(--bg); border: 1.5px solid var(--line2); border-radius: 10px; padding: 12px 14px; font: 600 15px var(--f-body); color: var(--ink); cursor: pointer; text-align: left; display: flex; justify-content: center; align-items: center; }
+.qopts:not(.figs) .qo { justify-content: flex-start; }
+.qo:hover:not(:disabled) { border-color: var(--accent); }
+.qo .ic { width: 100%; max-width: 130px; }
+.qo.ok { border-color: var(--accent); background: var(--accent-soft); } .qo.no { border-color: #C0504D; background: color-mix(in srgb, #C0504D 14%, var(--surface)); }
+.qo:disabled { cursor: default; }
+.fb { margin-top: 14px; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--line); font-size: 14.5px; line-height: 1.5; }
+.fb.good { border-color: var(--accent); background: var(--accent-soft); } .fb.bad { border-color: #C0504D; }
+.end { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 20px; text-align: center; } .end .stars .st { font-size: 34px; }
+.end .big { font: 700 22px var(--f-display); margin: 8px 0 2px; } .muted { color: var(--muted); }
+.end .go { justify-content: center; }
+
+/* ===== Stile tavola: inchiostro su carta, puntinato e tratteggio ===== */
+.ic * { stroke-width: 1.5; }
+.ic .cap, .ic .fl, .ic .gel, .ic .leaf { fill: var(--surface); }
+.ic .gi { fill: url(#p-stip); }
+.ic .lam, .ic .hi, .ic .fib { display: none; }
+.ic .tub { fill: url(#p-hatch); stroke: none; }
+.ic .skin { stroke-width: 2.4; }
+.ic .bark { fill: url(#p-hatch2); } .ic .soil, .ic .dung, .ic .moss { fill: url(#p-stip); }
+.ic .core { fill: url(#p-stip); } .ic .gel2 { fill: url(#p-stip); }
+.ic .ln { fill: none; } .ic .tis { fill: url(#p-stip); stroke: none; } .ic .mk { filter: none; } .ic .sh { fill: url(#p-stip); stroke: none; }
+.ic .tn { stroke-width: .8; opacity: .85; }
+.ic .sf-net { fill: url(#p-net); stroke: none; } .ic .sf-wave { fill: url(#p-wave); stroke: none; }
+.ic .sf-ring { fill: url(#p-ring); stroke: none; } .ic .sf-band { fill: url(#p-band); stroke: none; }
+.go { margin-top: 20px; }
+
+
+/* Le tavole */
+.tabs { overflow-x: auto; }
+.tab { white-space: nowrap; }
+.tav-intro { max-width: 70ch; }
+.tav-intro h2 { margin: 0 0 6px; font: 700 22px/1.2 var(--f-display); }
+.tav-intro p { margin: 0 0 10px; color: var(--muted); }
+.tav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-top: 14px; }
+.tav { background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; padding: 0; text-align: left; cursor: zoom-in; color: inherit; font: inherit; display: flex; flex-direction: column; }
+.tav:hover, .tav:focus-visible { border-color: var(--accent); }
+.tav-pic { background: #F6F1E6; padding: 12px; display: flex; align-items: center; justify-content: center; height: 300px; }
+.tav-pic img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.tav-cap { padding: 10px 12px 12px; font-size: 13.5px; line-height: 1.35; }
+.tav-cap em { font-style: italic; }
+.tav-cap small { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+.tav-note { margin-top: 18px; font-size: 12.5px; color: var(--muted); max-width: 80ch; }
+.lb { position: fixed; inset: 0; background: rgba(10, 16, 13, .82); z-index: 50; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.lb[hidden] { display: none; }
+.lb-box { position: relative; background: #F6F1E6; border-radius: 12px; max-width: min(920px, 100%); max-height: 100%; overflow: auto; padding: 16px 16px 14px; color: #2a2217; }
+.lb-box img { display: block; max-width: 100%; max-height: 76vh; margin: 0 auto; }
+.lb-box p { margin: 10px 0 0; font-size: 14px; text-align: center; }
+.lb-x { position: sticky; top: 0; float: right; z-index: 2; margin: -6px -6px 6px 8px; }
+
+/* Biblioteca e lettore */
+.bk-g { margin: 22px 0 10px; font: 700 18px/1.2 var(--f-display); }
+.bk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.bk { display: flex; gap: 12px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px; }
+.bk-cov { width: 72px; height: 104px; object-fit: cover; border-radius: 4px; background: #F6F1E6; border: 1px solid var(--line); flex: none; }
+.bk-body { min-width: 0; flex: 1; }
+.bk h3 { margin: 0 0 2px; font: 600 15px/1.25 var(--f-display); }
+.bk-meta { margin: 0 0 4px; font-size: 12.5px; color: var(--muted); }
+.bk-d { margin: 0 0 6px; font-size: 13.5px; }
+.bk-warn { display: inline-block; margin: 0 0 6px; padding: 1px 8px; border-radius: 999px; background: var(--ochre-soft); color: var(--ochre); font-size: 12px; font-weight: 600; }
+.bk-act { display: flex; flex-wrap: wrap; gap: 6px; }
+.bk-links { margin: 8px 0 0; font-size: 12px; color: var(--muted); }
+.bk-links a { color: var(--accent); }
+.rd { position: fixed; inset: 0; z-index: 60; background: #1d1a16; display: flex; flex-direction: column; }
+.rd[hidden] { display: none; }
+.rd-bar { display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: #2a2620; color: #EFE8D8; font-size: 13px; }
+.rd-bar .btn { background: #EFE8D8; color: #1d1a17; border-color: #EFE8D8; }
+.rd-bar #rdTitle { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.rd-bar #rdPg { color: #B9AF99; white-space: nowrap; }
+.rd-scroll { flex: 1; overflow: auto; touch-action: pan-x pan-y; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.rd-pages { margin: 0 auto; max-width: none; }
+.rd-p { position: relative; background: #F1EAD8; margin: 0 0 6px; aspect-ratio: 0.68 / 1; }
+.rd-p img { display: block; width: 100%; height: auto; }
+.rd-p:not(.ok) img { visibility: hidden; position: absolute; }
+.rd-e { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; padding: 20px; text-align: center; color: #6b5f48; font-size: 13px; }
+.rd-p.err .rd-e { display: flex; }
+
+.inz { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 16px 16px; margin-top: 14px; }
+.inz h2 { margin: 0 0 6px; font: 700 19px/1.2 var(--f-display); }
+.inz p { margin: 0 0 8px; color: var(--muted); max-width: 70ch; }
+.iz-g { margin: 16px 0 8px; font: 600 15px/1.2 var(--f-display); }
+.iz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.iz { display: flex; gap: 10px; justify-content: space-between; border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--bg); }
+.iz h3 { margin: 0 0 2px; font: 600 15px/1.25 var(--f-display); }
+.iz-a { font-weight: 400; font-size: 12.5px; color: var(--muted); }
+.iz-m { margin: 0 0 6px !important; font-size: 12.5px; color: var(--muted); }
+.iz-t { width: 64px; height: 84px; object-fit: contain; background: #F6F1E6; border-radius: 6px; flex: none; padding: 3px; }
+.iz-hit { border-top: 1px solid var(--line); padding: 10px 0; }
+.iz-hit p { margin: 0 0 6px; color: var(--ink); font-size: 14px; }
+.iz-hit mark { background: var(--ochre-soft); color: var(--ochre); padding: 0 2px; border-radius: 3px; }
+.tx { position: fixed; inset: 0; z-index: 70; background: rgba(10, 16, 13, .82); display: flex; align-items: center; justify-content: center; padding: 14px; }
+.tx[hidden] { display: none; }
+.tx-box { background: #F6F1E6; color: #2a2217; border-radius: 12px; width: min(760px, 100%); max-height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+.tx-bar { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; padding: 12px 14px; border-bottom: 1px solid rgba(0, 0, 0, .12); }
+.tx-bar h3 { margin: 0; font: 600 17px/1.25 var(--f-display); }
+.tx-bar p { margin: 2px 0 0; font-size: 12.5px; color: #6b5f48; }
+.tx-box pre { margin: 0; padding: 14px; overflow: auto; flex: 1; white-space: pre-wrap; font: 15px/1.6 Georgia, "Times New Roman", serif; }
+.tx-foot { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 10px 14px; border-top: 1px solid rgba(0, 0, 0, .12); font-size: 12px; color: #6b5f48; }
+.lb-sp { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
+.foot { margin-top: 28px; padding-top: 14px; border-top: 1.5px solid var(--line); font-size: 12.5px; color: var(--muted); max-width: 90ch; }
+
+@media (max-width: 760px) {
+  .chars { grid-template-columns: minmax(0, 1fr); }
+  .parts { flex-direction: row; flex-wrap: wrap; }
+  .card { width: 212px; }
+  .chip { width: 172px; }
+  .stage { padding: 18px 14px 22px; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<radialGradient id="g-cap" cx=".36" cy=".28" r=".95"><stop offset="0" style="stop-color:var(--d-cap-hi)"/><stop offset=".55" style="stop-color:var(--d-cap)"/><stop offset="1" style="stop-color:var(--d-cap-lo)"/></radialGradient>
+<linearGradient id="g-fl" x1="0" x2="1" y1="0" y2="0"><stop offset="0" style="stop-color:var(--d-fl-lo)"/><stop offset=".38" style="stop-color:var(--d-fl-hi)"/><stop offset=".7" style="stop-color:var(--d-flesh)"/><stop offset="1" style="stop-color:var(--d-fl-lo)"/></linearGradient>
+<pattern id="p-stip" width="13" height="13" patternUnits="userSpaceOnUse"><g style="fill:var(--ink);stroke:none"><circle cx="1.2" cy="2" r=".55"/><circle cx="5.5" cy="1" r=".5"/><circle cx="9.6" cy="2.6" r=".55"/><circle cx="12" cy="6" r=".5"/><circle cx="3.4" cy="5.4" r=".5"/><circle cx="7.4" cy="6.2" r=".6"/><circle cx="10.4" cy="9.6" r=".5"/><circle cx="1.6" cy="9.2" r=".55"/><circle cx="5" cy="10.6" r=".5"/><circle cx="8" cy="12.2" r=".55"/><circle cx="12" cy="12.4" r=".45"/><circle cx="3" cy="12.6" r=".45"/></g></pattern>
+<pattern id="p-stip2" width="17" height="17" patternUnits="userSpaceOnUse"><g style="fill:var(--ink);stroke:none"><circle cx="2" cy="3" r=".5"/><circle cx="8" cy="1.5" r=".5"/><circle cx="14" cy="4" r=".5"/><circle cx="5" cy="8" r=".5"/><circle cx="11" cy="9" r=".5"/><circle cx="1.5" cy="13.5" r=".5"/><circle cx="8" cy="14" r=".5"/><circle cx="15" cy="14.6" r=".5"/></g></pattern>
+<pattern id="p-hatch" width="2.4" height="6" patternUnits="userSpaceOnUse"><path d="M1.2 0V6" style="stroke:var(--ink);stroke-width:.6"/></pattern>
+<pattern id="p-hatch2" width="5" height="8" patternUnits="userSpaceOnUse"><path d="M1.5 0C2.5 3 .5 5 1.5 8M3.9 0C4.9 3 2.9 5 3.9 8" style="fill:none;stroke:var(--ink);stroke-width:.7"/></pattern>
+<filter id="blm" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.4"/></filter>
+<clipPath id="cp-conv"><path d="M8 60C10 34 34 18 60 18C86 18 110 34 112 60C98 56 84 57 72 59L48 59C36 57 22 56 8 60Z"/></clipPath>
+<pattern id="p-lam" width="3" height="6" patternUnits="userSpaceOnUse"><path d="M1.5 0V6" style="stroke:var(--ink);stroke-width:.55;opacity:.55"/></pattern>
+<pattern id="p-tub" width="2.6" height="5" patternUnits="userSpaceOnUse"><path d="M1.3 0V5" style="stroke:var(--ink);stroke-width:.5;opacity:.65"/></pattern>
+<pattern id="p-pores" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="1.1" style="fill:none;stroke:var(--ink);stroke-width:.5;opacity:.7"/></pattern>
+<pattern id="p-fuzz" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M1 3L1.8 1.2M3.4 3.6L4 2" style="stroke:var(--ink);stroke-width:.55;opacity:.55"/></pattern>
+<pattern id="p-net" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0L6 6M6 0L0 6" style="stroke:var(--ink);stroke-width:.7;opacity:.6"/></pattern>
+<pattern id="p-ring" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" style="fill:none;stroke:var(--ink);stroke-width:.8;opacity:.7"/></pattern>
+<pattern id="p-wave" width="8" height="6" patternUnits="userSpaceOnUse"><path d="M0 3Q2 1 4 3T8 3" style="fill:none;stroke:var(--ink);stroke-width:.8;opacity:.7"/></pattern>
+<pattern id="p-band" width="6" height="9" patternUnits="userSpaceOnUse"><path d="M0 4.5H6" style="stroke:var(--ink);stroke-width:1;opacity:.55"/></pattern>
+</defs></svg>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M3 17C3 9 9 3 16 3s13 6 13 14H3Z"/><path d="M12 19h8l-1 9a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2l-1-9Z"/></svg>
+      </div>
+      <div class="brand-t">
+        <h1>Impara i funghi</h1>
+        <p class="lead">Qui i funghi si imparano facendo: guarda i disegni, mettiti alla prova con i quiz, poi usa la chiave come faresti sul fungo vero.</p>
+      </div>
+    </div>
+    <div class="pills">
+      <span class="pill">Sezione didattica</span>
+      <span class="pill warn">Bozza per il comitato scientifico</span>
+      <span class="pill" id="count"></span>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Sezioni">
+    <button class="tab" role="tab" id="tab-percorso" aria-controls="p-percorso" aria-selected="true" data-tab="percorso">Il percorso</button>
+    <button class="tab" role="tab" id="tab-chiave" aria-controls="p-chiave" aria-selected="false" data-tab="chiave">La chiave</button>
+    <button class="tab" role="tab" id="tab-caratteri" aria-controls="p-caratteri" aria-selected="false" data-tab="caratteri">I caratteri</button>
+    <button class="tab" role="tab" id="tab-tavole" aria-controls="p-tavole" aria-selected="false" data-tab="tavole">Le tavole</button>
+    <button class="tab" role="tab" id="tab-biblioteca" aria-controls="p-biblioteca" aria-selected="false" data-tab="biblioteca">Biblioteca</button>
+  </div>
+
+  <section id="p-percorso" role="tabpanel" aria-labelledby="tab-percorso">
+    <div id="path" class="path" aria-live="polite"></div>
+  </section>
+
+  <section id="p-chiave" role="tabpanel" aria-labelledby="tab-chiave" hidden>
+    <details class="how">
+      <summary>Come si usa</summary>
+      <ol>
+        <li>Guarda il fungo intero, poi tagliato a metà. Ti serve anche la base del gambo.</li>
+        <li>Tocca la risposta che gli somiglia di più: si apre la domanda successiva, sulla destra.</li>
+        <li>Se due risposte ti sembrano giuste, tocca «Apri tutte le vie» su quella domanda e confrontale.</li>
+        <li>Quando arrivi a una scheda arancio, hai il genere o il gruppo. Per la specie serve altro.</li>
+      </ol>
+    </details>
+    <div class="toolbar">
+      <div class="search"><input id="q" type="search" placeholder="Cerca un genere o un carattere: Amanita, volva, ciuffi…" aria-label="Cerca nella chiave" autocomplete="off"></div>
+      <button class="btn" id="back" type="button">Indietro</button>
+      <button class="btn" id="reset" type="button">Ricomincia</button>
+      <button class="btn primary" id="openall" type="button">Apri tutta la chiave</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <nav class="crumbs" id="crumbs" aria-label="Percorso scelto"></nav>
+    <p class="zoomhint">Allarga o stringi con due dita per ingrandire il diagramma. Con il mouse: Ctrl e rotellina.</p>
+    <div class="stage" id="stage"><div class="tree" id="tree"></div></div>
+    <p class="safety"><strong>La chiave non dice se un fungo si può mangiare.</strong> Nessuna chiave può farlo. Prima di portare in tavola qualunque fungo, fallo determinare da un esperto.</p>
+  </section>
+
+  <section id="p-caratteri" role="tabpanel" aria-labelledby="tab-caratteri" hidden>
+    <div class="chars">
+      <div class="parts" id="parts" role="group" aria-label="Parti del fungo"></div>
+      <div class="panel" id="panel" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="p-tavole" role="tabpanel" aria-labelledby="tab-tavole" hidden>
+    <div class="tav-intro">
+      <h2>Tavole storiche siciliane</h2>
+      <p>Sono le tavole a colori di Giuseppe Inzenga, il micologo palermitano da cui prende il nome l'associazione. Le abbiamo ripulite per leggerle meglio: fondo e scritte tolti, colori ravvivati.</p>
+      <p>Guardale con calma e prova a riconoscere le parti del fungo: cappello, lamelle o pori, gambo, base. Quasi ogni tavola mostra anche il fungo tagliato a metà. <button class="btn" type="button" data-goto-tab="caratteri">Rivedi i caratteri</button></p>
+    </div>
+    <div class="tav-grid" id="tavGrid"></div>
+    <p class="tav-note">Nomi come li scrisse Inzenga: molti oggi si chiamano in un altro modo. Il comitato scientifico li aggiorna prima della pubblicazione. Fonte: G. Inzenga, <em>Funghi siciliani</em>, Palermo, F. Lao, litografie di Frauenfelder. Scansione dell'Internet Archive (opera non più coperta da diritto d'autore).</p>
+  </section>
+
+  <section id="p-biblioteca" role="tabpanel" aria-labelledby="tab-biblioteca" hidden>
+    <div class="tav-intro">
+      <h2>Biblioteca storica</h2>
+      <p>I libri antichi più importanti sui funghi, liberi da diritti d'autore. Li leggi qui: scorri e allarga con due dita. Per ogni libro c'è anche il PDF completo da scaricare.</p>
+    </div>
+    <section class="inz" aria-labelledby="inzH">
+      <h2 id="inzH">Dentro il libro di Inzenga</h2>
+      <p>Abbiamo trascritto <em>Funghi siciliani</em>, così si può cercare. Scrivi un nome (<em>Amanita</em>, <em>Boletus</em>, <em>Peziza</em>) o una parola, e trovi le specie e le pagine. Da ogni risultato puoi leggere il testo o aprire la pagina originale.</p>
+      <p class="bk-warn" style="display:inline-block">Testo storico del 1865: le indicazioni sull'uso alimentare non valgono oggi.</p>
+      <div class="toolbar"><div class="search"><input id="inzQ" type="search" placeholder="Cerca nel libro di Inzenga: Amanita, Ficuzza, lamelle…" aria-label="Cerca nel libro di Inzenga" autocomplete="off"></div></div>
+      <div id="inzRes"><p class="status">Scrivi almeno due lettere: un nome (per esempio <em>Amanita</em> o <em>Boletus</em>) o una parola del testo.</p></div>
+    </section>
+    <h2 class="bk-g">Tutti i libri</h2>
+    <div class="toolbar"><div class="search"><input id="bkQ" type="search" placeholder="Cerca un autore, un anno, un argomento: Cooke, tavole, latino…" aria-label="Cerca nella biblioteca" autocomplete="off"></div></div>
+    <div id="bkList"></div>
+    <p class="tav-note">Fonte delle scansioni: Internet Archive e Biodiversity Heritage Library. Le opere sono di pubblico dominio. Diritti e dati di ogni libro vanno confermati dal comitato prima della pubblicazione. I libri antichi contengono indicazioni sull'uso alimentare dei funghi: oggi non valgono e il sito non ne dà.</p>
+  </section>
+
+  <div class="tx" id="tx" hidden role="dialog" aria-modal="true" aria-label="Trascrizione">
+    <div class="tx-box">
+      <div class="tx-bar"><div><h3 id="txTitle"></h3><p id="txSub"></p></div><button class="btn" id="txx" type="button">Chiudi</button></div>
+      <pre id="txBody"></pre>
+      <div class="tx-foot"><button class="btn primary" id="txPage" type="button" data-iz-page="0">Apri la pagina originale</button><span>Il testo è una trascrizione automatica, ancora da rivedere.</span></div>
+    </div>
+  </div>
+
+  <div class="rd" id="rd" hidden role="dialog" aria-modal="true" aria-label="Lettore del libro">
+    <div class="rd-bar"><span id="rdTitle"></span><span id="rdPg"></span><button class="btn" id="rdx" type="button">Chiudi</button></div>
+    <div class="rd-scroll" id="rdScroll"><div class="rd-pages" id="rdPages"></div></div>
+  </div>
+
+  <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Tavola ingrandita">
+    <div class="lb-box">
+      <button class="btn lb-x" id="lbx" type="button" aria-label="Chiudi">Chiudi</button>
+      <img id="lbimg" alt="">
+      <p id="lbcap"></p>
+      <div id="lbsp" class="lb-sp"></div>
+      <p><button class="btn" id="lbbook" type="button">Apri nel libro</button></p>
+    </div>
+  </div>
+
+  <p class="foot">Bozza di lavoro: percorsi e descrizioni vanno rivisti dal comitato scientifico prima della pubblicazione. La chiave si ferma al genere o al gruppo e copre solo i funghi più comuni.</p>
+</div>
+
+<script>
+/* ===== Dati della chiave: bozza per il comitato scientifico ===== */
+function Q(part, text, hint, opts, flags) { return Object.assign({ q: true, part: part, text: text, hint: hint, opts: opts }, flags || {}); }
+function O(l, d, to) { return { l: l, d: d, to: to }; }
+function R(name, rank, desc, feats, eg) { return { r: true, name: name, rank: rank, desc: desc, feats: feats || [], eg: eg || "" }; }
+function NONE() {
+  return { r: true, none: true, name: "Qui la chiave si ferma", rank: "Fuori bozza",
+    desc: "Può essere un fungo che questa bozza non copre. Fotografalo da sopra, da sotto, di lato e alla base del gambo, scrivi dove l'hai trovato e portalo alla pratica di determinazione in sede.",
+    feats: [], eg: "" };
+}
+
+/* ---------- Lamelle, sporata bianca ---------- */
+var legnoBianca = Q("Forma", "Com'è fatto il fungo che nasce sul legno?", null, [
+  O("A mensola o a conchiglia", "Gambo laterale o quasi assente, lamelle che scendono",
+    R("Pleurotus e affini", "Gruppo", "Cappelli a ostrica o a mensola, spesso sovrapposti, con lamelle decorrenti e gambo laterale corto o assente.", ["gambo laterale", "lamelle decorrenti", "su legno"], "Pleurotus ostreatus")),
+  O("A ombrello, gambo centrale", "Carne soda, cappello rotondo",
+    R("Altri funghi bianchi del legno", "Gruppo", "Funghi a ombrello con sporata bianca che crescono su ceppi e tronchi: serve guardare anello, viscosità e lamelle per andare oltre.", ["gambo centrale", "su legno"], "Oudemansiella, Lentinus, Hypsizygus")),
+  O("Piccolo ed esile", "Cappello di pochi centimetri, gambo sottile",
+    R("Mycena e piccoli funghi esili", "Gruppo", "Funghi minuti, spesso a gruppi su legno marcio e muschio, con gambo sottile e cappello conico o campanulato.", ["piccoli", "gambo sottile", "su legno marcio"], "Mycena, Panellus"))
+]);
+
+var terraBianca = Q("Lamelle", "Com'è il cappello e come sono attaccate le lamelle al gambo?", "Taglia il fungo a metà in verticale: l'attacco delle lamelle si vede meglio.", [
+  O("Lamelle spaziate e cerose", "Al tatto sembrano cera, cappello spesso viscido",
+    R("Idrofori e affini", "Famiglia", "Famiglia Hygrophoraceae: lamelle spesse, distanziate e cerose, spesso su prati o sotto alberi. Colori vivaci nei piccoli, carne soda nei grandi.", ["lamelle cerose", "spaziate", "bosco e prato"], "Hygrophorus, Cuphophyllus, Hygrocybe")),
+  O("Cappello a imbuto", "Lamelle che scendono lungo il gambo",
+    R("Clitocybe e Infundibulicybe", "Gruppo", "Cappello depresso al centro, poi a imbuto, con lamelle decorrenti. Alcune specie hanno odore di anice o di farina; certe crescono in cerchi nel prato o nella lettiera.", ["imbutiforme", "lamelle decorrenti", "lettiera e prato"], "Clitocybe odora, Infundibulicybe geotropa")),
+  O("Cappello convesso, carne soda", "Lamelle smarginate, gambo robusto",
+    R("Tricholoma", "Genere", "Lamelle con una piccola incisura vicino al gambo, carne soda, spesso odore farinoso. Vive in simbiosi con gli alberi.", ["lamelle sinuate", "carne soda", "odore farinoso", "micorrizico"], "Tricholoma terreum")),
+  O("Piccolo, gambo sottile e tenace", "Cresce in mezzo alle foglie secche",
+    R("Piccoli funghi esili della lettiera", "Gruppo", "Marasmius, Gymnopus e simili: gambo sottile e coriaceo, cappello di pochi centimetri, a gruppi sulla lettiera.", ["piccoli", "gambo coriaceo", "lettiera"], "Marasmius, Gymnopus"))
+]);
+
+var habBianca = Q("Dove cresce", "Su cosa cresce?", null, [
+  O("Su legno", "Ceppi, tronchi, rami, radici", legnoBianca),
+  O("Su terra o lettiera", "Bosco, prato, radura", terraBianca)
+]);
+
+var anelloSi = Q("Dove cresce", "Il fungo con anello cresce su legno o su terra?", null, [
+  O("Su legno, in ciuffi", "Anche alla base degli alberi",
+    R("Armillaria", "Genere", "Fungo in ciuffi su ceppi, radici e alberi vivi, con anello e lamelle bianche. Può essere parassita.", ["ciuffi", "anello", "su legno o radici"], "Armillaria mellea")),
+  O("Su terra o lettiera", "Bosco, radura, prato",
+    Q("Cappello", "Il cappello è squamoso e l'anello scorre lungo il gambo?", "Prova a spostare l'anello con un dito: se scorre è mobile.", [
+      O("Sì, e il fungo è grande", "Cappello oltre 10 cm da adulto, gambo lungo e screziato",
+        R("Macrolepiota e Chlorophyllum", "Gruppo", "Funghi grandi con cappello squamoso, lamelle libere e anello doppio che scorre. La carne può cambiare colore al taglio: è un carattere da annotare.", ["cappello squamoso", "anello mobile", "lamelle libere"], "Macrolepiota procera")),
+      O("No, o il fungo è piccolo", "Squamette fini, anello fragile o assente",
+        R("Lepiota e affini", "Gruppo", "Lepiota, Leucoagaricus, Cystoderma: funghi piccoli e medi con cappello squamoso o granuloso. Per andare oltre serve spesso il microscopio.", ["squamoso o granuloso", "lamelle libere"], "Lepiota, Leucoagaricus"))
+    ]))
+]);
+
+var bianca = Q("Base del gambo", "C'è una volva alla base del gambo? È un sacco, una guaina o un bulbo con cercini.", "Scava con cura attorno al gambo: la volva può restare sotto terra. Non strappare il fungo.", [
+  O("Sì, c'è una volva", "Sacco, guaina o bulbo con cercini",
+    R("Amanita", "Genere", "Residui del velo sul cappello (placche o verruche), lamelle libere, volva alla base. Spesso c'è anche un anello.", ["lamelle libere", "volva", "anello o residui"], "Amanita caesarea, A. pantherina, A. muscaria")),
+  O("No, il gambo finisce senza volva", "Base liscia o appena ingrossata",
+    Q("Gambo", "Sul gambo c'è un anello?", null, [
+      O("Sì, c'è un anello", "Membrana o fascia attorno al gambo", anelloSi),
+      O("No, nessun anello", "Gambo senza anello o residui",
+        Q("Carne", "Spezzando il fungo, la carne si sbriciola come gesso?", "Cappello e gambo fragili e granulosi, senza fibre.", [
+          O("Sì, si sbriciola", "Fragile, a grani, senza fibre",
+            Q("Latice", "Ferendo le lamelle esce un liquido (latice)?", "Incidi le lamelle e aspetta qualche secondo: il colore può cambiare.", [
+              O("Sì, esce latice", "Bianco, arancio, rosso o di altro colore",
+                R("Lactarius", "Genere", "Carne fragile e lamelle che emettono un latice. Il colore del latice e il suo cambiamento all'aria sono i caratteri chiave. Vive in simbiosi con gli alberi.", ["carne fragile", "latice", "micorrizico"], "Lactarius deliciosus, L. sanguifluus")),
+              O("No, non esce nulla", "Lamelle asciutte",
+                R("Russula", "Genere", "Cappelli spesso molto colorati, lamelle fragili, gambo bianco che si spezza netto. Senza latice. Vive in simbiosi con gli alberi.", ["carne fragile", "niente latice", "cappelli colorati"], "Russula"))
+            ])),
+          O("No, è fibrosa o elastica", "Si piega prima di rompersi", habBianca)
+        ]))
+    ]))
+]);
+
+/* ---------- Lamelle, sporata rosa ---------- */
+var rosa = Q("Base del gambo", "C'è una volva alla base del gambo?", "Scava attorno alla base: la volva può essere sotto terra.", [
+  O("Sì, c'è una volva", "Sacco o guaina che avvolge la base",
+    R("Volvariella e Volvopluteus", "Gruppo", "Lamelle libere che da bianche diventano rosa, volva a sacco, niente anello. Cresce su resti vegetali, paglia, ceppaie.", ["lamelle libere", "volva a sacco", "senza anello"], "Volvariella, Volvopluteus")),
+  O("No, nessuna volva", "Base senza sacco",
+    Q("Dove cresce", "Il fungo cresce su legno e ha le lamelle libere?", null, [
+      O("Sì, su legno, lamelle libere", "Ceppi, tronchi marci, segatura",
+        R("Pluteus", "Genere", "Lamelle libere che passano da bianche a rosa, niente anello né volva, gambo che si stacca facilmente dal cappello. Cresce su legno morto.", ["lamelle libere", "senza anello", "su legno"], "Pluteus")),
+      O("No, cresce a terra", "Lamelle attaccate o che scendono sul gambo",
+        Q("Lamelle", "Le lamelle scendono sul gambo e c'è un odore di farina?", null, [
+          O("Sì, decorrenti e odore di farina", "Cappello biancastro, feltrato",
+            R("Clitopilus", "Genere", "Lamelle decorrenti che virano al rosa, forte odore farinoso, cappello biancastro e feltrato.", ["lamelle decorrenti", "odore farinoso"], "Clitopilus prunulus")),
+          O("No, lamelle adnate o smarginate", "Cappello grigio-bruno, spesso conico",
+            R("Entoloma", "Genere", "Genere molto numeroso: sporata rosa che al microscopio risulta angolosa. Cappelli grigi o bruni, spesso con umbone, lamelle adnate o smarginate.", ["sporata rosa", "lamelle adnate o sinuate"], "Entoloma"))
+        ]))
+    ]))
+]);
+
+/* ---------- Lamelle, sporata ruggine ---------- */
+var ruggineLegno = Q("Aspetto", "Com'è il fungo che cresce su legno?", null, [
+  O("Giallo o arancio, lamelle che diventano ruggine", "Cappello fibroso o squamoso",
+    R("Gymnopilus", "Genere", "Cappello giallo-arancio, lamelle gialle che col tempo diventano color ruggine per le spore, su ceppi e legno morto anche di conifere.", ["giallo", "lamelle ruggine", "su legno"], "Gymnopilus")),
+  O("Squamoso o viscido, in ciuffi", "Con anello fugace",
+    R("Pholiota", "Genere", "Cappello squamoso o viscido, spesso in ciuffi su legno, anello fugace, sporata bruno-tabacco.", ["squamoso o viscido", "ciuffi", "anello fugace"], "Pholiota")),
+  O("Cappello liscio con anello, su ceppaie di latifoglie", "Bruno-ocra, lamelle crema poi bruno tabacco",
+    R("Cyclocybe (ex Agrocybe)", "Genere", "Cappello liscio color nocciola, anello membranoso, lamelle da crema a bruno tabacco. Cresce su ceppaie e tronchi di latifoglie, come pioppo e salice.", ["anello membranoso", "su latifoglie", "sporata bruno tabacco"], "Cyclocybe cylindracea (= Agrocybe aegerita)")),
+  O("Piccolo e bruno, con anello", "Su muschio e legno marcio",
+    R("Galerina e piccoli bruni con anello", "Gruppo", "Funghi minuti color miele o bruno, con anello sottile, su muschio e legno. Hanno bisogno di una determinazione accurata.", ["piccoli", "anello sottile", "muschio e legno"], "Galerina"))
+]);
+
+var ruggineTerra = Q("Aspetto", "Com'è il fungo che cresce a terra?", "Guarda la parte alta del gambo da giovane: la cortina si vede nei primi giorni.", [
+  O("Cortina da giovane", "Veli come ragnatela, lamelle che diventano ruggine",
+    R("Cortinarius", "Genere", "Da giovane ha una cortina tra cappello e gambo, che lascia fibre sul gambo. Le lamelle diventano color ruggine. Genere enorme, in simbiosi con gli alberi.", ["cortina", "lamelle ruggine", "micorrizico"], "Cortinarius")),
+  O("Cappello fibrilloso, spesso con umbone", "Odore spermatico o fruttato",
+    R("Inocybe", "Genere", "Cappello fibrilloso che si screpola in senso radiale, spesso con umbone, lamelle grigio-brune, spesso odore spermatico. Si determina bene solo con il microscopio.", ["fibrilloso", "umbone", "odore particolare"], "Inocybe")),
+  O("Cappello liscio biancastro o bruno, odore di rafano", "Sotto alberi",
+    R("Hebeloma", "Genere", "Cappello liscio color crema o bruno, lamelle brune, spesso odore di rafano o di cacao. Vive in simbiosi con gli alberi.", ["odore di rafano", "lamelle brune", "micorrizico"], "Hebeloma")),
+  O("Lamelle separabili, orlo arrotolato", "Cappello bruno-olivaceo",
+    R("Paxillus", "Genere", "Margine del cappello arrotolato in dentro, lamelle decorrenti che si staccano dal cappello come i tubuli dei boleti, carne che bruna al taglio.", ["orlo involuto", "lamelle separabili"], "Paxillus"))
+]);
+
+var ruggine = Q("Dove cresce", "Su cosa cresce?", null, [
+  O("Su legno", "Ceppi, tronchi, rami", ruggineLegno),
+  O("Su terra, sotto alberi", "Bosco, radura", ruggineTerra)
+]);
+
+/* ---------- Lamelle, sporata scura ---------- */
+var scura = Q("Aspetto", "Come si presenta il fungo?", "Per vedere il colore giusto servono lamelle mature: guarda un esemplare adulto.", [
+  O("Lamelle che si sciolgono in inchiostro", "Con l'età si liquefanno e colano",
+    R("Coprinus e Coprinopsis", "Gruppo", "Lamelle che diventano nere e si sciolgono in un liquido scuro. Cappello cilindrico o campanulato, a volte a scaglie bianche.", ["lamelle deliquescenti", "sporata nera"], "Coprinus comatus")),
+  O("Lamelle libere, rosa e poi bruno cioccolato, con anello", "Gambo che si stacca dal cappello",
+    R("Agaricus", "Genere", "Lamelle libere che da rosa o grigio-rosa diventano bruno cioccolato, anello presente. Odore, viraggio al taglio e habitat sono decisivi per distinguere i gruppi.", ["lamelle libere", "anello", "sporata bruno cioccolato"], "Agaricus campestris")),
+  O("In ciuffi su ceppi, cappello giallo o laterizio", "Sporata bruno-porpora",
+    R("Hypholoma", "Genere", "Cappelli giallo zolfo o color mattone in ciuffi su ceppi e legno morto, lamelle che virano al grigio-viola.", ["ciuffi", "su legno", "sporata bruno-porpora"], "Hypholoma fasciculare, H. sublateritium")),
+  O("Viscido, con anello, su prato o paglia", "Lamelle grigie poi violacee",
+    R("Stropharia", "Genere", "Cappello viscido, anello ben visibile, lamelle che con la maturazione diventano violacee. Cresce su prati concimati, paglia e trucioli.", ["viscido", "anello", "prato o paglia"], "Stropharia")),
+  O("Fragile ed esile, su prato, sterco o legno marcio", "Lamelle spesso screziate",
+    R("Panaeolus, Psathyrella e affini", "Gruppo", "Funghi fragili con lamelle a macchie (Panaeolus, su sterco) o cappello igrofano che cambia colore asciugando (Psathyrella, su legno marcio e terra).", ["fragili", "su sterco o legno marcio"], "Panaeolus, Psathyrella"))
+]);
+
+var lamelle = Q("Sporata", "Di che colore è la sporata, cioè la polvere di spore?", "Appoggia il cappello, lamelle in giù, su un foglio mezzo bianco e mezzo nero. Copri con un bicchiere per qualche ora.", [
+  O("Bianca o crema", "Polvere chiara sul foglio nero", bianca),
+  O("Rosa", "Colore salmone o rosa pallido", rosa),
+  O("Bruno-ruggine o ocra", "Colore tabacco, ruggine, nocciola", ruggine),
+  O("Bruno scuro, porpora o nera", "Cioccolato, violaceo, nero", scura)
+]);
+
+/* ---------- Tubuli con pori ---------- */
+var boleti = Q("Gambo e pori", "Com'è il gambo e che aspetto hanno i pori?", "Taglia il fungo e osserva per un minuto: il viraggio dei colori è un carattere chiave.", [
+  O("Gambo con rete chiara, cappello bruno", "Carne bianca che non cambia colore",
+    R("Boletus sezione Boletus", "Gruppo", "Tubuli bianchi poi giallo-olivastri, gambo massiccio con reticolo in rilievo, carne bianca che non vira al taglio. Vive in simbiosi con gli alberi.", ["reticolo", "carne bianca", "pori che non viran"], "Boletus edulis, B. aereus, B. reticulatus")),
+  O("Pori rossi o arancio, vira al blu", "Il taglio diventa blu in pochi secondi",
+    R("Boleti a pori rossi", "Gruppo", "Neoboletus, Suillellus, Rubroboletus: pori rossi o arancio, carne gialla che vira rapidamente al blu al taglio, spesso gambo con puntini o reticolo rosso.", ["pori rossi o arancio", "viraggio al blu"], "Neoboletus luridiformis, Suillellus luridus")),
+  O("Gambo con squamette scure", "Cappello arancio o bruno, vira grigio-nerastro",
+    R("Leccinum e Leccinellum", "Gruppo", "Gambo con squamette o punti scuri, carne che col tempo vira al grigio o al nero. Leccinellum corsicum vive col cisto, L. lepidum con le querce.", ["gambo squamettato", "carne che annerisce"], "Leccinellum corsicum, L. lepidum")),
+  O("Cappello viscido, spesso sotto conifere", "Gambo con granuli o anello",
+    R("Suillus", "Genere", "Cappello viscido o vischioso, pori gialli, spesso gambo con granuli o anello. Cresce sotto pini e altre conifere.", ["cappello viscido", "conifere"], "Suillus")),
+  O("Cappello vellutato, spesso screpolato", "Pori gialli larghi, vira al blu-verde",
+    R("Xerocomus e affini", "Gruppo", "Cappello asciutto e vellutato che si screpola con l'età, pori gialli e larghi, viraggio azzurro-verdastro lieve.", ["cappello vellutato", "pori gialli"], "Xerocomus, Xerocomellus, Hortiboletus"))
+]);
+
+var mensole = Q("Consistenza", "Com'è la consistenza del fungo?", "Premi con l'unghia e prova a staccare un pezzetto.", [
+  O("Dura, con crosta lucida come laccata", "Perenne o annuale, color rosso-bruno",
+    R("Ganoderma", "Genere", "Fungo legnoso a mensola con superficie lucida o resinosa e pori chiari. Su ceppaie e alberi, anche vivi.", ["crosta lucida", "legnoso", "su legno"], "Ganoderma lucidum, G. resinaceum")),
+  O("Dura e perenne, senza lucido", "A zoccolo o a mensola, strati di crescita",
+    R("Fomes, Phellinus e altri polipori perenni", "Gruppo", "Mensole dure e legnose, di anni, con strati di crescita visibili. Su tronchi vivi o morti.", ["perenni", "legnosi"], "Fomes fomentarius, Phellinus")),
+  O("Sottile e coriacea, a ventaglio con zone colorate", "Mensoline sovrapposte",
+    R("Trametes e affini", "Gruppo", "Piccole mensole sottili e flessibili con zone concentriche colorate, in file sul legno morto.", ["sottile", "zonata", "su legno morto"], "Trametes versicolor")),
+  O("Carnosa, giallo-arancio, a mensole sovrapposte", "Succosa da giovane, gessosa da vecchia",
+    R("Laetiporus", "Genere", "Grosse mensole giallo-arancio sovrapposte con pori giallo zolfo, su latifoglie vive o morte.", ["giallo-arancio", "carnosa", "mensole"], "Laetiporus sulphureus")),
+  O("Rossa, a lingua, che trasuda succo rosso", "Tubuli separati uno dall'altro",
+    R("Fistulina", "Genere", "Fungo a lingua color carne, carne striata come filetto che trasuda succo rosso. I tubuli sono liberi uno dall'altro. Su castagno e quercia.", ["a lingua", "succo rosso", "tubuli liberi"], "Fistulina hepatica")),
+  O("Cespo di tanti cappellini, alla base di latifoglie", "Carnoso, grande, grigio-bruno",
+    R("Grifola e Meripilus", "Gruppo", "Cespi molto grandi con tanti piccoli cappelli sovrapposti, alla base di alberi o ceppaie.", ["a cespo", "alla base di alberi"], "Grifola frondosa, Meripilus giganteus"))
+]);
+
+var pori = Q("Substrato", "Il fungo ha un gambo centrale ed è a terra, oppure è a mensola sul legno?", null, [
+  O("Gambo centrale, a terra", "I tubuli si staccano dalla carne", boleti),
+  O("A mensola o a crosta, sul legno", "Senza vero gambo", mensole)
+]);
+
+/* ---------- Aculei ---------- */
+var aculei = Q("Aspetto", "Com'è il fungo con gli aculei?", null, [
+  O("Gambo e cappello giallo-arancio, aculei fragili", "A terra, aculei che scendono sul gambo",
+    R("Hydnum", "Genere", "Cappello color crema o arancio, aculei fragili e chiari che scendono sul gambo, carne bianca. A terra, in bosco.", ["aculei fragili", "arancio chiaro", "a terra"], "Hydnum repandum")),
+  O("Cappello squamoso bruno scuro", "Con gambo, a terra",
+    R("Sarcodon", "Genere", "Cappello con grosse squame scure sollevate, aculei bruni, carne amara. A terra, sotto alberi.", ["squame scure", "aculei bruni"], "Sarcodon")),
+  O("Massa bianca con aculei lunghi", "A barba o a grappolo, su legno",
+    R("Hericium", "Genere", "Corpo fruttifero bianco con aculei lunghi che pendono, a barba o a grappolo, su tronchi di latifoglie.", ["aculei lunghi", "bianco", "su legno"], "Hericium erinaceus")),
+  O("Piccolo, su pigne interrate", "Cappello peloso sul gambo laterale",
+    R("Auriscalpium", "Genere", "Fungo minuto con cappello peloso e gambo laterale, aculei sotto; cresce solo su pigne seppellite.", ["su pigne", "piccolo"], "Auriscalpium vulgare"))
+]);
+
+/* ---------- Pieghe e venature ---------- */
+var pieghe = Q("Aspetto", "Com'è il fungo con le pieghe?", "Le pieghe non sono vere lamelle: sono rilievi bassi, ottusi, spesso ramificati e legati tra loro.", [
+  O("Imbuto giallo-uovo, odore fruttato", "Pieghe che scendono sul gambo, a terra",
+    R("Cantharellus", "Genere", "Cappello a imbuto irregolare giallo-uovo, pieghe ramificate che scendono sul gambo, odore di albicocca. Da non confondere con funghi a lamelle vere e fitte.", ["pieghe ottuse", "giallo-uovo", "odore fruttato"], "Cantharellus cibarius")),
+  O("A tromba, grigio-bruno, cavo fino alla base", "Imbuto profondo, sottile",
+    R("Craterellus", "Genere", "Fungo a tromba cavo fino alla base, grigio scuro o bruno, imenio liscio o con pieghe appena accennate.", ["a tromba", "cavo", "imenio liscio o piegato"], "Craterellus cornucopioides, C. tubaeformis")),
+  O("Su legno marcio, a pieghe cerose", "Crosta o mensola con imenio a rete",
+    R("Phlebia, Serpula e altri funghi a pieghe del legno", "Gruppo", "Crosta o mensola ceracea sul legno marcio, con imenio a pieghe o a rete.", ["su legno marcio", "pieghe a rete"], "Phlebia, Serpula"))
+]);
+
+/* ---------- Forme particolari ---------- */
+var palla = Q("Peridio", "Com'è la pelle esterna e com'è l'interno?", "Taglia il fungo a metà: l'interno è decisivo.", [
+  O("Pelle spessa e dura, interno nero-violaceo", "Compatto già da giovane",
+    R("Scleroderma", "Genere", "Palla con pelle spessa, verrucosa o screpolata, e interno compatto nero-violaceo già in gioventù. Cresce a terra, spesso sotto alberi.", ["pelle spessa", "interno scuro", "a terra"], "Scleroderma")),
+  O("Pelle sottile, interno bianco che diventa polvere", "Spesso con base sterile come un gambo",
+    R("Vesce (Lycoperdon, Calvatia, Bovista)", "Gruppo", "Palle con pelle sottile e interno bianco e soffice che da maturo diventa una polvere bruna. Alcune hanno una base sterile simile a un gambo.", ["interno bianco", "polvere a maturità"], "Lycoperdon, Calvatia, Bovista")),
+  O("Si apre a stella", "La pelle esterna si divide in raggi",
+    R("Geastrum e Astraeus", "Gruppo", "Stelle di terra: la pelle esterna si apre a raggi e lascia una piccola palla interna. In Astraeus i raggi si chiudono e si aprono con l'umidità.", ["a stella", "palla centrale"], "Geastrum, Astraeus"))
+]);
+
+var coppa = Q("Colore", "Di che colore è la coppa o il disco?", null, [
+  O("Arancio vivo, a terra", "Dischi arancio sul terreno",
+    R("Aleuria", "Genere", "Coppe arancio vivo che si aprono a disco sul terreno nudo o ai bordi dei sentieri.", ["arancio", "a disco", "a terra"], "Aleuria aurantia")),
+  O("Bruno-grigiastro, carnosa", "Coppa fragile su terra o legno",
+    R("Peziza", "Genere", "Coppe carnose e fragili, grigie o brune, su terra, legno o suolo bruciato.", ["a coppa", "fragile"], "Peziza")),
+  O("Piccola, rossa o gialla, su rametti", "Spesso in inverno o a inizio primavera",
+    R("Sarcoscypha e piccole coppe del legno", "Gruppo", "Coppe rosso vivo o gialle di pochi centimetri su rametti caduti e umidi, spesso nella stagione fredda.", ["rosso vivo", "su rametti"], "Sarcoscypha coccinea"))
+]);
+
+var sella = Q("Cappello", "Com'è fatto il cappello?", null, [
+  O("A sella, grigio o bianco, gambo scanalato", "Cappello ripiegato in lobi",
+    R("Helvella", "Genere", "Cappello a lobi irregolari a forma di sella, gambo spesso scanalato e con coste. Il cappello grigio-nerastro e il gambo bianco sono tipici di H. lacunosa.", ["a sella", "gambo scanalato"], "Helvella lacunosa, H. crispa")),
+  O("Alveolato, a nido d'ape, cavo", "Cappello unito al gambo, tutto cavo dentro",
+    R("Morchella", "Genere", "Cappello con alveoli come un nido d'ape, unito al gambo, tutto cavo dentro. Fruttifica in primavera.", ["alveolato", "cavo", "in primavera"], "Morchella")),
+  O("A cervello, bruno-rossastro", "Cappello contorto e irregolare",
+    R("Gyromitra", "Genere", "Cappello contorto come un cervello, bruno-rossastro, su gambo spesso. Fruttifica in primavera, spesso sotto conifere.", ["a cervello", "contorto"], "Gyromitra"))
+]);
+
+var clava = Q("Forma", "Com'è la forma ramificata o a clava?", null, [
+  O("Cespuglio ramificato, carnoso", "Rami che nascono da un tronco comune",
+    R("Ramaria", "Genere", "Corpo ramificato come un corallo, carnoso, spesso giallo, ocra o rosato, con un tronco comune alla base. A terra, in bosco.", ["ramificato", "carnoso", "a terra"], "Ramaria")),
+  O("Ramificato, bianco o grigio, rami fragili", "Punte a corona",
+    R("Clavulina", "Genere", "Corallo bianco o grigio-cenere con rami fragili che terminano con punte a corona.", ["bianco o grigio", "fragile"], "Clavulina")),
+  O("Clave o dita singole", "Giallo, arancio o bruno",
+    R("Clavaria, Clavulinopsis, Clavariadelphus", "Gruppo", "Corpi non ramificati a forma di dito o di clava, gialli, arancio o bruni, a terra.", ["a clava", "a dito"], "Clavaria, Clavariadelphus"))
+]);
+
+var gelatina = Q("Forma", "Com'è la forma del fungo gelatinoso?", "Il fungo cambia molto con l'umidità: quando è secco si indurisce e si raggrinza.", [
+  O("A orecchio, bruno e vellutato", "Su sambuco o su latifoglie",
+    R("Auricularia", "Genere", "Corpi a forma di orecchio, bruno-purpurei, vellutati sopra e lisci sotto, su rami di sambuco e latifoglie.", ["a orecchio", "gelatinoso", "su legno"], "Auricularia auricula-judae")),
+  O("Lobi giallo-arancio in ammassi", "Aspetto di cervello su un ramo",
+    R("Tremella", "Genere", "Ammassi lobati giallo vivo o arancio, gelatinosi, su rami morti di latifoglie.", ["lobato", "giallo-arancio"], "Tremella mesenterica")),
+  O("Croste o cuscinetti scuri", "Grigio-nerastri, duri a secco",
+    R("Exidia e affini", "Gruppo", "Cuscinetti o croste gelatinose grigio-nerastre su rametti, che si induriscono a secco.", ["scuro", "a cuscinetto"], "Exidia glandulosa"))
+]);
+
+var fetido = Q("Forma", "Com'è la forma?", "Nasce da un «uovo» chiuso: cercalo alla base.", [
+  O("Cappello a ditale con muco verde-oliva", "Gambo bianco spugnoso, odore forte",
+    R("Phallus", "Genere", "Nasce da un uovo bianco, ha gambo bianco spugnoso e cappello coperto di muco verde-oliva con forte odore di carne in putrefazione.", ["gambo spugnoso", "gleba verde-oliva", "odore forte"], "Phallus impudicus")),
+  O("Rete o gabbia rossa", "Bracci rosso vivo",
+    R("Clathrus", "Genere", "Rete o gabbia rosso vivo che esce da un uovo bianco, con gleba scura e odore sgradevole.", ["a gabbia", "rosso"], "Clathrus ruber"))
+]);
+
+var forme = Q("Forma", "Che forma ha il fungo?", "Scegli la forma che gli somiglia di più.", [
+  O("Palla chiusa", "Senza cappello né lamelle", palla),
+  O("Coppa, disco", "Aperto verso l'alto", coppa),
+  O("Sella, cervello o alveolato", "Su gambo", sella),
+  O("Clava o cespuglio ramificato", "Come un corallo", clava),
+  O("Gelatinoso e tremolante", "Su legno", gelatina),
+  O("Fetido, a ditale o a gabbia", "Nasce da un uovo", fetido),
+  O("Nero e duro, a dita o a palla", "Su legno",
+    R("Xylaria, Daldinia e funghi neri del legno", "Gruppo", "Ascomiceti duri e carbonizzati a forma di dita, clave o palle sul legno morto.", ["nero", "duro", "su legno"], "Xylaria, Daldinia")),
+  O("Sotterraneo, come un tubero", "Si trova sotto terra",
+    R("Tartufi e altri funghi ipogei", "Gruppo", "Funghi che nascono e restano sotto terra, con una massa interna compatta. Si cercano con tecniche e permessi propri.", ["sotto terra", "interno compatto"], "Tuber, Terfezia")),
+  O("Crosta o mensola sottile senza pori", "Superficie liscia o rugosa, su legno",
+    R("Stereum, Chondrostereum e croste del legno", "Gruppo", "Croste o mensolette sottili e coriacee sul legno, con imenio liscio, senza lamelle né pori.", ["imenio liscio", "su legno"], "Stereum hirsutum"))
+]);
+
+/* ---------- Radice ---------- */
+var KEY = Q("Imenio", "Guarda sotto il cappello. Com'è fatta la superficie che porta le spore?", "Se il fungo non ha un cappello con qualcosa sotto, scegli l'ultima via.", [
+  O("Lamelle", "Foglietti sottili disposti a raggiera", lamelle),
+  O("Tubuli con pori", "Come una spugna di forellini", pori),
+  O("Aculei", "Punte o denti che pendono", aculei),
+  O("Pieghe o venature", "Rilievi bassi, ottusi, spesso ramificati", pieghe),
+  O("Nessun cappello con imenio sotto", "Palle, coppe, clave, gelatine, croste", forme)
+], { noNone: true });
+
+KEY.ref = "imenio"; lamelle.ref = "sporata"; bianca.ref = "volva"; rosa.ref = "volva";
+bianca.opts[1].to.ref = "anello"; terraBianca.ref = "lamelle"; boleti.ref = "gambo";
+
+/* ---------- Indicizzazione ---------- */
+var OPTS = {}, NODES = {}, LEAVES = [], uid = 0;
+function prep(n, parentOpt) {
+  n.id = "n" + (++uid);
+  n.parentOpt = parentOpt || null;
+  NODES[n.id] = n;
+  if (n.q) {
+    if (!n.noNone) {
+      var g = O("Nessuna descrizione mi torna", "Ho dei dubbi, o il fungo è diverso", NONE());
+      g.ghost = true;
+      n.opts.push(g);
+    }
+    n.opts.forEach(function (o, i) {
+      o.id = n.id + "_" + i;
+      o.parent = n;
+      OPTS[o.id] = o;
+      prep(o.to, o);
+    });
+  } else {
+    LEAVES.push(n);
+  }
+}
+prep(KEY, null);
+
+
+/* ===== Stato ===== */
+var $ = function (s) { return document.querySelector(s); };
+var state = { exp: new Set(), multi: new Set(), multiAll: false, detail: new Set(), q: "" };
+var searchExp = new Set(), hitNodes = new Set(), hitOpts = new Set();
+var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+function isOpen(id) { return state.exp.has(id) || searchExp.has(id); }
+function isMulti(nodeId) { return state.multiAll || state.multi.has(nodeId); }
+
+/* ===== Operazioni sull'albero ===== */
+function collapseOpt(o) {
+  state.exp.delete(o.id);
+  if (o.to.q) { state.multi.delete(o.to.id); o.to.opts.forEach(collapseOpt); }
+}
+function expandUnder(n) {
+  if (!n.q) return;
+  state.multi.add(n.id);
+  n.opts.forEach(function (o) { state.exp.add(o.id); expandUnder(o.to); });
+}
+function allOpenUnder(n) {
+  return n.opts.every(function (o) { return isOpen(o.id) && (!o.to.q || allOpenUnder(o.to)); });
+}
+function commitSearch() {
+  if (!state.q) return;
+  searchExp.forEach(function (id) { state.exp.add(id); });
+  clearSearch();
+  $("#q").value = "";
+}
+function clearSearch() { state.q = ""; searchExp = new Set(); hitNodes = new Set(); hitOpts = new Set(); }
+
+function centerOn(optId) {
+  var chip = $('.chip[data-opt="' + optId + '"]');
+  var card = chip && chip.closest ? chip.closest(".branch") : null;
+  card = card && card.querySelector(".card");
+  if (card) card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center", inline: "center" });
+}
+function toggleOpt(id) {
+  commitSearch();
+  var o = OPTS[id];
+  if (state.exp.has(id)) { collapseOpt(o); render(null); centerOn(id); return; }
+  else {
+    if (!isMulti(o.parent.id)) o.parent.opts.forEach(function (s) { if (s !== o) collapseOpt(s); });
+    state.exp.add(id);
+  }
+  render(id);
+}
+function toggleAllUnder(nodeId) {
+  commitSearch();
+  var n = NODES[nodeId];
+  if (allOpenUnder(n)) {
+    n.opts.forEach(collapseOpt);
+    state.multi.delete(n.id);
+  } else expandUnder(n);
+  render(null);
+}
+function resetAll() {
+  state.exp.clear(); state.multi.clear(); state.multiAll = false; state.detail.clear();
+  clearSearch(); $("#q").value = "";
+  render(null);
+}
+function pathInfo() {
+  var out = [], n = KEY;
+  while (n && n.q) {
+    var open = n.opts.filter(function (o) { return state.exp.has(o.id); });
+    if (open.length !== 1) break;
+    out.push(open[0]); n = open[0].to;
+  }
+  return { out: out, end: n };
+}
+function goBack() {
+  commitSearch();
+  var p = pathInfo();
+  if (p.out.length) collapseOpt(p.out[p.out.length - 1]);
+  else { state.exp.clear(); state.multi.clear(); state.multiAll = false; }
+  render(null);
+}
+
+/* ===== Ricerca ===== */
+function addPath(o) { while (o) { searchExp.add(o.id); o = o.parent.parentOpt; } }
+function runSearch(term) {
+  searchExp = new Set(); hitNodes = new Set(); hitOpts = new Set();
+  var t = norm(term.trim());
+  if (t.length < 2) { state.q = ""; return 0; }
+  state.q = t;
+  var n = 0;
+  LEAVES.forEach(function (l) {
+    if (l.none) return;
+    var txt = norm([l.name, l.rank, l.desc, l.feats.join(" "), l.eg].join(" "));
+    if (txt.indexOf(t) > -1) { hitNodes.add(l.id); n++; addPath(l.parentOpt); }
+  });
+  Object.keys(OPTS).forEach(function (k) {
+    var o = OPTS[k];
+    if (o.ghost) return;
+    if (norm(o.l + " " + (o.d || "")).indexOf(t) > -1) { hitOpts.add(o.id); n++; addPath(o.parent.parentOpt); }
+  });
+  Object.keys(NODES).forEach(function (k) {
+    var q = NODES[k];
+    if (!q.q) return;
+    if (norm(q.part + " " + q.text).indexOf(t) > -1) { hitNodes.add(q.id); n++; addPath(q.parentOpt); }
+  });
+  return n;
+}
+
+/* ===== Disegno ===== */
+var GIMG = {
+  "Amanita": ["t213", "Agaricus muscarius e A. caesareus"],
+  "Pleurotus e affini": ["t109", "Agaricus ostreatus"],
+  "Stereum, Chondrostereum e croste del legno": ["t205", "Stereum speciosum"],
+  "Helvella": ["t109", "Helvella panormitana"],
+  "Coprinus e Coprinopsis": ["t217", "Coprinus panormitanus"],
+  "Peziza": ["t117", "Peziza rutilans"]
+};
+function leafImgHTML(n, compact) {
+  if (n.none || compact) return "";
+  var g = GIMG[n.name];
+  if (!g) return '<p class="eg leaf-soon">Tavola storica: in arrivo</p>';
+  return '<button class="leaf-img" type="button" data-plate="' + g[0] + '" aria-label="Apri la tavola storica: ' + esc(g[1]) + '"><img loading="lazy" src="tavole/' + g[0] + '.webp" alt="Tavola storica di Inzenga: ' + esc(g[1]) + '"><small>Tavola storica di Inzenga: <i>' + esc(g[1]) + '</i>. Tocca per aprirla nel libro.</small></button>';
+}
+function leafHTML(n, compact) {
+  var cls = ["card", "res"];
+  if (n.none) cls.push("none");
+  if (hitNodes.has(n.id)) cls.push("hit");
+  if (compact) cls.push("compact");
+  var feats = n.feats.length ? '<ul class="feats">' + n.feats.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" : "";
+  var eg = n.eg ? '<p class="eg"><span>Es.</span> <i>' + esc(n.eg) + "</i></p>" : "";
+  var attrs = compact ? ' data-leaf="' + n.id + '" tabindex="0" role="button" aria-label="Mostra i dettagli di ' + esc(n.name) + '"' : "";
+  return '<div class="' + cls.join(" ") + '"' + attrs + ">" +
+    '<div class="card-top"><span class="rank">' + esc(n.rank) + "</span></div>" +
+    '<h3 class="' + (n.rank === "Genere" ? "latin" : "") + '">' + esc(n.name) + "</h3>" +
+    '<p class="desc">' + esc(n.desc) + "</p>" + leafImgHTML(n, compact) + feats + eg + "</div>";
+}
+function nodeHTML(n, depth, parentMulti) {
+  if (!n.q) return '<div class="branch">' + leafHTML(n, parentMulti && !state.detail.has(n.id)) + "</div>";
+  var multi = isMulti(n.id);
+  var cls = "card q" + (hitNodes.has(n.id) ? " hit" : "");
+  var all = allOpenUnder(n);
+  var h = '<div class="branch"><div class="' + cls + '">' +
+    '<div class="card-top"><span class="part">' + esc(n.part) + '</span><span class="step">' + (depth + 1) + "</span></div>" +
+    "<h3>" + esc(n.text) + "</h3>" +
+    (n.hint ? '<p class="hint">' + esc(n.hint) + "</p>" : "") +
+    (n.ref ? '<button class="openall seeref" type="button" data-ref="' + n.ref + '">Vedi i disegni</button> ' : "") +
+    '<button class="openall" type="button" data-all="' + n.id + '">' + (all ? "Chiudi tutte le vie" : "Apri tutte le vie") + "</button></div>" +
+    '<ul class="edges">';
+  n.opts.forEach(function (o) {
+    var open = isOpen(o.id);
+    var on = open && !multi && !state.q;
+    h += '<li class="edge' + (on ? " on" : "") + '">' +
+      '<button class="chip' + (KIC[o.l] ? " hasic" : "") + (o.ghost ? " ghost" : "") + (hitOpts.has(o.id) ? " hit" : "") + '" type="button" data-opt="' + o.id + '" aria-expanded="' + open + '">' +
+      (KIC[o.l] && icon(KIC[o.l]) ? '<span class="chip-ic" aria-hidden="true">' + icon(KIC[o.l]) + "</span>" : "") +
+      '<span class="chip-t"><b>' + esc(o.l) + "</b><small>" + esc(o.d || "") + '</small></span><span class="chip-i" aria-hidden="true">' + (open ? "−" : "+") + "</span></button>" +
+      (open ? nodeHTML(o.to, depth + 1, multi) : "") + "</li>";
+  });
+  return h + "</ul></div>";
+}
+function renderCrumbs() {
+  var p = pathInfo(), el = $("#crumbs");
+  if (!p.out.length) { el.innerHTML = '<span class="lbl">Percorso</span><span style="color:var(--muted)">Sei all\'inizio: scegli una risposta.</span>'; return; }
+  var h = '<span class="lbl">Percorso</span>';
+  p.out.forEach(function (o, i) {
+    if (i) h += '<span class="sep" aria-hidden="true">›</span>';
+    h += '<button class="crumb" type="button" data-crumb="' + i + '">' + esc(o.l) + "</button>";
+  });
+  if (p.end && !p.end.q) h += '<span class="sep" aria-hidden="true">›</span><span class="crumb-end">' + esc(p.end.name) + "</span>";
+  el.innerHTML = h;
+}
+function render(scrollToOpt) {
+  $("#tree").innerHTML = nodeHTML(KEY, 0, false);
+  renderCrumbs();
+  var hasOpen = state.exp.size > 0 || state.multiAll;
+  $("#back").disabled = !hasOpen && !state.q;
+  $("#openall").textContent = state.multiAll ? "Chiudi tutto" : "Apri tutta la chiave";
+  if (scrollToOpt) {
+    var li = $('.chip[data-opt="' + scrollToOpt + '"]');
+    var card = li && li.parentElement ? li.parentElement.querySelector(".branch > .card") : null;
+    if (card) card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center", inline: "center" });
+  }
+}
+
+
+/* ===== Zoom del diagramma ===== */
+(function () {
+  var stage = $("#stage"), tree = $("#tree"), zoom = 1, t0 = null;
+  function dist(t) { var dx = t[0].clientX - t[1].clientX, dy = t[0].clientY - t[1].clientY; return Math.sqrt(dx * dx + dy * dy); }
+  function setZoom(z, cx, cy) {
+    z = Math.max(0.35, Math.min(1.8, z));
+    var r = stage.getBoundingClientRect(), mx = cx - r.left, my = cy - r.top;
+    var sw = stage.scrollWidth, ax = (stage.scrollLeft + mx) / sw, oh = stage.offsetHeight, ay = my / oh;
+    zoom = z; tree.style.zoom = z;
+    stage.scrollLeft = ax * stage.scrollWidth - mx;
+    var dh = stage.offsetHeight - oh; if (dh) window.scrollBy(0, ay * dh);
+  }
+  stage.addEventListener("touchstart", function (e) { if (e.touches.length === 2) t0 = { d: dist(e.touches), z: zoom }; }, { passive: true });
+  stage.addEventListener("touchmove", function (e) {
+    if (e.touches.length === 2 && t0) {
+      e.preventDefault();
+      setZoom(t0.z * dist(e.touches) / t0.d, (e.touches[0].clientX + e.touches[1].clientX) / 2, (e.touches[0].clientY + e.touches[1].clientY) / 2);
+    }
+  }, { passive: false });
+  stage.addEventListener("touchend", function (e) { if (e.touches.length < 2) t0 = null; }, { passive: true });
+  stage.addEventListener("wheel", function (e) {
+    if (!e.ctrlKey) return;
+    e.preventDefault(); setZoom(zoom * Math.exp(-e.deltaY * 0.01), e.clientX, e.clientY);
+  }, { passive: false });
+})();
+
+/* ===== Eventi della chiave ===== */
+$("#tree").addEventListener("click", function (e) {
+  var chip = e.target.closest("[data-opt]");
+  if (chip) { toggleOpt(chip.getAttribute("data-opt")); return; }
+  var pl = e.target.closest("[data-plate]");
+  if (pl) { e.stopPropagation(); openReader("funghisiciliani00inze", 228, "Funghi siciliani", parseInt(pl.getAttribute("data-plate").slice(1), 10) - 1); return; }
+  var rf = e.target.closest("[data-ref]");
+  if (rf) { curPart = rf.getAttribute("data-ref"); renderParts(); setTab("caratteri", true); window.scrollTo(0, 0); return; }
+  var all = e.target.closest("[data-all]");
+  if (all) { toggleAllUnder(all.getAttribute("data-all")); return; }
+  var leaf = e.target.closest("[data-leaf]");
+  if (leaf) { var id = leaf.getAttribute("data-leaf"); if (state.detail.has(id)) state.detail.delete(id); else state.detail.add(id); render(null); }
+});
+$("#tree").addEventListener("keydown", function (e) {
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-leaf]")) { e.preventDefault(); e.target.click(); }
+});
+$("#crumbs").addEventListener("click", function (e) {
+  var c = e.target.closest("[data-crumb]");
+  if (!c) return;
+  var p = pathInfo(), o = p.out[Number(c.getAttribute("data-crumb"))];
+  if (o && o.to.q) o.to.opts.forEach(collapseOpt);
+  render(null);
+});
+$("#back").addEventListener("click", goBack);
+$("#reset").addEventListener("click", resetAll);
+$("#openall").addEventListener("click", function () {
+  if (state.multiAll) { resetAll(); return; }
+  commitSearch();
+  expandUnder(KEY); state.multiAll = true;
+  render(null);
+});
+$("#q").addEventListener("input", function (e) {
+  var n = runSearch(e.target.value);
+  var st = $("#status");
+  if (!state.q) st.textContent = "";
+  else if (!n) st.textContent = "Nessuna corrispondenza. Prova con un'altra parola.";
+  else st.textContent = n + (n === 1 ? " corrispondenza evidenziata nella chiave." : " corrispondenze evidenziate nella chiave.");
+  render(null);
+  if (state.q && n) { var h = document.querySelector("#tree .hit"); if (h) h.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center", inline: "center" }); }
+});
+
+/* ===== Caratteri ===== */
+/* ===== Disegni: tratto continuo, forme naturali ===== */
+function svgI(w, h, inner) { return '<svg class="ic" viewBox="0 0 ' + w + " " + h + '" aria-hidden="true">' + inner + "</svg>"; }
+/* deformazione organica: stesso campo liscio per tutte le coordinate, cosi i tratti restano coerenti */
+var WARP = 1.6;
+function wp(x, y) {
+  return [x + WARP * (0.6 * Math.sin(0.27 * x + 0.15 * y + 1.3) + 0.4 * Math.sin(0.12 * y - 0.21 * x + 4.1)),
+          y + WARP * (0.6 * Math.sin(0.19 * x - 0.24 * y + 2.2) + 0.4 * Math.sin(0.14 * x + 0.17 * y + 0.7))];
+}
+function warp(d) {
+  return d.replace(/([MLCQ])([^MLCQZHVmlcqzhv]*)/g, function (m, c, b) {
+    var n = b.match(/-?\d*\.?\d+/g);
+    if (!n || n.length % 2) return m;
+    var o = [];
+    for (var i = 0; i < n.length; i += 2) { var q = wp(+n[i], +n[i + 1]); o.push(q[0].toFixed(1) + " " + q[1].toFixed(1)); }
+    return c + o.join(" ");
+  });
+}
+function P(d, c) { d = warp(d); return "<path" + (c ? ' class="' + c + '"' : "") + ' d="' + d + '"/>'; }
+function G(inner, tr) { return "<g" + (tr ? ' transform="' + tr + '"' : "") + ">" + inner + "</g>"; }
+function mir(inner, w) { return G(inner, "translate(" + w + " 0) scale(-1 1)"); }
+var ICONS = {};
+
+/* ---------- Cappello: forme (profilo) ---------- */
+var SHN = 0;
+function shade(d, dx, dy) {
+  var id = "sh" + (++SHN), w = warp(d);
+  return '<clipPath id="c' + id + '"><path d="' + w + '"/></clipPath>' +
+    '<mask id="m' + id + '" maskUnits="userSpaceOnUse" x="-20" y="-20" width="170" height="200"><rect x="-20" y="-20" width="170" height="200" style="fill:#fff;stroke:none"/>' +
+    '<path class="mk" transform="translate(' + (dx || -8) + " " + (dy || -4) + ')" style="fill:#000;stroke:none" d="' + w + '"/></mask>' +
+    '<g clip-path="url(#c' + id + ')"><rect class="sh" x="-10" y="-10" width="150" height="190" mask="url(#m' + id + ')"/></g>' + P(d, "ln");
+}
+var STUB = '<path class="fl" d="M52 60C51 68 51 74 52 80L68 80C69 74 69 68 68 60Z"/>';
+function gstrip(xl, xr, yb) {
+  var w = xr - xl;
+  return "M" + xl + " " + yb + "C" + (xl + w * .12) + " " + (yb - 3) + " " + (xl + w * .3) + " " + (yb - 2) + " " + (xl + w * .4) + " " + (yb - 1) +
+    "L" + (xr - w * .4) + " " + (yb - 1) + "C" + (xr - w * .3) + " " + (yb - 2) + " " + (xr - w * .12) + " " + (yb - 3) + " " + xr + " " + yb +
+    "C" + (xr - 3) + " " + (yb + 5) + " " + (xr - w * .16) + " " + (yb + 8) + " " + (xr - w * .3) + " " + (yb + 5) +
+    "C" + (xr - w * .4) + " " + (yb + 2) + " " + (xl + w * .4) + " " + (yb + 2) + " " + (xl + w * .3) + " " + (yb + 5) +
+    "C" + (xl + w * .16) + " " + (yb + 8) + " " + (xl + 3) + " " + (yb + 5) + " " + xl + " " + yb + "Z";
+}
+var CAPGS = { emisferico: [12, 108, 61], convesso: [8, 112, 59], piano: [8, 112, 55], campanulato: [24, 96, 63], conico: [24, 96, 63], umbonato: [8, 112, 59] };
+function capFig(d, extra, noStub, gs) {
+  var g = gs ? P(gstrip(gs[0], gs[1], gs[2]), "gi") + P(gstrip(gs[0], gs[1], gs[2]), "lam") : "";
+  return svgI(120, 84, g + (noStub ? "" : STUB) + P(d, "cap") + shade(d, -9, -4) + (extra || ""));
+}
+var CAPSH = {
+  emisferico: "M12 62C8 26 32 8 60 8C88 8 112 26 108 62C96 58 84 59 74 61L46 61C36 59 24 58 12 62Z",
+  convesso: "M8 60C10 34 34 18 60 18C86 18 110 34 112 60C98 56 84 57 72 59L48 59C36 57 22 56 8 60Z",
+  piano: "M6 54C20 42 40 38 60 38C80 38 100 42 114 54C100 52 84 54 72 57L48 57C36 54 20 52 6 54Z",
+  campanulato: "M24 64C20 34 36 8 60 8C84 8 100 34 96 64C86 62 78 63 72 64L48 64C42 63 34 62 24 64Z",
+  conico: "M24 64C32 44 48 20 60 6C72 20 88 44 96 64C86 62 78 63 72 64L48 64C42 63 34 62 24 64Z",
+  umbonato: "M8 60C10 40 32 28 50 25C52 14 56 8 60 8C64 8 68 14 70 25C88 28 110 40 112 60C98 56 84 57 72 59L48 59C36 57 22 56 8 60Z"
+};
+Object.keys(CAPSH).forEach(function (k) { ICONS["cap:" + k] = capFig(CAPSH[k], "", false, CAPGS[k]); });
+ICONS["cap:imbutiforme"] = svgI(120, 84,
+  P("M6 22C20 10 44 8 60 12C76 8 100 10 114 22C100 34 80 38 60 38C40 38 20 34 6 22Z", "gi") +
+  P("M6 22C8 34 24 42 44 46C52 50 53 66 52 82L68 82C67 66 68 50 76 46C96 42 112 34 114 22C100 34 80 38 60 38C40 38 20 34 6 22Z", "cap") +
+  P("M16 22C30 14 46 12 58 14", "hi") + P("M30 40C34 44 40 46 44 47", "tn"));
+/* ---------- Cappello: superficie (texture dentro il profilo convesso) ---------- */
+function texFig(inner) { return svgI(120, 84, STUB + P(CAPSH.convesso, "cap") + G(inner, 'clip-path="url(#cp-conv)"'.replace('clip-path="url(#cp-conv)"', "")) + ""); }
+function texG(inner) { return '<clipPath id="cp-conv"><path d="' + warp(CAPSH.convesso) + '"/></clipPath><g clip-path="url(#cp-conv)">' + inner + "</g>"; }
+function surfFig(inner, after) { return svgI(120, 84, STUB + P(CAPSH.convesso, "cap") + texG(inner) + P(CAPSH.convesso, "ol") + (after || "")); }
+var fibre = "", scal = "";
+for (var fi = 0; fi < 17; fi++) {
+  var fa = (-80 + fi * 10) * Math.PI / 180;
+  fibre += "M" + (60 + 6 * Math.sin(fa)).toFixed(1) + " 22L" + (60 + 62 * Math.sin(fa)).toFixed(1) + " " + (22 + 52 * Math.cos(fa)).toFixed(1);
+}
+for (var sr = 0; sr < 5; sr++) { for (var sc = 0; sc < 9; sc++) { scal += "M" + (10 + sc * 12 + (sr % 2) * 6) + " " + (26 + sr * 8) + "q5 7 11 0"; } }
+ICONS["sup:liscia"] = surfFig(P("M24 36C32 26 46 21 62 22", "hi") + P("M70 24C80 26 90 32 96 42", "tn"));
+ICONS["sup:viscida"] = surfFig(P("M24 36C32 26 46 21 62 22", "hi") + P("M70 24C80 26 90 32 96 42", "hi") + P("M30 46C34 40 40 38 46 40", "hi"),
+  P("M32 58C31 64 32 68 35 69C38 67 38 63 37 58", "dr") + P("M64 58C63 66 64 72 67 73C70 71 70 66 69 59", "dr") + P("M90 57C89 62 90 65 92 65C94 64 94 61 93 57", "dr"));
+ICONS["sup:fibrillosa"] = surfFig(P(fibre, "tn"));
+ICONS["sup:squamosa"] = surfFig(P(scal, "tn"));
+ICONS["sup:vellutata"] = surfFig(P("M0 0H120V84H0Z", "fz"));
+ICONS["sup:screpolata"] = surfFig(P("M40 22L48 32L42 42L50 52M48 32L62 28L68 40L58 50M62 28L72 20M68 40L82 38L90 48M82 38L88 28L100 30M42 42L28 44L22 52M58 50L66 60M90 48L100 54", "tn"));
+
+/* ---------- Cappello: margine ---------- */
+function rimFig(d, extra) { return svgI(120, 84, P(d, "cap") + P("M24 34C34 24 46 20 58 19", "hi") + (extra || "")); }
+ICONS["mar:involuto"] = rimFig("M8 56C8 34 30 18 60 18C90 18 112 34 112 56C114 66 104 70 98 64C94 60 100 56 102 54C84 52 72 56 60 56C48 56 36 52 18 54C20 56 26 60 22 64C16 70 6 66 8 56Z");
+ICONS["mar:disteso"] = rimFig("M6 58C10 36 32 20 60 20C88 20 110 36 114 58C98 54 82 56 70 58L50 58C38 56 22 54 6 58Z");
+ICONS["mar:appendicolato"] = rimFig("M8 56C10 34 32 18 60 18C88 18 110 34 112 56C98 52 84 54 72 56L48 56C36 54 22 52 8 56Z",
+  P("M14 56L10 70L20 62L22 74L30 60L38 72L42 58M78 58L84 72L90 60L98 72L102 58L110 66L112 56", "fl"));
+var strr = "";
+for (var ri = 0; ri < 36; ri++) { var ra = ri * 10 * Math.PI / 180; strr += "M" + (60 + 26 * Math.cos(ra)).toFixed(1) + " " + (42 + 26 * Math.sin(ra) * 0.72).toFixed(1) + "L" + (60 + 38 * Math.cos(ra)).toFixed(1) + " " + (42 + 38 * Math.sin(ra) * 0.72).toFixed(1); }
+ICONS["mar:striato"] = svgI(120, 84, P("M60 8C92 8 114 22 114 42C114 62 92 76 60 76C28 76 6 62 6 42C6 22 28 8 60 8Z", "cap") + P(strr, "tn") + P("M44 26C52 20 62 18 72 20", "hi"));
+
+/* ---------- Imenio: tipi ---------- */
+var rad = "";
+for (var li = 0; li < 40; li++) { var la = li * 9 * Math.PI / 180; rad += "M" + (60 + 9 * Math.cos(la)).toFixed(1) + " " + (42 + 9 * Math.sin(la) * 0.7).toFixed(1) + "L" + (60 + 47 * Math.cos(la)).toFixed(1) + " " + (42 + 47 * Math.sin(la) * 0.7).toFixed(1); }
+var bellow = P("M60 6C94 6 116 20 116 42C116 64 94 78 60 78C26 78 4 64 4 42C4 20 26 6 60 6Z", "gi");
+ICONS["him:lamelle"] = svgI(120, 84, bellow + P(rad, "tn") + P("M60 32C66 32 70 36 70 42C70 48 66 52 60 52C54 52 50 48 50 42C50 36 54 32 60 32Z", "fl"));
+ICONS["him:tubuli"] = svgI(120, 84, P("M60 6C94 6 116 20 116 42C116 64 94 78 60 78C26 78 4 64 4 42C4 20 26 6 60 6Z", "gi") + P("M60 6C94 6 116 20 116 42C116 64 94 78 60 78C26 78 4 64 4 42C4 20 26 6 60 6Z", "po") + P("M60 32C66 32 70 36 70 42C70 48 66 52 60 52C54 52 50 48 50 42C50 36 54 32 60 32Z", "fl"));
+var spk = "";
+for (var ai = 0; ai < 13; ai++) { var ax = 14 + ai * 8; spk += "M" + ax + " 50L" + (ax + 4) + " " + (66 + (ai % 3)) + "L" + (ax + 8) + " 50"; }
+ICONS["him:aculei"] = svgI(120, 84, P("M8 52C10 28 32 12 60 12C88 12 110 28 112 52C98 48 84 50 72 52L48 52C36 50 22 48 8 52Z", "cap") + P(spk, "gi") + P("M26 28C34 20 46 16 58 15", "hi"));
+ICONS["him:pieghe"] = svgI(120, 84,
+  P("M60 44C60 56 58 70 58 80L62 80C62 70 60 56 60 44Z", "fl") +
+  P("M4 20C16 22 26 30 34 40C40 48 52 58 60 66C68 58 80 48 86 40C94 30 104 22 116 20C100 38 82 46 60 46C38 46 20 38 4 20Z", "cap") +
+  P("M30 38C38 50 48 58 56 66M42 42C46 52 52 60 58 68M78 42C74 52 68 60 62 68M90 38C82 50 72 58 64 66M54 62C52 56 48 52 44 50M66 62C68 56 72 52 76 50", "tn"));
+ICONS["him:liscio"] = svgI(120, 84, P("M14 6C10 30 10 56 14 80L26 80C24 56 24 30 26 6Z", "fl") + P("M26 30C40 20 76 18 108 30C108 36 106 40 104 44C78 38 48 40 26 50Z", "cap") + P("M28 48C48 40 78 38 104 44", "tn") + P("M34 28C48 22 68 21 88 25", "hi"));
+ICONS["him:gleba"] = svgI(120, 84, P("M60 8C88 8 108 26 108 46C108 66 90 76 74 78C72 82 72 84 70 84L50 84C48 84 48 82 46 78C30 76 12 66 12 46C12 26 32 8 60 8Z", "cap") + P("M60 22C78 22 94 32 94 46C94 60 80 68 60 68C40 68 26 60 26 46C26 32 42 22 60 22Z", "fl") + P("M60 22C78 22 94 32 94 46C94 60 80 68 60 68C40 68 26 60 26 46C26 32 42 22 60 22Z", "fz") + P("M32 20C40 14 50 11 58 11", "hi"));
+
+/* ---------- Sezione cappello e gambo: lamelle e tubuli (a sinistra e a destra del gambo) ---------- */
+var SEC_ARC = "M4 54C8 28 32 8 60 8C88 8 112 28 116 54";
+function secFig(gl, tube) {
+  var base = tube ? "fl" : "gi", over = tube ? "tub" : "";
+  var one = P(gl, base) + (over ? P(gl, over) : "") + P(gl, "ln");
+  return svgI(120, 104, P("M54 24L54 100M66 24L66 100", "ln") + one + mir(one, 120) + P(SEC_ARC, "ln"));
+}
+var GILLS = {
+  distanti: "M112 52C104 40 94 33 82 31C75 34 75 48 82 55C94 58 104 57 112 52Z",
+  libere: "M112 52C104 40 90 31 71 28C69 38 69 48 71 57C90 59 104 57 112 52Z",
+  adnate: "M112 52C104 40 90 31 66 27L66 56C84 58 102 57 112 52Z",
+  secedenti: "M112 52C104 40 90 31 66 27L66 40L71 46L71 57C90 59 104 57 112 52Z",
+  rotondate: "M112 52C104 40 90 31 66 27L66 46C70 56 80 59 92 58C102 57 108 55 112 52Z",
+  smarginate: "M112 52C104 40 90 31 66 27L66 48C71 50 77 52 79 60C93 61 105 58 112 52Z",
+  sinuose: "M112 52C104 40 90 31 66 27L66 52C72 55 76 62 85 60C91 58 92 53 98 56C104 59 109 56 112 52Z",
+  dentino: "M112 52C104 40 90 31 66 27L66 66L73 58C86 60 102 58 112 52Z",
+  decorrenti: "M112 52C104 40 90 31 66 27L66 90C72 70 92 60 112 52Z",
+  diritto: "M112 52C104 40 90 31 66 27L66 66L112 52Z",
+  strette: "M112 52C100 42 84 36 66 34L66 45C84 48 100 52 112 52Z",
+  acute: "M112 54C96 44 82 36 66 31L66 54C84 56 100 57 112 54Z",
+  ottuse: "M112 48C112 40 100 34 84 31C77 30 70 29 66 29L66 58C84 62 106 58 112 48Z",
+  ventricose: "M112 52C104 38 88 28 66 25L66 68C90 72 108 62 112 52Z",
+  arcuate: "M112 52C104 40 90 31 66 27C64 44 70 56 82 61C96 63 108 58 112 52Z"
+};
+Object.keys(GILLS).forEach(function (k) { ICONS["att:" + k] = secFig(GILLS[k], false); });
+var TUBES = {
+  distanti: "M110 46C108 38 100 34 90 34L80 34C76 40 76 54 80 60L90 60C100 60 108 56 110 46Z",
+  adnati: "M112 50C106 40 90 32 66 29L66 62C84 64 104 60 112 50Z",
+  decorrenti: "M112 50C106 40 90 32 66 29L66 94C70 76 92 64 112 50Z"
+};
+Object.keys(TUBES).forEach(function (k) { ICONS["tub:" + k] = secFig(TUBES[k], true); });
+
+/* ---------- Gambo ---------- */
+var CAPF = "M16 42C12 20 34 6 60 6C86 6 108 20 104 42C94 38 82 38 72 40L48 40C38 38 26 38 16 42Z";
+var GSTRIP = "M18 41C28 38 38 39 48 41L72 41C82 39 94 38 102 41C100 49 90 53 80 50C72 47 68 46 60 46C52 46 48 47 40 50C30 53 20 49 18 41Z";
+var CAPF_X = P(CAPF, "cap") + shade(CAPF, -9, -4);
+var CLIPN = 0;
+function fibrils(d) {
+  var id = "fb" + (++CLIPN), f = "";
+  for (var x = 34; x < 90; x += 5.5) { var o = ((x * 7) % 5) - 2.5; f += "M" + x + " 38C" + (x + o) + " 70 " + (x - o) + " 104 " + (x + o * .6) + " 148"; }
+  return '<clipPath id="' + id + '"><path d="' + warp(d) + '"/></clipPath><g clip-path="url(#' + id + ')">' + P(f, "fib") + "</g>";
+}
+function stemFig(d, extra) { return svgI(120, 150, P(GSTRIP, "gi") + P(GSTRIP, "lam") + P(d, "fl") + fibrils(d) + (extra || "") + CAPF_X); }
+var STEMS = {
+  cilindrico: "M50 36C49 70 50.5 110 50 140C56 144 64 144 70 140C69.5 110 71 70 70 36Z",
+  clavato: "M52 36C51 70 48 92 42 112C38 126 44 142 60 144C76 142 82 126 78 112C72 92 69 70 68 36Z",
+  bulboso: "M54 36C53 76 54 96 54 104C40 108 34 122 40 136C46 146 74 146 80 136C86 122 80 108 66 104C66 96 67 76 66 36Z",
+  fusiforme: "M52 36C48 70 44 110 60 146C76 110 72 70 68 36Z",
+  radicante: "M53 36C52 70 54 100 56 112C58 124 54 134 60 148C66 134 62 124 64 112C66 100 68 70 67 36Z",
+  attalto: "M55 36C54 70 48 110 44 142C52 146 68 146 76 142C72 110 66 70 65 36Z",
+  attbasso: "M46 36C50 70 54 110 56 144C58 147 62 147 64 144C66 110 70 70 74 36Z",
+  flessuoso: "M52 36C46 56 56 72 52 92C48 112 58 126 54 144L64 144C68 126 58 112 62 92C66 72 56 56 68 36Z",
+  arcuato: "M52 36C50 76 56 108 78 132L86 124C70 110 70 76 68 36Z",
+  inguainato: "M52 36C51 70 52 100 52 108L44 112C42 126 44 140 48 144L72 144C76 140 78 126 76 112L68 108C68 100 69 70 68 36Z",
+  ventricoso: "M50 36C36 70 34 110 48 144L72 144C86 110 84 70 70 36Z"
+};
+Object.keys(STEMS).forEach(function (k) { ICONS["gam:" + k] = stemFig(STEMS[k], k === "bulboso" ? P("M54 104C58 108 62 108 66 104", "tn") : ""); });
+var CYL = "M50 36C49 70 50.5 110 50 140C56 144 64 144 70 140C69.5 110 71 70 70 36Z";
+ICONS["gam:reticolato"] = stemFig(CYL, P(CYL, "sf-net"));
+ICONS["gam:rugoso"] = stemFig(CYL, P(CYL, "sf-wave"));
+ICONS["gam:vellutato"] = stemFig(CYL, P(CYL, "fz"));
+ICONS["gam:scrobicolato"] = stemFig(CYL, P(CYL, "sf-ring"));
+ICONS["gam:zonato"] = stemFig(CYL, P(CYL, "sf-band"));
+ICONS["gam:centrale"] = stemFig(STEMS.cilindrico);
+ICONS["gam:eccentrico"] = svgI(120, 150, P("M72 36C71 70 72.5 110 72 140C78 144 86 144 92 140C91.5 110 93 70 92 36Z", "fl") +
+  P("M10 42C6 20 28 6 52 6C76 6 98 20 94 42C84 38 74 38 64 40L40 40C30 38 20 38 10 42Z", "cap") + P("M16 40C28 46 38 46 44 40", "tn") + P("M20 26C30 16 40 11 52 10", "hi"));
+ICONS["gam:laterale"] = svgI(120, 150, P("M4 8L26 8L26 142L4 142Z", "bark") +
+  P("M26 62C30 56 36 54 44 56L50 66C42 66 34 68 26 74Z", "fl") +
+  P("M26 58C34 36 62 24 92 28C112 32 118 50 108 62C90 58 62 60 38 72C34 70 30 66 26 58Z", "cap") + P("M44 42C58 34 76 32 92 36", "hi") + P("M44 68C62 62 84 62 104 64", "tn"));
+ICONS["gam:eterogeneo"] = svgI(120, 150,
+  P("M52 44C51 62 46 76 46 96C46 116 42 130 38 140C50 146 72 146 82 140C78 130 74 116 74 96C74 76 69 62 68 44Z", "fl") +
+  P("M14 36C10 14 32 2 60 2C88 2 110 14 106 36C96 32 84 32 72 34L48 34C36 32 24 32 14 36Z", "cap") + P("M28 22C38 12 50 7 60 6", "hi") +
+  P("M52 44L68 44", "tn") + P("M47 92C56 96 64 96 73 92", "tn") + P("M43 124C54 128 66 128 77 124", "tn"));
+ICONS["gam:omogeneo"] = svgI(120, 150, P("M10 44C8 22 30 6 60 6C90 6 112 22 110 44C100 42 88 42 78 46C72 49 70 50 70 54C71 90 70 120 71 142C64 148 56 148 49 142C50 120 49 90 50 54C50 50 48 49 42 46C32 42 20 42 10 44Z", "fl") +
+  P("M10 44C8 22 30 6 60 6C90 6 112 22 110 44", "skin") + P("M26 24C36 14 48 9 60 8", "hi"));
+
+/* interno del gambo (sezione) */
+var SEC_OUT = "M10 44C8 22 30 6 60 6C90 6 112 22 110 44C100 42 90 42 80 45C72 47 68 46 66 48L66 140C62 143 58 143 54 140L54 48C52 46 48 47 40 45C30 42 20 42 10 44Z";
+var SEC_THIN = "M10 44C8 22 30 6 60 6C90 6 112 22 110 44C100 42 90 42 80 45C72 47 64 48 63 50L63 140C61 143 59 143 57 140L57 50C56 48 48 47 40 45C30 42 20 42 10 44Z";
+function intFig(outline, inner) { return svgI(120, 150, P(outline, "fl") + P("M10 44C8 22 30 6 60 6C90 6 112 22 110 44", "skin") + inner + P("M26 24C36 14 48 9 60 8", "hi")); }
+ICONS["int:pieno"] = intFig(SEC_OUT, P("M54 50L54 138L66 138L66 50Z", "fz"));
+ICONS["int:cavo"] = intFig(SEC_OUT, P("M58 48L58 136C60 138 62 138 62 136L62 48C61 46 59 46 58 48Z", "hole"));
+ICONS["int:cavernoso"] = intFig(SEC_OUT, P("M56 58C54 64 58 70 61 68C64 64 62 58 56 58ZM58 78C55 86 59 94 63 90C65 84 63 78 58 78ZM56 100C54 108 58 116 62 112C65 106 62 100 56 100Z", "hole"));
+ICONS["int:fistoloso"] = intFig(SEC_THIN, P("M59.5 52L59.5 138L60.5 138L60.5 52Z", "hole"));
+ICONS["int:corticato"] = intFig(SEC_OUT, P("M57 50L57 136L63 136L63 50Z", "core"));
+
+/* bulbi */
+var BULBS = {
+  depresso: "M54 0L54 22C34 24 18 34 20 54C22 70 40 78 60 78C80 78 98 70 100 54C102 34 86 24 66 22L66 0",
+  subglobuloso: "M54 0L54 14C32 18 26 36 28 56C30 76 46 84 60 84C74 84 90 76 92 56C94 36 88 18 66 14L66 0",
+  napiforme: "M54 0L54 14C36 20 30 34 34 50C38 66 52 78 60 88C68 78 82 66 86 50C90 34 84 20 66 14L66 0",
+  turbinato: "M54 0L54 14C34 14 18 18 16 28C18 48 40 70 56 86L64 86C80 70 102 48 104 28C102 18 86 14 66 14L66 0",
+  marginato: "M54 0L54 16L14 26C16 44 30 62 46 76C54 82 58 84 60 84C62 84 66 82 74 76C90 62 104 44 106 26L66 16L66 0"
+};
+Object.keys(BULBS).forEach(function (k) { ICONS["bul:" + k] = svgI(120, 92, P(BULBS[k], "fl") + P("M30 44C34 58 44 70 56 76M40 40C46 56 56 66 68 70", "tn") + P("M34 30C42 24 52 22 60 22", "hi")); });
+
+/* ---------- Anello ---------- */
+var STEM_R = P("M52 0C51 30 53 70 52 100L68 100C67 70 69 30 68 0Z", "fl");
+var RINGS = {
+  rudimentale: P("M48 38C54 35 66 35 72 38L72 44C66 47 54 47 48 44Z", "cap"),
+  ampio: P("M52 26C46 40 34 56 26 70C42 78 78 78 94 70C86 56 74 40 68 26Z", "cap") + P("M44 52C48 62 48 70 46 74M60 56L60 76M76 52C72 62 72 70 74 74", "tn"),
+  doppio: P("M52 44C46 58 34 72 26 82C42 90 78 90 94 82C86 72 74 58 68 44Z", "cap") + P("M52 20C48 30 40 42 36 50C46 56 74 56 84 50C80 42 72 30 68 20Z", "cap"),
+  striato: P("M52 26C46 40 34 56 26 70C42 78 78 78 94 70C86 56 74 40 68 26Z", "cap") + P("M36 58L33 72M44 60L42 75M52 62L51 76M60 62L60 77M68 62L69 76M76 60L78 75M84 58L87 72", "tn"),
+  frangiato: P("M52 26C46 40 34 56 26 70L32 78L38 70L44 80L50 71L56 80L62 71L68 80L74 70L80 78L86 70L94 70C86 56 74 40 68 26Z", "cap"),
+  armilla: P("M46 40C54 36 66 36 74 40L74 56C66 60 54 60 46 56Z", "cap") + P("M48 52C56 55 64 55 72 52", "tn"),
+  riflesso: P("M50 58C42 48 40 36 46 28C54 32 66 32 74 28C80 36 78 48 70 58Z", "cap") + P("M48 34C54 38 66 38 72 34", "tn"),
+  mobile: P("M46 40C54 36 66 36 74 40L74 52C66 56 54 56 46 52Z", "cap") + P("M92 26L92 74M86 34L92 26L98 34M86 66L92 74L98 66", "ar")
+};
+Object.keys(RINGS).forEach(function (k) { ICONS["ann:" + k] = svgI(120, 100, STEM_R + RINGS[k]); });
+var cort = "";
+for (var ci = 0; ci < 8; ci++) { cort += "M" + (22 + ci * 4) + " 42C" + (34 + ci * 3) + " " + (50 + ci * 2) + " " + (46 + ci) + " " + (50 + ci) + " 52 " + (56 + ci * 2); cort += "M" + (98 - ci * 4) + " 42C" + (86 - ci * 3) + " " + (50 + ci * 2) + " " + (74 - ci) + " " + (50 + ci) + " 68 " + (56 + ci * 2); }
+ICONS["ann:cortina"] = svgI(120, 100, STEM_R + P("M8 40C10 18 32 6 60 6C88 6 110 18 112 40C100 36 88 38 78 40L42 40C32 38 20 36 8 40Z", "cap") + P(cort, "tn"));
+
+/* ---------- Volva ---------- */
+var VST = P("M52 0C51 14 52 30 52 40L68 40C68 30 69 14 68 0Z", "fl");
+var VB = "M52 36C34 42 28 62 32 80C38 98 50 104 60 104C70 104 82 98 88 80C92 62 86 42 68 36Z";
+ICONS["vol:libera"] = svgI(120, 110, VST + P("M52 0L52 36C40 30 28 38 26 56C24 76 38 100 60 102C82 100 96 76 94 56C92 38 80 30 68 36L68 0", "cap") + P("M44 40C48 44 52 44 52 36M76 40C72 44 68 44 68 36", "tn") + P("M38 52C34 62 34 74 40 84", "hi"));
+ICONS["vol:inguainante"] = svgI(120, 110, VST + P("M52 0L52 18L46 30L42 20C30 34 28 56 32 74C38 94 50 102 60 102C70 102 82 94 88 74C92 56 90 34 78 20L74 30L68 18L68 0", "cap") + P("M40 48C38 58 38 68 42 78", "hi"));
+ICONS["vol:circoncisa"] = svgI(120, 110, VST + P("M52 0L52 34L36 34L36 40C28 54 28 76 40 90C48 100 54 102 60 102C66 102 72 100 80 90C92 76 92 54 84 40L84 34L68 34L68 0", "cap") + P("M36 40L84 40", "tn") + P("M40 54C38 64 38 74 44 84", "hi"));
+ICONS["vol:anelli"] = svgI(120, 110, VST + P("M52 0L52 38C34 44 28 64 32 82C38 98 50 104 60 104C70 104 82 98 88 82C92 64 86 44 68 38L68 0", "cap") + P("M34 54C50 62 70 62 86 54M30 70C48 80 72 80 90 70M34 88C48 96 72 96 86 88", "tn"));
+var wart = "";
+[[34, 56], [48, 50], [62, 56], [76, 52], [40, 70], [56, 74], [72, 70], [84, 66], [46, 88], [64, 90], [78, 84]].forEach(function (w) { wart += '<ellipse class="dot" cx="' + w[0] + '" cy="' + w[1] + '" rx="3.2" ry="2.4"/>'; });
+ICONS["vol:verruche"] = svgI(120, 110, VST + P("M52 0L52 38C34 44 28 64 32 82C38 98 50 104 60 104C70 104 82 98 88 82C92 64 86 44 68 38L68 0", "cap") + wart);
+ICONS["vol:evanescente"] = svgI(120, 110, VST + P("M52 0L52 38C34 44 28 64 32 82C38 98 50 104 60 104C70 104 82 98 88 82C92 64 86 44 68 38L68 0", "cap") + '<ellipse class="dot" cx="46" cy="64" rx="2" ry="1.6" opacity=".45"/><ellipse class="dot" cx="66" cy="80" rx="2" ry="1.6" opacity=".45"/><ellipse class="dot" cx="56" cy="92" rx="2" ry="1.6" opacity=".45"/>');
+
+/* ---------- Carne ---------- */
+function frag(d) { return P(d, "fl"); }
+ICONS["car:fragile"] = svgI(120, 100,
+  frag("M42 6L42 40L48 44L54 39L60 46L67 40L73 45L78 40L78 6Z") +
+  frag("M42 94L42 66L48 62L55 67L61 61L68 66L74 62L78 66L78 94Z") +
+  frag("M54 52L58 51L59 55L55 56Z") + frag("M66 54L70 53L70 57L66 58Z") + frag("M48 54L51 53L52 56L49 57Z"));
+ICONS["car:soda"] = svgI(120, 100, frag("M42 6L42 46L78 42L78 6Z") + frag("M42 58L78 54L78 94L42 94Z") + P("M38 50L82 46", "tn"));
+ICONS["car:fibrosa"] = svgI(120, 100, frag("M42 6L42 42C46 46 50 44 52 48L58 44L64 48L70 44C74 46 78 44 78 42L78 6Z") + frag("M42 94L42 62C46 58 50 60 52 56L58 60L64 56L70 60C74 58 78 60 78 62L78 94Z") + P("M48 50C46 53 50 56 48 58M54 48C52 52 56 56 54 60M60 48C58 52 62 56 60 60M66 48C64 52 68 56 66 60M72 49C70 53 74 56 72 58", "tn"));
+ICONS["car:elastica"] = svgI(120, 100, frag("M34 92C34 54 48 32 82 28L88 24L88 40L84 44C62 48 52 62 52 92Z") + P("M80 22C92 20 100 26 104 36", "ar"));
+ICONS["car:gelatinosa"] = svgI(120, 100, P("M24 70C16 48 30 26 54 24C68 12 98 20 96 44C108 62 92 84 68 82C54 92 30 88 24 70Z", "gel") + P("M38 38C44 30 54 28 62 30", "hi") + P("M44 70C54 74 66 74 78 66", "tn"));
+ICONS["car:legnosa"] = svgI(120, 100, P("M10 6C8 36 8 66 10 94L24 94C22 66 22 36 24 6Z", "fl") + P("M24 40C44 24 82 22 110 38L110 56C82 50 50 56 24 66Z", "cap") + P("M34 44C54 34 80 34 102 44M32 52C54 44 80 44 104 50", "tn") + P("M34 36C50 30 72 28 92 32", "hi"));
+var cutc = "M44 20C54 12 66 12 76 20C80 30 76 44 66 50L66 90L54 90L54 50C44 44 40 30 44 20Z";
+function cutFig(cls) {
+  return svgI(120, 100, P("M10 46C8 24 30 8 60 8C90 8 112 24 110 46C100 44 90 44 80 47C74 49 68 48 66 50L66 94C62 97 58 97 54 94L54 50C52 48 46 49 40 47C30 44 20 44 10 46Z", "fl") +
+    (cls ? P(cutc, cls) : "") + P("M10 46C8 24 30 8 60 8C90 8 112 24 110 46", "skin") + P("M28 24C38 14 50 10 60 10", "hi"));
+}
+ICONS["car:nessuno"] = cutFig("");
+ICONS["car:blu"] = cutFig("cb");
+ICONS["car:rosso"] = cutFig("cr");
+ICONS["car:giallo"] = cutFig("cy");
+ICONS["car:nero"] = cutFig("cn");
+function latFig(drops, cls) {
+  return svgI(120, 100, P("M6 30C6 14 28 4 60 4C92 4 114 14 114 30C100 28 84 30 72 32L48 32C36 30 20 28 6 30Z", "cap") +
+    P("M14 32L18 54M26 33L30 58M38 34L42 62M50 34L53 62M62 34L62 64M74 34L71 62M86 33L82 58M98 32L94 54", "tn") + (drops ? P("M42 66C38 74 36 78 42 82C48 78 46 74 42 66Z", cls) + P("M70 70C66 78 64 82 70 86C76 82 74 78 70 70Z", cls) : ""));
+}
+ICONS["lat:assente"] = latFig(false);
+ICONS["lat:bianco"] = latFig(true, "dw");
+ICONS["lat:colorato"] = latFig(true, "dc");
+
+/* ---------- Odore ---------- */
+function sc3(x) { return P("M" + x + " 8C" + (x - 5) + " 14 " + (x + 5) + " 18 " + x + " 24", "tn"); }
+ICONS["odo:farinoso"] = svgI(100, 90, P("M32 26C26 36 22 54 26 72C40 82 66 82 76 72C80 54 76 36 70 26Z", "fl") + P("M30 28C42 20 60 20 72 28", "tn") + P("M38 52C44 46 54 46 62 52", "tn") + sc3(42) + sc3(60));
+ICONS["odo:rafano"] = svgI(100, 90, P("M44 30C26 36 22 54 32 66C38 74 48 82 54 88C60 78 72 66 70 50C68 38 56 30 44 30Z", "fl") + P("M44 30C40 20 34 14 28 12M48 30C50 18 54 12 60 8M52 30C58 22 66 18 74 18", "tn") + P("M38 48C44 54 50 60 56 64", "tn"));
+ICONS["odo:spermatico"] = svgI(100, 90, P("M50 20C42 38 34 46 34 58C34 70 42 78 50 78C58 78 66 70 66 58C66 46 58 38 50 20Z", "fl") + P("M42 56C42 62 46 66 50 66", "hi") + sc3(24) + sc3(76));
+var star = "";
+for (var si = 0; si < 16; si++) { var sa = si * Math.PI / 8 - Math.PI / 2, sr2 = si % 2 ? 12 : 30; star += (si ? "L" : "M") + (50 + sr2 * Math.cos(sa)).toFixed(1) + " " + (46 + sr2 * Math.sin(sa)).toFixed(1); }
+ICONS["odo:anice"] = svgI(100, 90, P(star + "Z", "cap") + '<circle class="dot" cx="50" cy="46" r="3"/>');
+ICONS["odo:fruttato"] = svgI(100, 90, P("M50 30C34 20 18 34 24 54C30 72 44 80 50 76C56 80 70 72 76 54C82 34 66 20 50 30Z", "cap") + P("M50 30C50 22 54 16 60 12M52 24C60 20 68 22 70 28C64 30 58 28 52 24Z", "tn") + P("M32 44C34 38 38 34 44 32", "hi"));
+ICONS["odo:terra"] = svgI(100, 90, P("M12 72C10 54 26 42 42 46C52 34 76 38 80 56C88 64 84 74 76 76L20 76C14 76 12 74 12 72Z", "gel2") + P("M30 62C34 58 40 58 44 62M56 58C60 54 66 56 68 60", "tn") + P("M44 46C42 38 44 30 50 24M50 24C46 22 42 24 40 28M50 24C54 22 58 24 58 30", "tn"));
+ICONS["odo:fenolo"] = svgI(100, 90, P("M40 18L60 18L60 30C74 36 78 46 78 60L78 72C78 76 74 78 70 78L30 78C26 78 22 76 22 72L22 60C22 46 26 36 40 30Z", "fl") + P("M38 12L62 12L60 18L40 18Z", "cap") + P("M28 56C36 52 46 60 54 56C62 52 70 56 74 58", "tn") + P("M48 80C46 84 46 86 50 86C54 86 54 84 52 80", "dc"));
+ICONS["odo:sgradevole"] = svgI(100, 90, P("M26 76C20 64 32 56 26 46C20 36 32 28 26 18M50 76C44 64 56 56 50 46C44 36 56 28 50 18M74 76C68 64 80 56 74 46C68 36 80 28 74 18", "tn2"));
+
+/* ---------- Sporata ---------- */
+var PAPER = '<rect class="paper pw" x="10" y="20" width="50" height="60"/><rect class="paper pk" x="60" y="20" width="50" height="60"/>';
+var rosette = "";
+for (var pi = 0; pi < 24; pi++) { var pa = pi * Math.PI / 12, pr = pi % 2 ? 20 : 26; rosette += (pi ? "L" : "M") + (60 + pr * Math.cos(pa)).toFixed(1) + " " + (50 + pr * Math.sin(pa)).toFixed(1); }
+rosette += "Z";
+function sporFig(cls) { return svgI(120, 100, PAPER + P(rosette, "pr " + cls) + P("M60 50m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0", "pr " + cls)); }
+ICONS["spo:bianca"] = sporFig("sw"); ICONS["spo:rosa"] = sporFig("sp"); ICONS["spo:ocra"] = sporFig("so");
+ICONS["spo:tabacco"] = sporFig("st"); ICONS["spo:porpora"] = sporFig("su"); ICONS["spo:nera"] = sporFig("sk");
+ICONS["spo:1"] = svgI(120, 100, P("M52 40C51 56 52 70 52 88L68 88C68 70 69 56 68 40Z", "fl") + P("M14 36C10 14 32 2 60 2C88 2 110 14 106 36C96 32 84 32 72 34L48 34C36 32 24 32 14 36Z", "cap") + '<path class="cut" d="M40 52L80 52"/>' + P("M82 46L96 58M82 58L96 46", "ar"));
+ICONS["spo:2"] = svgI(120, 100, '<rect class="paper pw" x="10" y="78" width="50" height="8"/><rect class="paper pk" x="60" y="78" width="50" height="8"/>' + P("M14 74C10 46 32 28 60 28C88 28 110 46 106 74C94 72 84 74 76 76L44 76C36 74 24 72 14 74Z", "cap") + P("M24 74L24 70M34 76L34 71M44 76L44 70M54 76L54 70M66 76L66 70M76 76L76 71M86 75L86 70M96 74L96 70", "tn") + P("M30 46C38 38 48 34 58 33", "hi"));
+ICONS["spo:3"] = svgI(120, 100, '<rect class="paper pw" x="10" y="84" width="50" height="8"/><rect class="paper pk" x="60" y="84" width="50" height="8"/>' + P("M18 80C16 54 34 38 60 38C86 38 104 54 102 80C92 78 84 80 76 82L44 82C36 80 28 78 18 80Z", "cap") + P("M8 84C6 40 28 10 60 10C92 10 114 40 112 84", "gl2") + P("M30 28C38 20 48 16 58 14", "hi"));
+
+/* ---------- Dove cresce ---------- */
+ICONS["hab:legnovivo"] = svgI(120, 100, P("M34 0C32 30 34 60 30 98L78 98C74 60 76 30 74 0Z", "bark") + P("M42 8C40 36 42 60 40 92M54 4C53 36 55 62 54 94M66 8C65 36 66 60 66 92", "tn") + P("M76 52C88 44 104 46 110 56C98 60 86 60 76 62Z", "cap") + P("M80 60C92 62 102 62 108 58", "tn"));
+ICONS["hab:legnomorto"] = svgI(120, 100, P("M16 62C16 44 28 40 40 40L96 40C108 40 110 50 110 62C110 74 108 84 96 84L40 84C28 84 16 80 16 62Z", "bark") + P("M40 40C30 46 30 78 40 84", "tn") + P("M36 52C40 52 42 56 40 60M34 62C38 64 40 68 38 72", "tn") + P("M20 62m-5 0a5 22 0 1 0 10 0a5 22 0 1 0 -10 0", "fl") + P("M60 40C60 32 58 28 54 26C60 22 72 22 76 26C72 28 70 32 70 40Z", "cap") + P("M86 40C86 34 84 31 82 30C86 27 92 27 94 30C92 31 92 35 92 40Z", "cap"));
+function leaf(tx, ty, rot, sc) { return '<g transform="translate(' + tx + " " + ty + ") rotate(" + rot + ") scale(" + sc + ')">' + P("M0 -20C8 -26 14 -22 14 -14C22 -16 26 -8 20 -2C28 2 26 12 16 12C18 20 8 24 2 18C-4 24 -14 20 -12 12C-22 12 -24 2 -16 -2C-22 -8 -18 -16 -10 -14C-10 -22 -4 -26 0 -20Z", "leaf") + P("M0 -16L0 20M0 -4L-8 -10M0 4L8 -2M0 10L-6 6", "tn") + "</g>"; }
+ICONS["hab:lettiera"] = svgI(120, 100, P("M4 86C30 80 90 80 116 86L116 98L4 98Z", "soil") + leaf(30, 54, -20, 1.1) + leaf(64, 46, 12, 1.2) + leaf(92, 58, 40, 1) + leaf(52, 74, 80, .8));
+var needles = "";
+for (var ni = 0; ni < 9; ni++) { needles += "M" + (22 + ni * 3) + " 84L" + (14 + ni * 12) + " 34"; }
+ICONS["hab:aghi"] = svgI(120, 100, P("M4 88L116 88L116 98L4 98Z", "soil") + P(needles, "tn2") + P("M62 66C58 54 66 44 80 44C94 44 100 56 96 68C92 80 72 82 62 66Z", "cap") + P("M70 52L78 60M80 48L88 58M70 64L80 72M86 52L92 62M76 70L84 76", "tn"));
+var blades = "";
+[[14, 70, 8], [24, 62, 18], [34, 72, 28], [88, 66, 80], [98, 60, 92], [108, 70, 112], [76, 72, 70]].forEach(function (b) { blades += "M" + b[0] + " 90C" + b[0] + " 80 " + b[2] + " 76 " + b[2] + " " + b[1] + "M" + (b[0] + 6) + " 90C" + (b[0] + 6) + " 82 " + (b[2] + 8) + " 78 " + (b[2] + 8) + " " + (b[1] + 6); });
+ICONS["hab:prato"] = svgI(120, 100, P("M4 90L116 90L116 98L4 98Z", "soil") + P("M56 90C55 78 56 72 56 64L66 64C66 72 67 78 66 90Z", "fl") + P("M44 66C44 54 52 48 61 48C70 48 78 54 78 66C72 64 68 65 66 66L56 66C54 65 50 64 44 66Z", "cap") + P(blades, "tn2"));
+var straw = "";
+[[10, 70, 60, 50], [20, 86, 70, 62], [40, 80, 100, 56], [14, 58, 64, 74], [50, 90, 108, 74], [30, 66, 90, 44]].forEach(function (s) { straw += "M" + s[0] + " " + s[1] + "L" + s[2] + " " + s[3]; });
+ICONS["hab:sterco"] = svgI(120, 100, P("M4 88L116 88L116 98L4 98Z", "soil") + P("M30 86C26 74 36 64 50 66C58 54 80 58 84 70C94 72 96 86 88 88Z", "dung") + P(straw, "tn2"));
+ICONS["hab:muschio"] = svgI(120, 100, P("M4 88C14 66 30 62 42 76C50 58 72 54 84 72C92 62 106 64 116 84L116 98L4 98Z", "moss") + P("M24 74L24 62M32 78L34 66M52 70L51 56M64 68L66 54M74 74L73 62M96 72L98 62", "tn") + '<ellipse class="dot" cx="24" cy="61" rx="1.8" ry="2.4"/><ellipse class="dot" cx="34" cy="65" rx="1.8" ry="2.4"/><ellipse class="dot" cx="51" cy="55" rx="1.8" ry="2.4"/><ellipse class="dot" cx="66" cy="53" rx="1.8" ry="2.4"/><ellipse class="dot" cx="98" cy="61" rx="1.8" ry="2.4"/>');
+ICONS["hab:micorriza"] = svgI(120, 100, P("M4 40L116 40L116 98L4 98Z", "soil") + P("M20 0C20 20 18 34 20 44M20 44C16 60 8 70 6 86M20 44C22 62 30 72 34 90M20 44C32 54 44 56 56 58", "root") + P("M56 58C66 60 76 58 84 56M56 58C62 66 70 70 78 72M84 56C88 52 90 46 90 42", "hyph") + P("M86 42C86 36 84 32 82 30C86 26 98 26 102 30C100 32 98 36 98 42Z", "cap") + P("M90 42L90 44L96 44L96 42", "fl") + P("M52 54C56 58 60 60 64 62", "hyph"));
+ICONS["hab:saprotrofo"] = svgI(120, 100, P("M4 56L116 56L116 98L4 98Z", "soil") + leaf(28, 50, -30, .9) + leaf(70, 48, 30, 1) + P("M14 70C30 66 46 74 62 70C78 66 94 72 108 68M20 82C40 78 60 86 80 80C92 78 100 82 110 80", "hyph") + P("M96 52C96 44 94 40 92 38C96 34 108 34 112 38C110 40 108 44 108 52Z", "cap"));
+ICONS["hab:parassita"] = svgI(120, 100, P("M38 0C36 30 36 56 30 82C26 92 22 96 20 98L96 98C92 96 88 92 84 82C78 56 80 30 78 0Z", "bark") + P("M48 6C46 34 48 56 44 80M62 4C60 32 62 56 60 86M70 8C70 34 70 54 74 78", "tn") + P("M30 80C18 76 12 84 14 94C22 90 30 88 36 90Z", "cap") + P("M84 80C96 74 106 82 104 92C96 90 88 90 82 90Z", "cap") + P("M52 40L58 52L52 62L60 72", "hyph"));
+/* ---------- Forme e simboli aggiuntivi per la chiave ---------- */
+function TH(d, w) { return '<path class="ln" style="stroke-width:' + w + '" d="' + warp(d) + '"/><path class="ln pap" style="stroke-width:' + (w - 3) + '" d="' + warp(d) + '"/>'; }
+ICONS["ann:nessuno"] = svgI(120, 100, P("M50 4C49 40 50 70 50 94L70 94C70 70 71 40 70 4Z", "fl") + P("M55 10C54 40 55 66 55 90", "tn"));
+ICONS["base:no"] = svgI(120, 100, P("M48 6C49 34 48 56 50 78L70 78C72 56 71 34 72 6Z", "fl") + P("M4 78C34 73 86 73 116 78L116 96L4 96Z", "soil") + P("M4 78C34 73 86 73 116 78", "ln"));
+ICONS["forma:coppa"] = svgI(120, 100, P("M14 38C14 68 36 84 60 84C84 84 106 68 106 38C90 46 30 46 14 38Z", "cap") + P("M14 38C14 26 34 20 60 20C86 20 106 26 106 38C106 48 86 54 60 54C34 54 14 48 14 38Z", "gi") + P("M24 60C32 70 44 76 56 78", "tn"));
+ICONS["forma:sella"] = svgI(120, 100, P("M50 54C48 70 46 84 48 94L72 94C74 84 72 70 70 54Z", "fl") + P("M54 60C53 74 54 86 55 92M60 58L60 92M66 60C67 74 66 86 65 92", "tn") +
+  P("M12 40C8 26 22 14 38 18C46 8 66 8 74 18C90 14 108 26 106 40C100 52 84 46 74 52L46 52C34 46 18 52 12 40Z", "cap") + P("M30 28C40 22 56 20 70 24", "tn"));
+ICONS["forma:alveolato"] = svgI(120, 100, P("M46 70C45 80 46 88 47 94L73 94C74 88 75 80 74 70Z", "fl") + P("M28 74C26 46 44 10 60 8C76 10 94 46 92 74Z", "cap") + P("M28 74C26 46 44 10 60 8C76 10 94 46 92 74Z", "sf-net") + P("M28 74C26 46 44 10 60 8C76 10 94 46 92 74Z", "ln"));
+ICONS["forma:cervello"] = svgI(120, 100, P("M50 76C50 86 50 90 51 94L69 94C70 90 70 86 70 76Z", "fl") +
+  P("M14 56C10 34 28 18 48 20C56 12 76 12 84 22C102 22 112 40 104 56C100 70 82 78 60 78C36 78 18 70 14 56Z", "cap") +
+  P("M28 38C36 32 44 42 52 36C60 30 66 42 74 36C80 32 86 40 94 36M22 54C32 48 40 58 50 52C60 46 68 58 78 52C86 48 94 56 100 52M32 66C42 60 52 70 62 64C72 58 80 68 90 64", "tn"));
+ICONS["forma:corallo"] = svgI(120, 100, TH("M60 94C60 76 58 66 52 54C46 44 38 38 32 26M58 76C62 64 70 56 80 44C86 36 90 30 92 20M56 62C54 50 56 38 60 24M52 54C42 52 32 50 24 42M72 54C82 56 92 54 98 48", 7));
+ICONS["forma:clava"] = svgI(120, 100, P("M54 94C52 72 46 48 40 26C38 12 50 6 60 6C70 6 82 12 80 26C74 48 68 72 66 94Z", "cap") + P("M52 24C54 16 64 12 72 14", "tn") + P("M58 40C58 56 58 72 58 88M66 38C66 54 65 70 64 86", "tn"));
+ICONS["forma:fetido"] = svgI(120, 100, P("M40 90C38 78 48 72 60 72C72 72 82 78 80 90C78 98 44 98 40 90Z", "cap") + P("M52 74C51 58 52 42 54 28L66 28C68 42 69 58 68 74Z", "fl") + P("M57 34C56 50 57 64 57 72M63 34C64 50 63 64 63 72", "tn") +
+  P("M47 30C45 12 53 4 60 4C67 4 75 12 73 30C69 34 51 34 47 30Z", "cap") + P("M47 30C45 12 53 4 60 4C67 4 75 12 73 30C69 34 51 34 47 30Z", "sf-net"));
+ICONS["forma:gabbia"] = svgI(120, 100, P("M60 8C86 8 106 28 106 52C106 78 86 94 60 94C34 94 14 78 14 52C14 28 34 8 60 8Z", "cap") + P("M60 8C86 8 106 28 106 52C106 78 86 94 60 94C34 94 14 78 14 52C14 28 34 8 60 8Z", "sf-net") +
+  P("M60 8C86 8 106 28 106 52C106 78 86 94 60 94C34 94 14 78 14 52C14 28 34 8 60 8Z", "ln") + P("M36 24C28 42 28 64 38 82M84 24C92 42 92 64 82 82M60 8L60 94", "tn"));
+ICONS["forma:nero"] = svgI(120, 100, P("M4 94L116 94", "tn") + P("M42 94C40 70 44 44 40 24C42 12 54 12 56 24C58 44 56 70 58 94Z", "cn") + P("M66 94C66 74 70 56 74 40C76 30 86 30 86 40C86 58 80 74 80 94Z", "cn") + P("M92 94C92 82 94 72 96 66C98 60 104 60 104 66C104 76 100 84 102 94Z", "cn"));
+ICONS["forma:tartufo"] = svgI(120, 100, P("M2 2L118 2L118 22C90 28 30 18 2 24Z", "soil") + P("M2 24C30 18 90 28 118 22", "ln") +
+  P("M16 58C14 40 30 28 46 30C56 22 78 24 84 34C100 36 108 50 102 64C96 80 76 86 58 84C38 88 18 80 16 58Z", "cap") + P("M32 48C44 44 52 58 64 52C74 48 80 58 90 54M30 66C42 62 54 72 66 66C76 62 84 70 94 66", "tn") + P("M24 52L24 52M96 52L96 52M44 76L44 76M78 76L78 76", "ln"));
+ICONS["forma:stella"] = svgI(120, 100, P("M60 42L72 12L80 40L108 30L92 54L114 68L84 68L90 94L66 74L60 98L54 74L30 94L36 68L6 68L28 54L12 30L40 40L48 12Z", "cap") +
+  P("M60 38C72 38 80 48 80 58C80 70 70 76 60 76C50 76 40 70 40 58C40 48 48 38 60 38Z", "cap") + P("M60 38C60 36 60 34 60 34", "ln") + P("M50 50C54 46 64 46 70 50", "tn"));
+
+
+function icon(k) { return k && ICONS[k] ? ICONS[k] : ""; }
+var IM = {
+  "cappello/Liscia e asciutta": "sup:liscia", "cappello/Viscida": "sup:viscida", "cappello/Fibrillosa": "sup:fibrillosa",
+  "cappello/Squamosa": "sup:squamosa", "cappello/Vellutata": "sup:vellutata", "cappello/Screpolata": "sup:screpolata",
+  "cappello/Involuto": "mar:involuto", "cappello/Disteso": "mar:disteso", "cappello/Striato": "mar:striato", "cappello/Appendicolato": "mar:appendicolato",
+  "imenio/Lamelle": "him:lamelle", "imenio/Tubuli e pori": "him:tubuli", "imenio/Aculei": "him:aculei",
+  "imenio/Pieghe o false lamelle": "him:pieghe", "imenio/Liscio": "him:liscio", "imenio/Gleba interna": "him:gleba",
+  "anello/Cortina": "ann:cortina",
+  "carne/Fragile come gesso": "car:fragile", "carne/Soda": "car:soda", "carne/Fibrosa": "car:fibrosa",
+  "carne/Elastica o coriacea": "car:elastica", "carne/Gelatinosa": "car:gelatinosa", "carne/Legnosa": "car:legnosa",
+  "carne/No": "car:nessuno", "carne/Vira al blu": "car:blu", "carne/Vira al rosso o al rosa": "car:rosso",
+  "carne/Vira al giallo": "car:giallo", "carne/Vira al grigio o al nero": "car:nero",
+  "carne/Assente": "lat:assente", "carne/Bianco": "lat:bianco", "carne/Colorato": "lat:colorato",
+  "odore/Farinoso": "odo:farinoso", "odore/Di rafano": "odo:rafano", "odore/Spermatico": "odo:spermatico", "odore/Di anice": "odo:anice",
+  "odore/Fruttato": "odo:fruttato", "odore/Di terra o di muffa": "odo:terra", "odore/Di fenolo o d'inchiostro": "odo:fenolo", "odore/Sgradevole": "odo:sgradevole",
+  "sporata/1. Taglia il gambo": "spo:1", "sporata/2. Appoggia sul foglio": "spo:2", "sporata/3. Copri e aspetta": "spo:3",
+  "sporata/Bianca o crema": "spo:bianca", "sporata/Rosa": "spo:rosa", "sporata/Ocra o ruggine": "spo:ocra",
+  "sporata/Bruno tabacco": "spo:tabacco", "sporata/Bruno porpora": "spo:porpora", "sporata/Nera": "spo:nera",
+  "habitat/Legno vivo o ceppo": "hab:legnovivo", "habitat/Legno morto": "hab:legnomorto", "habitat/Lettiera di latifoglie": "hab:lettiera",
+  "habitat/Aghi di conifere": "hab:aghi", "habitat/Prato e radura": "hab:prato", "habitat/Sterco e paglia": "hab:sterco",
+  "habitat/Muschio o terreno bruciato": "hab:muschio", "habitat/Micorrizico": "hab:micorriza", "habitat/Saprotrofo": "hab:saprotrofo", "habitat/Parassita": "hab:parassita"
+};
+
+var PARTS = [
+  { id: "cappello", nome: "Cappello", intro: "La parte che si nota per prima. Guardalo da giovane e da adulto: cambia molto con l'età e con l'umidità.", gruppi: [
+    { t: "Forma", v: [
+      ["Emisferico", "A mezza sfera, tipico di molti funghi giovani.", "cap:emisferico"],
+      ["Convesso", "Curvo e arrotondato, con il bordo verso il basso.", "cap:convesso"],
+      ["Piano", "Disteso, quasi piatto.", "cap:piano"],
+      ["Campanulato", "A campana, più alto che largo.", "cap:campanulato"],
+      ["Imbutiforme", "Depresso al centro, a imbuto.", "cap:imbutiforme"],
+      ["Umbonato", "Con un rilievo al centro, come un piccolo dosso.", "cap:umbonato"],
+      ["Conico", "A cono, alto e appuntito.", "cap:conico"] ] },
+    { t: "Superficie", v: [
+      ["Liscia e asciutta", "Senza squame né fibre, opaca o appena lucida."],
+      ["Viscida", "Appiccicosa al tatto, soprattutto se umida."],
+      ["Fibrillosa", "Con fibre sottili disposte dal centro al bordo."],
+      ["Squamosa", "Con squame sollevate, a volte a scaglie concentriche."],
+      ["Vellutata", "Con peluria corta, come un tessuto."],
+      ["Screpolata", "A placche, con la carne sotto visibile nelle crepe."] ] },
+    { t: "Margine", v: [
+      ["Involuto", "Arrotolato verso l'interno."],
+      ["Disteso", "Piano, senza arrotolamenti."],
+      ["Striato", "Con righe in trasparenza, dovute alle lamelle."],
+      ["Appendicolato", "Con resti del velo che pendono dal bordo."] ] }
+  ] },
+  { id: "imenio", nome: "Imenio", intro: "È la superficie che produce le spore. Il suo aspetto è la prima domanda della chiave.", gruppi: [
+    { t: "Tipi", v: [
+      ["Lamelle", "Foglietti sottili disposti a raggiera sotto il cappello."],
+      ["Tubuli e pori", "Come una spugna: tubicini che si aprono in forellini."],
+      ["Aculei", "Punte o denti sottili che pendono."],
+      ["Pieghe o false lamelle", "Rilievi bassi, ottusi, ramificati e uniti tra loro."],
+      ["Liscio", "Superficie senza lamelle né pori, tipica di croste e coralli."],
+      ["Gleba interna", "Spore dentro una palla chiusa, come nelle vesce."] ] }
+  ] },
+  { id: "lamelle", nome: "Lamelle e tubuli", intro: "Taglia il fungo a metà in verticale e guarda come lamelle o tubuli arrivano al gambo. I disegni mostrano la sezione: a sinistra e a destra del gambo.", gruppi: [
+    { t: "Attacco delle lamelle al gambo", v: [
+      ["Distanti", "Finiscono lontano dal gambo: resta un vuoto ben visibile.", "att:distanti"],
+      ["Libere", "Si fermano poco prima del gambo, senza toccarlo.", "att:libere"],
+      ["Adnate", "Arrivano al gambo con tutta la loro larghezza.", "att:adnate"],
+      ["Secedenti", "Attaccate da giovani, poi si staccano dal gambo.", "att:secedenti"],
+      ["Rotondate", "Si arrotondano prima del gambo, quasi toccandolo.", "att:rotondate"],
+      ["Smarginate", "Con una piccola incisura appena prima del gambo.", "att:smarginate"],
+      ["Sinuose", "Con una curva a onda lungo il bordo vicino al gambo.", "att:sinuose"],
+      ["Decorrenti con dentino", "Scendono di poco sul gambo, con una piccola punta.", "att:dentino"],
+      ["Decorrenti", "Scendono a lungo lungo il gambo.", "att:decorrenti"],
+      ["A orlo diritto", "Il bordo inferiore è una linea retta.", "att:diritto"] ] },
+    { t: "Forma delle lamelle", v: [
+      ["Strette", "Poco alte, sottili come nastri.", "att:strette"],
+      ["Acute", "Si assottigliano a punta verso il margine del cappello.", "att:acute"],
+      ["Ottuse", "Arrotondate verso il margine del cappello.", "att:ottuse"],
+      ["Ventricose", "Panciute, più alte al centro.", "att:ventricose"],
+      ["Arcuate", "Curvate ad arco verso il basso.", "att:arcuate"] ] },
+    { t: "Attacco dei tubuli al gambo", v: [
+      ["Tubuli distanti", "Si fermano prima del gambo: c'è una piccola cavità intorno.", "tub:distanti"],
+      ["Tubuli adnati", "Arrivano al gambo e si attaccano.", "tub:adnati"],
+      ["Tubuli decorrenti", "Scendono lungo il gambo.", "tub:decorrenti"] ] }
+  ] },
+  { id: "gambo", nome: "Gambo", intro: "Guarda forma, superficie, attacco e interno. Taglialo per il lungo, senza strapparlo dal terreno.", gruppi: [
+    { t: "Forma", v: [
+      ["Cilindrico", "Largo uguale dall'alto al basso.", "gam:cilindrico"],
+      ["Clavato", "Sottile in alto e sempre più largo verso la base.", "gam:clavato"],
+      ["Bulboso", "Con un bulbo netto alla base.", "gam:bulboso"],
+      ["Fusiforme", "Largo al centro e stretto alle due estremità.", "gam:fusiforme"],
+      ["Radicante", "Prosegue sotto terra come una radice sottile.", "gam:radicante"],
+      ["Attenuato in alto", "Si restringe verso il cappello.", "gam:attalto"],
+      ["Attenuato in basso", "Si restringe verso la base.", "gam:attbasso"],
+      ["Flessuoso", "Si piega ondeggiando.", "gam:flessuoso"],
+      ["Arcuato", "Curvo ad arco.", "gam:arcuato"],
+      ["Inguainato", "La base è avvolta da una guaina.", "gam:inguainato"],
+      ["Obeso o ventricoso", "Pieno e rigonfio, con un grande ventre.", "gam:ventricoso"] ] },
+    { t: "Attacco al cappello", v: [
+      ["Centrale", "Sta al centro del cappello.", "gam:centrale"],
+      ["Eccentrico", "Spostato dal centro del cappello.", "gam:eccentrico"],
+      ["Laterale", "Attaccato a un lato, come nelle mensole.", "gam:laterale"],
+      ["Eterogeneo o staccabile", "Il cappello si stacca dal gambo con facilità: sono carni diverse.", "gam:eterogeneo"],
+      ["Omogeneo", "Cappello e gambo sono la stessa carne, senza stacco netto.", "gam:omogeneo"] ] },
+    { t: "Superficie", v: [
+      ["Reticolato", "Con una rete in rilievo, come nei boleti.", "gam:reticolato"],
+      ["Rugoso", "Con piccole pieghe longitudinali.", "gam:rugoso"],
+      ["Vellutato", "Coperto da una peluria fitta e corta.", "gam:vellutato"],
+      ["Scrobicolato", "Con piccole fossette tondeggianti.", "gam:scrobicolato"],
+      ["Zonato", "Con fasce o zone trasversali di colore diverso.", "gam:zonato"] ] },
+    { t: "Interno", v: [
+      ["Pieno", "Carne compatta fino al centro.", "int:pieno"],
+      ["Cavo", "Vuoto all'interno, con un canale largo.", "int:cavo"],
+      ["Cavernoso", "Con cavità irregolari, a camere.", "int:cavernoso"],
+      ["Fistoloso", "Sottile e vuoto come una cannuccia.", "int:fistoloso"],
+      ["Corticato", "Con una corteccia esterna diversa dall'interno.", "int:corticato"] ] },
+    { t: "Tipi di bulbo alla base", v: [
+      ["Depresso", "Largo e appiattito, più basso che largo.", "bul:depresso"],
+      ["Subglobuloso", "Quasi sferico.", "bul:subglobuloso"],
+      ["Napiforme", "A rapa, con la punta verso il basso.", "bul:napiforme"],
+      ["Turbinato", "A trottola, largo in alto e stretto in basso.", "bul:turbinato"],
+      ["Marginato", "Con un bordo netto e rilevato in alto.", "bul:marginato"] ] }
+  ] },
+  { id: "anello", nome: "Anello e velo", intro: "L'anello è ciò che resta del velo che proteggeva le lamelle da giovani. Può cadere presto: cerca anche la sua traccia sul gambo.", gruppi: [
+    { t: "Tipi di anello", v: [
+      ["Rudimentale", "Una piccola cresta o una traccia appena visibile.", "ann:rudimentale"],
+      ["Ampio e membranoso", "Una gonna larga che pende dal gambo.", "ann:ampio"],
+      ["Doppio", "Due strati sovrapposti.", "ann:doppio"],
+      ["Striato", "Con righe sul lato superiore.", "ann:striato"],
+      ["Frangiato", "Con il bordo seghettato o a frange.", "ann:frangiato"],
+      ["Armilla", "Un bracciale stretto attorno al gambo.", "ann:armilla"],
+      ["Riflesso", "Ripiegato verso l'alto, come un risvolto.", "ann:riflesso"],
+      ["Mobile", "Scorre su e giù lungo il gambo.", "ann:mobile"] ] },
+    { t: "Altre tracce di velo", v: [
+      ["Assente", "Nessun resto di velo sul gambo."],
+      ["Cortina", "Fibre sottili come ragnatela, tra bordo del cappello e gambo."] ] }
+  ] },
+  { id: "volva", nome: "Volva", intro: "Scava con cura attorno alla base. Spesso la volva sta sotto terra e basta strappare il fungo per perderla.", gruppi: [
+    { t: "Tipi di volva", v: [
+      ["Libera", "Un sacco largo che si stacca dal gambo.", "vol:libera"],
+      ["Libera e inguainante", "Un sacco che avvolge la base del gambo come una guaina.", "vol:inguainante"],
+      ["Aderente e circoncisa", "Aderisce alla base e finisce con un bordo netto.", "vol:circoncisa"],
+      ["Dissociata in anelli", "Si rompe in cerchi concentrici sul bulbo.", "vol:anelli"],
+      ["Dissociata in verruche", "Resta a placche o verruche sparse.", "vol:verruche"],
+      ["Quasi evanescente", "Lascia solo tracce quasi invisibili.", "vol:evanescente"] ] }
+  ] },
+  { id: "carne", nome: "Carne e latice", intro: "Taglia il fungo e guarda cosa succede nel minuto dopo. I cambi di colore sono caratteri importanti.", gruppi: [
+    { t: "Consistenza", v: [
+      ["Fragile come gesso", "Si sbriciola a grani, tipica di Russula e Lactarius."],
+      ["Soda", "Compatta, si spezza di netto."],
+      ["Fibrosa", "Si sfilaccia in fibre lunghe."],
+      ["Elastica o coriacea", "Si piega e resiste a rompersi."],
+      ["Gelatinosa", "Molle e tremolante."],
+      ["Legnosa", "Dura come legno o sughero."] ] },
+    { t: "Cambia colore al taglio?", v: [
+      ["No", "Resta dello stesso colore."],
+      ["Vira al blu", "Dal giallo all'azzurro in pochi secondi."],
+      ["Vira al rosso o al rosa", "Diventa rossastra dopo qualche minuto."],
+      ["Vira al giallo", "Diventa gialla dopo lo sfregamento."],
+      ["Vira al grigio o al nero", "Si scurisce con il tempo."] ] },
+    { t: "Latice", v: [
+      ["Assente", "Nessun liquido dal taglio."],
+      ["Bianco", "Liquido bianco, che può cambiare con l'aria."],
+      ["Colorato", "Arancio, rosso, giallo, violaceo."] ] }
+  ] },
+  { id: "odore", nome: "Odore", intro: "Annusa il fungo appena tagliato e subito dopo averlo spezzato. È un carattere da annotare con parole tue.", gruppi: [
+    { t: "Odori più usati", v: [
+      ["Farinoso", "Come farina fresca o cetriolo."],
+      ["Di rafano", "Pungente e crudo."],
+      ["Spermatico", "Pungente e particolare, tipico di alcuni Inocybe."],
+      ["Di anice", "Dolciastro e aromatico."],
+      ["Fruttato", "Albicocca, mela, pera."],
+      ["Di terra o di muffa", "Umido, di cantina."],
+      ["Di fenolo o d'inchiostro", "Chimico, come inchiostro o medicinale."],
+      ["Sgradevole", "Di cavolo, di gas, di carne in putrefazione."] ] }
+  ] },
+  { id: "sporata", nome: "Sporata", intro: "È il colore della polvere di spore. Si guarda lasciando cadere le spore su un foglio.", gruppi: [
+    { t: "Come si fa", v: [
+      ["1. Taglia il gambo", "Tieni solo il cappello."],
+      ["2. Appoggia sul foglio", "Lamelle o pori in basso, su carta metà bianca e metà nera."],
+      ["3. Copri e aspetta", "Un bicchiere sopra, qualche ora, senza spostarlo."] ] },
+    { t: "Colori", v: [
+      ["Bianca o crema", "Visibile soprattutto sul foglio nero."],
+      ["Rosa", "Salmone o rosa pallido."],
+      ["Ocra o ruggine", "Da nocciola a ruggine."],
+      ["Bruno tabacco", "Bruno caldo, a volte con riflessi arancio."],
+      ["Bruno porpora", "Bruno con riflessi violacei."],
+      ["Nera", "Nera o nerastra."] ] }
+  ] },
+  { id: "habitat", nome: "Dove cresce", intro: "Annota sempre l'albero più vicino e il tipo di terreno. A volte basta per scegliere tra due generi.", gruppi: [
+    { t: "Substrato", v: [
+      ["Legno vivo o ceppo", "Su alberi in piedi, ceppaie, radici."],
+      ["Legno morto", "Tronchi caduti, rami, segatura."],
+      ["Lettiera di latifoglie", "Foglie secche di leccio, quercia, castagno."],
+      ["Aghi di conifere", "Sotto pini, abeti, cedri."],
+      ["Prato e radura", "Erba, margini, sentieri."],
+      ["Sterco e paglia", "Terreno concimato o con residui vegetali."],
+      ["Muschio o terreno bruciato", "Tappeti di muschio o suolo dopo un incendio."] ] },
+    { t: "Alberi amici", v: [
+      ["Micorrizico", "Il fungo vive in simbiosi con le radici di un albero preciso: segna sempre quale."],
+      ["Saprotrofo", "Vive di materia morta: foglie, aghi, legno, erba."],
+      ["Parassita", "Attacca alberi o piante vive."] ] }
+  ] }
+];
+/* Esempi didattici: specie da manuale che mostrano bene il singolo carattere. Bozza da confermare dal comitato. */
+var EX = {
+  "cappello/Emisferico": ["Agaricus campestris", "Amanita muscaria"],
+  "cappello/Convesso": ["Boletus edulis", "Russula cyanoxantha"],
+  "cappello/Piano": ["Lepista nuda", "Cyclocybe aegerita"],
+  "cappello/Campanulato": ["Mycena galericulata", "Coprinellus micaceus"],
+  "cappello/Imbutiforme": ["Infundibulicybe gibba", "Cantharellus cibarius"],
+  "cappello/Umbonato": ["Macrolepiota procera", "Tricholoma terreum"],
+  "cappello/Conico": ["Hygrocybe conica", "Conocybe tenera"],
+  "cappello/Liscia e asciutta": ["Cantharellus cibarius", "Hydnum repandum"],
+  "cappello/Viscida": ["Suillus granulatus", "Hygrophorus eburneus"],
+  "cappello/Fibrillosa": ["Inocybe geophylla", "Inocybe rimosa"],
+  "cappello/Squamosa": ["Macrolepiota procera", "Pholiota squarrosa"],
+  "cappello/Vellutata": ["Xerocomus subtomentosus", "Paxillus involutus"],
+  "cappello/Screpolata": ["Xerocomellus chrysenteron", "Russula virescens"],
+  "cappello/Involuto": ["Paxillus involutus", "Lactarius torminosus"],
+  "cappello/Striato": ["Coprinellus disseminatus", "Parasola plicatilis"],
+  "cappello/Appendicolato": ["Psathyrella candolleana", "Hypholoma fasciculare"],
+
+  "imenio/Lamelle": ["Agaricus campestris", "Amanita muscaria"],
+  "imenio/Tubuli e pori": ["Boletus edulis", "Suillus luteus"],
+  "imenio/Aculei": ["Hydnum repandum", "Hericium erinaceus"],
+  "imenio/Pieghe o false lamelle": ["Cantharellus cibarius", "Craterellus cornucopioides"],
+  "imenio/Liscio": ["Stereum hirsutum", "Clavulina cristata"],
+  "imenio/Gleba interna": ["Lycoperdon perlatum", "Scleroderma citrinum"],
+
+  "lamelle/Distanti": ["Marasmius rotula"],
+  "lamelle/Libere": ["Agaricus campestris", "Amanita phalloides"],
+  "lamelle/Sinuose": ["Tricholoma equestre", "Calocybe gambosa"],
+  "lamelle/Decorrenti": ["Infundibulicybe gibba", "Omphalotus olearius"],
+  "lamelle/Ottuse": ["Hygrophorus eburneus", "Hygrophorus pudorinus"],
+
+  "gambo/Cilindrico": ["Coprinus comatus", "Marasmius oreades"],
+  "gambo/Clavato": ["Boletus edulis", "Boletus aereus"],
+  "gambo/Bulboso": ["Amanita phalloides", "Amanita muscaria"],
+  "gambo/Radicante": ["Hymenopellis radicata", "Hebeloma radicosum"],
+  "gambo/Obeso o ventricoso": ["Boletus edulis", "Boletus aereus"],
+  "gambo/Centrale": ["Agaricus campestris", "Macrolepiota procera"],
+  "gambo/Eccentrico": ["Pleurotus eryngii", "Pleurotus nebrodensis"],
+  "gambo/Laterale": ["Pleurotus ostreatus", "Panellus stipticus"],
+  "gambo/Eterogeneo o staccabile": ["Macrolepiota procera", "Amanita caesarea"],
+  "gambo/Omogeneo": ["Boletus edulis", "Cantharellus cibarius"],
+  "gambo/Reticolato": ["Suillellus luridus", "Boletus aestivalis"],
+  "gambo/Vellutato": ["Flammulina velutipes", "Auriscalpium vulgare"],
+  "gambo/Scrobicolato": ["Lactarius scrobiculatus"],
+  "gambo/Zonato": ["Cortinarius armillatus"],
+  "gambo/Pieno": ["Boletus edulis", "Russula virescens"],
+  "gambo/Cavo": ["Macrolepiota procera", "Coprinus comatus"],
+  "gambo/Marginato": ["Amanita pantherina", "Amanita citrina"],
+
+  "anello/Ampio e membranoso": ["Amanita muscaria", "Amanita phalloides"],
+  "anello/Doppio": ["Agaricus arvensis"],
+  "anello/Striato": ["Amanita rubescens", "Amanita caesarea"],
+  "anello/Armilla": ["Armillaria mellea"],
+  "anello/Mobile": ["Macrolepiota procera", "Macrolepiota mastoidea"],
+  "anello/Assente": ["Russula cyanoxantha", "Lactarius deliciosus"],
+  "anello/Cortina": ["Cortinarius violaceus", "Cortinarius sanguineus"],
+
+  "volva/Libera": ["Amanita phalloides", "Amanita caesarea"],
+  "volva/Libera e inguainante": ["Amanita vaginata", "Volvopluteus gloiocephalus"],
+  "volva/Aderente e circoncisa": ["Amanita pantherina", "Amanita citrina"],
+  "volva/Dissociata in anelli": ["Amanita muscaria"],
+  "volva/Dissociata in verruche": ["Amanita strobiliformis", "Amanita echinocephala"],
+  "volva/Quasi evanescente": ["Amanita rubescens", "Amanita spissa"],
+
+  "carne/Fragile come gesso": ["Russula emetica", "Russula nigricans"],
+  "carne/Soda": ["Boletus edulis", "Boletus aereus"],
+  "carne/Fibrosa": ["Armillaria mellea"],
+  "carne/Elastica o coriacea": ["Trametes versicolor", "Stereum hirsutum"],
+  "carne/Gelatinosa": ["Auricularia auricula-judae", "Tremella mesenterica"],
+  "carne/Legnosa": ["Ganoderma applanatum", "Fomes fomentarius"],
+  "carne/No": ["Cantharellus cibarius", "Lepista nuda"],
+  "carne/Vira al blu": ["Cyanoboletus pulverulentus", "Gyroporus cyanescens"],
+  "carne/Vira al rosso o al rosa": ["Amanita rubescens", "Agaricus campestris"],
+  "carne/Vira al giallo": ["Agaricus xanthodermus", "Agaricus arvensis"],
+  "carne/Vira al grigio o al nero": ["Russula nigricans", "Leccinum aurantiacum"],
+  "carne/Assente": ["Russula cyanoxantha", "Hygrophorus eburneus"],
+  "carne/Bianco": ["Lactarius piperatus", "Lactarius vellereus"],
+  "carne/Colorato": ["Lactarius deliciosus", "Lactarius sanguifluus"],
+
+  "odore/Farinoso": ["Clitopilus prunulus", "Calocybe gambosa"],
+  "odore/Di rafano": ["Mycena pura", "Hebeloma sinapizans"],
+  "odore/Spermatico": ["Inocybe rimosa", "Inocybe geophylla"],
+  "odore/Di anice": ["Clitocybe odora", "Lentinellus cochleatus"],
+  "odore/Fruttato": ["Cantharellus cibarius"],
+  "odore/Di fenolo o d'inchiostro": ["Agaricus xanthodermus", "Agaricus placomyces"],
+  "odore/Sgradevole": ["Phallus impudicus", "Clathrus ruber"],
+
+  "sporata/Bianca o crema": ["Amanita phalloides", "Macrolepiota procera"],
+  "sporata/Rosa": ["Pluteus cervinus", "Clitopilus prunulus"],
+  "sporata/Ocra o ruggine": ["Gymnopilus junonius", "Cortinarius violaceus"],
+  "sporata/Bruno tabacco": ["Cyclocybe aegerita"],
+  "sporata/Bruno porpora": ["Agaricus campestris", "Stropharia aeruginosa"],
+  "sporata/Nera": ["Coprinus comatus", "Coprinopsis atramentaria"],
+
+  "habitat/Legno vivo o ceppo": ["Armillaria mellea", "Laetiporus sulphureus"],
+  "habitat/Legno morto": ["Trametes versicolor", "Pleurotus ostreatus"],
+  "habitat/Lettiera di latifoglie": ["Gymnopus dryophilus"],
+  "habitat/Aghi di conifere": ["Suillus luteus", "Lactarius deliciosus"],
+  "habitat/Prato e radura": ["Agaricus campestris", "Marasmius oreades"],
+  "habitat/Sterco e paglia": ["Panaeolus semiovatus", "Coprinopsis nivea"],
+  "habitat/Muschio o terreno bruciato": ["Pholiota highlandensis", "Rickenella fibula"],
+  "habitat/Micorrizico": ["Boletus edulis", "Amanita caesarea"],
+  "habitat/Saprotrofo": ["Coprinus comatus", "Lepista nuda"],
+  "habitat/Parassita": ["Armillaria mellea", "Laetiporus sulphureus"]
+};
+
+/* Simboli nelle risposte della chiave: stessa grafica dei caratteri. */
+var KIC = {
+  "Lamelle": "him:lamelle", "Tubuli con pori": "him:tubuli", "Aculei": "him:aculei", "Pieghe o venature": "him:pieghe", "Nessun cappello con imenio sotto": "him:gleba",
+  "Bianca o crema": "spo:bianca", "Rosa": "spo:rosa", "Bruno-ruggine o ocra": "spo:ocra", "Bruno scuro, porpora o nera": "spo:porpora",
+  "Sì, c'è una volva": "vol:libera", "No, il gambo finisce senza volva": "base:no", "No, nessuna volva": "base:no",
+  "Sì, c'è un anello": "ann:ampio", "No, nessun anello": "ann:nessuno",
+  "Su legno, in ciuffi": "hab:legnovivo", "Su legno": "hab:legnomorto", "Sì, su legno, lamelle libere": "hab:legnomorto",
+  "Su terra o lettiera": "hab:lettiera", "No, cresce a terra": "hab:lettiera", "Su terra, sotto alberi": "hab:micorriza", "Gambo centrale, a terra": "gam:centrale", "A mensola o a crosta, sul legno": "gam:laterale",
+  "Sì, e il fungo è grande": "ann:mobile",
+  "Sì, si sbriciola": "car:fragile", "No, è fibrosa o elastica": "car:fibrosa",
+  "Sì, esce latice": "lat:bianco", "No, non esce nulla": "lat:assente",
+  "A mensola o a conchiglia": "gam:laterale", "A ombrello, gambo centrale": "gam:centrale", "Piccolo ed esile": "int:fistoloso",
+  "Lamelle spaziate e cerose": "att:ottuse", "Cappello a imbuto": "cap:imbutiforme", "Cappello convesso, carne soda": "cap:convesso", "Piccolo, gambo sottile e tenace": "int:fistoloso",
+  "Sì, decorrenti e odore di farina": "att:decorrenti", "No, lamelle adnate o smarginate": "att:adnate",
+  "Gambo con rete chiara, cappello bruno": "gam:reticolato", "Pori rossi o arancio, vira al blu": "car:blu", "Gambo con squamette scure": "sup:squamosa", "Cappello viscido, spesso sotto conifere": "sup:viscida", "Cappello vellutato, spesso screpolato": "sup:vellutata",
+  "Squamoso o viscido, in ciuffi": "sup:squamosa", "Cortina da giovane": "ann:cortina", "Cappello fibrilloso, spesso con umbone": "sup:fibrillosa", "Cappello liscio biancastro o bruno, odore di rafano": "odo:rafano", "Lamelle separabili, orlo arrotolato": "mar:involuto",
+  "Viscido, con anello, su prato o paglia": "sup:viscida", "Fragile ed esile, su prato, sterco o legno marcio": "hab:sterco",
+  "Dura, con crosta lucida come laccata": "car:legnosa", "Dura e perenne, senza lucido": "car:legnosa", "Sottile e coriacea, a ventaglio con zone colorate": "car:elastica", "Carnosa, giallo-arancio, a mensole sovrapposte": "gam:laterale",
+  "Imbuto giallo-uovo, odore fruttato": "odo:fruttato", "A tromba, grigio-bruno, cavo fino alla base": "int:cavo", "Su legno marcio, a pieghe cerose": "hab:legnomorto",
+  "Palla chiusa": "him:gleba", "Coppa, disco": "forma:coppa", "Sella, cervello o alveolato": "forma:sella", "Clava o cespuglio ramificato": "forma:corallo", "Gelatinoso e tremolante": "car:gelatinosa",
+  "Fetido, a ditale o a gabbia": "forma:fetido", "Nero e duro, a dita o a palla": "forma:nero", "Sotterraneo, come un tubero": "forma:tartufo", "Crosta o mensola sottile senza pori": "him:liscio",
+  "Si apre a stella": "forma:stella",
+  "A sella, grigio o bianco, gambo scanalato": "forma:sella", "Alveolato, a nido d'ape, cavo": "forma:alveolato", "A cervello, bruno-rossastro": "forma:cervello",
+  "Cespuglio ramificato, carnoso": "forma:corallo", "Ramificato, bianco o grigio, rami fragili": "forma:corallo", "Clave o dita singole": "forma:clava",
+  "Cappello a ditale con muco verde-oliva": "forma:fetido", "Rete o gabbia rossa": "forma:gabbia"
+};
+
+var curPart = "cappello";
+function renderParts() {
+  $("#parts").innerHTML = PARTS.map(function (p) {
+    return '<button class="part-btn" type="button" data-part="' + p.id + '" aria-pressed="' + (p.id === curPart) + '">' + esc(p.nome) + "</button>";
+  }).join("");
+  var p = PARTS.filter(function (x) { return x.id === curPart; })[0];
+  var h = "<h2>" + esc(p.nome) + '</h2><p class="intro">' + esc(p.intro) + "</p>";
+  p.gruppi.forEach(function (g) {
+    h += '<div class="grp"><h4>' + esc(g.t) + '</h4><div class="items">';
+    g.v.forEach(function (v) { var ex = EX[p.id + "/" + v[0]];
+      h += '<div class="item">' + icon(v[2] || IM[p.id + "/" + v[0]]) + "<div><b>" + esc(v[0]) + "</b><span>" + esc(v[1]) + "</span>" +
+        (ex ? '<em class="ex"><u>' + (ex.length > 1 ? "Due esempi" : "Esempio") + "</u> " + ex.map(function (n) { return "<i>" + esc(n) + "</i>"; }).join(" · ") + "</em>" : "") + "</div></div>"; });
+    h += "</div></div>";
+  });
+  h += '<p class="exnote">Gli esempi sono specie da manuale che mostrano bene quel carattere: non dicono che crescano in Sicilia né se siano commestibili. Il comitato conferma l\u2019elenco e aggiunge le specie siciliane. Dove manca l\u2019esempio, il carattere è ancora da completare.</p>';
+  h += '<div class="go"><button class="btn primary" type="button" data-goto="chiave">Usa questi caratteri nella chiave</button></div>';
+  $("#panel").innerHTML = h;
+}
+$("#parts").addEventListener("click", function (e) {
+  var b = e.target.closest("[data-part]");
+  if (b) { curPart = b.getAttribute("data-part"); renderParts(); }
+});
+$("#panel").addEventListener("click", function (e) {
+  if (e.target.closest("[data-goto]")) setTab("chiave", true);
+});
+
+/* ===== Il percorso: impara, allenati, metti insieme ===== */
+var PKEY = "inzenga-percorso-v1";
+function loadP() { try { var s = JSON.parse(localStorage.getItem(PKEY)); if (s && s.t) return s; } catch (e) {} return { t: {} }; }
+function saveP() { try { localStorage.setItem(PKEY, JSON.stringify(PR)); } catch (e) {} }
+var PR = loadP();
+var LV = [{ n: "Principiante", min: 0 }, { n: "Esploratore", min: 150 }, { n: "Determinatore", min: 400 }];
+var TAPPE = [
+  { id: "parti", t: "Cappello e gambo", s: "Le forme che vedi per prime", parts: ["cappello", "gambo"], n: 8 },
+  { id: "sotto", t: "Sotto il cappello", s: "Imenio, lamelle e tubuli", parts: ["imenio", "lamelle"], n: 8 },
+  { id: "velo", t: "Anello e volva", s: "I resti del velo", parts: ["anello", "volva"], n: 8 },
+  { id: "carne", t: "Taglia e annusa", s: "Carne, latice e odore", parts: ["carne", "odore"], n: 8 },
+  { id: "sporata", t: "Sporata e ambiente", s: "Colore delle spore e dove cresce", parts: ["sporata", "habitat"], n: 8 },
+  { id: "mix", t: "Sfida mista", s: "Tutti i caratteri, senza aiuti", parts: null, n: 12, noLearn: true },
+  { id: "chi", t: "Chi sono io?", s: "Dalla descrizione al genere", final: true, n: 8 }
+];
+var PV = { mode: "home" };
+function totalPts() { return Object.keys(PR.t).reduce(function (a, k) { return a + (PR.t[k].best || 0); }, 0); }
+function levelOf(p) { var l = LV[0]; LV.forEach(function (x) { if (p >= x.min) l = x; }); return l; }
+function nextLevel(p) { for (var i = 0; i < LV.length; i++) if (p < LV[i].min) return LV[i]; return null; }
+function shuf(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function starsFor(sc, max) { var r = sc / max; return r >= .85 ? 3 : r >= .65 ? 2 : r >= .4 ? 1 : 0; }
+function starsHTML(n) { var s = ""; for (var i = 0; i < 3; i++) s += '<span class="st' + (i < n ? " on" : "") + '" aria-hidden="true">★</span>'; return '<span class="stars" aria-label="' + n + ' stelle su 3">' + s + "</span>"; }
+
+function allItems() {
+  var out = [], cnt = {};
+  PARTS.forEach(function (p) { p.gruppi.forEach(function (g) {
+    if (g.t === "Come si fa") return;
+    g.v.forEach(function (v) {
+      cnt[v[0]] = (cnt[v[0]] || 0) + 1;
+      out.push({ pid: p.id, pn: p.nome, g: g.t, name: v[0], desc: v[1], ik: v[2] || IM[p.id + "/" + v[0]] || "", ex: EX[p.id + "/" + v[0]] || null });
+    });
+  }); });
+  out.forEach(function (it) { it.label = cnt[it.name] > 1 ? it.name + " (" + it.g.toLowerCase() + ")" : it.name; });
+  return out;
+}
+function pick(pool, k, avoid) {
+  var seen = {}; seen[avoid] = 1; var res = [];
+  shuf(pool).forEach(function (x) { if (res.length < k && !seen[x.label]) { seen[x.label] = 1; res.push(x); } });
+  return res;
+}
+function distract(it, ALL, k, needIcon) {
+  var ok = function (x) { return x !== it && (!needIcon || x.ik); };
+  var res = pick(ALL.filter(function (x) { return ok(x) && x.pid === it.pid && x.g === it.g; }), k, it.label);
+  [function (x) { return x.pid === it.pid; }, function () { return true; }].forEach(function (f) {
+    if (res.length < k) {
+      var have = {}; res.forEach(function (r) { have[r.label] = 1; });
+      var more = pick(ALL.filter(function (x) { return ok(x) && f(x) && !have[x.label]; }), k - res.length, it.label);
+      res = res.concat(more);
+    }
+  });
+  return res;
+}
+function makeQuiz(tp) {
+  if (tp.final) return makeWho(tp.n);
+  var ALL = allItems(), pool = tp.parts ? ALL.filter(function (x) { return tp.parts.indexOf(x.pid) >= 0; }) : ALL;
+  var qs = [];
+  shuf(pool).slice(0, tp.n).forEach(function (it) {
+    var kind = it.ik ? (Math.random() < .5 && distract(it, ALL, 2, true).length >= 2 ? "fig" : "name") : "desc";
+    var q = { kind: kind, it: it };
+    if (kind === "fig") {
+      q.opts = shuf([it].concat(distract(it, ALL, 2, true))).map(function (x) { return { ik: x.ik, ok: x === it, lab: x.label }; });
+    } else {
+      q.opts = shuf([it].concat(distract(it, ALL, 3, false))).map(function (x) { return { t: x.label, ok: x === it }; });
+    }
+    qs.push(q);
+  });
+  return qs;
+}
+function maskDesc(name, desc) {
+  var toks = name.split(/ e |, | /).filter(function (w) { return w.length > 3 && /^[A-ZÀ-Ý]/.test(w); });
+  var out = desc;
+  toks.forEach(function (w) { out = out.replace(new RegExp("\\b" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "g"), "…"); });
+  return out;
+}
+function makeWho(n) {
+  var seen = {}, L = [];
+  LEAVES.forEach(function (l) { if (!l.none && l.rank !== "Fuori bozza" && l.desc && l.desc.length > 40 && !seen[l.name]) { seen[l.name] = 1; L.push(l); } });
+  return shuf(L).slice(0, n).map(function (l) {
+    var opts = shuf([l].concat(shuf(L.filter(function (x) { return x !== l; })).slice(0, 3))).map(function (x) { return { t: x.name, ok: x === l }; });
+    return { kind: "who", leaf: l, text: maskDesc(l.name, l.desc), opts: opts };
+  });
+}
+
+/* ---- viste ---- */
+function pathHome() {
+  var p = totalPts(), lv = levelOf(p), nx = nextLevel(p);
+  var pct = nx ? Math.round(100 * (p - lv.min) / (nx.min - lv.min)) : 100;
+  var h = '<div class="lvl"><div><span class="lvl-k">Il tuo livello</span><b class="lvl-n">' + lv.n + '</b></div><div class="lvl-bar"><div class="lvl-fill" style="width:' + pct + '%"></div></div><span class="lvl-p">' +
+    p + " punti" + (nx ? " · prossimo livello a " + nx.min : " · livello massimo") + "</span></div>";
+  h += '<p class="path-intro">Sette tappe per imparare a descrivere un fungo con le parole giuste. Ogni tappa ha tre momenti: <b>guarda</b> i disegni, <b>mettiti alla prova</b> con un quiz, poi <b>riprova</b> per migliorare il punteggio. Alla fine, usa tutto per riconoscere il genere.</p>';
+  h += '<ol class="tappe">';
+  TAPPE.forEach(function (tp, i) {
+    var r = PR.t[tp.id], st = r ? r.stars || 0 : 0;
+    h += '<li><button type="button" class="tappa" data-act="open" data-id="' + tp.id + '"><span class="tn">' + (i + 1) + '</span><span class="tt"><b>' + esc(tp.t) + "</b><span>" + esc(tp.s) + '</span></span><span class="tr">' + starsHTML(st) + '<span class="tb">' + (r ? "Migliore: " + r.best : "Da fare") + "</span></span></button></li>";
+  });
+  h += "</ol>";
+  h += '<h3 class="soonh">In arrivo</h3><div class="soon">' +
+    '<div><b>Schede di genere e specie</b><span>Caratteri chiave, specie simili e ambiente, con foto dei soci e fonte.</span></div>' +
+    '<div><b>Il fungo misterioso</b><span>Una sfida al giorno, uguale per tutti, da risolvere con la chiave.</span></div>' +
+    '<div><b>Modalità bosco</b><span>La chiave a un carattere per schermo, da usare sul posto.</span></div></div>';
+  h += '<p class="exnote">Qui si impara facendo. Per dati, mappe e previsioni c\u2019è l\u2019Osservatorio. Nessuna parte di questa sezione dice se un fungo si può mangiare. ' +
+    'I punti sono la somma del miglior risultato di ogni tappa, così non serve rifare lo stesso quiz per accumulare punti. I progressi restano su questo dispositivo. Contenuti in bozza: il comitato scientifico li rivede prima della pubblicazione.</p>';
+  return h;
+}
+function itemHTML(it) {
+  return '<div class="item">' + icon(it.ik) + "<div><b>" + esc(it.name) + "</b><span>" + esc(it.desc) + "</span>" +
+    (it.ex ? '<em class="ex"><u>' + (it.ex.length > 1 ? "Due esempi" : "Esempio") + "</u> " + it.ex.map(function (n) { return "<i>" + esc(n) + "</i>"; }).join(" · ") + "</em>" : "") + "</div></div>";
+}
+function pathLearn(tp) {
+  var h = '<button type="button" class="btn back" data-act="home">← Tutte le tappe</button><h2>' + esc(tp.t) + '</h2>';
+  if (tp.final) {
+    h += '<p class="intro">Qui metti insieme tutto. Ti leggo la descrizione di un genere o di un gruppo di funghi e tu scegli il nome giusto. Se ti blocchi, apri la chiave e prova a seguire i caratteri: è lo stesso percorso che faresti sul fungo vero.</p>';
+    h += '<div class="go"><button type="button" class="btn primary" data-act="start" data-id="' + tp.id + '">Inizia il quiz</button> <button type="button" class="btn" data-act="key">Apri la chiave</button></div>';
+    return h;
+  }
+  h += '<p class="intro">Prima guarda con calma i disegni e leggi i termini. Poi premi «Mettiti alla prova»: il quiz ha ' + tp.n + ' domande.</p>';
+  PARTS.filter(function (p) { return tp.parts.indexOf(p.id) >= 0; }).forEach(function (p) {
+    h += '<h3 class="lp">' + esc(p.nome) + "</h3>";
+    p.gruppi.forEach(function (g) {
+      if (g.t === "Come si fa") return;
+      h += '<div class="grp"><h4>' + esc(g.t) + '</h4><div class="items">';
+      g.v.forEach(function (v) {
+        h += itemHTML({ name: v[0], desc: v[1], ik: v[2] || IM[p.id + "/" + v[0]] || "", ex: EX[p.id + "/" + v[0]] || null });
+      });
+      h += "</div></div>";
+    });
+  });
+  h += '<div class="go"><button type="button" class="btn primary" data-act="start" data-id="' + tp.id + '">Mettiti alla prova</button></div>';
+  return h;
+}
+function pathQuiz() {
+  var Q = PV.qs, i = PV.i, q = Q[i], tp = PV.tp;
+  var h = '<div class="qtop"><button type="button" class="btn back" data-act="home">← Esci</button><span class="qn">Domanda ' + (i + 1) + " di " + Q.length + '</span><span class="qp">' + PV.pts + ' punti' + (PV.streak >= 3 ? ' · serie ' + PV.streak : "") + '</span></div>';
+  h += '<div class="qprog"><div style="width:' + Math.round(100 * i / Q.length) + '%"></div></div>';
+  h += '<div class="qbox">';
+  if (q.kind === "name") h += '<p class="qt">Che carattere mostra questo disegno?</p><div class="qfig">' + icon(q.it.ik) + "</div>";
+  else if (q.kind === "fig") h += '<p class="qt">Quale disegno è «' + esc(q.it.label) + '»?</p>';
+  else if (q.kind === "desc") h += '<p class="qt">Quale carattere è descritto così?</p><p class="qd">' + esc(q.it.desc) + "</p>";
+  else {
+    h += '<p class="qt">Chi sono io?</p><p class="qd">' + esc(q.text) + "</p>";
+    if (q.leaf.feats && q.leaf.feats.length) h += '<p class="chips">' + q.leaf.feats.map(function (f) { return "<span>" + esc(f) + "</span>"; }).join("") + "</p>";
+  }
+  h += '<div class="qopts' + (q.kind === "fig" ? " figs" : "") + '" role="group" aria-label="Risposte">';
+  q.opts.forEach(function (o, k) {
+    var cls = "qo";
+    if (PV.done) { if (o.ok) cls += " ok"; else if (k === PV.chosen) cls += " no"; }
+    h += '<button type="button" class="' + cls + '" data-act="ans" data-k="' + k + '"' + (PV.done ? " disabled" : "") + ">" + (q.kind === "fig" ? icon(o.ik) : esc(o.t)) + "</button>";
+  });
+  h += "</div>";
+  if (PV.done) {
+    var good = q.opts[PV.chosen].ok, fb;
+    if (q.kind === "who") {
+      fb = "<b>" + esc(q.leaf.name) + "</b> (" + esc(q.leaf.rank.toLowerCase()) + "). " + esc(q.leaf.desc) + (q.leaf.eg ? " Esempi: <i>" + esc(q.leaf.eg) + "</i>." : "");
+    } else {
+      fb = "<b>" + esc(q.it.name) + ".</b> " + esc(q.it.desc) + (q.it.ex ? " Esempi: <i>" + q.it.ex.map(esc).join(", ") + "</i>." : "");
+    }
+    h += '<div class="fb ' + (good ? "good" : "bad") + '" role="status"><strong>' + (good ? "Giusto! +" + PV.gain : "Non proprio.") + "</strong> " + fb + "</div>";
+    h += '<div class="go"><button type="button" class="btn primary" data-act="next">' + (i + 1 < Q.length ? "Avanti" : "Vedi il risultato") + "</button></div>";
+  }
+  h += "</div>";
+  return h;
+}
+function pathEnd() {
+  var tp = PV.tp, max = PV.qs.length * 10 + Math.max(0, PV.qs.length - 2) * 5, st = starsFor(PV.pts, max);
+  var prev = PR.t[tp.id], newBest = !prev || PV.pts > prev.best;
+  var h = '<div class="end"><h2>' + esc(tp.t) + "</h2>" + starsHTML(st) + '<p class="big">' + PV.right + " risposte giuste su " + PV.qs.length + '</p><p class="muted">' + PV.pts + " punti" +
+    (newBest ? (prev ? " · nuovo record!" : " · primo risultato salvato") : " · il tuo migliore resta " + prev.best) + "</p>";
+  var msg = PV.right === PV.qs.length ? "Tutte giuste: puoi passare alla tappa dopo." : PV.right >= PV.qs.length * .7 ? "Buon risultato. Rivedi i disegni dei termini che hai sbagliato e riprova." : "Normale: serve un po' di pratica. Torna ai disegni e riprova, i termini si fissano ripetendoli.";
+  h += "<p>" + msg + "</p>";
+  var i = TAPPE.indexOf(tp), nxt = TAPPE[i + 1];
+  h += '<div class="go"><button type="button" class="btn primary" data-act="start" data-id="' + tp.id + '">Riprova</button> <button type="button" class="btn" data-act="open" data-id="' + tp.id + '">Rivedi i disegni</button>' +
+    (nxt ? ' <button type="button" class="btn" data-act="open" data-id="' + nxt.id + '">Tappa successiva</button>' : "") + ' <button type="button" class="btn" data-act="home">Tutte le tappe</button></div></div>';
+  return h;
+}
+function renderPath() {
+  var el = $("#path"), h;
+  if (PV.mode === "home") h = pathHome();
+  else if (PV.mode === "learn") h = pathLearn(PV.tp);
+  else if (PV.mode === "quiz") h = pathQuiz();
+  else h = pathEnd();
+  el.innerHTML = h;
+}
+$("#path").addEventListener("click", function (e) {
+  var b = e.target.closest("[data-act]"); if (!b) return;
+  var act = b.getAttribute("data-act"), id = b.getAttribute("data-id");
+  var tp = id ? TAPPE.filter(function (t) { return t.id === id; })[0] : null;
+  if (act === "home") { PV = { mode: "home" }; }
+  else if (act === "open") { PV = { mode: tp.noLearn ? "quiz" : "learn", tp: tp }; if (tp.noLearn) { PV = newRun(tp); } }
+  else if (act === "start") { PV = newRun(tp); }
+  else if (act === "key") { setTab("chiave", true); return; }
+  else if (act === "ans" && !PV.done) {
+    var k = +b.getAttribute("data-k"), ok = PV.qs[PV.i].opts[k].ok;
+    PV.chosen = k; PV.done = true; PV.gain = 0;
+    if (ok) { PV.right++; PV.streak++; PV.gain = 10 + (PV.streak >= 3 ? 5 : 0); PV.pts += PV.gain; } else { PV.streak = 0; }
+  }
+  else if (act === "next") {
+    if (PV.i + 1 < PV.qs.length) { PV.i++; PV.done = false; PV.chosen = -1; }
+    else {
+      var max = PV.qs.length * 10 + Math.max(0, PV.qs.length - 2) * 5, st = starsFor(PV.pts, max), prev = PR.t[PV.tp.id];
+      PR.t[PV.tp.id] = { best: Math.max(prev ? prev.best : 0, PV.pts), stars: Math.max(prev ? prev.stars || 0 : 0, st) };
+      saveP(); PV.mode = "end";
+    }
+  }
+  renderPath();
+  if (act !== "ans") window.scrollTo({ top: $("#p-percorso").getBoundingClientRect().top + window.scrollY - 60, behavior: reduce ? "auto" : "smooth" });
+});
+function newRun(tp) { return { mode: "quiz", tp: tp, qs: makeQuiz(tp), i: 0, pts: 0, right: 0, streak: 0, done: false, chosen: -1, gain: 0 }; }
+
+
+/* ===== Biblioteca ===== */
+var BIB = [
+  { g: "Sicilia e Italia", items: [
+    { t: "Funghi siciliani", a: "Giuseppe Inzenga", y: "1865", l: "italiano", tag: "Sicilia tavole",
+      d: "Studi con tavole a colori litografate a Palermo. È l'opera del micologo da cui prende il nome l'associazione.",
+      v: [{ id: "funghisiciliani00inze", n: 228, mb: 12.7 }], old: true },
+    { t: "Fungi tridentini", a: "Giacomo Bresadola", y: "1881–1892", l: "latino", tag: "Italia tavole",
+      d: "Specie nuove o poco note del Trentino, descritte in latino e illustrate con tavole.",
+      v: [{ id: "fungitridentini01bresgoog", n: 322, mb: 6.0, lab: "Vol. 1 (1881)" }, { id: "fungitridentini00bresgoog", n: 375, mb: 6.4, lab: "Vol. 2 (1892)" }] },
+    { t: "Descrizione dei funghi mangerecci più comuni dell'Italia e de' velenosi che possono co' medesimi confondersi", a: "Carlo Vittadini", y: "1835", l: "italiano", tag: "Italia storico", old: true,
+      d: "Opera italiana dell'Ottocento. Testo storico: le indicazioni sull'uso alimentare non valgono oggi.",
+      v: [{ id: "descrizionedeifu00vitt", n: 474, mb: 29.7 }] },
+    { t: "Flora italica cryptogama, parte Fungi: Hymeniales", a: "Pier Andrea Saccardo", y: "1915", l: "italiano", tag: "Italia", chk: true,
+      d: "La flora dei funghi italiani a lamelle, pori e simili. Diritti da verificare dal comitato (autore morto nel 1920).",
+      v: [{ id: "floraitalicacryp0000sacc", n: 1428, mb: 68.0 }] },
+    { t: "Nova plantarum genera", a: "Pier Antonio Micheli", y: "1729", l: "latino", tag: "storia",
+      d: "Opera fiorentina considerata una delle origini della micologia scientifica.",
+      v: [{ id: "novaplantarvmgen00mich", n: 478, mb: 31.4 }] },
+    { t: "Aperçu mycologique et catalogue des champignons des environs de Nice", a: "Jean-Baptiste Barla", y: "1858", l: "francese", tag: "Mediterraneo",
+      d: "Elenco dei funghi di una zona mediterranea, utile per il confronto con la Sicilia.",
+      v: [{ id: "bub_gb_3wYWAAAAYAAJ", n: 70, mb: 2.6 }] }
+  ] },
+  { g: "Atlanti con tavole", items: [
+    { t: "Coloured figures of English fungi or mushrooms", a: "James Sowerby", y: "1797–1809", l: "inglese", tag: "tavole",
+      d: "Tavole colorate a mano. Una scansione unica di tutta l'opera.",
+      v: [{ id: "colouredfigureso00sowe", n: 1124, mb: 32.8 }] },
+    { t: "Illustrations of British fungi (Hymenomycetes)", a: "Mordecai C. Cooke", y: "1881–1891", l: "inglese", tag: "tavole",
+      d: "Circa 1200 tavole di funghi a lamelle, con intero, sezione e dettagli.",
+      v: [{ id: "illustrationsofb01cookuoft", n: 626, mb: 7.2, lab: "Vol. 1" }, { id: "illustrationsofb02cookuoft", n: 600, mb: 7.8, lab: "Vol. 2" }, { id: "illustrationsofb03cookuoft", n: 666, mb: 6.4, lab: "Vol. 3" }, { id: "illustrationsofb04cookuoft", n: 678, mb: 6.8, lab: "Vol. 4" }, { id: "illustrationsofb05cookuoft", n: 594, mb: 10.7, lab: "Vol. 5" }, { id: "illustrationsofb06cookuoft", n: 346, mb: 10.9, lab: "Vol. 6" }, { id: "illustrationsofb07cookuoft", n: 754, mb: 12.7, lab: "Vol. 7" }, { id: "illustrationsofb08cookuoft", n: 420, mb: 13.1, lab: "Vol. 8" }] },
+    { t: "Icones mycologicae", a: "Émile Boudier", y: "1904–1910", l: "francese", tag: "tavole microscopia",
+      d: "Tavole molto precise, con anche i dettagli visti al microscopio.",
+      v: [{ id: "iconesmycologic01boud", n: 414, mb: 8.4, lab: "Vol. 1" }, { id: "iconesmycologic02boud", n: 486, mb: 8.8, lab: "Vol. 2" }, { id: "iconesmycologic03boud", n: 366, mb: 7.7, lab: "Vol. 3" }, { id: "iconesmycologic04boud", n: 384, mb: 41.2, lab: "Vol. 4" }] },
+    { t: "Histoire des champignons de la France", a: "Pierre Bulliard", y: "1791", l: "francese", tag: "tavole",
+      d: "Uno degli atlanti più importanti del Settecento.",
+      v: [{ id: "histoiredeschamv117bull", n: 552, mb: 57.5 }] },
+    { t: "Herbier de la France", a: "Pierre Bulliard", y: "1780–1793", l: "francese", tag: "tavole",
+      d: "Raccolta di tavole di piante e funghi. Qui un volume.",
+      v: [{ id: "herbierdelafranc145192bull", n: 202, mb: 5.4 }] },
+    { t: "Naturgetreue Abbildungen und Beschreibungen der essbaren, schädlichen und verdächtigen Schwämme", a: "Julius Vincenz von Krombholz", y: "1831", l: "tedesco", tag: "tavole storico", old: true,
+      d: "Litografie grandi e realistiche. Testo storico: le indicazioni sull'uso alimentare non valgono oggi.",
+      v: [{ id: "mobot31753002807052", n: 77, mb: 42.5 }] },
+    { t: "Iconographie des champignons de Paulet", a: "Jean-Jacques Paulet, a cura di J.-H. Léveillé", y: "1855", l: "francese", tag: "tavole",
+      d: "Raccolta di 217 tavole disegnate.",
+      v: [{ id: "iconographiedesc00lv", n: 600, mb: 26.5 }] },
+    { t: "Traité des champignons", a: "Jean-Jacques Paulet", y: "1793", l: "francese", tag: "storico",
+      d: "Trattato settecentesco. Testo storico: le indicazioni sull'uso alimentare non valgono oggi.",
+      v: [{ id: "traitdeschampign02paul", n: 518, mb: 24.5 }], old: true },
+    { t: "Les champignons qui croissent en France", a: "Claude Casimir Gillet", y: "1878", l: "francese", tag: "tavole",
+      d: "Descrizioni e figure dei funghi a lamelle di Francia.",
+      v: [{ id: "leschampignonsfu00gill", n: 848, mb: 39.6 }] },
+    { t: "Tabulae analyticae fungorum", a: "Narcisse Patouillard", y: "1883", l: "francese", tag: "microscopia",
+      d: "Analisi al microscopio dei funghi, con disegni delle parti minute.",
+      v: [{ id: "tabulaeanalytica6718pato", n: 220, mb: 13.9 }] }
+  ] },
+  { g: "Opere di base", items: [
+    { t: "Synopsis methodica fungorum", a: "Christiaan H. Persoon", y: "1801", l: "latino", tag: "sistematica",
+      d: "Uno dei testi da cui parte la classificazione dei funghi.",
+      v: [{ id: "synopsismethodi00pers", n: 760, mb: 38.0 }] },
+    { t: "Systema mycologicum", a: "Elias Fries", y: "1821–1832", l: "latino", tag: "sistematica",
+      d: "L'opera di partenza per i nomi dei funghi (punto di riferimento della nomenclatura).",
+      v: [{ id: "systemamycologic03frie", n: 748, mb: 59.1 }] },
+    { t: "Elenchus fungorum", a: "Elias Fries", y: "1828", l: "latino", tag: "sistematica",
+      d: "Commento al Systema mycologicum.",
+      v: [{ id: "elenchusfungoru01friegoog", n: 409, mb: 15.6 }] },
+    { t: "Handbook of British fungi", a: "Mordecai C. Cooke", y: "1871", l: "inglese", tag: "descrizioni",
+      d: "Descrizioni di tutte le specie britanniche conosciute allora.",
+      v: [{ id: "handbookofbriti01cook", n: 522, mb: 34.0 }] },
+    { t: "Sylloge fungorum omnium hucusque cognitorum", a: "Pier Andrea Saccardo", y: "1882–1931", l: "latino", tag: "sistematica",
+      d: "L'enciclopedia dei funghi conosciuti, in oltre 25 volumi. Qui il volume 2.",
+      v: [{ id: "syllogefungorumo02sacc", n: 1010, mb: 66.1 }] }
+  ] }
+];
+var IA = "https://archive.org/";
+function biblioHTML(filter) {
+  var f = norm(filter || ""), h = "", total = 0;
+  BIB.forEach(function (g) {
+    var cards = "";
+    g.items.forEach(function (b, bi) {
+      var hay = norm([b.t, b.a, b.y, b.l, b.tag, b.d].join(" "));
+      if (f && hay.indexOf(f) < 0) return;
+      total++;
+      var vols = b.v.length > 1;
+      var btns = "";
+      b.v.forEach(function (v, vi) {
+        btns += '<button class="btn primary" type="button" data-read="' + v.id + '" data-n="' + v.n + '" data-title="' + esc(b.t + (v.lab ? " · " + v.lab : "")) + '">' + (vols ? esc(v.lab) : "Leggi") + '</button>';
+      });
+      var pdfs = b.v.map(function (v) {
+        return '<a href="' + IA + 'download/' + v.id + '/' + v.id + '.pdf" target="_blank" rel="noopener">PDF' + (v.lab ? " " + esc(v.lab.split(" (")[0]) : "") + ' · ' + v.mb + ' MB</a>';
+      }).join(" · ");
+      cards += '<article class="bk"><img class="bk-cov" loading="lazy" alt="" src="' + IA + 'services/img/' + b.v[0].id + '">' +
+        '<div class="bk-body"><h3>' + esc(b.t) + '</h3><p class="bk-meta">' + esc(b.a) + ' · ' + esc(b.y) + ' · ' + esc(b.l) + '</p>' +
+        '<p class="bk-d">' + esc(b.d) + '</p>' + (b.old ? '<p class="bk-warn">Testo storico</p>' : "") +
+        '<div class="bk-act">' + btns + '</div><p class="bk-links">' + pdfs + '</p></div></article>';
+    });
+    if (cards) h += '<h2 class="bk-g">' + esc(g.g) + '</h2><div class="bk-grid">' + cards + '</div>';
+  });
+  if (!total) h = '<p class="status">Nessun libro trovato.</p>';
+  return h;
+}
+function renderBiblio() { $("#bkList").innerHTML = biblioHTML($("#bkQ").value); }
+$("#bkQ").addEventListener("input", renderBiblio);
+renderBiblio();
+
+/* ===== Lettore: solo scorrimento e zoom con le dita ===== */
+var rd = $("#rd"), rdScroll = $("#rdScroll"), rdPages = $("#rdPages"), rdState = { id: null, n: 0, zoom: 1, last: null }, rdIO = null, rdZT = 0;
+function rdBucket() {
+  var dpr = Math.min(window.devicePixelRatio || 1, 2.5), cw = Math.min(rdScroll.clientWidth, 820) * rdState.zoom * dpr, B = [500, 700, 1000, 1400, 2000];
+  for (var i = 0; i < B.length; i++) if (cw <= B[i]) return B[i];
+  return 2000;
+}
+function rdLoad(p) {
+  var w = rdBucket(), img = p.querySelector("img");
+  if (+p.getAttribute("data-w") >= w) return;
+  var url = IA + "download/" + rdState.id + "/page/n" + p.getAttribute("data-i") + "_w" + w + ".jpg", pre = new Image();
+  pre.onload = function () {
+    if (rdState.id === null) return;
+    img.src = url; p.setAttribute("data-w", w); p.style.aspectRatio = pre.naturalWidth + " / " + pre.naturalHeight; p.classList.add("ok");
+    if (!rdState.ratio) {
+      rdState.ratio = pre.naturalWidth + " / " + pre.naturalHeight;
+      rdPages.querySelectorAll(".rd-p:not(.ok)").forEach(function (q) { q.style.aspectRatio = rdState.ratio; });
+    }
+    if (rdState.target && +p.getAttribute("data-i") === rdState.target) { rdScroll.scrollTop = p.offsetTop; rdState.target = 0; }
+  };
+  pre.onerror = function () { if (!img.getAttribute("src")) p.classList.add("err"); };
+  pre.src = url;
+}
+function rdRefresh() {
+  var r = rdScroll.getBoundingClientRect();
+  rdPages.querySelectorAll(".rd-p").forEach(function (p) {
+    var b = p.getBoundingClientRect();
+    if (b.bottom > r.top - 1200 && b.top < r.bottom + 1800) rdLoad(p);
+  });
+}
+function rdLabel() {
+  var r = rdScroll.getBoundingClientRect(), ps = rdPages.children, best = 0;
+  for (var i = 0; i < ps.length; i++) { if (ps[i].getBoundingClientRect().top <= r.top + r.height * .35) best = i; else break; }
+  $("#rdPg").textContent = "pagina " + (best + 1) + " di " + rdState.n;
+}
+function openReader(id, n, title, leaf) {
+  rdState = { id: id, n: n, zoom: 1, target: leaf || 0, ratio: 0 };
+  $("#rdTitle").textContent = title; rd.hidden = false; document.body.style.overflow = "hidden";
+  rdPages.style.width = Math.min(rdScroll.clientWidth, 820) + "px"; rdPages.innerHTML = "";
+  for (var i = 0; i < n; i++) {
+    var d = document.createElement("div"); d.className = "rd-p"; d.setAttribute("data-i", i); d.setAttribute("data-w", 0);
+    d.innerHTML = '<img alt="Pagina ' + (i + 1) + '"><span class="rd-e">Pagina non disponibile. Prova a riaprire il libro o scarica il PDF.</span>';
+    rdPages.appendChild(d);
+  }
+  rdScroll.scrollLeft = 0; rdScroll.scrollTop = 0;
+  if (leaf) { var t = rdPages.children[Math.min(leaf, n - 1)]; if (t) rdScroll.scrollTop = t.offsetTop; }
+  rdRefresh(); rdLabel(); $("#rdx").focus();
+}
+function closeReader() { rd.hidden = true; document.body.style.overflow = ""; rdPages.innerHTML = ""; rdState.id = null; }
+function rdSetZoom(z, mx, my) {
+  z = Math.max(1, Math.min(4, z));
+  var sw = rdScroll.scrollWidth, sh = rdScroll.scrollHeight, ax = (rdScroll.scrollLeft + mx) / sw, ay = (rdScroll.scrollTop + my) / sh;
+  rdState.zoom = z; rdPages.style.width = (Math.min(rdScroll.clientWidth, 820) * z) + "px";
+  rdScroll.scrollLeft = ax * rdScroll.scrollWidth - mx; rdScroll.scrollTop = ay * rdScroll.scrollHeight - my;
+  clearTimeout(rdZT); rdZT = setTimeout(rdRefresh, 220);
+}
+(function () {
+  var t0 = null;
+  function dist(t) { var dx = t[0].clientX - t[1].clientX, dy = t[0].clientY - t[1].clientY; return Math.sqrt(dx * dx + dy * dy); }
+  rdScroll.addEventListener("touchstart", function (e) {
+    if (e.touches.length === 2) { t0 = { d: dist(e.touches), z: rdState.zoom }; }
+  }, { passive: true });
+  rdScroll.addEventListener("touchmove", function (e) {
+    if (e.touches.length === 2 && t0) {
+      e.preventDefault();
+      var r = rdScroll.getBoundingClientRect(), mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left, my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top;
+      rdSetZoom(t0.z * dist(e.touches) / t0.d, mx, my);
+    }
+  }, { passive: false });
+  rdScroll.addEventListener("touchend", function (e) { if (e.touches.length < 2) t0 = null; }, { passive: true });
+  rdScroll.addEventListener("wheel", function (e) {
+    if (!e.ctrlKey) return;
+    e.preventDefault();
+    var r = rdScroll.getBoundingClientRect();
+    rdSetZoom(rdState.zoom * Math.exp(-e.deltaY * 0.01), e.clientX - r.left, e.clientY - r.top);
+  }, { passive: false });
+  var raf = 0;
+  rdScroll.addEventListener("scroll", function () {
+    if (raf) return;
+    raf = requestAnimationFrame(function () { raf = 0; rdLabel(); rdRefresh(); });
+  }, { passive: true });
+})();
+$("#rdx").addEventListener("click", closeReader);
+document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !rd.hidden) closeReader(); });
+$("#bkList").addEventListener("click", function (e) {
+  var b = e.target.closest("[data-read]"); if (!b) return;
+  openReader(b.getAttribute("data-read"), +b.getAttribute("data-n"), b.getAttribute("data-title"), 0);
+});
+
+
+/* ===== Inzenga: ricerca nel testo e schede ===== */
+var INZ = { loaded: false, loading: false, pages: [], sp: [], byKey: {} };
+var INZ_BOOK = { id: "funghisiciliani00inze", n: 228, title: "Funghi siciliani" };
+var INZ_PLATES = {
+  t107: ["1:38", "1:46"], t109: ["1:49", "1:63", "1:64"], t111: ["1:68"], t113: ["1:69", "1:68"], t115: ["1:85"], t117: ["1:85", "1:88", "1:92"],
+  t199: ["2:1"], t201: ["2:2"], t203: ["2:12", "2:13"], t205: ["2:25", "2:26"], t207: ["2:27", "2:28"], t209: ["2:32"],
+  t211: ["1:7", "2:38", "2:39"], t213: ["2:47", "2:48", "2:49", "2:50"], t215: ["2:100", "2:86"], t217: ["2:89", "2:87", "2:84", "2:83"]
+};
+function inzLoad(cb) {
+  if (INZ.loaded) { cb(); return; }
+  if (INZ.loading) { INZ.wait.push(cb); return; }
+  INZ.loading = true; INZ.wait = [cb];
+  Promise.all([fetch("inzenga/specie.json").then(function (r) { return r.json(); }), fetch("inzenga/pagine.json").then(function (r) { return r.json(); })]).then(function (d) {
+    INZ.sp = d[0]; INZ.pages = d[1];
+    INZ.sp.forEach(function (s) { INZ.byKey[s.c + ":" + s.n] = s; });
+    INZ.pages.forEach(function (p) { p.nt = norm(p.t); });
+    INZ.loaded = true; INZ.wait.forEach(function (f) { f(); });
+  }).catch(function () { INZ.loading = false; var el = $("#inzRes"); if (el) el.innerHTML = '<p class="status">Non riesco a caricare il testo. Riprova più tardi.</p>'; });
+}
+function inzPlateOf(c, n) {
+  var k = c + ":" + n, out = [];
+  Object.keys(INZ_PLATES).forEach(function (p) { if (INZ_PLATES[p].indexOf(k) > -1) out.push(p); });
+  return out;
+}
+function inzName(s) { return s.g + " " + s.s + (s.a ? " " + s.a : ""); }
+function inzSpecCard(s) {
+  var pl = inzPlateOf(s.c, s.n), h = '<article class="iz"><div class="iz-b"><h3><em>' + esc(s.g + " " + s.s) + '</em> <span class="iz-a">' + esc(s.a || "") + '</span></h3>' +
+    '<p class="iz-m">Centuria ' + (s.c === 1 ? "prima" : "seconda") + ", n. " + s.n + ", pagina " + s.p + "</p><div class=\"bk-act\">" +
+    '<button class="btn primary" type="button" data-iz-text="' + s.c + ":" + s.n + '">Leggi il testo</button>' +
+    '<button class="btn" type="button" data-iz-page="' + s.l + '">Apri la pagina</button>';
+  pl.forEach(function (p) { h += '<button class="btn" type="button" data-iz-page="' + (parseInt(p.slice(1), 10) - 1) + '">Tavola</button>'; });
+  return h + "</div></div>" + (pl.length ? '<img class="iz-t" loading="lazy" alt="Tavola di Inzenga con ' + esc(s.g + " " + s.s) + '" src="tavole/' + pl[0] + '.webp">' : "") + "</article>";
+}
+function inzSnippet(p, toks) {
+  var t = p.t, nt = p.nt, at = -1;
+  for (var i = 0; i < toks.length; i++) { var k = nt.indexOf(toks[i]); if (k > -1 && (at < 0 || k < at)) at = k; }
+  var a = Math.max(0, at - 70), b = Math.min(t.length, at + 160), s = esc(t.slice(a, b).replace(/\s+/g, " "));
+  toks.forEach(function (w) { s = s.replace(new RegExp("(" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig"), "<mark>$1</mark>"); });
+  return (a > 0 ? "…" : "") + s + (b < t.length ? "…" : "");
+}
+function inzSearch() {
+  var q = $("#inzQ").value.trim(), el = $("#inzRes");
+  if (q.length < 2) { el.innerHTML = '<p class="status">Scrivi almeno due lettere: un nome (per esempio <em>Amanita</em> o <em>Boletus</em>) o una parola del testo.</p>'; return; }
+  inzLoad(function () {
+    var toks = norm(q).split(/\s+/).filter(Boolean), h = "";
+    var sp = INZ.sp.filter(function (s) { var n = norm(s.g + " " + s.s + " " + (s.a || "")); return toks.every(function (t) { return n.indexOf(t) > -1; }); });
+    var pg = INZ.pages.filter(function (p) { return toks.every(function (t) { return p.nt.indexOf(t) > -1; }); });
+    pg.sort(function (a, b) { return b.nt.split(toks[0]).length - a.nt.split(toks[0]).length; });
+    if (sp.length) { h += '<h3 class="iz-g">Specie (' + sp.length + ")</h3><div class=\"iz-grid\">" + sp.slice(0, 24).map(inzSpecCard).join("") + "</div>" + (sp.length > 24 ? '<p class="status">Mostrate le prime 24. Scrivi di più per restringere.</p>' : ""); }
+    if (pg.length) {
+      h += '<h3 class="iz-g">Nel testo (' + pg.length + " pagine)</h3>";
+      pg.slice(0, 30).forEach(function (p) {
+        h += '<div class="iz-hit"><p class="iz-m">Centuria ' + (p.c === 1 ? "prima" : "seconda") + (p.s ? ", pagina " + p.s : "") + '</p><p>' + inzSnippet(p, toks) + '</p><div class="bk-act"><button class="btn" type="button" data-iz-ptext="' + p.l + '">Leggi la pagina</button><button class="btn" type="button" data-iz-page="' + p.l + '">Apri la scansione</button></div></div>';
+      });
+      if (pg.length > 30) h += '<p class="status">Mostrate le prime 30 pagine.</p>';
+    }
+    if (!sp.length && !pg.length) h = '<p class="status">Non trovo nulla. Prova con meno parole o senza accenti.</p>';
+    el.innerHTML = h;
+  });
+}
+function inzShowText(title, sub, text, leaf) {
+  $("#txTitle").innerHTML = title; $("#txSub").textContent = sub; $("#txBody").textContent = text;
+  $("#txPage").setAttribute("data-iz-page", leaf); $("#tx").hidden = false; $("#txBody").scrollTop = 0; $("#txx").focus();
+}
+function inzPageText(leaf) { for (var i = 0; i < INZ.pages.length; i++) if (INZ.pages[i].l === leaf) return INZ.pages[i]; return null; }
+document.addEventListener("click", function (e) {
+  var b;
+  if ((b = e.target.closest("[data-iz-page]"))) { var lf = parseInt(b.getAttribute("data-iz-page"), 10); $("#tx").hidden = true; openReader(INZ_BOOK.id, INZ_BOOK.n, INZ_BOOK.title, lf); return; }
+  if ((b = e.target.closest("[data-iz-ptext]"))) {
+    var lf2 = parseInt(b.getAttribute("data-iz-ptext"), 10), p = inzPageText(lf2);
+    if (p) inzShowText("Pagina " + (p.s || ""), "Funghi siciliani, centuria " + (p.c === 1 ? "prima" : "seconda") + ". Trascrizione di prova, ancora da rivedere.", p.t, lf2);
+    return;
+  }
+  if ((b = e.target.closest("[data-iz-text]"))) {
+    var s = INZ.byKey[b.getAttribute("data-iz-text")]; if (!s) return;
+    var pp = inzPageText(s.l), txt = pp ? pp.t : "";
+    if (pp && s.o > -1) txt = pp.t.slice(s.o);
+    var nx = inzPageText(s.l + 1); if (nx && s.o > -1 && nx.c === pp.c && txt.length < 1800) txt += "\n\n" + nx.t;
+    inzShowText("<em>" + esc(s.g + " " + s.s) + "</em> " + esc(s.a || ""), "Centuria " + (s.c === 1 ? "prima" : "seconda") + ", n. " + s.n + ", pagina " + s.p + ". Trascrizione di prova, ancora da rivedere.", txt, s.l);
+  }
+});
+$("#txx").addEventListener("click", function () { $("#tx").hidden = true; });
+document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#tx").hidden) $("#tx").hidden = true; });
+var izT = 0; $("#inzQ").addEventListener("input", function () { clearTimeout(izT); izT = setTimeout(inzSearch, 160); });
+
+
+
+
+/* ===== Le tavole ===== */
+var TAV = [
+  ["t107", "Agaricus citri · Polyporus todari"],
+  ["t109", "Helvella panormitana · Agaricus ostreatus · Agaricus ostreatus nigripes"],
+  ["t111", "Hydnum compactum"],
+  ["t113", "Hydnum crispum · Hydnum compactum"],
+  ["t115", "Agaricus gemmellari"],
+  ["t117", "Agaricus gemmellari · Agaricus velutinus · Peziza rutilans"],
+  ["t199", "Boletus friesii"],
+  ["t201", "Daedalea inzengae"],
+  ["t203", "Boletus messanensis · Boletus fulvidus"],
+  ["t205", "Stereum speciosum · Arcyria punicea"],
+  ["t207", "Boletus panormitanus · Boletus aetnensis"],
+  ["t209", "Boletus bellini"],
+  ["t211", "Agaricus nebrodensis · Agaricus ferulae · Cantharellus (nome da verificare)"],
+  ["t213", "Agaricus muscarius · Agaricus caesareus · Agaricus zizyphinus · Peziza (nome da verificare)"],
+  ["t215", "Stereum hirsutum · Boletus satanas"],
+  ["t217", "Coprinus panormitanus · Boletus siculus · Boletus lanzi · Boletus candicans"]
+];
+(function () {
+  var h = "";
+  TAV.forEach(function (t, i) {
+    h += '<button class="tav" type="button" data-tav="' + i + '"><span class="tav-pic"><img loading="lazy" src="tavole/' + t[0] + '.webp" alt="Tavola a colori di Inzenga: ' + esc(t[1]) + '"></span>' +
+      '<span class="tav-cap"><em>' + esc(t[1]) + '</em><small>Inzenga, <i>Funghi siciliani</i></small></span></button>';
+  });
+  $("#tavGrid").innerHTML = h;
+  var lb = $("#lb"), lastFocus = null, lbLeaf = 0;
+  function closeLb() { lb.hidden = true; if (lastFocus) { try { lastFocus.focus(); } catch (e) {} } }
+  $("#tavGrid").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-tav]"); if (!b) return;
+    var t = TAV[+b.getAttribute("data-tav")];
+    lastFocus = b;
+    $("#lbimg").src = "tavole/" + t[0] + ".webp"; $("#lbimg").alt = "Tavola a colori di Inzenga: " + t[1];
+    $("#lbcap").innerHTML = "<em>" + esc(t[1]) + "</em><br><small>G. Inzenga, <i>Funghi siciliani</i>, Palermo</small>";
+    $("#lbsp").innerHTML = "";
+    (function (key) {
+      inzLoad(function () {
+        var h2 = "";
+        (INZ_PLATES[key] || []).forEach(function (k) { var s = INZ.byKey[k]; if (s) h2 += '<button class="btn" type="button" data-iz-text="' + k + '">Cosa scrive Inzenga: <em>' + esc(s.g + " " + s.s) + "</em></button>"; });
+        $("#lbsp").innerHTML = h2;
+      });
+    })(t[0]);
+    lb.hidden = false; $("#lbx").focus(); lbLeaf = parseInt(t[0].slice(1), 10) - 1;
+  });
+  $("#lbx").addEventListener("click", closeLb);
+  $("#lbbook").addEventListener("click", function () { closeLb(); openReader("funghisiciliani00inze", 228, "Funghi siciliani", lbLeaf); });
+  lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) closeLb(); });
+  document.addEventListener("click", function (e) {
+    var g = e.target.closest("[data-goto-tab]"); if (g) { setTab(g.getAttribute("data-goto-tab"), true); window.scrollTo(0, 0); }
+  });
+})();
+
+/* ===== Schede e indirizzo ===== */
+function setTab(name, updateHash) {
+  if (["chiave", "caratteri", "percorso", "tavole", "biblioteca"].indexOf(name) < 0) name = "percorso";
+  ["percorso", "chiave", "caratteri", "tavole", "biblioteca"].forEach(function (t) {
+    $("#p-" + t).hidden = t !== name;
+    $("#tab-" + t).setAttribute("aria-selected", String(t === name));
+  });
+  if (updateHash) { try { location.hash = name; } catch (err) {} }
+}
+document.querySelectorAll("[data-tab]").forEach(function (b) {
+  b.addEventListener("click", function () { setTab(b.getAttribute("data-tab"), true); });
+});
+window.addEventListener("hashchange", function () { setTab(location.hash.replace("#", ""), false); });
+
+/* ===== Avvio ===== */
+(function () {
+  var uniq = {};
+  LEAVES.forEach(function (l) { if (!l.none) uniq[l.name] = 1; });
+  $("#count").textContent = Object.keys(uniq).length + " generi e gruppi";
+  renderParts();
+  renderPath();
+  render(null);
+  setTab(location.hash.replace("#", ""), false);
+})();
+</script>
+
+</body>
+</html>
