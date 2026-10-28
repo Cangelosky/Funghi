@@ -368,6 +368,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .tv-f figcaption { font: 13px/1.4 system-ui, sans-serif; color: #8a7a5c; }
 .tv-hl { background: rgba(226, 171, 60, .14); border-radius: 8px; }
 #tvMore { display: block; margin: 16px auto; }
+.tav-search { max-width: 520px; margin: 4px 0 10px; }
 .tav-books { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
 .tav-books .chip { min-height: 40px; padding: 4px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: 14.5px; cursor: pointer; }
 .tav-books .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
@@ -477,7 +478,9 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
       <p>Le tavole a colori dei libri italiani della biblioteca: Inzenga, il micologo palermitano da cui prende il nome l'associazione, poi Bresadola, Vittadini, Comes e Mattirolo. Le abbiamo ripulite per leggerle meglio: fondo tolto, colori ravvivati.</p>
       <p>Guardale con calma e prova a riconoscere le parti del fungo: cappello, lamelle o pori, gambo, base. Quasi ogni tavola mostra anche il fungo tagliato a metà. <button class="btn" type="button" data-goto-tab="caratteri">Rivedi i caratteri</button></p>
     </div>
+    <div class="search tav-search"><input id="tavQ" type="search" placeholder="Cerca nelle tavole: Amanita, Boletus edulis, porcino…" aria-label="Cerca nelle tavole" autocomplete="off"></div>
     <div class="tav-books" id="tavBooks" role="group" aria-label="Scegli il libro"></div>
+    <p class="status" id="tavCount" aria-live="polite"></p>
     <div class="tav-grid" id="tavGrid"></div>
     <p class="tav-note">Nomi come li scrissero gli autori: molti oggi si chiamano in un altro modo. Il comitato scientifico li aggiorna prima della pubblicazione. Fonte: G. Inzenga, <em>Funghi siciliani</em>, Palermo, F. Lao, litografie di Frauenfelder. Scansione dell'Internet Archive (opera non più coperta da diritto d'autore).</p>
   </section>
@@ -2405,15 +2408,23 @@ var TAV = [
       '<span class="tav-cap"><em>' + esc(it.cap) + '</em><small>' + esc(libByK(it.k).short) + "</small></span></button>";
   }
   function render() {
-    var h = "";
+    var h = "", q = norm(($("#tavQ").value || "").trim()), toks = q ? q.split(/\s+/) : [], tot = 0;
     ORDER.forEach(function (k) {
       if (cur !== "all" && cur !== k) return;
-      var L = libByK(k), its = ALL[k] = items(k);
+      var L = libByK(k), its = ALL[k] = items(k), shown = "";
+      its.forEach(function (it, idx) { if (!toks.length || toks.every(function (w) { return norm(it.cap).indexOf(w) > -1; })) { shown += card(it, idx); tot++; } });
+      if (!shown) return;
       h += '<h3 class="tav-bk"><em>' + esc(L.title) + '</em> <span>' + esc(L.short) + " · " + its.length + (its.length === 1 ? " tavola" : " tavole") + "</span></h3>";
-      h += '<div class="tav-grid">' + its.map(card).join("") + "</div>";
+      h += '<div class="tav-grid">' + shown + "</div>";
     });
-    $("#tavGrid").innerHTML = h;
+    $("#tavGrid").innerHTML = h || '<p class="status">Nessuna tavola con questo nome. Prova il nome antico (per esempio <em>Agaricus</em> invece di <em>Amanita</em>) o il nome italiano (<em>porcino</em>, <em>ovolo</em>).</p>';
+    $("#tavCount").textContent = toks.length ? (tot === 1 ? "1 tavola trovata" : tot + " tavole trovate") + ". I nomi sono letti in automatico dalle didascalie: qualcuno può avere errori." : "";
   }
+  var tavLoaded = false;
+  function tavLoadAll() { if (tavLoaded) return; tavLoaded = true; libLoadMany(["bres", "vitt", "come", "matt"], render); }
+  var tqT = 0; $("#tavQ").addEventListener("input", function () { tavLoadAll(); clearTimeout(tqT); tqT = setTimeout(render, 150); });
+  $("#tab-tavole").addEventListener("click", tavLoadAll);
+  if (location.hash === "#tavole") tavLoadAll();
   (function () {
     var h = '<button class="chip" type="button" data-tb="all" aria-pressed="true">Tutti</button>';
     ORDER.forEach(function (k) { h += '<button class="chip" type="button" data-tb="' + k + '" aria-pressed="false">' + SH[k] + " · " + libByK(k).np + "</button>"; });
@@ -2425,7 +2436,6 @@ var TAV = [
     render();
   });
   render();
-  libLoad("bres", function () { render(); });
   var lb = $("#lb"), lastFocus = null, lbCur = null;
   function closeLb() { lb.hidden = true; if (lastFocus) { try { lastFocus.focus(); } catch (e) {} } }
   $("#tavGrid").addEventListener("click", function (e) {
