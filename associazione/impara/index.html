@@ -369,6 +369,11 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .tv-hl { background: rgba(226, 171, 60, .14); border-radius: 8px; }
 #tvMore { display: block; margin: 16px auto; }
 .tav-search { max-width: 520px; margin: 4px 0 10px; }
+.tav-now { display: block; font-size: 13px; color: var(--accent, #2f6b4f); font-style: normal; margin-top: 2px; }
+.tav-now i { font-style: italic; }
+.lb-now { text-align: left; max-width: 560px; margin: 10px auto 0; font-size: 14px; line-height: 1.45; background: rgba(255,255,255,.08); border-radius: 10px; padding: 10px 12px; }
+.lb-now ul { margin: 6px 0; padding-left: 18px; }
+.lb-now small { opacity: .85; }
 .tav-books { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
 .tav-books .chip { min-height: 40px; padding: 4px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: 14.5px; cursor: pointer; }
 .tav-books .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
@@ -478,7 +483,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
       <p>Le tavole a colori dei libri italiani della biblioteca: Inzenga, il micologo palermitano da cui prende il nome l'associazione, poi Bresadola, Vittadini, Comes e Mattirolo. Le abbiamo ripulite per leggerle meglio: fondo tolto, colori ravvivati.</p>
       <p>Guardale con calma e prova a riconoscere le parti del fungo: cappello, lamelle o pori, gambo, base. Quasi ogni tavola mostra anche il fungo tagliato a metà. <button class="btn" type="button" data-goto-tab="caratteri">Rivedi i caratteri</button></p>
     </div>
-    <div class="search tav-search"><input id="tavQ" type="search" placeholder="Cerca nelle tavole: Amanita, Boletus edulis, porcino…" aria-label="Cerca nelle tavole" autocomplete="off"></div>
+    <div class="search tav-search"><input id="tavQ" type="search" placeholder="Cerca nelle tavole: nome antico o attuale, o italiano (porcino)…" aria-label="Cerca nelle tavole" autocomplete="off"></div>
     <div class="tav-books" id="tavBooks" role="group" aria-label="Scegli il libro"></div>
     <p class="status" id="tavCount" aria-live="polite"></p>
     <div class="tav-grid" id="tavGrid"></div>
@@ -2395,24 +2400,39 @@ var TAV = [
 (function () {
   var SH = { inz: "Inzenga", bres: "Bresadola", vitt: "Vittadini", come: "Comes", matt: "Mattirolo" }, ORDER = ["inz", "bres", "vitt", "come", "matt"], cur = "all";
   function items(k) {
-    if (k === "inz") return TAV.map(function (t, i) { return { k: "inz", leaf: parseInt(t[0].slice(1), 10) - 1, src: "tavole/" + t[0] + ".webp", cap: t[1], key: t[0] }; });
+    if (k === "inz") return TAV.map(function (t, i) { return { k: "inz", leaf: parseInt(t[0].slice(1), 10) - 1, src: "tavole/" + t[0] + ".webp", cap: t[1], key: t[0], nk: "inz:" + t[0] }; });
     var pl = libPlates(k), d = LIBD[k], n = 0;
     return Object.keys(pl).map(Number).sort(function (a, b) { return a - b; }).map(function (l) {
       n++; var p = d && d.loaded ? d.byLeaf[l] : null;
-      return { k: k, leaf: l, src: pl[l], cap: p && p.tv && p.t ? p.t : "Tavola " + n };
+      return { k: k, leaf: l, src: pl[l], cap: p && p.tv && p.t ? p.t : "Tavola " + n, nk: k + ":" + l };
     });
   }
-  var ALL = {};
+  var ALL = {}, NOMI = {};
+  fetch("libri/nomi.json").then(function (r) { return r.json(); }).then(function (d) { NOMI = d; render(); }).catch(function () {});
+  function nowLine(it) {
+    var L = NOMI[it.nk]; if (!L || !L.length) return "";
+    if (L.every(function (x) { return x.s === "same"; })) return '<span class="tav-now">Nome ancora valido</span>';
+    return '<span class="tav-now">Oggi: ' + L.map(function (x) { return x.s === "nf" ? "da verificare" : "<i>" + esc(x.n) + "</i>"; }).join(" · ") + "</span>";
+  }
+  function nowFull(it) {
+    var L = NOMI[it.nk]; if (!L || !L.length) return "";
+    var h = '<div class="lb-now"><b>Nome attuale</b><ul>';
+    L.forEach(function (x) {
+      h += "<li><i>" + esc(x.o) + "</i> → " + (x.s === "nf" ? "da verificare: non trovato nel catalogo" : x.s === "same" ? "nome ancora valido (<i>" + esc(x.n) + "</i> " + esc(x.a || "") + ")" : "<i><b>" + esc(x.n) + "</b></i> " + esc(x.a || "")) + (x.x ? '<br><small>' + esc(x.x) + "</small>" : "") + "</li>";
+    });
+    return h + '</ul><small>Fonte: Catalogue of Life (Species Fungorum), consultato il 28 ottobre 2026, con correzioni a mano. Da confermare dal comitato scientifico.</small></div>';
+  }
+  function hay(it) { var L = NOMI[it.nk] || []; return norm(it.cap + " " + L.map(function (x) { return (x.n || "") + " " + (x.o || ""); }).join(" ")); }
   function card(it, idx) {
     return '<button class="tav" type="button" data-tk="' + it.k + '" data-ti="' + idx + '"><span class="tav-pic"><img loading="lazy" src="' + it.src + '" alt="Tavola di ' + SH[it.k] + ': ' + esc(it.cap) + '"></span>' +
-      '<span class="tav-cap"><em>' + esc(it.cap) + '</em><small>' + esc(libByK(it.k).short) + "</small></span></button>";
+      '<span class="tav-cap"><em>' + esc(it.cap) + "</em>" + nowLine(it) + "<small>" + esc(libByK(it.k).short) + "</small></span></button>";
   }
   function render() {
     var h = "", q = norm(($("#tavQ").value || "").trim()), toks = q ? q.split(/\s+/) : [], tot = 0;
     ORDER.forEach(function (k) {
       if (cur !== "all" && cur !== k) return;
       var L = libByK(k), its = ALL[k] = items(k), shown = "";
-      its.forEach(function (it, idx) { if (!toks.length || toks.every(function (w) { return norm(it.cap).indexOf(w) > -1; })) { shown += card(it, idx); tot++; } });
+      its.forEach(function (it, idx) { if (!toks.length || toks.every(function (w) { return hay(it).indexOf(w) > -1; })) { shown += card(it, idx); tot++; } });
       if (!shown) return;
       h += '<h3 class="tav-bk"><em>' + esc(L.title) + '</em> <span>' + esc(L.short) + " · " + its.length + (its.length === 1 ? " tavola" : " tavole") + "</span></h3>";
       h += '<div class="tav-grid">' + shown + "</div>";
@@ -2443,7 +2463,7 @@ var TAV = [
     var it = ALL[b.getAttribute("data-tk")][+b.getAttribute("data-ti")], L = libByK(it.k);
     lastFocus = b; lbCur = it;
     $("#lbimg").src = it.src; $("#lbimg").alt = "Tavola di " + SH[it.k] + ": " + it.cap;
-    $("#lbcap").innerHTML = "<em>" + esc(it.cap) + "</em><br><small>" + esc(L.short) + ", <i>" + esc(L.title) + "</i></small>";
+    $("#lbcap").innerHTML = "<em>" + esc(it.cap) + "</em><br><small>" + esc(L.short) + ", <i>" + esc(L.title) + "</i></small>" + nowFull(it);
     $("#lbsp").innerHTML = '<button class="btn" type="button" data-tv="' + it.k + '" data-tv-leaf="' + it.leaf + '">Nel libro trascritto</button>';
     if (it.k === "inz") (function (key) {
       inzLoad(function () {
