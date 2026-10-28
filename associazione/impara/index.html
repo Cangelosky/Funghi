@@ -2176,7 +2176,7 @@ $("#bkList").addEventListener("click", function (e) {
 /* ===== Libri trascritti: ricerca, lettura del testo, tavole ripulite ===== */
 function libList() {
   return [
-    { k: "inz", id: "funghisiciliani00inze", n: 228, title: "Funghi siciliani", short: "Inzenga, 1865", file: "inzenga/pagine.json", np: 16 },
+    { k: "inz", id: "funghisiciliani00inze", n: 228, title: "Funghi siciliani", short: "Inzenga, 1865", file: "inzenga/pagine.json", np: 18 },
     { k: "vitt", id: "descrizionedeifu00vitt", n: 472, title: "Descrizione dei funghi mangerecci più comuni dell'Italia", short: "Vittadini, 1835", file: "libri/vitt.json", np: 22 },
     { k: "bres", id: "ifunghimangereccev00bres", n: 402, title: "I funghi mangerecci e velenosi dell'Europa media", short: "Bresadola, 1906", file: "libri/bres.json", np: 121 },
     { k: "come", id: "funghidelnapolit00come", n: 162, title: "Funghi del Napolitano", short: "Comes, 1878", file: "libri/come.json", np: 3 },
@@ -2188,7 +2188,7 @@ function libByK(k) { var L = libList(); for (var i = 0; i < L.length; i++) if (L
 /* tavole ripulite: foglio -> file */
 function libPlates(k) {
   var o = {}, i;
-  if (k === "inz") { [107, 109, 111, 113, 115, 117, 199, 201, 203, 205, 207, 209, 211, 213, 215, 217].forEach(function (p) { o[p - 1] = "tavole/t" + p + ".webp"; }); return o; }
+  if (k === "inz") { [103, 105, 107, 109, 111, 113, 115, 117, 199, 201, 203, 205, 207, 209, 211, 213, 215, 217].forEach(function (p) { o[p - 1] = "tavole/t" + p + ".webp"; }); return o; }
   var R = { vitt: [422, 464], bres: [152, 392] };
   if (R[k]) { for (i = R[k][0]; i <= R[k][1]; i += 2) o[i] = "libri/tav/" + k + "/n" + i + ".webp"; return o; }
   if (k === "come") { [150, 152, 154].forEach(function (p) { o[p] = "libri/tav/come/n" + p + ".webp"; }); return o; }
@@ -2200,6 +2200,7 @@ function libPlateFile(k, leaf) { var o = libPlates(k); return o[leaf] ? o[leaf].
 var INZ = { loaded: false, loading: false, pages: [], sp: [], byKey: {} };
 var INZ_BOOK = { id: "funghisiciliani00inze", n: 228, title: "Funghi siciliani" };
 var INZ_PLATES = {
+  t103: ["1:1", "1:2", "1:3"], t105: ["1:15", "1:4"],
   t107: ["1:38", "1:46"], t109: ["1:49", "1:63", "1:64"], t111: ["1:68"], t113: ["1:69", "1:68"], t115: ["1:85"], t117: ["1:85", "1:88", "1:92"],
   t199: ["2:1"], t201: ["2:2"], t203: ["2:12", "2:13"], t205: ["2:25", "2:26"], t207: ["2:27", "2:28"], t209: ["2:32"],
   t211: ["1:7", "2:38", "2:39"], t213: ["2:47", "2:48", "2:49", "2:50"], t215: ["2:100", "2:86"], t217: ["2:89", "2:87", "2:84", "2:83"]
@@ -2369,6 +2370,8 @@ $("#inzBook").addEventListener("change", inzSearch);
 
 /* ===== Le tavole ===== */
 var TAV = [
+  ["t103", "Hydnum notarisii · Agaricus gussonii · Agaricus bertolonii"],
+  ["t105", "Polyporus inzengae · Agaricus virosus"],
   ["t107", "Agaricus citri · Polyporus todari"],
   ["t109", "Helvella panormitana · Agaricus ostreatus · Agaricus ostreatus nigripes"],
   ["t111", "Hydnum compactum"],
