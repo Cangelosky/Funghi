@@ -368,6 +368,12 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .tv-f figcaption { font: 13px/1.4 system-ui, sans-serif; color: #8a7a5c; }
 .tv-hl { background: rgba(226, 171, 60, .14); border-radius: 8px; }
 #tvMore { display: block; margin: 16px auto; }
+.tav-books { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
+.tav-books .chip { min-height: 40px; padding: 4px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: 14.5px; cursor: pointer; }
+.tav-books .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tav-bk { margin: 18px 0 10px; font: 600 17px/1.25 var(--f-display); }
+.tav-bk span { font: 400 13px/1.3 var(--f-body, system-ui); color: var(--muted); }
+#tavGrid { display: block; }
 .lb-sp { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
 .foot { margin-top: 28px; padding-top: 14px; border-top: 1.5px solid var(--line); font-size: 12.5px; color: var(--muted); max-width: 90ch; }
 
@@ -467,12 +473,13 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 
   <section id="p-tavole" role="tabpanel" aria-labelledby="tab-tavole" hidden>
     <div class="tav-intro">
-      <h2>Tavole storiche siciliane</h2>
-      <p>Sono le tavole a colori di Giuseppe Inzenga, il micologo palermitano da cui prende il nome l'associazione. Le abbiamo ripulite per leggerle meglio: fondo e scritte tolti, colori ravvivati.</p>
+      <h2>Tavole storiche</h2>
+      <p>Le tavole a colori dei libri italiani della biblioteca: Inzenga, il micologo palermitano da cui prende il nome l'associazione, poi Bresadola, Vittadini, Comes e Mattirolo. Le abbiamo ripulite per leggerle meglio: fondo tolto, colori ravvivati.</p>
       <p>Guardale con calma e prova a riconoscere le parti del fungo: cappello, lamelle o pori, gambo, base. Quasi ogni tavola mostra anche il fungo tagliato a metà. <button class="btn" type="button" data-goto-tab="caratteri">Rivedi i caratteri</button></p>
     </div>
+    <div class="tav-books" id="tavBooks" role="group" aria-label="Scegli il libro"></div>
     <div class="tav-grid" id="tavGrid"></div>
-    <p class="tav-note">Nomi come li scrisse Inzenga: molti oggi si chiamano in un altro modo. Il comitato scientifico li aggiorna prima della pubblicazione. Fonte: G. Inzenga, <em>Funghi siciliani</em>, Palermo, F. Lao, litografie di Frauenfelder. Scansione dell'Internet Archive (opera non più coperta da diritto d'autore).</p>
+    <p class="tav-note">Nomi come li scrissero gli autori: molti oggi si chiamano in un altro modo. Il comitato scientifico li aggiorna prima della pubblicazione. Fonte: G. Inzenga, <em>Funghi siciliani</em>, Palermo, F. Lao, litografie di Frauenfelder. Scansione dell'Internet Archive (opera non più coperta da diritto d'autore).</p>
   </section>
 
   <section id="p-biblioteca" role="tabpanel" aria-labelledby="tab-biblioteca" hidden>
@@ -2380,32 +2387,63 @@ var TAV = [
   ["t217", "Coprinus panormitanus · Boletus siculus · Boletus lanzi · Boletus candicans"]
 ];
 (function () {
-  var h = "";
-  TAV.forEach(function (t, i) {
-    h += '<button class="tav" type="button" data-tav="' + i + '"><span class="tav-pic"><img loading="lazy" src="tavole/' + t[0] + '.webp" alt="Tavola a colori di Inzenga: ' + esc(t[1]) + '"></span>' +
-      '<span class="tav-cap"><em>' + esc(t[1]) + '</em><small>Inzenga, <i>Funghi siciliani</i></small></span></button>';
+  var SH = { inz: "Inzenga", bres: "Bresadola", vitt: "Vittadini", come: "Comes", matt: "Mattirolo" }, ORDER = ["inz", "bres", "vitt", "come", "matt"], cur = "all";
+  function items(k) {
+    if (k === "inz") return TAV.map(function (t, i) { return { k: "inz", leaf: parseInt(t[0].slice(1), 10) - 1, src: "tavole/" + t[0] + ".webp", cap: t[1], key: t[0] }; });
+    var pl = libPlates(k), d = LIBD[k], n = 0;
+    return Object.keys(pl).map(Number).sort(function (a, b) { return a - b; }).map(function (l) {
+      n++; var p = d && d.loaded ? d.byLeaf[l] : null;
+      return { k: k, leaf: l, src: pl[l], cap: p && p.tv && p.t ? p.t : "Tavola " + n };
+    });
+  }
+  var ALL = {};
+  function card(it, idx) {
+    return '<button class="tav" type="button" data-tk="' + it.k + '" data-ti="' + idx + '"><span class="tav-pic"><img loading="lazy" src="' + it.src + '" alt="Tavola di ' + SH[it.k] + ': ' + esc(it.cap) + '"></span>' +
+      '<span class="tav-cap"><em>' + esc(it.cap) + '</em><small>' + esc(libByK(it.k).short) + "</small></span></button>";
+  }
+  function render() {
+    var h = "";
+    ORDER.forEach(function (k) {
+      if (cur !== "all" && cur !== k) return;
+      var L = libByK(k), its = ALL[k] = items(k);
+      h += '<h3 class="tav-bk"><em>' + esc(L.title) + '</em> <span>' + esc(L.short) + " · " + its.length + (its.length === 1 ? " tavola" : " tavole") + "</span></h3>";
+      h += '<div class="tav-grid">' + its.map(card).join("") + "</div>";
+    });
+    $("#tavGrid").innerHTML = h;
+  }
+  (function () {
+    var h = '<button class="chip" type="button" data-tb="all" aria-pressed="true">Tutti</button>';
+    ORDER.forEach(function (k) { h += '<button class="chip" type="button" data-tb="' + k + '" aria-pressed="false">' + SH[k] + " · " + libByK(k).np + "</button>"; });
+    $("#tavBooks").innerHTML = h;
+  })();
+  $("#tavBooks").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-tb]"); if (!b) return; cur = b.getAttribute("data-tb");
+    [].forEach.call($("#tavBooks").querySelectorAll("[data-tb]"), function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    render();
   });
-  $("#tavGrid").innerHTML = h;
-  var lb = $("#lb"), lastFocus = null, lbLeaf = 0;
+  render();
+  libLoad("bres", function () { render(); });
+  var lb = $("#lb"), lastFocus = null, lbCur = null;
   function closeLb() { lb.hidden = true; if (lastFocus) { try { lastFocus.focus(); } catch (e) {} } }
   $("#tavGrid").addEventListener("click", function (e) {
-    var b = e.target.closest("[data-tav]"); if (!b) return;
-    var t = TAV[+b.getAttribute("data-tav")];
-    lastFocus = b;
-    $("#lbimg").src = "tavole/" + t[0] + ".webp"; $("#lbimg").alt = "Tavola a colori di Inzenga: " + t[1];
-    $("#lbcap").innerHTML = "<em>" + esc(t[1]) + "</em><br><small>G. Inzenga, <i>Funghi siciliani</i>, Palermo</small>";
-    $("#lbsp").innerHTML = "";
-    (function (key) {
+    var b = e.target.closest("[data-tk]"); if (!b) return;
+    var it = ALL[b.getAttribute("data-tk")][+b.getAttribute("data-ti")], L = libByK(it.k);
+    lastFocus = b; lbCur = it;
+    $("#lbimg").src = it.src; $("#lbimg").alt = "Tavola di " + SH[it.k] + ": " + it.cap;
+    $("#lbcap").innerHTML = "<em>" + esc(it.cap) + "</em><br><small>" + esc(L.short) + ", <i>" + esc(L.title) + "</i></small>";
+    $("#lbsp").innerHTML = '<button class="btn" type="button" data-tv="' + it.k + '" data-tv-leaf="' + it.leaf + '">Nel libro trascritto</button>';
+    if (it.k === "inz") (function (key) {
       inzLoad(function () {
-        var h2 = "";
+        var h2 = '<button class="btn" type="button" data-tv="inz" data-tv-leaf="' + it.leaf + '">Nel libro trascritto</button>';
         (INZ_PLATES[key] || []).forEach(function (k) { var s = INZ.byKey[k]; if (s) h2 += '<button class="btn" type="button" data-iz-text="' + k + '">Cosa scrive Inzenga: <em>' + esc(s.g + " " + s.s) + "</em></button>"; });
         $("#lbsp").innerHTML = h2;
       });
-    })(t[0]);
-    lb.hidden = false; $("#lbx").focus(); lbLeaf = parseInt(t[0].slice(1), 10) - 1;
+    })(it.key);
+    lb.hidden = false; $("#lbx").focus();
   });
+  $("#lbsp").addEventListener("click", function (e) { if (e.target.closest("[data-tv],[data-iz-text]")) lb.hidden = true; });
   $("#lbx").addEventListener("click", closeLb);
-  $("#lbbook").addEventListener("click", function () { closeLb(); openReader("funghisiciliani00inze", 228, "Funghi siciliani", lbLeaf); });
+  $("#lbbook").addEventListener("click", function () { closeLb(); if (lbCur) { var L = libByK(lbCur.k); openReader(L.id, L.n, L.title, lbCur.leaf); } });
   lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) closeLb(); });
   document.addEventListener("click", function (e) {
