@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Impara i funghi</title>
+<title>Laboratorio e Biblioteca</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -423,6 +423,25 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .no-card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-top: 10px; }
 .no-syn ul { columns: 2 240px; font-size: 14px; }
 @media print { body.pr-sc * { visibility: hidden !important; } body.pr-sc #st-scheda, body.pr-sc #st-scheda * { visibility: visible !important; } body.pr-sc #st-scheda { position: absolute; left: 0; top: 0; width: 100%; border: 0; } body.pr-sc #st-scheda .bk-act, body.pr-sc #st-scheda .bk-warn { display: none; } }
+.pg-switch { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; margin: 16px 0 0; }
+.pg-switch button { border: 0; background: transparent; color: var(--ink); font: 700 16px/1 var(--f-display); padding: 0 20px; min-height: 44px; border-radius: 999px; cursor: pointer; }
+.pg-switch button[aria-current="page"] { background: var(--accent); color: var(--accent-ink); }
+.tab[hidden] { display: none; }
+.pub-tools { display: grid; gap: 10px; margin: 6px 0 12px; }
+.pub-f { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.pub-f > span { font-size: 13px; font-weight: 600; color: var(--muted); min-width: 44px; }
+.pub-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.pub-chips .chip { min-height: 36px; padding: 2px 12px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; }
+.pub-chips .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.pub-list { display: grid; gap: 10px; }
+.pub { background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.pub h3 { margin: 2px 0 4px; font: 600 16.5px/1.3 var(--f-display); }
+.pub h3 a { color: var(--ink); text-decoration-color: var(--line2); }
+.pub-m { margin: 0; font-size: 12.5px; color: var(--muted); }
+.pub-ar { color: var(--accent); font-weight: 600; }
+.pub-a { margin: 0 0 4px; font-size: 13.5px; color: var(--muted); overflow-wrap: anywhere; }
+.pub-s { margin: 0; font-size: 15px; }
+.pub-chips .chip, .tav-books .chip { width: auto; display: inline-flex; border-radius: 999px; padding: 6px 14px; }
 .lb-sp { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
 .foot { margin-top: 28px; padding-top: 14px; border-top: 1.5px solid var(--line); font-size: 12.5px; color: var(--muted); max-width: 90ch; }
 
@@ -467,23 +486,29 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
       </div>
       <div class="brand-t">
         <a href="../" style="font-size:14px;font-weight:600;color:inherit">← Sito dell’associazione</a>
-        <h1>Impara i funghi</h1>
-        <p class="lead">Qui i funghi si imparano facendo: guarda i disegni, mettiti alla prova con i quiz, poi usa la chiave come faresti sul fungo vero.</p>
+        <h1 id="pgTitle">Laboratorio</h1>
+        <p class="lead" id="pgLead">Qui i funghi si imparano facendo: il percorso, la chiave, i caratteri e gli strumenti per chi determina.</p>
       </div>
     </div>
     <div class="pills">
-      <span class="pill">Sezione didattica</span>
+      <span class="pill" id="pgPill">Didattica e strumenti</span>
       <span class="pill warn">Bozza per il comitato scientifico</span>
       <span class="pill" id="count"></span>
     </div>
   </header>
 
+  <nav class="pg-switch" aria-label="Sezioni del sito">
+    <button type="button" data-page="lab" aria-current="page">Laboratorio</button>
+    <button type="button" data-page="bib">Biblioteca</button>
+  </nav>
   <div class="tabs" role="tablist" aria-label="Sezioni">
-    <button class="tab" role="tab" id="tab-percorso" aria-controls="p-percorso" aria-selected="true" data-tab="percorso">Il percorso</button>
-    <button class="tab" role="tab" id="tab-chiave" aria-controls="p-chiave" aria-selected="false" data-tab="chiave">La chiave</button>
-    <button class="tab" role="tab" id="tab-caratteri" aria-controls="p-caratteri" aria-selected="false" data-tab="caratteri">I caratteri</button>
-    <button class="tab" role="tab" id="tab-tavole" aria-controls="p-tavole" aria-selected="false" data-tab="tavole">Le tavole</button>
-    <button class="tab" role="tab" id="tab-biblioteca" aria-controls="p-biblioteca" aria-selected="false" data-tab="biblioteca">Lo studio</button>
+    <button class="tab" role="tab" id="tab-percorso" aria-controls="p-percorso" aria-selected="true" data-tab="percorso" data-pg="lab">Il percorso</button>
+    <button class="tab" role="tab" id="tab-chiave" aria-controls="p-chiave" aria-selected="false" data-tab="chiave" data-pg="lab">La chiave</button>
+    <button class="tab" role="tab" id="tab-caratteri" aria-controls="p-caratteri" aria-selected="false" data-tab="caratteri" data-pg="lab">I caratteri</button>
+    <button class="tab" role="tab" id="tab-strumenti" aria-controls="p-strumenti" aria-selected="false" data-tab="strumenti" data-pg="lab">Strumenti</button>
+    <button class="tab" role="tab" id="tab-biblioteca" aria-controls="p-biblioteca" aria-selected="false" data-tab="biblioteca" data-pg="bib">Libri</button>
+    <button class="tab" role="tab" id="tab-tavole" aria-controls="p-tavole" aria-selected="false" data-tab="tavole" data-pg="bib">Tavole</button>
+    <button class="tab" role="tab" id="tab-pubblicazioni" aria-controls="p-pubblicazioni" aria-selected="false" data-tab="pubblicazioni" data-pg="bib">Pubblicazioni</button>
   </div>
 
   <section id="p-percorso" role="tabpanel" aria-labelledby="tab-percorso">
@@ -534,11 +559,6 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
   </section>
 
   <section id="p-biblioteca" role="tabpanel" aria-labelledby="tab-biblioteca" hidden>
-    <div class="st-sub" role="tablist" aria-label="Lo studio">
-      <button type="button" role="tab" data-sub="biblioteca" aria-selected="true">Biblioteca</button>
-      <button type="button" role="tab" data-sub="strumenti" aria-selected="false">Strumenti</button>
-    </div>
-    <div id="st-biblioteca">
     <div class="tav-intro">
       <h2>Biblioteca storica</h2>
       <p>I libri antichi più importanti sui funghi, liberi da diritti d'autore. Li leggi qui: scorri e allarga con due dita. Per ogni libro c'è anche il PDF completo da scaricare.</p>
@@ -557,8 +577,10 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
     <div class="toolbar"><div class="search"><input id="bkQ" type="search" placeholder="Cerca un autore, un anno, un argomento: Cooke, tavole, latino…" aria-label="Cerca nella biblioteca" autocomplete="off"></div></div>
     <div id="bkList"></div>
     <p class="tav-note">Fonte delle scansioni: Internet Archive e Biodiversity Heritage Library. Le opere sono di pubblico dominio. Diritti e dati di ogni libro vanno confermati dal comitato prima della pubblicazione. I libri antichi contengono indicazioni sull'uso alimentare dei funghi: oggi non valgono e il sito non ne dà.</p>
-    </div>
-    <div id="st-strumenti" hidden>
+  </section>
+
+  <section id="p-strumenti" role="tabpanel" aria-labelledby="tab-strumenti" hidden>
+    <div id="st-strumenti">
       <div class="tav-intro">
         <h2>Strumenti</h2>
         <p>Strumenti di lavoro per chi determina: misure delle spore, reagenti, colore della sporata, scheda di raccolta e nomi aggiornati. Sono pensati per il lunedì sera in sede e per lo studio a casa.</p>
@@ -637,6 +659,22 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
         <p class="tav-note">I cataloghi cambiano e non sempre sono d'accordo fra loro. Per i casi dubbi decide il comitato scientifico.</p>
       </section>
     </div>
+
+  </section>
+
+  <section id="p-pubblicazioni" role="tabpanel" aria-labelledby="tab-pubblicazioni" hidden>
+    <div class="tav-intro">
+      <h2>Pubblicazioni</h2>
+      <p>Articoli scientifici sui funghi in generale e sulle specie del Sud Italia e della Sicilia. Per ognuno trovi i dati per citarlo, un riassunto in due righe e il collegamento all'articolo, quasi sempre gratuito.</p>
+    </div>
+    <div class="pub-tools">
+      <div class="search"><input id="pubQ" type="search" placeholder="Cerca un autore, una specie, un luogo: Venturella, Pleurotus, Madonie…" aria-label="Cerca nelle pubblicazioni" autocomplete="off"></div>
+      <div class="pub-f"><span>Dove</span><div class="pub-chips" id="pubAr" role="group" aria-label="Filtra per area"></div></div>
+      <div class="pub-f"><span>Tema</span><div class="pub-chips" id="pubTe" role="group" aria-label="Filtra per tema"></div></div>
+      <p class="status" id="pubCount" aria-live="polite"></p>
+    </div>
+    <div class="pub-list" id="pubList"></div>
+    <p class="tav-note">Elenco iniziale, da ampliare con il comitato scientifico. Per proporre un articolo, mandane il titolo o il DOI al comitato. Ogni voce è stata controllata sui dati dell'editore (Crossref) o sulla pagina dell'articolo.</p>
 
   </section>
 
@@ -2504,14 +2542,7 @@ $("#inzBook").addEventListener("change", inzSearch);
 
 
 /* ===== Lo studio: sottopagine e strumenti ===== */
-function setStudio(sub) {
-  if (sub !== "strumenti") sub = "biblioteca";
-  $("#st-biblioteca").hidden = sub !== "biblioteca";
-  $("#st-strumenti").hidden = sub !== "strumenti";
-  [].forEach.call(document.querySelectorAll("[data-sub]"), function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-sub") === sub)); });
-}
 document.addEventListener("click", function (e) {
-  var b = e.target.closest("[data-sub]"); if (b) { setStudio(b.getAttribute("data-sub")); try { location.hash = b.getAttribute("data-sub"); } catch (err) {} return; }
   var a = e.target.closest(".st-jump a"); if (a) { e.preventDefault(); var t = document.querySelector(a.getAttribute("href")); if (t) t.scrollIntoView({ block: "start", behavior: "smooth" }); }
 });
 
@@ -2715,6 +2746,65 @@ $("#spoList").innerHTML = SPO.map(function (s) {
 })();
 
 
+/* ===== Biblioteca: pubblicazioni scientifiche ===== */
+var PUBS = [
+  { a: "Ferraro V., Venturella G., Cirlincione F., Mirabile G., Gargano M.L., Colasuonno P.", y: 2022, t: "The Checklist of Sicilian Macrofungi: Second Edition", j: "Journal of Fungi 8(6): 566", doi: "10.3390/jof8060566", ar: "sicilia", te: "check", s: "L'elenco aggiornato dei macrofunghi siciliani: circa 1.900 specie, con la provincia e il ruolo ecologico di ognuna." },
+  { a: "Venturella G., Saitta A., Mazzola P.", y: 1999, t: "Contribution to the knowledge of the beech-woods mycological flora in the Madonie Mts (N. Sicily)", j: "Flora Mediterranea 9: 17–55", url: "https://herbmedit.org/storage/453/9-017_compressed.pdf", ar: "sicilia", te: "eco", s: "I funghi delle faggete delle Madonie con le date di raccolta del 1994–1998: l'unica fenologia mese per mese pubblicata per la Sicilia." },
+  { a: "Gargano M.L., Venturella G., Balenzano G., Ferraro V., Cirlincione F., Mirabile G.", y: 2024, t: "Pleurotus nebrodensis (Basidiomycota), a rare endemic mushroom of Sicily: current and future issues", j: "Italian Botanist 17: 55–68", doi: "10.3897/italianbotanist.17.123048", ar: "sicilia", te: "specie", s: "Tassonomia, ambiente, conservazione e coltivazione del Pleurotus delle Madonie, descritto proprio da Inzenga." },
+  { a: "Peintner U., Kuhnert-Finkernagel R., Wille V., Biasioli F., Shiryaev A., Perini C.", y: 2019, t: "How to resolve cryptic species of polypores: an example in Fomes", j: "IMA Fungus 10: 17", doi: "10.1186/s43008-019-0016-4", ar: "medit", te: "specie", s: "DNA, morfologia e composti volatili mostrano che il Fomes delle querce mediterranee è una specie a sé: Fomes inzengae, il Polyporus inzengae della Tavola II di Inzenga." },
+  { a: "Venturella G., Gargano M.L., Compagno R.", y: 2015, t: "The genus Pleurotus in Italy", j: "Flora Mediterranea 25 (Special Issue): 143–156", url: "https://www.herbmedit.org/flora/FL25SI_143-156.pdf", ar: "italia", te: "specie", s: "Le specie di Pleurotus presenti in Italia, con ospiti, quote e distribuzione." },
+  { a: "Cirlincione F., Venturella G., Gargano M.L., Mirabile G., Balenzano G., Pardi R., Ferraro V.", y: 2024, t: "Medicinal wood decay fungi on large old oaks in the Madonie Mountains (Sicily)", j: "Italian Journal of Mycology 53: 160–165", doi: "10.6092/issn.2531-7342/19902", ar: "sicilia", te: "eco", s: "I funghi del legno censiti sulle grandi querce vetuste delle Madonie." },
+  { a: "Saitta A., Losi C.", y: 2016, t: "New records of corticioid fungi from Sicily", j: "Check List 12(5): 1972", doi: "10.15560/12.5.1972", ar: "sicilia", te: "check", s: "Nuove segnalazioni siciliane di funghi corticioidi, quelli che crescono come croste sul legno." },
+  { a: "Pisani G., Gargano M.L., Venturella G.", y: 2016, t: "A list of macromycetes from Calabria (southern Italy)", j: "Flora Mediterranea 26: 63–68", doi: "10.7320/FlMedit26.063", ar: "sud", te: "check", s: "338 specie calabresi tra letteratura e osservazioni di campo, di cui 57 nuove per la regione." },
+  { a: "ISPRA, gruppo di lavoro Progetto speciale funghi, con la Confederazione Micologica Calabrese", y: 2018, t: "Correlation among mycological components of Calabria and EUNIS and Natura 2000 habitat classification systems", j: "ISPRA, Manuali e linee guida 180/2018", url: "http://www.isprambiente.gov.it/files2018/pubblicazioni/manuali-linee-guida/MLG_180_18_Abbinamento_Calabria_Foreste.pdf", ar: "sud", te: "eco", s: "Il primo abbinamento regionale tra funghi e habitat europei: circa 1.500 specie calabresi dei boschi naturali." },
+  { a: "Zotti M.", y: 2024, t: "Checklist of Macrofungi Associated with Nine Different Habitats of Taburno-Camposauro Massif in Campania, Southern Italy", j: "Journal of Fungi 10(4): 275", doi: "10.3390/jof10040275", ar: "sud", te: "check", s: "453 specie raccolte dal 2019 al 2023 in nove ambienti diversi di un parco campano." },
+  { a: "Comandini O., Paulis S., Rinaldi A.C.", y: 2018, t: "Sardinia: Mycovisions from a Charming Land", j: "Current Research in Environmental & Applied Mycology 8(5): 474–491", doi: "10.5943/cream/8/5/1", ar: "sud", te: "check", s: "Panoramica sulla micologia della Sardegna, isola mediterranea vicina alla Sicilia per clima e ambienti." },
+  { a: "Monaco P., Naclerio G., Bucci A., Mello A.", y: 2021, t: "Determination of the peridium thickness of Tuber magnatum ascomata from Molise region", j: "Italian Journal of Mycology 50: 92–98", doi: "10.6092/issn.2531-7342/13052", ar: "sud", te: "specie", s: "Lo spessore della scorza del tartufo bianco cambia da zona a zona del Molise." },
+  { a: "Perini C., Stallman J.K., Salerni E., Dahlberg A., Mueller G.M.", y: 2026, t: "1,302 fungal species published on the global IUCN Red List: what patterns occur for those found in Italy?", j: "Italian Journal of Mycology 55: 120–133", doi: "10.60923/issn.2531-7342/24478", ar: "italia", te: "cons", s: "Quali funghi italiani sono nella Lista Rossa mondiale e perché: perdita di habitat, gestione forestale e raccolta eccessiva." },
+  { a: "Hawksworth D.L., Lücking R.", y: 2017, t: "Fungal Diversity Revisited: 2.2 to 3.8 Million Species", j: "Microbiology Spectrum 5(4)", doi: "10.1128/microbiolspec.FUNK-0052-2016", ar: "gen", te: "gen", s: "Quante specie di funghi esistono al mondo: fra 2,2 e 3,8 milioni, e ne conosciamo meno del 10%." },
+  { a: "Tedersoo L., Bahram M., Põlme S., Kõljalg U., Yorou N.S., Wijesundera R. et al.", y: 2014, t: "Global diversity and geography of soil fungi", j: "Science 346(6213): 1256688", doi: "10.1126/science.1256688", ar: "gen", te: "gen", s: "Una mappa mondiale dei funghi del suolo, ricavata dal DNA di campioni raccolti in tutti i continenti." },
+  { a: "James T.Y., Kauff F., Schoch C.L., Matheny P.B., Hofstetter V., Cox C.J. et al.", y: 2006, t: "Reconstructing the early evolution of Fungi using a six-gene phylogeny", j: "Nature 443: 818–822", doi: "10.1038/nature05110", ar: "gen", te: "gen", s: "L'albero genealogico dei funghi ricostruito con sei geni: il lavoro di base della sistematica moderna." },
+  { a: "Kauserud H., Stige L.C., Vik J.O., Økland R.H., Høiland K., Stenseth N.C.", y: 2008, t: "Mushroom fruiting and climate change", j: "PNAS 105(10): 3811–3814", doi: "10.1073/pnas.0709037105", ar: "gen", te: "clima", s: "Decenni di dati d'erbario norvegesi: con il clima più caldo i funghi autunnali fruttificano più tardi." },
+  { a: "Boddy L., Büntgen U., Egli S., Gange A.C., Heegaard E., Kirk P.M. et al.", y: 2014, t: "Climate variation effects on fungal fruiting", j: "Fungal Ecology 10: 20–33", doi: "10.1016/j.funeco.2013.10.006", ar: "gen", te: "clima", s: "Rassegna su come temperatura e pioggia cambiano quando e quanto fruttificano i funghi in Europa." },
+  { a: "Andrew C., Heegaard E., Høiland K., Senn-Irlet B., Kuyper T.W., Krisai-Greilhuber I. et al.", y: 2018, t: "Explaining European fungal fruiting phenology with climate variability", j: "Ecology 99(6): 1306–1315", doi: "10.1002/ecy.2237", ar: "gen", te: "clima", s: "Segnalazioni da tutta Europa: quota e clima spostano le date di fruttificazione fino a un mese." },
+  { a: "Alday J.G., Martínez de Aragón J., de-Miguel S., Bonet J.A.", y: 2017, t: "Mushroom biomass and diversity are driven by different spatio-temporal scales along Mediterranean elevation gradients", j: "Scientific Reports 7: 45824", doi: "10.1038/srep45824", ar: "medit", te: "clima", s: "Pinete catalane per otto anni: la pioggia di agosto-ottobre decide l'annata più di ogni altro fattore." },
+  { a: "Ponce Á., Alday J.G., Martínez de Aragón J., Collado E., Morera A., Bonet J.A. et al.", y: 2022, t: "Environmental drivers shaping the macrofungal sporocarp community in Mediterranean Quercus ilex stands", j: "Forest Ecology and Management 524: 120523", doi: "10.1016/j.foreco.2022.120523", ar: "medit", te: "clima", s: "Leccete catalane per tredici autunni: la stagione si apre quando la pioggia dal 1° agosto supera circa 50 mm." }
+];
+var PUB_AR = { sicilia: "Sicilia", sud: "Sud Italia", italia: "Italia", medit: "Mediterraneo", gen: "Studi generali" };
+var PUB_TE = { check: "Censimenti e checklist", specie: "Specie", eco: "Ambienti", clima: "Clima e stagioni", cons: "Conservazione", gen: "Biologia ed evoluzione" };
+(function () {
+  var curA = "all", curT = "all";
+  function chips(id, map, attr, cur) {
+    var h = '<button class="chip" type="button" data-' + attr + '="all" aria-pressed="' + (cur === "all") + '">Tutte</button>';
+    Object.keys(map).forEach(function (k) { var n = PUBS.filter(function (p) { return (attr === "pa" ? p.ar : p.te) === k; }).length; if (n) h += '<button class="chip" type="button" data-' + attr + '="' + k + '" aria-pressed="' + (cur === k) + '">' + esc(map[k]) + " · " + n + "</button>"; });
+    $(id).innerHTML = h;
+  }
+  function render() {
+    chips("#pubAr", PUB_AR, "pa", curA); chips("#pubTe", PUB_TE, "pt", curT);
+    var q = norm(($("#pubQ").value || "").trim()), toks = q ? q.split(/\s+/) : [];
+    var L = PUBS.filter(function (p) {
+      if (curA !== "all" && p.ar !== curA) return false;
+      if (curT !== "all" && p.te !== curT) return false;
+      var hay = norm([p.a, p.y, p.t, p.j, p.s, PUB_AR[p.ar], PUB_TE[p.te]].join(" "));
+      return toks.every(function (w) { return hay.indexOf(w) > -1; });
+    }).sort(function (a, b) { return b.y - a.y; });
+    $("#pubCount").textContent = L.length === 1 ? "1 pubblicazione" : L.length + " pubblicazioni";
+    $("#pubList").innerHTML = L.map(function (p) {
+      var link = p.doi ? "https://doi.org/" + p.doi : p.url;
+      return '<article class="pub"><p class="pub-m"><span class="pub-ar">' + esc(PUB_AR[p.ar]) + "</span> · " + esc(PUB_TE[p.te]) + " · " + p.y + '</p><h3><a href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(p.t) + "</a></h3>" +
+        '<p class="pub-a">' + esc(p.a) + " (" + p.y + "). <i>" + esc(p.j) + "</i>" + (p.doi ? '. doi: <a href="https://doi.org/' + esc(p.doi) + '" target="_blank" rel="noopener">' + esc(p.doi) + "</a>" : "") + '</p><p class="pub-s">' + esc(p.s) + "</p></article>";
+    }).join("") || '<p class="status">Nessuna pubblicazione con questi filtri.</p>';
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-pa],[data-pt]"); if (!b) return;
+    if (b.hasAttribute("data-pa")) curA = b.getAttribute("data-pa"); else curT = b.getAttribute("data-pt");
+    render();
+  });
+  $("#pubQ").addEventListener("input", render);
+  render();
+})();
+
+
 
 
 /* ===== Le tavole ===== */
@@ -2826,17 +2916,28 @@ var TAV = [
 })();
 
 /* ===== Schede e indirizzo ===== */
+var PG = { lab: ["percorso", "chiave", "caratteri", "strumenti"], bib: ["biblioteca", "tavole", "pubblicazioni"] };
+var PGTXT = {
+  lab: ["Laboratorio", "Qui i funghi si imparano facendo: il percorso, la chiave, i caratteri e gli strumenti per chi determina.", "Didattica e strumenti"],
+  bib: ["Biblioteca", "I libri storici da sfogliare e da leggere trascritti, le loro tavole ripulite e le pubblicazioni scientifiche sui funghi del Sud Italia.", "Libri, tavole e pubblicazioni"]
+};
 function setTab(name, updateHash) {
-  var sub = null;
-  if (name === "strumenti" || name === "biblioteca") { sub = name; name = "biblioteca"; }
-  if (["chiave", "caratteri", "percorso", "tavole", "biblioteca"].indexOf(name) < 0) name = "percorso";
-  if (name === "biblioteca") setStudio(sub || (document.getElementById("st-strumenti").hidden ? "biblioteca" : "strumenti"));
-  ["percorso", "chiave", "caratteri", "tavole", "biblioteca"].forEach(function (t) {
+  if (name === "laboratorio") name = "percorso";
+  if (name === "libri") name = "biblioteca";
+  var all = PG.lab.concat(PG.bib);
+  if (all.indexOf(name) < 0) name = "percorso";
+  var pg = PG.lab.indexOf(name) > -1 ? "lab" : "bib";
+  all.forEach(function (t) {
     $("#p-" + t).hidden = t !== name;
     $("#tab-" + t).setAttribute("aria-selected", String(t === name));
+    $("#tab-" + t).hidden = PG[pg].indexOf(t) < 0;
   });
+  [].forEach.call(document.querySelectorAll("[data-page]"), function (b) { if (b.getAttribute("data-page") === pg) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
+  $("#count").hidden = pg !== "lab"; $("#pgTitle").textContent = PGTXT[pg][0]; $("#pgLead").textContent = PGTXT[pg][1]; $("#pgPill").textContent = PGTXT[pg][2];
+  try { document.title = PGTXT[pg][0] + " · Inzenga"; } catch (e) {}
   if (updateHash) { try { location.hash = name; } catch (err) {} }
 }
+document.addEventListener("click", function (e) { var b = e.target.closest("[data-page]"); if (b) { setTab(PG[b.getAttribute("data-page")][0], true); window.scrollTo(0, 0); } });
 document.querySelectorAll("[data-tab]").forEach(function (b) {
   b.addEventListener("click", function () { setTab(b.getAttribute("data-tab"), true); });
 });
