@@ -380,6 +380,49 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .tav-bk { margin: 18px 0 10px; font: 600 17px/1.25 var(--f-display); }
 .tav-bk span { font: 400 13px/1.3 var(--f-body, system-ui); color: var(--muted); }
 #tavGrid { display: block; }
+
+.st-sub { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; margin: 4px 0 16px; }
+.st-sub button { border: 0; background: transparent; color: var(--ink); font: 600 15px/1 var(--f-body); padding: 0 18px; min-height: 42px; border-radius: 999px; cursor: pointer; }
+.st-sub button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+.st-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
+.st-jump a { text-decoration: none; color: var(--ink); border: 1.5px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px; font-size: 14.5px; font-weight: 600; }
+.st-tool { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 16px; margin-top: 16px; scroll-margin-top: 12px; }
+.st-tool h3 { margin: 0 0 6px; font: 700 20px/1.2 var(--f-display); }
+.st-tool > p { margin: 0 0 10px; color: var(--muted); max-width: 72ch; }
+.st-how { margin-top: 12px; font-size: 15px; }
+.st-how summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.st-how ol { padding-left: 20px; }
+.sp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 16px; align-items: start; }
+@media (max-width: 760px) { .sp-grid { grid-template-columns: minmax(0, 1fr); } }
+.sp-in label, .sp-opts label { font-weight: 600; font-size: 14px; }
+.sp-in textarea { width: 100%; font: 15px/1.5 var(--f-mono, ui-monospace, monospace); padding: 10px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); margin: 6px 0; min-height: 200px; }
+.sp-opts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+.sp-opts select, .sp-opts input, .st-filter input, .sc-f input, .sc-f select, .sc-f textarea { font: inherit; font-size: 15px; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 9px 10px; min-width: 0; }
+.sp-opts input { width: 90px; }
+.sp-out { min-width: 0; }
+.sp-line { font: 16px/1.5 Georgia, "Times New Roman", serif; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin: 0 0 10px; }
+.sp-dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0 0 10px; font-size: 15px; }
+.sp-dl dt { color: var(--muted); } .sp-dl dd { margin: 0; font-variant-numeric: tabular-nums; }
+.sp-warn { color: var(--ochre); font-weight: 600; }
+#spPlot { width: 100%; height: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; }
+.st-filter { margin: 4px 0 12px; } .st-filter input { width: min(100%, 460px); }
+.no-row { display: flex; gap: 8px; flex-wrap: wrap; } .no-row input { flex: 1 1 260px; }
+.re-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.re-card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 15px; }
+.re-card h4 { margin: 0 0 4px; font: 700 17px/1.2 var(--f-display); }
+.re-card p { margin: 0 0 6px; } .re-c { color: var(--muted); font-size: 14px; }
+.re-card ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.spo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.spo { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: center; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
+.spo-sw { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--line2); box-shadow: inset 0 0 0 6px rgba(255,255,255,.15); }
+.spo b { font-size: 15px; } .spo p { margin: 2px 0 0; font-size: 14px; color: var(--muted); }
+.sc-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px 14px; margin: 8px 0 12px; }
+.sc-f { display: grid; gap: 4px; font-size: 14px; font-weight: 600; min-width: 0; }
+.sc-f textarea { resize: vertical; font-weight: 400; } .sc-f input, .sc-f select { font-weight: 400; }
+.sc-wide { grid-column: 1 / -1; }
+.no-card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-top: 10px; }
+.no-syn ul { columns: 2 240px; font-size: 14px; }
+@media print { body.pr-sc * { visibility: hidden !important; } body.pr-sc #st-scheda, body.pr-sc #st-scheda * { visibility: visible !important; } body.pr-sc #st-scheda { position: absolute; left: 0; top: 0; width: 100%; border: 0; } body.pr-sc #st-scheda .bk-act, body.pr-sc #st-scheda .bk-warn { display: none; } }
 .lb-sp { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
 .foot { margin-top: 28px; padding-top: 14px; border-top: 1.5px solid var(--line); font-size: 12.5px; color: var(--muted); max-width: 90ch; }
 
@@ -440,7 +483,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
     <button class="tab" role="tab" id="tab-chiave" aria-controls="p-chiave" aria-selected="false" data-tab="chiave">La chiave</button>
     <button class="tab" role="tab" id="tab-caratteri" aria-controls="p-caratteri" aria-selected="false" data-tab="caratteri">I caratteri</button>
     <button class="tab" role="tab" id="tab-tavole" aria-controls="p-tavole" aria-selected="false" data-tab="tavole">Le tavole</button>
-    <button class="tab" role="tab" id="tab-biblioteca" aria-controls="p-biblioteca" aria-selected="false" data-tab="biblioteca">Biblioteca</button>
+    <button class="tab" role="tab" id="tab-biblioteca" aria-controls="p-biblioteca" aria-selected="false" data-tab="biblioteca">Lo studio</button>
   </div>
 
   <section id="p-percorso" role="tabpanel" aria-labelledby="tab-percorso">
@@ -491,6 +534,11 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
   </section>
 
   <section id="p-biblioteca" role="tabpanel" aria-labelledby="tab-biblioteca" hidden>
+    <div class="st-sub" role="tablist" aria-label="Lo studio">
+      <button type="button" role="tab" data-sub="biblioteca" aria-selected="true">Biblioteca</button>
+      <button type="button" role="tab" data-sub="strumenti" aria-selected="false">Strumenti</button>
+    </div>
+    <div id="st-biblioteca">
     <div class="tav-intro">
       <h2>Biblioteca storica</h2>
       <p>I libri antichi più importanti sui funghi, liberi da diritti d'autore. Li leggi qui: scorri e allarga con due dita. Per ogni libro c'è anche il PDF completo da scaricare.</p>
@@ -509,6 +557,87 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
     <div class="toolbar"><div class="search"><input id="bkQ" type="search" placeholder="Cerca un autore, un anno, un argomento: Cooke, tavole, latino…" aria-label="Cerca nella biblioteca" autocomplete="off"></div></div>
     <div id="bkList"></div>
     <p class="tav-note">Fonte delle scansioni: Internet Archive e Biodiversity Heritage Library. Le opere sono di pubblico dominio. Diritti e dati di ogni libro vanno confermati dal comitato prima della pubblicazione. I libri antichi contengono indicazioni sull'uso alimentare dei funghi: oggi non valgono e il sito non ne dà.</p>
+    </div>
+    <div id="st-strumenti" hidden>
+      <div class="tav-intro">
+        <h2>Strumenti</h2>
+        <p>Strumenti di lavoro per chi determina: misure delle spore, reagenti, colore della sporata, scheda di raccolta e nomi aggiornati. Sono pensati per il lunedì sera in sede e per lo studio a casa.</p>
+        <p class="bk-warn" style="display:inline-block">Bozza per il comitato scientifico: contenuti da rivedere prima della pubblicazione.</p>
+      </div>
+      <nav class="st-jump" aria-label="Vai allo strumento">
+        <a href="#st-spore">Misura delle spore</a><a href="#st-reagenti">Reagenti</a><a href="#st-sporata">Colore della sporata</a><a href="#st-scheda">Scheda di raccolta</a><a href="#st-nomi">Nome attuale</a>
+      </nav>
+
+      <section class="st-tool" id="st-spore" aria-labelledby="st-spore-h">
+        <h3 id="st-spore-h">Misura delle spore</h3>
+        <p>Scrivi una spora per riga: lunghezza e larghezza, separate da uno spazio, da una x o da un tab. Va bene anche incollare due colonne da un foglio di calcolo. Servono almeno 20–30 spore, prese a caso da una sporata.</p>
+        <div class="sp-grid">
+          <div class="sp-in">
+            <label for="spIn">Misure</label>
+            <textarea id="spIn" rows="10" spellcheck="false" placeholder="10,5 x 7,2&#10;11 7,5&#10;9,8 6,9"></textarea>
+            <div class="sp-opts">
+              <label for="spUnit">Unità</label>
+              <select id="spUnit"><option value="um">micrometri (µm)</option><option value="div">divisioni dell'oculare</option></select>
+              <span id="spFwrap" hidden><label for="spF">µm per divisione</label><input id="spF" type="number" step="0.01" min="0" value="1"></span>
+            </div>
+            <div class="bk-act"><button class="btn" type="button" id="spEx">Carica un esempio</button><button class="btn" type="button" id="spClr">Svuota</button></div>
+          </div>
+          <div class="sp-out" aria-live="polite">
+            <p class="status" id="spMsg">Il risultato compare qui, scritto come nelle descrizioni scientifiche.</p>
+            <div id="spRes" hidden>
+              <p class="sp-line" id="spLine"></p>
+              <dl class="sp-dl" id="spDl"></dl>
+              <canvas id="spPlot" width="560" height="300" aria-label="Grafico lunghezza per larghezza delle spore misurate" role="img"></canvas>
+              <div class="bk-act"><button class="btn primary" type="button" id="spCopy">Copia il risultato</button></div>
+            </div>
+          </div>
+        </div>
+        <details class="st-how"><summary>Come si legge</summary>
+          <p>La formula segue l'uso delle monografie: <i>(min–) 5° percentile – 95° percentile (–max)</i>. Fra parentesi i valori estremi, al centro dove cade il 90% delle spore. <b>Q</b> è il rapporto lunghezza/larghezza di ogni spora: vicino a 1 vuol dire tonda, oltre 1,6 allungata. <b>Lm</b>, <b>Wm</b> e <b>Qm</b> sono le medie. L'apiculo non va compreso nella lunghezza.</p>
+        </details>
+      </section>
+
+      <section class="st-tool" id="st-reagenti" aria-labelledby="st-re-h">
+        <h3 id="st-re-h">Reagenti</h3>
+        <p>I reagenti più usati in determinazione: a cosa servono, come si usano e cosa si osserva. Una goccia sulla carne, sulla cuticola o sul vetrino può separare due specie simili.</p>
+        <div class="st-filter"><input id="reQ" type="search" placeholder="Cerca un reagente o un genere: Melzer, Russula, amiloide…" aria-label="Cerca nei reagenti" autocomplete="off"></div>
+        <div class="re-grid" id="reList"></div>
+        <p class="tav-note">Sicurezza: guanti e occhiali, lontano dai bambini. Il Melzer contiene idrato di cloralio, che in Italia si acquista solo in farmacia o da fornitori di laboratorio. La potassa (KOH) e l'ammoniaca sono caustiche; il fenolo è tossico anche per contatto.</p>
+      </section>
+
+      <section class="st-tool" id="st-sporata" aria-labelledby="st-sp-h">
+        <h3 id="st-sp-h">Colore della sporata</h3>
+        <p>Il colore delle spore in massa è uno dei primi caratteri della chiave. Confronta la tua sporata con questi gruppi.</p>
+        <div class="spo-grid" id="spoList"></div>
+        <details class="st-how" open><summary>Come si fa una sporata</summary>
+          <ol>
+            <li>Taglia il gambo sotto il cappello e appoggia il cappello, lamelle o pori in giù, su un foglio metà bianco e metà nero (o su un vetrino).</li>
+            <li>Copri con un bicchiere o una ciotola, per non far seccare il fungo e non far muovere l'aria.</li>
+            <li>Aspetta da 2 a 12 ore. I funghi giovani o secchi spesso non sporulano.</li>
+            <li>Guarda il colore di giorno, su carta bianca. Una sporata sottile sembra più chiara di quella spessa: raschia le spore in un mucchietto con una lama.</li>
+          </ol>
+          <p><button class="btn" type="button" data-goto-tab="chiave">Usala nella chiave</button></p>
+        </details>
+      </section>
+
+      <section class="st-tool" id="st-scheda" aria-labelledby="st-sc-h">
+        <h3 id="st-sc-h">Scheda di raccolta</h3>
+        <p>La stessa scheda per tutti i soci, così ogni ritrovamento è descritto allo stesso modo. Compilala sul posto o a casa, poi copiala nel messaggio al comitato o stampala dal sito. Il testo resta salvato su questo dispositivo finché non la svuoti.</p>
+        <p class="bk-warn" style="display:inline-block">Non scrivere coordinate o luoghi precisi: basta il comune o la contrada.</p>
+        <form id="scForm" class="sc-form" autocomplete="off"></form>
+        <div class="bk-act"><button class="btn primary" type="button" id="scCopy">Copia la scheda</button><button class="btn" type="button" id="scPrint">Stampa</button><button class="btn" type="button" id="scClr">Svuota</button></div>
+        <p class="status" id="scMsg" aria-live="polite"></p>
+      </section>
+
+      <section class="st-tool" id="st-nomi" aria-labelledby="st-no-h">
+        <h3 id="st-no-h">Nome attuale</h3>
+        <p>Scrivi un nome, anche antico, e scopri come si chiama oggi la specie. Prima cerco fra i nomi già controllati delle nostre tavole, poi nel Catalogue of Life, il catalogo mondiale che per i funghi riprende Species Fungorum.</p>
+        <div class="st-filter no-row"><input id="noQ" type="search" placeholder="Per esempio: Boletus satanas, Agaricus procerus, Tricholoma georgii" aria-label="Nome da cercare" autocomplete="off"><button class="btn primary" type="button" id="noGo">Cerca</button></div>
+        <div id="noRes" aria-live="polite"></div>
+        <p class="tav-note">I cataloghi cambiano e non sempre sono d'accordo fra loro. Per i casi dubbi decide il comitato scientifico.</p>
+      </section>
+    </div>
+
   </section>
 
   <div class="tx" id="tx" hidden role="dialog" aria-modal="true" aria-label="Trascrizione">
@@ -2374,6 +2503,218 @@ $("#inzBook").addEventListener("change", inzSearch);
 (function () { var h = '<option value="all">Tutti i libri trascritti</option>'; libList().forEach(function (L) { h += '<option value="' + L.k + '">' + esc(L.short + " · " + L.title) + "</option>"; }); $("#inzBook").innerHTML = h; })();
 
 
+/* ===== Lo studio: sottopagine e strumenti ===== */
+function setStudio(sub) {
+  if (sub !== "strumenti") sub = "biblioteca";
+  $("#st-biblioteca").hidden = sub !== "biblioteca";
+  $("#st-strumenti").hidden = sub !== "strumenti";
+  [].forEach.call(document.querySelectorAll("[data-sub]"), function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-sub") === sub)); });
+}
+document.addEventListener("click", function (e) {
+  var b = e.target.closest("[data-sub]"); if (b) { setStudio(b.getAttribute("data-sub")); try { location.hash = b.getAttribute("data-sub"); } catch (err) {} return; }
+  var a = e.target.closest(".st-jump a"); if (a) { e.preventDefault(); var t = document.querySelector(a.getAttribute("href")); if (t) t.scrollIntoView({ block: "start", behavior: "smooth" }); }
+});
+
+function fmt(x, d) { return x.toFixed(d).replace(".", ","); }
+
+/* ----- misura delle spore ----- */
+(function () {
+  var inp = $("#spIn"), unit = $("#spUnit"), fac = $("#spF");
+  function parse() {
+    var f = unit.value === "div" ? parseFloat(String(fac.value).replace(",", ".")) || 0 : 1, out = [];
+    inp.value.split(/\n/).forEach(function (ln) {
+      var nums = ln.replace(/(\d),(\d)/g, "$1.$2").match(/\d+(?:\.\d+)?/g);
+      if (nums && nums.length >= 2) { var L = parseFloat(nums[0]) * f, W = parseFloat(nums[1]) * f; if (L > 0 && W > 0) { if (W > L) { var t = L; L = W; W = t; } out.push([L, W]); } }
+    });
+    return out;
+  }
+  function pct(a, p) { var s = a.slice().sort(function (x, y) { return x - y; }), i = (s.length - 1) * p, lo = Math.floor(i), hi = Math.ceil(i); return s[lo] + (s[hi] - s[lo]) * (i - lo); }
+  function mean(a) { return a.reduce(function (s, x) { return s + x; }, 0) / a.length; }
+  function sd(a) { var m = mean(a); return Math.sqrt(a.reduce(function (s, x) { return s + (x - m) * (x - m); }, 0) / Math.max(1, a.length - 1)); }
+  function range(a, d) {
+    var mn = Math.min.apply(null, a), mx = Math.max.apply(null, a), p5 = pct(a, 0.05), p95 = pct(a, 0.95);
+    return (mn < p5 - 1e-9 ? "(" + fmt(mn, d) + "–) " : "") + fmt(p5, d) + "–" + fmt(p95, d) + (mx > p95 + 1e-9 ? " (–" + fmt(mx, d) + ")" : "");
+  }
+  var last = "";
+  function run() {
+    var d = parse(), msg = $("#spMsg"), res = $("#spRes");
+    if (d.length < 2) { res.hidden = true; msg.hidden = false; msg.textContent = d.length ? "Serve almeno un'altra spora." : "Il risultato compare qui, scritto come nelle descrizioni scientifiche."; return; }
+    var L = d.map(function (x) { return x[0]; }), W = d.map(function (x) { return x[1]; }), Q = d.map(function (x) { return x[0] / x[1]; });
+    var line = range(L, 1) + " × " + range(W, 1) + " µm; Q = " + range(Q, 2) + "; Lm × Wm = " + fmt(mean(L), 1) + " × " + fmt(mean(W), 1) + " µm; Qm = " + fmt(mean(Q), 2) + "; n = " + d.length;
+    last = "Spore " + line; $("#spLine").textContent = last;
+    $("#spDl").innerHTML = "<dt>Spore misurate</dt><dd>" + d.length + (d.length < 20 ? ' <span class="sp-warn">poche: ne servono almeno 20</span>' : "") + "</dd>" +
+      "<dt>Lunghezza media</dt><dd>" + fmt(mean(L), 2) + " ± " + fmt(sd(L), 2) + " µm</dd>" +
+      "<dt>Larghezza media</dt><dd>" + fmt(mean(W), 2) + " ± " + fmt(sd(W), 2) + " µm</dd>" +
+      "<dt>Q medio</dt><dd>" + fmt(mean(Q), 2) + " ± " + fmt(sd(Q), 2) + " (" + (mean(Q) < 1.05 ? "tonde" : mean(Q) < 1.15 ? "quasi tonde" : mean(Q) < 1.3 ? "largamente ellissoidi" : mean(Q) < 1.6 ? "ellissoidi" : mean(Q) < 2 ? "oblunghe" : "cilindriche") + ")</dd>";
+    msg.hidden = true; res.hidden = false; plot(d);
+  }
+  function plot(d) {
+    var c = $("#spPlot"), x = c.getContext("2d"), cs = getComputedStyle(document.documentElement);
+    var ink = cs.getPropertyValue("--ink").trim() || "#222", mut = cs.getPropertyValue("--muted").trim() || "#777", acc = cs.getPropertyValue("--accent").trim() || "#17694F", line = cs.getPropertyValue("--line").trim() || "#ccc";
+    var W = c.width, H = c.height, m = { l: 48, r: 14, t: 14, b: 40 };
+    var Ls = d.map(function (p) { return p[0]; }), Ws = d.map(function (p) { return p[1]; });
+    var x0 = Math.floor(Math.min.apply(null, Ls) - 0.5), x1 = Math.ceil(Math.max.apply(null, Ls) + 0.5), y0 = Math.floor(Math.min.apply(null, Ws) - 0.5), y1 = Math.ceil(Math.max.apply(null, Ws) + 0.5);
+    function X(v) { return m.l + (v - x0) / (x1 - x0) * (W - m.l - m.r); } function Y(v) { return H - m.b - (v - y0) / (y1 - y0) * (H - m.t - m.b); }
+    x.clearRect(0, 0, W, H); x.font = "12px system-ui, sans-serif"; x.lineWidth = 1;
+    var sx = Math.max(1, Math.round((x1 - x0) / 8)), sy = Math.max(1, Math.round((y1 - y0) / 6)), v;
+    for (v = x0; v <= x1; v += sx) { x.strokeStyle = line; x.beginPath(); x.moveTo(X(v), m.t); x.lineTo(X(v), H - m.b); x.stroke(); x.fillStyle = mut; x.textAlign = "center"; x.fillText(v, X(v), H - m.b + 16); }
+    for (v = y0; v <= y1; v += sy) { x.strokeStyle = line; x.beginPath(); x.moveTo(m.l, Y(v)); x.lineTo(W - m.r, Y(v)); x.stroke(); x.fillStyle = mut; x.textAlign = "right"; x.fillText(v, m.l - 6, Y(v) + 4); }
+    x.fillStyle = ink; x.textAlign = "center"; x.fillText("lunghezza (µm)", (m.l + W - m.r) / 2, H - 6);
+    x.save(); x.translate(13, (m.t + H - m.b) / 2); x.rotate(-Math.PI / 2); x.fillText("larghezza (µm)", 0, 0); x.restore();
+    x.fillStyle = acc; x.globalAlpha = 0.75;
+    d.forEach(function (p) { x.beginPath(); x.arc(X(p[0]), Y(p[1]), 4, 0, 6.3); x.fill(); });
+    x.globalAlpha = 1;
+  }
+  var T = 0; [inp, fac].forEach(function (el) { el.addEventListener("input", function () { clearTimeout(T); T = setTimeout(run, 200); }); });
+  unit.addEventListener("change", function () { $("#spFwrap").hidden = unit.value !== "div"; run(); });
+  $("#spEx").addEventListener("click", function () {
+    var s = 1, ex = []; function r() { s = (s * 9301 + 49297) % 233280; return s / 233280; }
+    for (var i = 0; i < 30; i++) { var L = 9.2 + r() * 3.4, Wd = L / (1.32 + r() * 0.3); ex.push(fmt(L, 1) + " x " + fmt(Wd, 1)); }
+    inp.value = "# esempio inventato, non è una specie reale\n" + ex.join("\n"); unit.value = "um"; $("#spFwrap").hidden = true; run();
+  });
+  $("#spClr").addEventListener("click", function () { inp.value = ""; run(); inp.focus(); });
+  $("#spCopy").addEventListener("click", function () { copyText(last, $("#spCopy")); });
+})();
+function copyText(t, btn) {
+  function ok() { var o = btn.textContent; btn.textContent = "Copiato"; setTimeout(function () { btn.textContent = o; }, 1500); }
+  function fallback() { var ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (e) {} ta.remove(); }
+  try { navigator.clipboard.writeText(t).then(ok, fallback); } catch (e) { fallback(); }
+}
+
+/* ----- reagenti ----- */
+var REAG = [
+  { n: "Melzer", c: "Iodio, ioduro di potassio e idrato di cloralio in acqua. Bruno-arancio.", u: "Al microscopio, su spore, ife e apici degli aschi. Si osserva il colore dopo un minuto.",
+    r: [["Amiloide: grigio-blu fino a nero", "spore di Russula e Lactarius (ornamenti), di molte Amanita come la sezione phalloides, Melanoleuca, Leucopaxillus; apici degli aschi in Peziza"], ["Destrinoide: bruno-rossastro", "spore di Lepiota, Macrolepiota, Chlorophyllum e di alcune Mycena"], ["Inamiloide: nessun cambiamento, giallastro", "per esempio Amanita caesarea e muscaria, Tricholoma, Agaricus"]], k: "amiloide destrinoide spore aschi russula lactarius amanita lepiota peziza" },
+  { n: "Potassa (KOH 3–10%)", c: "Idrossido di potassio in acqua.", u: "Una goccia sulla cuticola o sulla carne; al microscopio per reidratare il materiale secco.",
+    r: [["Giallo vivo", "cuticola delle Agaricus della sezione Xanthodermatei e della sezione Arvenses"], ["Rosso-porpora", "Cortinarius del gruppo Dermocybe"], ["Nero", "carne di Inonotus e di altri funghi xantocroici"]], k: "potassa koh agaricus cortinarius dermocybe inonotus reidratare" },
+  { n: "Solfato di ferro (FeSO₄)", c: "Cristallo o soluzione al 10% di solfato ferroso.", u: "Si strofina sul gambo o sulla carne e si guarda il colore dopo pochi secondi.",
+    r: [["Verde", "Russula del gruppo xerampelina; alcuni boleti"], ["Rosa-salmone", "molte Russula, per esempio della sezione Heterophyllae"], ["Grigio-verde", "alcuni Lactarius e boleti"]], k: "solfato ferro feso4 russula xerampelina boleti lactarius" },
+  { n: "Tintura di guaiaco", c: "Resina di guaiaco sciolta in alcol.", u: "Sul gambo o sulla carne. Conta la velocità della reazione, entro 5–10 secondi.",
+    r: [["Blu-verde rapido", "molte Russula; il tempo e l'intensità aiutano a separare le specie"], ["Debole o assente", "altre Russula"]], k: "guaiaco russula" },
+  { n: "Sulfovanillina", c: "Vanillina sciolta in acido solforico diluito. Si prepara al momento.", u: "Al microscopio, su sezioni della cuticola e dell'imenio.",
+    r: [["Grigio-nero o blu-nero", "gleocistidi di Russula e Lactarius"]], k: "sulfovanillina cistidi gleocistidi russula lactarius" },
+  { n: "Fenolo (2–3%)", c: "Fenolo in acqua o in alcol.", u: "Una goccia sulla carne o sul gambo, si osserva dopo qualche minuto.",
+    r: [["Vinoso, rosso-bruno o cioccolato", "molte Russula; alcune Agaricus"]], k: "fenolo russula agaricus" },
+  { n: "Ammoniaca", c: "Ammoniaca diluita in acqua.", u: "Sulla cuticola, sulla carne o al microscopio come base per altri coloranti.",
+    r: [["Cambi di colore della cuticola", "utile in alcuni generi, per esempio Boletus e Hygrocybe"]], k: "ammoniaca boletus hygrocybe" },
+  { n: "Rosso Congo", c: "Colorante rosso, di solito in ammoniaca.", u: "Al microscopio, per colorare le pareti di ife, basidi e cistidi.",
+    r: [["Pareti rosse", "rende visibili giunti a fibbia, basidi e cistidi"]], k: "rosso congo ife basidi cistidi fibbie microscopio" },
+  { n: "Blu cotone (lattofenolo)", c: "Blu di metile in lattofenolo.", u: "Al microscopio, sulle spore.",
+    r: [["Cianofilo: ornamenti e pareti blu", "spore di Lyophyllum, Calocybe e di altri generi"]], k: "blu cotone lattofenolo cianofilo spore lyophyllum calocybe" }
+];
+function renderReag() {
+  var q = norm(($("#reQ").value || "").trim()), h = "";
+  REAG.forEach(function (r) {
+    var hay = norm(r.n + " " + r.c + " " + r.u + " " + r.k + " " + r.r.map(function (x) { return x.join(" "); }).join(" "));
+    if (q && q.split(/\s+/).some(function (w) { return hay.indexOf(w) < 0; })) return;
+    h += '<article class="re-card"><h4>' + esc(r.n) + '</h4><p class="re-c">' + esc(r.c) + '</p><p><b>Come si usa.</b> ' + esc(r.u) + '</p><ul>' +
+      r.r.map(function (x) { return "<li><b>" + esc(x[0]) + ".</b> " + esc(x[1]) + "</li>"; }).join("") + "</ul></article>";
+  });
+  $("#reList").innerHTML = h || '<p class="status">Nessun reagente con questa parola.</p>';
+}
+$("#reQ").addEventListener("input", renderReag); renderReag();
+
+/* ----- colore della sporata ----- */
+var SPO = [
+  ["Bianca o crema", "#FBF8EF", "Amanita, Lepiota, Macrolepiota, Tricholoma, Clitocybe, Pleurotus, Hygrophorus, Armillaria, Mycena, Marasmius"],
+  ["Da crema a gialla", "#F1D98C", "Russula e Lactarius: il tono esatto aiuta a separare le specie"],
+  ["Rosa o rosa-salmone", "#E8B5A2", "Entoloma, Pluteus, Volvopluteus e Volvariella, Clitopilus"],
+  ["Ocra, ruggine o bruno-arancio", "#B46A2C", "Cortinarius, Pholiota, Gymnopilus, Galerina, Agrocybe, Hebeloma (bruno argilla), Inocybe (bruno tabacco)"],
+  ["Bruno-porpora o cioccolato", "#5A3A3A", "Agaricus, Stropharia, Hypholoma"],
+  ["Nera", "#1E1B1A", "Coprinus, Coprinopsis, Panaeolus; Psathyrella da bruno scuro a nera"],
+  ["Verde", "#9DB58A", "Chlorophyllum molybdites, l'unico agarico europeo segnalato con sporata verdastra"],
+  ["Bruno-olivastra", "#6E6A3C", "molti boleti, come Boletus e Suillus; rosa-vinosa in Tylopilus"]
+];
+$("#spoList").innerHTML = SPO.map(function (s) {
+  return '<div class="spo"><span class="spo-sw" style="background:' + s[1] + '"></span><div><b>' + esc(s[0]) + "</b><p>" + esc(s[2]) + "</p></div></div>";
+}).join("");
+
+/* ----- scheda di raccolta ----- */
+(function () {
+  var F = [
+    ["Data del ritrovamento", "date", "data"], ["Raccoglitore (nome o sigla)", "text", "chi"], ["Comune o contrada (mai coordinate)", "text", "dove"], ["Quota (m)", "number", "quota"],
+    ["Ambiente", "text", "amb", "bosco di leccio, pineta, prato, giardino…"], ["Piante vicine", "text", "piante", "querce, castagni, pini, eucalipti…"],
+    ["Substrato", "select", "sub", "", ["", "terra", "legno vivo", "legno morto", "lettiera", "muschio", "sterco", "altro fungo", "altro"]],
+    ["Crescita", "select", "cresc", "", ["", "isolato", "sparso", "gregario", "cespitoso", "ad anello"]],
+    ["Cappello: forma, misura, colore, superficie", "textarea", "capp"], ["Lamelle, pori o aculei", "textarea", "imen"],
+    ["Gambo: misura, colore, anello, volva, base", "textarea", "gambo"], ["Carne: colore, viraggio al taglio, consistenza", "textarea", "carne"],
+    ["Odore", "text", "odore"], ["Latice", "text", "latice", "assente, bianco, colorato, cambia colore…"],
+    ["Colore della sporata", "text", "sporata"], ["Reazioni chimiche (reagente: colore)", "textarea", "reaz"],
+    ["Misure delle spore", "textarea", "spore", "incolla il risultato dello strumento Misura delle spore"], ["Foto fatte", "text", "foto", "cappello dall'alto, lamelle, gambo intero, sezione"],
+    ["Proposta di determinazione", "text", "det"], ["Note", "textarea", "note"]
+  ], KEY = "inz-scheda";
+  var h = "";
+  F.forEach(function (f) {
+    var id = "sc_" + f[2], ph = f[3] ? ' placeholder="' + esc(f[3]) + '"' : "";
+    h += '<label class="sc-f' + (f[1] === "textarea" ? " sc-wide" : "") + '" for="' + id + '"><span>' + esc(f[0]) + "</span>";
+    if (f[1] === "textarea") h += '<textarea id="' + id + '" rows="2"' + ph + "></textarea>";
+    else if (f[1] === "select") h += '<select id="' + id + '">' + f[4].map(function (o) { return "<option>" + esc(o) + "</option>"; }).join("") + "</select>";
+    else h += '<input id="' + id + '" type="' + f[1] + '"' + ph + ">";
+    h += "</label>";
+  });
+  var form = $("#scForm"); form.innerHTML = h;
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
+  function data() { var o = {}; F.forEach(function (f) { o[f[2]] = $("#sc_" + f[2]).value; }); return o; }
+  try { var s = JSON.parse(localStorage.getItem(KEY) || "{}"); F.forEach(function (f) { if (s[f[2]]) $("#sc_" + f[2]).value = s[f[2]]; }); } catch (e) {}
+  form.addEventListener("input", function () { try { localStorage.setItem(KEY, JSON.stringify(data())); } catch (e) {} });
+  function text() {
+    var d = data(), out = ["SCHEDA DI RACCOLTA · Associazione Micologica Giuseppe Inzenga"];
+    F.forEach(function (f) { if (d[f[2]]) out.push(f[0].split(" (")[0] + ": " + d[f[2]]); });
+    return out.join("\n");
+  }
+  $("#scCopy").addEventListener("click", function () { copyText(text(), $("#scCopy")); });
+  $("#scPrint").addEventListener("click", function () {
+    document.body.classList.add("pr-sc"); var before = Date.now(); window.print(); setTimeout(function () { document.body.classList.remove("pr-sc"); }, 500);
+    if (Date.now() - before < 50) $("#scMsg").textContent = "Se la finestra di stampa non si apre, copia la scheda e incollala in un documento.";
+  });
+  $("#scClr").addEventListener("click", function () { F.forEach(function (f) { $("#sc_" + f[2]).value = ""; }); try { localStorage.removeItem(KEY); } catch (e) {} $("#scMsg").textContent = "Scheda svuotata."; });
+})();
+
+/* ----- nome attuale ----- */
+(function () {
+  var LOCAL = null;
+  function loadLocal(cb) {
+    if (LOCAL) { cb(); return; }
+    fetch("libri/nomi.json").then(function (r) { return r.json(); }).then(function (d) {
+      LOCAL = {}; Object.keys(d).forEach(function (k) { d[k].forEach(function (x) { if (x.s !== "nf") LOCAL[norm(x.o.split(" ").slice(0, 2).join(" "))] = x; }); });
+      cb();
+    }).catch(function () { LOCAL = {}; cb(); });
+  }
+  function row(label, html) { return "<dt>" + label + "</dt><dd>" + html + "</dd>"; }
+  function show(q) {
+    var el = $("#noRes"); q = q.trim().replace(/\s+/g, " ");
+    if (q.split(" ").length < 2) { el.innerHTML = '<p class="status">Scrivi genere e specie, per esempio <i>Boletus satanas</i>.</p>'; return; }
+    el.innerHTML = '<p class="status">Cerco…</p>';
+    loadLocal(function () {
+      var key = norm(q.split(" ").slice(0, 2).join(" ")), loc = LOCAL[key], h = "";
+      if (loc) h += '<div class="no-card"><p class="iz-m">Dalle nostre tavole, nome già controllato</p><dl class="sp-dl">' + row("Nome cercato", "<i>" + esc(loc.o) + "</i>") + row("Nome attuale", "<i><b>" + esc(loc.n) + "</b></i> " + esc(loc.a || "")) + (loc.x ? row("Nota", esc(loc.x)) : "") + "</dl></div>";
+      el.innerHTML = h + '<p class="status" id="noLive">Cerco anche nel Catalogue of Life…</p>';
+      var api = "https://api.checklistbank.org/dataset/3LR/";
+      fetch(api + "match/nameusage?q=" + encodeURIComponent(q)).then(function (r) { return r.json(); }).then(function (m) {
+        var u = m && m.usage;
+        if (!u || ["species", "variety", "form", "subspecies"].indexOf(u.rank) < 0) { $("#noLive").textContent = "Nel Catalogue of Life non trovo questo nome. Controlla la grafia, oppure il nome è troppo antico o poco usato."; return; }
+        var acc = u.status === "accepted" ? u : (u.classification || [])[0] || u, accId = acc.id;
+        var st = { accepted: "nome accettato", synonym: "sinonimo", "ambiguous synonym": "sinonimo ambiguo", misapplied: "nome usato in modo errato", "provisionally accepted": "accettato in via provvisoria" }[u.status] || u.status;
+        var hh = '<div class="no-card"><p class="iz-m">Catalogue of Life</p><dl class="sp-dl">' + row("Nome trovato", "<i>" + esc(u.name) + "</i> " + esc(u.authorship || "") + " · " + esc(st)) +
+          row("Nome attuale", "<i><b>" + esc(acc.name) + "</b></i> " + esc(acc.authorship || "")) + "</dl>";
+        var famLine = (u.classification || []).filter(function (c) { return c.rank === "family" || c.rank === "order"; }).map(function (c) { return c.name; }).join(" · ");
+        if (famLine) hh += '<p class="iz-m">' + esc(famLine) + "</p>";
+        hh += '<div id="noSyn" class="no-syn"></div><p><a href="https://www.catalogueoflife.org/data/taxon/' + encodeURIComponent(accId) + '" target="_blank" rel="noopener">Apri la scheda nel Catalogue of Life</a></p></div>';
+        $("#noLive").outerHTML = hh;
+        fetch(api + "taxon/" + encodeURIComponent(accId) + "/synonyms").then(function (r) { return r.json(); }).then(function (s) {
+          var all = [].concat(s.homotypic || [], s.heterotypic || []).map(function (x) { return x.name ? x.name.scientificName + (x.name.authorship ? " " + x.name.authorship : "") : ""; }).filter(Boolean);
+          if (all.length) $("#noSyn").innerHTML = "<details><summary>Altri nomi della stessa specie (" + all.length + ")</summary><ul>" + all.slice(0, 60).map(function (n) { return "<li><i>" + esc(n) + "</i></li>"; }).join("") + "</ul></details>";
+        }).catch(function () {});
+      }).catch(function () {
+        var l = $("#noLive"); if (l) l.textContent = "Il Catalogue of Life non risponde da qui. Dal sito dell'associazione la ricerca funziona; in alternativa cerca il nome su catalogueoflife.org.";
+      });
+    });
+  }
+  $("#noGo").addEventListener("click", function () { show($("#noQ").value); });
+  $("#noQ").addEventListener("keydown", function (e) { if (e.key === "Enter") show($("#noQ").value); });
+})();
+
+
 
 
 /* ===== Le tavole ===== */
@@ -2486,7 +2827,10 @@ var TAV = [
 
 /* ===== Schede e indirizzo ===== */
 function setTab(name, updateHash) {
+  var sub = null;
+  if (name === "strumenti" || name === "biblioteca") { sub = name; name = "biblioteca"; }
   if (["chiave", "caratteri", "percorso", "tavole", "biblioteca"].indexOf(name) < 0) name = "percorso";
+  if (name === "biblioteca") setStudio(sub || (document.getElementById("st-strumenti").hidden ? "biblioteca" : "strumenti"));
   ["percorso", "chiave", "caratteri", "tavole", "biblioteca"].forEach(function (t) {
     $("#p-" + t).hidden = t !== name;
     $("#tab-" + t).setAttribute("aria-selected", String(t === name));
