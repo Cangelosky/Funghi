@@ -4159,7 +4159,7 @@ window.addEventListener("hashchange", function () { setTab(location.hash.replace
 (function () {
   var uniq = {};
   var nsp = 0;
-  LEAVES.forEach(function (l) { if (l.none) return; if (l.sp) nsp++; else uniq[l.name] = 1; });
+  LEAVES.forEach(function (l) { if (l.none) return; if (l.sp) { if (!l.stop && l.rank === "Specie") nsp++; } else uniq[l.name] = 1; });
   Object.keys(NODES).forEach(function (k) { if (NODES[k].genus) uniq[NODES[k].genus.name] = 1; });
   $("#count").textContent = Object.keys(uniq).length + " generi e gruppi · " + nsp + " specie";
   renderParts();
