@@ -30,6 +30,7 @@
   --mist: #E9EFE3;
   --bar: #F1F4EC;
   --c-conv: #E7EFDD;
+  --c-socio: #F4E5C8;
   --c-corsi: #EEF1CF;
   --c-pratica: #D7EBDF;
   --c-gite: #F4EAC2;
@@ -46,14 +47,14 @@
   :root:not([data-theme="light"]) {
     --bg: #0E1712; --card: #15221A; --ink: #E5EDE1; --ink-2: #C4D2C7; --line: #263A2E; --link: #8FCBA7;
     --forest: #123022; --forest-2: #1B4132; --bar: #0E1712;
-    --c-conv: #25362B; --c-corsi: #303622; --c-pratica: #20372F; --c-gite: #3A3419; --c-mostre: #33392A; --c-stage: #22343A; --c-eventi: #2E3A1E; --c-ist: #2A2D28;
+    --c-socio: #3A2F18; --c-conv: #25362B; --c-corsi: #303622; --c-pratica: #20372F; --c-gite: #3A3419; --c-mostre: #33392A; --c-stage: #22343A; --c-eventi: #2E3A1E; --c-ist: #2A2D28;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0E1712; --card: #15221A; --ink: #E5EDE1; --ink-2: #C4D2C7; --line: #263A2E; --link: #8FCBA7;
   --forest: #123022; --forest-2: #1B4132; --bar: #0E1712;
-  --c-conv: #25362B; --c-corsi: #303622; --c-pratica: #20372F; --c-gite: #3A3419; --c-mostre: #33392A; --c-stage: #22343A; --c-eventi: #2E3A1E; --c-ist: #2A2D28;
+  --c-socio: #3A2F18; --c-conv: #25362B; --c-corsi: #303622; --c-pratica: #20372F; --c-gite: #3A3419; --c-mostre: #33392A; --c-stage: #22343A; --c-eventi: #2E3A1E; --c-ist: #2A2D28;
   color-scheme: dark;
 }
 
@@ -80,23 +81,25 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* header */
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bgx); border-bottom: 1px solid var(--line); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); min-width: 0; }
+.top .wrap { max-width: 1280px; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); min-width: 0; flex: 0 1 auto; }
+.brand strong { max-width: 15em; }
 .brand img { width: 48px; height: 48px; flex: none; display: block; }
 .brand span { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
 .brand strong { font-family: var(--font-display); font-size: 17px; letter-spacing: -0.02em; line-height: 1.15; }
 @media (max-width: 480px) { .brand strong { font-size: 15px; } .brand small { font-size: 12px; } .brand img { width: 44px; height: 44px; } }
 .brand small { font-size: 12.5px; color: var(--ink-2); }
 .menu-btn { display: none; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 8px 16px; font-weight: 500; }
-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; align-items: center; }
-nav a { white-space: nowrap; display: block; text-decoration: none; color: var(--ink); padding: 8px 14px; border-radius: 999px; font-weight: 500; font-size: 15.5px; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; align-items: center; }
+nav { flex: none; }
+nav a { white-space: nowrap; display: block; text-decoration: none; color: var(--ink); padding: 8px 11px; border-radius: 999px; font-weight: 500; font-size: 15px; }
 nav a:hover { background: var(--line); }
 nav a[aria-current="page"] { background: var(--forest); color: var(--forest-ink); }
 nav a.lock { border: 1px solid var(--line); }
 nav a.socio { background: var(--ochre); color: #1A2A20; font-weight: 600; }
 nav a.socio:hover { background: #EDBB55; }
 
-@media (max-width: 1180px) {
+@media (max-width: 1240px) {
   .menu-btn { display: inline-flex; }
   nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--bgx); border-bottom: 1px solid var(--line); display: none; padding: 8px max(16px, env(safe-area-inset-left, 0px)) 16px max(16px, env(safe-area-inset-right, 0px)); }
   nav.open { display: block; }
@@ -269,6 +272,11 @@ nav a.socio:hover { background: #EDBB55; }
 @media (max-width: 820px) { .cells { grid-template-columns: minmax(0, 1fr); } }
 .cell { background: var(--tint, var(--c-conv)); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .cell h3 { font-size: 24px; }
+.cell-top { display: flex; align-items: center; gap: 14px; }
+.cell-logo { width: 72px; height: 72px; flex: none; }
+.ban { border-radius: 24px; overflow: hidden; margin-bottom: -36px; }
+.ban img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; object-fit: cover; }
+@media (max-width: 640px) { .ban img { aspect-ratio: 2.2 / 1; } .ban { border-radius: 18px; margin-bottom: -40px; } }
 .cell > p { margin: 0; color: var(--ink-2); font-size: 16.5px; }
 .roster { list-style: none; margin: 6px 0 0; padding: 0; display: grid; }
 .roster li { display: grid; grid-template-columns: minmax(7.5rem, 9.5rem) minmax(0, 1fr); gap: 4px 16px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); }
@@ -410,6 +418,17 @@ textarea { min-height: 110px; resize: vertical; }
 .prog .track { height: 12px; border-radius: 999px; background: var(--line); overflow: hidden; }
 .prog .fill { height: 100%; background: var(--forest-2); border-radius: 999px; }
 .prog.done .fill { background: var(--ochre); }
+.perks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.perks li { background: var(--tint, var(--card)); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; display: grid; gap: 6px; align-content: start; }
+.perks b { font-family: var(--font-display); font-size: 20px; line-height: 1.2; }
+.perks span { color: var(--ink-2); font-size: 15.5px; }
+.sdlg { border: 0; padding: 0; border-radius: 22px; background: var(--card); color: var(--ink); width: min(760px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); }
+.sdlg::backdrop { background: rgba(10, 22, 16, .6); }
+.sdlg-in { padding: clamp(18px, 4vw, 32px); display: grid; gap: 14px; }
+.sdlg-h { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: sticky; top: calc(-1 * clamp(18px, 4vw, 32px)); background: var(--card); padding-block: 6px; z-index: 1; }
+.sdlg-h h3 { font-size: 26px; }
+.sdlg-p { color: var(--ink-2); }
+.sdlg .radios { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
 .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; padding: 0; margin: 0; list-style: none; counter-reset: st; }
 .how li { counter-increment: st; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; row-gap: 8px; align-items: baseline; align-content: start; font-size: 16px; }
 .how li::before { content: counter(st) " \2013"; font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height: 1; color: var(--link); }
@@ -571,7 +590,6 @@ footer a { color: var(--ink); }
         <li><a href="impara/#laboratorio">Didattica</a></li>
         <li><a href="impara/#biblioteca">Biblioteca</a></li>
         <li><a href="#contatti" data-go="contatti">Contatti</a></li>
-        <li><a class="socio" href="#associati" data-go="associati">Diventa socio</a></li>
         <li><a class="lock" href="#accesso" data-go="accesso">Area riservata</a></li>
       </ul>
     </nav>
@@ -600,6 +618,24 @@ footer a { color: var(--ink); }
     </div>
 
     <div>
+      <div class="sec-head"><h2>Studia i funghi con noi, anche da casa</h2><p>Due sezioni nuove del sito, aperte a tutti e gratuite.</p></div>
+      <div class="cells">
+        <div class="cell" style="--tint:var(--c-pratica)">
+          <div class="cell-top"><img class="cell-logo" src="img/logo-didattica.svg" alt="" width="72" height="72"><span class="kicker">Didattica</span></div>
+          <h3>Impara a riconoscere i funghi, passo dopo passo.</h3>
+          <p>Un percorso per cominciare, la chiave per arrivare al genere, i caratteri da osservare, le specie del Sud Italia e gli strumenti per chi determina: misura delle spore, reagenti, sporata, scheda di raccolta.</p>
+          <div class="cta-row"><a class="btn solid" href="impara/#laboratorio">Entra nella Didattica</a></div>
+        </div>
+        <div class="cell" style="--tint:var(--c-stage)">
+          <div class="cell-top"><img class="cell-logo" src="img/logo-biblioteca.svg" alt="" width="72" height="72"><span class="kicker">Biblioteca</span></div>
+          <h3>I grandi libri dei funghi, liberi da leggere.</h3>
+          <p>Inzenga, Bresadola, Vittadini e gli altri classici da sfogliare o da leggere trascritti, oltre 160 tavole storiche ripulite e le pubblicazioni scientifiche sui funghi del Sud.</p>
+          <div class="cta-row"><a class="btn solid" href="impara/#biblioteca">Entra nella Biblioteca</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
       <div class="sec-head"><h2>In primo piano</h2><p>Le novità, una alla volta: tocca una linguetta per aprire la scheda.</p></div>
       <div class="sched" id="sched">
         <div class="sched-bar">
@@ -607,24 +643,6 @@ footer a { color: var(--ink); }
           <button type="button" class="sched-pp" id="schedPP" aria-label="Metti in pausa lo scorrimento automatico"></button>
         </div>
         <div class="sched-body" id="schedBody"></div>
-      </div>
-    </div>
-
-    <div>
-      <div class="sec-head"><h2>Studia i funghi con noi, anche da casa</h2><p>Due sezioni nuove del sito, aperte a tutti e gratuite.</p></div>
-      <div class="cells">
-        <div class="cell" style="--tint:var(--c-pratica)">
-          <span class="kicker">Didattica</span>
-          <h3>Impara a riconoscere i funghi, passo dopo passo.</h3>
-          <p>Un percorso per cominciare, la chiave per arrivare al genere, i caratteri da osservare, le specie del Sud Italia e gli strumenti per chi determina: misura delle spore, reagenti, sporata, scheda di raccolta.</p>
-          <div class="cta-row"><a class="btn solid" href="impara/#laboratorio">Entra nella Didattica</a></div>
-        </div>
-        <div class="cell" style="--tint:var(--c-stage)">
-          <span class="kicker">Biblioteca</span>
-          <h3>I grandi libri dei funghi, liberi da leggere.</h3>
-          <p>Inzenga, Bresadola, Vittadini e gli altri classici da sfogliare o da leggere trascritti, oltre 160 tavole storiche ripulite e le pubblicazioni scientifiche sui funghi del Sud.</p>
-          <div class="cta-row"><a class="btn solid" href="impara/#biblioteca">Entra nella Biblioteca</a></div>
-        </div>
       </div>
     </div>
 
@@ -644,6 +662,7 @@ footer a { color: var(--ink); }
 <!-- CHI SIAMO -->
 <section class="page gut" id="p-chi-siamo" aria-label="Chi siamo">
   <div class="wrap stack">
+    <div class="ban"><img src="img/chi.svg" alt="" width="1200" height="300"></div>
     <div class="two">
       <div class="text">
         <span class="kicker">Chi siamo</span>
@@ -743,6 +762,7 @@ footer a { color: var(--ink); }
 <!-- ATTIVITA -->
 <section class="page gut" id="p-attivita" aria-label="Attività">
   <div class="wrap stack">
+    <div class="ban"><img src="img/attivita.svg" alt="" width="1200" height="300"></div>
     <div>
       <div class="sec-head"><span class="kicker">Attività</span><h2 style="font-size:clamp(32px,5vw,52px)">Un anno di appuntamenti, per ogni modo di amare i funghi.</h2><p>Ogni tipo di incontro ha il suo colore: lo riconosci a colpo d'occhio.</p></div>
       <div class="seg" role="tablist" aria-label="Come vuoi vedere le attività">
@@ -771,6 +791,7 @@ footer a { color: var(--ink); }
 <!-- CORSI -->
 <section class="page gut" id="p-corsi" aria-label="Corsi">
   <div class="wrap stack">
+    <div class="ban"><img src="img/corsi.svg" alt="" width="1200" height="300"></div>
     <div>
       <div class="corsi-top"><div class="sec-head"><span class="kicker">Corsi</span><h2 style="font-size:clamp(32px,5vw,52px)">Impara a conoscere i funghi, con chi li studia.</h2><p>Corsi per il tesserino di raccolta, con docenti accreditati. Preiscriviti senza impegno: quando arriviamo a 15 corsisti, il corso parte. Scegli a quale corso sei interessato e ti contatteremo noi.</p></div>
       <a class="btn solid cta-iscr" href="#preiscrizione" id="ctaIscr">Preiscriviti ora</a></div>
@@ -816,6 +837,7 @@ footer a { color: var(--ink); }
 <!-- OSSERVATORIO -->
 <section class="page gut" id="p-osservatorio" aria-label="Osservatorio">
   <div class="wrap stack">
+    <div class="ban"><img src="img/osservatorio.svg" alt="" width="1200" height="300"></div>
     <div>
       <div class="sec-head"><span class="kicker">Osservatorio micologico</span><h2 style="font-size:clamp(32px,5vw,52px)">La scienza dei funghi di Sicilia, a schede.</h2><p>Piccole schede per capire i funghi di Sicilia senza essere esperti: una domanda, una risposta chiara, le fonti. Scegli un argomento o cerca per parola. Dai nostri dati arrivano solo informazioni generali: niente luoghi precisi, niente nomi di persone.</p></div>
       <div class="tools">
@@ -850,49 +872,88 @@ footer a { color: var(--ink); }
 <!-- DIVENTA SOCIO -->
 <section class="page gut" id="p-associati" aria-label="Diventa socio">
   <div class="wrap stack">
+    <div class="ban"><img src="img/socio.svg" alt="" width="1200" height="300"></div>
     <div>
-      <div class="sec-head"><span class="kicker">Diventa socio</span><h2 style="font-size:clamp(32px,5vw,52px)">Entra nel gruppo che studia i funghi di Sicilia.</h2><p>Da socio partecipi alle serate del lunedì e del giovedì, alle gite, alle mostre e allo stage, con un tutor che ti accompagna il primo anno. Non serve sapere già qualcosa di funghi: si comincia con la curiosità.</p></div>
+      <div class="sec-head"><span class="kicker">Diventa socio</span><h2 style="font-size:clamp(32px,5vw,52px)">Entra nel gruppo che studia i funghi di Sicilia.</h2><p>Siamo micologi, appassionati e curiosi che si ritrovano da quasi quarant'anni. Da socio partecipi a tutto quello che facciamo, con un tutor che ti accompagna il primo anno. Non serve sapere già qualcosa di funghi: si comincia con la curiosità.</p></div>
+      <div class="cta-row"><button type="button" class="btn solid" data-socio-open>Compila la richiesta</button></div>
+    </div>
+    <div>
+      <div class="sec-head"><h2>Cosa fai da socio</h2><p>Un anno da metà settembre a metà giugno, con appuntamenti per ogni modo di amare i funghi.</p></div>
+      <ul class="perks">
+        <li style="--tint:var(--c-conv)"><b>Serate in sede</b><span>Ogni lunedì e giovedì: conversazioni con relatori scelti tra i soci, su funghi, bosco e natura.</span></li>
+        <li style="--tint:var(--c-pratica)"><b>Determinazione</b><span>Porti quello che hai trovato e lo riconosci con i micologi, al microscopio e sui libri della nostra biblioteca.</span></li>
+        <li style="--tint:var(--c-gite)"><b>Gite nel bosco</b><span>Uscite in gruppo nei boschi di Sicilia, per imparare a cercare e a osservare dove nascono i funghi.</span></li>
+        <li style="--tint:var(--c-mostre)"><b>Mostre</b><span>Prepari con noi la mostra micologica: raccolta, determinazione, cartellini e incontro con i visitatori.</span></li>
+        <li style="--tint:var(--c-stage)"><b>Stage micologico</b><span>Tre giorni fuori, con altri gruppi: al mattino nel bosco, al pomeriggio al microscopio.</span></li>
+        <li style="--tint:var(--c-corsi)"><b>Corsi e studio</b><span>Corsi per il tesserino e percorsi di approfondimento, con la Didattica e la Biblioteca del sito sempre aperte.</span></li>
+        <li style="--tint:var(--c-eventi)"><b>Osservatorio</b><span>Le tue foto e i tuoi ritrovamenti aiutano le ricerche dell'associazione sui funghi di Sicilia.</span></li>
+        <li style="--tint:var(--c-ist)"><b>Un tutor per te</b><span>Il primo anno un socio esperto ti segue, ti presenta il gruppo e risponde ai tuoi dubbi.</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="sec-head"><h2>Come si diventa soci</h2></div>
       <ol class="how">
-        <li><b>Compila la richiesta</b><span>Ci vuole un minuto. Non è un impegno.</span></li>
+        <li><b>Compila la richiesta</b><span>Ci vuole qualche minuto. Non è un impegno.</span></li>
         <li><b>Ci conosciamo</b><span>La segreteria ti ricontatta e ti invita a una serata in sede.</span></li>
         <li><b>Ricevi la tessera</b><span>Versi la quota annuale (<span class="todo">importo da inserire</span>) e sei dei nostri.</span></li>
       </ol>
+      <div class="cta-row" style="margin-top:24px"><button type="button" class="btn solid" data-socio-open>Compila la richiesta</button></div>
     </div>
-    <div class="box">
-      <h3>Richiesta di iscrizione</h3>
+    <p class="rule">Usiamo i tuoi dati solo per ricontattarti sull'iscrizione. Non li mostriamo sul sito e non li diamo a nessuno.</p>
+  </div>
+  <dialog class="sdlg" id="socioDlg" aria-labelledby="sdlgT">
+    <div class="sdlg-in">
+      <div class="sdlg-h"><h3 id="sdlgT">Richiesta di iscrizione</h3><button type="button" class="btn line" id="socioX">Chiudi</button></div>
+      <p class="sdlg-p">Raccontaci chi sei e perché vuoi entrare: ci aiuta a presentarti il gruppo giusto e a sceglierti un tutor. I campi segnati con * sono obbligatori.</p>
       <form id="socioForm" novalidate>
         <div class="fgrid">
-          <label for="so_nome">Nome<input type="text" id="so_nome" autocomplete="given-name" required></label>
-          <label for="so_cognome">Cognome<input type="text" id="so_cognome" autocomplete="family-name" required></label>
-          <label for="so_email">Email<input type="email" id="so_email" autocomplete="email" required></label>
+          <label for="so_nome">Nome *<input type="text" id="so_nome" autocomplete="given-name" required></label>
+          <label for="so_cognome">Cognome *<input type="text" id="so_cognome" autocomplete="family-name" required></label>
+          <label for="so_email">Email *<input type="email" id="so_email" autocomplete="email" required></label>
           <label for="so_tel">Telefono (facoltativo)<input type="text" id="so_tel" autocomplete="tel" inputmode="tel"></label>
-          <label for="so_comune">Comune in cui vivi<input type="text" id="so_comune" autocomplete="address-level2" required></label>
+          <label for="so_comune">Comune in cui vivi *<input type="text" id="so_comune" autocomplete="address-level2" required></label>
           <label for="so_come">Come ci hai conosciuto
             <select id="so_come"><option value="">Scegli</option><option>Da un amico o un socio</option><option>A una mostra</option><option>A un corso</option><option>Sui social</option><option>Cercando su internet</option><option>Altro</option></select>
           </label>
+          <fieldset class="radios full" id="so_why">
+            <legend>Perché vuoi diventare socio? * (anche più di una risposta)</legend>
+            <label class="radio"><input type="checkbox" value="Ottenere il tesserino"><span>Ottenere il tesserino di raccolta</span></label>
+            <label class="radio"><input type="checkbox" value="Studio scientifico"><span>Intraprendere un percorso di studio scientifico</span></label>
+            <label class="radio"><input type="checkbox" value="Cercare e raccogliere"><span>Imparare a cercare e raccogliere per uso personale</span></label>
+            <label class="radio"><input type="checkbox" value="Gite e persone"><span>Partecipare alle gite e conoscere persone</span></label>
+            <label class="radio"><input type="checkbox" value="Altro"><span>Altro</span></label>
+          </fieldset>
           <fieldset class="radios full" id="so_int">
-            <legend>Cosa ti interessa di più (anche più di una cosa)</legend>
-            <label class="radio"><input type="checkbox" value="Corsi per il tesserino"><span>Corsi per il tesserino</span></label>
-            <label class="radio"><input type="checkbox" value="Gite e uscite nel bosco"><span>Gite e uscite nel bosco</span></label>
+            <legend>A cosa ti piacerebbe partecipare</legend>
+            <label class="radio"><input type="checkbox" value="Serate in sede"><span>Serate in sede</span></label>
+            <label class="radio"><input type="checkbox" value="Gite e uscite"><span>Gite e uscite nel bosco</span></label>
             <label class="radio"><input type="checkbox" value="Determinazione e microscopio"><span>Determinazione e microscopio</span></label>
             <label class="radio"><input type="checkbox" value="Mostre"><span>Mostre</span></label>
+            <label class="radio"><input type="checkbox" value="Stage"><span>Stage micologico</span></label>
             <label class="radio"><input type="checkbox" value="Osservatorio e ricerca"><span>Osservatorio e ricerca</span></label>
-            <label class="radio"><input type="checkbox" value="Fotografia"><span>Fotografia</span></label>
+            <label class="radio"><input type="checkbox" value="Contribuire con le mie competenze"><span>Contribuire con le mie competenze</span></label>
           </fieldset>
-          <label class="full" for="so_msg">Vuoi dirci qualcosa? (facoltativo)<textarea id="so_msg"></textarea></label>
-          <label class="check full" for="so_priv"><input type="checkbox" id="so_priv" required><span>Ho letto l'informativa sulla privacy (<span class="todo">da inserire</span>) e acconsento a essere ricontattato per l'iscrizione.</span></label>
+          <fieldset class="radios full" id="so_liv">
+            <legend>Quanto conosci già i funghi?</legend>
+            <label class="radio"><input type="radio" name="so_liv" value="Per niente"><span>Per niente</span></label>
+            <label class="radio"><input type="radio" name="so_liv" value="Un po'"><span>Un po'</span></label>
+            <label class="radio"><input type="radio" name="so_liv" value="Ho già fatto un corso"><span>Ho già fatto un corso</span></label>
+            <label class="radio"><input type="radio" name="so_liv" value="Li studio da tempo"><span>Li studio da tempo</span></label>
+          </fieldset>
+          <label class="full" for="so_msg">C'è qualcosa che vorresti sapere su di noi, o un dubbio prima di iscriverti? (facoltativo)<textarea id="so_msg"></textarea></label>
+          <label class="check full" for="so_priv"><input type="checkbox" id="so_priv" required><span>Ho letto l'informativa sulla privacy (<span class="todo">da inserire</span>) e acconsento a essere ricontattato per l'iscrizione. *</span></label>
         </div>
         <button class="btn solid" type="submit" style="margin-top:8px">Invia la richiesta</button>
         <div class="msg" id="somsg" hidden role="status"></div>
       </form>
     </div>
-    <p class="rule">Usiamo i tuoi dati solo per ricontattarti sull'iscrizione. Non li mostriamo sul sito e non li diamo a nessuno.</p>
-  </div>
+  </dialog>
 </section>
 
 <!-- CONTATTI -->
 <section class="page gut" id="p-contatti" aria-label="Contatti">
   <div class="wrap stack">
+    <div class="ban"><img src="img/contatti.svg" alt="" width="1200" height="300"></div>
     <div>
       <div class="sec-head"><span class="kicker">Contatti</span><h2 style="font-size:clamp(32px,5vw,52px)">Vieni a trovarci in sede.</h2><p>Le serate sono il lunedì e il giovedì. Scrivici per un corso, per una mostra nel tuo comune o anche solo per capire se fa per te: ti rispondiamo volentieri.</p></div>
       <div class="cols">
@@ -964,7 +1025,7 @@ footer a { color: var(--ink); }
   <div class="wrap">
     <div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><img id="logoAmb" class="amb-logo" alt="Logo dell'Associazione Micologica Bresadola (A.M.B.)" height="64"><img id="logoFoot" alt="" width="64" height="64" style="display:block"><div><strong style="color:var(--ink)">Associazione Micologica Giuseppe Inzenga APS</strong><br>Gruppo A.M.B. di Palermo · Oratorio dei Salesiani «Villaurea»<br>Ente del Terzo settore, iscritta al RUNTS n. 75000 · C.F. 97171140821 <span class="todo">(dati da verificare con il tesoriere)</span><br>Non diamo indicazioni di commestibilità.</div></div></div>
     <div class="fright"><div class="links">
-      <a href="#home" data-go="home">Home</a><a href="#chi-siamo" data-go="chi-siamo">Chi siamo</a><a href="#attivita" data-go="attivita">Attività</a><a href="#corsi" data-go="corsi">Corsi</a><a href="#osservatorio" data-go="osservatorio">Osservatorio</a><a href="#contatti" data-go="contatti">Contatti</a><a href="#accesso" data-go="accesso">Area riservata</a>
+      <a href="#home" data-go="home">Home</a><a href="#chi-siamo" data-go="chi-siamo">Chi siamo</a><a href="#attivita" data-go="attivita">Attività</a><a href="#corsi" data-go="corsi">Corsi</a><a href="#osservatorio" data-go="osservatorio">Osservatorio</a><a href="#contatti" data-go="contatti">Contatti</a><a href="#associati" data-go="associati">Diventa socio</a><a href="#accesso" data-go="accesso">Area riservata</a>
     </div>
     <span class="soc"><a class="soc-b" href="https://www.facebook.com/profile.php?id=61568126933510" target="_blank" rel="noopener noreferrer" aria-label="Facebook (si apre in una nuova scheda)" title="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><text x="12" y="20" text-anchor="middle" font-family="Bricolage Grotesque, Trebuchet MS, sans-serif" font-size="27" font-weight="800" fill="currentColor">f</text></svg></a><a class="soc-b" href="https://www.instagram.com/ass.micologica.inzenga/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (si apre in una nuova scheda)" title="Instagram"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.9" cy="7.1" r="1.25" fill="currentColor"/></svg></a></span></div>
   </div>
@@ -1031,17 +1092,17 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
     { cat: 'eventi', tab: 'Dona il 5x1000', t: 'Una firma che non ti costa niente', b: 'Il tuo 5 per mille all\'Inzenga: basta una firma nella dichiarazione dei redditi per sostenere corsi, mostre e ricerca.', d: 'Codice fiscale: da inserire', go: 'contatti', cta: 'Contatti', chip: '5 per mille', poster: 'cinque', palt: 'Logo 5 per mille dell\'Associazione Micologica Giuseppe Inzenga', round: true },
     { cat: 'mostre', tab: 'Mostra micologica', t: '65 specie in un giorno: la mostra al Parco Uditore', b: 'L\'11 ottobre, nella Giornata Nazionale della Micologia, i nostri micologi hanno determinato ed esposto 65 specie raccolte nei boschi siciliani. Grazie a chi è passato a trovarci!', d: 'Parco Uditore, Palermo · 11 ottobre 2026', go: 'attivita', cta: 'Guarda le attività', poster: 'mostra26', palt: 'La mostra micologica 2026 al Parco Uditore: soci e visitatori attorno ai tavoli con i funghi esposti e i cartellini con i nomi' },
     { cat: 'stage', tab: 'Stage Micologico', t: 'Tre giorni nel cuore dell\'Aspromonte: lo stage a Gambarie', b: 'Al mattino cerchi nel bosco, al pomeriggio studi al microscopio quello che hai trovato. È la 32ª edizione, con l\'Associazione Micologica Naturale Aspromonte.', d: 'Gambarie d\'Aspromonte · 23-25 ottobre 2026', go: 'attivita', cta: 'Scopri lo stage', poster: 'stageloc', palt: 'Locandina dello stage micologico a Gambarie d\'Aspromonte, 23-25 ottobre 2026' },
-    { cat: 'pratica', tab: 'Conversazioni', t: 'Lunedì sera: il tuo fungo diventa una scoperta', b: 'I soci portano ciò che hanno raccolto e lo determinano insieme ai micologi, al microscopio e sui libri. Si impara facendo.', d: 'In sede · lunedì sera · orario da inserire', go: 'chi-siamo', cta: 'Chi siamo' }
+    { cat: 'eventi', tint: 'var(--c-socio)', chip: 'Diventa socio', tab: 'Diventa socio', t: 'Diventa socio: i funghi si imparano in compagnia', b: 'Serate in sede il lunedì e il giovedì, gite nel bosco, mostre, stage e un tutor che ti accompagna il primo anno. Non serve sapere già nulla di funghi: basta la curiosità.', d: 'Quota annuale: da inserire', go: 'associati', cta: 'Scopri cosa fa un socio' }
   ];
   var N = SPOT.length, cur = 0, userAt = 0, hov = false, vis = false;
   var sched = document.getElementById('sched'), tabsEl = document.getElementById('schedTabs'), bodyEl = document.getElementById('schedBody'), pp = document.getElementById('schedPP');
   var paused = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   tabsEl.innerHTML = SPOT.map(function (s, i) {
-    return '<button type="button" class="sched-tab" role="tab" id="stab-' + i + '" aria-controls="fold-' + i + '" data-i="' + i + '" style="--tint:' + CAT[s.cat].v + '"><span>' + esc(s.tab) + '</span></button>';
+    return '<button type="button" class="sched-tab" role="tab" id="stab-' + i + '" aria-controls="fold-' + i + '" data-i="' + i + '" style="--tint:' + (s.tint || CAT[s.cat].v) + '"><span>' + esc(s.tab) + '</span></button>';
   }).join('');
   bodyEl.innerHTML = SPOT.map(function (s, i) {
     var c = CAT[s.cat];
-    return '<article class="fold' + (s.poster ? ' has-poster' : '') + '" id="fold-' + i + '" role="tabpanel" aria-labelledby="stab-' + i + '" style="--tint:' + c.v + '">' +
+    return '<article class="fold' + (s.poster ? ' has-poster' : '') + '" id="fold-' + i + '" role="tabpanel" aria-labelledby="stab-' + i + '" style="--tint:' + (s.tint || c.v) + '">' +
       '<div class="fold-head">' + (s.chip ? '<span class="chip">' + esc(s.chip) + '</span>' : tag(s.cat)) + '<h3>' + esc(s.t) + '</h3></div>' +
       '<p class="body">' + esc(s.b) + '</p>' +
       (s.poster ? '<button type="button" class="fold-poster' + (s.round ? ' round' : '') + '" data-i="' + i + '" aria-label="Ingrandisci: ' + esc(s.palt) + '"><img src="' + IMG[s.poster] + '" alt=""><span>Ingrandisci</span></button>' : '') +
@@ -2023,6 +2084,12 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
 
   (function () {
     var f = document.getElementById('socioForm'); if (!f) return;
+    var dlg = document.getElementById('socioDlg');
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-socio-open]')) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); var n = document.getElementById('so_nome'); setTimeout(function () { n.focus(); }, 30); }
+    });
+    document.getElementById('socioX').addEventListener('click', function () { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg && dlg.close) dlg.close(); });
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var m = document.getElementById('somsg'), miss = [];
@@ -2031,6 +2098,7 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
       m.hidden = false;
       if (miss.length) { m.textContent = (miss.length === 1 ? 'Manca ' : 'Mancano ') + miss.join(', ') + '.'; return; }
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { m.textContent = "L'email non sembra corretta: controlla che ci sia la @ e il punto."; return; }
+      if (!f.querySelector('#so_why input:checked')) { m.textContent = "Dicci almeno un motivo per cui vuoi diventare socio."; return; }
       if (!document.getElementById('so_priv').checked) { m.textContent = "Per inviare la richiesta serve il consenso sulla privacy."; return; }
       m.textContent = 'Grazie, ' + document.getElementById('so_nome').value.trim() + '! In questa anteprima la richiesta non parte davvero. Nel sito vero arriva alla segreteria, che ti ricontatta per invitarti in sede.';
     });

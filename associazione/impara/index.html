@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta name="robots" content="noindex,nofollow">
 <title>Didattica e Biblioteca</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -429,8 +430,27 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .pg-switch button[aria-current="page"] { background: var(--accent); color: var(--accent-ink); }
 .tab[hidden] { display: none; }
 .sp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
-.sp-card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.sp-card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; text-align: left; padding: 0; cursor: pointer; font: inherit; color: inherit; }
+.sp-card:hover { border-color: var(--accent); }
+.sp-card > span { display: grid; }
+.sp-media { display: grid !important; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); height: 150px; background: var(--surface2); }
+.sp-tv { width: 100%; height: 150px; object-fit: contain; background: #F3EDDD; display: block; }
 .sp-ph { width: 100%; height: 150px; object-fit: cover; display: block; }
+.sp-miss { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--muted); font-size: 13px; font-weight: 600; min-height: 100%; border: 1.5px dashed var(--line2); margin: 8px; border-radius: 10px; }
+.sp-miss svg { width: 34px; height: 34px; fill: var(--line2); }
+.sp-h { font: 600 16px/1.25 var(--f-display); }
+.sp-open { font-size: 13.5px; font-weight: 600; color: var(--accent); }
+.spd-box { --ink: #2a2217; --muted: #5d5340; --line: #cbbf9f; --line2: #a89a78; --surface: #FBF8F0; --surface2: #EFE7D2; --accent: #17694F; --accent-ink: #fff; --accent-soft: #D5E9DE; --ochre: #8A4F06; --ochre-soft: #F4E5C8; max-width: min(980px, 100%); width: 100%; text-align: left; }
+.spd-box h2 { margin: 0 0 4px; font: 700 24px/1.2 var(--f-display); padding-right: 90px; }
+.spd-box h3 { margin: 14px 0 6px; font: 700 16px/1.2 var(--f-display); }
+.spd-box p { text-align: left; }
+.spd-media { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 12px 0; }
+.spd-fig { margin: 0; display: grid; gap: 6px; align-content: start; }
+.spd-fig img { width: 100%; max-height: 420px; object-fit: contain; background: #EFE7D2; border-radius: 10px; display: block; }
+.spd-pl { border: 0; padding: 0; background: none; cursor: zoom-in; display: block; }
+.spd-fig figcaption { font-size: 13px; opacity: .8; }
+.spd-miss .sp-miss { min-height: 240px; margin: 0; border-color: #B7A98A; color: #6b5c40; }
+.spd-old { margin: 0; padding-left: 18px; }
 .sp-b { padding: 10px 12px 12px; display: grid; gap: 6px; min-width: 0; }
 .sp-b h3 { margin: 0; font: 600 16px/1.25 var(--f-display); }
 .sp-b p { margin: 0; }
@@ -487,6 +507,35 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .foto-row img { width: 100%; height: 190px; object-fit: cover; border-radius: 10px; display: block; }
 .foto-row figcaption { font-size: 12.5px; opacity: .85; margin-top: 3px; }
 .lb-sp { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
+
+/* Sfondi di sezione: terra per la Didattica, bosco per la Biblioteca */
+body.pg-lab { background: #3B2A1E url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22240%22 viewBox=%220 0 240 240%22%3E%3Crect width=%22240%22 height=%22240%22 fill=%22%233B2A1E%22/%3E%3Cg opacity=%220.13%22%3E%3Cg transform=%22translate(30.000000 40.000000) rotate(332.951491) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(150.000000 30.000000) rotate(35.888462) scale(0.900000)%22%3E%3Cellipse cx=%220%22 cy=%229%22 rx=%227.5%22 ry=%2210.5%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M0 -6 V-11%22 stroke=%22%23C9A77E%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M-6 0 H6 M-7 -3 H7%22 stroke=%22%23F6EFD9%22 stroke-width=%221%22 opacity=%22.35%22/%3E%3C/g%3E%3Cg transform=%22translate(90.000000 134.000000) rotate(15.697334)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(200.000000 140.000000) rotate(30.078244) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(40.000000 200.000000) rotate(7.362178) scale(0.900000)%22%3E%3Cellipse cx=%220%22 cy=%229%22 rx=%227.5%22 ry=%2210.5%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M0 -6 V-11%22 stroke=%22%23C9A77E%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M-6 0 H6 M-7 -3 H7%22 stroke=%22%23F6EFD9%22 stroke-width=%221%22 opacity=%22.35%22/%3E%3C/g%3E%3Cg transform=%22translate(160.000000 229.000000) rotate(-3.050104)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+body.pg-bib { background: #173A2B url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22240%22 viewBox=%220 0 240 240%22%3E%3Crect width=%22240%22 height=%22240%22 fill=%22%23173A2B%22/%3E%3Cg opacity=%220.13%22%3E%3Cg transform=%22translate(30.000000 40.000000) rotate(197.322859) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(150.000000 30.000000) rotate(-9.250091)%22%3E%3Crect x=%22-9%22 y=%22-12%22 width=%2218%22 height=%2224%22 rx=%222%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-5 -6 H5 M-5 -1 H5%22 stroke=%22%23173A2B%22 stroke-width=%221.4%22/%3E%3C/g%3E%3Cg transform=%22translate(90.000000 134.000000) rotate(13.794044)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(200.000000 140.000000) rotate(103.895077) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(40.000000 200.000000) rotate(0.620702)%22%3E%3Crect x=%22-9%22 y=%22-12%22 width=%2218%22 height=%2224%22 rx=%222%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-5 -6 H5 M-5 -1 H5%22 stroke=%22%23173A2B%22 stroke-width=%221.4%22/%3E%3C/g%3E%3Cg transform=%22translate(160.000000 229.000000) rotate(-6.247429)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body.pg-lab { background: #24190F url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22240%22 viewBox=%220 0 240 240%22%3E%3Crect width=%22240%22 height=%22240%22 fill=%22%2324190F%22/%3E%3Cg opacity=%220.1%22%3E%3Cg transform=%22translate(30.000000 40.000000) rotate(332.951491) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(150.000000 30.000000) rotate(35.888462) scale(0.900000)%22%3E%3Cellipse cx=%220%22 cy=%229%22 rx=%227.5%22 ry=%2210.5%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M0 -6 V-11%22 stroke=%22%23C9A77E%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M-6 0 H6 M-7 -3 H7%22 stroke=%22%23F6EFD9%22 stroke-width=%221%22 opacity=%22.35%22/%3E%3C/g%3E%3Cg transform=%22translate(90.000000 134.000000) rotate(15.697334)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(200.000000 140.000000) rotate(30.078244) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(40.000000 200.000000) rotate(7.362178) scale(0.900000)%22%3E%3Cellipse cx=%220%22 cy=%229%22 rx=%227.5%22 ry=%2210.5%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M0 -6 V-11%22 stroke=%22%23C9A77E%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M-6 0 H6 M-7 -3 H7%22 stroke=%22%23F6EFD9%22 stroke-width=%221%22 opacity=%22.35%22/%3E%3C/g%3E%3Cg transform=%22translate(160.000000 229.000000) rotate(-3.050104)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); } :root:not([data-theme="light"]) body.pg-bib { background: #0E2419 url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22240%22 viewBox=%220 0 240 240%22%3E%3Crect width=%22240%22 height=%22240%22 fill=%22%230E2419%22/%3E%3Cg opacity=%220.1%22%3E%3Cg transform=%22translate(30.000000 40.000000) rotate(197.322859) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(150.000000 30.000000) rotate(-9.250091)%22%3E%3Crect x=%22-9%22 y=%22-12%22 width=%2218%22 height=%2224%22 rx=%222%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-5 -6 H5 M-5 -1 H5%22 stroke=%22%230E2419%22 stroke-width=%221.4%22/%3E%3C/g%3E%3Cg transform=%22translate(90.000000 134.000000) rotate(13.794044)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(200.000000 140.000000) rotate(103.895077) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(40.000000 200.000000) rotate(0.620702)%22%3E%3Crect x=%22-9%22 y=%22-12%22 width=%2218%22 height=%2224%22 rx=%222%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-5 -6 H5 M-5 -1 H5%22 stroke=%22%230E2419%22 stroke-width=%221.4%22/%3E%3C/g%3E%3Cg transform=%22translate(160.000000 229.000000) rotate(-6.247429)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); } }
+:root[data-theme="dark"] body.pg-lab { background: #24190F url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22240%22 viewBox=%220 0 240 240%22%3E%3Crect width=%22240%22 height=%22240%22 fill=%22%2324190F%22/%3E%3Cg opacity=%220.1%22%3E%3Cg transform=%22translate(30.000000 40.000000) rotate(332.951491) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(150.000000 30.000000) rotate(35.888462) scale(0.900000)%22%3E%3Cellipse cx=%220%22 cy=%229%22 rx=%227.5%22 ry=%2210.5%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M0 -6 V-11%22 stroke=%22%23C9A77E%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M-6 0 H6 M-7 -3 H7%22 stroke=%22%23F6EFD9%22 stroke-width=%221%22 opacity=%22.35%22/%3E%3C/g%3E%3Cg transform=%22translate(90.000000 134.000000) rotate(15.697334)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(200.000000 140.000000) rotate(30.078244) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3Cg transform=%22translate(40.000000 200.000000) rotate(7.362178) scale(0.900000)%22%3E%3Cellipse cx=%220%22 cy=%229%22 rx=%227.5%22 ry=%2210.5%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M0 -6 V-11%22 stroke=%22%23C9A77E%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M-6 0 H6 M-7 -3 H7%22 stroke=%22%23F6EFD9%22 stroke-width=%221%22 opacity=%22.35%22/%3E%3C/g%3E%3Cg transform=%22translate(160.000000 229.000000) rotate(-3.050104)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23C9A77E%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+:root[data-theme="dark"] body.pg-bib { background: #0E2419 url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22240%22 viewBox=%220 0 240 240%22%3E%3Crect width=%22240%22 height=%22240%22 fill=%22%230E2419%22/%3E%3Cg opacity=%220.1%22%3E%3Cg transform=%22translate(30.000000 40.000000) rotate(197.322859) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(150.000000 30.000000) rotate(-9.250091)%22%3E%3Crect x=%22-9%22 y=%22-12%22 width=%2218%22 height=%2224%22 rx=%222%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-5 -6 H5 M-5 -1 H5%22 stroke=%22%230E2419%22 stroke-width=%221.4%22/%3E%3C/g%3E%3Cg transform=%22translate(90.000000 134.000000) rotate(13.794044)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(200.000000 140.000000) rotate(103.895077) scale(0.550000)%22%3E%3Cpath d=%22M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3Cg transform=%22translate(40.000000 200.000000) rotate(0.620702)%22%3E%3Crect x=%22-9%22 y=%22-12%22 width=%2218%22 height=%2224%22 rx=%222%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-5 -6 H5 M-5 -1 H5%22 stroke=%22%230E2419%22 stroke-width=%221.4%22/%3E%3C/g%3E%3Cg transform=%22translate(160.000000 229.000000) rotate(-6.247429)%22%3E%3Cpath d=%22M-3.385200 0 L-2.457000 -18.480000 H2.457000 L3.385200 0Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 A12.600000 10.920000 0 0 1 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3Cpath d=%22M-12.600000 -18.480000 Q0 -16.380000 12.600000 -18.480000Z%22 fill=%22%23A9C4A2%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+body.pg-lab, body.pg-bib { background-attachment: fixed; }
+body.pg-lab header, body.pg-bib header { color: #F4ECDD; }
+body.pg-lab header .lead { color: #E0D2BC; }
+body.pg-bib header .lead { color: #CFE0CB; }
+body.pg-lab .back-site, body.pg-bib .back-site { color: #F4ECDD !important; }
+.pban { border-radius: 22px; overflow: hidden; margin: 0 0 18px; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+.pban svg { display: block; width: 100%; height: auto; aspect-ratio: 5 / 1; }
+@media (max-width: 640px) { .pban svg { aspect-ratio: 2.2 / 1; } .pban { border-radius: 16px; } }
+body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
+.logo.lg2 { background: none; width: 64px; height: 64px; border-radius: 50%; }
+.logo.lg2 svg { width: 64px; height: 64px; }
+body.pg-lab .lg-bib, body.pg-bib .lg-lab { display: none; }
+.sheet { background: var(--bg); border-radius: 22px; padding: 6px clamp(12px, 2.4vw, 26px) 22px; margin-top: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+.sheet .tabs { margin-top: 10px; }
+.ks-genus { border-bottom: 1.5px dashed var(--line); padding-bottom: 10px; margin-bottom: 10px; display: grid; gap: 4px; }
+.ks-genus h3 { margin: 0; }
+.ks-next { font: 600 12px/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin: 4px 0 0; }
+.ks-media { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; margin: 8px 0; height: 120px; }
+.ks-media img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; background: #F3EDDD; }
+.ks-media img:first-child { object-fit: contain; }
+.ks-media .sp-miss { margin: 0; font-size: 12px; }
+.ks-open { margin: 2px 0 8px; }
 .foot { margin-top: 28px; padding-top: 14px; border-top: 1.5px solid var(--line); font-size: 12.5px; color: var(--muted); max-width: 90ch; }
 
 @media (max-width: 760px) {
@@ -497,8 +546,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
   .stage { padding: 18px 14px 22px; }
 }
 </style>
-</head>
-<body>
+
 <meta name="robots" content="noindex,nofollow">
 <style>#inzGate{position:fixed;inset:0;z-index:9999;background:#15362A;color:#E8EFE3;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Instrument Sans",system-ui,sans-serif}#inzGate form{width:min(380px,100%);display:grid;gap:14px}#inzGate h1{font:700 26px/1.15 "Bricolage Grotesque",system-ui,sans-serif;margin:0}#inzGate p{margin:0;color:#C9D8C6;font-size:16px;line-height:1.5}#inzGate input{font:inherit;font-size:17px;padding:12px 14px;border-radius:12px;border:1px solid #4B7A62;background:#1F4A38;color:#fff}#inzGate button{font:inherit;font-weight:600;font-size:16px;padding:12px 18px;border-radius:999px;border:0;background:#E2AB3C;color:#1A2A20;cursor:pointer}#inzGate .e{color:#F4C987;min-height:1.2em}</style>
 <div id="inzGate"><form autocomplete="off"><h1>Anteprima riservata</h1><p>Sito dell'Associazione Micologica Giuseppe Inzenga, in prova. Inserisci la password che ti è stata data.</p><label style="display:grid;gap:6px;font-weight:600">Password<input id="inzGateP" type="password" autocomplete="current-password"></label><button type="submit">Entra</button><p class="e" id="inzGateE" role="alert"></p></form></div>
@@ -523,13 +571,12 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 <pattern id="p-band" width="6" height="9" patternUnits="userSpaceOnUse"><path d="M0 4.5H6" style="stroke:var(--ink);stroke-width:1;opacity:.55"/></pattern>
 </defs></svg>
 <div class="wrap">
+  <div class="pban pban-lab" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Una chiave dicotomica che si divide fino a quattro funghi, con una lente e ghiande"><rect width="1200" height="300" fill="#3B2A1E"/><g opacity=".18"><g transform="translate(310.810190 205.577398) rotate(305.761018) scale(0.873633)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(222.869009 69.167583) rotate(81.058657) scale(0.658864)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(880.828323 39.063907) rotate(77.006711) scale(0.812526)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(353.588105 129.474099) rotate(219.024773) scale(0.935063)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(17.318872 82.751056) rotate(313.662503) scale(0.658684)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(971.687533 241.814051) rotate(268.110055) scale(0.930546)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(1139.188100 238.131165) rotate(305.978045) scale(0.702683)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(584.142592 226.501155) rotate(154.647953) scale(0.825655)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(437.043150 128.946681) rotate(42.249618) scale(0.725505)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(983.572372 239.477591) rotate(248.732154) scale(0.994272)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(665.071630 224.523447) rotate(243.655763) scale(0.653942)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(532.079946 52.990124) rotate(188.169589) scale(0.681051)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(303.974107 137.837707) rotate(142.472653) scale(0.842200)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><g opacity=".18"><g transform="translate(156.937154 147.257141) rotate(84.844199) scale(0.694179)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E4D7B5"/></g></g><path d="M150 150 H300 M300 150 V80 M300 150 V220 M300 80 H460 M300 220 H460 M460 80 V44 M460 80 V116 M460 220 V184 M460 220 V256 M460 44 H600 M460 116 H600 M460 184 H600 M460 256 H600" stroke="#E2AB3C" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="150" cy="150" r="11" fill="#E2AB3C"/><circle cx="150" cy="150" r="5" fill="#3B2A1E"/><circle cx="300" cy="80" r="11" fill="#E2AB3C"/><circle cx="300" cy="80" r="5" fill="#3B2A1E"/><circle cx="300" cy="220" r="11" fill="#E2AB3C"/><circle cx="300" cy="220" r="5" fill="#3B2A1E"/><circle cx="460" cy="80" r="11" fill="#E2AB3C"/><circle cx="460" cy="80" r="5" fill="#3B2A1E"/><circle cx="460" cy="220" r="11" fill="#E2AB3C"/><circle cx="460" cy="220" r="5" fill="#3B2A1E"/><g transform="translate(640.000000 62.000000) rotate(0.000000)"><path d="M-4.433000 0 L-3.217500 -24.200000 H3.217500 L4.433000 0Z" fill="#F6EFD9"/><path d="M-16.500000 -24.200000 A16.500000 14.300000 0 0 1 16.500000 -24.200000Z" fill="#D77A2C"/><path d="M-16.500000 -24.200000 Q0 -21.450000 16.500000 -24.200000Z" fill="#E4D7B5"/><circle cx="-7.700000" cy="-31.900000" r="1.870000" fill="#F6EFD9"/><circle cx="1.100000" cy="-35.200000" r="1.650000" fill="#F6EFD9"/><circle cx="8.250000" cy="-30.800000" r="1.980000" fill="#F6EFD9"/><circle cx="-2.200000" cy="-29.150000" r="1.320000" fill="#F6EFD9"/><circle cx="12.100000" cy="-26.950000" r="1.210000" fill="#F6EFD9"/><circle cx="-12.100000" cy="-26.950000" r="1.210000" fill="#F6EFD9"/></g><g transform="translate(640.000000 134.000000) rotate(0.000000)"><path d="M-6.655000 0.000000 Q-9.680000 -9.350000 -5.445000 -18.700000 H5.445000 Q9.680000 -9.350000 6.655000 0.000000Z" fill="#F6EFD9"/><path d="M-18.700000 -16.500000 C-18.700000 -33.000000 -7.700000 -37.400000 0 -37.400000 C7.700000 -37.400000 18.700000 -33.000000 18.700000 -16.500000Z" fill="#8A5A32"/><path d="M-18.150000 -17.050000 Q0 -13.750000 18.150000 -17.050000Z" fill="#E4D7B5"/></g><g transform="translate(640.000000 202.000000) rotate(0.000000)"><path d="M-3.575000 0 L-5.005000 -19.360000 H5.005000 L3.575000 0Z" fill="#E2AB3C"/><path d="M-3.300000 -19.360000 Q-11.000000 -22.660000 -16.500000 -30.360000 Q0 -27.060000 16.500000 -30.360000 Q11.000000 -22.660000 3.300000 -19.360000Z" fill="#E2AB3C"/><path d="M-15.400000 -29.810000 Q0 -25.960000 15.400000 -29.810000" fill="none" stroke="#B35A1B" stroke-width="1.100000"/></g><g transform="translate(640.000000 274.000000) rotate(0.000000)"><path d="M-4.433000 0 L-3.217500 -24.200000 H3.217500 L4.433000 0Z" fill="#E9EFE3"/><path d="M-12.100000 -23.100000 Q-8.800000 -34.100000 0 -42.900000 Q8.800000 -34.100000 12.100000 -23.100000Z" fill="#E4D7B5"/></g><g fill="#F6EFD9" font-family="Georgia,serif" font-size="18" font-style="italic"><text x="680" y="52">Amanita</text><text x="680" y="124">Boletus</text><text x="680" y="192">Cantharellus</text><text x="680" y="264">Coprinus</text></g><circle cx="960" cy="140" r="70" fill="#F6EFD9" opacity=".18"/><circle cx="960" cy="140" r="70" fill="none" stroke="#E4D7B5" stroke-width="12"/><path d="M1010 192 L1080 262" stroke="#9A5B34" stroke-width="20" stroke-linecap="round"/><g transform="translate(960.000000 180.000000) rotate(0.000000)"><path d="M-8.866000 0 L-6.435000 -48.400000 H6.435000 L8.866000 0Z" fill="#F6EFD9"/><path d="M-33.000000 -48.400000 A33.000000 28.600000 0 0 1 33.000000 -48.400000Z" fill="#D77A2C"/><path d="M-33.000000 -48.400000 Q0 -42.900000 33.000000 -48.400000Z" fill="#E4D7B5"/><circle cx="-15.400000" cy="-63.800000" r="3.740000" fill="#F6EFD9"/><circle cx="2.200000" cy="-70.400000" r="3.300000" fill="#F6EFD9"/><circle cx="16.500000" cy="-61.600000" r="3.960000" fill="#F6EFD9"/><circle cx="-4.400000" cy="-58.300000" r="2.640000" fill="#F6EFD9"/><circle cx="24.200000" cy="-53.900000" r="2.420000" fill="#F6EFD9"/><circle cx="-24.200000" cy="-53.900000" r="2.420000" fill="#F6EFD9"/></g><g transform="translate(70.000000 60.000000) rotate(-30.000000) scale(1.600000)"><ellipse cx="0" cy="9" rx="7.5" ry="10.5" fill="#B8703F"/><path d="M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z" fill="#7A5236"/><path d="M0 -6 V-11" stroke="#7A5236" stroke-width="2" stroke-linecap="round"/><path d="M-6 0 H6 M-7 -3 H7" stroke="#F6EFD9" stroke-width="1" opacity=".35"/></g><g transform="translate(1150.000000 60.000000) rotate(25.000000) scale(1.500000)"><ellipse cx="0" cy="9" rx="7.5" ry="10.5" fill="#B8703F"/><path d="M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z" fill="#7A5236"/><path d="M0 -6 V-11" stroke="#7A5236" stroke-width="2" stroke-linecap="round"/><path d="M-6 0 H6 M-7 -3 H7" stroke="#F6EFD9" stroke-width="1" opacity=".35"/></g><g transform="translate(1120.000000 270.000000) rotate(-10.000000) scale(1.300000)"><ellipse cx="0" cy="9" rx="7.5" ry="10.5" fill="#B8703F"/><path d="M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z" fill="#7A5236"/><path d="M0 -6 V-11" stroke="#7A5236" stroke-width="2" stroke-linecap="round"/><path d="M-6 0 H6 M-7 -3 H7" stroke="#F6EFD9" stroke-width="1" opacity=".35"/></g><g transform="translate(60.000000 240.000000) rotate(210.000000) scale(1.100000)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#6E8B4A"/></g><g transform="translate(840.000000 30.000000) rotate(120.000000) scale(0.800000)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#6E8B4A"/></g></svg></div><div class="pban pban-bib" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Uno scaffale di libri antichi e un libro aperto con la tavola di un fungo"><rect width="1200" height="300" fill="#173A2B"/><g opacity=".14"><g transform="translate(626.380692 242.007233) rotate(104.265136) scale(0.984198)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(919.328925 211.265960) rotate(39.658338) scale(0.864553)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(32.324135 115.251331) rotate(90.858156) scale(0.898558)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(601.923205 95.230527) rotate(340.269809) scale(0.938531)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(481.909124 299.534102) rotate(292.539240) scale(0.624877)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(1050.379803 45.274644) rotate(201.201073) scale(0.882227)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(1146.225435 63.003003) rotate(317.684198) scale(0.815985)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(766.527817 92.759859) rotate(338.319377) scale(0.632746)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(568.918165 298.897855) rotate(292.393531) scale(0.656643)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(976.053746 275.992507) rotate(133.989423) scale(0.607134)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(62.002792 225.610450) rotate(345.421879) scale(0.741857)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(449.794816 232.312477) rotate(86.020764) scale(0.947115)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(668.179949 287.217654) rotate(129.494814) scale(0.810767)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><g opacity=".14"><g transform="translate(320.640430 235.940908) rotate(217.402715) scale(0.677099)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#A9C4A2"/></g></g><rect x="120" y="40" width="460" height="230" rx="8" fill="#5B3A26"/><rect x="134" y="52" width="432" height="96" fill="#2A1C12"/><rect x="134" y="160" width="432" height="98" fill="#2A1C12"/><rect x="140.000000" y="65.823422" width="24.666557" height="82.176578" rx="2" fill="#E2AB3C"/><rect x="143.000000" y="77.823422" width="18.666557" height="4" fill="#F6EFD9" opacity=".55"/><rect x="166.666557" y="63.511567" width="19.553831" height="84.488433" rx="2" fill="#C2452D"/><rect x="169.666557" y="75.511567" width="13.553831" height="4" fill="#F6EFD9" opacity=".55"/><rect x="188.220388" y="70.984662" width="28.998351" height="77.015338" rx="2" fill="#2D6049"/><rect x="191.220388" y="82.984662" width="22.998351" height="4" fill="#F6EFD9" opacity=".55"/><rect x="219.218739" y="58.001103" width="21.984878" height="89.998897" rx="2" fill="#3FA7C4"/><rect x="222.218739" y="70.001103" width="15.984878" height="4" fill="#F6EFD9" opacity=".55"/><rect x="243.203617" y="72.003290" width="24.940142" height="75.996710" rx="2" fill="#E4D7B5"/><rect x="246.203617" y="84.003290" width="18.940142" height="4" fill="#F6EFD9" opacity=".55"/><rect x="270.143760" y="61.428072" width="18.117160" height="86.571928" rx="2" fill="#9A5B34"/><rect x="273.143760" y="73.428072" width="12.117160" height="4" fill="#F6EFD9" opacity=".55"/><rect x="290.260920" y="67.722504" width="22.176048" height="80.277496" rx="2" fill="#A9C4A2"/><rect x="293.260920" y="79.722504" width="16.176048" height="4" fill="#F6EFD9" opacity=".55"/><rect x="314.436968" y="64.071756" width="21.270036" height="83.928244" rx="2" fill="#B9812A"/><rect x="317.436968" y="76.071756" width="15.270036" height="4" fill="#F6EFD9" opacity=".55"/><rect x="337.707004" y="71.184662" width="26.747814" height="76.815338" rx="2" fill="#7A3E2A"/><rect x="340.707004" y="83.184662" width="20.747814" height="4" fill="#F6EFD9" opacity=".55"/><rect x="366.454818" y="56.290608" width="18.900358" height="91.709392" rx="2" fill="#4E7F62"/><rect x="369.454818" y="68.290608" width="12.900358" height="4" fill="#F6EFD9" opacity=".55"/><rect x="387.355175" y="77.545449" width="28.920493" height="70.454551" rx="2" fill="#E2AB3C"/><rect x="390.355175" y="89.545449" width="22.920493" height="4" fill="#F6EFD9" opacity=".55"/><rect x="418.275669" y="62.908037" width="24.770218" height="85.091963" rx="2" fill="#C2452D"/><rect x="421.275669" y="74.908037" width="18.770218" height="4" fill="#F6EFD9" opacity=".55"/><rect x="445.045887" y="61.903910" width="22.836153" height="86.096090" rx="2" fill="#2D6049"/><rect x="448.045887" y="73.903910" width="16.836153" height="4" fill="#F6EFD9" opacity=".55"/><rect x="469.882040" y="65.016776" width="29.517784" height="82.983224" rx="2" fill="#3FA7C4"/><rect x="472.882040" y="77.016776" width="23.517784" height="4" fill="#F6EFD9" opacity=".55"/><rect x="501.399823" y="73.695741" width="22.698886" height="74.304259" rx="2" fill="#E4D7B5"/><rect x="504.399823" y="85.695741" width="16.698886" height="4" fill="#F6EFD9" opacity=".55"/><rect x="526.098709" y="74.682367" width="21.017022" height="73.317633" rx="2" fill="#9A5B34"/><rect x="529.098709" y="86.682367" width="15.017022" height="4" fill="#F6EFD9" opacity=".55"/><rect x="140.000000" y="183.327426" width="19.324893" height="74.672574" rx="2" fill="#E4D7B5"/><rect x="161.324893" y="176.186485" width="28.104291" height="81.813515" rx="2" fill="#9A5B34"/><rect x="191.429185" y="167.755913" width="27.659229" height="90.244087" rx="2" fill="#A9C4A2"/><rect x="221.088414" y="186.912255" width="27.729416" height="71.087745" rx="2" fill="#B9812A"/><rect x="250.817830" y="185.958571" width="29.111509" height="72.041429" rx="2" fill="#7A3E2A"/><rect x="281.929339" y="169.543242" width="27.251589" height="88.456758" rx="2" fill="#4E7F62"/><rect x="317.180928" y="179.118981" width="25.889416" height="78.881019" rx="2" fill="#E2AB3C" transform="rotate(-14 317.180928 258)"/><rect x="363.070345" y="186.126624" width="18.900205" height="71.873376" rx="2" fill="#C2452D"/><rect x="383.970550" y="182.682505" width="25.638032" height="75.317495" rx="2" fill="#2D6049"/><rect x="411.608582" y="182.165003" width="24.387389" height="75.834997" rx="2" fill="#3FA7C4"/><rect x="437.995971" y="181.504757" width="19.960909" height="76.495243" rx="2" fill="#E4D7B5"/><rect x="459.956880" y="177.290098" width="26.698402" height="80.709902" rx="2" fill="#9A5B34"/><rect x="488.655282" y="177.297386" width="22.713238" height="80.702614" rx="2" fill="#A9C4A2"/><rect x="513.368519" y="176.655311" width="24.647806" height="81.344689" rx="2" fill="#B9812A"/><rect x="540.016326" y="166.717514" width="23.340707" height="91.282486" rx="2" fill="#7A3E2A"/><path d="M660 250 Q780 226 900 250 Q1020 226 1140 250 V268 Q1020 246 900 270 Q780 246 660 268Z" fill="#5B3A26"/><path d="M670 96 Q785 76 900 100 V250 Q785 228 670 248Z" fill="#F6EFD9"/><path d="M900 100 Q1015 76 1130 96 V248 Q1015 228 900 250Z" fill="#EFE5C8"/><rect x="712" y="110" width="150" height="116" fill="none" stroke="#B9812A" stroke-width="2"/><g transform="translate(770.000000 214.000000) rotate(0.000000)"><path d="M-8.060000 0 L-5.850000 -44.000000 H5.850000 L8.060000 0Z" fill="#F6EFD9"/><path d="M-30.000000 -44.000000 A30.000000 26.000000 0 0 1 30.000000 -44.000000Z" fill="#D77A2C"/><path d="M-30.000000 -44.000000 Q0 -39.000000 30.000000 -44.000000Z" fill="#E4D7B5"/><circle cx="-14.000000" cy="-58.000000" r="3.400000" fill="#F6EFD9"/><circle cx="2.000000" cy="-64.000000" r="3.000000" fill="#F6EFD9"/><circle cx="15.000000" cy="-56.000000" r="3.600000" fill="#F6EFD9"/><circle cx="-4.000000" cy="-53.000000" r="2.400000" fill="#F6EFD9"/><circle cx="22.000000" cy="-49.000000" r="2.200000" fill="#F6EFD9"/><circle cx="-22.000000" cy="-49.000000" r="2.200000" fill="#F6EFD9"/></g><g transform="translate(816.000000 216.000000) rotate(0.000000)"><path d="M-4.836000 0 L-3.510000 -26.400000 H3.510000 L4.836000 0Z" fill="#F6EFD9"/><path d="M-18.000000 -26.400000 A18.000000 15.600000 0 0 1 18.000000 -26.400000Z" fill="#B35A1B"/><path d="M-18.000000 -26.400000 Q0 -23.400000 18.000000 -26.400000Z" fill="#E4D7B5"/></g><path d="M940 116 H1090 M940 136 H1080 M940 156 H1090 M940 176 H1060 M940 196 H1086 M940 216 H1040" stroke="#9A8A66" stroke-width="3" opacity=".6"/><rect x="1110" y="186" width="44" height="40" rx="8" fill="#15362A"/><path d="M1132 190 Q1150 120 1184 60 Q1170 128 1138 192Z" fill="#F6EFD9"/><g transform="translate(620.000000 268.000000) rotate(-20.000000) scale(1.200000)"><ellipse cx="0" cy="9" rx="7.5" ry="10.5" fill="#9A5B34"/><path d="M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z" fill="#5B3A26"/><path d="M0 -6 V-11" stroke="#5B3A26" stroke-width="2" stroke-linecap="round"/><path d="M-6 0 H6 M-7 -3 H7" stroke="#F6EFD9" stroke-width="1" opacity=".35"/></g><g transform="translate(1020.000000 40.000000) rotate(70.000000) scale(0.800000)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#4E7F62"/></g></svg></div>
   <header>
     <div class="brand">
-      <div class="logo" aria-hidden="true">
-        <svg viewBox="0 0 32 32"><path d="M3 17C3 9 9 3 16 3s13 6 13 14H3Z"/><path d="M12 19h8l-1 9a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2l-1-9Z"/></svg>
-      </div>
+      <div class="logo lg2 lg-lab" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="58" fill="#3B2A1E"/><g opacity=".9"><g transform="translate(22.000000 30.000000) rotate(-40.000000) scale(0.500000)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#6E8B4A"/></g><g transform="translate(96.000000 92.000000) rotate(140.000000) scale(0.450000)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#6E8B4A"/></g></g><circle cx="54" cy="56" r="30" fill="#5A4030"/><g transform="translate(54.000000 76.000000) rotate(0.000000)"><path d="M-6.045000 0 L-4.387500 -33.000000 H4.387500 L6.045000 0Z" fill="#F6EFD9"/><path d="M-22.500000 -33.000000 A22.500000 19.500000 0 0 1 22.500000 -33.000000Z" fill="#D77A2C"/><path d="M-22.500000 -33.000000 Q0 -29.250000 22.500000 -33.000000Z" fill="#E4D7B5"/><circle cx="-10.500000" cy="-43.500000" r="2.550000" fill="#F6EFD9"/><circle cx="1.500000" cy="-48.000000" r="2.250000" fill="#F6EFD9"/><circle cx="11.250000" cy="-42.000000" r="2.700000" fill="#F6EFD9"/><circle cx="-3.000000" cy="-39.750000" r="1.800000" fill="#F6EFD9"/><circle cx="16.500000" cy="-36.750000" r="1.650000" fill="#F6EFD9"/><circle cx="-16.500000" cy="-36.750000" r="1.650000" fill="#F6EFD9"/></g><circle cx="54" cy="56" r="30" fill="none" stroke="#E2AB3C" stroke-width="7"/><path d="M76 78 L96 98" stroke="#E2AB3C" stroke-width="10" stroke-linecap="round"/><g transform="translate(92.000000 30.000000) rotate(20.000000) scale(0.800000)"><ellipse cx="0" cy="9" rx="7.5" ry="10.5" fill="#B8703F"/><path d="M-9 3 Q-9 -6 0 -6 Q9 -6 9 3Z" fill="#7A5236"/><path d="M0 -6 V-11" stroke="#7A5236" stroke-width="2" stroke-linecap="round"/><path d="M-6 0 H6 M-7 -3 H7" stroke="#F6EFD9" stroke-width="1" opacity=".35"/></g></svg></div><div class="logo lg2 lg-bib" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="58" fill="#173A2B"/><g opacity=".9"><g transform="translate(24.000000 26.000000) rotate(-30.000000) scale(0.450000)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#4E7F62"/></g><g transform="translate(100.000000 30.000000) rotate(40.000000) scale(0.400000)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#4E7F62"/></g></g><path d="M18 84 Q39 76 60 84 Q81 76 102 84 V90 Q81 82 60 92 Q39 82 18 90Z" fill="#5B3A26"/><path d="M22 46 Q41 38 60 46 V84 Q41 76 22 84Z" fill="#F6EFD9"/><path d="M60 46 Q79 38 98 46 V84 Q79 76 60 84Z" fill="#EFE5C8"/><g transform="translate(40.000000 78.000000) rotate(0.000000)"><path d="M-4.030000 0 L-2.925000 -22.000000 H2.925000 L4.030000 0Z" fill="#F6EFD9"/><path d="M-15.000000 -22.000000 A15.000000 13.000000 0 0 1 15.000000 -22.000000Z" fill="#D77A2C"/><path d="M-15.000000 -22.000000 Q0 -19.500000 15.000000 -22.000000Z" fill="#E4D7B5"/><circle cx="-7.000000" cy="-29.000000" r="1.700000" fill="#F6EFD9"/><circle cx="1.000000" cy="-32.000000" r="1.500000" fill="#F6EFD9"/><circle cx="7.500000" cy="-28.000000" r="1.800000" fill="#F6EFD9"/><circle cx="-2.000000" cy="-26.500000" r="1.200000" fill="#F6EFD9"/><circle cx="11.000000" cy="-24.500000" r="1.100000" fill="#F6EFD9"/><circle cx="-11.000000" cy="-24.500000" r="1.100000" fill="#F6EFD9"/></g><path d="M66 54 H90 M66 62 H88 M66 70 H90" stroke="#9A8A66" stroke-width="2.4"/><path d="M60 46 Q62 30 74 20" stroke="#E2AB3C" stroke-width="4" fill="none" stroke-linecap="round"/><g transform="translate(76.000000 16.000000) rotate(50.000000) scale(0.300000)"><path d="M0 0 C6 6 10 4 12 10 C8 12 8 16 14 20 C9 23 9 27 15 31 C9 34 9 38 13 42 C7 45 5 50 1.5 58 L1.5 66 L-1.5 66 L-1.5 58 C-5 50 -7 45 -13 42 C-9 38 -9 34 -15 31 C-9 27 -9 23 -14 20 C-8 16 -8 12 -12 10 C-10 4 -6 6 0 0Z" fill="#E2AB3C"/></g></svg></div>
       <div class="brand-t">
-        <a href="../" style="font-size:14px;font-weight:600;color:inherit">← Sito dell’associazione</a>
+        <a class="back-site" href="../" style="font-size:14px;font-weight:600;color:inherit">← Sito dell’associazione</a>
         <h1 id="pgTitle">Didattica</h1>
         <p class="lead" id="pgLead">Qui i funghi si imparano facendo: il percorso, la chiave, i caratteri e gli strumenti per chi determina.</p>
       </div>
@@ -545,6 +592,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
     <button type="button" data-page="lab" aria-current="page">Didattica</button>
     <button type="button" data-page="bib">Biblioteca</button>
   </nav>
+  <div class="sheet">
   <div class="tabs" role="tablist" aria-label="Sezioni">
     <button class="tab" role="tab" id="tab-percorso" aria-controls="p-percorso" aria-selected="true" data-tab="percorso" data-pg="lab">Il percorso</button>
     <button class="tab" role="tab" id="tab-chiave" aria-controls="p-chiave" aria-selected="false" data-tab="chiave" data-pg="lab">La chiave</button>
@@ -567,7 +615,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
         <li>Guarda il fungo intero, poi tagliato a metà. Ti serve anche la base del gambo.</li>
         <li>Tocca la risposta che gli somiglia di più: si apre la domanda successiva, sulla destra.</li>
         <li>Se due risposte ti sembrano giuste, tocca «Apri tutte le vie» su quella domanda e confrontale.</li>
-        <li>Quando arrivi a una scheda arancio, hai il genere o il gruppo. Per la specie serve altro.</li>
+        <li>Quando arrivi a una scheda arancio, hai il genere o il gruppo. Per i generi più comuni la chiave continua fino alla specie, con il disegno dei libri storici e la foto dal vero.</li>
       </ol>
     </details>
     <div class="toolbar">
@@ -645,7 +693,13 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
     </div>
     <div class="sp-list" id="spList"><p class="status">Apri la scheda per caricare le specie.</p></div>
     <button class="btn" type="button" id="spMore" hidden>Mostra altre specie</button>
-    <p class="tav-note">Fonte delle segnalazioni: GBIF, il database mondiale della biodiversità, che raccoglie dati di erbari, ricerche e osservazioni dei cittadini (non tutte verificate); nomi secondo la sua tassonomia, consultata il 29 ottobre 2026. Il numero di segnalazioni dice quanto una specie è stata registrata, non quanto è comune. ★ indica le specie evidenziate nella lista della mostra. Elenco da rivedere con il comitato scientifico.</p>
+    <p class="tav-note">Fonte delle segnalazioni: GBIF, il database mondiale della biodiversità, che raccoglie dati di erbari, ricerche e osservazioni dei cittadini (non tutte verificate); nomi secondo la sua tassonomia, consultata il 29 ottobre 2026. Il numero di segnalazioni dice quanto una specie è stata registrata, non quanto è comune. ★ indica le specie evidenziate nella lista della mostra. Per ogni specie mostriamo per primo il disegno dei libri storici, se c'è, e accanto la foto dal vero: dove manca, ce lo segniamo per cercarla tra le foto dei soci. Elenco da rivedere con il comitato scientifico.</p>
+    <div class="lb spd" id="spd" hidden role="dialog" aria-modal="true" aria-label="Scheda della specie">
+      <div class="lb-box spd-box">
+        <button class="btn lb-x" id="spdx" type="button">Chiudi</button>
+        <div id="spdBody"></div>
+      </div>
+    </div>
 
   </section>
 
@@ -776,7 +830,8 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
     </div>
   </div>
 
-  <p class="foot">Bozza di lavoro: percorsi e descrizioni vanno rivisti dal comitato scientifico prima della pubblicazione. La chiave si ferma al genere o al gruppo e copre solo i funghi più comuni.</p>
+  <p class="foot">Bozza di lavoro: percorsi e descrizioni vanno rivisti dal comitato scientifico prima della pubblicazione. La chiave arriva al genere o al gruppo e, per 13 generi e gruppi comuni, fino alla specie: copre solo i funghi più comuni, e per molte specie servono microscopio e reagenti.</p>
+  </div>
 </div>
 
 <script>
@@ -1051,6 +1106,253 @@ var KEY = Q("Imenio", "Guarda sotto il cappello. Com'è fatta la superficie che 
 KEY.ref = "imenio"; lamelle.ref = "sporata"; bianca.ref = "volva"; rosa.ref = "volva";
 bianca.opts[1].to.ref = "anello"; terraBianca.ref = "lamelle"; boleti.ref = "gambo";
 
+
+/* ---------- Dal genere alla specie: prima bozza, da rivedere con il comitato scientifico ---------- */
+function S(name, desc, feats, syn) { var r = R(name, "Specie", desc, feats, ""); r.sp = true; if (syn) r.syn = syn; return r; }
+function SG(name, desc, feats, eg) { var r = R(name, "Gruppo di specie", desc, feats, eg); r.sp = true; return r; }
+var SPKEYS = {};
+
+SPKEYS["Amanita"] = Q("Volva", "Com'è la volva alla base del gambo?", "Estrai il fungo intero scavando attorno: la volva resta spesso nel terreno.", [
+  O("Un sacco membranoso, largo e staccato dal gambo", "Si apre come un guscio d'uovo",
+    Q("Anello", "C'è un anello sul gambo?", null, [
+      O("No, niente anello", "Margine del cappello striato a pettine",
+        Q("Cappello", "Di che colore è il cappello?", null, [
+          O("Fulvo, bruno-arancio", "Volva bianca con macchie ruggine",
+            S("Amanita fulva", "Cappello fulvo-arancio con margine striato, gambo slanciato senza anello, volva a sacco bianca macchiata di ruggine. Sotto latifoglie e conifere, su suoli acidi.", ["senza anello", "margine striato", "volva a sacco"])),
+          O("Grigio, grigio-bruno o livido", "Gambo bianco o grigiastro",
+            SG("Amanite grigie senza anello", "Sezione Vaginatae: cappello grigio con margine striato, niente anello, volva a sacco. Si distinguono per dimensioni, colore della volva e microscopia.", ["senza anello", "grigio", "volva a sacco"], "Amanita vaginata, A. lividopallescens, A. mairei"))
+        ])),
+      O("Sì, c'è un anello", "Membrana pendente sul gambo",
+        Q("Colori", "Di che colore sono cappello, lamelle e gambo?", "Guarda anche le lamelle: sono il carattere più sicuro.", [
+          O("Cappello arancio-rosso, lamelle e gambo gialli", "Volva bianca ampia",
+            S("Amanita caesarea", "Cappello da emisferico a disteso, arancio-rosso vivo, liscio. Lamelle, gambo e anello giallo-oro; volva bianca, ampia e spessa. Sotto querce e castagni, nei mesi caldi.", ["lamelle gialle", "anello giallo", "volva bianca a sacco"], "Agaricus caesareus")),
+          O("Cappello verde-oliva o giallastro, lamelle bianche", "Fibrille radiali sottili sul cappello",
+            S("Amanita phalloides", "Cappello verde-olivastro, giallastro o più raramente bianco, con fibrille radiali innate. Lamelle bianche, anello bianco, volva bianca a sacco. Sotto latifoglie, spesso querce.", ["fibrille radiali", "lamelle bianche", "volva a sacco"])),
+          O("Tutto bianco, di taglia media", "Cappello liscio e asciutto",
+            SG("Amanite bianche con anello", "Funghi interamente bianchi con anello e volva a sacco. Le forme bianche di A. phalloides e A. verna si separano con certezza solo in laboratorio.", ["tutto bianco", "anello", "volva a sacco"], "Amanita verna, forme bianche di A. phalloides")),
+          O("Bianco, grande e massiccio", "Anello cremoso che si sfalda, margine con fiocchi",
+            S("Amanita ovoidea", "Fungo grande, bianco o color avorio, con cappello liscio e margine che porta fiocchi del velo. Anello cremoso e fragile, che si sfalda come farina. Volva ampia, spesso ocra. Sotto querce e lecci, su suoli calcarei.", ["grande", "anello cremoso", "margine fioccoso"]))
+        ]))
+    ])),
+  O("Verruche o placche sul cappello, volva friabile", "Bulbo con cercini o orlo, oppure residui in placche",
+    Q("Carne", "Tocca o rosicchia la base del gambo: la carne diventa rossastra?", "Guarda anche le rosicature degli insetti: in alcune specie sono color vino.", [
+      O("Sì, arrossa", "Ferite e rosicature color vino",
+        S("Amanita rubescens", "Cappello bruno-rossastro con verruche grigio-rosate, anello striato in alto. Carne bianca che arrossa lentamente al taglio e nelle rosicature. Molto diffusa sotto latifoglie e conifere.", ["carne che arrossa", "anello striato", "verruche grigio-rosate"])),
+      O("No, la carne resta bianca o ingiallisce", "Nessun rossore",
+        Q("Cappello", "Di che colore è il cappello e come sono le verruche?", null, [
+          O("Rosso o arancio con verruche bianche", "Bulbo con cercini a scaglie",
+            S("Amanita muscaria", "Cappello rosso vivo o arancio coperto di verruche bianche, che la pioggia può lavare via. Lamelle bianche, anello bianco, bulbo con cercini concentrici. Sotto betulle, pini e querce.", ["rosso", "verruche bianche", "bulbo a cercini"], "Agaricus muscarius")),
+          O("Bruno con verruche bianche piccole", "Bulbo con un orlo netto, come un colletto",
+            S("Amanita pantherina", "Cappello bruno con verruchine bianche regolari, margine striato. Anello liscio, non striato. Bulbo con orlo netto e uno o due cercini sopra. Sotto latifoglie e conifere.", ["bruno", "verruche bianche", "bulbo con orlo"])),
+          O("Grigio-bruno con verruche grigie", "Anello bianco striato",
+            S("Amanita excelsa", "Cappello grigio-bruno con verruche grigie farinose, anello ampio e striato. Carne bianca che non arrossa. Bulbo ingrossato senza orlo netto.", ["grigio-bruno", "verruche grigie", "carne immutabile"], "Amanita spissa")),
+          O("Bruno-grigio con verruche gialle", "Orlo dell'anello e bulbo gialli",
+            S("Amanita franchetii", "Cappello bruno-olivastro con verruche giallo zolfo polverose. Anello con l'orlo giallo, bulbo con residui gialli. Sotto latifoglie, soprattutto querce.", ["verruche gialle", "anello orlato di giallo"], "Amanita aspera")),
+          O("Giallo limone pallido o bianco", "Odore di patata cruda",
+            S("Amanita citrina", "Cappello giallo limone pallido o bianco, con placche del velo. Bulbo grosso e marginato. Odore netto di patata cruda o di rapa. Sotto conifere e latifoglie su suoli acidi.", ["odore di patata", "bulbo marginato", "giallo pallido"])),
+          O("Giallo paglia o oro pallido", "Volva in cercini, anello fragile",
+            S("Amanita gemmata", "Cappello giallo paglia con qualche placca bianca, margine striato. Anello fugace, base con un bulbetto e cercini. Sotto pini, anche nelle pinete costiere.", ["giallo paglia", "anello fugace", "pinete"], "Amanita junquillea")),
+          O("Bianco con grosse verruche, gambo squamoso", "Bulbo profondo, spesso radicante",
+            SG("Amanite bianche con verruche", "Sezione Lepidella: funghi bianchi o biancastri, robusti, con verruche grosse, gambo squamoso e bulbo spesso radicante. Specie termofile, nei boschi e nei prati caldi.", ["bianco", "verruche grosse", "bulbo radicante"], "Amanita strobiliformis, A. echinocephala, A. vittadinii"))
+        ]))
+    ]))
+]);
+
+SPKEYS["Boletus sezione Boletus"] = Q("Cappello", "Com'è il cappello e dove cresce?", "Guarda il colore del cappello da adulto e quanto si estende il reticolo sul gambo.", [
+  O("Bruno scuro, quasi nero", "Asciutto e vellutato; sotto querce e castagni",
+    S("Boletus aereus", "Cappello bruno scuro o nerastro, asciutto e pruinoso. Gambo con reticolo bruno. Termofilo: sotto querce, lecci, sughere e castagni, dall'estate all'autunno.", ["cappello scuro", "reticolo bruno", "querce"])),
+  O("Bruno chiaro, spesso screpolato", "Reticolo su tutto il gambo; estate",
+    S("Boletus reticulatus", "Cappello nocciola o bruno chiaro, asciutto, che si screpola col secco. Reticolo evidente fino alla base del gambo. Esce presto, già a fine primavera e in estate, sotto latifoglie.", ["cappello screpolato", "reticolo esteso", "precoce"], "Boletus aestivalis")),
+  O("Bruno-rossastro vinoso", "Gambo con toni rossicci; sotto pini o castagni",
+    S("Boletus pinophilus", "Cappello bruno rosso-vinoso, robusto, a volte rugoso. Gambo con riflessi rossastri e reticolo. Sotto pini e castagni, su suoli acidi.", ["cappello rosso-vinoso", "pini", "castagni"])),
+  O("Bruno, un po' viscido, margine chiaro", "Reticolo bianco, soprattutto in alto",
+    S("Boletus edulis", "Cappello da nocciola a bruno, leggermente viscido col tempo umido, spesso con un orlo più chiaro. Reticolo bianco nella parte alta del gambo. Sotto faggi, castagni, abeti e pini.", ["margine chiaro", "reticolo bianco in alto"]))
+]);
+
+SPKEYS["Boleti a pori rossi"] = Q("Gambo", "Il gambo ha un reticolo a maglie oppure solo dei puntini?", "Usa una lente: i puntini rossi sono granuli, il reticolo forma delle maglie.", [
+  O("Reticolo a maglie", "Rete rossa o rosa in rilievo",
+    Q("Cappello", "Di che colore è il cappello?", null, [
+      O("Bianco o grigio chiaro", "Gambo panciuto rosso; odore sgradevole da adulto",
+        S("Rubroboletus satanas", "Cappello bianco-grigiastro, gambo molto panciuto rosso con reticolo, pori rossi. Carne che vira al blu chiaro solo leggermente. Sotto querce e faggi, su suoli calcarei.", ["cappello bianco", "gambo panciuto", "calcare"], "Boletus satanas")),
+      O("Biancastro poi rosato", "Gambo giallo con reticolo rosso fine",
+        S("Rubroboletus rhodoxanthus", "Cappello da biancastro a rosato, pori rossi. Gambo giallo con reticolo rosso porpora fine e allungato. Carne gialla nel gambo che vira al blu soprattutto nel cappello. Sotto latifoglie termofile.", ["cappello rosato", "gambo giallo", "reticolo rosso"], "Boletus rhodoxanthus")),
+      O("Rosso porpora o rosa vinoso", "Pori rossi, vira subito al blu",
+        S("Imperator rhodopurpureus", "Cappello porpora o rosa vinoso, spesso con toni gialli, che si macchia al tocco. Gambo con reticolo rosso, carne gialla che vira rapidamente al blu scuro. Sotto querce, su suoli acidi.", ["cappello porpora", "viraggio rapido"], "Boletus rhodopurpureus")),
+      O("Bruno-olivastro o ocra", "Linea rossa sopra i tubuli, in sezione",
+        S("Suillellus luridus", "Cappello bruno-olivastro, pori arancio-rossi, gambo con reticolo rosso a maglie allungate. Tagliato, mostra una linea rossa sopra i tubuli e carne rossa alla base. Vira subito al blu.", ["reticolo rosso", "linea rossa sopra i tubuli"], "Boletus luridus"))
+    ])),
+  O("Solo puntini, niente reticolo", "Granuli rossi su fondo giallo",
+    Q("Cappello", "Di che colore è il cappello e la carne alla base del gambo?", null, [
+      O("Bruno scuro vellutato", "Carne gialla che diventa subito blu scuro",
+        S("Neoboletus luridiformis", "Cappello bruno scuro vellutato, pori rossi, gambo fittamente punteggiato di rosso. La carne gialla vira all'istante al blu scuro. Molto diffuso sotto latifoglie e conifere.", ["cappello bruno vellutato", "puntini rossi", "viraggio istantaneo"], "Boletus erythropus")),
+      O("Bruno-arancio o rossiccio", "Carne alla base rosso barbabietola",
+        S("Suillellus queletii", "Cappello bruno-arancio o rosso mattone, pori arancio-rossi, gambo con granulazione fine. Alla base del gambo la carne è rosso barbabietola. Sotto latifoglie.", ["base rosso barbabietola", "cappello arancio"], "Boletus queletii")),
+      O("Rosa-ocra o grigio-rosato", "Pori rossi, odore sgradevole",
+        S("Rubroboletus lupinus", "Cappello da grigio-ocra a rosa, pori rossi, gambo giallo con toni rossi e pochi puntini. Carne gialla che vira al blu. Sotto querce, in ambienti caldi.", ["cappello rosato", "odore sgradevole"], "Boletus lupinus"))
+    ]))
+]);
+
+SPKEYS["Leccinum e Leccinellum"] = Q("Albero", "Sotto quale pianta cresce, e di che colore sono i pori?", "Questi boleti sono legati a un albero preciso: guarda bene cosa c'è attorno.", [
+  O("Sotto i cisti", "Cappello bruno-arancio, pori gialli",
+    S("Leccinellum corsicum", "Cappello bruno-arancio o bruno-giallo, spesso screpolato. Pori gialli, gambo con squamette scure, carne gialla che col tempo diventa grigio-nerastra. Cresce solo con i cisti, nella macchia mediterranea.", ["cisti", "pori gialli", "macchia mediterranea"])),
+  O("Sotto querce e lecci", "Cappello bruno-giallo, pori gialli",
+    S("Leccinellum lepidum", "Cappello bruno-giallo o nocciola, gambo giallastro con squamette, carne gialla che annerisce lentamente. Sotto querce sempreverdi, soprattutto lecci.", ["lecci", "pori gialli"])),
+  O("Sotto pioppi", "Cappello bruno-grigio, pori bianchi o grigi",
+    S("Leccinum duriusculum", "Cappello bruno-grigio, asciutto. Pori biancastri. Carne soda, bianca, che al taglio diventa rosa-violacea e poi grigio-nera. Cresce con i pioppi.", ["pioppi", "pori chiari", "carne che annerisce"])),
+  O("Cappello arancio vivo", "Pori grigiastri, gambo con squame scure",
+    S("Leccinum aurantiacum", "Cappello arancio o rosso-arancio, margine con un lembo di pellicina. Pori grigiastri, gambo bianco con squamette che scuriscono. Carne che vira al grigio-nero. Sotto pioppi e querce.", ["cappello arancio", "pori grigi"]))
+]);
+
+SPKEYS["Suillus"] = Q("Anello", "Sul gambo c'è un anello?", null, [
+  O("Sì, anello membranoso", "Velo che chiude i pori da giovane",
+    Q("Albero", "Sotto quale albero cresce?", null, [
+      O("Pini", "Anello bianco-violaceo",
+        S("Suillus luteus", "Cappello bruno-cioccolato molto viscido, pori gialli, anello membranoso bianco che diventa violaceo. Sotto pini a due aghi.", ["anello violaceo", "pini"])),
+      O("Larici", "Cappello giallo-arancio vivo",
+        S("Suillus grevillei", "Cappello giallo-arancio viscido, pori gialli, anello bianco-giallastro. Cresce solo con i larici, anche piantati.", ["larici", "giallo-arancio"]))
+    ])),
+  O("No, niente anello", "Gambo nudo o con granuli",
+    Q("Gambo", "Com'è il gambo?", "Strofina il gambo con un dito e guarda la base del micelio.", [
+      O("Corto, bianco, cappello crema", "Margine con residui di velo",
+        S("Suillus bellinii", "Cappello bianco-crema o nocciola chiaro, viscido. Gambo corto, bianco, con pochi granuli. Molto comune nelle pinete mediterranee, anche sulla costa. Descritto da Inzenga.", ["cappello chiaro", "pinete mediterranee"], "Boletus bellini")),
+      O("Con granuli che stillano goccioline", "Cappello giallo-bruno",
+        S("Suillus granulatus", "Cappello giallo-bruno o arancio-bruno, viscido. Pori gialli che da giovani stillano goccioline lattiginose. Gambo giallo con granuli. Sotto pini.", ["goccioline sui pori", "granuli", "pini"])),
+      O("Base del gambo con micelio rosa", "Cappello castano scuro",
+        S("Suillus collinitus", "Cappello bruno castano con fibre radiali, viscido. Gambo con granuli e alla base un feltro di micelio rosa. Sotto pini mediterranei.", ["micelio rosa alla base", "pini"]))
+    ]))
+]);
+
+SPKEYS["Lactarius"] = Q("Latice", "Di che colore è il latice appena esce, e cambia all'aria?", "Incidi le lamelle e aspetta un minuto, poi osserva anche la goccia su un fazzoletto bianco.", [
+  O("Arancio o rosso", "Latice colorato fin da subito",
+    Q("Latice", "Come cambia il latice dopo qualche minuto?", null, [
+      O("Arancio carota, resta arancio", "Le ferite diventano verdi col tempo",
+        S("Lactarius deliciosus", "Cappello arancio con zone concentriche, che si macchia di verde. Latice arancio carota che non cambia colore. Gambo con fossette. Sotto pini.", ["latice arancio", "macchie verdi", "pini"])),
+      O("Rosso vino già dall'inizio", "Cappello arancio-vinoso",
+        S("Lactarius sanguifluus", "Cappello arancio-vinoso con zone e macchie verdi. Latice rosso vino scuro fin dall'inizio. Sotto pini, soprattutto su suoli calcarei.", ["latice rosso vino", "pini"])),
+      O("Arancio che diventa rosso vino in mezz'ora", "Viraggio lento",
+        S("Lactarius semisanguifluus", "Simile al deliciosus, con latice arancio che in 10-30 minuti vira al rosso vinoso. Sotto pini.", ["latice che arrossa lentamente", "pini"]))
+    ])),
+  O("Bianco che diventa giallo", "In pochi secondi, sul fazzoletto",
+    S("Lactarius chrysorrheus", "Cappello color carne-arancio pallido con zone di gocce più scure. Latice bianco che vira al giallo zolfo in pochi secondi. Sotto querce e castagni.", ["latice che ingiallisce", "querce"])),
+  O("Acquoso, quasi trasparente", "Come acqua o siero",
+    SG("Lattari a latice acquoso", "Piccoli lattari bruno-rossastri con latice trasparente o appena lattiginoso. Si distinguono con odore, sapore e microscopia.", ["latice acquoso", "piccoli"], "Lactarius serifluus, L. subumbonatus")),
+  O("Bianco che non cambia", "Resta bianco anche dopo minuti",
+    Q("Cappello", "Com'è il cappello?", null, [
+      O("Margine peloso, come una frangia", "Cappello biancastro o rosato",
+        SG("Lattari con margine barbato", "Cappello con il bordo arrotolato e coperto di peli lunghi, latice bianco acre. Crescono con le betulle e altre latifoglie.", ["margine barbato", "latice bianco"], "Lactarius pubescens, L. torminosus")),
+      O("Giallo-ocra o arancio a zone", "Anelli concentrici più scuri",
+        S("Lactarius zonarius", "Cappello giallo-ocra o arancio pallido con zone concentriche, margine arrotolato. Latice bianco immutabile, molto acre. Sotto querce.", ["cappello zonato", "latice bianco", "querce"])),
+      O("Bruno-rossiccio, odore di cimice", "Latice bianco dolce",
+        S("Lactarius quietus", "Cappello bruno-rossiccio con zone appena visibili, latice bianco o crema, sapore mite. Odore oleoso, di cimice. Solo sotto querce.", ["odore di cimice", "querce"])),
+      O("Bianco con macchie rosa, lamelle rosate", "Grande e sodo, sotto pioppi",
+        S("Lactarius controversus", "Cappello bianco, grande, con macchie rosa-vinose, lamelle crema-rosate. Latice bianco acre. Cresce con pioppi e salici.", ["lamelle rosate", "pioppi"]))
+    ]))
+]);
+
+SPKEYS["Macrolepiota e Chlorophyllum"] = Q("Carne", "Taglia il gambo: la carne diventa arancio o rossastra?", "Aspetta un minuto: il viraggio può essere lento.", [
+  O("No, resta bianca", "Nessun cambiamento",
+    Q("Cappello", "Com'è il fungo?", null, [
+      O("Molto grande, gambo zebrato di bruno", "Cappello con squame brune su fondo chiaro",
+        S("Macrolepiota procera", "Il cappello arriva a 30 cm, con un umbone bruno e squame brune su fondo crema. Gambo lungo e zebrato a bande brune, anello doppio che scorre. Prati e radure.", ["gambo zebrato", "anello scorrevole", "molto grande"])),
+      O("Medio, bianco, con umbone netto", "Squamette fini, gambo poco zebrato",
+        S("Macrolepiota mastoidea", "Cappello bianco-crema con umbone a capezzolo e squamette fini. Gambo bianco con zebrature leggere. Bordi dei boschi e radure.", ["umbone a capezzolo", "squame fini"])),
+      O("Cappello che si lacera a stella", "Gambo bianco liscio, nei prati",
+        S("Macrolepiota excoriata", "Cappello bianco-crema la cui pellicola si strappa verso il margine, lasciando la carne scoperta. Gambo bianco senza zebrature. Prati e pascoli.", ["pellicola strappata", "gambo liscio", "prati"]))
+    ])),
+  O("Sì, diventa arancio o rossastra", "Il taglio vira in pochi secondi",
+    SG("Mazze di tamburo che arrossano", "Chlorophyllum: grandi funghi a cappello squamoso con carne che arrossa al taglio. C. brunneum ha un bulbo marginato. Giardini, compost, boschi.", ["carne che arrossa", "anello scorrevole"], "Chlorophyllum rhacodes, C. brunneum"))
+]);
+
+SPKEYS["Pleurotus e affini"] = Q("Substrato", "Su cosa cresce?", "Scava alla base: alcune specie sembrano a terra ma nascono su radici.", [
+  O("Su tronchi o ceppi di latifoglie", "A mensole sovrapposte",
+    Q("Aspetto", "Com'è il fungo?", null, [
+      O("Grigio-bruno o bluastro, in autunno e inverno", "Senza anello",
+        S("Pleurotus ostreatus", "Cappelli a ostrica grigio-bruni o bluastri, sovrapposti a mensola. Lamelle bianche decorrenti, gambo corto laterale. Su latifoglie, dal tardo autunno all'inverno.", ["a ostrica", "invernale", "su legno"], "Agaricus ostreatus")),
+      O("Chiaro, crema, in estate", "Simile all'ostreatus",
+        S("Pleurotus pulmonarius", "Cappelli crema o beige chiaro, più sottili dell'ostreatus, che escono con il caldo. Su legno di latifoglie.", ["chiaro", "estivo"])),
+      O("Con un velo o anello sul gambo", "Cappello biancastro feltrato",
+        S("Pleurotus dryinus", "Cappello bianco-grigio feltrato, gambo più lungo con un anello fugace. Su tronchi vivi di latifoglie, spesso querce.", ["anello fugace", "feltrato"])),
+      O("A imbuto, a ciuffo, crema", "Lamelle che si intrecciano sul gambo",
+        S("Pleurotus cornucopiae", "Cappelli crema o ocra a imbuto, in ciuffi. Le lamelle scendono e si intrecciano sul gambo. Su ceppi di latifoglie.", ["a imbuto", "lamelle a rete sul gambo"]))
+    ])),
+  O("A terra, su radici di piante erbacee", "Cardi, ferule e altre ombrellifere",
+    Q("Pianta", "Su quale pianta?", null, [
+      O("Cardo di campo (Eryngium) o ferula", "Cappello bruno",
+        S("Pleurotus eryngii", "Cappello bruno o grigio-bruno, carnoso, gambo centrale o eccentrico. Nasce a terra sulle radici morte del cardo di campo, e la varietà ferulae sulla ferula. Prati e pascoli.", ["su radici di cardo o ferula", "pascoli"], "Agaricus ferulae")),
+      O("Cachrys ferulacea, in montagna", "Cappello bianco o crema, grande",
+        S("Pleurotus nebrodensis", "Cappello bianco-crema, carnoso, lamelle decorrenti. Cresce solo su radici di Cachrys ferulacea nei pascoli di montagna delle Madonie. Specie rara, descritta da Inzenga. Da proteggere.", ["bianco", "montagna", "specie rara"], "Agaricus nebrodensis"))
+    ]))
+]);
+
+SPKEYS["Agaricus"] = Q("Viraggio", "Strofina la base del gambo e il bordo del cappello: di che colore diventa?", "Taglia anche la base del gambo: il colore che compare nei primi secondi è decisivo.", [
+  O("Giallo vivo, subito; odore di inchiostro", "Specie alla base del gambo",
+    SG("Prataioli che ingialliscono subito", "Sezione Xanthodermatei: viraggio giallo cromo immediato alla base del gambo e odore di fenolo o di inchiostro. Nei giardini, nei prati e nei boschi.", ["giallo subito", "odore di inchiostro"], "Agaricus xanthodermus, A. moelleri")),
+  O("Giallo lento; odore di anice o di mandorla", "Il giallo compare piano piano",
+    Q("Aspetto", "Com'è il fungo e dove cresce?", null, [
+      O("Grande, squame brune su fondo giallo", "Odore di mandorla amara",
+        S("Agaricus augustus", "Fungo grande con cappello coperto di squame bruno-dorate, gambo con fiocchi sotto l'anello. Forte odore di mandorla amara. Boschi e parchi, spesso sotto conifere.", ["molto grande", "odore di mandorla", "squame brune"])),
+      O("Bianco, nei prati", "Anello con una ruota dentata sotto",
+        S("Agaricus arvensis", "Cappello bianco che ingiallisce al tocco, odore di anice. Anello doppio, con la faccia inferiore a ruota dentata. Prati e pascoli.", ["anello a ruota dentata", "prati", "anice"])),
+      O("Bianco, nei boschi", "Gambo slanciato con bulbetto",
+        S("Agaricus sylvicola", "Cappello bianco che ingiallisce, gambo slanciato con un piccolo bulbo, anello ampio. Odore di anice. Nei boschi di conifere e latifoglie.", ["bosco", "anice", "bulbetto"]))
+    ])),
+  O("Rosso, alla carne tagliata", "La carne arrossa al taglio",
+    SG("Prataioli che arrossano", "Carne bianca che arrossa vivamente al taglio, cappello con squamette brune. Nei boschi, soprattutto di conifere.", ["carne che arrossa", "bosco"], "Agaricus sylvaticus, A. langei")),
+  O("Quasi nessun cambiamento", "Appena rosato",
+    S("Agaricus campestris", "Cappello bianco, setoso, lamelle rosa vivo da giovani poi bruno-cioccolato. Anello semplice e fragile. Nei prati concimati e nei pascoli.", ["lamelle rosa vivo", "anello fragile", "prati"]))
+]);
+
+SPKEYS["Cantharellus"] = Q("Colore", "Di che colore è il fungo?", null, [
+  O("Giallo uovo uniforme", "Pieghe dello stesso colore",
+    S("Cantharellus cibarius", "Fungo giallo uovo, pieghe ramificate che scendono sul gambo, carne bianca e soda. Odore di albicocca. Sotto latifoglie e conifere.", ["giallo uovo", "pieghe", "odore di albicocca"])),
+  O("Biancastro, che si macchia di ruggine", "Al tocco diventa arancio-rossastro",
+    S("Cantharellus alborufescens", "Cappello bianco o crema pallido che al tocco e con l'età si macchia di arancio e ruggine. Sotto querce e lecci, in ambienti caldi.", ["bianco", "si macchia di ruggine", "lecci"])),
+  O("Giallo pallido, come impolverato", "Superficie pruinosa",
+    S("Cantharellus pallens", "Cappello giallo pallido coperto da una pruina biancastra, robusto. Sotto latifoglie, spesso querce.", ["pruinoso", "pallido"])),
+  O("Con squamette violette sul cappello", "Su fondo giallo",
+    S("Cantharellus amethysteus", "Cappello giallo coperto da squamette fini viola o lilla. Pieghe gialle. Sotto latifoglie su suoli acidi.", ["squamette viola"]))
+]);
+
+SPKEYS["Craterellus"] = Q("Colore", "Di che colore sono il cappello e l'imenio sotto?", "L'imenio è la parte esterna, sotto il cappello: liscia o con pieghe.", [
+  O("Tutto nero o grigio scuro, liscio", "A tromba, cavo fino alla base",
+    S("Craterellus cornucopioides", "Trombetta grigio-nera, cava fino alla base, con l'esterno liscio o appena rugoso e grigio cenere. A gruppi tra le foglie di latifoglie.", ["a tromba", "nero", "imenio liscio"])),
+  O("Cappello bruno, gambo giallo-arancio", "Imenio giallo-arancio con pieghe",
+    S("Craterellus lutescens", "Cappello bruno, gambo cavo giallo-arancio vivo, imenio giallo-arancio con pieghe. In gruppi numerosi tra il muschio, sotto conifere e latifoglie.", ["gambo giallo", "imenio giallo-arancio"])),
+  O("Cappello bruno, gambo giallo", "Imenio grigio con pieghe",
+    S("Craterellus tubaeformis", "Cappello bruno, gambo giallo cavo, imenio con pieghe grigie o grigio-lilla. Tardo autunnale, sotto conifere.", ["imenio grigio", "tardo autunno"])),
+  O("Grigio, piccolo e ondulato", "Pieghe grigie, margine sinuoso",
+    S("Craterellus undulatus", "Fungo piccolo, grigio, con margine ondulato e pieghe basse grigie. Sotto latifoglie.", ["piccolo", "margine ondulato"], "Craterellus sinuosus"))
+]);
+
+SPKEYS["Hydnum"] = Q("Aspetto", "Com'è il fungo e come sono attaccati gli aculei?", "Guarda se gli aculei scendono sul gambo.", [
+  O("Grande, crema o arancio pallido", "Aculei che scendono sul gambo",
+    S("Hydnum repandum", "Cappello crema o arancio pallido, irregolare, carnoso. Aculei chiari che scendono sul gambo. Sotto latifoglie e conifere.", ["aculei decorrenti", "crema"])),
+  O("Piccolo, arancio-rossiccio", "Aculei che non scendono",
+    S("Hydnum rufescens", "Cappello arancio-rossiccio, più piccolo e regolare, gambo centrale. Gli aculei finiscono prima del gambo, senza scendere.", ["arancio-rossiccio", "aculei non decorrenti"])),
+  O("Bianco", "Tutto bianco o quasi",
+    S("Hydnum albidum", "Cappello bianco o biancastro, aculei bianchi. Sotto latifoglie, su suoli calcarei.", ["bianco"]))
+]);
+
+SPKEYS["Clitocybe e Infundibulicybe"] = Q("Aspetto", "Com'è il fungo e che odore ha?", "Annusa le lamelle: l'odore di anice è un carattere sicuro.", [
+  O("Verde-azzurro, odore di anice", "Anche le lamelle profumano",
+    S("Clitocybe odora", "Cappello verde-azzurro o verde mare, lamelle chiare, forte odore di anice. Nella lettiera di latifoglie e conifere.", ["verde-azzurro", "anice"])),
+  O("Grande, grigio, lamelle fitte", "Odore forte e particolare",
+    S("Clitocybe nebularis", "Cappello grigio cenere, grande e carnoso, lamelle crema fitte. Odore forte, aromatico. In gruppi o cerchi nella lettiera, in autunno.", ["grigio", "lamelle fitte", "in cerchi"], "Lepista nebularis")),
+  O("Grande, crema, con umbone; in cerchi", "Gambo lungo e robusto",
+    S("Infundibulicybe geotropa", "Cappello crema-nocciola a imbuto con umbone centrale, gambo lungo e robusto. Cresce in file e grandi cerchi, nei prati e ai margini dei boschi.", ["umbone", "cerchi", "gambo lungo"], "Clitocybe geotropa")),
+  O("Piccolo, imbuto rosa-camoscio", "Gambo sottile",
+    S("Infundibulicybe gibba", "Cappello a imbuto sottile, rosa-camoscio, lamelle bianche decorrenti. Odore di mandorla. Nella lettiera.", ["piccolo", "rosa-camoscio"], "Clitocybe gibba")),
+  O("Piccolo, bianco, nei prati", "Cappello come infarinato",
+    S("Clitocybe rivulosa", "Fungo piccolo bianco, con cappello pruinoso come gesso, lamelle decorrenti fitte. Nei prati e nei giardini, spesso in cerchi.", ["bianco pruinoso", "prati"], "Clitocybe dealbata"))
+]);
+
+(function () {
+  function walk(n, fn) { if (!n.q) return; n.opts.forEach(function (o) { fn(o); walk(o.to, fn); }); }
+  walk(KEY, function (o) { var s = SPKEYS[o.to.name]; if (s && !o.to.q) { s.genus = o.to; o.to = s; } });
+})();
+
+var KSP = {"Amanita fulva": {}, "Amanita caesarea": {"tv": "tavole/t213.webp", "ph": "libri/foto/amanita-caesarea-1.webp"}, "Amanita phalloides": {"tv": "libri/tav/bres/n156.webp"}, "Amanita ovoidea": {"tv": "libri/tav/vitt/n424.webp"}, "Amanita rubescens": {"tv": "libri/tav/vitt/n460.webp"}, "Amanita muscaria": {"tv": "tavole/t213.webp"}, "Amanita pantherina": {"tv": "libri/tav/bres/n164.webp"}, "Amanita excelsa": {"tv": "libri/tav/bres/n170.webp"}, "Amanita franchetii": {"tv": "libri/tav/vitt/n462.webp"}, "Amanita citrina": {"tv": "libri/tav/bres/n160.webp"}, "Amanita gemmata": {}, "Boletus aereus": {"tv": "libri/tav/bres/n338.webp"}, "Boletus reticulatus": {}, "Boletus pinophilus": {}, "Boletus edulis": {"tv": "libri/tav/vitt/n438.webp"}, "Rubroboletus satanas": {"tv": "tavole/t215.webp"}, "Rubroboletus rhodoxanthus": {}, "Imperator rhodopurpureus": {}, "Suillellus luridus": {"tv": "libri/tav/bres/n342.webp"}, "Neoboletus luridiformis": {}, "Suillellus queletii": {}, "Rubroboletus lupinus": {}, "Leccinellum corsicum": {"ph": "libri/foto/leccinellum-corsicum-1.webp"}, "Leccinellum lepidum": {}, "Leccinum duriusculum": {}, "Leccinum aurantiacum": {}, "Suillus luteus": {"tv": "libri/tav/bres/n330.webp"}, "Suillus grevillei": {"tv": "libri/tav/bres/n332.webp"}, "Suillus bellinii": {"tv": "tavole/t209.webp"}, "Suillus granulatus": {"tv": "libri/tav/bres/n334.webp"}, "Suillus collinitus": {}, "Lactarius deliciosus": {"tv": "libri/tav/bres/n288.webp"}, "Lactarius sanguifluus": {"tv": "libri/tav/bres/n290.webp", "ph": "libri/foto/lactarius-sanguifluus-1.webp"}, "Lactarius semisanguifluus": {}, "Lactarius chrysorrheus": {}, "Lactarius zonarius": {"tv": "libri/tav/bres/n284.webp"}, "Lactarius quietus": {}, "Lactarius controversus": {"tv": "libri/tav/vitt/n456.webp"}, "Macrolepiota procera": {"tv": "libri/tav/vitt/n440.webp", "ph": "libri/foto/macrolepiota-procera-1.webp"}, "Macrolepiota mastoidea": {}, "Macrolepiota excoriata": {"tv": "libri/tav/bres/n178.webp"}, "Pleurotus ostreatus": {"tv": "tavole/t109.webp", "ph": "libri/foto/pleurotus-ostreatus-1.webp"}, "Pleurotus pulmonarius": {}, "Pleurotus dryinus": {}, "Pleurotus cornucopiae": {}, "Pleurotus eryngii": {"tv": "tavole/t211.webp"}, "Pleurotus nebrodensis": {"tv": "tavole/t211.webp"}, "Agaricus augustus": {}, "Agaricus arvensis": {"tv": "libri/tav/bres/n258.webp"}, "Agaricus sylvicola": {}, "Agaricus campestris": {"tv": "libri/tav/vitt/n428.webp"}, "Cantharellus cibarius": {"tv": "libri/tav/bres/n320.webp"}, "Cantharellus alborufescens": {}, "Cantharellus pallens": {}, "Cantharellus amethysteus": {}, "Craterellus cornucopioides": {"tv": "libri/tav/bres/n326.webp"}, "Craterellus lutescens": {"tv": "libri/tav/bres/n322.webp"}, "Craterellus tubaeformis": {}, "Craterellus undulatus": {}, "Hydnum repandum": {"tv": "libri/tav/bres/n360.webp"}, "Hydnum rufescens": {}, "Hydnum albidum": {}, "Clitocybe odora": {}, "Clitocybe nebularis": {"tv": "libri/tav/bres/n220.webp"}, "Infundibulicybe geotropa": {"tv": "libri/tav/bres/n232.webp", "ph": "libri/foto/infundibulicybe-geotropa-1.webp"}, "Infundibulicybe gibba": {}, "Clitocybe rivulosa": {}};
+
 /* ---------- Indicizzazione ---------- */
 var OPTS = {}, NODES = {}, LEAVES = [], uid = 0;
 function prep(n, parentOpt) {
@@ -1165,7 +1467,7 @@ function runSearch(term) {
   var n = 0;
   LEAVES.forEach(function (l) {
     if (l.none) return;
-    var txt = norm([l.name, l.rank, l.desc, l.feats.join(" "), l.eg].join(" "));
+    var txt = norm([l.name, l.rank, l.desc, l.feats.join(" "), l.eg, l.syn || ""].join(" "));
     if (txt.indexOf(t) > -1) { hitNodes.add(l.id); n++; addPath(l.parentOpt); }
   });
   Object.keys(OPTS).forEach(function (k) {
@@ -1176,7 +1478,7 @@ function runSearch(term) {
   Object.keys(NODES).forEach(function (k) {
     var q = NODES[k];
     if (!q.q) return;
-    if (norm(q.part + " " + q.text).indexOf(t) > -1) { hitNodes.add(q.id); n++; addPath(q.parentOpt); }
+    if (norm(q.part + " " + q.text + (q.genus ? " " + q.genus.name + " " + q.genus.desc + " " + q.genus.eg : "")).indexOf(t) > -1) { hitNodes.add(q.id); n++; addPath(q.parentOpt); }
   });
   return n;
 }
@@ -1196,6 +1498,12 @@ function leafImgHTML(n, compact) {
   if (!g) return '<p class="eg leaf-soon">Tavola storica: in arrivo</p>';
   return '<button class="leaf-img" type="button" data-plate="' + g[0] + '" aria-label="Apri la tavola storica: ' + esc(g[1]) + '"><img loading="lazy" src="tavole/' + g[0] + '.webp" alt="Tavola storica di Inzenga: ' + esc(g[1]) + '"><small>Tavola storica di Inzenga: <i>' + esc(g[1]) + '</i>. Tocca per aprirla nel libro.</small></button>';
 }
+function spMedia(n) {
+  var m = window.KSP && KSP[n.name];
+  if (!m) return "";
+  var h = '<div class="ks-media">' + (m.tv ? '<img loading="lazy" src="' + m.tv + '" alt="Tavola storica di ' + esc(n.name) + '">' : "") + (m.ph ? '<img loading="lazy" src="' + m.ph + '" alt="Foto di ' + esc(n.name) + '">' : '<span class="sp-miss">Foto mancante</span>') + "</div>";
+  return h + '<button class="btn ks-open" type="button" data-ks="' + esc(n.name) + '">Apri la scheda della specie</button>';
+}
 function leafHTML(n, compact) {
   var cls = ["card", "res"];
   if (n.none) cls.push("none");
@@ -1206,15 +1514,16 @@ function leafHTML(n, compact) {
   var attrs = compact ? ' data-leaf="' + n.id + '" tabindex="0" role="button" aria-label="Mostra i dettagli di ' + esc(n.name) + '"' : "";
   return '<div class="' + cls.join(" ") + '"' + attrs + ">" +
     '<div class="card-top"><span class="rank">' + esc(n.rank) + "</span></div>" +
-    '<h3 class="' + (n.rank === "Genere" ? "latin" : "") + '">' + esc(n.name) + "</h3>" +
-    '<p class="desc">' + esc(n.desc) + "</p>" + leafImgHTML(n, compact) + feats + eg + "</div>";
+    '<h3 class="' + (n.rank === "Genere" || n.rank === "Specie" ? "latin" : "") + '">' + esc(n.name) + "</h3>" +
+    '<p class="desc">' + esc(n.desc) + "</p>" + (n.sp ? (compact ? "" : spMedia(n)) : leafImgHTML(n, compact)) + feats + eg + (n.syn ? '<p class="eg"><span>Nome antico</span> <i>' + esc(n.syn) + "</i></p>" : "") + "</div>";
 }
 function nodeHTML(n, depth, parentMulti) {
   if (!n.q) return '<div class="branch">' + leafHTML(n, parentMulti && !state.detail.has(n.id)) + "</div>";
   var multi = isMulti(n.id);
   var cls = "card q" + (hitNodes.has(n.id) ? " hit" : "");
   var all = allOpenUnder(n);
-  var h = '<div class="branch"><div class="' + cls + '">' +
+  var gn = n.genus ? '<div class="ks-genus"><span class="rank">' + esc(n.genus.rank) + '</span><h3 class="' + (n.genus.rank === "Genere" ? "latin" : "") + '">' + esc(n.genus.name) + '</h3><p class="desc">' + esc(n.genus.desc) + "</p>" + leafImgHTML(n.genus, false) + '<p class="ks-next">Ora andiamo alla specie</p></div>' : "";
+  var h = '<div class="branch"><div class="' + cls + (n.genus ? " has-genus" : "") + '">' + gn +
     '<div class="card-top"><span class="part">' + esc(n.part) + '</span><span class="step">' + (depth + 1) + "</span></div>" +
     "<h3>" + esc(n.text) + "</h3>" +
     (n.hint ? '<p class="hint">' + esc(n.hint) + "</p>" : "") +
@@ -1293,6 +1602,8 @@ $("#tree").addEventListener("click", function (e) {
   if (rf) { curPart = rf.getAttribute("data-ref"); renderParts(); setTab("caratteri", true); window.scrollTo(0, 0); return; }
   var all = e.target.closest("[data-all]");
   if (all) { toggleAllUnder(all.getAttribute("data-all")); return; }
+  var ks = e.target.closest("[data-ks]");
+  if (ks) { e.stopPropagation(); if (window.spOpen) window.spOpen(ks.getAttribute("data-ks"), ks); return; }
   var leaf = e.target.closest("[data-leaf]");
   if (leaf) { var id = leaf.getAttribute("data-leaf"); if (state.detail.has(id)) state.detail.delete(id); else state.detail.add(id); render(null); }
 });
@@ -2982,14 +3293,50 @@ function pubFull(p, lang) {
     L.sort(cur.sort === "az" ? function (a, b) { return a.n < b.n ? -1 : 1; } : function (a, b) { return (b.mo ? 1 : 0) - (a.mo ? 1 : 0) || b.t - a.t || (a.n < b.n ? -1 : 1); });
     return L;
   }
+  function tvSrc(t) { var k = t.split(":")[0], l = t.split(":")[1]; if (k === "inz") return "tavole/" + l + ".webp"; var o = libPlates(k); return o[+l] || null; }
+  function tvLeaf(t) { var k = t.split(":")[0], l = t.split(":")[1]; return k === "inz" ? parseInt(l.slice(1), 10) - 1 : +l; }
+  var MISS = '<span class="sp-miss"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 22A14 12 0 0 1 34 22Z"/><path d="M17 23h6l-1 11h-4Z"/></svg>Foto mancante</span>';
+  function regs(e, n) { return Object.keys(RG).filter(function (k) { return e.r && e.r[k]; }).map(function (k) { return '<span class="sp-rg" title="' + e.r[k] + ' segnalazioni">' + RG[k] + (n ? " · " + e.r[k] : "") + "</span>"; }).join(""); }
+  function badges(e) { return (e.mo ? '<span class="sp-bd sp-mo">' + (e.mo === 2 ? "★ " : "") + "Mostra 2026</span>" : "") + (e.tv ? '<span class="sp-bd">Tavola storica</span>' : "") + (e.ph ? '<span class="sp-bd">Foto dal vero</span>' : ""); }
   function card(e) {
-    var reg = Object.keys(RG).filter(function (k) { return e.r && e.r[k]; }).map(function (k) { return '<span class="sp-rg" title="' + e.r[k] + ' segnalazioni">' + RG[k] + "</span>"; }).join("");
-    var badges = (e.mo ? '<span class="sp-bd sp-mo">' + (e.mo === 2 ? "★ " : "") + "Mostra 2026</span>" : "") + (e.tv ? '<span class="sp-bd">Tavola</span>' : "") + (e.ph ? '<span class="sp-bd">Foto dal vero</span>' : "");
+    var reg = regs(e), b = badges(e), src = e.tv ? tvSrc(e.tv[0]) : null;
+    var media = '<span class="sp-media">' + (src ? '<img class="sp-tv" loading="lazy" src="' + src + '" alt="">' : "") + (e.ph ? '<img class="sp-ph" loading="lazy" src="' + e.ph[0] + '" alt="">' : MISS) + "</span>";
     var old = (e.on || []).map(function (x) { return "<i>" + esc(x[1]) + "</i> (" + esc(x[0]) + ")"; }).join(" · ");
-    var acts = '<button class="btn" type="button" data-sp-libri="' + esc(e.n) + '">Cerca nei libri</button>' + (e.tv ? '<button class="btn" type="button" data-sp-tav="' + esc(e.n) + '">Vedi la tavola</button>' : "") + (e.k ? '<a class="btn" href="https://www.gbif.org/species/' + e.k + '" target="_blank" rel="noopener">Mappa delle segnalazioni</a>' : "");
-    return '<article class="sp-card">' + (e.ph ? '<img class="sp-ph" loading="lazy" src="' + e.ph[0] + '" alt="Foto di ' + esc(e.n) + '">' : "") + '<div class="sp-b"><h3><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></h3><p class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · " + esc(e.f) : "") + (e.t ? " · " + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") + " nel Sud" : "") + "</p>" +
-      (badges ? '<p class="sp-bds">' + badges + "</p>" : "") + (reg ? '<p class="sp-rgs">' + reg + "</p>" : "") + (old ? '<p class="sp-old">Nei libri e in mostra come: ' + old + "</p>" : "") + (e.x ? '<p class="sp-old">' + esc(e.x) + "</p>" : "") + '<div class="bk-act">' + acts + "</div></div></article>";
+    return '<button type="button" class="sp-card" data-spk="' + esc(e.n) + '" aria-label="Apri la scheda di ' + esc(e.n) + '">' + media + '<span class="sp-b"><span class="sp-h"><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></span><span class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · " + esc(e.f) : "") + (e.t ? " · " + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") : "") + "</span>" +
+      (b ? '<span class="sp-bds">' + b + "</span>" : "") + (reg ? '<span class="sp-rgs">' + reg + "</span>" : "") + (old ? '<span class="sp-old">Nei libri e in mostra come: ' + old + "</span>" : "") + '<span class="sp-open">Apri la scheda ›</span></span></button>';
   }
+  function detail(e) {
+    var SHB = { inz: "Inzenga, 1865", vitt: "Vittadini, 1835", bres: "Bresadola, 1906", come: "Comes, 1878", matt: "Mattirolo" };
+    var figs = (e.tv || []).map(function (t) { var src = tvSrc(t), k = t.split(":")[0]; if (!src) return ""; return '<figure class="spd-fig"><button type="button" class="spd-pl" data-spd-book="' + t + '" aria-label="Apri la tavola nel libro"><img src="' + src + '" alt="Tavola storica di ' + esc(e.n) + '"></button><figcaption>Disegno: ' + esc(SHB[k] || k) + ". Tocca per aprirlo nel libro.</figcaption></figure>"; }).join("");
+    var ph = e.ph ? e.ph.map(function (src) { return '<figure class="spd-fig"><img src="' + src + '" alt="Foto di ' + esc(e.n) + ' in natura"><figcaption>Foto dal vero · © Oscar Cangelosi</figcaption></figure>'; }).join("") :
+      '<figure class="spd-fig spd-miss">' + MISS + "<figcaption>Non abbiamo ancora una foto di questa specie. Se ne hai una con determinazione certa, mandala all'associazione.</figcaption></figure>";
+    if (!figs) figs = '<figure class="spd-fig spd-miss"><span class="sp-miss">Nessun disegno</span><figcaption>Nessuna tavola dei libri della Biblioteca per questa specie.</figcaption></figure>';
+    var old = (e.on || []).map(function (x) { return "<li><i>" + esc(x[1]) + "</i> · " + esc(x[0]) + "</li>"; }).join("");
+    return '<h2><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></h2><p class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · famiglia " + esc(e.f) : "") + (e.o ? " · ordine " + esc(e.o) : "") + "</p>" +
+      '<div class="spd-media">' + figs + ph + "</div>" + (badges(e) ? '<p class="sp-bds">' + badges(e) + "</p>" : "") +
+      (e.t ? '<h3>Dove è stata segnalata</h3><p class="sp-rgs">' + regs(e, true) + '</p><p class="sp-old">' + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") + " nel Sud Italia su GBIF. Il numero dice quanto è stata registrata, non quanto è comune.</p>" : "") +
+      (old ? "<h3>Nomi antichi</h3><ul class=\"spd-old\">" + old + "</ul>" : "") + (e.x ? '<p class="sp-old">' + esc(e.x) + "</p>" : "") +
+      '<div class="bk-act"><button class="btn" type="button" data-sp-libri="' + esc(e.n) + '">Cerca nei libri</button>' + (e.k ? '<a class="btn" href="https://www.gbif.org/species/' + e.k + '" target="_blank" rel="noopener">Mappa delle segnalazioni</a>' : "") + "</div>";
+  }
+  var BYN = null, lastF = null;
+  function open(name, from) {
+    load(function () {
+      if (!BYN) { BYN = {}; SP.forEach(function (e) { BYN[e.n] = e; }); }
+      var e = BYN[name]; if (!e) return;
+      lastF = from || document.activeElement;
+      $("#spdBody").innerHTML = detail(e); $("#spd").hidden = false; $("#spd").scrollTop = 0; $("#spdx").focus();
+    });
+  }
+  function close() { $("#spd").hidden = true; if (lastF) { try { lastF.focus(); } catch (x) {} } }
+  $("#spdx").addEventListener("click", close);
+  $("#spd").addEventListener("click", function (e) {
+    if (e.target === $("#spd")) { close(); return; }
+    var b = e.target.closest("[data-spd-book]"); if (b) { var t = b.getAttribute("data-spd-book"), L = libByK(t.split(":")[0]); close(); openReader(L.id, L.n, L.title, tvLeaf(t)); return; }
+    if (e.target.closest("[data-sp-libri]")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#spd").hidden) close(); });
+  window.spOpen = open;
+  window.spHas = function (name, cb) { load(function () { if (!BYN) { BYN = {}; SP.forEach(function (e) { BYN[e.n] = e; }); } cb(BYN[name] || null); }); };
   function render() {
     if (!SP) return;
     chips();
@@ -3007,7 +3354,7 @@ function pubFull(p, lang) {
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-sg]"); if (b) { cur.g = b.getAttribute("data-sg"); shown = 60; render(); return; }
     if ((b = e.target.closest("[data-sp-libri]"))) { setTab("biblioteca", true); $("#inzBook").value = "all"; $("#inzQ").value = b.getAttribute("data-sp-libri").split(" ")[0] + " " + b.getAttribute("data-sp-libri").split(" ")[1]; inzSearch(); setTimeout(function () { $("#inzQ").scrollIntoView({ block: "center" }); }, 50); return; }
-    if ((b = e.target.closest("[data-sp-tav]"))) { setTab("tavole", true); $("#tavQ").value = b.getAttribute("data-sp-tav"); $("#tavQ").dispatchEvent(new Event("input")); window.scrollTo(0, 0); }
+    if ((b = e.target.closest("[data-spk]"))) { open(b.getAttribute("data-spk"), b); }
   });
   $("#tab-specie").addEventListener("click", go);
   if (location.hash === "#specie") go();
@@ -3151,6 +3498,7 @@ function setTab(name, updateHash) {
     $("#tab-" + t).hidden = PG[pg].indexOf(t) < 0;
   });
   [].forEach.call(document.querySelectorAll("[data-page]"), function (b) { if (b.getAttribute("data-page") === pg) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
+  document.body.classList.toggle("pg-lab", pg === "lab"); document.body.classList.toggle("pg-bib", pg === "bib");
   $("#count").hidden = pg !== "lab"; $("#pgTitle").textContent = PGTXT[pg][0]; $("#pgLead").textContent = PGTXT[pg][1]; $("#pgPill").textContent = PGTXT[pg][2];
   try { document.title = PGTXT[pg][0] + " · Inzenga"; } catch (e) {}
   if (updateHash) { try { location.hash = name; } catch (err) {} }
@@ -3164,14 +3512,13 @@ window.addEventListener("hashchange", function () { setTab(location.hash.replace
 /* ===== Avvio ===== */
 (function () {
   var uniq = {};
-  LEAVES.forEach(function (l) { if (!l.none) uniq[l.name] = 1; });
-  $("#count").textContent = Object.keys(uniq).length + " generi e gruppi";
+  var nsp = 0;
+  LEAVES.forEach(function (l) { if (l.none) return; if (l.sp) nsp++; else uniq[l.name] = 1; });
+  Object.keys(NODES).forEach(function (k) { if (NODES[k].genus) uniq[NODES[k].genus.name] = 1; });
+  $("#count").textContent = Object.keys(uniq).length + " generi e gruppi · " + nsp + " specie";
   renderParts();
   renderPath();
   render(null);
   setTab(location.hash.replace("#", ""), false);
 })();
 </script>
-
-</body>
-</html>
