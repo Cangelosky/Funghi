@@ -428,6 +428,21 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .pg-switch button { border: 0; background: transparent; color: var(--ink); font: 700 16px/1 var(--f-display); padding: 0 20px; min-height: 44px; border-radius: 999px; cursor: pointer; }
 .pg-switch button[aria-current="page"] { background: var(--accent); color: var(--accent-ink); }
 .tab[hidden] { display: none; }
+.sp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
+.sp-card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.sp-ph { width: 100%; height: 150px; object-fit: cover; display: block; }
+.sp-b { padding: 10px 12px 12px; display: grid; gap: 6px; min-width: 0; }
+.sp-b h3 { margin: 0; font: 600 16px/1.25 var(--f-display); }
+.sp-b p { margin: 0; }
+.sp-bds, .sp-rgs { display: flex; flex-wrap: wrap; gap: 4px; }
+.sp-bd { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.sp-mo { background: var(--ochre-soft); color: var(--ochre); }
+.sp-rg { font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.sp-old { font-size: 13px; color: var(--muted); }
+.sp-opts2 { display: flex; flex-wrap: wrap; gap: 10px; }
+.sp-checks { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14.5px; }
+.sp-checks input { accent-color: var(--accent); }
+#spMore { display: block; margin: 14px auto 0; }
 .pub-tools { display: grid; gap: 10px; margin: 6px 0 12px; }
 .pub-f { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .pub-f > span { font-size: 13px; font-weight: 600; color: var(--muted); min-width: 44px; }
@@ -534,6 +549,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
     <button class="tab" role="tab" id="tab-percorso" aria-controls="p-percorso" aria-selected="true" data-tab="percorso" data-pg="lab">Il percorso</button>
     <button class="tab" role="tab" id="tab-chiave" aria-controls="p-chiave" aria-selected="false" data-tab="chiave" data-pg="lab">La chiave</button>
     <button class="tab" role="tab" id="tab-caratteri" aria-controls="p-caratteri" aria-selected="false" data-tab="caratteri" data-pg="lab">I caratteri</button>
+    <button class="tab" role="tab" id="tab-specie" aria-controls="p-specie" aria-selected="false" data-tab="specie" data-pg="lab">Specie</button>
     <button class="tab" role="tab" id="tab-strumenti" aria-controls="p-strumenti" aria-selected="false" data-tab="strumenti" data-pg="lab">Strumenti</button>
     <button class="tab" role="tab" id="tab-biblioteca" aria-controls="p-biblioteca" aria-selected="false" data-tab="biblioteca" data-pg="bib">Libri</button>
     <button class="tab" role="tab" id="tab-tavole" aria-controls="p-tavole" aria-selected="false" data-tab="tavole" data-pg="bib">Tavole</button>
@@ -606,6 +622,31 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
     <div class="toolbar"><div class="search"><input id="bkQ" type="search" placeholder="Cerca un autore, un anno, un argomento: Cooke, tavole, latino…" aria-label="Cerca nella biblioteca" autocomplete="off"></div></div>
     <div id="bkList"></div>
     <p class="tav-note">Fonte delle scansioni: Internet Archive e Biodiversity Heritage Library. Le opere sono di pubblico dominio. Diritti e dati di ogni libro vanno confermati dal comitato prima della pubblicazione. I libri antichi contengono indicazioni sull'uso alimentare dei funghi: oggi non valgono e il sito non ne dà.</p>
+  </section>
+
+  <section id="p-specie" role="tabpanel" aria-labelledby="tab-specie" hidden>
+    <div class="tav-intro">
+      <h2>Specie del Sud Italia</h2>
+      <p>Le specie di macrofunghi segnalate in Sicilia, Sardegna e nelle regioni del Sud, con il nome di oggi. Per ognuna trovi in quali regioni è stata vista, se era alla mostra micologica 2026, se compare nelle tavole e nei libri della Biblioteca, e le foto dal vero del nostro monitoraggio.</p>
+    </div>
+    <div class="pub-tools">
+      <div class="search"><input id="spQ" type="search" placeholder="Cerca una specie, un genere o una famiglia: Boletus, Amanita, Russulaceae…" aria-label="Cerca nelle specie" autocomplete="off"></div>
+      <div class="pub-f"><span>Gruppo</span><div class="pub-chips" id="spGr" role="group" aria-label="Filtra per gruppo"></div></div>
+      <div class="sp-opts2">
+        <label class="iz-sel"><span>Regione</span><select id="spReg"><option value="all">Tutto il Sud</option><option value="SI">Sicilia</option><option value="SA">Sardegna</option><option value="CB">Calabria</option><option value="CA">Campania</option><option value="PU">Puglia</option><option value="BA">Basilicata</option><option value="MO">Molise</option><option value="AB">Abruzzo</option></select></label>
+        <label class="iz-sel"><span>Ordine</span><select id="spSort"><option value="seg">Più segnalate</option><option value="az">Dalla A alla Z</option></select></label>
+      </div>
+      <div class="sp-checks">
+        <label><input type="checkbox" id="spFmo"> Alla mostra 2026</label>
+        <label><input type="checkbox" id="spFtv"> Con tavola storica</label>
+        <label><input type="checkbox" id="spFph"> Con foto dal vero</label>
+      </div>
+      <p class="status" id="spCount" aria-live="polite"></p>
+    </div>
+    <div class="sp-list" id="spList"><p class="status">Apri la scheda per caricare le specie.</p></div>
+    <button class="btn" type="button" id="spMore" hidden>Mostra altre specie</button>
+    <p class="tav-note">Fonte delle segnalazioni: GBIF, il database mondiale della biodiversità, che raccoglie dati di erbari, ricerche e osservazioni dei cittadini (non tutte verificate); nomi secondo la sua tassonomia, consultata il 29 ottobre 2026. Il numero di segnalazioni dice quanto una specie è stata registrata, non quanto è comune. ★ indica le specie evidenziate nella lista della mostra. Elenco da rivedere con il comitato scientifico.</p>
+
   </section>
 
   <section id="p-strumenti" role="tabpanel" aria-labelledby="tab-strumenti" hidden>
@@ -2911,6 +2952,69 @@ function pubFull(p, lang) {
 })();
 
 
+/* ===== Didattica: archivio delle specie ===== */
+(function () {
+  var SP = null, cur = { g: "all", r: "all", mo: false, tv: false, ph: false, sort: "seg" }, shown = 60;
+  var GR = { aga: "A lamelle", bol: "Boleti", rus: "Russule e lattari", pol: "Polipori e funghi del legno", can: "Cantarelli, idni e clavarie", pez: "Spugnole, pezize e tartufi", pal: "Vesce, geastri e falli", gel: "Gelatinosi", alt: "Altri" };
+  var RG = { SI: "Sicilia", SA: "Sardegna", CB: "Calabria", CA: "Campania", PU: "Puglia", BA: "Basilicata", MO: "Molise", AB: "Abruzzo" };
+  var LIBK = { inz: "Inzenga", vitt: "Vittadini", bres: "Bresadola", come: "Comes", matt: "Mattirolo" };
+  function load(cb) {
+    if (SP) { cb(); return; }
+    $("#spList").innerHTML = '<p class="status">Carico le specie…</p>';
+    fetch("libri/specie.json").then(function (r) { return r.json(); }).then(function (d) { SP = d; SP.forEach(function (e) { e.h = norm(e.n + " " + e.f + " " + (e.on || []).map(function (x) { return x[1]; }).join(" ")); }); cb(); })
+      .catch(function () { $("#spList").innerHTML = '<p class="status">Non riesco a caricare l\'archivio. Riprova più tardi.</p>'; });
+  }
+  function chips() {
+    var h = '<button class="chip" type="button" data-sg="all" aria-pressed="' + (cur.g === "all") + '">Tutti</button>';
+    Object.keys(GR).forEach(function (k) { var n = SP.filter(function (e) { return e.g === k; }).length; if (n) h += '<button class="chip" type="button" data-sg="' + k + '" aria-pressed="' + (cur.g === k) + '">' + esc(GR[k]) + " · " + n + "</button>"; });
+    $("#spGr").innerHTML = h;
+  }
+  function list() {
+    var q = norm(($("#spQ").value || "").trim()), toks = q ? q.split(/\s+/) : [];
+    var L = SP.filter(function (e) {
+      if (cur.g !== "all" && e.g !== cur.g) return false;
+      if (cur.r !== "all" && !(e.r && e.r[cur.r])) return false;
+      if (cur.mo && !e.mo) return false;
+      if (cur.tv && !e.tv) return false;
+      if (cur.ph && !e.ph) return false;
+      return toks.every(function (w) { return e.h.indexOf(w) > -1; });
+    });
+    L.sort(cur.sort === "az" ? function (a, b) { return a.n < b.n ? -1 : 1; } : function (a, b) { return (b.mo ? 1 : 0) - (a.mo ? 1 : 0) || b.t - a.t || (a.n < b.n ? -1 : 1); });
+    return L;
+  }
+  function card(e) {
+    var reg = Object.keys(RG).filter(function (k) { return e.r && e.r[k]; }).map(function (k) { return '<span class="sp-rg" title="' + e.r[k] + ' segnalazioni">' + RG[k] + "</span>"; }).join("");
+    var badges = (e.mo ? '<span class="sp-bd sp-mo">' + (e.mo === 2 ? "★ " : "") + "Mostra 2026</span>" : "") + (e.tv ? '<span class="sp-bd">Tavola</span>' : "") + (e.ph ? '<span class="sp-bd">Foto dal vero</span>' : "");
+    var old = (e.on || []).map(function (x) { return "<i>" + esc(x[1]) + "</i> (" + esc(x[0]) + ")"; }).join(" · ");
+    var acts = '<button class="btn" type="button" data-sp-libri="' + esc(e.n) + '">Cerca nei libri</button>' + (e.tv ? '<button class="btn" type="button" data-sp-tav="' + esc(e.n) + '">Vedi la tavola</button>' : "") + (e.k ? '<a class="btn" href="https://www.gbif.org/species/' + e.k + '" target="_blank" rel="noopener">Mappa delle segnalazioni</a>' : "");
+    return '<article class="sp-card">' + (e.ph ? '<img class="sp-ph" loading="lazy" src="' + e.ph[0] + '" alt="Foto di ' + esc(e.n) + '">' : "") + '<div class="sp-b"><h3><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></h3><p class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · " + esc(e.f) : "") + (e.t ? " · " + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") + " nel Sud" : "") + "</p>" +
+      (badges ? '<p class="sp-bds">' + badges + "</p>" : "") + (reg ? '<p class="sp-rgs">' + reg + "</p>" : "") + (old ? '<p class="sp-old">Nei libri e in mostra come: ' + old + "</p>" : "") + (e.x ? '<p class="sp-old">' + esc(e.x) + "</p>" : "") + '<div class="bk-act">' + acts + "</div></div></article>";
+  }
+  function render() {
+    if (!SP) return;
+    chips();
+    var L = list();
+    $("#spCount").textContent = (L.length === 1 ? "1 specie" : L.length.toLocaleString("it-IT") + " specie") + (L.length > shown ? ", ne mostro " + shown : "");
+    $("#spList").innerHTML = L.slice(0, shown).map(card).join("") || '<p class="status">Nessuna specie con questi filtri. Prova il nome antico o togli qualche filtro.</p>';
+    $("#spMore").hidden = L.length <= shown;
+  }
+  function go() { load(render); }
+  var T = 0; $("#spQ").addEventListener("input", function () { shown = 60; clearTimeout(T); T = setTimeout(go, 150); });
+  $("#spReg").addEventListener("change", function () { cur.r = this.value; shown = 60; go(); });
+  $("#spSort").addEventListener("change", function () { cur.sort = this.value; go(); });
+  ["mo", "tv", "ph"].forEach(function (k) { $("#spF" + k).addEventListener("change", function () { cur[k] = this.checked; shown = 60; go(); }); });
+  $("#spMore").addEventListener("click", function () { shown += 120; render(); });
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-sg]"); if (b) { cur.g = b.getAttribute("data-sg"); shown = 60; render(); return; }
+    if ((b = e.target.closest("[data-sp-libri]"))) { setTab("biblioteca", true); $("#inzBook").value = "all"; $("#inzQ").value = b.getAttribute("data-sp-libri").split(" ")[0] + " " + b.getAttribute("data-sp-libri").split(" ")[1]; inzSearch(); setTimeout(function () { $("#inzQ").scrollIntoView({ block: "center" }); }, 50); return; }
+    if ((b = e.target.closest("[data-sp-tav]"))) { setTab("tavole", true); $("#tavQ").value = b.getAttribute("data-sp-tav"); $("#tavQ").dispatchEvent(new Event("input")); window.scrollTo(0, 0); }
+  });
+  $("#tab-specie").addEventListener("click", go);
+  if (location.hash === "#specie") go();
+  window.specieLoad = go;
+})();
+
+
 
 
 /* ===== Le tavole ===== */
@@ -3030,9 +3134,9 @@ var TAV = [
 })();
 
 /* ===== Schede e indirizzo ===== */
-var PG = { lab: ["percorso", "chiave", "caratteri", "strumenti"], bib: ["biblioteca", "tavole", "pubblicazioni"] };
+var PG = { lab: ["percorso", "chiave", "caratteri", "specie", "strumenti"], bib: ["biblioteca", "tavole", "pubblicazioni"] };
 var PGTXT = {
-  lab: ["Didattica", "Qui i funghi si imparano facendo: il percorso, la chiave, i caratteri e gli strumenti per chi determina.", "Didattica e strumenti"],
+  lab: ["Didattica", "Qui i funghi si imparano facendo: il percorso, la chiave, i caratteri, le specie del Sud Italia e gli strumenti per chi determina.", "Didattica e strumenti"],
   bib: ["Biblioteca", "I libri storici da sfogliare e da leggere trascritti, le loro tavole ripulite e le pubblicazioni scientifiche sui funghi del Sud Italia.", "Libri, tavole e pubblicazioni"]
 };
 function setTab(name, updateHash) {

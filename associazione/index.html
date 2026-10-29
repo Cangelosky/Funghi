@@ -93,6 +93,9 @@ nav a { white-space: nowrap; display: block; text-decoration: none; color: var(-
 nav a:hover { background: var(--line); }
 nav a[aria-current="page"] { background: var(--forest); color: var(--forest-ink); }
 nav a.lock { border: 1px solid var(--line); }
+nav a.socio { background: var(--ochre); color: #1A2A20; font-weight: 600; }
+nav a.socio:hover { background: #EDBB55; }
+
 @media (max-width: 1180px) {
   .menu-btn { display: inline-flex; }
   nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--bgx); border-bottom: 1px solid var(--line); display: none; padding: 8px max(16px, env(safe-area-inset-left, 0px)) 16px max(16px, env(safe-area-inset-right, 0px)); }
@@ -568,6 +571,7 @@ footer a { color: var(--ink); }
         <li><a href="impara/#laboratorio">Didattica</a></li>
         <li><a href="impara/#biblioteca">Biblioteca</a></li>
         <li><a href="#contatti" data-go="contatti">Contatti</a></li>
+        <li><a class="socio" href="#associati" data-go="associati">Diventa socio</a></li>
         <li><a class="lock" href="#accesso" data-go="accesso">Area riservata</a></li>
       </ul>
     </nav>
@@ -603,6 +607,24 @@ footer a { color: var(--ink); }
           <button type="button" class="sched-pp" id="schedPP" aria-label="Metti in pausa lo scorrimento automatico"></button>
         </div>
         <div class="sched-body" id="schedBody"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-head"><h2>Studia i funghi con noi, anche da casa</h2><p>Due sezioni nuove del sito, aperte a tutti e gratuite.</p></div>
+      <div class="cells">
+        <div class="cell" style="--tint:var(--c-pratica)">
+          <span class="kicker">Didattica</span>
+          <h3>Impara a riconoscere i funghi, passo dopo passo.</h3>
+          <p>Un percorso per cominciare, la chiave per arrivare al genere, i caratteri da osservare, le specie del Sud Italia e gli strumenti per chi determina: misura delle spore, reagenti, sporata, scheda di raccolta.</p>
+          <div class="cta-row"><a class="btn solid" href="impara/#laboratorio">Entra nella Didattica</a></div>
+        </div>
+        <div class="cell" style="--tint:var(--c-stage)">
+          <span class="kicker">Biblioteca</span>
+          <h3>I grandi libri dei funghi, liberi da leggere.</h3>
+          <p>Inzenga, Bresadola, Vittadini e gli altri classici da sfogliare o da leggere trascritti, oltre 160 tavole storiche ripulite e le pubblicazioni scientifiche sui funghi del Sud.</p>
+          <div class="cta-row"><a class="btn solid" href="impara/#biblioteca">Entra nella Biblioteca</a></div>
+        </div>
       </div>
     </div>
 
@@ -825,6 +847,49 @@ footer a { color: var(--ink); }
   <div class="wrap odet" id="obsPage"></div>
 </section>
 
+<!-- DIVENTA SOCIO -->
+<section class="page gut" id="p-associati" aria-label="Diventa socio">
+  <div class="wrap stack">
+    <div>
+      <div class="sec-head"><span class="kicker">Diventa socio</span><h2 style="font-size:clamp(32px,5vw,52px)">Entra nel gruppo che studia i funghi di Sicilia.</h2><p>Da socio partecipi alle serate del lunedì e del giovedì, alle gite, alle mostre e allo stage, con un tutor che ti accompagna il primo anno. Non serve sapere già qualcosa di funghi: si comincia con la curiosità.</p></div>
+      <ol class="how">
+        <li><b>Compila la richiesta</b><span>Ci vuole un minuto. Non è un impegno.</span></li>
+        <li><b>Ci conosciamo</b><span>La segreteria ti ricontatta e ti invita a una serata in sede.</span></li>
+        <li><b>Ricevi la tessera</b><span>Versi la quota annuale (<span class="todo">importo da inserire</span>) e sei dei nostri.</span></li>
+      </ol>
+    </div>
+    <div class="box">
+      <h3>Richiesta di iscrizione</h3>
+      <form id="socioForm" novalidate>
+        <div class="fgrid">
+          <label for="so_nome">Nome<input type="text" id="so_nome" autocomplete="given-name" required></label>
+          <label for="so_cognome">Cognome<input type="text" id="so_cognome" autocomplete="family-name" required></label>
+          <label for="so_email">Email<input type="email" id="so_email" autocomplete="email" required></label>
+          <label for="so_tel">Telefono (facoltativo)<input type="text" id="so_tel" autocomplete="tel" inputmode="tel"></label>
+          <label for="so_comune">Comune in cui vivi<input type="text" id="so_comune" autocomplete="address-level2" required></label>
+          <label for="so_come">Come ci hai conosciuto
+            <select id="so_come"><option value="">Scegli</option><option>Da un amico o un socio</option><option>A una mostra</option><option>A un corso</option><option>Sui social</option><option>Cercando su internet</option><option>Altro</option></select>
+          </label>
+          <fieldset class="radios full" id="so_int">
+            <legend>Cosa ti interessa di più (anche più di una cosa)</legend>
+            <label class="radio"><input type="checkbox" value="Corsi per il tesserino"><span>Corsi per il tesserino</span></label>
+            <label class="radio"><input type="checkbox" value="Gite e uscite nel bosco"><span>Gite e uscite nel bosco</span></label>
+            <label class="radio"><input type="checkbox" value="Determinazione e microscopio"><span>Determinazione e microscopio</span></label>
+            <label class="radio"><input type="checkbox" value="Mostre"><span>Mostre</span></label>
+            <label class="radio"><input type="checkbox" value="Osservatorio e ricerca"><span>Osservatorio e ricerca</span></label>
+            <label class="radio"><input type="checkbox" value="Fotografia"><span>Fotografia</span></label>
+          </fieldset>
+          <label class="full" for="so_msg">Vuoi dirci qualcosa? (facoltativo)<textarea id="so_msg"></textarea></label>
+          <label class="check full" for="so_priv"><input type="checkbox" id="so_priv" required><span>Ho letto l'informativa sulla privacy (<span class="todo">da inserire</span>) e acconsento a essere ricontattato per l'iscrizione.</span></label>
+        </div>
+        <button class="btn solid" type="submit" style="margin-top:8px">Invia la richiesta</button>
+        <div class="msg" id="somsg" hidden role="status"></div>
+      </form>
+    </div>
+    <p class="rule">Usiamo i tuoi dati solo per ricontattarti sull'iscrizione. Non li mostriamo sul sito e non li diamo a nessuno.</p>
+  </div>
+</section>
+
 <!-- CONTATTI -->
 <section class="page gut" id="p-contatti" aria-label="Contatti">
   <div class="wrap stack">
@@ -910,7 +975,7 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
 (function () {
   var lg = document.getElementById("logoImg"), lf = document.getElementById("logoFoot"); document.getElementById("logoAmb").src = IMG.amb;
   if (lg) lg.src = IMG.logo; if (lf) lf.src = IMG.logo; var hi = document.getElementById("heroImg"); if (hi) hi.src = IMG.hero;
-  var PAGES = ['home', 'chi-siamo', 'attivita', 'attivita-dett', 'osserv-dett', 'corsi', 'osservatorio', 'contatti', 'accesso'];
+  var PAGES = ['home', 'chi-siamo', 'attivita', 'attivita-dett', 'osserv-dett', 'corsi', 'osservatorio', 'contatti', 'accesso', 'associati'];
   var CAT = {
     conv: { n: 'Conversazioni', v: 'var(--c-conv)' }, corsi: { n: 'Corsi', v: 'var(--c-corsi)' },
     pratica: { n: 'Pratica di determinazione', v: 'var(--c-pratica)' }, gite: { n: 'Gite', v: 'var(--c-gite)' },
@@ -1955,6 +2020,21 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
 
   show(location.hash.replace('#', '') || 'home');
 })();
+
+  (function () {
+    var f = document.getElementById('socioForm'); if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var m = document.getElementById('somsg'), miss = [];
+      [['so_nome', 'il nome'], ['so_cognome', 'il cognome'], ['so_email', "l'email"], ['so_comune', 'il comune']].forEach(function (x) { if (!document.getElementById(x[0]).value.trim()) miss.push(x[1]); });
+      var em = document.getElementById('so_email').value.trim();
+      m.hidden = false;
+      if (miss.length) { m.textContent = (miss.length === 1 ? 'Manca ' : 'Mancano ') + miss.join(', ') + '.'; return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { m.textContent = "L'email non sembra corretta: controlla che ci sia la @ e il punto."; return; }
+      if (!document.getElementById('so_priv').checked) { m.textContent = "Per inviare la richiesta serve il consenso sulla privacy."; return; }
+      m.textContent = 'Grazie, ' + document.getElementById('so_nome').value.trim() + '! In questa anteprima la richiesta non parte davvero. Nel sito vero arriva alla segreteria, che ti ricontatta per invitarti in sede.';
+    });
+  })();
 </script>
 
 
