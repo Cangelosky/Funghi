@@ -45,7 +45,7 @@
 body {
   background: var(--bg); color: var(--ink);
   font: 15px/1.5 var(--f-body);
-  padding-block: 22px 48px;
+  padding-block: 10px 48px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
@@ -519,17 +519,23 @@ body.pg-lab header, body.pg-bib header { color: #F4ECDD; }
 body.pg-lab header .lead { color: #E0D2BC; }
 body.pg-bib header .lead { color: #CFE0CB; }
 body.pg-lab .back-site, body.pg-bib .back-site { color: #F4ECDD !important; }
-.phead { position: relative; border-radius: 22px; overflow: hidden; min-height: clamp(220px, 20vw, 270px); padding: clamp(20px, 3vw, 34px); display: flex; flex-direction: column; justify-content: flex-end; box-shadow: 0 6px 24px rgba(0,0,0,.25); isolation: isolate; }
+.phead { position: relative; border-radius: 22px; overflow: hidden; min-height: 0; padding: 18px clamp(16px, 2.4vw, 28px); display: flex; flex-direction: column; justify-content: flex-end; box-shadow: 0 6px 24px rgba(0,0,0,.25); isolation: isolate; }
 .phead::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(20,14,8,.82) 0%, rgba(20,14,8,.55) 42%, rgba(20,14,8,0) 72%); }
 body.pg-bib .phead::before { background: linear-gradient(90deg, rgba(6,22,15,.85) 0%, rgba(6,22,15,.55) 42%, rgba(6,22,15,0) 72%); }
 .pban { position: absolute; inset: 0; z-index: -2; }
 .pban svg { display: block; width: 100%; height: 100%; }
 body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
 .phead .brand-t { max-width: 560px; }
-.phead h1 { font-size: clamp(32px, 5vw, 48px); text-shadow: 0 2px 12px rgba(0,0,0,.4); }
+.phead .pills { margin-top: 8px; }
+#pgPill { display: none; }
+@media (max-width: 640px) { .phead #count { display: none; } .phead .lead { font-size: 13.5px; line-height: 1.4; } .phead .pills { margin-top: 6px; } .pg-switch button { min-height: 38px; } }
+.phead .lead { margin-top: 2px; font-size: 14px; }
+.phead + .pg-switch { margin-top: 10px; }
+.phead ~ .sheet { margin-top: 10px; }
+.phead h1 { font-size: clamp(26px, 3.6vw, 36px); text-shadow: 0 2px 12px rgba(0,0,0,.4); }
 .phead .lead { text-shadow: 0 1px 8px rgba(0,0,0,.5); }
 @media (max-width: 640px) {
-  .phead { border-radius: 16px; min-height: 0; padding-top: 120px; }
+  .phead { border-radius: 16px; padding: 56px 14px 14px; }
   .phead::before { background: linear-gradient(180deg, rgba(20,14,8,0) 0%, rgba(20,14,8,.55) 32%, rgba(20,14,8,.88) 60%); }
   body.pg-bib .phead::before { background: linear-gradient(180deg, rgba(6,22,15,0) 0%, rgba(6,22,15,.55) 32%, rgba(6,22,15,.9) 60%); }
 }
