@@ -541,6 +541,45 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
 }
 .sheet { background: var(--bg); border-radius: 22px; padding: 6px clamp(12px, 2.4vw, 26px) 22px; margin-top: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
 .sheet .tabs { margin-top: 10px; }
+.kwrap { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 12px; align-items: start; }
+.cand { position: sticky; top: 10px; max-height: calc(100vh - 20px); display: flex; flex-direction: column; background: var(--surface); border: 1.5px solid var(--line2); border-radius: 14px; overflow: hidden; }
+.cand-bar { border: 0; background: var(--accent); color: var(--accent-ink); font: 700 15px/1.2 var(--f-display); padding: 11px 14px; text-align: left; display: flex; justify-content: space-between; gap: 8px; cursor: default; }
+.cand-i { display: none; }
+.cand-body { overflow: auto; padding: 10px 12px 14px; display: grid; gap: 10px; align-content: start; }
+.cand-sub { font-size: 13px; color: var(--muted); margin: 0; }
+.cand h4 { margin: 4px 0 0; font: 600 11px/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.cand ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.cand-it { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 8px; align-items: center; width: 100%; text-align: left; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 5px 8px 5px 5px; cursor: pointer; font: inherit; color: inherit; }
+.cand-it:hover { border-color: var(--accent); }
+.cand-it img, .cand-it .ci-ph { width: 40px; height: 40px; border-radius: 7px; object-fit: cover; background: #F3EDDD; display: block; }
+.cand-it .ci-ph { display: grid; place-items: center; color: var(--line2); font-size: 18px; }
+.cand-it b { font-weight: 600; font-style: italic; font-size: 14px; display: block; line-height: 1.2; }
+.cand-it small { display: block; font-size: 12px; color: var(--muted); line-height: 1.25; }
+.cand-gen { display: flex; flex-wrap: wrap; gap: 4px; }
+.cand-gen button { font: 500 12.5px/1.2 var(--f-body); border: 1px solid var(--line2); background: var(--bg); color: var(--ink); border-radius: 999px; padding: 4px 9px; cursor: pointer; }
+.cand-stop { background: var(--ochre-soft); color: var(--ink); border-radius: 10px; padding: 9px 10px; font-size: 13.5px; display: grid; gap: 4px; }
+.cand-stop b { color: var(--ochre); }
+.cand-more { font: 600 13px var(--f-body); color: var(--accent); background: none; border: 0; padding: 4px 0; cursor: pointer; text-align: left; }
+.card.res.stop { border-color: var(--ochre); border-style: dashed; }
+.ks-stop { font-size: 13px; margin: 6px 0 0; background: var(--ochre-soft); border-radius: 8px; padding: 6px 8px; }
+@media (max-width: 900px) {
+  .kwrap { grid-template-columns: minmax(0, 1fr); }
+  #p-chiave { padding-bottom: 64px; }
+  .cand { position: fixed; left: max(10px, env(safe-area-inset-left)); right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); top: auto; z-index: 40; max-height: 70vh; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+  .cand-bar { cursor: pointer; }
+  .cand-i { display: inline; }
+  .cand:not(.open) .cand-body { display: none; }
+  .cand.open .cand-i { transform: rotate(180deg); }
+}
+.spd-key { display: grid; gap: 8px; margin: 6px 0 4px; }
+.spd-path { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; font-size: 13px; }
+.spd-path span { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 3px 9px; font-weight: 600; }
+.spd-path i { opacity: .5; font-style: normal; }
+.spd-sim { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.spd-sim th, .spd-sim td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.spd-sim th { font: 600 11px/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.spd-sim button { border: 0; background: none; padding: 0; color: var(--accent); font: italic 600 13.5px var(--f-body); cursor: pointer; text-align: left; }
+@media (max-width: 560px) { .spd-sim thead { display: none; } .spd-sim tr { display: grid; padding: 6px 0; border-bottom: 1px solid var(--line); } .spd-sim td { border: 0; padding: 2px 4px; } .spd-sim td:first-child { font-weight: 600; } }
 .ks-genus { border-bottom: 1.5px dashed var(--line); padding-bottom: 10px; margin-bottom: 10px; display: grid; gap: 4px; }
 .ks-genus h3 { margin: 0; }
 .ks-next { font: 600 12px/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin: 4px 0 0; }
@@ -628,6 +667,9 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
         <li>Tocca la risposta che gli somiglia di più: si apre la domanda successiva, sulla destra.</li>
         <li>Se due risposte ti sembrano giuste, tocca «Apri tutte le vie» su quella domanda e confrontale.</li>
         <li>Quando arrivi a una scheda arancio, hai il genere o il gruppo. Per i generi più comuni la chiave continua fino alla specie, con il disegno dei libri storici e la foto dal vero.</li>
+        <li>Nel riquadro «Specie che restano» vedi a ogni risposta quali specie sono ancora possibili. Toccane una per andarci nella chiave.</li>
+        <li>Dove servono microscopio o reagenti la chiave si ferma e ti mostra le specie possibili nel Sud e cosa serve per separarle.</li>
+        <li>Nella scheda di ogni specie trovi la strada per arrivarci e come distinguerla dalle simili.</li>
       </ol>
     </details>
     <div class="toolbar">
@@ -639,7 +681,13 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
     <p class="status" id="status" role="status" aria-live="polite"></p>
     <nav class="crumbs" id="crumbs" aria-label="Percorso scelto"></nav>
     <p class="zoomhint">Allarga o stringi con due dita per ingrandire il diagramma. Con il mouse: Ctrl e rotellina.</p>
-    <div class="stage" id="stage"><div class="tree" id="tree"></div></div>
+    <div class="kwrap">
+      <div class="stage" id="stage"><div class="tree" id="tree"></div></div>
+      <aside class="cand" id="cand" aria-label="Specie che restano">
+        <button type="button" class="cand-bar" id="candBar" aria-expanded="false" aria-controls="candBody"><span id="candHead">Specie che restano</span><span class="cand-i" aria-hidden="true">▲</span></button>
+        <div class="cand-body" id="candBody"></div>
+      </aside>
+    </div>
     <p class="safety"><strong>La chiave non dice se un fungo si può mangiare.</strong> Nessuna chiave può farlo. Prima di portare in tavola qualunque fungo, fallo determinare da un esperto.</p>
   </section>
 
@@ -706,12 +754,6 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
     <div class="sp-list" id="spList"><p class="status">Apri la scheda per caricare le specie.</p></div>
     <button class="btn" type="button" id="spMore" hidden>Mostra altre specie</button>
     <p class="tav-note">Fonte delle segnalazioni: GBIF, il database mondiale della biodiversità, che raccoglie dati di erbari, ricerche e osservazioni dei cittadini (non tutte verificate); nomi secondo la sua tassonomia, consultata il 29 ottobre 2026. Il numero di segnalazioni dice quanto una specie è stata registrata, non quanto è comune. ★ indica le specie evidenziate nella lista della mostra. Per ogni specie mostriamo per primo il disegno dei libri storici, se c'è, e accanto la foto dal vero: dove manca, ce lo segniamo per cercarla tra le foto dei soci. Elenco da rivedere con il comitato scientifico.</p>
-    <div class="lb spd" id="spd" hidden role="dialog" aria-modal="true" aria-label="Scheda della specie">
-      <div class="lb-box spd-box">
-        <button class="btn lb-x" id="spdx" type="button">Chiudi</button>
-        <div id="spdBody"></div>
-      </div>
-    </div>
 
   </section>
 
@@ -832,6 +874,12 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
     <div class="rd-scroll" id="rdScroll"><div class="rd-pages" id="rdPages"></div></div>
   </div>
 
+  <div class="lb spd" id="spd" hidden role="dialog" aria-modal="true" aria-label="Scheda della specie">
+    <div class="lb-box spd-box">
+      <button class="btn lb-x" id="spdx" type="button">Chiudi</button>
+      <div id="spdBody"></div>
+    </div>
+  </div>
   <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Tavola ingrandita">
     <div class="lb-box">
       <button class="btn lb-x" id="lbx" type="button" aria-label="Chiudi">Chiudi</button>
@@ -842,7 +890,7 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
     </div>
   </div>
 
-  <p class="foot">Bozza di lavoro: percorsi e descrizioni vanno rivisti dal comitato scientifico prima della pubblicazione. La chiave arriva al genere o al gruppo e, per 13 generi e gruppi comuni, fino alla specie: copre solo i funghi più comuni, e per molte specie servono microscopio e reagenti.</p>
+  <p class="foot">Bozza di lavoro: percorsi e descrizioni vanno rivisti dal comitato scientifico prima della pubblicazione. La chiave arriva al genere o al gruppo e, per circa 50 generi e gruppi comuni, fino alla specie: copre solo i funghi più comuni, e per molte specie servono microscopio e reagenti.</p>
   </div>
 </div>
 
@@ -1358,12 +1406,501 @@ SPKEYS["Clitocybe e Infundibulicybe"] = Q("Aspetto", "Com'è il fungo e che odor
     S("Clitocybe rivulosa", "Fungo piccolo bianco, con cappello pruinoso come gesso, lamelle decorrenti fitte. Nei prati e nei giardini, spesso in cerchi.", ["bianco pruinoso", "prati"], "Clitocybe dealbata"))
 ]);
 
+
+/* ---------- Secondo blocco: altri generi, con odore e sapore. Bozza da rivedere con il comitato scientifico ---------- */
+/* Dove servono microscopio o reagenti la chiave si ferma con STOP: mostra cosa serve e le specie possibili nel Sud. */
+function STOP(name, desc, need, genera) { var r = R(name, "Qui serve altro", desc, [], ""); r.sp = true; r.stop = need; r.gen = genera; return r; }
+var TASTE = "Per il sapore: mastica un pezzetto di lamella con la punta della lingua per qualche secondo, poi sputalo e sciacqua la bocca. Non inghiottire mai.";
+
+SPKEYS["Russula"] = Q("Cappello e carne", "Di che colore è il cappello e com'è la carne?", "Guarda anche il colore delle lamelle e della sporata, se l'hai.", [
+  O("Bianco o biancastro, fungo tozzo", "Spesso esce con terra sul cappello",
+    Q("Carne", "Taglia il fungo e aspetta qualche minuto: la carne diventa scura?", null, [
+      O("Sì, arrossa e poi annerisce, o annerisce", "Anche le parti vecchie sono nere",
+        SG("Russule che anneriscono", "Sezione Compactae: funghi sodi, biancastri poi bruno-neri, con lamelle spesse. La carne annerisce col tempo o al taglio.", ["carne che annerisce", "fungo sodo"], "Russula adusta, R. nigricans")),
+      O("No, resta bianca", "Lamelle con un riflesso verde-azzurro",
+        Q("Gambo", "In cima al gambo, sotto le lamelle, c'è una fascia azzurro-verde?", null, [
+          O("Sì, fascia azzurra netta", "Lamelle fitte",
+            S("Russula chloroides", "Grande e bianca, a imbuto, con lamelle fitte e una fascia azzurro-verde all'apice del gambo. Sapore lievemente acre. Sotto latifoglie e conifere.", ["fascia azzurra in cima al gambo", "lamelle fitte"])),
+          O("No, o appena accennata", "Lamelle più spaziate",
+            S("Russula delica", "Grande, bianca poi macchiata di ocra, con cappello a imbuto e lamelle più spaziate. Sapore mite o un po' acre nelle lamelle. Sotto latifoglie e conifere.", ["bianca", "a imbuto", "lamelle spaziate"]))
+        ]))
+    ])),
+  O("Verde", "Dal verde erba al verde-grigio",
+    Q("Cuticola", "Com'è la pelle del cappello e come sono le lamelle?", "Passa un dito sulle lamelle: alcune si spezzano, altre si piegano.", [
+      O("Screpolata in piccole placche", "Come un mosaico verde",
+        S("Russula virescens", "Cappello verde con la cuticola rotta in piccole areole, carne bianca soda, sapore mite. Sotto querce e castagni, in estate e inizio autunno.", ["cuticola a mosaico", "sapore mite"])),
+      O("Liscia, lamelle elastiche", "Si piegano senza spezzarsi",
+        S("Russula cyanoxantha", "Cappello di colori misti, viola, verde o blu, a volte tutto verde. Lamelle elastiche e untuose al tatto che non si sbriciolano. Sapore mite. Sotto latifoglie.", ["lamelle elastiche", "colori misti"])),
+      O("Liscia, lamelle fragili", "Cappello verde-grigio o verde-oliva",
+        STOP("Altre russule verdi", "Diverse specie verdi si distinguono solo con sporata, sapore e reagenti.", "Sporata (bianca o crema), sapore e reazione al solfato di ferro sul gambo.", ["Russula"]))
+    ])),
+  O("Giallo-bruno, viscido, con margine scanalato", "Odore forte",
+    Q("Odore", "Che odore ha?", null, [
+      O("Rancido, sgradevole", "Carne amara e acre",
+        S("Russula foetens", "Cappello giallo-bruno viscido con margine profondamente scanalato, lamelle che lacrimano. Odore rancido e sgradevole, sapore acre. Sotto latifoglie.", ["odore rancido", "margine scanalato"])),
+      O("Di mandorla amara o di marzapane", "Simile alla precedente",
+        SG("Russule odorose di mandorla", "Sezione Ingratae: specie simili a R. foetens ma più piccole, con odore di mandorla amara. Si separano al microscopio.", ["odore di mandorla", "margine scanalato"], "Russula laurocerasi, R. insignis, R. praetervisa"))
+    ])),
+  O("Giallo vivo", "Giallo oro o giallo uovo",
+    Q("Lamelle", "Di che colore sono lamelle e gambo?", null, [
+      O("Lamelle col filo giallo, gambo giallino", "Cappello giallo oro con toni arancio",
+        S("Russula aurea", "Cappello giallo oro o arancio, lamelle crema con il filo giallo, gambo con toni gialli. Sapore mite. Sotto latifoglie.", ["filo delle lamelle giallo", "mite"])),
+      O("Lamelle giallo-ocra, fungo piccolo", "Cappello giallo uovo pallido",
+        S("Russula risigallina", "Piccola, con cappello giallo uovo o albicocca e lamelle che diventano giallo-ocra. Sporata gialla, sapore mite. Sotto latifoglie.", ["piccola", "lamelle gialle", "sporata gialla"]))
+    ])),
+  O("Rosso, rosa, porpora o vinoso", "Anche con toni misti",
+    Q("Sapore", "Che sapore ha la carne?", TASTE, [
+      O("Molto acre, brucia", "Dopo pochi secondi",
+        Q("Gambo", "Di che colore è il gambo?", null, [
+          O("Rosato o con toni rossi", "Lamelle che stillano goccioline; sotto pini",
+            S("Russula sanguinea", "Cappello rosso sangue, gambo rosato, lamelle un po' decorrenti che da giovani stillano goccioline. Sapore acre. Sotto pini.", ["gambo rosato", "pini", "acre"])),
+          O("Bianco, fragile", "Cappello rosso vivo o rosso-viola",
+            STOP("Russule rosse acri", "Gruppo di specie rosse e acri dal gambo bianco: si separano con l'albero ospite, la sporata e il microscopio.", "Sporata bianca o crema, albero vicino, microscopio.", ["Russula"]))
+        ])),
+      O("Mite o dolce", "Nessun bruciore",
+        Q("Odore e aspetto", "Che odore ha e come sono gambo e margine?", null, [
+          O("Odore di pesce o di granchio", "La carne ingiallisce e poi imbrunisce",
+            SG("Russule che sanno di pesce", "Gruppo di R. xerampelina: odore di pesce o di crostaceo, carne e gambo che imbruniscono, sapore mite. Sporata ocra.", ["odore di pesce", "carne che imbrunisce"], "Russula xerampelina e affini")),
+          O("Il margine si ritrae e scopre le lamelle", "Cappello rosa-carne o vinoso",
+            S("Russula vesca", "Cappello rosa-carne o vinoso, la cui pellicola si ritira dal margine lasciando scoperta la carne, come dentini. Sapore mite di nocciola. Sotto latifoglie.", ["margine che scopre la carne", "mite"])),
+          O("Grande, gambo rosato in cima, lamelle ocra", "Cappello porpora o oliva",
+            S("Russula olivacea", "Grande e robusta, cappello porpora-vinoso o olivastro, lamelle che da crema diventano giallo-ocra, gambo con una sfumatura rosa in cima. Sporata gialla. Sotto faggi e altre latifoglie.", ["grande", "sporata gialla", "gambo rosato in cima"])),
+          O("Nessuno di questi", "Odore debole o assente",
+            STOP("Russule rosse miti", "Molte specie rosse o vinose dal sapore mite: servono la sporata e i reagenti.", "Colore della sporata (dal bianco al giallo), reazione al solfato di ferro e al fenolo, microscopio.", ["Russula"]))
+        ]))
+    ])),
+  O("Viola, lilla, grigio o bruno", "O un colore che non trovi qui",
+    STOP("Altre russule", "Le russule sono centinaia: oltre i caratteri a occhio servono la sporata, il sapore e i reagenti.", "Sporata su foglio bianco, sapore, solfato di ferro sul gambo e microscopio.", ["Russula"]))
+]);
+
+SPKEYS["Tricholoma"] = Q("Odore", "Annusa la carne appena tagliata: che odore ha?", "Annusa subito il taglio: l'odore di farina ricorda la pasta fresca appena impastata.", [
+  O("Di gas, catrame o naftalina", "Fungo tutto giallo zolfo",
+    S("Tricholoma sulphureum", "Tutto giallo zolfo, lamelle spaziate gialle, odore forte di gas di città o di catrame. Sotto latifoglie e conifere.", ["giallo zolfo", "odore di gas"])),
+  O("Di sapone da bucato", "Cappello grigio-verdastro, base rosata",
+    S("Tricholoma saponaceum", "Cappello grigio, verdastro o bruno, molto variabile; base del gambo che arrossa. Odore di sapone da bucato. Sotto latifoglie e conifere.", ["odore di sapone", "base rosata"])),
+  O("Di farina", "Pasta fresca, cetriolo",
+    Q("Aspetto", "Com'è il fungo e dove cresce?", null, [
+      O("Bruno-rossiccio, sotto pioppi", "A gruppi numerosi",
+        S("Tricholoma populinum", "Cappello bruno-rossiccio, viscido col tempo umido, lamelle chiare che si macchiano di bruno. Odore e sapore di farina. Solo sotto pioppi.", ["pioppi", "bruno-rossiccio", "farina"])),
+      O("Arancio, gambo con bande arancio", "Sotto conifere",
+        S("Tricholoma aurantium", "Cappello arancio viscido, gambo bianco in alto e coperto in basso da bande arancio. Odore di farina, sapore amaro. Sotto conifere.", ["arancio", "gambo a bande"])),
+      O("Grigio con squamette, che ingiallisce", "Sotto pini e latifoglie",
+        SG("Tricholoma grigi che ingialliscono", "Cappello grigio con squamette fibrillose, lamelle che ingialliscono con l'età. Odore di farina.", ["grigio", "lamelle che ingialliscono"], "Tricholoma scalpturatum, T. argyraceum"))
+    ])),
+  O("Fruttato o aromatico, con un velo sul gambo", "Gambo con bande brune sotto l'anello",
+    S("Tricholoma caligatum", "Cappello con squame brune, gambo bianco in alto e coperto in basso da una calza bruna che finisce con un anello. Odore aromatico o fruttato. Sotto pini e lecci.", ["anello", "calza bruna", "odore aromatico"])),
+  O("Forte e sgradevole, fungo bianco", "Odore di gas o di terra",
+    SG("Tricholoma bianchi", "Funghi bianchi o biancastri con odore forte e sgradevole e sapore amaro o acre. Si separano per albero ospite e dettagli.", ["bianco", "odore forte"], "Tricholoma album, T. lascivum")),
+  O("Quasi nessun odore", "O debole, terroso",
+    Q("Aspetto", "Com'è il fungo?", null, [
+      O("Grigio topo, feltrato, sottile", "Sotto pini, a gruppi",
+        SG("Tricholoma grigi a cappello feltrato", "Cappello grigio topo coperto di fibrille o squamette feltrate, carne sottile e fragile. A gruppi sotto pini e altre conifere.", ["grigio topo", "feltrato", "pini"], "Tricholoma terreum, T. squarrulosum")),
+      O("Giallo-verde, lamelle gialle", "Sotto pini, su sabbia",
+        S("Tricholoma equestre", "Cappello giallo-verdastro con squamette brune al centro, lamelle e gambo giallo zolfo. Sotto pini, su suoli sabbiosi.", ["lamelle gialle", "pini", "sabbia"])),
+      O("Bruno-arancio, margine arrotolato a coste", "Sapore amaro",
+        S("Tricholoma acerbum", "Cappello bruno-arancio, carnoso, con margine arrotolato e scanalato a coste. Sapore amaro. Sotto querce e castagni.", ["margine a coste", "amaro", "querce"]))
+    ])),
+  O("Tutto viola o lilla, odore fruttato", "Anche le lamelle e il gambo",
+    S("Lepista nuda", "Non è un Tricholoma, ma ci somiglia: cappello viola-lilla poi bruno, lamelle viola, gambo fibrilloso violetto. Odore fruttato. Nella lettiera, anche nei giardini e nel compost, in autunno e inverno.", ["tutto viola", "odore fruttato", "lettiera"]))
+]);
+
+SPKEYS["Idrofori e affini"] = Q("Ambiente", "Dove cresce?", null, [
+  O("Nei prati e nei pascoli", "Lontano dagli alberi",
+    Q("Colore", "Di che colore è?", null, [
+      O("Conico, rosso o giallo, che annerisce", "Al tocco o con l'età",
+        S("Hygrocybe conica", "Cappello conico appuntito, rosso, arancio o giallo, che annerisce al tocco e con l'età fino a diventare tutto nero. Nei prati.", ["conico", "annerisce"])),
+      O("Rosso scarlatto, non annerisce", "Lamelle rosse o arancio",
+        SG("Hygrocybe rosse", "Igrocibi rosso vivo che non anneriscono, nei prati poveri e non concimati. Indicano prati antichi.", ["rosso", "prati antichi"], "Hygrocybe coccinea, H. punicea")),
+      O("Verde pappagallo, viscido", "Poi giallastro o rosato",
+        S("Gliophorus psittacinus", "Piccolo e molto viscido, verde pappagallo da giovane poi con toni gialli o rosa. Nei prati.", ["verde", "viscidissimo"], "Hygrocybe psittacina")),
+      O("Arancio-salmone, lamelle decorrenti", "Carne soda",
+        S("Cuphophyllus pratensis", "Cappello arancio-salmone, lamelle spesse e spaziate che scendono sul gambo, carne soda. Nei prati e ai margini dei boschi.", ["arancio-salmone", "lamelle decorrenti"])),
+      O("Bianco avorio, lamelle decorrenti", "Piccolo",
+        S("Cuphophyllus virgineus", "Piccolo, tutto bianco avorio, con lamelle cerose decorrenti. Nei prati, a tardo autunno.", ["bianco", "lamelle decorrenti", "prati"]))
+    ])),
+  O("Nel bosco, sotto alberi", "Spesso viscido",
+    Q("Aspetto", "Com'è il fungo e che odore ha?", null, [
+      O("Bianco, viscido, odore forte", "Come di bruco o di mandorla",
+        S("Hygrophorus cossus", "Bianco e viscido, con odore forte che ricorda il bruco del legno (Cossus). Sotto querce.", ["bianco viscido", "odore forte", "querce"])),
+      O("Bianco, viscido, odore debole", "Gambo viscido",
+        S("Hygrophorus eburneus", "Tutto bianco avorio, cappello e gambo molto viscidi, odore debole. Sotto faggi e altre latifoglie.", ["bianco avorio", "viscido"])),
+      O("Bianco con granuli gialli", "Al margine e in cima al gambo",
+        S("Hygrophorus chrysodon", "Bianco, con granuli giallo oro sul margine del cappello e in cima al gambo. Sotto latifoglie e conifere.", ["granuli gialli"])),
+      O("Rosa-vinoso, carne soda", "Macchiato di porpora",
+        S("Hygrophorus russula", "Cappello rosa-vinoso macchiato di porpora, carne soda, lamelle che si macchiano di vinoso. Sembra una russula. Sotto querce.", ["rosa-vinoso", "carne soda", "querce"])),
+      O("Grigio-bruno, viscidissimo", "Sotto pini, in autunno",
+        S("Hygrophorus latitabundus", "Cappello grigio-bruno ricoperto da uno strato di glutine, gambo viscido sotto un anello di muco. Sotto pini mediterranei.", ["glutinoso", "pini"], "Hygrophorus limacinus")),
+      O("Grigio-nero, a fine inverno", "Spesso sotto le foglie o la neve",
+        S("Hygrophorus marzuolus", "Cappello grigio chiaro poi nerastro, carne soda, lamelle grigie spaziate. Esce tra fine inverno e primavera, nascosto nella lettiera, in montagna.", ["fine inverno", "grigio-nero"]))
+    ]))
+]);
+
+SPKEYS["Armillaria"] = Q("Anello", "Com'è l'anello e su cosa cresce?", null, [
+  O("Anello membranoso, ciuffi su latifoglie", "Cappello giallo miele",
+    S("Armillaria mellea", "In grandi ciuffi su tronchi e ceppi di latifoglie, anche vivi. Cappello giallo miele con squamette scure al centro, anello membranoso bianco-giallo. Parassita degli alberi.", ["ciuffi", "anello membranoso", "giallo miele"])),
+  O("Anello fragile, a terra su radici", "Gambo con la base ingrossata",
+    S("Armillaria gallica", "Esce dal terreno su radici sepolte, isolata o a gruppi piccoli. Cappello bruno-rosato con squamette, anello fragile come una ragnatela, base del gambo ingrossata.", ["a terra", "anello fragile"])),
+  O("Squame scure, anello bruno", "Su conifere",
+    S("Armillaria ostoyae", "Cappello bruno-rossastro con squame scure, anello spesso con orlo bruno. Su conifere, in montagna.", ["squame scure", "conifere"])),
+  O("Senza anello", "Ciuffi alla base delle querce",
+    S("Desarmillaria tabescens", "Come un chiodino ma senza anello. In ciuffi fitti alla base di querce e altre latifoglie, in estate e inizio autunno.", ["senza anello", "ciuffi", "querce"], "Armillaria tabescens"))
+]);
+
+SPKEYS["Coprinus e Coprinopsis"] = Q("Aspetto", "Com'è il cappello?", null, [
+  O("Cilindrico, bianco, con squame arricciate", "Prati, bordi delle strade",
+    S("Coprinus comatus", "Cappello alto e cilindrico, bianco con squame arricciate, che da sotto diventa nero e si scioglie in inchiostro. Anello mobile. Nei prati e lungo le strade.", ["cilindrico", "squame arricciate", "si scioglie"])),
+  O("Nero con placche bianche, come una gazza", "Nei boschi",
+    S("Coprinopsis picacea", "Cappello a campana nero-bruno coperto di placche bianche, come il piumaggio di una gazza. Nei boschi di latifoglie, su suoli calcarei.", ["nero e bianco", "bosco"])),
+  O("Grigio liscio, a ciuffi", "Vicino a ceppi sepolti",
+    S("Coprinopsis atramentaria", "Cappello grigio liscio a campana, a ciuffi su legno sepolto, in giardini e prati. Si scioglie in inchiostro nero.", ["grigio", "a ciuffi"])),
+  O("Ocra con granuli lucenti", "A ciuffi su legno",
+    S("Coprinellus micaceus", "Cappello ocra-bruno coperto da granuli che brillano come mica, a ciuffi su legno di latifoglie. Le lamelle si sciolgono poco.", ["granuli lucenti", "su legno"])),
+  O("Minuscoli, a centinaia", "Non si sciolgono",
+    S("Coprinellus disseminatus", "Funghi minuscoli, grigio chiaro e striati, a centinaia su ceppi e radici. Non si sciolgono in inchiostro.", ["minuscoli", "a centinaia"]))
+]);
+
+SPKEYS["Morchella"] = Q("Cappello", "Com'è il cappello e com'è attaccato al gambo?", "Tagliala in verticale: si vede bene l'attacco del cappello.", [
+  O("Alveoli irregolari, gialli o ocra", "Coste chiare",
+    SG("Spugnole gialle", "Gruppo di M. esculenta: cappello tondo o ovale con alveoli irregolari gialli, ocra o grigi e coste chiare. Le specie si distinguono solo con il DNA.", ["alveoli irregolari", "chiara"], "Morchella esculenta, M. dunalii")),
+  O("Scura, coste nere parallele", "Cappello conico",
+    SG("Spugnole nere", "Gruppo di M. elata: cappello conico con coste scure quasi parallele. Alcune crescono dopo gli incendi o nei giardini con trucioli.", ["conica", "coste scure"], "Morchella elata, M. importuna")),
+  O("Cappello attaccato solo a metà", "Il bordo pende libero sul gambo",
+    S("Morchella semilibera", "Cappello piccolo e conico, attaccato al gambo solo nella metà superiore, con il bordo libero come una gonna. Gambo lungo e fragile. Sotto latifoglie umide in primavera.", ["cappello semilibero", "gambo lungo"]))
+]);
+
+SPKEYS["Helvella"] = Q("Forma", "Che forma ha?", null, [
+  O("Cappello a sella, gambo con coste profonde", "Bianco o crema",
+    S("Helvella crispa", "Cappello bianco-crema a lobi ripiegati, gambo bianco scavato da coste profonde. In autunno, nei boschi.", ["bianca", "gambo costoluto"])),
+  O("Cappello a sella, grigio-nero", "Gambo grigio con coste",
+    S("Helvella lacunosa", "Cappello grigio-nero a lobi irregolari, gambo grigio scavato da coste e cavità. Nei boschi, anche dopo gli incendi.", ["grigio-nera", "gambo costoluto"])),
+  O("A coppa, con coste che salgono sulla coppa", "Come un calice",
+    S("Helvella acetabulum", "A forma di coppa bruna, con un gambo corto le cui coste salgono come nervature sulla parte esterna della coppa. In primavera.", ["a coppa", "nervature"])),
+  O("Altra forma", "Coppa liscia, cappello piccolo",
+    STOP("Altre elvelle", "Le elvelle piccole si separano con il microscopio.", "Microscopio: spore e parafisi.", ["Helvella"]))
+]);
+
+SPKEYS["Ganoderma"] = Q("Superficie", "Com'è la superficie sopra?", null, [
+  O("Lucida, rosso laccato, con gambo", "Come verniciata",
+    S("Ganoderma lucidum", "Mensola o ventaglio rosso-bruno lucido come lacca, con gambo laterale. Pori bianchi. Su ceppi e radici di latifoglie.", ["lucido", "gambo laterale"])),
+  O("Resinosa, che fonde con un fiammifero", "Su querce",
+    S("Ganoderma resinaceum", "Grande mensola annuale, lucida e resinosa: la crosta si scioglie se la scaldi con un fiammifero. Alla base di querce vive.", ["resinoso", "querce"])),
+  O("Opaca, bruna, piatta e spessa", "Pori bianchi che si segnano al tocco",
+    Q("Margine", "Com'è il bordo della mensola?", "Le spore si depositano sopra come polvere color cacao.", [
+      O("Sottile e tagliente", "Mensola piatta",
+        S("Ganoderma applanatum", "Mensola perenne piatta con margine sottile e bianco. I pori bianchi si scuriscono dove li graffi: si usa per disegnare. Su latifoglie.", ["piatto", "margine sottile"])),
+      O("Spesso e arrotondato", "Mensola a cuscino",
+        S("Ganoderma adspersum", "Mensola perenne spessa, a cuscino, con margine arrotondato. Su latifoglie, anche alberi di città.", ["spesso", "margine arrotondato"]))
+    ]))
+]);
+
+SPKEYS["Fomes, Phellinus e altri polipori perenni"] = Q("Forma", "Che forma ha e su cosa cresce?", null, [
+  O("A zoccolo di cavallo, grigio", "Su faggi e altre latifoglie",
+    S("Fomes fomentarius", "Mensola perenne a zoccolo di cavallo, grigia con fasce, pori bruni. Dentro, sopra i tubuli, c'è un nucleo bruno. Su faggi, querce e pioppi.", ["a zoccolo", "grigio"])),
+  O("Peloso e giallo-ruggine, annuale", "Su gelsi, frassini e noci",
+    S("Inonotus hispidus", "Grossa mensola annuale spugnosa, coperta di peli ispidi giallo-ruggine, poi nera. Su gelsi, frassini, noci e meli.", ["peloso", "annuale"])),
+  O("A cuscino, bruno-ruggine", "Alla base di latifoglie, cisti, corbezzoli",
+    S("Fuscoporia torulosa", "Mensola perenne bruno-ruggine, a cuscino, spesso alla base del tronco. Su latifoglie e arbusti della macchia.", ["bruno-ruggine", "alla base"], "Phellinus torulosus")),
+  O("Piccolo, sul rosmarino", "Crosta o mensoletta",
+    S("Fomitiporia rosmarini", "Piccole croste o mensolette bruno-ruggine sui rami vivi e morti di rosmarino.", ["rosmarino"])),
+  O("Altro", "Croste o mensole dure",
+    STOP("Altri polipori perenni", "Molti polipori duri si separano solo al microscopio.", "Microscopio: setole, spore e ife.", ["Phellinus", "Fomitiporia", "Fuscoporia", "Fomes"]))
+]);
+
+SPKEYS["Trametes e affini"] = Q("Superficie", "Com'è la superficie sopra?", null, [
+  O("Zone di tanti colori, vellutate", "Blu, grigio, bruno, crema",
+    S("Trametes versicolor", "Mensoline sottili e flessibili a zone concentriche di molti colori, vellutate. In file sovrapposte su legno morto.", ["zone colorate", "sottile"])),
+  O("Grigiastra e pelosa, margine bruno", "Pori bianchi",
+    S("Trametes hirsuta", "Mensole grigio-biancastre molto pelose, spesso con margine bruno. Su legno morto di latifoglie.", ["peloso", "grigio"])),
+  O("Bianca con una gobba, pori allungati", "Spessa",
+    S("Trametes gibbosa", "Mensola bianca spessa con una gobba vicino all'attacco e pori allungati. Spesso con alghe verdi sopra. Su faggi e altre latifoglie.", ["gobba", "pori allungati"])),
+  O("Pori larghi, pelosa, su pioppi", "Grigio-ocra",
+    S("Trametes trogii", "Mensole grigio-ocra pelose, con pori larghi. Su pioppi e salici.", ["pori larghi", "pioppi"]))
+]);
+
+SPKEYS["Vesce (Lycoperdon, Calvatia, Bovista)"] = Q("Aspetto", "Com'è la superficie e dove cresce?", null, [
+  O("Aculei conici che lasciano cicatrici", "A forma di pera, a terra",
+    S("Lycoperdon perlatum", "Vescia a pera coperta di aculei conici di varie misure che, staccandosi, lasciano un reticolo di cicatrici. Nei boschi.", ["aculei conici", "a pera"])),
+  O("Aculei lunghi e bruni", "Come un riccio",
+    S("Lycoperdon echinatum", "Coperta di aculei lunghi e bruni, uniti in punta a gruppi, che cadono e lasciano un reticolo. Sotto faggi e latifoglie su calcare.", ["aculei lunghi", "come un riccio"])),
+  O("Su legno marcio, a gruppi", "Liscia, con cordoni bianchi alla base",
+    S("Apioperdon pyriforme", "Vescia a pera, quasi liscia, a gruppi fitti su legno marcio, con cordoni bianchi alla base.", ["su legno", "a gruppi"], "Lycoperdon pyriforme")),
+  O("Piccola, nei prati, con base spugnosa", "Poi si apre in alto",
+    S("Lycoperdon pratense", "Vescia piccola e schiacciata dei prati, con una base spugnosa separata dalla parte fertile da una membrana.", ["prati", "base spugnosa"], "Vascellum pratense")),
+  O("Palla senza gambo, che si stacca", "Rotola col vento",
+    SG("Bovista", "Palle piccole senza base sterile, che da mature si staccano e rotolano. Nei prati e nelle dune.", ["senza gambo", "si stacca"], "Bovista plumbea, B. promontorii"))
+]);
+
+SPKEYS["Scleroderma"] = Q("Pelle", "Com'è la pelle esterna?", null, [
+  O("Sottile e squamettata, con finto gambo", "Base con radici",
+    S("Scleroderma verrucosum", "Palla con pelle sottile e squamettata bruna, che si allunga in basso in un finto gambo con radici. Sotto latifoglie.", ["finto gambo", "pelle sottile"])),
+  O("Spessa, che si apre a stella", "Grossa, mezza sotto terra",
+    S("Scleroderma polyrhizum", "Grossa palla dalla pelle spessa che da matura si apre in lobi a stella. Mezza interrata, in suoli poveri e lungo le strade.", ["si apre a stella", "pelle spessa"])),
+  O("Gialla, screpolata a placche", "Pelle spessa",
+    S("Scleroderma citrinum", "Palla con pelle spessa giallo-ocra screpolata in placche, interno nero-violaceo. Sotto latifoglie su suoli acidi.", ["pelle a placche", "gialla"])),
+  O("Su sabbia, con lunga radice", "Gialla",
+    S("Scleroderma meridionale", "Palla giallastra con una lunga base radicante, nelle dune e nelle pinete sabbiose.", ["sabbia", "radice lunga"])),
+  O("Dentro a granuli colorati", "Come piccoli piselli",
+    S("Pisolithus arhizus", "Palla irregolare e scura che dentro è fatta di piccoli granuli colorati, come piselli. Su suoli poveri, con pini, querce e eucalipti.", ["granuli interni"], "Pisolithus tinctorius"))
+]);
+
+SPKEYS["Geastrum e Astraeus"] = Q("Stella", "Com'è la stella e la palla al centro?", null, [
+  O("Raggi che si chiudono col secco", "E si riaprono con l'umido",
+    S("Astraeus hygrometricus", "Stella di terra con raggi spessi e screpolati che si chiudono sulla palla col secco e si riaprono con l'umido. Su suoli sabbiosi e acidi.", ["igroscopico", "raggi screpolati"])),
+  O("Palla con tanti pori, su colonnine", "Stella grande",
+    S("Myriostoma coliforme", "Stella grande con la palla interna sostenuta da più colonnine e forata da molti pori. Rara, in suoli sabbiosi e parchi.", ["molti pori", "colonnine"])),
+  O("Collare a tazza sotto la palla", "Stella grande e carnosa",
+    S("Geastrum triplex", "Stella carnosa con raggi che si spaccano lasciando un collare a tazza sotto la palla. Nella lettiera.", ["collare a tazza"])),
+  O("Piccola, poro con orlo sfrangiato", "Palla liscia",
+    S("Geastrum fimbriatum", "Piccola stella color nocciola con palla liscia e un poro dall'orlo sfrangiato. Nella lettiera di conifere.", ["piccola", "poro sfrangiato"])),
+  O("Altra", "Poro solcato, palla su gambo",
+    STOP("Altri geastri", "Molti geastri si separano dal tipo di poro e dalle spore.", "Lente per il poro, microscopio per le spore.", ["Geastrum"]))
+]);
+
+SPKEYS["Xerocomus e affini"] = Q("Cappello", "Com'è il cappello?", "Graffia la pellicola del cappello: guarda il colore che compare sotto.", [
+  O("Screpolato, con il rosso nelle crepe", "Carne gialla, rossa sotto la cuticola",
+    SG("Xerocomelli a crepe rosse", "Cappello bruno-oliva che si screpola mostrando carne rossastra, pori gialli che virano al blu, gambo con toni rossi. Le specie si separano al microscopio.", ["crepe rosse", "pori gialli"], "Xerocomellus chrysenteron, X. porosporus, X. redeuilhii")),
+  O("Rosso vivo, piccolo", "Gambo con toni rossi",
+    S("Hortiboletus rubellus", "Piccolo boleto con cappello rosso vivo vellutato, pori gialli che virano al blu, gambo giallo con toni rossi. Parchi e boschi di latifoglie.", ["cappello rosso", "piccolo"])),
+  O("Olivastro, vellutato, crepe gialle", "Pori gialli larghi",
+    S("Xerocomus subtomentosus", "Cappello oliva-bruno vellutato, screpolato con crepe gialle. Pori gialli larghi che virano poco. Sotto latifoglie e conifere.", ["crepe gialle", "pori larghi"])),
+  O("Albicocca o arancio", "Vellutato",
+    S("Rheubarbariboletus armeniacus", "Cappello color albicocca o arancio-rosa vellutato, pori gialli, viraggio blu leggero. Sotto latifoglie in ambienti caldi.", ["albicocca"], "Xerocomus armeniacus"))
+]);
+
+SPKEYS["Hypholoma"] = Q("Colore", "Di che colore è il cappello?", TASTE, [
+  O("Giallo zolfo, lamelle verdastre", "Sapore molto amaro",
+    S("Hypholoma fasciculare", "Ciuffi fitti su ceppi e legno, cappello giallo zolfo con centro arancio, lamelle giallo-verdastre poi viola-nerastre. Sapore molto amaro. Tutto l'anno.", ["giallo zolfo", "lamelle verdastre", "amaro"])),
+  O("Rosso mattone, lamelle grigie", "Sapore amarognolo",
+    S("Hypholoma lateritium", "Ciuffi su ceppi di latifoglie, cappello rosso mattone con margine più chiaro, lamelle grigiastre poi violacee.", ["rosso mattone", "ciuffi"]))
+]);
+
+SPKEYS["Gymnopilus"] = Q("Taglia", "Com'è il fungo?", null, [
+  O("Grande, in ciuffi, con anello", "Su ceppi e alla base di alberi",
+    S("Gymnopilus junonius", "Grandi ciuffi giallo-arancio su ceppi e alla base di latifoglie, con anello e lamelle color ruggine. Sapore molto amaro.", ["grande", "anello", "amaro"], "Gymnopilus spectabilis")),
+  O("Piccolo, senza anello", "Su legno di conifere",
+    S("Gymnopilus penetrans", "Piccolo, giallo-arancio, senza anello, a gruppi su legno e residui di conifere. Amaro.", ["piccolo", "conifere"]))
+]);
+
+SPKEYS["Phallus"] = Q("Volva", "Di che colore è l'uovo, cioè la volva alla base?", null, [
+  O("Bianco", "Nei boschi e nei giardini",
+    S("Phallus impudicus", "Esce da un uovo bianco: gambo bianco spugnoso e cappello coperto di muco verde-oliva con forte odore di carogna, che attira le mosche.", ["uovo bianco", "odore forte"])),
+  O("Rosa o violaceo", "Sulle dune e nei terreni sabbiosi",
+    S("Phallus hadriani", "Come il precedente ma con l'uovo rosa-violaceo. Sulle dune e nei suoli sabbiosi vicino al mare.", ["uovo rosa", "dune"]))
+]);
+
+SPKEYS["Auricularia"] = Q("Forma", "Com'è?", null, [
+  O("A orecchio, singolo o a gruppi", "Sopra vellutato, sotto liscio",
+    S("Auricularia auricula-judae", "Orecchie gelatinose bruno-purpuree, vellutate sopra e lisce sotto. Su sambuco e altre latifoglie, anche d'inverno.", ["a orecchio", "sambuco"])),
+  O("A mensola, con zone pelose", "Sotto rugoso e violaceo",
+    S("Auricularia mesenterica", "Mensole gelatinose sovrapposte, sopra pelose e zonate di grigio, sotto rugose e porpora. Su ceppi di latifoglie.", ["a mensola", "zone pelose"]))
+]);
+
+SPKEYS["Stropharia"] = Q("Colore", "Di che colore è il cappello?", null, [
+  O("Verde-azzurro, viscido", "Con fiocchi bianchi al margine",
+    S("Stropharia aeruginosa", "Cappello verde-azzurro molto viscido, con fiocchi bianchi al margine, anello e lamelle grigio-viola. Nei boschi.", ["verde-azzurro", "anello"])),
+  O("Azzurro-verde più chiaro, anello fugace", "Prati e parchi",
+    STOP("Altre stroparie", "Le stroparie verdi si distinguono con il microscopio.", "Microscopio: cistidi delle lamelle.", ["Stropharia"]))
+]);
+
+SPKEYS["Pluteus"] = Q("Aspetto", "Com'è il fungo?", null, [
+  O("Bruno, grande, odore di rafano", "Su legno di latifoglie",
+    S("Pluteus cervinus", "Cappello bruno fibrilloso, lamelle libere bianche poi rosa, odore di rafano. Su ceppi e legno di latifoglie.", ["bruno", "odore di rafano"])),
+  O("Gambo giallo, cappello bruno", "Piccolo",
+    S("Pluteus romellii", "Piccolo, cappello bruno rugoso, gambo giallo vivo. Su legno di latifoglie.", ["gambo giallo"])),
+  O("Grigio con toni blu alla base", "Su legno di salici e altre latifoglie",
+    S("Pluteus salicinus", "Cappello grigio con fibrille, gambo bianco che verso la base si tinge di grigio-azzurro.", ["base azzurra"])),
+  O("Altro", "Colori diversi",
+    STOP("Altri plutei", "I plutei si separano spesso solo al microscopio.", "Microscopio: cistidi e pellicola del cappello.", ["Pluteus"]))
+]);
+
+SPKEYS["Volvariella e Volvopluteus"] = Q("Substrato", "Dove cresce?", null, [
+  O("Su legno, alto sui tronchi", "Bianco setoso",
+    S("Volvariella bombycina", "Cappello bianco setoso e peloso, volva grande a sacco. Su tronchi vivi o morti di latifoglie, spesso in alto.", ["su legno", "setoso"])),
+  O("A terra, nei campi e nei prati", "Grigio, viscido",
+    S("Volvopluteus gloiocephalus", "Cappello grigio o bianco viscido, lamelle rosa, volva bianca. Nei campi, negli orti e nei prati concimati.", ["a terra", "viscido"], "Volvariella gloiocephala"))
+]);
+
+SPKEYS["Tartufi e altri funghi ipogei"] = Q("Esterno", "Com'è la superficie esterna?", "Guarda anche l'interno (la gleba) tagliando a metà: colore e venature contano.", [
+  O("Liscia, giallo-ocra", "Forte profumo",
+    Q("Dimensioni", "Quanto è grande e com'è l'interno?", null, [
+      O("Grande, irregolare, interno nocciola con venature bianche", "Profumo intenso",
+        S("Tuber magnatum", "Esterno liscio giallo-ocra o verdastro, irregolare, interno nocciola o rosato con venature bianche fini. Profumo intenso. Sotto querce, pioppi, salici e tigli.", ["liscio", "giallo-ocra", "profumo intenso"])),
+      O("Piccolo, biancastro poi ocra", "Odore agliaceo",
+        S("Tuber borchii", "Piccolo, liscio, biancastro poi fulvo, interno bruno con venature bianche. Odore agliaceo. Sotto pini e querce, anche sulla costa.", ["piccolo", "agliaceo"]))
+    ])),
+  O("Nera, verrucosa", "Verruche a piramide",
+    Q("Interno", "Di che colore è l'interno?", null, [
+      O("Nero-violaceo con venature bianche fini", "Profumo intenso",
+        S("Tuber melanosporum", "Nero con piccole verruche, interno nero-violaceo con venature bianche fini. Profumo intenso. Sotto querce e noccioli in suoli calcarei.", ["interno nero-violaceo"])),
+      O("Nocciola o bruno chiaro", "Verruche grandi",
+        S("Tuber aestivum", "Nero con grosse verruche a piramide, interno nocciola con venature bianche. Profumo delicato. Estate e autunno; la forma autunnale è detta uncinatum.", ["verruche grandi", "interno nocciola"], "Tuber uncinatum")),
+      O("Grigio con venature larghe", "Verruche piccole",
+        S("Tuber brumale", "Nero con verruche piccole, interno grigio con venature bianche larghe e rade. Odore muschiato. Inverno.", ["venature larghe", "invernale"])),
+      O("Con una fossetta alla base, odore di fenolo", "Interno bruno",
+        S("Tuber mesentericum", "Nero verrucoso con una cavità alla base, interno bruno con venature a labirinto. Odore di fenolo o di catrame.", ["cavità basale", "odore di fenolo"]))
+    ])),
+  O("Altro", "Bruno, rossiccio, piccolo",
+    STOP("Altri ipogei", "Molti funghi sotterranei si riconoscono solo al microscopio.", "Microscopio: spore e aschi.", ["Tuber", "Rhizopogon"]))
+]);
+
+SPKEYS["Lepiota e affini"] = Q("Aspetto", "Com'è il fungo?", null, [
+  O("Piccola, squame concentriche bruno-rosse", "Odore sgradevole di gomma",
+    S("Lepiota cristata", "Piccola, cappello bianco con squamette bruno-rosse in cerchi concentrici e centro scuro. Anello fragile. Odore sgradevole di gomma. Ai bordi dei boschi e nei parchi.", ["piccola", "odore di gomma"])),
+  O("Gambo coperto di fiocchi lanosi", "Cappello con squame brune",
+    S("Lepiota clypeolaria", "Cappello con squame bruno-ocra su fondo bianco, gambo coperto di fiocchi lanosi bianchi sotto un anello poco netto. Nei boschi.", ["gambo lanoso"])),
+  O("Bianca liscia, nei prati", "Lamelle che diventano rosate",
+    S("Leucoagaricus leucothites", "Cappello bianco liscio, setoso, lamelle bianche poi rosate, anello semplice. Nei prati, nei giardini e lungo le strade.", ["bianco liscio", "prati"])),
+  O("Cappello con verruche appuntite", "Fungo medio",
+    S("Echinoderma asperum", "Cappello bruno coperto di verruche appuntite che si staccano, lamelle fitte biforcate, anello. Odore sgradevole. Nei parchi e boschi ricchi.", ["verruche appuntite"], "Lepiota aspera")),
+  O("Altro", "Rosa, vinosa, grigia, piccola",
+    STOP("Altre lepiote", "Le lepiote piccole sono tante e si separano solo al microscopio.", "Microscopio: spore e pellicola del cappello.", ["Lepiota", "Leucoagaricus"]))
+]);
+
+SPKEYS["Piccoli funghi esili della lettiera"] = Q("Aspetto", "Com'è e dove cresce?", null, [
+  O("Nei prati, in cerchi", "Gambo tenace che si attorciglia",
+    S("Marasmius oreades", "Cappello nocciola con umbone, lamelle spaziate, gambo tenace che si torce senza spezzarsi. Nei prati, in cerchi.", ["cerchi nei prati", "gambo tenace"])),
+  O("A ciuffi alla base delle querce", "Gambo gonfio a fuso",
+    S("Gymnopus fusipes", "Ciuffi alla base di querce, cappello bruno-rossiccio, gambo duro a forma di fuso con solchi.", ["querce", "gambo a fuso"])),
+  O("Lamelle attaccate a un collare", "Minuscolo, su rametti",
+    S("Marasmius rotula", "Minuscolo, bianco, con cappello a ombrellino e lamelle unite a un collare attorno al gambo nero.", ["collare", "minuscolo"])),
+  O("Cappello liscio crema-arancio", "Gambo liscio, nella lettiera",
+    S("Gymnopus dryophilus", "Cappello liscio color crema o fulvo, lamelle fitte bianche, gambo liscio. Molto comune nella lettiera.", ["liscio", "lettiera"])),
+  O("Altro", "Odore di cavolo, aglio...",
+    STOP("Altri funghetti della lettiera", "Gymnopus, Marasmius e simili si separano con odore, gambo e microscopio.", "Odore (aglio, cavolo), gambo, microscopio.", ["Gymnopus", "Marasmius"]))
+]);
+
+SPKEYS["Mycena e piccoli funghi esili"] = Q("Aspetto", "Com'è e che odore ha?", null, [
+  O("Rosa o lilla, odore di rafano", "Nella lettiera",
+    SG("Micene rosa", "Cappello rosa o lilla, lamelle chiare, odore netto di rafano. Nella lettiera di latifoglie e conifere.", ["rosa-lilla", "odore di rafano"], "Mycena pura, M. rosea")),
+  O("Il gambo spezzato perde un latice rosso", "Su legno",
+    S("Mycena haematopus", "A ciuffi su legno marcio, cappello rosa-bruno, gambo che spezzato perde un latice rosso sangue.", ["latice rosso", "su legno"])),
+  O("Su legno, lamelle rosate unite da venature", "Cappello grigio-bruno",
+    S("Mycena galericulata", "Su ceppi di latifoglie, cappello grigio-bruno a campana, lamelle che diventano rosate e sono unite da venature.", ["su ceppi", "lamelle venate"])),
+  O("Altro", "Grigie, brune, piccolissime",
+    STOP("Altre micene", "Le micene sono centinaia e quasi tutte richiedono il microscopio.", "Microscopio: cistidi e spore.", ["Mycena"]))
+]);
+
+SPKEYS["Cortinarius"] = Q("Aspetto", "Com'è il fungo?", TASTE, [
+  O("Gambo viscido con bande", "Cappello viscido color miele",
+    S("Cortinarius trivialis", "Cappello viscido giallo-bruno, gambo viscido con bande trasversali del velo. Sotto pioppi, salici e querce.", ["gambo viscido a bande"])),
+  O("Cappello olivastro scuro, amarissimo", "Lamelle oliva",
+    S("Cortinarius infractus", "Cappello oliva-bruno con margine arrotolato, lamelle oliva scuro, sapore molto amaro. Sotto latifoglie e conifere.", ["olivastro", "molto amaro"])),
+  O("Grande, bruno con riflesso viola", "Margine con velo bianco",
+    S("Cortinarius praestans", "Fungo grande, cappello bruno-violaceo con residui bianchi al margine, bulbo. Sotto latifoglie su calcare.", ["grande", "riflesso viola"])),
+  O("Fulvo-arancio, fibrilloso, senza viscidità", "Gambo giallastro, sotto querce",
+    S("Cortinarius orellanus", "Cappello fulvo-arancio asciutto e fibrilloso, lamelle spaziate color arancio-ruggine, gambo giallastro. Sotto querce e castagni.", ["fulvo-arancio", "asciutto", "querce"])),
+  O("Altro", "La gran parte dei cortinari",
+    STOP("Altri cortinari", "I cortinari nel Sud sono oltre 70: servono reagenti e microscopio, a volte il DNA.", "Viscidità, colore delle lamelle giovani, reazione alla potassa, microscopio.", ["Cortinarius"]))
+]);
+
+SPKEYS["Inocybe"] = Q("Aspetto", "Com'è il fungo?", null, [
+  O("Bianco, setoso, piccolo", "Lamelle grigio-brune",
+    S("Inocybe geophylla", "Piccola e tutta bianca setosa, con umbone, lamelle grigie poi brune. Odore spermatico. Comune nei boschi.", ["bianco setoso", "piccolo"])),
+  O("Carne e fibre che arrossano", "Cappello biancastro poi rosso",
+    S("Inosperma erubescens", "Cappello conico biancastro che arrossa con l'età e al tocco, lamelle che si macchiano di rosso. Sotto latifoglie in primavera ed estate.", ["arrossa", "primavera"], "Inocybe erubescens")),
+  O("Conico, giallo-bruno, screpolato", "Fibre radiali",
+    S("Pseudosperma rimosum", "Cappello conico giallo-paglia o bruno, fibroso e screpolato radialmente. Comune sotto latifoglie e conifere.", ["screpolato", "conico"], "Inocybe rimosa")),
+  O("Altro", "La gran parte delle inocibi",
+    STOP("Altre inocibi", "Le inocibi del Sud sono oltre 90: si separano solo al microscopio.", "Microscopio: forma delle spore (lisce o angolose) e cistidi.", ["Inocybe", "Inosperma", "Pseudosperma"]))
+]);
+
+SPKEYS["Hebeloma"] = Q("Aspetto", "Com'è il fungo e che odore ha?", null, [
+  O("Grande, odore di rafano", "Gambo con una cavità a stalattite",
+    S("Hebeloma sinapizans", "Grande, cappello crema-bruno, odore forte di rafano. Tagliato, il gambo mostra una cavità con una punta che scende dal cappello.", ["odore di rafano", "cavità nel gambo"])),
+  O("Altro", "Piccolo o medio",
+    STOP("Altri ebelomi", "Gli ebelomi si separano al microscopio. Nel Sud molti vivono con i cisti.", "Albero ospite (cisti, querce, pini), microscopio.", ["Hebeloma"]))
+]);
+
+SPKEYS["Entoloma"] = Q("Aspetto", "Com'è il fungo?", null, [
+  O("Grande, crema-grigio, odore di farina", "Lamelle giallastre poi rosa",
+    S("Entoloma sinuatum", "Grande, cappello grigio-crema, lamelle giallastre che diventano rosa, odore di farina. Sotto latifoglie in autunno.", ["grande", "lamelle giallastre"])),
+  O("In primavera, sotto rosacee", "Cappello grigio-bruno igrofano",
+    S("Entoloma clypeatum", "Cappello grigio-bruno che schiarisce asciugando, lamelle rosa. In primavera sotto rosacee: prugnoli, biancospini, meli.", ["primavera", "rosacee"])),
+  O("Altro", "Piccoli, blu, neri...",
+    STOP("Altri entolomi", "Gli entolomi sono moltissimi e si separano al microscopio.", "Microscopio: spore angolose e pellicola del cappello.", ["Entoloma"]))
+]);
+
+SPKEYS["Ramaria"] = Q("Punte", "Di che colore sono le punte dei rami?", null, [
+  O("Rosa-vinose su rami bianchi", "Tronco grosso",
+    S("Ramaria botrytis", "Grosso corallo bianco con le punte dei rami rosa-vinose, come un cavolfiore. Sotto latifoglie.", ["punte rosa", "tronco grosso"])),
+  O("Altro", "Gialle, arancio, ocra",
+    STOP("Altre ramarie", "Le ramarie gialle e arancio si separano solo con reagenti e microscopio.", "Reagenti e microscopio.", ["Ramaria"]))
+]);
+
+SPKEYS["Clavulina"] = Q("Colore", "Di che colore è?", null, [
+  O("Bianco, punte a cresta", "Rami appiattiti",
+    S("Clavulina coralloides", "Corallo bianco con punte appiattite e frastagliate a cresta. Nei boschi.", ["bianca", "a cresta"], "Clavulina cristata")),
+  O("Grigio cenere", "Rami più spessi",
+    S("Clavulina cinerea", "Corallo grigio cenere con rami spessi e punte ottuse o frastagliate.", ["grigia"]))
+]);
+
+SPKEYS["Clavaria, Clavulinopsis, Clavariadelphus"] = Q("Forma", "Com'è?", null, [
+  O("Grande clava ocra, cima arrotondata", "Fino a 20 cm",
+    S("Clavariadelphus pistillaris", "Grande clava ocra-arancio con la cima arrotondata, carne bianca che imbrunisce. Sotto faggi su calcare.", ["clava grande", "cima tonda"])),
+  O("Clava a cima piatta", "Come troncata",
+    S("Clavariadelphus truncatus", "Clava gialla-arancio allargata in cima e come tagliata di netto. Sotto conifere.", ["cima piatta"])),
+  O("Bianche, sottili, a fascetti", "Fragili",
+    S("Clavaria fragilis", "Ditini bianchi e fragili, a fascetti nei prati e nei boschi.", ["bianche", "a fascetti"])),
+  O("Altro", "Gialle, arancio, piccole",
+    STOP("Altre clavarie", "Le piccole clavarie si separano al microscopio.", "Microscopio.", ["Clavaria", "Clavulinopsis", "Clavariadelphus"]))
+]);
+
+SPKEYS["Grifola e Meripilus"] = Q("Aspetto", "Come sono i cappelli?", null, [
+  O("Tanti piccoli cappelli grigio-bruni", "Alla base di querce",
+    S("Grifola frondosa", "Grande cespo di piccoli cappelli grigio-bruni a ventaglio, con pori bianchi. Alla base di querce e castagni.", ["piccoli cappelli", "querce"])),
+  O("Grandi lobi bruni, carne che annerisce", "Alla base di faggi e altre latifoglie",
+    S("Meripilus giganteus", "Cespo enorme di grandi lobi bruni, pori bianchi che anneriscono al tocco. Alla base di faggi, querce e alberi di città.", ["lobi grandi", "annerisce"]))
+]);
+
+SPKEYS["Hericium"] = Q("Forma", "Com'è?", null, [
+  O("Un blocco unico con aculei lunghi", "Come una barba",
+    S("Hericium erinaceus", "Blocco bianco con aculei lunghi che pendono come una barba. Su ferite di querce e faggi vivi. Raro, da proteggere.", ["a barba", "aculei lunghi"])),
+  O("Ramificato, aculei corti", "Come un corallo",
+    S("Hericium coralloides", "Corallo bianco molto ramificato con aculei corti lungo i rami. Su legno di faggio.", ["ramificato"]))
+]);
+
+SPKEYS["Altri funghi bianchi del legno"] = Q("Aspetto", "Com'è il fungo?", null, [
+  O("Gambo lungo con una radice profonda", "Cappello viscido rugoso",
+    S("Hymenopellis radicata", "Cappello bruno-oliva viscido e rugoso, lamelle bianche spaziate, gambo lungo che continua sotto terra con una radice fino al legno sepolto.", ["radice lunga", "viscido"], "Oudemansiella radicata")),
+  O("Lamelle larghissime e rade", "Cordoni bianchi alla base",
+    S("Megacollybia platyphylla", "Cappello grigio-bruno fibrilloso, lamelle molto larghe e rade, cordoni bianchi di micelio alla base. Su legno marcio.", ["lamelle larghe", "cordoni"])),
+  O("Squame scure, lamelle seghettate", "Su legno di salici e pioppi",
+    S("Lentinus tigrinus", "Cappello biancastro con squamette scure, lamelle decorrenti col filo seghettato. Su salici e pioppi, spesso vicino all'acqua.", ["squame scure", "lamelle seghettate"])),
+  O("Bianco trasparente, molto viscido", "Su tronchi di faggio",
+    S("Mucidula mucida", "Cappello bianco translucido coperto di muco, anello, a gruppi su tronchi di faggio.", ["viscidissimo", "faggio"], "Oudemansiella mucida"))
+]);
+
+SPKEYS["Pholiota"] = Q("Aspetto", "Com'è il cappello e dove cresce?", null, [
+  O("Squame grosse e asciutte", "Ciuffi alla base degli alberi",
+    S("Pholiota squarrosa", "Ciuffi alla base di latifoglie, cappello giallo con squame brune rialzate e asciutte, anche sul gambo.", ["squame asciutte", "ciuffi"])),
+  O("Viscido, giallo-verdastro", "Piccolo, su legno sepolto",
+    S("Pholiota gummosa", "Cappello viscido giallo-verdastro con squamette chiare, a gruppi su legno sepolto e trucioli.", ["viscido", "giallo-verde"])),
+  O("Su terra bruciata", "Dopo gli incendi",
+    S("Pholiota carbonaria", "Cappello bruno-arancio viscido, a gruppi su suolo e legno bruciati, dopo gli incendi.", ["dopo gli incendi"], "Pholiota highlandensis"))
+]);
+
+SPKEYS["Cyclocybe (ex Agrocybe)"] = Q("Substrato", "Dove cresce?", null, [
+  O("A ciuffi su pioppi e altre latifoglie", "Cappello nocciola",
+    S("Cyclocybe aegerita", "A ciuffi su pioppi, salici e altre latifoglie, anche vivi. Cappello nocciola rugoso, anello membranoso, lamelle bruno-tabacco.", ["ciuffi", "pioppi"], "Agrocybe aegerita")),
+  O("A terra, nei prati, in primavera", "Cappello crema",
+    S("Agrocybe praecox", "Cappello crema-ocra, anello fragile, lamelle brune. A terra in prati, parchi e bordi dei boschi, in primavera.", ["primavera", "prati"]))
+]);
+
+SPKEYS["Stereum, Chondrostereum e croste del legno"] = Q("Colore", "Di che colore è la parte di sotto?", null, [
+  O("Giallo-arancio, sopra peloso", "Mensolette in file",
+    S("Stereum hirsutum", "Mensolette coriacee pelose sopra, con la faccia sotto liscia giallo-arancio vivo. In file su legno di latifoglie.", ["sotto arancio", "peloso"])),
+  O("Viola o porpora", "Su legno di latifoglie e alberi da frutto",
+    S("Chondrostereum purpureum", "Croste e mensolette con la faccia sotto viola-porpora. Su legno morto e su alberi da frutto.", ["sotto viola"])),
+  O("Altro", "Croste bianche o brune",
+    STOP("Altre croste del legno", "Le croste del legno si separano quasi sempre al microscopio.", "Microscopio.", ["Stereum"]))
+]);
+
 (function () {
   function walk(n, fn) { if (!n.q) return; n.opts.forEach(function (o) { fn(o); walk(o.to, fn); }); }
   walk(KEY, function (o) { var s = SPKEYS[o.to.name]; if (s && !o.to.q) { s.genus = o.to; o.to = s; } });
 })();
 
-var KSP = {"Amanita fulva": {}, "Amanita caesarea": {"tv": "tavole/t213.webp", "ph": "libri/foto/amanita-caesarea-1.webp"}, "Amanita phalloides": {"tv": "libri/tav/bres/n156.webp"}, "Amanita ovoidea": {"tv": "libri/tav/vitt/n424.webp"}, "Amanita rubescens": {"tv": "libri/tav/vitt/n460.webp"}, "Amanita muscaria": {"tv": "tavole/t213.webp"}, "Amanita pantherina": {"tv": "libri/tav/bres/n164.webp"}, "Amanita excelsa": {"tv": "libri/tav/bres/n170.webp"}, "Amanita franchetii": {"tv": "libri/tav/vitt/n462.webp"}, "Amanita citrina": {"tv": "libri/tav/bres/n160.webp"}, "Amanita gemmata": {}, "Boletus aereus": {"tv": "libri/tav/bres/n338.webp"}, "Boletus reticulatus": {}, "Boletus pinophilus": {}, "Boletus edulis": {"tv": "libri/tav/vitt/n438.webp"}, "Rubroboletus satanas": {"tv": "tavole/t215.webp"}, "Rubroboletus rhodoxanthus": {}, "Imperator rhodopurpureus": {}, "Suillellus luridus": {"tv": "libri/tav/bres/n342.webp"}, "Neoboletus luridiformis": {}, "Suillellus queletii": {}, "Rubroboletus lupinus": {}, "Leccinellum corsicum": {"ph": "libri/foto/leccinellum-corsicum-1.webp"}, "Leccinellum lepidum": {}, "Leccinum duriusculum": {}, "Leccinum aurantiacum": {}, "Suillus luteus": {"tv": "libri/tav/bres/n330.webp"}, "Suillus grevillei": {"tv": "libri/tav/bres/n332.webp"}, "Suillus bellinii": {"tv": "tavole/t209.webp"}, "Suillus granulatus": {"tv": "libri/tav/bres/n334.webp"}, "Suillus collinitus": {}, "Lactarius deliciosus": {"tv": "libri/tav/bres/n288.webp"}, "Lactarius sanguifluus": {"tv": "libri/tav/bres/n290.webp", "ph": "libri/foto/lactarius-sanguifluus-1.webp"}, "Lactarius semisanguifluus": {}, "Lactarius chrysorrheus": {}, "Lactarius zonarius": {"tv": "libri/tav/bres/n284.webp"}, "Lactarius quietus": {}, "Lactarius controversus": {"tv": "libri/tav/vitt/n456.webp"}, "Macrolepiota procera": {"tv": "libri/tav/vitt/n440.webp", "ph": "libri/foto/macrolepiota-procera-1.webp"}, "Macrolepiota mastoidea": {}, "Macrolepiota excoriata": {"tv": "libri/tav/bres/n178.webp"}, "Pleurotus ostreatus": {"tv": "tavole/t109.webp", "ph": "libri/foto/pleurotus-ostreatus-1.webp"}, "Pleurotus pulmonarius": {}, "Pleurotus dryinus": {}, "Pleurotus cornucopiae": {}, "Pleurotus eryngii": {"tv": "tavole/t211.webp"}, "Pleurotus nebrodensis": {"tv": "tavole/t211.webp"}, "Agaricus augustus": {}, "Agaricus arvensis": {"tv": "libri/tav/bres/n258.webp"}, "Agaricus sylvicola": {}, "Agaricus campestris": {"tv": "libri/tav/vitt/n428.webp"}, "Cantharellus cibarius": {"tv": "libri/tav/bres/n320.webp"}, "Cantharellus alborufescens": {}, "Cantharellus pallens": {}, "Cantharellus amethysteus": {}, "Craterellus cornucopioides": {"tv": "libri/tav/bres/n326.webp"}, "Craterellus lutescens": {"tv": "libri/tav/bres/n322.webp"}, "Craterellus tubaeformis": {}, "Craterellus undulatus": {}, "Hydnum repandum": {"tv": "libri/tav/bres/n360.webp"}, "Hydnum rufescens": {}, "Hydnum albidum": {}, "Clitocybe odora": {}, "Clitocybe nebularis": {"tv": "libri/tav/bres/n220.webp"}, "Infundibulicybe geotropa": {"tv": "libri/tav/bres/n232.webp", "ph": "libri/foto/infundibulicybe-geotropa-1.webp"}, "Infundibulicybe gibba": {}, "Clitocybe rivulosa": {}};
+var KSP = {"Amanita fulva": {}, "Amanita caesarea": {"tv": "tavole/t213.webp", "ph": "libri/foto/amanita-caesarea-1.webp"}, "Amanita phalloides": {"tv": "libri/tav/bres/n156.webp"}, "Amanita ovoidea": {"tv": "libri/tav/vitt/n424.webp"}, "Amanita rubescens": {"tv": "libri/tav/vitt/n460.webp"}, "Amanita muscaria": {"tv": "tavole/t213.webp"}, "Amanita pantherina": {"tv": "libri/tav/bres/n164.webp"}, "Amanita excelsa": {"tv": "libri/tav/bres/n170.webp"}, "Amanita franchetii": {"tv": "libri/tav/vitt/n462.webp"}, "Amanita citrina": {"tv": "libri/tav/bres/n160.webp"}, "Amanita gemmata": {}, "Boletus aereus": {"tv": "libri/tav/bres/n338.webp"}, "Boletus reticulatus": {}, "Boletus pinophilus": {}, "Boletus edulis": {"tv": "libri/tav/vitt/n438.webp"}, "Rubroboletus satanas": {"tv": "tavole/t215.webp"}, "Rubroboletus rhodoxanthus": {}, "Imperator rhodopurpureus": {}, "Suillellus luridus": {"tv": "libri/tav/bres/n342.webp"}, "Neoboletus luridiformis": {}, "Suillellus queletii": {}, "Rubroboletus lupinus": {}, "Leccinellum corsicum": {"ph": "libri/foto/leccinellum-corsicum-1.webp"}, "Leccinellum lepidum": {}, "Leccinum duriusculum": {}, "Leccinum aurantiacum": {}, "Suillus luteus": {"tv": "libri/tav/bres/n330.webp"}, "Suillus grevillei": {"tv": "libri/tav/bres/n332.webp"}, "Suillus bellinii": {"tv": "tavole/t209.webp"}, "Suillus granulatus": {"tv": "libri/tav/bres/n334.webp"}, "Suillus collinitus": {}, "Lactarius deliciosus": {"tv": "libri/tav/bres/n288.webp"}, "Lactarius sanguifluus": {"tv": "libri/tav/bres/n290.webp", "ph": "libri/foto/lactarius-sanguifluus-1.webp"}, "Lactarius semisanguifluus": {}, "Lactarius chrysorrheus": {}, "Lactarius zonarius": {"tv": "libri/tav/bres/n284.webp"}, "Lactarius quietus": {}, "Lactarius controversus": {"tv": "libri/tav/vitt/n456.webp"}, "Macrolepiota procera": {"tv": "libri/tav/vitt/n440.webp", "ph": "libri/foto/macrolepiota-procera-1.webp"}, "Macrolepiota mastoidea": {}, "Macrolepiota excoriata": {"tv": "libri/tav/bres/n178.webp"}, "Pleurotus ostreatus": {"tv": "tavole/t109.webp", "ph": "libri/foto/pleurotus-ostreatus-1.webp"}, "Pleurotus pulmonarius": {}, "Pleurotus dryinus": {}, "Pleurotus cornucopiae": {}, "Pleurotus eryngii": {"tv": "tavole/t211.webp"}, "Pleurotus nebrodensis": {"tv": "tavole/t211.webp"}, "Agaricus augustus": {}, "Agaricus arvensis": {"tv": "libri/tav/bres/n258.webp"}, "Agaricus sylvicola": {}, "Agaricus campestris": {"tv": "libri/tav/vitt/n428.webp"}, "Cantharellus cibarius": {"tv": "libri/tav/bres/n320.webp"}, "Cantharellus alborufescens": {}, "Cantharellus pallens": {}, "Cantharellus amethysteus": {}, "Craterellus cornucopioides": {"tv": "libri/tav/bres/n326.webp"}, "Craterellus lutescens": {"tv": "libri/tav/bres/n322.webp"}, "Craterellus tubaeformis": {}, "Craterellus undulatus": {}, "Hydnum repandum": {"tv": "libri/tav/bres/n360.webp"}, "Hydnum rufescens": {}, "Hydnum albidum": {}, "Clitocybe odora": {}, "Clitocybe nebularis": {"tv": "libri/tav/bres/n220.webp"}, "Infundibulicybe geotropa": {"tv": "libri/tav/bres/n232.webp", "ph": "libri/foto/infundibulicybe-geotropa-1.webp"}, "Infundibulicybe gibba": {}, "Clitocybe rivulosa": {}, "Russula chloroides": {}, "Russula delica": {"tv": "libri/tav/bres/n296.webp"}, "Russula virescens": {"tv": "libri/tav/vitt/n448.webp"}, "Russula cyanoxantha": {"tv": "libri/tav/bres/n302.webp"}, "Russula foetens": {}, "Russula aurea": {"tv": "libri/tav/bres/n316.webp"}, "Russula risigallina": {"tv": "libri/tav/bres/n318.webp"}, "Russula sanguinea": {}, "Russula vesca": {"tv": "libri/tav/bres/n304.webp"}, "Russula olivacea": {}, "Tricholoma sulphureum": {"tv": "libri/tav/bres/n206.webp"}, "Tricholoma saponaceum": {"tv": "libri/tav/bres/n216.webp"}, "Tricholoma populinum": {}, "Tricholoma aurantium": {"tv": "libri/tav/bres/n186.webp"}, "Tricholoma caligatum": {"tv": "libri/tav/bres/n184.webp"}, "Tricholoma equestre": {}, "Tricholoma acerbum": {"tv": "libri/tav/bres/n192.webp"}, "Lepista nuda": {"tv": "libri/tav/bres/n214.webp"}, "Hygrocybe conica": {}, "Gliophorus psittacinus": {}, "Cuphophyllus pratensis": {"tv": "libri/tav/bres/n278.webp"}, "Cuphophyllus virgineus": {"tv": "libri/tav/vitt/n450.webp"}, "Hygrophorus cossus": {}, "Hygrophorus eburneus": {}, "Hygrophorus chrysodon": {}, "Hygrophorus russula": {"tv": "libri/tav/bres/n196.webp"}, "Hygrophorus latitabundus": {}, "Hygrophorus marzuolus": {}, "Armillaria mellea": {"tv": "libri/tav/bres/n190.webp"}, "Armillaria gallica": {}, "Armillaria ostoyae": {}, "Desarmillaria tabescens": {}, "Coprinus comatus": {"ph": "libri/foto/coprinus-comatus-1.webp"}, "Coprinopsis picacea": {}, "Coprinopsis atramentaria": {"tv": "libri/tav/bres/n272.webp"}, "Coprinellus micaceus": {}, "Coprinellus disseminatus": {}, "Helvella crispa": {"tv": "libri/tav/bres/n386.webp"}, "Helvella lacunosa": {"ph": "libri/foto/helvella-lacunosa-1.webp"}, "Helvella acetabulum": {"tv": "libri/tav/vitt/n446.webp"}, "Ganoderma lucidum": {"ph": "libri/foto/ganoderma-lucidum-1.webp"}, "Ganoderma resinaceum": {}, "Ganoderma applanatum": {}, "Ganoderma adspersum": {}, "Fomes fomentarius": {}, "Inonotus hispidus": {}, "Fuscoporia torulosa": {}, "Fomitiporia rosmarini": {}, "Trametes versicolor": {}, "Trametes hirsuta": {}, "Trametes gibbosa": {}, "Trametes trogii": {}, "Lycoperdon perlatum": {}, "Lycoperdon echinatum": {}, "Apioperdon pyriforme": {}, "Lycoperdon pratense": {}, "Scleroderma verrucosum": {}, "Scleroderma polyrhizum": {}, "Scleroderma citrinum": {}, "Scleroderma meridionale": {}, "Pisolithus arhizus": {}, "Astraeus hygrometricus": {}, "Myriostoma coliforme": {}, "Geastrum triplex": {}, "Geastrum fimbriatum": {}, "Hortiboletus rubellus": {}, "Xerocomus subtomentosus": {}, "Rheubarbariboletus armeniacus": {}, "Hypholoma fasciculare": {"tv": "libri/tav/bres/n270.webp"}, "Hypholoma lateritium": {}, "Gymnopilus junonius": {}, "Gymnopilus penetrans": {}, "Phallus impudicus": {}, "Phallus hadriani": {}, "Auricularia auricula-judae": {}, "Auricularia mesenterica": {}, "Stropharia aeruginosa": {}, "Pluteus cervinus": {}, "Pluteus romellii": {}, "Pluteus salicinus": {}, "Volvariella bombycina": {}, "Volvopluteus gloiocephalus": {"tv": "libri/tav/bres/n242.webp"}, "Tuber magnatum": {}, "Tuber borchii": {}, "Tuber melanosporum": {"tv": "libri/tav/bres/n392.webp"}, "Tuber aestivum": {}, "Tuber brumale": {}, "Tuber mesentericum": {}, "Lepiota cristata": {}, "Lepiota clypeolaria": {}, "Leucoagaricus leucothites": {}, "Echinoderma asperum": {}, "Marasmius oreades": {"tv": "libri/tav/bres/n328.webp"}, "Gymnopus fusipes": {}, "Marasmius rotula": {}, "Gymnopus dryophilus": {"tv": "libri/tav/bres/n236.webp"}, "Mycena haematopus": {}, "Mycena galericulata": {}, "Cortinarius trivialis": {}, "Cortinarius infractus": {}, "Cortinarius praestans": {}, "Cortinarius orellanus": {}, "Inocybe geophylla": {}, "Inosperma erubescens": {}, "Pseudosperma rimosum": {}, "Hebeloma sinapizans": {}, "Entoloma sinuatum": {}, "Entoloma clypeatum": {"tv": "libri/tav/bres/n246.webp"}, "Ramaria botrytis": {"tv": "libri/tav/bres/n366.webp"}, "Clavulina coralloides": {}, "Clavulina cinerea": {}, "Clavariadelphus pistillaris": {}, "Clavariadelphus truncatus": {}, "Clavaria fragilis": {}, "Grifola frondosa": {"tv": "libri/tav/bres/n354.webp"}, "Meripilus giganteus": {}, "Hericium erinaceus": {"tv": "libri/tav/vitt/n442.webp"}, "Hericium coralloides": {}, "Hymenopellis radicata": {}, "Megacollybia platyphylla": {}, "Lentinus tigrinus": {}, "Mucidula mucida": {}, "Pholiota squarrosa": {}, "Pholiota gummosa": {}, "Pholiota carbonaria": {}, "Cyclocybe aegerita": {"tv": "libri/tav/bres/n254.webp"}, "Agrocybe praecox": {"tv": "libri/tav/bres/n252.webp"}, "Stereum hirsutum": {"tv": "tavole/t215.webp"}, "Chondrostereum purpureum": {}};
 
 /* ---------- Indicizzazione ---------- */
 var OPTS = {}, NODES = {}, LEAVES = [], uid = 0;
@@ -1519,6 +2056,7 @@ function spMedia(n) {
 function leafHTML(n, compact) {
   var cls = ["card", "res"];
   if (n.none) cls.push("none");
+  if (n.stop) cls.push("stop");
   if (hitNodes.has(n.id)) cls.push("hit");
   if (compact) cls.push("compact");
   var feats = n.feats.length ? '<ul class="feats">' + n.feats.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" : "";
@@ -1527,7 +2065,7 @@ function leafHTML(n, compact) {
   return '<div class="' + cls.join(" ") + '"' + attrs + ">" +
     '<div class="card-top"><span class="rank">' + esc(n.rank) + "</span></div>" +
     '<h3 class="' + (n.rank === "Genere" || n.rank === "Specie" ? "latin" : "") + '">' + esc(n.name) + "</h3>" +
-    '<p class="desc">' + esc(n.desc) + "</p>" + (n.sp ? (compact ? "" : spMedia(n)) : leafImgHTML(n, compact)) + feats + eg + (n.syn ? '<p class="eg"><span>Nome antico</span> <i>' + esc(n.syn) + "</i></p>" : "") + "</div>";
+    '<p class="desc">' + esc(n.desc) + "</p>" + (n.sp ? (compact ? "" : spMedia(n)) : leafImgHTML(n, compact)) + feats + eg + (n.syn ? '<p class="eg"><span>Nome antico</span> <i>' + esc(n.syn) + "</i></p>" : "") + (n.stop && !compact ? '<p class="ks-stop"><b>Per andare avanti serve:</b> ' + esc(n.stop) + '</p><p class="eg">Le specie possibili sono nel riquadro «Specie che restano».</p>' : "") + "</div>";
 }
 function nodeHTML(n, depth, parentMulti) {
   if (!n.q) return '<div class="branch">' + leafHTML(n, parentMulti && !state.detail.has(n.id)) + "</div>";
@@ -1567,6 +2105,7 @@ function renderCrumbs() {
 function render(scrollToOpt) {
   $("#tree").innerHTML = nodeHTML(KEY, 0, false);
   renderCrumbs();
+  if (window.renderCand) renderCand();
   var hasOpen = state.exp.size > 0 || state.multiAll;
   $("#back").disabled = !hasOpen && !state.q;
   $("#openall").textContent = state.multiAll ? "Chiudi tutto" : "Apri tutta la chiave";
@@ -1577,6 +2116,89 @@ function render(scrollToOpt) {
   }
 }
 
+
+
+/* ===== Specie che restano, fermate e confronto con le simili ===== */
+(function () {
+  var showAll = false, lastEnd = null, ARCH = null, BYG = null;
+  function under(n, out) { if (!n.q) { if (!n.none) out.push(n); return out; } n.opts.forEach(function (o) { if (!o.ghost) under(o.to, out); }); return out; }
+  function genOf(l) {
+    if (l.gen) return l.gen;
+    var w = (l.name + " " + (l.eg || "")).match(/\b[A-Z][a-z]{3,}\b/g) || [];
+    return w.filter(function (g, i) { return w.indexOf(g) === i && (!BYG || BYG[g]); });
+  }
+  function archFor(gs) { var o = []; gs.forEach(function (g) { (BYG[g] || []).forEach(function (e) { o.push(e); }); }); o.sort(function (a, b) { return b.t - a.t; }); return o; }
+  function optOf(n) { return n.parentOpt ? n.parentOpt.l : ""; }
+  function thumb(name) { var m = window.KSP && KSP[name]; var src = m && (m.ph || m.tv); return src ? '<img loading="lazy" src="' + src + '" alt="">' : '<span class="ci-ph" aria-hidden="true">●</span>'; }
+  function item(l) { return '<li><button type="button" class="cand-it" data-cgo="' + l.id + '">' + thumb(l.name) + '<span><b>' + esc(l.name) + '</b><small>' + esc(l.rank !== "Specie" ? l.rank : (l.feats || []).slice(0, 2).join(" · ")) + "</small></span></button></li>"; }
+  function archItem(e) { return '<li><button type="button" class="cand-it" data-cspk="' + esc(e.n) + '">' + (e.tv || e.ph ? '<img loading="lazy" src="' + (e.ph ? e.ph[0] : (window.KSP && KSP[e.n] && KSP[e.n].tv) || "") + '" alt="">' : '<span class="ci-ph" aria-hidden="true">●</span>') + '<span><b>' + esc(e.n) + '</b><small>' + (e.t || 0) + (e.t === 1 ? " segnalazione" : " segnalazioni") + " nel Sud</small></span></button></li>"; }
+  window.renderCand = function () {
+    var p = pathInfo(), end = p.out.length ? p.end : KEY, body = $("#candBody"), head = $("#candHead");
+    if (end !== lastEnd) { showAll = false; lastEnd = end; }
+    var L = under(end, []), sps = L.filter(function (l) { return l.sp && !l.stop && l.rank === "Specie"; }), grp = L.filter(function (l) { return l.sp && !l.stop && l.rank !== "Specie"; }), stops = L.filter(function (l) { return l.stop; }), gens = L.filter(function (l) { return !l.sp; });
+    var h = "";
+    if (!end.q) {
+      var gs = genOf(end);
+      head.textContent = end.sp && !end.stop ? "Sei arrivato alla specie" : "Specie possibili";
+      if (end.sp && !end.stop) h += '<ul>' + item(end) + '</ul><p class="cand-sub">Apri la scheda per vedere le specie simili e come distinguerla.</p>';
+      else if (!ARCH) h += '<p class="cand-sub">Carico le specie del Sud…</p>';
+      else {
+        var A = archFor(gs);
+        h += '<div class="cand-stop"><b>' + (end.stop ? "Qui la chiave si ferma" : "La chiave arriva al " + (end.rank === "Genere" ? "genere" : "gruppo")) + '</b><span>' + esc(end.stop || "Per la specie servono altri caratteri, spesso il microscopio.") + "</span></div>";
+        head.textContent = A.length ? A.length + " specie possibili nel Sud" : "Specie possibili";
+        if (A.length) h += '<p class="cand-sub">Segnalate nel Sud Italia, dalle più registrate. Toccane una per aprire la scheda.</p><ul>' + A.slice(0, showAll ? 400 : 30).map(archItem).join("") + "</ul>" + (A.length > 30 && !showAll ? '<button type="button" class="cand-more" data-cmore>Mostra tutte (' + A.length + ")</button>" : "");
+        else h += '<p class="cand-sub">Nessuna specie di questo gruppo nel nostro archivio del Sud.</p>';
+      }
+    } else {
+      var n = sps.length;
+      head.textContent = end === KEY ? n + " specie nella chiave" : (n ? "Restano " + n + (n === 1 ? " specie" : " specie") : "Restano " + (gens.length + grp.length + stops.length) + " gruppi");
+      h += '<p class="cand-sub">' + (end === KEY ? "Rispondi alle domande: l'elenco si accorcia a ogni risposta." : "Ancora possibili con le risposte che hai dato.") + "</p>";
+      if (sps.length) h += "<h4>Specie</h4><ul>" + sps.slice(0, showAll ? 999 : 25).map(item).join("") + "</ul>" + (sps.length > 25 && !showAll ? '<button type="button" class="cand-more" data-cmore>Mostra tutte (' + sps.length + ")</button>" : "");
+      var others = grp.concat(stops, gens);
+      if (others.length) h += "<h4>" + (sps.length ? "E inoltre generi e gruppi" : "Generi e gruppi") + '</h4><div class="cand-gen">' + others.slice(0, 80).map(function (l) { return '<button type="button" data-cgo="' + l.id + '">' + esc(l.name) + "</button>"; }).join("") + "</div>";
+    }
+    body.innerHTML = h;
+  };
+  function goTo(id) {
+    var n = NODES[id]; if (!n) return;
+    commitSearch(); state.exp.clear(); state.multi.clear(); state.multiAll = false;
+    var o = n.parentOpt, last = o; while (o) { state.exp.add(o.id); o = o.parent.parentOpt; }
+    render(last ? last.id : null);
+    if (window.matchMedia("(max-width: 900px)").matches) $("#cand").classList.remove("open");
+  }
+  window.keyGo = function (name) {
+    var l = LEAVES.filter(function (x) { return x.name === name; })[0];
+    if (!l) { var g = name.split(" ")[0]; Object.keys(NODES).forEach(function (k) { var q = NODES[k]; if (!l && q.genus && genOf(q.genus).indexOf(g) > -1) l = q; }); if (!l) l = LEAVES.filter(function (x) { return !x.sp && genOf(x).indexOf(g) > -1; })[0]; }
+    if (!l) return false;
+    setTab("chiave", true); goTo(l.id); return true;
+  };
+  window.keyInfo = function (name) {
+    var l = LEAVES.filter(function (x) { return x.sp && x.name === name; })[0], g = name.split(" ")[0], out = { path: [], sims: [], at: null };
+    if (!l) {
+      var hit = null;
+      Object.keys(NODES).forEach(function (k) { var q = NODES[k]; if (!hit && q.genus && genOf(q.genus).indexOf(g) > -1) hit = q.genus; });
+      if (!hit) hit = LEAVES.filter(function (x) { return (!x.sp || x.stop) && genOf(x).indexOf(g) > -1; })[0];
+      if (hit) out.at = hit.name; return out.at ? out : null;
+    }
+    var o = l.parentOpt;
+    while (o) { out.path.unshift(o.l); var q = o.parent;
+      if (out.sims.length < 8) q.opts.forEach(function (x) { if (x === o || x.ghost) return; under(x.to, []).forEach(function (s) { if (s.sp && !s.stop && out.sims.length < 8) out.sims.push({ name: s.name, q: q.text, mine: o.l, theirs: x.l, id: s.id, rank: s.rank }); }); });
+      if (q.genus) { out.at = q.genus.name; break; }
+      o = q.parentOpt; }
+    out.id = l.id; return out;
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cgo]"); if (b) { goTo(b.getAttribute("data-cgo")); return; }
+    if ((b = e.target.closest("[data-cspk]"))) { if (window.spOpen) spOpen(b.getAttribute("data-cspk"), b); return; }
+    if ((b = e.target.closest("[data-cmore]"))) { showAll = true; renderCand(); return; }
+    if ((b = e.target.closest("#candBar"))) { var c = $("#cand"); c.classList.toggle("open"); b.setAttribute("aria-expanded", c.classList.contains("open")); }
+  });
+  function loadArch() { if (ARCH || !window.spAll) return; spAll(function (S) { ARCH = S; BYG = {}; S.forEach(function (e) { var g = e.n.split(" ")[0]; (BYG[g] = BYG[g] || []).push(e); }); renderCand(); }); }
+  $("#tab-chiave").addEventListener("click", loadArch);
+  if (location.hash === "#chiave") setTimeout(loadArch, 0);
+  window.addEventListener("hashchange", function () { if (location.hash === "#chiave") loadArch(); });
+  setTimeout(function () { renderCand(); }, 0);
+})();
 
 /* ===== Zoom del diagramma ===== */
 (function () {
@@ -3327,8 +3949,17 @@ function pubFull(p, lang) {
     return '<h2><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></h2><p class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · famiglia " + esc(e.f) : "") + (e.o ? " · ordine " + esc(e.o) : "") + "</p>" +
       '<div class="spd-media">' + figs + ph + "</div>" + (badges(e) ? '<p class="sp-bds">' + badges(e) + "</p>" : "") +
       (e.t ? '<h3>Dove è stata segnalata</h3><p class="sp-rgs">' + regs(e, true) + '</p><p class="sp-old">' + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") + " nel Sud Italia su GBIF. Il numero dice quanto è stata registrata, non quanto è comune.</p>" : "") +
+      keySec(e) +
       (old ? "<h3>Nomi antichi</h3><ul class=\"spd-old\">" + old + "</ul>" : "") + (e.x ? '<p class="sp-old">' + esc(e.x) + "</p>" : "") +
       '<div class="bk-act"><button class="btn" type="button" data-sp-libri="' + esc(e.n) + '">Cerca nei libri</button>' + (e.k ? '<a class="btn" href="https://www.gbif.org/species/' + e.k + '" target="_blank" rel="noopener">Mappa delle segnalazioni</a>' : "") + "</div>";
+  }
+  function keySec(e) {
+    var K = window.keyInfo && keyInfo(e.n); if (!K) return "";
+    var h = "<h3>Nella chiave</h3>";
+    if (!K.path.length) return h + '<p class="sp-old">La chiave arriva fino a «' + esc(K.at) + '». Per separare questa specie dalle altre servono altri caratteri, spesso il microscopio.</p><div class="bk-act"><button class="btn" type="button" data-key-go="' + esc(e.n) + '">Vai nella chiave</button></div>';
+    h += '<div class="spd-key"><div class="spd-path">' + K.path.map(function (p) { return "<span>" + esc(p) + "</span>"; }).join("<i>›</i>") + '</div><div class="bk-act"><button class="btn" type="button" data-key-go="' + esc(e.n) + '">Seguila nella chiave</button></div></div>';
+    if (K.sims.length) h += "<h3>Come distinguerla dalle simili</h3>" + '<table class="spd-sim"><thead><tr><th>Simile</th><th>Questa specie</th><th>La simile</th></tr></thead><tbody>' + K.sims.map(function (x) { return '<tr><td><button type="button" data-spk-sim="' + esc(x.name) + '">' + esc(x.name) + "</button>" + (x.rank !== "Specie" ? " <small>(gruppo)</small>" : "") + "</td><td>" + esc(x.mine) + "</td><td>" + esc(x.theirs) + "</td></tr>"; }).join("") + "</tbody></table>";
+    return h;
   }
   var BYN = null, lastF = null;
   function open(name, from) {
@@ -3345,9 +3976,12 @@ function pubFull(p, lang) {
     if (e.target === $("#spd")) { close(); return; }
     var b = e.target.closest("[data-spd-book]"); if (b) { var t = b.getAttribute("data-spd-book"), L = libByK(t.split(":")[0]); close(); openReader(L.id, L.n, L.title, tvLeaf(t)); return; }
     if (e.target.closest("[data-sp-libri]")) close();
+    if ((b = e.target.closest("[data-key-go]"))) { var nm = b.getAttribute("data-key-go"); close(); if (window.keyGo) keyGo(nm); window.scrollTo(0, 0); return; }
+    if ((b = e.target.closest("[data-spk-sim]"))) { var nm2 = b.getAttribute("data-spk-sim"); if (BYN[nm2]) open(nm2, lastF); else { close(); if (window.keyGo) keyGo(nm2); } return; }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#spd").hidden) close(); });
   window.spOpen = open;
+  window.spAll = function (cb) { load(function () { cb(SP); }); };
   window.spHas = function (name, cb) { load(function () { if (!BYN) { BYN = {}; SP.forEach(function (e) { BYN[e.n] = e; }); } cb(BYN[name] || null); }); };
   function render() {
     if (!SP) return;
