@@ -754,7 +754,6 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
         <label class="iz-sel"><span>Ordine</span><select id="spSort"><option value="seg">Più segnalate</option><option value="az">Dalla A alla Z</option></select></label>
       </div>
       <div class="sp-checks">
-        <label><input type="checkbox" id="spFmo"> Alla mostra 2026</label>
         <label><input type="checkbox" id="spFtv"> Con tavola storica</label>
         <label><input type="checkbox" id="spFph"> Con foto dal vero</label>
       </div>
@@ -4082,7 +4081,7 @@ function pubFull(p, lang) {
   var T = 0; $("#spQ").addEventListener("input", function () { shown = 60; clearTimeout(T); T = setTimeout(go, 150); });
   $("#spReg").addEventListener("change", function () { cur.r = this.value; shown = 60; go(); });
   $("#spSort").addEventListener("change", function () { cur.sort = this.value; go(); });
-  ["mo", "tv", "ph"].forEach(function (k) { $("#spF" + k).addEventListener("change", function () { cur[k] = this.checked; shown = 60; go(); }); });
+  ["tv", "ph"].forEach(function (k) { $("#spF" + k).addEventListener("change", function () { cur[k] = this.checked; shown = 60; go(); }); });
   $("#spMore").addEventListener("click", function () { shown += 120; render(); });
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-sg]"); if (b) { cur.g = b.getAttribute("data-sg"); shown = 60; render(); return; }
