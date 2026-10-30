@@ -2600,8 +2600,35 @@ ICONS["forma:tartufo"] = svgI(120, 100, P("M2 2L118 2L118 22C90 28 30 18 2 24Z",
 ICONS["forma:stella"] = svgI(120, 100, P("M60 42L72 12L80 40L108 30L92 54L114 68L84 68L90 94L66 74L60 98L54 74L30 94L36 68L6 68L28 54L12 30L40 40L48 12Z", "cap") +
   P("M60 38C72 38 80 48 80 58C80 70 70 76 60 76C50 76 40 70 40 58C40 48 48 38 60 38Z", "cap") + P("M60 38C60 36 60 34 60 34", "ln") + P("M50 50C54 46 64 46 70 50", "tn"));
 
+/* ---------- Imenio rifatto nello stile delle sezioni (tratto nero e puntinato) ---------- */
+(function () {
+  var stem = P("M54 62L54 100M66 62L66 100", "ln");
+  var arc = P("M4 54C8 28 32 8 60 8C88 8 112 28 116 54", "ln");
+  var zone = "M6 53C30 44 90 44 114 53C102 64 84 70 67 71L53 71C36 70 18 64 6 53Z";
+  function yUp(x) { var t = (x - 6) / 108; return 53 - 36 * t * (1 - t) * 1; }
+  function yLo(x) { var t = (x - 6) / 108; return 53 + 70 * t * (1 - t); }
+  var lines = "";
+  for (var x = 11; x <= 109; x += 4.2) { if (x > 51 && x < 69) continue; lines += "M" + x.toFixed(1) + " " + (yUp(x) + 1).toFixed(1) + "L" + x.toFixed(1) + " " + (yLo(x) - 1).toFixed(1); }
+  ICONS["him:lamelle"] = svgI(120, 104, P(zone, "gi") + P(lines, "tn2") + P(zone, "ln") + P("M54 70L54 100M66 70L66 100", "ln") + arc);
+  var tz = "M6 53C30 44 90 44 114 53L112 60C96 68 80 70 67 71L53 71C40 70 24 68 8 60Z";
+  var pores = "";
+  for (var px = 14; px <= 106; px += 8) { if (px > 48 && px < 72) continue; var t = (px - 6) / 108, py = 60 + 40 * t * (1 - t) * 0.42; pores += '<ellipse class="tn2" cx="' + px + '" cy="' + (py + 1).toFixed(1) + '" rx="2.6" ry="1.6"/>'; }
+  ICONS["him:tubuli"] = svgI(120, 104, P(tz, "fl") + P(tz, "tub") + P(tz, "ln") + pores + P("M54 70L54 100M66 70L66 100", "ln") + arc);
+  var spikes = "";
+  for (var sx = 10; sx <= 108; sx += 7) { if (sx > 46 && sx < 70) continue; var t2 = (sx - 6) / 108, top = 53 - 36 * t2 * (1 - t2) + 2, L = 10 + 8 * Math.sin(Math.PI * t2); spikes += "M" + (sx - 2.6).toFixed(1) + " " + top.toFixed(1) + "L" + sx.toFixed(1) + " " + (top + L).toFixed(1) + "L" + (sx + 2.6).toFixed(1) + " " + top.toFixed(1) + "Z"; }
+  ICONS["him:aculei"] = svgI(120, 104, P(spikes, "gi") + P(spikes, "ln") + P("M6 53C30 44 90 44 114 53", "ln") + P("M54 56L54 100M66 56L66 100", "ln") + arc);
+  var funnel = "M8 26C30 18 90 18 112 26C108 40 86 54 70 68L70 100L50 100L50 68C34 54 12 40 8 26Z";
+  var ridges = "M14 31C26 42 40 54 52 70M24 32L33 41M34 33C42 44 48 54 54 68M44 33L50 46M54 33C56 46 57 58 57 74M60 33L60 76M66 33C64 46 63 58 63 74M76 33L70 46M86 33C78 44 72 54 66 68M96 32L87 41M106 31C94 42 80 54 68 70M55 78L55 98M60 78L60 98M65 78L65 98";
+  ICONS["him:pieghe"] = svgI(120, 104, P(funnel, "fl") + P(ridges, "tn2") + P(funnel, "ln") + P("M8 26C30 34 90 34 112 26", "ln"));
+  var trumpet = "M14 18C34 12 86 12 106 18C104 36 82 52 68 66L66 100L54 100L52 66C38 52 16 36 14 18Z";
+  ICONS["him:liscio"] = svgI(120, 104, P(trumpet, "gi") + P(trumpet, "ln") + P("M14 18C34 26 86 26 106 18", "ln") + P("M30 30C44 44 52 56 56 70", "tn2"));
+  var ball = "M60 6C86 6 106 26 106 50C106 72 90 84 74 86L70 98L50 98L46 86C30 84 14 72 14 50C14 26 34 6 60 6Z";
+  var gleba = "M60 14C82 14 98 30 98 50C98 68 84 78 60 78C36 78 22 68 22 50C22 30 38 14 60 14Z";
+  ICONS["him:gleba"] = svgI(120, 104, P(ball, "fl") + P(gleba, "gi") + P(gleba, "tn2") + P(ball, "ln") + P("M50 86L70 86", "tn2"));
+})();
 
-var PIMG = {"him:lamelle": ["Bresadola 1906", "Agaricus campestris"], "him:tubuli": ["Bresadola 1906", "Suillus granulatus"], "him:aculei": ["Bresadola 1906", "Hydnum repandum"], "him:pieghe": ["Bresadola 1906", "Cantharellus cibarius"], "him:liscio": ["Bresadola 1906", "Craterellus cornucopioides"], "him:gleba": ["Bresadola 1906", "Lycoperdon utriforme"], "vol:libera": ["Bresadola 1906", "Amanita caesarea"], "base:no": ["Bresadola 1906", "Russula cyanoxantha"], "ann:ampio": ["Bresadola 1906", "Amanita phalloides"], "ann:mobile": ["Bresadola 1906", "Macrolepiota procera"], "ann:nessuno": ["Bresadola 1906", "Russula cyanoxantha"], "forma:alveolato": ["Bresadola 1906", "Morchella esculenta"], "forma:cervello": ["Bresadola 1906", "Gyromitra esculenta"], "forma:coppa": ["Vittadini 1835", "Helvella acetabulum"], "forma:corallo": ["Bresadola 1906", "Ramaria botrytis"], "forma:sella": ["Bresadola 1906", "Helvella crispa"], "forma:tartufo": ["Bresadola 1906", "Tuber melanosporum"], "gam:laterale": ["Inzenga 1865", "Pleurotus ostreatus"], "gam:reticolato": ["Bresadola 1906", "Suillellus luridus"], "cap:convesso": ["Bresadola 1906", "Boletus edulis"], "cap:imbutiforme": ["Bresadola 1906", "Infundibulicybe geotropa"]};
+
+var PIMG = {};
 var DSTYLE = "tratto";
 function icon(k, mode) {
   if (k && PIMG[k]) { var m = "tratto"; return '<img class="ic ic-img" loading="lazy" src="caratteri/' + k.replace(":", "-") + "-" + m + '.webp" alt="" title="Tavola di ' + PIMG[k][0] + ": " + PIMG[k][1] + '">'; }
