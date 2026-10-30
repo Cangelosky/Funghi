@@ -1,6 +1,6 @@
 {
 "Leccinellum corsicum": [
-"libri/foto/leccinellum-corsicum-1.webp"
+"libri/foto/leccinellum-corsicum-1c.webp"
 ],
 "Pleurotus ostreatus": [
 "libri/foto/pleurotus-ostreatus-1.webp",
@@ -19,13 +19,13 @@
 "libri/foto/lactarius-sanguifluus-1.webp"
 ],
 "Helvella lacunosa": [
-"libri/foto/helvella-lacunosa-1.webp"
+"libri/foto/helvella-lacunosa-1c.webp"
 ],
 "Fistulina hepatica": [
 "libri/foto/fistulina-hepatica-1.webp"
 ],
 "Ganoderma lucidum": [
-"libri/foto/ganoderma-lucidum-1.webp"
+"libri/foto/ganoderma-lucidum-1c.webp"
 ],
 "Amanita caesarea": [
 "libri/foto/amanita-caesarea-1.webp"
@@ -35,7 +35,8 @@
 "libri/foto/tricholoma-terreum-2.webp"
 ],
 "Infundibulicybe geotropa": [
-"libri/foto/infundibulicybe-geotropa-1.webp"
+"libri/foto/infundibulicybe-geotropa-1.webp",
+"libri/foto/infundibulicybe-geotropa-2c.webp"
 ],
 "Coprinus comatus": [
 "libri/foto/coprinus-comatus-1.webp"
@@ -64,13 +65,13 @@
 "libri/foto/armillaria-mellea-1.webp"
 ],
 "Gyromitra esculenta": [
-"libri/foto/gyromitra-esculenta-1.webp"
+"libri/foto/gyromitra-esculenta-1c.webp"
 ],
 "Lepista nuda": [
-"libri/foto/lepista-nuda-1.webp"
+"libri/foto/lepista-nuda-1c.webp"
 ],
 "Amanita excelsa": [
-"libri/foto/amanita-excelsa-1.webp"
+"libri/foto/amanita-excelsa-1c.webp"
 ],
 "Amanita ovoidea": [
 "libri/foto/amanita-ovoidea-1.webp"
@@ -85,7 +86,7 @@
 "libri/foto/entoloma-clypeatum-1.webp"
 ],
 "Gymnopus dryophilus": [
-"libri/foto/gymnopus-dryophilus-1.webp"
+"libri/foto/gymnopus-dryophilus-1c.webp"
 ],
 "Gyroporus castaneus": [
 "libri/foto/gyroporus-castaneus-1.webp"
@@ -94,7 +95,7 @@
 "libri/foto/helvella-acetabulum-1.webp"
 ],
 "Hericium erinaceus": [
-"libri/foto/hericium-erinaceus-1.webp"
+"libri/foto/hericium-erinaceus-1c.webp"
 ],
 "Hygrophorus russula": [
 "libri/foto/hygrophorus-russula-1.webp"
@@ -112,7 +113,7 @@
 "libri/foto/macrolepiota-excoriata-1.webp"
 ],
 "Marasmius oreades": [
-"libri/foto/marasmius-oreades-1.webp"
+"libri/foto/marasmius-oreades-1c.webp"
 ],
 "Pseudoclitocybe cyathiformis": [
 "libri/foto/pseudoclitocybe-cyathiformis-1.webp"
@@ -145,19 +146,19 @@
 "libri/foto/tricholoma-caligatum-1.webp"
 ],
 "Morchella esculenta": [
-"libri/foto/morchella-esculenta-1.webp"
+"libri/foto/morchella-esculenta-1c.webp"
 ],
 "Russula virescens": [
 "libri/foto/russula-virescens-1.webp"
 ],
 "Agaricus campestris": [
-"libri/foto/agaricus-campestris-1.webp"
+"libri/foto/agaricus-campestris-1c.webp"
 ],
 "Agrocybe praecox": [
 "libri/foto/agrocybe-praecox-1.webp"
 ],
 "Amanita citrina": [
-"libri/foto/amanita-citrina-1.webp"
+"libri/foto/amanita-citrina-1c.webp"
 ],
 "Amanita franchetii": [
 "libri/foto/amanita-franchetii-1.webp"
@@ -166,7 +167,7 @@
 "libri/foto/amanita-phalloides-1.webp"
 ],
 "Boletus edulis": [
-"libri/foto/boletus-edulis-1.webp"
+"libri/foto/boletus-edulis-1c.webp"
 ],
 "Calocybe gambosa": [
 "libri/foto/calocybe-gambosa-1.webp"
@@ -175,7 +176,7 @@
 "libri/foto/chlorophyllum-rhacodes-1.webp"
 ],
 "Clitocybe nebularis": [
-"libri/foto/clitocybe-nebularis-1.webp"
+"libri/foto/clitocybe-nebularis-1c.webp"
 ],
 "Clitopilus prunulus": [
 "libri/foto/clitopilus-prunulus-1.webp"
@@ -193,16 +194,16 @@
 "libri/foto/cuphophyllus-virgineus-1.webp"
 ],
 "Daedalea quercina": [
-"libri/foto/daedalea-quercina-1.webp"
+"libri/foto/daedalea-quercina-1c.webp"
 ],
 "Grifola frondosa": [
-"libri/foto/grifola-frondosa-1.webp"
+"libri/foto/grifola-frondosa-1c.webp"
 ],
 "Hypholoma fasciculare": [
-"libri/foto/hypholoma-fasciculare-1.webp"
+"libri/foto/hypholoma-fasciculare-1c.webp"
 ],
 "Kuehneromyces mutabilis": [
-"libri/foto/kuehneromyces-mutabilis-1.webp"
+"libri/foto/kuehneromyces-mutabilis-1c.webp"
 ],
 "Lacrymaria lacrymabunda": [
 "libri/foto/lacrymaria-lacrymabunda-1.webp"
@@ -217,13 +218,13 @@
 "libri/foto/lyophyllum-decastes-1.webp"
 ],
 "Rubroboletus satanas": [
-"libri/foto/rubroboletus-satanas-1.webp"
+"libri/foto/rubroboletus-satanas-1c.webp"
 ],
 "Russula aurea": [
-"libri/foto/russula-aurea-1.webp"
+"libri/foto/russula-aurea-1c.webp"
 ],
 "Russula cyanoxantha": [
-"libri/foto/russula-cyanoxantha-1.webp"
+"libri/foto/russula-cyanoxantha-1c.webp"
 ],
 "Russula heterophylla": [
 "libri/foto/russula-heterophylla-1.webp"
@@ -269,5 +270,61 @@
 ],
 "Omphalotus olearius": [
 "libri/foto/omphalotus-olearius-1.webp"
+],
+"Clitocybe odora": [
+"libri/foto/clitocybe-odora-1c.webp",
+"libri/foto/clitocybe-odora-2c.webp",
+"libri/foto/clitocybe-odora-3c.webp"
+],
+"Crucibulum laeve": [
+"libri/foto/crucibulum-laeve-1c.webp"
+],
+"Cyclocybe aegerita": [
+"libri/foto/cyclocybe-aegerita-1c.webp"
+],
+"Dumontinia tuberosa": [
+"libri/foto/dumontinia-tuberosa-1c.webp"
+],
+"Gymnopilus spectabilis": [
+"libri/foto/gymnopilus-spectabilis-1.webp",
+"libri/foto/gymnopilus-spectabilis-2c.webp",
+"libri/foto/gymnopilus-spectabilis-3c.webp",
+"libri/foto/gymnopilus-spectabilis-4c.webp"
+],
+"Hydnocystis piligera": [
+"libri/foto/hydnocystis-piligera-1c.webp"
+],
+"Hydnum repandum": [
+"libri/foto/hydnum-repandum-1c.webp",
+"libri/foto/hydnum-repandum-2c.webp"
+],
+"Lactarius atlanticus": [
+"libri/foto/lactarius-atlanticus-1c.webp"
+],
+"Laetiporus sulphureus": [
+"libri/foto/laetiporus-sulphureus-1c.webp"
+],
+"Leccinellum lepidum": [
+"libri/foto/leccinellum-lepidum-1c.webp",
+"libri/foto/leccinellum-lepidum-2.webp",
+"libri/foto/leccinellum-lepidum-3.webp"
+],
+"Leucoagaricus americanus": [
+"libri/foto/leucoagaricus-americanus-1c.webp"
+],
+"Lycoperdon perlatum": [
+"libri/foto/lycoperdon-perlatum-1c.webp"
+],
+"Mucilago crustacea": [
+"libri/foto/mucilago-crustacea-1c.webp"
+],
+"Rhodocollybia butyracea": [
+"libri/foto/rhodocollybia-butyracea-1c.webp"
+],
+"Sarcosphaera coronaria": [
+"libri/foto/sarcosphaera-coronaria-1c.webp"
+],
+"Volvopluteus gloiocephalus": [
+"libri/foto/volvopluteus-gloiocephalus-1c.webp"
 ]
 }
