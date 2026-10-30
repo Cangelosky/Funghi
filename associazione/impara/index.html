@@ -489,6 +489,8 @@ img.ic-img { width: 108px; height: 108px; object-fit: cover; border-radius: 10px
 .spd-pl { border: 0; padding: 0; background: none; cursor: zoom-in; display: block; }
 .spd-fig figcaption { font-size: 13px; opacity: .8; }
 .spd-nt { font-style: italic; }
+.spd-ph { position: relative; display: grid; }
+.spd-cr { position: absolute; left: 8px; bottom: 8px; max-width: calc(100% - 16px); padding: 3px 9px; border-radius: 999px; background: rgba(20,30,24,.62); color: #fff; font-size: 12.5px; line-height: 1.35; letter-spacing: .01em; pointer-events: none; }
 .spd-gal .spd-th { display: flex; gap: 6px; flex-wrap: wrap; }
 .spd-gal .spd-t { padding: 0; border: 2px solid transparent; border-radius: 8px; background: none; cursor: pointer; width: 64px; height: 64px; overflow: hidden; }
 .spd-gal .spd-t img { width: 100%; height: 100%; max-height: none; object-fit: cover; border-radius: 0; }
@@ -4061,15 +4063,18 @@ function pubFull(p, lang) {
     return '<button type="button" class="sp-card" data-spk="' + esc(e.n) + '" aria-label="Apri la scheda di ' + esc(e.n) + '">' + media + '<span class="sp-b"><span class="sp-h"><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></span><span class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · " + esc(e.f) : "") + (e.t ? " · " + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") : "") + "</span>" +
       (b ? '<span class="sp-bds">' + b + "</span>" : "") + (reg ? '<span class="sp-rgs">' + reg + "</span>" : "") + (old ? '<span class="sp-old">Nei libri e in mostra come: ' + old + "</span>" : "") + '<span class="sp-open">Apri la scheda ›</span></span></button>';
   }
-  function phCap(m) { m = m || {}; var x = [m.v, m.nt].filter(Boolean).map(esc).join(" · "); return "© " + esc(m.a || "Oscar Cangelosi") + (m.d ? " · " + esc(m.d) : "") + (x ? '<br><span class="spd-nt">' + x + "</span>" : ""); }
+  function phCr(m) { m = m || {}; return "© " + esc(m.a || "Oscar Cangelosi") + (m.d ? " · " + esc(m.d) : ""); }
+  function phNt(m) { m = m || {}; return [m.v, m.nt].filter(Boolean).map(esc).join(" · "); }
+  function phBox(src, e, m) { return '<div class="spd-ph"><img class="spd-gm" src="' + src + '" alt="Foto di ' + esc(e.n) + ' in natura"><span class="spd-cr">' + phCr(m) + "</span></div>"; }
+  function phNote(m) { var x = phNt(m); return '<figcaption class="spd-gc spd-nt"' + (x ? "" : " hidden") + ">" + x + "</figcaption>"; }
   function gallery(e) {
-    return '<figure class="spd-fig spd-gal" data-gal="' + esc(e.n) + '"><img class="spd-gm" src="' + e.ph[0] + '" alt="Foto di ' + esc(e.n) + ' in natura"><figcaption class="spd-gc">' + phCap((e.pm || [])[0]) + '</figcaption><div class="spd-th" role="group" aria-label="Le foto di questa specie">' +
+    return '<figure class="spd-fig spd-gal" data-gal="' + esc(e.n) + '">' + phBox(e.ph[0], e, (e.pm || [])[0]) + phNote((e.pm || [])[0]) + '<div class="spd-th" role="group" aria-label="Le foto di questa specie">' +
       e.ph.map(function (src, i) { return '<button type="button" class="spd-t' + (i ? "" : " on") + '" data-gi="' + i + '" aria-label="Foto ' + (i + 1) + " di " + e.ph.length + '"><img src="' + src + '" alt=""></button>'; }).join("") + "</div></figure>";
   }
   function detail(e) {
     var SHB = { inz: "Inzenga, 1865", vitt: "Vittadini, 1835", bres: "Bresadola, 1906", come: "Comes, 1878", matt: "Mattirolo" };
     var figs = (e.tv || []).map(function (t) { var src = tvSrc(t), k = t.split(":")[0]; if (!src) return ""; return '<figure class="spd-fig"><button type="button" class="spd-pl" data-spd-book="' + t + '" aria-label="Apri la tavola nel libro"><img src="' + src + '" alt="Tavola storica di ' + esc(e.n) + '"></button><figcaption>Disegno: ' + esc(SHB[k] || k) + ". Tocca per aprirlo nel libro.</figcaption></figure>"; }).join("");
-    var ph = e.ph ? (e.ph.length > 1 ? gallery(e) : '<figure class="spd-fig"><img src="' + e.ph[0] + '" alt="Foto di ' + esc(e.n) + ' in natura"><figcaption>' + phCap((e.pm || [])[0]) + "</figcaption></figure>") :
+    var ph = e.ph ? (e.ph.length > 1 ? gallery(e) : '<figure class="spd-fig">' + phBox(e.ph[0], e, (e.pm || [])[0]) + phNote((e.pm || [])[0]) + "</figure>") :
       '<figure class="spd-fig spd-miss">' + MISS + "<figcaption>Non abbiamo ancora una foto di questa specie. Se ne hai una con determinazione certa, mandala all'associazione.</figcaption></figure>";
     if (!figs) figs = '<figure class="spd-fig spd-miss"><span class="sp-miss">Nessun disegno</span><figcaption>Nessuna tavola dei libri della Biblioteca per questa specie.</figcaption></figure>';
     var old = (e.on || []).map(function (x) { return "<li><i>" + esc(x[1]) + "</i> · " + esc(x[0]) + "</li>"; }).join("");
@@ -4128,7 +4133,8 @@ function pubFull(p, lang) {
     var t = ev.target.closest("[data-gi]"); if (!t) return;
     var fig = t.closest(".spd-gal"), sp = fig && BYN && BYN[fig.getAttribute("data-gal")]; if (!sp) return;
     var i = +t.getAttribute("data-gi");
-    fig.querySelector(".spd-gm").src = sp.ph[i]; fig.querySelector(".spd-gc").innerHTML = phCap((sp.pm || [])[i]);
+    var pm = (sp.pm || [])[i], gc = fig.querySelector(".spd-gc"), nt = phNt(pm);
+    fig.querySelector(".spd-gm").src = sp.ph[i]; fig.querySelector(".spd-cr").innerHTML = phCr(pm); gc.innerHTML = nt; gc.hidden = !nt;
     fig.querySelectorAll(".spd-t").forEach(function (b) { b.classList.toggle("on", b === t); });
   });
   document.addEventListener("click", function (e) {
