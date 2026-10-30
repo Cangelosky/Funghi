@@ -276,6 +276,11 @@ nav a.socio:hover { background: #EDBB55; }
 .cell-logo { width: 72px; height: 72px; flex: none; }
 .ban { border-radius: 24px; overflow: hidden; margin-bottom: -36px; }
 .ban img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; object-fit: cover; }
+.ban { position: relative; }
+.ban-t { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 clamp(18px, 4vw, 48px); background: linear-gradient(90deg, rgba(20,45,30,.78) 0%, rgba(20,45,30,.55) 38%, rgba(20,45,30,0) 68%); pointer-events: none; }
+.ban-t h1 { margin: 0; color: #fff; font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 6vw, 56px); line-height: 1.05; letter-spacing: -0.01em; text-shadow: 0 2px 10px rgba(0,0,0,.35); max-width: 14ch; }
+.axtra { margin: 12px 0 0; }
+.axtra .btn { display: inline-block; }
 @media (max-width: 640px) { .ban img { aspect-ratio: 2.2 / 1; } .ban { border-radius: 18px; margin-bottom: -40px; } }
 .cell > p { margin: 0; color: var(--ink-2); font-size: 16.5px; }
 .roster { list-style: none; margin: 6px 0 0; padding: 0; display: grid; }
@@ -602,11 +607,11 @@ footer a { color: var(--ink); }
   <div class="wrap stack">
     <div class="hero">
       <div class="hero-copy">
-        <h1>Il bosco racconta. Noi lo leggiamo, fungo per fungo.</h1>
-        <p class="lead">Dal 1987, a Palermo, studiamo i funghi nel bosco e al microscopio. Vieni a scoprire cosa nasce sotto i tuoi piedi, con micologi accreditati e un gruppo che ti fa sentire a casa.</p>
+        <h1>Il bosco racconta.<br>Noi lo leggiamo, fungo per fungo.</h1>
+        <p class="lead">Dal 1987 studiamo i funghi, dal bosco al microscopio. Vieni a scoprire cosa nasce sotto i tuoi piedi in Sicilia, con micologi accreditati e un gruppo che ti fa sentire a casa.</p>
         <div class="cta-row">
-          <a class="btn primary" href="#attivita" data-go="attivita">Trova il tuo appuntamento</a>
-          <a class="btn ghost" href="#osservatorio" data-go="osservatorio">Sbircia l'Osservatorio</a>
+          <a class="btn primary" href="#associati" data-go="associati">Associati adesso</a>
+          <a class="btn ghost" href="#attivita" data-go="attivita">Scopri le nostre attività</a>
         </div>
         <ul class="facts">
           <li>Ci vediamo ogni lunedì e giovedì</li>
@@ -662,65 +667,21 @@ footer a { color: var(--ink); }
 <!-- CHI SIAMO -->
 <section class="page gut" id="p-chi-siamo" aria-label="Chi siamo">
   <div class="wrap stack">
-    <div class="ban"><img src="img/chi.svg" alt="" width="1200" height="300"></div>
+    <div class="ban"><img src="img/chi.svg" alt="" width="1200" height="300"><div class="ban-t"><h1>Chi siamo</h1></div></div>
     <div class="two">
       <div class="text">
-        <span class="kicker">Chi siamo</span>
-        <h2 style="font-size:clamp(32px,5vw,52px)">Siamo un gruppo che studia i funghi dal vivo.</h2>
-        <p>L'Associazione Micologica Giuseppe Inzenga APS è il gruppo palermitano dell'A.M.B., l'Associazione Micologica Bresadola. Dal 1987 ci ritroviamo in una sede con microscopi, reagenti, videoproiettore e una grande biblioteca.</p>
-        <p>Siamo micologi accreditati, un comitato scientifico e soci che sanno di botanica, piante officinali, apicoltura e biodiversità. Ogni lunedì e giovedì ci si vede in sede per conversazioni, corsi e determinazione.</p>
+        <h2 style="font-size:clamp(32px,5vw,52px)">Una grande famiglia che studia i funghi con passione.</h2>
+        <p>L'Associazione Micologica Giuseppe Inzenga APS è il gruppo palermitano dell'A.M.B., l'Associazione Micologica Bresadola.</p>
+        <p>L'associazione Inzenga conta micologi accreditati, che fanno parte del comitato scientifico, e soci, appassionati e grandi ricercatori di funghi, esperti e autodidatti. Ogni lunedì e giovedì ci si vede in sede per conversazioni, corsi e determinazione.</p>
         <p>Cerchiamo persone curiose, con voglia di imparare e di stare in buona compagnia. Chi frequenta un corso diventa socio, come richiede la legge: è il modo più semplice per restare.</p>
       </div>
-      <aside class="facts-box" aria-label="In breve">
-        <dl>
-          <div><dt>Attiva dal</dt><dd>1987</dd></div>
-          <div><dt>Appartenenza</dt><dd>Gruppo A.M.B. di Palermo</dd></div>
-          <div><dt>Sede</dt><dd>Oratorio dei Salesiani «Villaurea»</dd></div>
-          <div><dt>Stagione</dt><dd>Da metà settembre a metà giugno</dd></div>
-        </dl>
-      </aside>
     </div>
     <div>
       <div class="sec-head"><h2>Come lavoriamo</h2></div>
       <div class="vals">
-        <div class="val"><svg viewBox="0 0 100 120" aria-hidden="true"><use href="#m4"/></svg><h3>Scienza, ma dal vivo</h3><p>Microscopio, comitato scientifico e determinazione sul campo. Ogni ritrovamento ha uno stato chiaro: proposto, confermato dalle foto, verificato in sede.</p></div>
-        <div class="val"><svg viewBox="0 0 100 120" aria-hidden="true"><use href="#m2"/></svg><h3>Il bosco, tutto insieme</h3><p>Funghi, ma anche alberi, erbe alimurgiche e biodiversità: il bosco si capisce solo guardandolo nell'insieme.</p></div>
-        <div class="val"><svg viewBox="0 0 100 120" aria-hidden="true"><use href="#m3"/></svg><h3>Qui non sei un numero</h3><p>Un tutor per i nuovi soci, uscite condivise e un racconto dopo ogni gita. Ci piacciono le persone che restano.</p></div>
-      </div>
-    </div>
-    <div>
-      <div class="sec-head"><h2>Con chi lavoriamo</h2><p>Collaborazioni, gemellaggi e partenariati: le persone e gli enti con cui facciamo strada.</p></div>
-      <div class="cells">
-        <section class="cell" style="--tint:var(--c-corsi)" aria-labelledby="colT">
-          <h3 id="colT">Collaborazioni</h3>
-          <p>Realtà con cui organizziamo attività, corsi e ricerca.</p>
-          <ul class="roster">
-            <li><span class="role">Associazione nazionale</span><span class="name">A.M.B., Associazione Micologica Bresadola</span></li>
-            <li><span class="role">Stage 2026</span><span class="name">Associazione Micologica Naturale Aspromonte</span></li>
-            <li><span class="role">Corsi nei comuni</span><span class="name">Cefalù, Casteldaccia, Godrano, Piana degli Albanesi, Torrenova, Belmonte</span></li>
-            <li><span class="role">Enti e amministrazioni</span><span class="name"><span class="todo">Da confermare</span></span></li>
-          </ul>
-        </section>
-        <section class="cell" style="--tint:var(--c-gite)" aria-labelledby="gemT">
-          <h3 id="gemT">Gemellaggi e partenariati</h3>
-          <p>Accordi con associazioni, università, scuole e parchi.</p>
-          <ul class="roster">
-            <li><span class="role">Gemellaggi</span><span class="name"><span class="todo">Da inserire</span></span></li>
-            <li><span class="role">Partenariati e convenzioni</span><span class="name"><span class="todo">Da inserire</span></span></li>
-            <li><span class="role">Università e ricerca</span><span class="name"><span class="todo">Da inserire</span></span></li>
-          </ul>
-        </section>
-        <section class="cell" style="--tint:var(--c-stage)" aria-labelledby="rgT">
-          <h3 id="rgT">Registri e riconoscimenti</h3>
-          <p>Siamo un'associazione di promozione sociale, ente del Terzo settore: i nostri dati sono pubblici nel Registro unico nazionale (RUNTS).</p>
-          <ul class="roster">
-            <li><span class="role">Registro</span><span class="name">RUNTS, Registro unico nazionale del Terzo settore</span></li>
-            <li><span class="role">Qualifica</span><span class="name">APS, associazione di promozione sociale</span></li>
-            <li><span class="role">Numero RUNTS</span><span class="name">75000 <span class="todo">da verificare con il tesoriere</span></span></li>
-            <li><span class="role">Data di iscrizione</span><span class="name"><span class="todo">Da inserire</span></span></li>
-            <li><span class="role">Codice fiscale</span><span class="name">97171140821 <span class="todo">da verificare con il tesoriere</span></span></li>
-          </ul>
-        </section>
+        <div class="val"><svg viewBox="0 0 100 120" aria-hidden="true"><use href="#m4"/></svg><h3>Si impara sul campo</h3><p>Micologi accreditati, un comitato scientifico, microscopio e libri in sede, uscite nel bosco: qui le conoscenze si toccano, si annusano e si verificano.</p></div>
+        <div class="val"><svg viewBox="0 0 100 120" aria-hidden="true"><use href="#m3"/></svg><h3>Un gruppo che accoglie</h3><p>65 soci attivi nel 2026, dal principiante al ricercatore: nessuno resta indietro e chi sa di più condivide volentieri.</p></div>
+        <div class="val"><svg viewBox="0 0 100 120" aria-hidden="true"><use href="#m2"/></svg><h3>Un'associazione che funziona</h3><p>Serate fisse, corsi, gite, mostra e stage, con un calendario chiaro e ruoli precisi: chi arriva trova subito un modo per dare una mano.</p></div>
       </div>
     </div>
     <div>
@@ -762,21 +723,15 @@ footer a { color: var(--ink); }
 <!-- ATTIVITA -->
 <section class="page gut" id="p-attivita" aria-label="Attività">
   <div class="wrap stack">
-    <div class="ban"><img src="img/attivita.svg" alt="" width="1200" height="300"></div>
+    <div class="ban"><img src="img/attivita.svg" alt="" width="1200" height="300"><div class="ban-t"><h1>Attività</h1></div></div>
     <div>
-      <div class="sec-head"><span class="kicker">Attività</span><h2 style="font-size:clamp(32px,5vw,52px)">Un anno di appuntamenti, per ogni modo di amare i funghi.</h2><p>Ogni tipo di incontro ha il suo colore: lo riconosci a colpo d'occhio.</p></div>
+      <div class="sec-head"><h2 style="font-size:clamp(32px,5vw,52px)">Un anno di appuntamenti. Tante attività per chi ama i funghi.</h2><p>Scopri il calendario dell'associazione per conoscere tutto ciò che facciamo insieme agli associati.</p></div>
       <div class="seg" role="tablist" aria-label="Come vuoi vedere le attività">
         <button type="button" role="tab" id="tabActs" aria-selected="true" aria-controls="panActs">Le attività</button>
         <button type="button" role="tab" id="tabCal" aria-selected="false" aria-controls="panCal" tabindex="-1">Calendario 2027</button>
       </div>
       <div id="panActs" role="tabpanel" aria-labelledby="tabActs">
       <div class="acts" id="acts"></div>
-      <div class="season"><span>Stagione</span>
-        <div class="bar" role="img" aria-label="Attività da metà settembre a metà giugno, pausa estiva">
-          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i><i class="off"></i><i class="off"></i>
-        </div>
-        <span>Pausa estiva da giugno a settembre</span>
-      </div>
       </div>
       <div id="panCal" role="tabpanel" aria-labelledby="tabCal" hidden></div>
     </div>
@@ -791,9 +746,9 @@ footer a { color: var(--ink); }
 <!-- CORSI -->
 <section class="page gut" id="p-corsi" aria-label="Corsi">
   <div class="wrap stack">
-    <div class="ban"><img src="img/corsi.svg" alt="" width="1200" height="300"></div>
+    <div class="ban"><img src="img/corsi.svg" alt="" width="1200" height="300"><div class="ban-t"><h1>Corsi</h1></div></div>
     <div>
-      <div class="corsi-top"><div class="sec-head"><span class="kicker">Corsi</span><h2 style="font-size:clamp(32px,5vw,52px)">Impara a conoscere i funghi, con chi li studia.</h2><p>Corsi per il tesserino di raccolta, con docenti accreditati. Preiscriviti senza impegno: quando arriviamo a 15 corsisti, il corso parte. Scegli a quale corso sei interessato e ti contatteremo noi.</p></div>
+      <div class="corsi-top"><div class="sec-head"><h2 style="font-size:clamp(32px,5vw,52px)">Impara a conoscere i funghi, con chi li studia.</h2><p>Vuoi raccogliere funghi e tartufi in regola e imparare a riconoscerli con sicurezza? I nostri corsi, tenuti da docenti accreditati, ti portano fino al tesserino. Scegli il corso che ti interessa e preiscriviti: è gratuito e non ti impegna a nulla. Quando raggiungiamo i 15 iscritti il corso parte, e ti contattiamo noi per i dettagli.</p></div>
       <a class="btn solid cta-iscr" href="#preiscrizione" id="ctaIscr">Preiscriviti ora</a></div>
       <ol class="how">
         <li><b>Preiscriviti</b><span>Compila il modulo qui sotto, senza essere socio. Ci vuole un minuto.</span></li>
@@ -837,9 +792,9 @@ footer a { color: var(--ink); }
 <!-- OSSERVATORIO -->
 <section class="page gut" id="p-osservatorio" aria-label="Osservatorio">
   <div class="wrap stack">
-    <div class="ban"><img src="img/osservatorio.svg" alt="" width="1200" height="300"></div>
+    <div class="ban"><img src="img/osservatorio.svg" alt="" width="1200" height="300"><div class="ban-t"><h1>Osservatorio micologico</h1></div></div>
     <div>
-      <div class="sec-head"><span class="kicker">Osservatorio micologico</span><h2 style="font-size:clamp(32px,5vw,52px)">La scienza dei funghi di Sicilia, a schede.</h2><p>Piccole schede per capire i funghi di Sicilia senza essere esperti: una domanda, una risposta chiara, le fonti. Scegli un argomento o cerca per parola. Dai nostri dati arrivano solo informazioni generali: niente luoghi precisi, niente nomi di persone.</p></div>
+      <div class="sec-head"><h2 style="font-size:clamp(32px,5vw,52px)">La scienza dei funghi di Sicilia, a schede.</h2><p>Piccole schede per capire i funghi di Sicilia senza essere esperti: una domanda, una risposta chiara, le fonti. Scegli un argomento o cerca per parola.</p></div>
       <div class="tools">
         <div class="filters" id="filters" role="group" aria-label="Tipo di scheda"></div>
         <label class="sr" for="q">Cerca nelle schede</label>
@@ -872,9 +827,9 @@ footer a { color: var(--ink); }
 <!-- DIVENTA SOCIO -->
 <section class="page gut" id="p-associati" aria-label="Diventa socio">
   <div class="wrap stack">
-    <div class="ban"><img src="img/socio.svg" alt="" width="1200" height="300"></div>
+    <div class="ban"><img src="img/socio.svg" alt="" width="1200" height="300"><div class="ban-t"><h1>Diventa socio</h1></div></div>
     <div>
-      <div class="sec-head"><span class="kicker">Diventa socio</span><h2 style="font-size:clamp(32px,5vw,52px)">Entra nel gruppo che studia i funghi di Sicilia.</h2><p>Siamo micologi, appassionati e curiosi che si ritrovano da quasi quarant'anni. Da socio partecipi a tutto quello che facciamo, con un tutor che ti accompagna il primo anno. Non serve sapere già qualcosa di funghi: si comincia con la curiosità.</p></div>
+      <div class="sec-head"><h2 style="font-size:clamp(32px,5vw,52px)">Entra nel gruppo che studia i funghi di Sicilia.</h2><p>Siamo micologi, appassionati e curiosi che si ritrovano da quasi quarant'anni. Da socio partecipi a tutto quello che facciamo. Non serve sapere già qualcosa di funghi: si comincia con la curiosità.</p></div>
       <div class="cta-row"><button type="button" class="btn solid" data-socio-open>Compila la richiesta</button></div>
     </div>
     <div>
@@ -887,7 +842,6 @@ footer a { color: var(--ink); }
         <li style="--tint:var(--c-stage)"><b>Stage micologico</b><span>Tre giorni fuori, con altri gruppi: al mattino nel bosco, al pomeriggio al microscopio.</span></li>
         <li style="--tint:var(--c-corsi)"><b>Corsi e studio</b><span>Corsi per il tesserino e percorsi di approfondimento, con la Didattica e la Biblioteca del sito sempre aperte.</span></li>
         <li style="--tint:var(--c-eventi)"><b>Osservatorio</b><span>Le tue foto e i tuoi ritrovamenti aiutano le ricerche dell'associazione sui funghi di Sicilia.</span></li>
-        <li style="--tint:var(--c-ist)"><b>Un tutor per te</b><span>Il primo anno un socio esperto ti segue, ti presenta il gruppo e risponde ai tuoi dubbi.</span></li>
       </ul>
     </div>
     <div>
@@ -904,7 +858,7 @@ footer a { color: var(--ink); }
   <dialog class="sdlg" id="socioDlg" aria-labelledby="sdlgT">
     <div class="sdlg-in">
       <div class="sdlg-h"><h3 id="sdlgT">Richiesta di iscrizione</h3><button type="button" class="btn line" id="socioX">Chiudi</button></div>
-      <p class="sdlg-p">Raccontaci chi sei e perché vuoi entrare: ci aiuta a presentarti il gruppo giusto e a sceglierti un tutor. I campi segnati con * sono obbligatori.</p>
+      <p class="sdlg-p">Raccontaci chi sei e perché vuoi entrare: ci aiuta a presentarti il gruppo giusto. I campi segnati con * sono obbligatori.</p>
       <form id="socioForm" novalidate>
         <div class="fgrid">
           <label for="so_nome">Nome *<input type="text" id="so_nome" autocomplete="given-name" required></label>
@@ -953,9 +907,9 @@ footer a { color: var(--ink); }
 <!-- CONTATTI -->
 <section class="page gut" id="p-contatti" aria-label="Contatti">
   <div class="wrap stack">
-    <div class="ban"><img src="img/contatti.svg" alt="" width="1200" height="300"></div>
+    <div class="ban"><img src="img/contatti.svg" alt="" width="1200" height="300"><div class="ban-t"><h1>Contatti</h1></div></div>
     <div>
-      <div class="sec-head"><span class="kicker">Contatti</span><h2 style="font-size:clamp(32px,5vw,52px)">Vieni a trovarci in sede.</h2><p>Le serate sono il lunedì e il giovedì. Scrivici per un corso, per una mostra nel tuo comune o anche solo per capire se fa per te: ti rispondiamo volentieri.</p></div>
+      <div class="sec-head"><h2 style="font-size:clamp(32px,5vw,52px)">Vieni a trovarci in sede.</h2><p>Le serate sono il lunedì e il giovedì. Scrivici per un corso, per una mostra nel tuo comune o anche solo per capire se fa per te: ti rispondiamo volentieri.</p></div>
       <div class="cols">
         <div class="box">
           <h3>Dove siamo</h3>
@@ -1023,7 +977,7 @@ footer a { color: var(--ink); }
 
 <footer class="gut">
   <div class="wrap">
-    <div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><img id="logoAmb" class="amb-logo" alt="Logo dell'Associazione Micologica Bresadola (A.M.B.)" height="64"><img id="logoFoot" alt="" width="64" height="64" style="display:block"><div><strong style="color:var(--ink)">Associazione Micologica Giuseppe Inzenga APS</strong><br>Gruppo A.M.B. di Palermo · Oratorio dei Salesiani «Villaurea»<br>Ente del Terzo settore, iscritta al RUNTS n. 75000 · C.F. 97171140821 <span class="todo">(dati da verificare con il tesoriere)</span><br>Non diamo indicazioni di commestibilità.</div></div></div>
+    <div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><img id="logoAmb" class="amb-logo" alt="Logo dell'Associazione Micologica Bresadola (A.M.B.)" height="64"><img id="logoFoot" alt="" width="64" height="64" style="display:block"><div><strong style="color:var(--ink)">Associazione Micologica Giuseppe Inzenga APS</strong><br>Gruppo A.M.B. di Palermo · Oratorio dei Salesiani «Villaurea»<br>Ente del Terzo settore, iscritta al RUNTS n. 75000 · C.F. 97171140821<br>Non diamo indicazioni di commestibilità.</div></div></div>
     <div class="fright"><div class="links">
       <a href="#home" data-go="home">Home</a><a href="#chi-siamo" data-go="chi-siamo">Chi siamo</a><a href="#attivita" data-go="attivita">Attività</a><a href="#corsi" data-go="corsi">Corsi</a><a href="#osservatorio" data-go="osservatorio">Osservatorio</a><a href="#contatti" data-go="contatti">Contatti</a><a href="#associati" data-go="associati">Diventa socio</a><a href="#accesso" data-go="accesso">Area riservata</a>
     </div>
@@ -1080,6 +1034,7 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
     if (p === 'calendario') calFilter = a.getAttribute('data-cal') || 'all';
     try { history.replaceState(null, '', '#' + p); } catch (err) {}
     show(p);
+    if (a.hasAttribute('data-iscr')) setTimeout(function () { var f = document.getElementById('preiscrizione'); if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
   });
   window.addEventListener('hashchange', function () { show(location.hash.replace('#', '')); });
   menuBtn.addEventListener('click', function () {
@@ -1092,7 +1047,7 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
     { cat: 'eventi', tab: 'Dona il 5x1000', t: 'Una firma che non ti costa niente', b: 'Il tuo 5 per mille all\'Inzenga: basta una firma nella dichiarazione dei redditi per sostenere corsi, mostre e ricerca.', d: 'Codice fiscale: da inserire', go: 'contatti', cta: 'Contatti', chip: '5 per mille', poster: 'cinque', palt: 'Logo 5 per mille dell\'Associazione Micologica Giuseppe Inzenga', round: true },
     { cat: 'mostre', tab: 'Mostra micologica', t: '65 specie in un giorno: la mostra al Parco Uditore', b: 'L\'11 ottobre, nella Giornata Nazionale della Micologia, i nostri micologi hanno determinato ed esposto 65 specie raccolte nei boschi siciliani. Grazie a chi è passato a trovarci!', d: 'Parco Uditore, Palermo · 11 ottobre 2026', go: 'attivita', cta: 'Guarda le attività', poster: 'mostra26', palt: 'La mostra micologica 2026 al Parco Uditore: soci e visitatori attorno ai tavoli con i funghi esposti e i cartellini con i nomi' },
     { cat: 'stage', tab: 'Stage Micologico', t: 'Tre giorni nel cuore dell\'Aspromonte: lo stage a Gambarie', b: 'Al mattino cerchi nel bosco, al pomeriggio studi al microscopio quello che hai trovato. È la 32ª edizione, con l\'Associazione Micologica Naturale Aspromonte.', d: 'Gambarie d\'Aspromonte · 23-25 ottobre 2026', go: 'attivita', cta: 'Scopri lo stage', poster: 'stageloc', palt: 'Locandina dello stage micologico a Gambarie d\'Aspromonte, 23-25 ottobre 2026' },
-    { cat: 'eventi', tint: 'var(--c-socio)', chip: 'Diventa socio', tab: 'Diventa socio', t: 'Diventa socio: i funghi si imparano in compagnia', b: 'Serate in sede il lunedì e il giovedì, gite nel bosco, mostre, stage e un tutor che ti accompagna il primo anno. Non serve sapere già nulla di funghi: basta la curiosità.', d: 'Quota annuale: da inserire', go: 'associati', cta: 'Scopri cosa fa un socio' }
+    { cat: 'eventi', tint: 'var(--c-socio)', chip: 'Diventa socio', tab: 'Diventa socio', t: 'Diventa socio: i funghi si imparano in compagnia', b: 'Serate in sede il lunedì e il giovedì, gite nel bosco, mostre e stage. Non serve sapere già nulla di funghi: basta la curiosità.', d: 'Quota annuale: da inserire', go: 'associati', cta: 'Scopri cosa fa un socio' }
   ];
   var N = SPOT.length, cur = 0, userAt = 0, hov = false, vis = false;
   var sched = document.getElementById('sched'), tabsEl = document.getElementById('schedTabs'), bodyEl = document.getElementById('schedBody'), pp = document.getElementById('schedPP');
@@ -1175,20 +1130,20 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
 
   /* ---------- attività ---------- */
   var ACTS = [
-    { cat: 'conv', img: 'corsi', alt: 'Relatore e soci attorno a un tavolo con i funghi da osservare e annusare', t: 'Conversazioni', b: 'Ogni lunedì e giovedì in sede, con relatori scelti tra i soci: funghi, bosco e natura. Si chiacchiera, si impara, si sta bene. Il calendario esce a inizio anno.', w: 'Soci e ospiti, secondo l\'incontro' },
-    { cat: 'pratica', img: 'pratica', alt: 'Funghi su un tavolo scuro con lampada, microscopio e libro di determinazione', t: 'Pratica di determinazione', b: 'Il fungo trovato nel bosco diventa una scoperta: nei mesi di raccolta lo determiniamo insieme ai micologi, al microscopio e con i libri della biblioteca.', w: 'Il lunedì, in sede' },
-    { cat: 'corsi', img: 'corsiaula', alt: 'Un\'aula di corso con i corsisti seduti davanti allo schermo che mostra la foto di un fungo', t: 'Corsi', b: 'Tesserino per epigei, tesserino per ipogei (i tartufi, obbligatorio in Sicilia) e aggiornamento ogni cinque anni. Incontri serali di quattro o cinque ore, a Palermo o nei comuni che li chiedono.', w: 'Venti posti per corso' },
-    { cat: 'gite', img: 'gite', alt: 'Un gruppo di soci in posa in una pineta, con cestini e bastoni da trekking', t: 'Gite sociali', b: 'Si va nel bosco, con date confermate a ridosso in base a meteo e stagione. Alcune uscite guardano anche ad alberi, piante alimurgiche e biodiversità.', w: 'Soci, con parenti e amici esperti di trekking' },
-    { cat: 'mostre', img: 'mostre', alt: 'Il lungo tavolo della mostra micologica, con i funghi esposti su piatti e foglie', t: 'Mostra micologica', b: 'Ogni anno, nel weekend della Giornata Nazionale della Micologia, apriamo la mostra a tutti. Siamo ospiti anche dei comuni siciliani che ci invitano.', w: 'Aperta a tutti' },
-    { cat: 'stage', img: 'stage', alt: 'I partecipanti allo stage in cammino su una strada nel bosco', t: 'Stage annuale', b: 'Un fine settimana di ottobre tra bosco e microscopio. Nel 2026 è la 32ª edizione, a Gambarie d\'Aspromonte.', w: 'Per i soci' },
-    { cat: 'eventi', img: 'eventi', alt: 'I soci a cena insieme, seduti ai lunghi tavoli del ristorante', t: 'Eventi conviviali', b: 'Il pranzo sociale di dicembre con tombola e premiazioni, la pizzata di giugno a chiusura della stagione: si impara meglio in compagnia.', w: 'Per i soci' }
+    { cat: 'conv', img: 'corsi', alt: 'Relatore e soci attorno a un tavolo con i funghi da osservare e annusare', t: 'Conversazioni', b: 'Il lunedì e il giovedì ci incontriamo in sede per studiare i funghi e parlare di bosco e di natura. I soci sono relatori volontari e raccontano le loro esperienze e conoscenze.', w: 'Soci e ospiti, secondo l\'incontro' },
+    { cat: 'pratica', img: 'pratica', alt: 'Funghi su un tavolo scuro con lampada, microscopio e libro di determinazione', t: 'Pratica di determinazione', b: 'Ogni fungo interessante trovato nel bosco diventa oggetto di discussione e determinazione, che coinvolge appassionati e micologi esperti.', w: 'Il lunedì, in sede' },
+    { cat: 'corsi', img: 'corsiaula', alt: 'Un\'aula di corso con i corsisti seduti davanti allo schermo che mostra la foto di un fungo', t: 'Corsi', b: 'Vuoi imparare a conoscere funghi e tartufi e hai bisogno del tesserino obbligatorio per la raccolta? Iscriviti adesso ai nostri corsi per il conseguimento o l\'aggiornamento del tesserino.', x: '<a class="btn solid" href="#corsi" data-go="corsi" data-iscr="1">Iscriviti adesso</a>', w: 'Venti posti per corso' },
+    { cat: 'gite', img: 'gite', alt: 'Un gruppo di soci in posa in una pineta, con cestini e bastoni da trekking', t: 'Gite sociali', b: 'La stagione dei funghi è il momento migliore per organizzare passeggiate nei boschi insieme agli associati.', x: '<a class="more" href="#calendario" data-go="calendario" data-cal="gite">Scopri nel calendario le prossime gite</a>', w: 'Soci, con parenti e amici esperti di trekking' },
+    { cat: 'mostre', img: 'mostre', alt: 'Il lungo tavolo della mostra micologica, con i funghi esposti su piatti e foglie', t: 'Mostra micologica', b: 'Vieni a scoprire dal vivo la biodiversità micologica siciliana durante le mostre micologiche. Una grande varietà di funghi da vedere e toccare con mano ti aspetta.', w: 'Aperta a tutti' },
+    { cat: 'stage', img: 'stage', alt: 'I partecipanti allo stage in cammino su una strada nel bosco', t: 'Stage annuale', b: 'Un weekend tra i boschi del Sud Italia, dedicato alla ricerca e allo studio dei carpofori (i funghi veri e propri). Un\'esperienza di condivisione e convivialità.', w: 'Per i soci' },
+    { cat: 'eventi', img: 'eventi', alt: 'I soci a cena insieme, seduti ai lunghi tavoli del ristorante', t: 'Eventi conviviali', b: 'Non solo boschi e funghi: anche cene, pranzi sociali e momenti di festa da vivere insieme.', w: 'Per i soci' }
   ];
   document.getElementById('acts').innerHTML = ACTS.map(function (a) {
     var pic = a.img ? '<img src="' + IMG[a.img] + '" alt="' + esc(a.alt) + '" loading="lazy">' :
       '<svg viewBox="0 0 400 267" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="330" cy="55" r="30" fill="var(--card)" opacity="0.7"/>' + a.ph.map(function (m) {
         return '<use href="#' + m[0] + '" x="' + m[1] + '" y="' + m[2] + '" width="' + m[3] + '" height="' + (m[3] * 1.2) + '" style="--cap:' + m[4] + ';--stem:var(--card);--gill:var(--card)"/>';
       }).join('') + '<rect y="240" width="400" height="27" fill="var(--ink)" opacity="0.12"/></svg><span class="ph">Foto da inserire</span>';
-    return '<article class="act" style="--tint:' + CAT[a.cat].v + '"><div class="apic">' + pic + '</div>' + tag(a.cat) + '<h3>' + esc(a.t) + '</h3><p>' + esc(a.b) + '</p><p class="who">' + esc(a.w) + '</p><a class="more" href="' + href(a.cat) + '" data-go="attivita/' + SLUG[a.cat] + '">Scopri di più ›</a></article>';
+    return '<article class="act" style="--tint:' + CAT[a.cat].v + '"><div class="apic">' + pic + '</div>' + tag(a.cat) + '<h3>' + esc(a.t) + '</h3><p>' + esc(a.b) + '</p>' + (a.x ? '<p class="axtra">' + a.x + '</p>' : '') + '<p class="who">' + esc(a.w) + '</p><a class="more" href="' + href(a.cat) + '" data-go="attivita/' + SLUG[a.cat] + '">Scopri di più ›</a></article>';
   }).join('');
 
 
@@ -1249,7 +1204,7 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
     var rows = evs.slice(0, 6).map(function (e) { return evRow(e, false); }).join('');
     actPage.innerHTML =
       '<div class="crumbs" role="navigation" aria-label="Percorso"><a href="#attivita" data-go="attivita">Attività</a><span aria-hidden="true">›</span><span aria-current="page">' + esc(c.n) + '</span></div>' +
-      '<div class="two"><div class="text"><span class="chip">' + esc(c.n) + '</span><h2 style="font-size:clamp(32px,5vw,52px)">' + esc(a.t) + '</h2><p class="lead">' + esc(a.b) + '</p><p class="fact"><b>Chi partecipa:</b> ' + esc(a.w) + '</p></div>' + pic + '</div>' +
+      '<div class="two"><div class="text"><span class="chip">' + esc(c.n) + '</span><h2 style="font-size:clamp(32px,5vw,52px)">' + esc(a.t) + '</h2><p class="lead">' + esc(a.b) + '</p><p class="fact"><b>Chi partecipa:</b> ' + esc(a.w) + '</p>' + (a.x ? '<p class="axtra">' + a.x + '</p>' : '') + '</div>' + pic + '</div>' +
       hi +
       '<section class="adet-sec"><h3>Nel calendario 2027</h3><ul class="evs">' + rows + '</ul>' + (evs.length > 6 ? '<p class="fact">Altre ' + (evs.length - 6) + ' date nel calendario.</p>' : '') + '<a class="btn solid" href="#calendario" data-go="calendario" data-cal="' + cat + '" style="align-self:flex-start">Tutte le date: ' + esc(c.n) + ' (' + evs.length + ') ›</a></section>' +
       '<section class="adet-sec"><h3>Le altre attività</h3><div class="others">' + others + '</div></section>';
