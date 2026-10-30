@@ -349,6 +349,8 @@ a.chip:focus-visible, .tile .ttl a:focus-visible, .act .more:focus-visible, .cru
 /* pagina di una singola attività */
 .crumbs { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14.5px; color: var(--ink-2); margin-bottom: 8px; }
 .crumbs a { color: var(--link); }
+.bc { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12.5px; color: var(--ink-2); margin: 0 auto 10px; max-width: 1120px; width: calc(100% - 32px); }
+.bc a { color: var(--link); }
 .adet .lead { font-size: 19px; }
 .adet .fact { margin: 0; font-weight: 500; }
 .adet .fact b { font-weight: 600; }
@@ -1073,6 +1075,14 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
     });
     if (tab) setTab(tab);
     nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false');
+    /* briciole di pane piccole nelle pagine interne (le schede di dettaglio hanno le loro) */
+    document.querySelectorAll('.bc').forEach(function (n) { n.remove(); });
+    var BCL = { 'chi-siamo': 'Chi siamo', attivita: 'Attività', corsi: 'Corsi', osservatorio: 'Osservatorio', contatti: 'Contatti', accesso: 'Area riservata', associati: 'Diventa socio', privacy: 'Privacy' };
+    if (BCL[pg]) {
+      var bc = document.createElement('div'); bc.className = 'bc'; bc.setAttribute('role', 'navigation'); bc.setAttribute('aria-label', 'Percorso');
+      bc.innerHTML = '<a href="#home" data-go="home">Home</a><span aria-hidden="true">›</span><span aria-current="page">' + BCL[pg] + '</span>';
+      var sec = document.getElementById('p-' + pg); sec.insertBefore(bc, sec.firstChild);
+    }
     window.scrollTo(0, 0);
   }
   document.addEventListener('click', function (e) {
@@ -1299,10 +1309,6 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
    [
     "Area",
     "Ficuzza, circa 1000 m, versante nord"
-   ],
-   [
-    "Fiducia",
-    "Una sola uscita, pioggia stimata da radar"
    ]
   ],
   "fonti": [
@@ -1354,10 +1360,6 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
    [
     "Area",
     "Studi spagnoli, Sicilia da verificare"
-   ],
-   [
-    "Fiducia",
-    "Moderata: dati non siciliani"
    ]
   ],
   "fonti": [
@@ -1411,10 +1413,6 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
    [
     "Area",
     "Toscana, Catalogna"
-   ],
-   [
-    "Fiducia",
-    "Moderata per la finestra di 30 giorni, sapere popolare per i 7-15 giorni"
    ]
   ],
   "fonti": [
@@ -1473,10 +1471,6 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
    [
     "Area",
     "Sicilia (specie), Catalogna (dati)"
-   ],
-   [
-    "Fiducia",
-    "Moderata"
    ]
   ],
   "fonti": [
@@ -1519,7 +1513,7 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
    "## E la stagione principale?",
    "Per le nostre zone, tra 550 e 1060 metri, la nostra ipotesi è una stagione principale da fine settembre-ottobre a dicembre, con una possibile coda a gennaio negli anni miti e una finestra minore tra aprile e giugno. A Caronia, a 800 metri sotto cerro, dei Cortinarius sono stati datati 23 novembre e 1° dicembre 2024. Nessuno però ha misurato tutto questo nei nostri siti, e le date primaverili che conosciamo sono pochi reperti, non serie complete.",
    "## Perché ci interessa",
-   "Un indice pensato solo per l'autunno perderebbe parte dei ritrovamenti. Per questo nel nostro progetto è previsto un modulo primaverile, per ora con fiducia debole, che si rafforzerà solo se le uscite di primavera verranno registrate con metodo, come quelle d'autunno."
+   "Un indice pensato solo per l'autunno perderebbe parte dei ritrovamenti. Per questo nel nostro progetto è previsto un modulo primaverile, per ora provvisorio, che si rafforzerà solo se le uscite di primavera verranno registrate con metodo, come quelle d'autunno."
   ],
   "meta": [
    [
@@ -1533,10 +1527,6 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
    [
     "Area",
     "Madonie, Ficuzza"
-   ],
-   [
-    "Fiducia",
-    "Moderata, da dati datati"
    ]
   ],
   "fonti": [
@@ -1700,66 +1690,6 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
   "foto": false
  },
  {
-  "slug": "livelli-di-fiducia",
-  "tipo": "metodo",
-  "cover": "fiducia",
-  "t": "Quanto fidarsi di una scheda: cinque livelli",
-  "sum": "Ogni affermazione dice quanto è sostenuta dalle prove.",
-  "lead": "Non tutte le informazioni sui funghi valgono allo stesso modo. Noi lo scriviamo chiaro.",
-  "corpo": [
-   "Sui funghi si sente dire di tutto: regole antiche, consigli di amici, studi scientifici. Non è tutto sullo stesso piano, e spesso chi legge non può capire quanto fidarsi. Per questo, nelle schede dell'Osservatorio, ogni affermazione importante dice quanto è sostenuta dalle prove. I livelli sono cinque.",
-   "## Stabilito",
-   "Più studi mediterranei, seguiti per più anni su molte parcelle, arrivano alla stessa conclusione. Esempio: la pioggia tra fine agosto e ottobre, accumulata su più settimane, è il motore principale della produzione autunnale.",
-   "## Moderato",
-   "Uno o due studi mediterranei con numeri, oppure più studi che concordano solo sulla direzione dell'effetto, senza soglie precise. Esempi: la finestra di pioggia di circa 30 giorni, o la soglia dei 50 mm dal 1° agosto, che viene da un solo sito.",
-   "## Debole",
-   "Dati che non vengono dal Mediterraneo, preprint non ancora controllati da altri scienziati, tesi, dati di coltivazione in laboratorio, singoli reperti datati. Esempi: i numeri sui porcini delle faggete tedesche, o la temperatura a cui alcuni funghi fruttificano in coltivazione (Cyclocybe tra 16 e 20 °C, Coprinus comatus che non fruttifica a 28-32 °C con un ceppo tropicale).",
-   "## Ipotesi",
-   "Un ragionamento nostro a partire dalle fonti, che nessuno ha misurato. Esempio: che tronchi e ceppaie facciano da serbatoio d'acqua per settimane e quindi per i funghi del legno servano finestre di pioggia più lunghe.",
-   "## Sapere popolare",
-   "Circola tra i cercatori, ma non abbiamo trovato alcuna fonte scientifica. Esempi: lo «sbalzo termico» come innesco, le soglie del tipo «20 mm in 48 ore», la temperatura del suolo come segnale. Non vuol dire che siano sbagliate: vuol dire che nessuno le ha ancora misurate, e che per questo le registriamo come dati senza trasformarle in regole.",
-   "## Perché lo scriviamo",
-   "Perché un'associazione che dà informazioni deve dire anche quanto è sicura di ciò che dice. E perché è il modo più onesto per far crescere, stagione dopo stagione, il livello delle nostre conoscenze."
-  ],
-  "meta": [
-   [
-    "Gruppo",
-    "Tutti i gruppi"
-   ],
-   [
-    "Periodo",
-    "Sempre"
-   ],
-   [
-    "Area",
-    "Generica"
-   ],
-   [
-    "Stato",
-    "Regola in uso"
-   ]
-  ],
-  "fonti": [
-   {
-    "t": "Ponce et al. 2022, Forest Ecology and Management 524",
-    "u": "https://cris.ctfc.cat/docs/upload/27_1233_forecoman_a2022v524p120523.pdf"
-   },
-   {
-    "t": "Salerni et al. 2002, Israel Journal of Plant Sciences 50",
-    "u": "https://usiena-air.unisi.it/handle/11365/3048"
-   },
-   {
-    "t": "Sato et al. 2012, PLoS ONE 7 (dato non mediterraneo)",
-    "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3507881"
-   },
-   {
-    "t": "Alday et al. 2017, Scientific Reports 7",
-    "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5382911"
-   }
-  ],
-  "foto": false
- },
- {
   "slug": "come-registriamo",
   "tipo": "metodo",
   "cover": "taccuino",
@@ -1827,7 +1757,7 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
    "## Confermata in sede",
    "La determinazione è confermata dopo lo studio dell'esemplare, anche al microscopio. È il livello più alto di sicurezza che l'associazione dà ai suoi dati.",
    "## Come usarli",
-   "Quando leggi una scheda o un dato sul sito, guarda sempre lo stato: ti dice se stai leggendo un'ipotesi o una certezza. È lo stesso principio dei livelli di fiducia delle schede: dichiarare quanto siamo sicuri è parte dell'onestà di un'associazione che si occupa di scienza."
+   "Quando leggi una scheda o un dato sul sito, guarda sempre lo stato: ti dice se stai leggendo un'ipotesi o una certezza."
   ],
   "meta": [
    [
