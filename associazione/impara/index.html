@@ -398,6 +398,18 @@ img.ic-img { width: 108px; height: 108px; object-fit: cover; border-radius: 10px
 .st-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
 .st-jump a { text-decoration: none; color: var(--ink); border: 1.5px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px; font-size: 14.5px; font-weight: 600; }
 .st-tool { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 16px; margin-top: 16px; scroll-margin-top: 12px; }
+.st-tool { padding: 0; overflow: hidden; }
+.st-tool > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 16px; }
+.st-tool > summary::-webkit-details-marker { display: none; }
+.st-tool > summary:hover { background: var(--accent-soft); }
+.st-t { flex: 1 1 auto; min-width: 0; display: grid; gap: 2px; }
+.st-t b { font: 700 20px/1.2 var(--f-display); }
+.st-t small { color: var(--muted); font-size: 14.5px; line-height: 1.35; }
+.st-chev { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--accent-soft); display: grid; place-items: center; }
+.st-chev::before { content: ""; width: 9px; height: 9px; border-right: 2.5px solid var(--accent); border-bottom: 2.5px solid var(--accent); transform: translateY(-2px) rotate(45deg); transition: transform .2s; }
+.st-tool[open] > summary { border-bottom: 1.5px solid var(--line); }
+.st-tool[open] .st-chev::before { transform: translateY(2px) rotate(-135deg); }
+.st-body { padding: 16px; }
 .st-tool h3 { margin: 0 0 6px; font: 700 20px/1.2 var(--f-display); }
 .st-tool > p { margin: 0 0 10px; color: var(--muted); max-width: 72ch; }
 .st-how { margin-top: 12px; font-size: 15px; }
@@ -769,15 +781,48 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
     <div id="st-strumenti">
       <div class="tav-intro">
         <h2>Strumenti</h2>
-        <p>Strumenti di lavoro per chi determina: misure delle spore, reagenti, colore della sporata, scheda di raccolta e nomi aggiornati. Sono pensati per il lunedì sera in sede e per lo studio a casa.</p>
+        <p>Strumenti di lavoro per chi determina: scheda di raccolta, colore della sporata, nomenclatura, misura delle spore e prontuario dei reagenti. Tocca una scheda per aprirla. Sono pensati per il lunedì sera in sede e per lo studio a casa.</p>
         <p class="bk-warn" style="display:inline-block">Bozza per il comitato scientifico: contenuti da rivedere prima della pubblicazione.</p>
       </div>
-      <nav class="st-jump" aria-label="Vai allo strumento">
-        <a href="#st-spore">Misura delle spore</a><a href="#st-reagenti">Reagenti</a><a href="#st-sporata">Colore della sporata</a><a href="#st-scheda">Scheda di raccolta</a><a href="#st-nomi">Nome attuale</a>
-      </nav>
 
-      <section class="st-tool" id="st-spore" aria-labelledby="st-spore-h">
-        <h3 id="st-spore-h">Misura delle spore</h3>
+      <details class="st-tool" id="st-scheda">
+        <summary><span class="st-t"><b>Scheda di raccolta</b><small>Descrivi ogni ritrovamento allo stesso modo, da copiare o stampare</small></span><span class="st-chev" aria-hidden="true"></span></summary>
+        <div class="st-body">
+        <p>La stessa scheda per tutti i soci, così ogni ritrovamento è descritto allo stesso modo. Compilala sul posto o a casa, poi copiala nel messaggio al comitato o stampala dal sito. Il testo resta salvato su questo dispositivo finché non la svuoti.</p>
+        <p class="bk-warn" style="display:inline-block">Non scrivere coordinate o luoghi precisi: basta il comune o la contrada.</p>
+        <form id="scForm" class="sc-form" autocomplete="off"></form>
+        <div class="bk-act"><button class="btn primary" type="button" id="scCopy">Copia la scheda</button><button class="btn" type="button" id="scPrint">Stampa</button><button class="btn" type="button" id="scClr">Svuota</button></div>
+        <p class="status" id="scMsg" aria-live="polite"></p>
+        </div>
+      </details>
+      <details class="st-tool" id="st-sporata">
+        <summary><span class="st-t"><b>Colore della sporata</b><small>Confronta la tua sporata e impara a farla</small></span><span class="st-chev" aria-hidden="true"></span></summary>
+        <div class="st-body">
+        <p>Il colore delle spore in massa è uno dei primi caratteri della chiave. Confronta la tua sporata con questi gruppi.</p>
+        <div class="spo-grid" id="spoList"></div>
+        <details class="st-how" open><summary>Come si fa una sporata</summary>
+          <ol>
+            <li>Taglia il gambo sotto il cappello e appoggia il cappello, lamelle o pori in giù, su un foglio metà bianco e metà nero (o su un vetrino).</li>
+            <li>Copri con un bicchiere o una ciotola, per non far seccare il fungo e non far muovere l'aria.</li>
+            <li>Aspetta da 2 a 12 ore. I funghi giovani o secchi spesso non sporulano.</li>
+            <li>Guarda il colore di giorno, su carta bianca. Una sporata sottile sembra più chiara di quella spessa: raschia le spore in un mucchietto con una lama.</li>
+          </ol>
+          <p><button class="btn" type="button" data-goto-tab="chiave">Usala nella chiave</button></p>
+        </details>
+        </div>
+      </details>
+      <details class="st-tool" id="st-nomi">
+        <summary><span class="st-t"><b>Nomenclatura e sinonimi</b><small>Cerca il nome attuale di una specie e i suoi vecchi nomi</small></span><span class="st-chev" aria-hidden="true"></span></summary>
+        <div class="st-body">
+        <p>Scrivi un nome, anche antico, e scopri come si chiama oggi la specie. Prima cerco fra i nomi già controllati delle nostre tavole, poi nel Catalogue of Life, il catalogo mondiale che per i funghi riprende Species Fungorum.</p>
+        <div class="st-filter no-row"><input id="noQ" type="search" placeholder="Per esempio: Boletus satanas, Agaricus procerus, Tricholoma georgii" aria-label="Nome da cercare" autocomplete="off"><button class="btn primary" type="button" id="noGo">Cerca</button></div>
+        <div id="noRes" aria-live="polite"></div>
+        <p class="tav-note">I cataloghi cambiano e non sempre sono d'accordo fra loro. Per i casi dubbi decide il comitato scientifico.</p>
+        </div>
+      </details>
+      <details class="st-tool" id="st-spore">
+        <summary><span class="st-t"><b>Misura delle spore</b><small>Incolla le misure e ottieni la formula per le descrizioni</small></span><span class="st-chev" aria-hidden="true"></span></summary>
+        <div class="st-body">
         <p>Scrivi una spora per riga: lunghezza e larghezza, separate da uno spazio, da una x o da un tab. Va bene anche incollare due colonne da un foglio di calcolo. Servono almeno 20–30 spore, prese a caso da una sporata.</p>
         <div class="sp-grid">
           <div class="sp-in">
@@ -803,47 +848,17 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
         <details class="st-how"><summary>Come si legge</summary>
           <p>La formula segue l'uso delle monografie: <i>(min–) 5° percentile – 95° percentile (–max)</i>. Fra parentesi i valori estremi, al centro dove cade il 90% delle spore. <b>Q</b> è il rapporto lunghezza/larghezza di ogni spora: vicino a 1 vuol dire tonda, oltre 1,6 allungata. <b>Lm</b>, <b>Wm</b> e <b>Qm</b> sono le medie. L'apiculo non va compreso nella lunghezza.</p>
         </details>
-      </section>
-
-      <section class="st-tool" id="st-reagenti" aria-labelledby="st-re-h">
-        <h3 id="st-re-h">Reagenti</h3>
+        </div>
+      </details>
+      <details class="st-tool" id="st-reagenti">
+        <summary><span class="st-t"><b>Prontuario dei reagenti</b><small>A cosa servono, come si usano e cosa si osserva</small></span><span class="st-chev" aria-hidden="true"></span></summary>
+        <div class="st-body">
         <p>I reagenti più usati in determinazione: a cosa servono, come si usano e cosa si osserva. Una goccia sulla carne, sulla cuticola o sul vetrino può separare due specie simili.</p>
         <div class="st-filter"><input id="reQ" type="search" placeholder="Cerca un reagente o un genere: Melzer, Russula, amiloide…" aria-label="Cerca nei reagenti" autocomplete="off"></div>
         <div class="re-grid" id="reList"></div>
         <p class="tav-note">Sicurezza: guanti e occhiali, lontano dai bambini. Il Melzer contiene idrato di cloralio, che in Italia si acquista solo in farmacia o da fornitori di laboratorio. La potassa (KOH) e l'ammoniaca sono caustiche; il fenolo è tossico anche per contatto.</p>
-      </section>
-
-      <section class="st-tool" id="st-sporata" aria-labelledby="st-sp-h">
-        <h3 id="st-sp-h">Colore della sporata</h3>
-        <p>Il colore delle spore in massa è uno dei primi caratteri della chiave. Confronta la tua sporata con questi gruppi.</p>
-        <div class="spo-grid" id="spoList"></div>
-        <details class="st-how" open><summary>Come si fa una sporata</summary>
-          <ol>
-            <li>Taglia il gambo sotto il cappello e appoggia il cappello, lamelle o pori in giù, su un foglio metà bianco e metà nero (o su un vetrino).</li>
-            <li>Copri con un bicchiere o una ciotola, per non far seccare il fungo e non far muovere l'aria.</li>
-            <li>Aspetta da 2 a 12 ore. I funghi giovani o secchi spesso non sporulano.</li>
-            <li>Guarda il colore di giorno, su carta bianca. Una sporata sottile sembra più chiara di quella spessa: raschia le spore in un mucchietto con una lama.</li>
-          </ol>
-          <p><button class="btn" type="button" data-goto-tab="chiave">Usala nella chiave</button></p>
-        </details>
-      </section>
-
-      <section class="st-tool" id="st-scheda" aria-labelledby="st-sc-h">
-        <h3 id="st-sc-h">Scheda di raccolta</h3>
-        <p>La stessa scheda per tutti i soci, così ogni ritrovamento è descritto allo stesso modo. Compilala sul posto o a casa, poi copiala nel messaggio al comitato o stampala dal sito. Il testo resta salvato su questo dispositivo finché non la svuoti.</p>
-        <p class="bk-warn" style="display:inline-block">Non scrivere coordinate o luoghi precisi: basta il comune o la contrada.</p>
-        <form id="scForm" class="sc-form" autocomplete="off"></form>
-        <div class="bk-act"><button class="btn primary" type="button" id="scCopy">Copia la scheda</button><button class="btn" type="button" id="scPrint">Stampa</button><button class="btn" type="button" id="scClr">Svuota</button></div>
-        <p class="status" id="scMsg" aria-live="polite"></p>
-      </section>
-
-      <section class="st-tool" id="st-nomi" aria-labelledby="st-no-h">
-        <h3 id="st-no-h">Nome attuale</h3>
-        <p>Scrivi un nome, anche antico, e scopri come si chiama oggi la specie. Prima cerco fra i nomi già controllati delle nostre tavole, poi nel Catalogue of Life, il catalogo mondiale che per i funghi riprende Species Fungorum.</p>
-        <div class="st-filter no-row"><input id="noQ" type="search" placeholder="Per esempio: Boletus satanas, Agaricus procerus, Tricholoma georgii" aria-label="Nome da cercare" autocomplete="off"><button class="btn primary" type="button" id="noGo">Cerca</button></div>
-        <div id="noRes" aria-live="polite"></div>
-        <p class="tav-note">I cataloghi cambiano e non sempre sono d'accordo fra loro. Per i casi dubbi decide il comitato scientifico.</p>
-      </section>
+        </div>
+      </details>
     </div>
 
   </section>
