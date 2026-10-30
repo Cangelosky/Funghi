@@ -4058,18 +4058,19 @@ function pubFull(p, lang) {
   function badges(e) { return (e.tv ? '<span class="sp-bd">Tavola storica</span>' : "") + (e.ph ? '<span class="sp-bd">Foto dal vero' + (e.ph.length > 1 ? " (" + e.ph.length + ")" : "") + "</span>" : ""); }
   function card(e) {
     var reg = regs(e), b = badges(e), src = e.tv ? tvSrc(e.tv[0]) : null;
-    var media = '<span class="sp-media">' + (src ? '<img class="sp-tv" loading="lazy" src="' + src + '" alt="">' : "") + (e.ph ? '<img class="sp-ph" loading="lazy" src="' + e.ph[0] + '" alt="">' : MISS) + "</span>";
+    var media = '<span class="sp-media">' + (src ? '<img class="sp-tv" loading="lazy" src="' + src + '" alt="">' : "") + (e.ph ? '<img class="sp-ph" loading="lazy" src="' + e.ph[0] + '" alt=""' + fpos((e.pm || [])[0]) + ">" : MISS) + "</span>";
     var old = (e.on || []).map(function (x) { return "<i>" + esc(x[1]) + "</i> (" + esc(x[0]) + ")"; }).join(" · ");
     return '<button type="button" class="sp-card" data-spk="' + esc(e.n) + '" aria-label="Apri la scheda di ' + esc(e.n) + '">' + media + '<span class="sp-b"><span class="sp-h"><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></span><span class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · " + esc(e.f) : "") + (e.t ? " · " + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") : "") + "</span>" +
       (b ? '<span class="sp-bds">' + b + "</span>" : "") + (reg ? '<span class="sp-rgs">' + reg + "</span>" : "") + (old ? '<span class="sp-old">Nei libri e in mostra come: ' + old + "</span>" : "") + '<span class="sp-open">Apri la scheda ›</span></span></button>';
   }
+  function fpos(m) { return m && m.f ? ' style="object-position:' + (+m.f[0]) + "% " + (+m.f[1]) + '%"' : ""; }
   function phCr(m) { m = m || {}; return "© " + esc(m.a || "Oscar Cangelosi") + (m.d ? " · " + esc(m.d) : ""); }
   function phNt(m) { m = m || {}; return [m.v, m.nt].filter(Boolean).map(esc).join(" · "); }
   function phBox(src, e, m) { return '<div class="spd-ph"><img class="spd-gm" src="' + src + '" alt="Foto di ' + esc(e.n) + ' in natura"><span class="spd-cr">' + phCr(m) + "</span></div>"; }
   function phNote(m) { var x = phNt(m); return '<figcaption class="spd-gc spd-nt"' + (x ? "" : " hidden") + ">" + x + "</figcaption>"; }
   function gallery(e) {
     return '<figure class="spd-fig spd-gal" data-gal="' + esc(e.n) + '">' + phBox(e.ph[0], e, (e.pm || [])[0]) + phNote((e.pm || [])[0]) + '<div class="spd-th" role="group" aria-label="Le foto di questa specie">' +
-      e.ph.map(function (src, i) { return '<button type="button" class="spd-t' + (i ? "" : " on") + '" data-gi="' + i + '" aria-label="Foto ' + (i + 1) + " di " + e.ph.length + '"><img src="' + src + '" alt=""></button>'; }).join("") + "</div></figure>";
+      e.ph.map(function (src, i) { return '<button type="button" class="spd-t' + (i ? "" : " on") + '" data-gi="' + i + '" aria-label="Foto ' + (i + 1) + " di " + e.ph.length + '"><img src="' + src + '" alt=""' + fpos((e.pm || [])[i]) + "></button>"; }).join("") + "</div></figure>";
   }
   function detail(e) {
     var SHB = { inz: "Inzenga, 1865", vitt: "Vittadini, 1835", bres: "Bresadola, 1906", come: "Comes, 1878", matt: "Mattirolo" };
