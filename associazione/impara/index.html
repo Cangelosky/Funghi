@@ -190,7 +190,7 @@ h1 { margin: 0; font: 700 clamp(26px, 5vw, 34px)/1.1 var(--f-display); letter-sp
 .item span { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.4; }
 .ic { flex: none; width: 108px; height: auto; }
 img.ic-img { width: 108px; height: 108px; object-fit: cover; border-radius: 10px; background: #FAF5EC; border: 1px solid var(--line); display: block; }
-.chip-ic img.ic-img { width: 52px; height: 52px; border-radius: 8px; }
+.chip-ic img.ic-img { width: 52px; height: 52px; border-radius: 8px; filter: contrast(1.8) brightness(.95); }
 .ic-src { display: block; font-size: 11.5px; color: var(--muted); margin-top: 2px; }
 .dsw { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
 .dsw h2 { margin: 0; }
@@ -2602,10 +2602,9 @@ ICONS["forma:stella"] = svgI(120, 100, P("M60 42L72 12L80 40L108 30L92 54L114 68
 
 
 var PIMG = {"him:lamelle": ["Bresadola 1906", "Agaricus campestris"], "him:tubuli": ["Bresadola 1906", "Suillus granulatus"], "him:aculei": ["Bresadola 1906", "Hydnum repandum"], "him:pieghe": ["Bresadola 1906", "Cantharellus cibarius"], "him:liscio": ["Bresadola 1906", "Craterellus cornucopioides"], "him:gleba": ["Bresadola 1906", "Lycoperdon utriforme"], "vol:libera": ["Bresadola 1906", "Amanita caesarea"], "base:no": ["Bresadola 1906", "Russula cyanoxantha"], "ann:ampio": ["Bresadola 1906", "Amanita phalloides"], "ann:mobile": ["Bresadola 1906", "Macrolepiota procera"], "ann:nessuno": ["Bresadola 1906", "Russula cyanoxantha"], "forma:alveolato": ["Bresadola 1906", "Morchella esculenta"], "forma:cervello": ["Bresadola 1906", "Gyromitra esculenta"], "forma:coppa": ["Vittadini 1835", "Helvella acetabulum"], "forma:corallo": ["Bresadola 1906", "Ramaria botrytis"], "forma:sella": ["Bresadola 1906", "Helvella crispa"], "forma:tartufo": ["Bresadola 1906", "Tuber melanosporum"], "gam:laterale": ["Inzenga 1865", "Pleurotus ostreatus"], "gam:reticolato": ["Bresadola 1906", "Suillellus luridus"], "cap:convesso": ["Bresadola 1906", "Boletus edulis"], "cap:imbutiforme": ["Bresadola 1906", "Infundibulicybe geotropa"]};
-var DSTYLE = "colore";
-try { var _ds = localStorage.getItem("inz-disegni"); if (_ds === "tratto" || _ds === "colore") DSTYLE = _ds; } catch (e) {}
+var DSTYLE = "tratto";
 function icon(k, mode) {
-  if (k && PIMG[k]) { var m = mode || "colore"; return '<img class="ic ic-img" loading="lazy" src="caratteri/' + k.replace(":", "-") + "-" + m + '.webp" alt="" title="Tavola di ' + PIMG[k][0] + ": " + PIMG[k][1] + '">'; }
+  if (k && PIMG[k]) { var m = "tratto"; return '<img class="ic ic-img" loading="lazy" src="caratteri/' + k.replace(":", "-") + "-" + m + '.webp" alt="" title="Tavola di ' + PIMG[k][0] + ": " + PIMG[k][1] + '">'; }
   return k && ICONS[k] ? ICONS[k] : "";
 }
 var IM = {
@@ -2944,7 +2943,7 @@ function renderParts() {
     return '<button class="part-btn" type="button" data-part="' + p.id + '" aria-pressed="' + (p.id === curPart) + '">' + esc(p.nome) + "</button>";
   }).join("");
   var p = PARTS.filter(function (x) { return x.id === curPart; })[0];
-  var h = '<div class="dsw"><h2>' + esc(p.nome) + '</h2><div class="dsw-b" role="group" aria-label="Stile dei disegni"><button type="button" data-dstyle="colore" aria-pressed="' + (DSTYLE === "colore") + '">A colori</button><button type="button" data-dstyle="tratto" aria-pressed="' + (DSTYLE === "tratto") + '">A tratto</button></div></div><p class="intro">' + esc(p.intro) + "</p>";
+  var h = '<div class="dsw"><h2>' + esc(p.nome) + '</h2></div><p class="intro">' + esc(p.intro) + "</p>";
   p.gruppi.forEach(function (g) {
     h += '<div class="grp"><h4>' + esc(g.t) + '</h4><div class="items">';
     g.v.forEach(function (v) { var ex = EX[p.id + "/" + v[0]];
