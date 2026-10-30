@@ -4130,7 +4130,7 @@ function pubFull(p, lang) {
   function load(cb) {
     if (SP) { cb(); return; }
     $("#spList").innerHTML = '<p class="status">Carico le specie…</p>';
-    fetch("libri/specie.json").then(function (r) { return r.json(); }).then(function (d) { SP = d; SP.forEach(function (e) { e.h = norm(e.n + " " + e.f + " " + (e.on || []).map(function (x) { return x[1]; }).join(" ")); }); cb(); })
+    fetch("libri/specie.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) { SP = d; SP.forEach(function (e) { e.h = norm(e.n + " " + e.f + " " + (e.on || []).map(function (x) { return x[1]; }).join(" ")); }); cb(); })
       .catch(function () { $("#spList").innerHTML = '<p class="status">Non riesco a caricare l\'archivio. Riprova più tardi.</p>'; });
   }
   function chips() {
@@ -4320,7 +4320,7 @@ var TAV = [
     });
   }
   var ALL = {}, NOMI = {};
-  Promise.all([fetch("libri/nomi.json").then(function (r) { return r.json(); }), fetch("libri/foto.json").then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (d) {
+  Promise.all([fetch("libri/nomi.json").then(function (r) { return r.json(); }), fetch("libri/foto.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (d) {
     NOMI = d[0]; var F = d[1], M = {};
     function sp2(s) { return (s || "").split(" ").slice(0, 2).join(" ").toLowerCase(); }
     var FK = {}; Object.keys(F).forEach(function (k) { FK[k.toLowerCase()] = { sp: k, f: F[k] }; });
