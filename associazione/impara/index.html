@@ -470,6 +470,10 @@ img.ic-img { width: 108px; height: 108px; object-fit: cover; border-radius: 10px
 .spd-fig img { width: 100%; max-height: 420px; object-fit: contain; background: #EFE7D2; border-radius: 10px; display: block; }
 .spd-pl { border: 0; padding: 0; background: none; cursor: zoom-in; display: block; }
 .spd-fig figcaption { font-size: 13px; opacity: .8; }
+.spd-gal .spd-th { display: flex; gap: 6px; flex-wrap: wrap; }
+.spd-gal .spd-t { padding: 0; border: 2px solid transparent; border-radius: 8px; background: none; cursor: pointer; width: 64px; height: 64px; overflow: hidden; }
+.spd-gal .spd-t img { width: 100%; height: 100%; max-height: none; object-fit: cover; border-radius: 0; }
+.spd-gal .spd-t.on { border-color: var(--accent); }
 .spd-miss .sp-miss { min-height: 240px; margin: 0; border-color: #B7A98A; color: #6b5c40; }
 .spd-old { margin: 0; padding-left: 18px; }
 .sp-b { padding: 10px 12px 12px; display: grid; gap: 6px; min-width: 0; }
@@ -4030,7 +4034,7 @@ function pubFull(p, lang) {
   function tvLeaf(t) { var k = t.split(":")[0], l = t.split(":")[1]; return k === "inz" ? parseInt(l.slice(1), 10) - 1 : +l; }
   var MISS = '<span class="sp-miss"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 22A14 12 0 0 1 34 22Z"/><path d="M17 23h6l-1 11h-4Z"/></svg>Foto mancante</span>';
   function regs(e, n) { return Object.keys(RG).filter(function (k) { return e.r && e.r[k]; }).map(function (k) { return '<span class="sp-rg" title="' + e.r[k] + ' segnalazioni">' + RG[k] + (n ? " · " + e.r[k] : "") + "</span>"; }).join(""); }
-  function badges(e) { return (e.tv ? '<span class="sp-bd">Tavola storica</span>' : "") + (e.ph ? '<span class="sp-bd">Foto dal vero</span>' : ""); }
+  function badges(e) { return (e.tv ? '<span class="sp-bd">Tavola storica</span>' : "") + (e.ph ? '<span class="sp-bd">Foto dal vero' + (e.ph.length > 1 ? " (" + e.ph.length + ")" : "") + "</span>" : ""); }
   function card(e) {
     var reg = regs(e), b = badges(e), src = e.tv ? tvSrc(e.tv[0]) : null;
     var media = '<span class="sp-media">' + (src ? '<img class="sp-tv" loading="lazy" src="' + src + '" alt="">' : "") + (e.ph ? '<img class="sp-ph" loading="lazy" src="' + e.ph[0] + '" alt="">' : MISS) + "</span>";
@@ -4038,10 +4042,15 @@ function pubFull(p, lang) {
     return '<button type="button" class="sp-card" data-spk="' + esc(e.n) + '" aria-label="Apri la scheda di ' + esc(e.n) + '">' + media + '<span class="sp-b"><span class="sp-h"><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></span><span class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · " + esc(e.f) : "") + (e.t ? " · " + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") : "") + "</span>" +
       (b ? '<span class="sp-bds">' + b + "</span>" : "") + (reg ? '<span class="sp-rgs">' + reg + "</span>" : "") + (old ? '<span class="sp-old">Nei libri e in mostra come: ' + old + "</span>" : "") + '<span class="sp-open">Apri la scheda ›</span></span></button>';
   }
+  function phCap(m) { m = m || {}; return "Foto dal vero · © " + esc(m.a || "Oscar Cangelosi") + (m.z ? " · " + esc(m.z) : "") + (m.d ? ", " + esc(m.d) : ""); }
+  function gallery(e) {
+    return '<figure class="spd-fig spd-gal" data-gal="' + esc(e.n) + '"><img class="spd-gm" src="' + e.ph[0] + '" alt="Foto di ' + esc(e.n) + ' in natura"><figcaption class="spd-gc">' + phCap((e.pm || [])[0]) + '</figcaption><div class="spd-th" role="group" aria-label="Le foto di questa specie">' +
+      e.ph.map(function (src, i) { return '<button type="button" class="spd-t' + (i ? "" : " on") + '" data-gi="' + i + '" aria-label="Foto ' + (i + 1) + " di " + e.ph.length + '"><img src="' + src + '" alt=""></button>'; }).join("") + "</div></figure>";
+  }
   function detail(e) {
     var SHB = { inz: "Inzenga, 1865", vitt: "Vittadini, 1835", bres: "Bresadola, 1906", come: "Comes, 1878", matt: "Mattirolo" };
     var figs = (e.tv || []).map(function (t) { var src = tvSrc(t), k = t.split(":")[0]; if (!src) return ""; return '<figure class="spd-fig"><button type="button" class="spd-pl" data-spd-book="' + t + '" aria-label="Apri la tavola nel libro"><img src="' + src + '" alt="Tavola storica di ' + esc(e.n) + '"></button><figcaption>Disegno: ' + esc(SHB[k] || k) + ". Tocca per aprirlo nel libro.</figcaption></figure>"; }).join("");
-    var ph = e.ph ? e.ph.map(function (src) { return '<figure class="spd-fig"><img src="' + src + '" alt="Foto di ' + esc(e.n) + ' in natura"><figcaption>Foto dal vero · © Oscar Cangelosi</figcaption></figure>'; }).join("") :
+    var ph = e.ph ? (e.ph.length > 1 ? gallery(e) : '<figure class="spd-fig"><img src="' + e.ph[0] + '" alt="Foto di ' + esc(e.n) + ' in natura"><figcaption>' + phCap((e.pm || [])[0]) + "</figcaption></figure>") :
       '<figure class="spd-fig spd-miss">' + MISS + "<figcaption>Non abbiamo ancora una foto di questa specie. Se ne hai una con determinazione certa, mandala all'associazione.</figcaption></figure>";
     if (!figs) figs = '<figure class="spd-fig spd-miss"><span class="sp-miss">Nessun disegno</span><figcaption>Nessuna tavola dei libri della Biblioteca per questa specie.</figcaption></figure>';
     var old = (e.on || []).map(function (x) { return "<li><i>" + esc(x[1]) + "</i> · " + esc(x[0]) + "</li>"; }).join("");
@@ -4096,6 +4105,13 @@ function pubFull(p, lang) {
   $("#spSort").addEventListener("change", function () { cur.sort = this.value; go(); });
   ["tv", "ph"].forEach(function (k) { $("#spF" + k).addEventListener("change", function () { cur[k] = this.checked; shown = 60; go(); }); });
   $("#spMore").addEventListener("click", function () { shown += 120; render(); });
+  document.addEventListener("click", function (ev) {
+    var t = ev.target.closest("[data-gi]"); if (!t) return;
+    var fig = t.closest(".spd-gal"), sp = fig && BYN && BYN[fig.getAttribute("data-gal")]; if (!sp) return;
+    var i = +t.getAttribute("data-gi");
+    fig.querySelector(".spd-gm").src = sp.ph[i]; fig.querySelector(".spd-gc").innerHTML = phCap((sp.pm || [])[i]);
+    fig.querySelectorAll(".spd-t").forEach(function (b) { b.classList.toggle("on", b === t); });
+  });
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-sg]"); if (b) { cur.g = b.getAttribute("data-sg"); shown = 60; render(); return; }
     if ((b = e.target.closest("[data-sp-libri]"))) { setTab("biblioteca", true); $("#inzBook").value = "all"; $("#inzQ").value = b.getAttribute("data-sp-libri").split(" ")[0] + " " + b.getAttribute("data-sp-libri").split(" ")[1]; inzSearch(); setTimeout(function () { $("#inzQ").scrollIntoView({ block: "center" }); }, 50); return; }
