@@ -470,6 +470,7 @@ img.ic-img { width: 108px; height: 108px; object-fit: cover; border-radius: 10px
 .spd-fig img { width: 100%; max-height: 420px; object-fit: contain; background: #EFE7D2; border-radius: 10px; display: block; }
 .spd-pl { border: 0; padding: 0; background: none; cursor: zoom-in; display: block; }
 .spd-fig figcaption { font-size: 13px; opacity: .8; }
+.spd-nt { font-style: italic; }
 .spd-gal .spd-th { display: flex; gap: 6px; flex-wrap: wrap; }
 .spd-gal .spd-t { padding: 0; border: 2px solid transparent; border-radius: 8px; background: none; cursor: pointer; width: 64px; height: 64px; overflow: hidden; }
 .spd-gal .spd-t img { width: 100%; height: 100%; max-height: none; object-fit: cover; border-radius: 0; }
@@ -4042,7 +4043,7 @@ function pubFull(p, lang) {
     return '<button type="button" class="sp-card" data-spk="' + esc(e.n) + '" aria-label="Apri la scheda di ' + esc(e.n) + '">' + media + '<span class="sp-b"><span class="sp-h"><i>' + esc(e.n) + '</i> <span class="iz-a">' + esc(e.a || "") + '</span></span><span class="iz-m">' + esc(GR[e.g] || "") + (e.f ? " · " + esc(e.f) : "") + (e.t ? " · " + e.t + (e.t === 1 ? " segnalazione" : " segnalazioni") : "") + "</span>" +
       (b ? '<span class="sp-bds">' + b + "</span>" : "") + (reg ? '<span class="sp-rgs">' + reg + "</span>" : "") + (old ? '<span class="sp-old">Nei libri e in mostra come: ' + old + "</span>" : "") + '<span class="sp-open">Apri la scheda ›</span></span></button>';
   }
-  function phCap(m) { m = m || {}; return "Foto dal vero" + (m.v ? " · " + esc(m.v) : "") + " · © " + esc(m.a || "Oscar Cangelosi") + (m.z ? " · " + esc(m.z) : "") + (m.d ? ", " + esc(m.d) : ""); }
+  function phCap(m) { m = m || {}; return "Foto dal vero" + (m.v ? " · " + esc(m.v) : "") + " · © " + esc(m.a || "Oscar Cangelosi") + (m.z ? " · " + esc(m.z) : "") + (m.d ? ", " + esc(m.d) : "") + (m.nt ? '<br><span class="spd-nt">' + esc(m.nt) + "</span>" : ""); }
   function gallery(e) {
     return '<figure class="spd-fig spd-gal" data-gal="' + esc(e.n) + '"><img class="spd-gm" src="' + e.ph[0] + '" alt="Foto di ' + esc(e.n) + ' in natura"><figcaption class="spd-gc">' + phCap((e.pm || [])[0]) + '</figcaption><div class="spd-th" role="group" aria-label="Le foto di questa specie">' +
       e.ph.map(function (src, i) { return '<button type="button" class="spd-t' + (i ? "" : " on") + '" data-gi="' + i + '" aria-label="Foto ' + (i + 1) + " di " + e.ph.length + '"><img src="' + src + '" alt=""></button>'; }).join("") + "</div></figure>";
