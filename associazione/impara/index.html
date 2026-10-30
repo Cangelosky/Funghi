@@ -267,6 +267,7 @@ img.ic-img { width: 108px; height: 108px; object-fit: cover; border-radius: 10px
 .ic * { stroke-width: 1.5; }
 .ic .cap, .ic .fl, .ic .gel, .ic .leaf { fill: var(--surface); }
 .ic .gi { fill: url(#p-stip); }
+.ic .spk { fill: var(--surface); stroke-width: .7; }
 .ic .lam, .ic .hi, .ic .fib { display: none; }
 .ic .tub { fill: url(#p-hatch); stroke: none; }
 .ic .skin { stroke-width: 2.4; }
@@ -2600,31 +2601,74 @@ ICONS["forma:tartufo"] = svgI(120, 100, P("M2 2L118 2L118 22C90 28 30 18 2 24Z",
 ICONS["forma:stella"] = svgI(120, 100, P("M60 42L72 12L80 40L108 30L92 54L114 68L84 68L90 94L66 74L60 98L54 74L30 94L36 68L6 68L28 54L12 30L40 40L48 12Z", "cap") +
   P("M60 38C72 38 80 48 80 58C80 70 70 76 60 76C50 76 40 70 40 58C40 48 48 38 60 38Z", "cap") + P("M60 38C60 36 60 34 60 34", "ln") + P("M50 50C54 46 64 46 70 50", "tn"));
 
-/* ---------- Imenio rifatto nello stile delle sezioni (tratto nero e puntinato) ---------- */
+/* ---------- Imenio: fungo visto da sotto, di tre quarti, tratto nero e puntinato ---------- */
 (function () {
-  var stem = P("M54 62L54 100M66 62L66 100", "ln");
-  var arc = P("M4 54C8 28 32 8 60 8C88 8 112 28 116 54", "ln");
-  var zone = "M6 53C30 44 90 44 114 53C102 64 84 70 67 71L53 71C36 70 18 64 6 53Z";
-  function yUp(x) { var t = (x - 6) / 108; return 53 - 36 * t * (1 - t) * 1; }
-  function yLo(x) { var t = (x - 6) / 108; return 53 + 70 * t * (1 - t); }
-  var lines = "";
-  for (var x = 11; x <= 109; x += 4.2) { if (x > 51 && x < 69) continue; lines += "M" + x.toFixed(1) + " " + (yUp(x) + 1).toFixed(1) + "L" + x.toFixed(1) + " " + (yLo(x) - 1).toFixed(1); }
-  ICONS["him:lamelle"] = svgI(120, 104, P(zone, "gi") + P(lines, "tn2") + P(zone, "ln") + P("M54 70L54 100M66 70L66 100", "ln") + arc);
-  var tz = "M6 53C30 44 90 44 114 53L112 60C96 68 80 70 67 71L53 71C40 70 24 68 8 60Z";
-  var pores = "";
-  for (var px = 14; px <= 106; px += 8) { if (px > 48 && px < 72) continue; var t = (px - 6) / 108, py = 60 + 40 * t * (1 - t) * 0.42; pores += '<ellipse class="tn2" cx="' + px + '" cy="' + (py + 1).toFixed(1) + '" rx="2.6" ry="1.6"/>'; }
-  ICONS["him:tubuli"] = svgI(120, 104, P(tz, "fl") + P(tz, "tub") + P(tz, "ln") + pores + P("M54 70L54 100M66 70L66 100", "ln") + arc);
-  var spikes = "";
-  for (var sx = 10; sx <= 108; sx += 7) { if (sx > 46 && sx < 70) continue; var t2 = (sx - 6) / 108, top = 53 - 36 * t2 * (1 - t2) + 2, L = 10 + 8 * Math.sin(Math.PI * t2); spikes += "M" + (sx - 2.6).toFixed(1) + " " + top.toFixed(1) + "L" + sx.toFixed(1) + " " + (top + L).toFixed(1) + "L" + (sx + 2.6).toFixed(1) + " " + top.toFixed(1) + "Z"; }
-  ICONS["him:aculei"] = svgI(120, 104, P(spikes, "gi") + P(spikes, "ln") + P("M6 53C30 44 90 44 114 53", "ln") + P("M54 56L54 100M66 56L66 100", "ln") + arc);
-  var funnel = "M8 26C30 18 90 18 112 26C108 40 86 54 70 68L70 100L50 100L50 68C34 54 12 40 8 26Z";
-  var ridges = "M14 31C26 42 40 54 52 70M24 32L33 41M34 33C42 44 48 54 54 68M44 33L50 46M54 33C56 46 57 58 57 74M60 33L60 76M66 33C64 46 63 58 63 74M76 33L70 46M86 33C78 44 72 54 66 68M96 32L87 41M106 31C94 42 80 54 68 70M55 78L55 98M60 78L60 98M65 78L65 98";
-  ICONS["him:pieghe"] = svgI(120, 104, P(funnel, "fl") + P(ridges, "tn2") + P(funnel, "ln") + P("M8 26C30 34 90 34 112 26", "ln"));
-  var trumpet = "M14 18C34 12 86 12 106 18C104 36 82 52 68 66L66 100L54 100L52 66C38 52 16 36 14 18Z";
-  ICONS["him:liscio"] = svgI(120, 104, P(trumpet, "gi") + P(trumpet, "ln") + P("M14 18C34 26 86 26 106 18", "ln") + P("M30 30C44 44 52 56 56 70", "tn2"));
-  var ball = "M60 6C86 6 106 26 106 50C106 72 90 84 74 86L70 98L50 98L46 86C30 84 14 72 14 50C14 26 34 6 60 6Z";
-  var gleba = "M60 14C82 14 98 30 98 50C98 68 84 78 60 78C36 78 22 68 22 50C22 30 38 14 60 14Z";
-  ICONS["him:gleba"] = svgI(120, 104, P(ball, "fl") + P(gleba, "gi") + P(gleba, "tn2") + P(ball, "ln") + P("M50 86L70 86", "tn2"));
+  function f(n) { return n.toFixed(1); }
+  function R(d, c) { return '<path class="' + c + '" d="' + d + '"/>'; }
+  var CX = 60, CY = 46, RX = 52, RY = 15;
+  var dome = "M8 46C10 18 34 6 60 6C86 6 110 18 112 46C112 38 88 31 60 31C32 31 8 38 8 46Z";
+  var domeSh = "M84 9C102 16 111 29 112 45C107 39 99 35 91 33C93 25 90 16 84 9Z";
+  var under = "M8 46C8 54 32 61 60 61C88 61 112 54 112 46C112 38 88 31 60 31C32 31 8 38 8 46Z";
+  function stem(y0, w0, w1) {
+    var l0 = CX - w0, r0 = CX + w0, l1 = CX - w1, r1 = CX + w1;
+    return R("M" + f(l0) + " " + y0 + "C" + f(l0 - 1) + " " + (y0 + 20) + " " + f(l1) + " 80 " + f(l1 - 1) + " 99L" + f(r1 + 1) + " 99C" + f(r1) + " 80 " + f(r0 + 1) + " " + (y0 + 20) + " " + f(r0) + " " + y0 + "Z", "fl") +
+      R("M" + f(r0 - 3) + " " + (y0 + 4) + "C" + f(r0 - 2) + " " + (y0 + 22) + " " + f(r1 - 2) + " 80 " + f(r1 - 1) + " 98L" + f(r1 + 0.5) + " 98C" + f(r1) + " 80 " + f(r0) + " " + (y0 + 22) + " " + f(r0) + " " + (y0 + 4) + "Z", "sh") +
+      R("M" + f(l0) + " " + y0 + "C" + f(l0) + " " + (y0 + 2.4) + " " + f(r0) + " " + (y0 + 2.4) + " " + f(r0) + " " + y0, "tn");
+  }
+  function base(extra) { return R(dome, "cap") + R(domeSh, "sh") + R(under, "cap") + extra; }
+  // Lamelle
+  var g = "", gb = "";
+  for (var k = 0; k < 44; k++) {
+    var a = 2 * Math.PI * k / 44, c = Math.cos(a), s = Math.sin(a), r0 = k % 2 ? 0.48 : 0.15;
+    var d = "M" + f(CX + RX * r0 * c) + " " + f(CY + 1 + RY * r0 * s) + "L" + f(CX + RX * 0.985 * c) + " " + f(CY + RY * 0.985 * s);
+    if (s < 0) gb += d; else g += d;
+  }
+  ICONS["him:lamelle"] = svgI(120, 104, base(R(gb, "tn") + R("M44 47C44 51 76 51 76 47C76 43 44 43 44 47Z", "sh") + R(g, "tn")) + stem(47, 7, 8));
+  // Tubuli e pori
+  var band = "M8 46C8 54 32 61 60 61C88 61 112 54 112 46L112 50C112 58 88 66 60 66C32 66 8 58 8 50Z";
+  var bl = "";
+  for (var x = 12; x <= 108; x += 4) { var t = (x - 8) / 104, yb = 46 + 15 * Math.sqrt(Math.max(0, 1 - Math.pow((x - CX) / RX, 2))); bl += "M" + x + " " + f(yb) + "L" + x + " " + f(yb + 4.6); }
+  var po = "";
+  for (var j = -5; j <= 5; j++) for (var i2 = -11; i2 <= 11; i2++) {
+    var px = CX + i2 * 4.6 + (j % 2 ? 2.3 : 0), py = CY + j * 2.7;
+    if (Math.pow((px - CX) / (RX - 3), 2) + Math.pow((py - CY) / (RY - 1.5), 2) > 1) continue;
+    if (Math.pow((px - CX) / 11, 2) + Math.pow((py - CY - 1) / 4, 2) < 1) continue;
+    po += '<ellipse cx="' + f(px) + '" cy="' + f(py) + '" rx="1.2" ry=".7" class="tn"/>';
+  }
+  ICONS["him:tubuli"] = svgI(120, 104, R(dome, "cap") + R(domeSh, "sh") + R(band, "fl") + R(bl, "tn") + R(under, "cap") + po + stem(47, 9, 11));
+  // Aculei
+  var sp = [];
+  for (var j2 = -1; j2 <= 4; j2++) for (var i3 = -8; i3 <= 8; i3++) {
+    var sx = CX + i3 * 6.2 + (j2 % 2 ? 3.1 : 0), sy = CY + j2 * 3.4;
+    if (Math.pow((sx - CX) / (RX - 3), 2) + Math.pow((sy - CY) / (RY - 1.5), 2) > 1) continue;
+    if (Math.pow((sx - CX) / 10, 2) + Math.pow((sy - CY - 1) / 4, 2) < 1) continue;
+    sp.push([sx, sy]);
+  }
+  sp.sort(function (p, q) { return p[1] - q[1]; });
+  var spk = "";
+  sp.forEach(function (p) { var L = 5 + (p[1] - (CY - RY)) / (2 * RY) * 11, w = 1.1 + (p[1] - (CY - RY)) / (2 * RY) * 0.8; spk += R("M" + f(p[0] - w) + " " + f(p[1]) + "Q" + f(p[0] - w * 0.3) + " " + f(p[1] + L * 0.6) + " " + f(p[0] + 0.4) + " " + f(p[1] + L) + "Q" + f(p[0] + w * 0.4) + " " + f(p[1] + L * 0.6) + " " + f(p[0] + w) + " " + f(p[1]) + "Z", "spk"); });
+  ICONS["him:aculei"] = svgI(120, 104, base(spk) + stem(47, 8, 9));
+  // Pieghe: cappello a imbuto visto di lato, con pieghe che scendono sul gambo
+  var top = "M10 24C24 17 44 15 60 15C76 15 96 17 110 24C96 31 76 33 60 33C44 33 24 31 10 24Z";
+  var topSh = "M18 24C30 19 46 18 60 18C74 18 90 19 102 24C88 28 74 30 60 30C46 30 32 28 18 24Z";
+  var cone = "M10 24C24 31 44 33 60 33C76 33 96 31 110 24C104 38 82 52 69 66L69 99L51 99L51 66C38 52 16 38 10 24Z";
+  var rid = "";
+  [[14, 27], [22, 30], [31, 32], [41, 33], [51, 33.5], [60, 33.6], [69, 33.5], [79, 33], [89, 32], [98, 30], [106, 27]].forEach(function (p, idx) {
+    var ex = 53 + (p[0] - 10) / 100 * 14, ey = 68;
+    rid += "M" + p[0] + " " + p[1] + "C" + f(p[0] + (ex - p[0]) * 0.3) + " " + f(p[1] + 12) + " " + f(ex + (p[0] - ex) * 0.2) + " " + f(ey - 14) + " " + f(ex) + " " + ey;
+    if (idx % 2 === 0 && idx > 0 && idx < 10) { var mx = p[0] + (ex - p[0]) * 0.35, my = p[1] + 10; rid += "M" + f(mx) + " " + f(my) + "L" + f(mx + (p[0] < 60 ? -5 : 5)) + " " + f(p[1] + 1.5); }
+  });
+  rid += "M54 70L54 96M58 70L58 98M62 70L62 98M66 70L66 96";
+  ICONS["him:pieghe"] = svgI(120, 104, R(cone, "fl") + R("M96 34C88 46 78 56 69 66L69 98L66 98L66 66C76 54 88 42 96 34Z", "sh") + R(rid, "tn2") + R(top, "cap") + R(topSh, "sh"));
+  // Liscio: trombetta
+  var rim = "M16 16C30 10 46 8 60 8C74 8 90 10 104 16C98 22 80 25 60 25C40 25 22 22 16 16Z";
+  var tube = "M16 16C22 22 40 25 60 25C80 25 98 22 104 16C100 34 80 48 68 62L67 99L53 99L52 62C40 48 20 34 16 16Z";
+  ICONS["him:liscio"] = svgI(120, 104, R(tube, "fl") + R("M98 22C92 36 80 48 68 62L67 98L63 98L64 62C74 50 86 38 94 24Z", "sh") + R(rim, "cap") + R("M24 16C36 12 48 11 60 11C72 11 84 12 96 16C88 20 74 22 60 22C46 22 32 20 24 16Z", "sh") + R("M40 34C50 44 56 54 58 66", "tn"));
+  // Gleba: vescia tagliata a meta
+  var ball = "M60 6C86 6 106 24 106 48C106 66 94 76 80 80C76 88 74 94 72 99L48 99C46 94 44 88 40 80C26 76 14 66 14 48C14 24 34 6 60 6Z";
+  var gl = "M60 12C82 12 99 28 99 48C99 63 88 72 74 74L46 74C32 72 21 63 21 48C21 28 38 12 60 12Z";
+  var sterile = "M46 74L74 74C72 82 70 90 69 96L51 96C50 90 48 82 46 74Z";
+  ICONS["him:gleba"] = svgI(120, 104, R(ball, "fl") + R(gl, "gi") + R(gl, "tn") + R(sterile, "po") + R(sterile, "tn") + R("M28 22C36 14 46 10 56 9", "tn"));
 })();
 
 
