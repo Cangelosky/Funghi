@@ -775,7 +775,7 @@ footer a { color: var(--ink); }
           <label for="pt">Telefono (facoltativo)<input type="text" id="pt" autocomplete="tel"></label>
           <label class="full" for="pm">Comune in cui vivi<input type="text" id="pm" autocomplete="address-level2"></label>
           <label class="full" for="pk">Domande o note (facoltativo)<textarea id="pk"></textarea></label>
-          <label class="check full" for="pp"><input type="checkbox" id="pp"><span>Acconsento al trattamento dei miei dati per essere ricontattato su questo corso. <span class="todo">Informativa: da inserire</span></span></label>
+          <label class="check full" for="pp"><input type="checkbox" id="pp"><span>Acconsento al trattamento dei miei dati per essere ricontattato su questo corso. <a href="#privacy" target="_blank" rel="noopener">Leggi l'informativa sulla privacy</a></span></label>
         </div>
         <div class="err" id="perr" hidden></div>
         <button class="btn solid" type="submit" style="align-self:flex-start">Mi preiscrivo</button>
@@ -849,7 +849,7 @@ footer a { color: var(--ink); }
       <ol class="how">
         <li><b>Compila la richiesta</b><span>Ci vuole qualche minuto. Non è un impegno.</span></li>
         <li><b>Ci conosciamo</b><span>La segreteria ti ricontatta e ti invita a una serata in sede.</span></li>
-        <li><b>Ricevi la tessera</b><span>Versi la quota annuale (<span class="todo">importo da inserire</span>) e sei dei nostri.</span></li>
+        <li><b>Ricevi la tessera</b><span>Versi la quota annuale, che ti comunichiamo in sede, e sei dei nostri.</span></li>
       </ol>
       <div class="cta-row" style="margin-top:24px"><button type="button" class="btn solid" data-socio-open>Compila la richiesta</button></div>
     </div>
@@ -895,7 +895,7 @@ footer a { color: var(--ink); }
             <label class="radio"><input type="radio" name="so_liv" value="Li studio da tempo"><span>Li studio da tempo</span></label>
           </fieldset>
           <label class="full" for="so_msg">C'è qualcosa che vorresti sapere su di noi, o un dubbio prima di iscriverti? (facoltativo)<textarea id="so_msg"></textarea></label>
-          <label class="check full" for="so_priv"><input type="checkbox" id="so_priv" required><span>Ho letto l'informativa sulla privacy (<span class="todo">da inserire</span>) e acconsento a essere ricontattato per l'iscrizione. *</span></label>
+          <label class="check full" for="so_priv"><input type="checkbox" id="so_priv" required><span>Ho letto l'informativa sulla privacy (<a href="#privacy" target="_blank" rel="noopener">leggila qui</a>) e acconsento a essere ricontattato per l'iscrizione. *</span></label>
         </div>
         <button class="btn solid" type="submit" style="margin-top:8px">Invia la richiesta</button>
         <div class="msg" id="somsg" hidden role="status"></div>
@@ -905,6 +905,37 @@ footer a { color: var(--ink); }
 </section>
 
 <!-- CONTATTI -->
+<section class="page gut" id="p-privacy" aria-label="Informativa sulla privacy">
+  <div class="wrap stack">
+    <div class="sec-head"><h1 style="font-size:clamp(32px,5vw,52px)">Informativa sulla privacy</h1><p>Come trattiamo i dati che ci lasci quando ci scrivi, ti preiscrivi a un corso o chiedi di diventare socio. Ultimo aggiornamento: ottobre 2026.</p></div>
+    <div class="box">
+      <h3>Chi è il titolare del trattamento</h3>
+      <p>L'Associazione Micologica G. Inzenga APS, con sede in via S. Domenico Savio 4, 90145 Palermo (presso l'Oratorio dei Salesiani «Villaurea»). Puoi scriverci a <a href="mailto:gruppomic.inzenga@libero.it">gruppomic.inzenga@libero.it</a> per qualsiasi domanda sui tuoi dati.</p>
+      <h3>Quali dati raccogliamo</h3>
+      <p>Solo quelli che inserisci tu nei moduli del sito: nome e cognome, email, comune di residenza, il corso a cui sei interessato, i motivi per cui vuoi diventare socio e il testo del messaggio che ci scrivi. Non ti chiediamo dati sensibili e non raccogliamo dati di minori senza il consenso di chi esercita la responsabilità genitoriale.</p>
+      <h3>Perché li usiamo e con quale base giuridica</h3>
+      <ul>
+        <li><b>Rispondere ai tuoi messaggi.</b> Usiamo nome ed email per risponderti. Base giuridica: il tuo consenso (art. 6, par. 1, lett. a del Regolamento UE 2016/679, «GDPR»).</li>
+        <li><b>Gestire le preiscrizioni ai corsi.</b> Ti ricontattiamo quando si raggiunge il numero minimo di preiscritti, con date, luogo e quota. Base giuridica: il tuo consenso.</li>
+        <li><b>Gestire le richieste di diventare socio.</b> Ti ricontattiamo per invitarti in sede e completare l'iscrizione. Base giuridica: misure precontrattuali adottate su tua richiesta (art. 6, par. 1, lett. b) e il tuo consenso.</li>
+      </ul>
+      <p>Non usiamo i tuoi dati per pubblicità, non li vendiamo e non li cediamo a terzi per scopi commerciali.</p>
+      <h3>Chi può vedere i tuoi dati</h3>
+      <p>Solo i soci incaricati della segreteria e del consiglio direttivo, che li trattano per le finalità sopra indicate. Possono trattare i dati anche i fornitori tecnici che ospitano il sito e raccolgono i moduli, in qualità di responsabili del trattamento. I dati non vengono diffusi.</p>
+      <h3>Per quanto tempo li conserviamo</h3>
+      <ul>
+        <li>Messaggi: il tempo necessario a risponderti e, in ogni caso, non oltre 12 mesi.</li>
+        <li>Preiscrizioni ai corsi: fino allo svolgimento del corso o, se il corso non parte, per non oltre 12 mesi.</li>
+        <li>Richieste di diventare socio: fino al completamento dell'iscrizione. Se non ti associ, non oltre 12 mesi. Se ti associ, i dati passano al libro soci e restano per la durata del rapporto e per gli obblighi di legge.</li>
+      </ul>
+      <h3>I tuoi diritti</h3>
+      <p>Puoi chiederci in ogni momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne l'uso, riceverli in formato leggibile (artt. 15-20 GDPR) o opporti al trattamento. Puoi anche ritirare il consenso, senza che questo tolga valore a quanto è stato fatto prima. Per farlo scrivi a <a href="mailto:gruppomic.inzenga@libero.it">gruppomic.inzenga@libero.it</a>. Se pensi che i tuoi dati non siano trattati correttamente, puoi presentare reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">garanteprivacy.it</a>).</p>
+      <h3>Cookie e memoria del browser</h3>
+      <p>Il sito non usa cookie di profilazione né strumenti di statistica. Salva soltanto nel tuo browser la scelta del tema chiaro o scuro, per ricordarla alla visita successiva. Non è un dato personale e non viene inviato a nessuno.</p>
+    </div>
+  </div>
+</section>
+
 <section class="page gut" id="p-contatti" aria-label="Contatti">
   <div class="wrap stack">
     <div class="ban"><img src="img/contatti.svg" alt="" width="1200" height="300"><div class="ban-t"><h1>Contatti</h1></div></div>
@@ -979,7 +1010,7 @@ footer a { color: var(--ink); }
   <div class="wrap">
     <div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><img id="logoAmb" class="amb-logo" alt="Logo dell'Associazione Micologica Bresadola (A.M.B.)" height="64"><img id="logoFoot" alt="" width="64" height="64" style="display:block"><div><strong style="color:var(--ink)">Associazione Micologica Giuseppe Inzenga APS</strong><br>Gruppo A.M.B. di Palermo · Oratorio dei Salesiani «Villaurea»<br>Ente del Terzo settore, iscritta al RUNTS n. 75000 · C.F. 97171140821<br>Non diamo indicazioni di commestibilità.</div></div></div>
     <div class="fright"><div class="links">
-      <a href="#home" data-go="home">Home</a><a href="#chi-siamo" data-go="chi-siamo">Chi siamo</a><a href="#attivita" data-go="attivita">Attività</a><a href="#corsi" data-go="corsi">Corsi</a><a href="#osservatorio" data-go="osservatorio">Osservatorio</a><a href="#contatti" data-go="contatti">Contatti</a><a href="#associati" data-go="associati">Diventa socio</a><a href="#accesso" data-go="accesso">Area riservata</a>
+      <a href="#home" data-go="home">Home</a><a href="#chi-siamo" data-go="chi-siamo">Chi siamo</a><a href="#attivita" data-go="attivita">Attività</a><a href="#corsi" data-go="corsi">Corsi</a><a href="#osservatorio" data-go="osservatorio">Osservatorio</a><a href="#contatti" data-go="contatti">Contatti</a><a href="#associati" data-go="associati">Diventa socio</a><a href="#accesso" data-go="accesso">Area riservata</a><a href="#privacy" data-go="privacy">Privacy</a>
     </div>
     <span class="soc"><a class="soc-b" href="https://www.facebook.com/profile.php?id=61568126933510" target="_blank" rel="noopener noreferrer" aria-label="Facebook (si apre in una nuova scheda)" title="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><text x="12" y="20" text-anchor="middle" font-family="Bricolage Grotesque, Trebuchet MS, sans-serif" font-size="27" font-weight="800" fill="currentColor">f</text></svg></a><a class="soc-b" href="https://www.instagram.com/ass.micologica.inzenga/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (si apre in una nuova scheda)" title="Instagram"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.9" cy="7.1" r="1.25" fill="currentColor"/></svg></a></span></div>
   </div>
@@ -990,7 +1021,7 @@ var IMG = {"fistulina": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
 (function () {
   var lg = document.getElementById("logoImg"), lf = document.getElementById("logoFoot"); document.getElementById("logoAmb").src = IMG.amb;
   if (lg) lg.src = IMG.logo; if (lf) lf.src = IMG.logo; var hi = document.getElementById("heroImg"); if (hi) hi.src = IMG.hero;
-  var PAGES = ['home', 'chi-siamo', 'attivita', 'attivita-dett', 'osserv-dett', 'corsi', 'osservatorio', 'contatti', 'accesso', 'associati'];
+  var PAGES = ['home', 'chi-siamo', 'attivita', 'attivita-dett', 'osserv-dett', 'corsi', 'osservatorio', 'contatti', 'accesso', 'associati', 'privacy'];
   var CAT = {
     conv: { n: 'Conversazioni', v: 'var(--c-conv)' }, corsi: { n: 'Corsi', v: 'var(--c-corsi)' },
     pratica: { n: 'Pratica di determinazione', v: 'var(--c-pratica)' }, gite: { n: 'Gite', v: 'var(--c-gite)' },
