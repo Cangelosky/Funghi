@@ -477,7 +477,6 @@ img.ic-img { width: 108px; height: 108px; object-fit: cover; border-radius: 10px
 .sp-b p { margin: 0; }
 .sp-bds, .sp-rgs { display: flex; flex-wrap: wrap; gap: 4px; }
 .sp-bd { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
-.sp-mo { background: var(--ochre-soft); color: var(--ochre); }
 .sp-rg { font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
 .sp-old { font-size: 13px; color: var(--muted); }
 .sp-opts2 { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -756,7 +755,7 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
   <section id="p-specie" role="tabpanel" aria-labelledby="tab-specie" hidden>
     <div class="tav-intro">
       <h2>Specie del Sud Italia</h2>
-      <p>Le specie di macrofunghi segnalate in Sicilia, Sardegna e nelle regioni del Sud, con il nome di oggi. Per ognuna trovi in quali regioni è stata vista, se era alla mostra micologica 2026, se compare nelle tavole e nei libri della Biblioteca, e le foto dal vero del nostro monitoraggio.</p>
+      <p>Le specie di macrofunghi segnalate in Sicilia, Sardegna e nelle regioni del Sud, con il nome di oggi. Per ognuna trovi in quali regioni è stata vista, se compare nelle tavole e nei libri della Biblioteca, e le foto dal vero del nostro monitoraggio.</p>
     </div>
     <div class="pub-tools">
       <div class="search"><input id="spQ" type="search" placeholder="Cerca una specie, un genere o una famiglia: Boletus, Amanita, Russulaceae…" aria-label="Cerca nelle specie" autocomplete="off"></div>
@@ -773,7 +772,7 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
     </div>
     <div class="sp-list" id="spList"><p class="status">Apri la scheda per caricare le specie.</p></div>
     <button class="btn" type="button" id="spMore" hidden>Mostra altre specie</button>
-    <p class="tav-note">Fonte delle segnalazioni: GBIF, il database mondiale della biodiversità, che raccoglie dati di erbari, ricerche e osservazioni dei cittadini (non tutte verificate); nomi secondo la sua tassonomia, consultata il 29 ottobre 2026. Il numero di segnalazioni dice quanto una specie è stata registrata, non quanto è comune. ★ indica le specie evidenziate nella lista della mostra. Per ogni specie mostriamo per primo il disegno dei libri storici, se c'è, e accanto la foto dal vero: dove manca, ce lo segniamo per cercarla tra le foto dei soci. Elenco da rivedere con il comitato scientifico.</p>
+    <p class="tav-note">Fonte delle segnalazioni: GBIF, il database mondiale della biodiversità, che raccoglie dati di erbari, ricerche e osservazioni dei cittadini (non tutte verificate); nomi secondo la sua tassonomia, consultata il 29 ottobre 2026. Il numero di segnalazioni dice quanto una specie è stata registrata, non quanto è comune. Per ogni specie mostriamo per primo il disegno dei libri storici, se c'è, e accanto la foto dal vero: dove manca, ce lo segniamo per cercarla tra le foto dei soci. Elenco da rivedere con il comitato scientifico.</p>
 
   </section>
 
@@ -4000,7 +3999,7 @@ function pubFull(p, lang) {
 
 /* ===== Didattica: archivio delle specie ===== */
 (function () {
-  var SP = null, cur = { g: "all", r: "all", mo: false, tv: false, ph: false, sort: "seg" }, shown = 60;
+  var SP = null, cur = { g: "all", r: "all", tv: false, ph: false, sort: "seg" }, shown = 60;
   var GR = { aga: "A lamelle", bol: "Boleti", rus: "Russule e lattari", pol: "Polipori e funghi del legno", can: "Cantarelli, idni e clavarie", pez: "Spugnole, pezize e tartufi", pal: "Vesce, geastri e falli", gel: "Gelatinosi", alt: "Altri" };
   var RG = { SI: "Sicilia", SA: "Sardegna", CB: "Calabria", CA: "Campania", PU: "Puglia", BA: "Basilicata", MO: "Molise", AB: "Abruzzo" };
   var LIBK = { inz: "Inzenga", vitt: "Vittadini", bres: "Bresadola", come: "Comes", matt: "Mattirolo" };
@@ -4020,19 +4019,18 @@ function pubFull(p, lang) {
     var L = SP.filter(function (e) {
       if (cur.g !== "all" && e.g !== cur.g) return false;
       if (cur.r !== "all" && !(e.r && e.r[cur.r])) return false;
-      if (cur.mo && !e.mo) return false;
       if (cur.tv && !e.tv) return false;
       if (cur.ph && !e.ph) return false;
       return toks.every(function (w) { return e.h.indexOf(w) > -1; });
     });
-    L.sort(cur.sort === "az" ? function (a, b) { return a.n < b.n ? -1 : 1; } : function (a, b) { return (b.mo ? 1 : 0) - (a.mo ? 1 : 0) || b.t - a.t || (a.n < b.n ? -1 : 1); });
+    L.sort(cur.sort === "az" ? function (a, b) { return a.n < b.n ? -1 : 1; } : function (a, b) { return b.t - a.t || (a.n < b.n ? -1 : 1); });
     return L;
   }
   function tvSrc(t) { var k = t.split(":")[0], l = t.split(":")[1]; if (k === "inz") return "tavole/" + l + ".webp"; var o = libPlates(k); return o[+l] || null; }
   function tvLeaf(t) { var k = t.split(":")[0], l = t.split(":")[1]; return k === "inz" ? parseInt(l.slice(1), 10) - 1 : +l; }
   var MISS = '<span class="sp-miss"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 22A14 12 0 0 1 34 22Z"/><path d="M17 23h6l-1 11h-4Z"/></svg>Foto mancante</span>';
   function regs(e, n) { return Object.keys(RG).filter(function (k) { return e.r && e.r[k]; }).map(function (k) { return '<span class="sp-rg" title="' + e.r[k] + ' segnalazioni">' + RG[k] + (n ? " · " + e.r[k] : "") + "</span>"; }).join(""); }
-  function badges(e) { return (e.mo ? '<span class="sp-bd sp-mo">' + (e.mo === 2 ? "★ " : "") + "Mostra 2026</span>" : "") + (e.tv ? '<span class="sp-bd">Tavola storica</span>' : "") + (e.ph ? '<span class="sp-bd">Foto dal vero</span>' : ""); }
+  function badges(e) { return (e.tv ? '<span class="sp-bd">Tavola storica</span>' : "") + (e.ph ? '<span class="sp-bd">Foto dal vero</span>' : ""); }
   function card(e) {
     var reg = regs(e), b = badges(e), src = e.tv ? tvSrc(e.tv[0]) : null;
     var media = '<span class="sp-media">' + (src ? '<img class="sp-tv" loading="lazy" src="' + src + '" alt="">' : "") + (e.ph ? '<img class="sp-ph" loading="lazy" src="' + e.ph[0] + '" alt="">' : MISS) + "</span>";
