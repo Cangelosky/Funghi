@@ -692,11 +692,11 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
   </nav>
   <div class="sheet">
   <div class="tabs" role="tablist" aria-label="Sezioni">
-    <button class="tab" role="tab" id="tab-percorso" aria-controls="p-percorso" aria-selected="true" data-tab="percorso" data-pg="lab">Il percorso</button>
-    <button class="tab" role="tab" id="tab-chiave" aria-controls="p-chiave" aria-selected="false" data-tab="chiave" data-pg="lab">La chiave</button>
-    <button class="tab" role="tab" id="tab-caratteri" aria-controls="p-caratteri" aria-selected="false" data-tab="caratteri" data-pg="lab">I caratteri</button>
+    <button class="tab" role="tab" id="tab-percorso" aria-controls="p-percorso" aria-selected="true" data-tab="percorso" data-pg="lab">Il percorso didattico</button>
+    <button class="tab" role="tab" id="tab-chiave" aria-controls="p-chiave" aria-selected="false" data-tab="chiave" data-pg="lab">La chiave dicotomica</button>
+    <button class="tab" role="tab" id="tab-caratteri" aria-controls="p-caratteri" aria-selected="false" data-tab="caratteri" data-pg="lab">I caratteri distintivi</button>
     <button class="tab" role="tab" id="tab-specie" aria-controls="p-specie" aria-selected="false" data-tab="specie" data-pg="lab">Specie</button>
-    <button class="tab" role="tab" id="tab-strumenti" aria-controls="p-strumenti" aria-selected="false" data-tab="strumenti" data-pg="lab">Strumenti</button>
+    <button class="tab" role="tab" id="tab-strumenti" aria-controls="p-strumenti" aria-selected="false" data-tab="strumenti" data-pg="lab">Strumenti scientifici</button>
     <button class="tab" role="tab" id="tab-biblioteca" aria-controls="p-biblioteca" aria-selected="false" data-tab="biblioteca" data-pg="bib">Libri</button>
     <button class="tab" role="tab" id="tab-tavole" aria-controls="p-tavole" aria-selected="false" data-tab="tavole" data-pg="bib">Tavole</button>
     <button class="tab" role="tab" id="tab-pubblicazioni" aria-controls="p-pubblicazioni" aria-selected="false" data-tab="pubblicazioni" data-pg="bib">Pubblicazioni</button>
@@ -748,7 +748,7 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
   <section id="p-tavole" role="tabpanel" aria-labelledby="tab-tavole" hidden>
     <div class="tav-intro">
       <h2>Tavole storiche</h2>
-      <p>Le tavole a colori dei libri italiani della biblioteca: Inzenga, il micologo palermitano da cui prende il nome l'associazione, poi Bresadola, Vittadini, Comes e Mattirolo. Le abbiamo ripulite per leggerle meglio: fondo tolto, colori ravvivati.</p>
+      <p>Immagini di funghi: le tavole illustrate a colori dei libri italiani della biblioteca: Inzenga, il micologo palermitano da cui prende il nome l'associazione, poi Bresadola, Vittadini, Comes e Mattirolo. Le abbiamo ripulite per leggerle meglio: fondo tolto, colori ravvivati.</p>
       <p>Guardale con calma e prova a riconoscere le parti del fungo: cappello, lamelle o pori, gambo, base. Quasi ogni tavola mostra anche il fungo tagliato a metà. <button class="btn" type="button" data-goto-tab="caratteri">Rivedi i caratteri</button></p>
     </div>
     <div class="search tav-search"><input id="tavQ" type="search" placeholder="Cerca nelle tavole: nome antico o attuale, o italiano (porcino)…" aria-label="Cerca nelle tavole" autocomplete="off"></div>
@@ -806,7 +806,7 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
   <section id="p-strumenti" role="tabpanel" aria-labelledby="tab-strumenti" hidden>
     <div id="st-strumenti">
       <div class="tav-intro">
-        <h2>Strumenti</h2>
+        <h2>Strumenti scientifici</h2>
         <p>Strumenti di lavoro per chi determina: scheda di raccolta, colore della sporata, nomenclatura, misura delle spore e prontuario dei reagenti. Tocca una scheda per aprirla. Sono pensati per il lunedì sera in sede e per lo studio a casa.</p>
         <p class="bk-warn" style="display:inline-block">Bozza per il comitato scientifico: contenuti da rivedere prima della pubblicazione.</p>
       </div>
@@ -4272,8 +4272,8 @@ var TAV = [
 /* ===== Schede e indirizzo ===== */
 var PG = { lab: ["percorso", "chiave", "caratteri", "specie", "strumenti"], bib: ["biblioteca", "tavole", "pubblicazioni"] };
 var PGTXT = {
-  lab: ["Didattica", "Qui i funghi si imparano facendo: il percorso, la chiave, i caratteri, le specie del Sud Italia e gli strumenti per chi determina.", "Didattica e strumenti"],
-  bib: ["Biblioteca", "I libri storici da sfogliare e da leggere trascritti, le loro tavole ripulite e le pubblicazioni scientifiche sui funghi del Sud Italia.", "Libri, tavole e pubblicazioni"]
+  lab: ["Didattica", "Qui i funghi si imparano facendo: il percorso didattico, la chiave dicotomica, i caratteri distintivi, le specie del Sud Italia e gli strumenti scientifici per chi determina.", "Didattica e strumenti"],
+  bib: ["Biblioteca", "I libri storici da sfogliare e da leggere trascritti, le loro tavole (immagini di funghi) ripulite e le pubblicazioni scientifiche sui funghi del Sud Italia.", "Libri, tavole e pubblicazioni"]
 };
 function setTab(name, updateHash) {
   if (name === "laboratorio") name = "percorso";
