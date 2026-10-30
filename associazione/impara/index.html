@@ -880,7 +880,7 @@ body.pg-lab .pban-bib, body.pg-bib .pban-lab { display: none; }
         <p>I reagenti più usati in determinazione: a cosa servono, come si usano e cosa si osserva. Una goccia sulla carne, sulla cuticola o sul vetrino può separare due specie simili.</p>
         <div class="st-filter"><input id="reQ" type="search" placeholder="Cerca un reagente o un genere: Melzer, Russula, amiloide…" aria-label="Cerca nei reagenti" autocomplete="off"></div>
         <div class="re-grid" id="reList"></div>
-        <p class="tav-note">Sicurezza: guanti e occhiali, lontano dai bambini. Il Melzer contiene idrato di cloralio, che in Italia si acquista solo in farmacia o da fornitori di laboratorio. La potassa (KOH) e l'ammoniaca sono caustiche; il fenolo è tossico anche per contatto.</p>
+        <p class="tav-note">Sicurezza: guanti e occhiali, lontano dai bambini. Il Melzer contiene idrato di cloralio, sostanza a vendita regolamentata in diversi Paesi: informati presso un fornitore di laboratorio o una farmacia prima di procurartelo. La potassa (KOH) e l'ammoniaca sono caustiche; il fenolo è tossico anche per contatto.</p>
         </div>
       </details>
     </div>
@@ -3770,13 +3770,13 @@ var REAG = [
   { n: "Sulfovanillina", c: "Vanillina sciolta in acido solforico diluito. Si prepara al momento.", u: "Al microscopio, su sezioni della cuticola e dell'imenio.",
     r: [["Grigio-nero o blu-nero", "gleocistidi di Russula e Lactarius"]], k: "sulfovanillina cistidi gleocistidi russula lactarius" },
   { n: "Fenolo (2–3%)", c: "Fenolo in acqua o in alcol.", u: "Una goccia sulla carne o sul gambo, si osserva dopo qualche minuto.",
-    r: [["Vinoso, rosso-bruno o cioccolato", "molte Russula; alcune Agaricus"]], k: "fenolo russula agaricus" },
+    r: [["Vinoso, rosso-bruno o cioccolato", "molte Russula"]], k: "fenolo russula agaricus" },
   { n: "Ammoniaca", c: "Ammoniaca diluita in acqua.", u: "Sulla cuticola, sulla carne o al microscopio come base per altri coloranti.",
-    r: [["Cambi di colore della cuticola", "utile in alcuni generi, per esempio Boletus e Hygrocybe"]], k: "ammoniaca boletus hygrocybe" },
+    r: [["Cambi di colore della cuticola", "utile in alcuni generi, per esempio in certi Boletus"]], k: "ammoniaca boletus" },
   { n: "Rosso Congo", c: "Colorante rosso, di solito in ammoniaca.", u: "Al microscopio, per colorare le pareti di ife, basidi e cistidi.",
     r: [["Pareti rosse", "rende visibili giunti a fibbia, basidi e cistidi"]], k: "rosso congo ife basidi cistidi fibbie microscopio" },
   { n: "Blu cotone (lattofenolo)", c: "Blu di metile in lattofenolo.", u: "Al microscopio, sulle spore.",
-    r: [["Cianofilo: ornamenti e pareti blu", "spore di Lyophyllum, Calocybe e di altri generi"]], k: "blu cotone lattofenolo cianofilo spore lyophyllum calocybe" }
+    r: [["Cianofilo: ornamenti e pareti blu", "perispora delle spore dei Pezizales; in Lyophyllum e Calocybe il blu cotone evidenzia i granuli dei basidi"]], k: "blu cotone lattofenolo cianofilo spore lyophyllum calocybe pezizales" }
 ];
 function renderReag() {
   var q = norm(($("#reQ").value || "").trim()), h = "";
@@ -3798,7 +3798,7 @@ var SPO = [
   ["Ocra, ruggine o bruno-arancio", "#B46A2C", "Cortinarius, Pholiota, Gymnopilus, Galerina, Agrocybe, Hebeloma (bruno argilla), Inocybe (bruno tabacco)"],
   ["Bruno-porpora o cioccolato", "#5A3A3A", "Agaricus, Stropharia, Hypholoma"],
   ["Nera", "#1E1B1A", "Coprinus, Coprinopsis, Panaeolus; Psathyrella da bruno scuro a nera"],
-  ["Verde", "#9DB58A", "Chlorophyllum molybdites, l'unico agarico europeo segnalato con sporata verdastra"],
+  ["Verde", "#9DB58A", "Chlorophyllum molybdites: sporata verde, carattere raro tra i grandi funghi; specie di origine tropicale, in Europa solo segnalazioni sporadiche"],
   ["Bruno-olivastra", "#6E6A3C", "molti boleti, come Boletus e Suillus; rosa-vinosa in Tylopilus"]
 ];
 $("#spoList").innerHTML = SPO.map(function (s) {
