@@ -1,6 +1,6 @@
 {
- "inizio": "2026-11-01 18:52",
- "fine": "2026-11-01 18:53",
+ "inizio": "2026-11-02 14:20",
+ "fine": "2026-11-02 14:21",
  "eseguito_da": "GitHub Actions",
  "telegram": "ok",
  "telegram_output": [
@@ -10,19 +10,19 @@
  "json_validi": "sì",
  "meteo_output": [
   "Radar: giorni letti 4",
-  "Mappe radar: 24 ore del 2026-10-31 - 7 giorni 2026-10-25 → 2026-10-31",
-  "Pioggia migliore: {'castagneto_piccolo': {'r': 171, 's': 262, 'c': 10, '-': 0}, 'castagneto_esteso': {'r': 171, 's': 262, 'c': 10, '-': 0}}",
-  "Fattore radar (ultimo): {'castagneto_piccolo': 1.14, 'castagneto_esteso': 1.14, 'lago': 1.14, 'poggio_sfrancesco': 1.14, 'ficuzza_cappella': 1.15, 'ficuzza_grotta': 1.15, 'cozzo_molle': 1.15, 'san_giorgio': 0.96, 'piano_torre': 0.97, 'carcara': 1.07, 'casena_mongerrati': 0.96, 'pioppeto': 1.14}",
+  "Mappe radar: 24 ore del 2026-11-01 - 7 giorni 2026-10-26 → 2026-11-01",
+  "Pioggia migliore: {'castagneto_piccolo': {'r': 172, 's': 262, 'c': 10, '-': 0}, 'castagneto_esteso': {'r': 172, 's': 262, 'c': 10, '-': 0}}",
+  "Fattore radar (ultimo): {'castagneto_piccolo': 1.03, 'castagneto_esteso': 1.04, 'lago': 1.02, 'poggio_sfrancesco': 1.03, 'ficuzza_cappella': 1.11, 'ficuzza_grotta': 1.09, 'cozzo_molle': 1.09, 'san_giorgio': 0.86, 'piano_torre': 0.89, 'carcara': 1.07, 'casena_mongerrati': 0.88, 'pioppeto': 1.02}",
   "POWER ok 12",
-  "Temperature Protezione Civile: giorni letti 0",
-  "Scarto medio stazione - Protezione Civile: {('Monreale Vigna Api', 'tn'): -0.6, ('Monreale Vigna Api', 'tx'): 1.2, ('Misilmeri', 'tn'): -0.8, ('Misilmeri', 'tx'): 1.4, ('Monreale Bifarera', 'tn'): -1.5, ('Monreale Bifarera', 'tx'): 0.4, ('Palermo', 'tn'): -1.0, ('Palermo', 'tx'): 1.3, ('Mezzojuso', 'tn'): -0.2, ('Mezzojuso', 'tx'): 2.0, ('Corleone', 'tn'): 0.9, ('Corleone', 'tx'): 2.1, ('Lascari', 'tn'): -0.1, ('Lascari', 'tx'): 2.0, ('Castelbuono', 'tn'): 0.5, ('Castelbuono', 'tx'): 1.8, ('Polizzi Generosa', 'tn'): 0.5, ('Polizzi Generosa', 'tx'): 4.3, ('Pettineo', 'tn'): 1.0, ('Pettineo', 'tx'): 2.1, ('Caronia Buzza', 'tn'): 1.2, ('Caronia Buzza', 'tx'): 3.4, ('Caronia Pomiere', 'tn'): 1.6, ('Caronia Pomiere', 'tx'): 2.7}",
-  "Temperature da stazioni SIAS: 10142 valori",
+  "Temperature Protezione Civile: giorni letti 1",
+  "Scarto medio stazione - Protezione Civile: {('Monreale Vigna Api', 'tn'): -0.7, ('Monreale Vigna Api', 'tx'): 1.3, ('Misilmeri', 'tn'): -0.8, ('Misilmeri', 'tx'): 1.3, ('Monreale Bifarera', 'tn'): -1.4, ('Monreale Bifarera', 'tx'): 0.4, ('Palermo', 'tn'): -0.9, ('Palermo', 'tx'): 1.3, ('Mezzojuso', 'tn'): -0.2, ('Mezzojuso', 'tx'): 2.0, ('Corleone', 'tn'): 0.8, ('Corleone', 'tx'): 2.2, ('Lascari', 'tn'): -0.1, ('Lascari', 'tx'): 2.1, ('Castelbuono', 'tn'): 0.5, ('Castelbuono', 'tx'): 1.7, ('Polizzi Generosa', 'tn'): 0.5, ('Polizzi Generosa', 'tx'): 4.4, ('Pettineo', 'tn'): 0.9, ('Pettineo', 'tx'): 2.1, ('Caronia Buzza', 'tn'): 1.4, ('Caronia Buzza', 'tx'): 3.5, ('Caronia Pomiere', 'tn'): 1.5, ('Caronia Pomiere', 'tx'): 2.9}",
+  "Temperature da stazioni SIAS: 10166 valori",
   "Suolo dai modelli: 12 punti",
-  "Acqua nel terreno (oggi): {'castagneto_piccolo': 42, 'castagneto_esteso': 38, 'lago': 39, 'poggio_sfrancesco': 39, 'ficuzza_cappella': 25, 'ficuzza_grotta': 26, 'cozzo_molle': 25, 'san_giorgio': 62, 'piano_torre': 95, 'carcara': 96, 'casena_mongerrati': 82, 'pioppeto': 40}",
-  "ok 2026-11-01T17:53Z",
-  "diario: oggi già salvato",
+  "Acqua nel terreno (oggi): {'castagneto_piccolo': 92, 'castagneto_esteso': 90, 'lago': 87, 'poggio_sfrancesco': 94, 'ficuzza_cappella': 83, 'ficuzza_grotta': 81, 'cozzo_molle': 77, 'san_giorgio': 94, 'piano_torre': 100, 'carcara': 100, 'casena_mongerrati': 100, 'pioppeto': 92}",
+  "ok 2026-11-02T13:20Z",
+  "diario salvato",
   "verifica previsioni: 14 zone",
-  "Segnalazioni: giorni radar letti 4",
+  "Segnalazioni: giorni radar letti 1",
   "Segnalazioni: meteo aggiornato per 11 segnalazioni"
  ]
 }
