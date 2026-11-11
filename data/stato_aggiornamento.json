@@ -1,6 +1,6 @@
 {
- "inizio": "2026-11-11 13:35",
- "fine": "2026-11-11 13:37",
+ "inizio": "2026-11-11 23:36",
+ "fine": "2026-11-11 23:37",
  "eseguito_da": "GitHub Actions",
  "telegram": "ok",
  "telegram_output": [
@@ -14,13 +14,13 @@
   "Pioggia migliore: {'castagneto_piccolo': {'r': 181, 's': 262, 'c': 10, '-': 0}, 'castagneto_esteso': {'r': 181, 's': 262, 'c': 10, '-': 0}}",
   "Fattore radar (ultimo): {'castagneto_piccolo': 1.17, 'castagneto_esteso': 1.17, 'lago': 1.19, 'poggio_sfrancesco': 1.25, 'ficuzza_cappella': 1.02, 'ficuzza_grotta': 1.03, 'cozzo_molle': 1.03, 'san_giorgio': 1.0, 'piano_torre': 0.99, 'carcara': 1.09, 'casena_mongerrati': 1.0, 'pioppeto': 1.19}",
   "POWER ok 12",
-  "Temperature Protezione Civile: giorni letti 1",
+  "Temperature Protezione Civile: giorni letti 0",
   "Scarto medio stazione - Protezione Civile: {('Monreale Vigna Api', 'tn'): -0.6, ('Monreale Vigna Api', 'tx'): 1.3, ('Misilmeri', 'tn'): -0.8, ('Misilmeri', 'tx'): 1.4, ('Monreale Bifarera', 'tn'): -1.4, ('Monreale Bifarera', 'tx'): 0.5, ('Palermo', 'tn'): -0.9, ('Palermo', 'tx'): 1.4, ('Mezzojuso', 'tn'): -0.2, ('Mezzojuso', 'tx'): 1.9, ('Corleone', 'tn'): 0.9, ('Corleone', 'tx'): 2.2, ('Lascari', 'tn'): -0.1, ('Lascari', 'tx'): 2.2, ('Castelbuono', 'tn'): 0.5, ('Castelbuono', 'tx'): 1.8, ('Polizzi Generosa', 'tn'): 0.5, ('Polizzi Generosa', 'tx'): 4.3, ('Pettineo', 'tn'): 0.9, ('Pettineo', 'tx'): 2.1, ('Caronia Buzza', 'tn'): 1.2, ('Caronia Buzza', 'tx'): 3.5, ('Caronia Pomiere', 'tn'): 1.5, ('Caronia Pomiere', 'tx'): 2.8}",
   "Temperature da stazioni SIAS: 10382 valori",
   "Suolo dai modelli: 12 punti",
   "Acqua nel terreno (oggi): {'castagneto_piccolo': 89, 'castagneto_esteso': 89, 'lago': 89, 'poggio_sfrancesco': 90, 'ficuzza_cappella': 77, 'ficuzza_grotta': 73, 'cozzo_molle': 72, 'san_giorgio': 88, 'piano_torre': 89, 'carcara': 90, 'casena_mongerrati': 88, 'pioppeto': 89}",
-  "ok 2026-11-11T12:35Z",
-  "diario salvato",
+  "ok 2026-11-11T22:37Z",
+  "diario: oggi già salvato",
   "verifica previsioni: 14 zone",
   "Segnalazioni: giorni radar letti 3",
   "Segnalazioni: meteo aggiornato per 11 segnalazioni"
