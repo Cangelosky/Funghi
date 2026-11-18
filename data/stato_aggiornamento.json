@@ -1,6 +1,6 @@
 {
- "inizio": "2026-11-18 14:46",
- "fine": "2026-11-18 14:47",
+ "inizio": "2026-11-18 23:54",
+ "fine": "2026-11-18 23:55",
  "eseguito_da": "GitHub Actions",
  "telegram": "ok",
  "telegram_output": [
@@ -19,7 +19,7 @@
   "Temperature da stazioni SIAS: 10550 valori",
   "Suolo dai modelli: 12 punti",
   "Acqua nel terreno (oggi): {'castagneto_piccolo': 80, 'castagneto_esteso': 80, 'lago': 80, 'poggio_sfrancesco': 82, 'ficuzza_cappella': 69, 'ficuzza_grotta': 65, 'cozzo_molle': 64, 'san_giorgio': 78, 'piano_torre': 79, 'carcara': 81, 'casena_mongerrati': 79, 'pioppeto': 80}",
-  "ok 2026-11-18T13:46Z",
+  "ok 2026-11-18T22:55Z",
   "diario: oggi già salvato",
   "verifica previsioni: 14 zone",
   "Segnalazioni: giorni radar letti 4",
