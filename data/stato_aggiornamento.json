@@ -1,6 +1,6 @@
 {
- "inizio": "2026-11-24 16:41",
- "fine": "2026-11-24 16:41",
+ "inizio": "2026-11-25 01:32",
+ "fine": "2026-11-25 01:33",
  "eseguito_da": "GitHub Actions",
  "telegram": "ok",
  "telegram_output": [
@@ -14,13 +14,13 @@
   "Pioggia migliore: {'castagneto_piccolo': {'r': 193, 's': 262, 'c': 10, '-': 1}, 'castagneto_esteso': {'r': 193, 's': 262, 'c': 10, '-': 1}}",
   "Fattore radar (ultimo): {'castagneto_piccolo': 1.46, 'castagneto_esteso': 1.43, 'lago': 1.51, 'poggio_sfrancesco': 1.54, 'ficuzza_cappella': 1.42, 'ficuzza_grotta': 1.4, 'cozzo_molle': 1.38, 'san_giorgio': 1.23, 'piano_torre': 1.18, 'carcara': 1.11, 'casena_mongerrati': 1.2, 'pioppeto': 1.49}",
   "POWER ok 12",
-  "Temperature Protezione Civile: giorni letti 0",
-  "Scarto medio stazione - Protezione Civile: {('Monreale Vigna Api', 'tn'): -0.4, ('Monreale Vigna Api', 'tx'): 1.2, ('Misilmeri', 'tn'): -0.8, ('Misilmeri', 'tx'): 1.4, ('Monreale Bifarera', 'tn'): -1.2, ('Monreale Bifarera', 'tx'): 0.5, ('Palermo', 'tn'): -1.1, ('Palermo', 'tx'): 1.4, ('Mezzojuso', 'tn'): -0.2, ('Mezzojuso', 'tx'): 1.8, ('Corleone', 'tn'): 0.8, ('Corleone', 'tx'): 2.2, ('Lascari', 'tn'): -0.1, ('Lascari', 'tx'): 2.2, ('Castelbuono', 'tn'): 0.3, ('Castelbuono', 'tx'): 1.8, ('Polizzi Generosa', 'tn'): 0.5, ('Polizzi Generosa', 'tx'): 4.4, ('Pettineo', 'tn'): 0.8, ('Pettineo', 'tx'): 2.1, ('Caronia Buzza', 'tn'): 1.1, ('Caronia Buzza', 'tx'): 3.4, ('Caronia Pomiere', 'tn'): 1.5, ('Caronia Pomiere', 'tx'): 2.9}",
-  "Temperature da stazioni SIAS: 10694 valori",
+  "Temperature Protezione Civile: giorni letti 1",
+  "Scarto medio stazione - Protezione Civile: {('Monreale Vigna Api', 'tn'): -0.4, ('Monreale Vigna Api', 'tx'): 1.2, ('Misilmeri', 'tn'): -0.8, ('Misilmeri', 'tx'): 1.4, ('Monreale Bifarera', 'tn'): -1.2, ('Monreale Bifarera', 'tx'): 0.5, ('Palermo', 'tn'): -1.1, ('Palermo', 'tx'): 1.4, ('Mezzojuso', 'tn'): -0.2, ('Mezzojuso', 'tx'): 1.8, ('Corleone', 'tn'): 0.8, ('Corleone', 'tx'): 2.2, ('Lascari', 'tn'): -0.1, ('Lascari', 'tx'): 2.2, ('Castelbuono', 'tn'): 0.3, ('Castelbuono', 'tx'): 1.8, ('Polizzi Generosa', 'tn'): 0.5, ('Polizzi Generosa', 'tx'): 4.4, ('Pettineo', 'tn'): 0.8, ('Pettineo', 'tx'): 2.1, ('Caronia Buzza', 'tn'): 1.1, ('Caronia Buzza', 'tx'): 3.4, ('Caronia Pomiere', 'tn'): 1.6, ('Caronia Pomiere', 'tx'): 2.9}",
+  "Temperature da stazioni SIAS: 10718 valori",
   "Suolo dai modelli: 12 punti",
   "Acqua nel terreno (oggi): {'castagneto_piccolo': 73, 'castagneto_esteso': 73, 'lago': 73, 'poggio_sfrancesco': 75, 'ficuzza_cappella': 62, 'ficuzza_grotta': 58, 'cozzo_molle': 57, 'san_giorgio': 70, 'piano_torre': 71, 'carcara': 74, 'casena_mongerrati': 70, 'pioppeto': 73}",
-  "ok 2026-11-24T15:41Z",
-  "diario: oggi già salvato",
+  "ok 2026-11-25T00:32Z",
+  "diario salvato",
   "verifica previsioni: 14 zone",
   "Segnalazioni: giorni radar letti 1",
   "Segnalazioni: meteo aggiornato per 11 segnalazioni"
